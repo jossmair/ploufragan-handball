@@ -16,6 +16,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.site-texture,.watermark,.hero-visual{transform:none!important}[data-reveal].reveal-pending{opacity:1;transform:none}.team-card:hover{transform:none!important}}
 
 /* 2026 live sections */
+html,body{overflow-x:hidden}
 body[data-page="index"] .site-texture{background-image:linear-gradient(#08080bbd,#08080bd0),url("backgrounds/fond-5.webp")}
 body[data-page="resultats"] .site-texture,body[data-page="jeunes"] .site-texture{background-image:linear-gradient(#08080bc5,#08080bdf),url("backgrounds/fond-3.webp")}
 body[data-page="boutique"] .site-texture,body[data-page="equipes"] .site-texture{background-image:linear-gradient(#08080bc2,#08080bdc),url("backgrounds/fond-2.webp")}
