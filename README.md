@@ -7,12 +7,15 @@ Site : https://jossmair.github.io/ploufragan-handball/
 ## Pages
 
 - `index.html` : accueil et accès rapides.
-- `club.html` : présentation, salles, partenariats et bénévolat.
+- `club.html` : présentation et salles.
 - `equipes.html` : accès aux six pages de catégories.
 - `baby-hand.html`, `ecole-de-hand.html`, `jeunes.html`, `seniors-masculins.html`, `seniors-feminines.html`, `loisirs.html` : informations et horaires propres à chaque catégorie.
 - `entrainements.html` : les 11 catégories et les 19 créneaux, plus le planning original téléchargeable.
 - `inscriptions.html` : démarches et demande de renseignements par e-mail.
-- `actualites.html` : accès aux publications du club sur ses réseaux.
+- `resultats.html` : résultats du week-end, prochains matchs et accès aux neuf championnats FFHandball.
+- `boutique.html` : les 21 articles de la collection, avec commande sur la boutique officielle Equip Club.
+- `partenaires.html` : partenaires identifiés et contact partenariat.
+- `actualites.html` : sélection de photos réelles publiées par le club et accès aux réseaux sociaux.
 - `contact.html` : coordonnées et lieux.
 - `404.html` : page d’erreur avec liens vers le site public.
 
@@ -22,6 +25,11 @@ Chaque document contient son propre titre, sa navigation active, son contenu HTM
 
 `build.py` contient les données d’entraînement et les modèles communs. Après modification, lancer `python build.py` à la racine du projet. Python utilise uniquement sa bibliothèque standard. Les fichiers HTML générés sont suivis dans Git et directement publiables sur GitHub Pages.
 
+- `scripts/sync_results.py` récupère les rencontres publiques du PHB sur FFHandball.
+- `data/results.json` alimente les scores, les prochains matchs et les liens de championnat.
+- `data/boutique.json` contient les noms, prix, visuels et liens Equip Club.
+- `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures, reconstruit le site et le publie.
+
 - `assets/site.css` : mise en page, couleurs et effets visuels.
 - `assets/site.js` : menu mobile, apparitions au défilement, progression de lecture, parallaxe et légère inclinaison des cartes à la souris.
 
@@ -29,7 +37,9 @@ Les effets respectent `prefers-reduced-motion`. Le menu utilise `aria-expanded`,
 
 ## Visuels
 
-- Logo et véritables affiches des seniors : fournis par le commanditaire. Les personnes n’ont pas été régénérées ou retouchées. Les cadrages sont gérés en CSS.
+- Logo, animation du logo, fonds et véritables affiches des seniors : fournis par le commanditaire. Le GIF joue une fois à l’accueil, puis sa dernière image reste affichée.
+- `assets/photos/` : sélection de photos publiées par le compte Instagram du club, reliées à leur publication d’origine.
+- `assets/boutique/` : visuels officiels des produits Equip Club.
 - `assets/planning-2026-2027.png` : affiche originale du planning fournie, conservée pour téléchargement.
 - `assets/background-phb.webp` : fond généré avec l’outil intégré imagegen, enregistré dans le projet après conversion WebP (223 520 octets). Texture noire, hermines discrètes et peinture rouge. Le logo officiel est superposé en CSS à faible opacité : il n’est pas redessiné par l’IA.
 
@@ -39,7 +49,7 @@ Prompt du fond : « Wide 16:9 premium club background using identite-phb.png as 
 
 Planning : 11 catégories, 19 créneaux, transcrits du document fourni. Les mêmes données alimentent le planning général et les pages d’équipes. Trégueux et Marcel Paul sont conservés comme lieux spécifiques. L’adresse exacte du Baby Hand à Trégueux n’est pas fournie et n’a pas été inventée.
 
-Les affiches seniors indiquent une première division départementale pour les seniors masculins 1 et les seniors féminines, saison 2026–2027. Aucun calendrier de matchs, résultat ou tarif non fourni n’a été ajouté. Les textes restent factuels, sans slogans.
+Les résultats et calendriers proviennent des pages publiques FFHandball des neuf équipes engagées. Les prix proviennent de la boutique officielle Equip Club et restent à vérifier au moment de la commande. Les textes restent factuels, sans slogans.
 
 Les coordonnées du club ont été vérifiées dans l’annuaire municipal le 12 septembre 2026 : https://www.ploufragan.fr/association/ploufragan-handball
 
@@ -47,8 +57,8 @@ Les liens sociaux proviennent des fichiers fournis. Les renseignements d’édit
 
 ## Publication et aperçu
 
-GitHub Pages publie la branche `main`, dossier `/`. Toutes les ressources utilisent des chemins relatifs compatibles avec le chemin du dépôt. La page 404 utilise le site public comme base pour rester fonctionnelle même sur une adresse inconnue imbriquée.
+GitHub Pages est publié par GitHub Actions depuis la branche `main`. Toutes les ressources utilisent des chemins relatifs compatibles avec le chemin du dépôt. La page 404 utilise le site public comme base pour rester fonctionnelle même sur une adresse inconnue imbriquée.
 
 Aperçu local : `python -m http.server 4175 --bind 127.0.0.1`, puis http://127.0.0.1:4175/.
 
-Contrôles : liens et ancres des 14 documents, titres et navigation active, ressources locales, cohérence des 19 créneaux entre les pages, syntaxe CSS et JavaScript. Les polices Inter et Barlow Condensed sont chargées depuis Google Fonts, avec des polices de remplacement. Aucun outil de suivi ou cookie applicatif ajouté.
+Contrôles : liens et ancres des 17 documents, titres et navigation active, ressources locales, cohérence des 19 créneaux entre les pages, syntaxe Python, CSS et JavaScript. Les polices Inter et Barlow Condensed sont chargées depuis Google Fonts, avec des polices de remplacement. Aucun outil de suivi ou cookie applicatif ajouté.

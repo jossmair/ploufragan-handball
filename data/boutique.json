@@ -1,0 +1,128 @@
+[
+  {
+    "image": "assets/boutique/produit-01.webp",
+    "name": "PLOUFRAGAN HB - VESTE FULL ZIP CAPUCHE",
+    "price": "47€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip-capuche"
+  },
+  {
+    "image": "assets/boutique/produit-02.webp",
+    "name": "PLOUFRAGAN HB - VESTE FULL ZIP CAPUCHE FEMME",
+    "price": "47€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip-capuche-capuche"
+  },
+  {
+    "image": "assets/boutique/produit-03.webp",
+    "name": "PLOUFRAGAN HB - VESTE FULL ZIP",
+    "price": "37€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip"
+  },
+  {
+    "image": "assets/boutique/produit-04.webp",
+    "name": "PLOUFRAGAN HB - SWEAT 1/4 ZIP TRAINING",
+    "price": "37€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-1-4-zip-training"
+  },
+  {
+    "image": "assets/boutique/produit-05.webp",
+    "name": "PLOUFRAGAN HB - PULL COL ROND POLYESTER",
+    "price": "35€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pull-col-rond-polyester"
+  },
+  {
+    "image": "assets/boutique/produit-06.webp",
+    "name": "PLOUFRAGAN HB - PANTALON",
+    "price": "32€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pantalon"
+  },
+  {
+    "image": "assets/boutique/produit-07.webp",
+    "name": "PLOUFRAGAN HB - PANTALON FEMME",
+    "price": "32€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pantalon-femme"
+  },
+  {
+    "image": "assets/boutique/produit-08.webp",
+    "name": "PLOUFRAGAN HB - T SHIRT TECHNIQUE",
+    "price": "21€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-technique"
+  },
+  {
+    "image": "assets/boutique/produit-09.webp",
+    "name": "PLOUFRAGAN HB - T SHIRT TECHNIQUE FEMME",
+    "price": "21€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-technique-femme"
+  },
+  {
+    "image": "assets/boutique/produit-10.webp",
+    "name": "PLOUFRAGAN HB - SHORT TRAINING",
+    "price": "18€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-short-training"
+  },
+  {
+    "image": "assets/boutique/produit-11.webp",
+    "name": "PLOUFRAGAN HB - SHORT TRAINING FEMME",
+    "price": "18€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-short-training-femme"
+  },
+  {
+    "image": "assets/boutique/produit-12.webp",
+    "name": "PLOUFRAGAN HB - SWEAT A CAPUCHE ADULTE",
+    "price": "34€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-a-capuche-adulte"
+  },
+  {
+    "image": "assets/boutique/produit-13.webp",
+    "name": "PLOUFRAGAN HB - SWEAT A CAPUCHE ENFANT",
+    "price": "29€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-a-capuche-enfant"
+  },
+  {
+    "image": "assets/boutique/produit-14.webp",
+    "name": "PLOUFRAGAN HB - T SHIRT COTON FEMME",
+    "price": "15€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-femme"
+  },
+  {
+    "image": "assets/boutique/produit-15.webp",
+    "name": "PLOUFRAGAN HB - T SHIRT COTON HOMME",
+    "price": "15€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-homme"
+  },
+  {
+    "image": "assets/boutique/produit-16.webp",
+    "name": "PLOUFRAGAN HB - T SHIRT COTON ENFANT",
+    "price": "13€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-enfant"
+  },
+  {
+    "image": "assets/boutique/produit-17.webp",
+    "name": "PLOUFRAGAN HB - SAC DE SPORT",
+    "price": "35€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sac-de-sport"
+  },
+  {
+    "image": "assets/boutique/produit-18.webp",
+    "name": "PLOUFRAGAN HB - SAC A DOS COMPARTIMENT",
+    "price": "30€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sac-a-dos-compartiment"
+  },
+  {
+    "image": "assets/boutique/produit-19.webp",
+    "name": "PLOUFRAGAN HB - PAIRE DE CHAUSSETTES",
+    "price": "8,50€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-paire-de-chaussettes"
+  },
+  {
+    "image": "assets/boutique/produit-20.webp",
+    "name": "PLOUFRAGAN HB - CLAQUETTES",
+    "price": "23€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-claquettes"
+  },
+  {
+    "image": "assets/boutique/produit-21.webp",
+    "name": "PLOUFRAGAN HB - GOURDE",
+    "price": "11€",
+    "url": "https://www.equipclub.com/product/ploufragan-hb-gourde"
+  }
+]

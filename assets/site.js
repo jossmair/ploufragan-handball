@@ -20,8 +20,20 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 
 // Keep links from the former single-page website usable.
 if (document.body.dataset.page === 'index') {
-  const destinations = { '#club':'club.html', '#equipes':'equipes.html', '#entrainements':'entrainements.html', '#actus':'actualites.html', '#inscriptions':'inscriptions.html', '#contact':'contact.html', '#partenaires':'club.html#participer', '#baby-hand':'baby-hand.html', '#ecole-hand':'ecole-de-hand.html', '#jeunes':'jeunes.html', '#seniors':'equipes.html', '#seniors-masculins':'seniors-masculins.html', '#seniors-feminines':'seniors-feminines.html', '#loisirs':'loisirs.html' };
+  const destinations = { '#club':'club.html', '#equipes':'equipes.html', '#entrainements':'entrainements.html', '#actus':'actualites.html', '#inscriptions':'inscriptions.html', '#contact':'contact.html', '#partenaires':'partenaires.html', '#baby-hand':'baby-hand.html', '#ecole-hand':'ecole-de-hand.html', '#jeunes':'jeunes.html', '#seniors':'equipes.html', '#seniors-masculins':'seniors-masculins.html', '#seniors-feminines':'seniors-feminines.html', '#loisirs':'loisirs.html' };
   if (destinations[location.hash]) location.replace(destinations[location.hash]);
+}
+
+// Play the supplied logo animation once, then keep its final frame visible.
+const animatedLogo = document.querySelector('#hero-logo-animation');
+if (animatedLogo) {
+  const freezeLogo = () => {
+    if (animatedLogo.dataset.frozen === 'true') return;
+    animatedLogo.dataset.frozen = 'true';
+    animatedLogo.src = animatedLogo.dataset.final;
+  };
+  if (motion.matches) freezeLogo();
+  else window.setTimeout(freezeLogo, Number(animatedLogo.dataset.duration) + 80);
 }
 
 let revealObserver;

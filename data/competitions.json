@@ -1,0 +1,101 @@
+[
+  {
+    "label": "Seniors feminines",
+    "group": "seniors-feminines",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/",
+    "poolId": "190429",
+    "pool": "D1F POULE 3",
+    "internalId": "1764919",
+    "teamId": "2119151",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/equipe-2119151/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/classements/"
+  },
+  {
+    "label": "U18 garcons",
+    "group": "jeunes",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/",
+    "poolId": "192879",
+    "pool": "U18M BRASSAGES TER POULE 2",
+    "internalId": "1793827",
+    "teamId": "2165107",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/equipe-2165107/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/classements/"
+  },
+  {
+    "label": "U11 mixte",
+    "group": "jeunes",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/",
+    "poolId": "195183",
+    "pool": "U11MX BR MOYEN PH1 - POULE 2",
+    "internalId": "1801196",
+    "teamId": "2175410",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/equipe-2175410/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/classements/"
+  },
+  {
+    "label": "U13 filles",
+    "group": "jeunes",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/",
+    "poolId": "194492",
+    "pool": "U13F BR BAS POULE 1",
+    "internalId": "1799196",
+    "teamId": "2171762",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/equipe-2171762/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/classements/"
+  },
+  {
+    "label": "U15 filles",
+    "group": "jeunes",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/",
+    "poolId": "192996",
+    "pool": "U15F BRASSAGES TER POULE 10",
+    "internalId": "1794284",
+    "teamId": "2164840",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/equipe-2164840/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/classements/"
+  },
+  {
+    "label": "Seniors masculins 1",
+    "group": "seniors-masculins",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/",
+    "poolId": "190425",
+    "pool": "D1M POULE 2",
+    "internalId": "1765012",
+    "teamId": "2119088",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/equipe-2119088/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/classements/"
+  },
+  {
+    "label": "Seniors masculins 2",
+    "group": "seniors-masculins",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/",
+    "poolId": "192928",
+    "pool": "D2M POULE 1",
+    "internalId": "1793646",
+    "teamId": "2165343",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/equipe-2165343/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/classements/"
+  },
+  {
+    "label": "U13 garcons",
+    "group": "jeunes",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/",
+    "poolId": "194043",
+    "pool": "U13M BR HAUT POULE 1",
+    "internalId": "1796135",
+    "teamId": "2169789",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/equipe-2169789/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/classements/"
+  },
+  {
+    "label": "U15 garcons",
+    "group": "jeunes",
+    "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/",
+    "poolId": "193010",
+    "pool": "U15M BRASSAGES TER POULE 6",
+    "internalId": "1794165",
+    "teamId": "2164938",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/equipe-2164938/",
+    "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/classements/"
+  }
+]

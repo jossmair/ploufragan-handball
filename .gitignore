@@ -1,3 +1,3 @@
-.DS_Store
-Thumbs.db
-.sites-runtime/
+__pycache__/
+*.pyc
+_site/
