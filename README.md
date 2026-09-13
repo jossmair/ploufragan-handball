@@ -1,44 +1,48 @@
 # Ploufragan Handball
 
-Site statique du PHB : noir, rouge et blanc, typographie au pinceau et illustration sportive. Adapté aux ordinateurs, tablettes et téléphones. Aucun outil de compilation ni abonnement supplémentaire n’est nécessaire pour ce site.
+Site statique du club, saison 2026–2027. HTML, CSS et JavaScript, hébergés sur GitHub Pages.
 
-## Contenu et utilisation
+- Site : https://jossmair.github.io/ploufragan-handball/
+- Dépôt : https://github.com/jossmair/ploufragan-handball
 
-- `index.html` : accueil, catégories, club, entraînements, inscriptions, réseaux, partenaires et contact.
-- `styles.css` : couleurs, mise en page et adaptations mobiles.
-- `script.js` : menu mobile, navigation active et ouverture des catégories.
-- `assets/logo-phb.png` : logo fourni par le commanditaire.
-- `assets/hero-handball.webp` : illustration originale générée par IA, optimisée en WebP. Elle ne représente pas un joueur identifié du club.
-- `.nojekyll` : publication directe des fichiers statiques sur GitHub Pages.
+## Contenu
 
-Les inscriptions et demandes de créneau ouvrent un e-mail prérempli dans la messagerie du visiteur. Il n’y a ni formulaire envoyé à un serveur, ni paiement, ni stockage de données personnelles. Les détails des catégories fonctionnent aussi sans JavaScript.
+Catégories, affiches seniors masculins 1 et seniors féminines, planning complet, lieux d’entraînement, inscriptions et coordonnées du club. Textes factuels, sans slogan.
 
-## GitHub Pages
+Le planning fourni comporte **11 catégories et 19 créneaux**, aux lieux Trégueux, Hoëdic, Belle-Île et Marcel Paul. La salle précise de Trégueux n’est pas indiquée sur l’affiche et n’a pas été inventée.
 
-Dépôt prévu : https://github.com/jossmair/ploufragan-handball
+Les affiches seniors indiquent une première division départementale pour les seniors masculins 1 et les seniors féminines, saison 2026–2027. Aucun calendrier de matchs, résultat ni tarif non fourni n’a été ajouté.
 
-Adresse prévue après activation : https://jossmair.github.io/ploufragan-handball/
+## Fichiers
 
-Dans le dépôt : **Settings → Pages → Deploy from a branch → main → / (root) → Save**. Le dossier `assets` doit rester à côté de `index.html`. Tous les chemins des ressources sont relatifs et fonctionnent sous le chemin du dépôt.
+- `index.html` : contenus, tableau des horaires et liens.
+- `styles.css` : identité noir/rouge/blanc, titres condensés inclinés, textures et mise en page responsive.
+- `script.js` : navigation mobile et ouverture des catégories.
+- `assets/logo-phb.png` : logo fourni.
+- `assets/seniors-masculins-1.png`, `assets/seniors-feminines.png` : véritables visuels transmis, sans génération ni modification des personnes.
+- `assets/identite-phb.png` : référence graphique fournie ; une partie des traces de peinture sert de décor.
+- `assets/planning-2026-2027.png` : affiche originale téléchargeable.
 
-Pour mettre à jour le site, modifiez les fichiers puis envoyez-les sur la branche `main`. GitHub Pages republie automatiquement la version mise à jour. La publication peut prendre quelques minutes.
+Chemins relatifs compatibles avec GitHub Pages. Aucun outil de compilation nécessaire.
+
+## Mise à jour du planning
+
+Modifier le tableau dans la section `entrainements` de `index.html` et reporter les changements dans les détails des catégories concernées. Remplacer aussi le planning téléchargeable lorsque l’affiche change.
+
+## Contacts et inscriptions
+
+Les liens préparent un e-mail dans la messagerie du visiteur. Aucun message n’est envoyé ni stocké par le site. Les tarifs et documents d’inscription restent à préciser par le club.
+
+Les coordonnées et l’adresse du complexe sportif ont été vérifiées le 12 septembre 2026 dans l’annuaire municipal : https://www.ploufragan.fr/association/ploufragan-handball
+
+Les liens sociaux proviennent des fichiers fournis. Les renseignements d’édition et de responsable de publication restent à fournir pour compléter les mentions légales.
+
+## Publication et aperçu
+
+GitHub Pages publie la branche `main`, dossier `/` (racine). Les changements envoyés sur cette branche sont publiés automatiquement, après quelques minutes.
 
 Documentation : https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-## Modifier les informations du club
+Aperçu local : `python -m http.server 4175 --bind 127.0.0.1`, puis http://127.0.0.1:4175/.
 
-Les coordonnées et le lieu sont ceux de l’annuaire municipal, consulté le 12 septembre 2026 : https://www.ploufragan.fr/association/ploufragan-handball
-
-Les catégories et les liens Facebook/Instagram proviennent des fichiers fournis. Faire confirmer par le club les tranches d’âge, groupes et comptes sociaux. Les créneaux, tarifs, dates de reprise, résultats et logos de partenaires n’ont pas été inventés : le site invite à contacter le club ou consulter ses réseaux.
-
-Pour publier le planning, remplacez le texte dans « Connaître les créneaux ». Pour des photos réelles, remplacez l’illustration par une image autorisée du club. Les renseignements d’éditeur et de responsable de publication devront être fournis pour compléter les mentions légales du site.
-
-Les polices Inter, Barlow Condensed et Permanent Marker sont chargées depuis Google Fonts, avec des polices de remplacement si le service est indisponible. Aucun outil de suivi ni cookie applicatif n’est ajouté.
-
-## Aperçu local
-
-Ouvrir `index.html` dans un navigateur, ou lancer `python -m http.server 4175 --bind 127.0.0.1` dans ce dossier et visiter http://127.0.0.1:4175/.
-
-## Vérifications effectuées
-
-Chargement des ressources, absence d’ancres cassées, syntaxe JavaScript, affichage ordinateur et mobile, absence de débordement horizontal, ouverture des catégories, menu mobile et fermeture après navigation. Le site respecte la préférence de réduction des animations.
+Inter et Barlow Condensed sont chargées depuis Google Fonts, avec des polices de remplacement. Aucun outil de suivi ni cookie applicatif ajouté.
