@@ -33,7 +33,7 @@ if (animatedLogo) {
     animatedLogo.src = animatedLogo.dataset.final;
   };
   if (motion.matches) freezeLogo();
-  else window.setTimeout(freezeLogo, Number(animatedLogo.dataset.duration) + 80);
+  else window.setTimeout(freezeLogo, Number(animatedLogo.dataset.duration));
 }
 
 // Count each published score once when the card enters the viewport.
