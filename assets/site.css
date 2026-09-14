@@ -155,8 +155,20 @@ body[data-page="inscriptions"] .site-texture,body[data-page="404"] .site-texture
 .hero-socials{margin-top:10px}
 .hero-socials a{display:flex;align-items:center;gap:10px;width:100%;min-height:54px;padding:14px 18px;border:1px solid #ffffff65;background:#1111166b;color:#fff;font:700 1rem/1 var(--display);text-transform:none;transition:border-color .2s,background .2s,transform .2s}
 .hero-socials a:hover{border-color:var(--red);color:#fff;transform:translateY(-2px)}
-.hero-socials a>span{display:grid;place-items:center;width:21px;height:21px;border-radius:50%;background:#fff;color:#111;font:800 1rem/1 Arial,sans-serif;text-transform:none}
+.social-icon{display:block;width:1em;height:1em;fill:currentColor}
+.social-icon-wrap{display:grid;place-items:center;flex:0 0 24px;width:24px;height:24px;color:#fff;box-shadow:0 4px 12px #0005}
+.social-icon-wrap .social-icon{width:15px;height:15px}
+.social-icon-wrap.facebook{border-radius:50%;background:#1877f2}
+.social-icon-wrap.instagram{border-radius:7px;background:radial-gradient(circle at 30% 107%,#fdf497 0 5%,#fd5949 44%,#d6249f 62%,#285aeb 90%)}
 .hero-socials a>b{margin-left:auto;color:currentColor;font:400 1.15rem/1 var(--body)}
 .hero-socials a:last-child{border-color:transparent;background:var(--red)}
 .hero-socials a:last-child:hover{border-color:transparent;background:#ce0516}
-@media(max-width:520px){.home-hero .actions,.hero-socials{grid-template-columns:1fr 1fr;width:100%;gap:10px}.hero-social-title{width:100%;margin-top:17px;font-size:.65rem;letter-spacing:.9px}.hero-socials{margin-top:9px}.hero-socials a{min-height:54px;padding:13px 12px;font-size:1rem;gap:8px}.hero-socials a>span{width:20px;height:20px;font-size:.9rem}}
+.social-brand-mark{display:grid;place-items:center;flex:0 0 82px;width:82px;height:82px;color:#fff;box-shadow:0 12px 28px #0007}
+.social-brand-mark .social-icon{width:45px;height:45px}
+.social-brand-mark.facebook{border-radius:50%;background:#1877f2}
+.social-brand-mark.instagram{border-radius:22px;background:radial-gradient(circle at 30% 107%,#fdf497 0 5%,#fd5949 44%,#d6249f 62%,#285aeb 90%)}
+.footer-social-link{display:flex!important;align-items:center;gap:9px}
+.footer-social-link .social-icon{width:17px;height:17px}
+.footer-social-link.facebook .social-icon{color:#1877f2}
+.footer-social-link.instagram .social-icon{color:#e1306c}
+@media(max-width:520px){.home-hero .actions,.hero-socials{grid-template-columns:1fr 1fr;width:100%;gap:10px}.hero-social-title{width:100%;margin-top:17px;font-size:.65rem;letter-spacing:.9px}.hero-socials{margin-top:9px}.hero-socials a{min-height:54px;padding:13px 12px;font-size:1rem;gap:8px}.social-icon-wrap{width:22px;height:22px;flex-basis:22px}.social-icon-wrap .social-icon{width:14px;height:14px}.social-brand-mark{width:64px;height:64px;flex-basis:64px;border-radius:18px}.social-brand-mark .social-icon{width:35px;height:35px}}
