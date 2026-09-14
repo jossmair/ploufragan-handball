@@ -36,6 +36,78 @@ if (animatedLogo) {
   else window.setTimeout(freezeLogo, Number(animatedLogo.dataset.duration) + 80);
 }
 
+// Count each published score once when the card enters the viewport.
+const scoreBlocks = document.querySelectorAll('[data-score]');
+function setFinalScore(block) {
+  block.querySelectorAll('[data-score-number]').forEach(number => {
+    number.textContent = number.dataset.value;
+  });
+  block.classList.add('score-complete');
+}
+function animateScore(block) {
+  if (block.dataset.counted === 'true') return;
+  block.dataset.counted = 'true';
+  if (motion.matches) { setFinalScore(block); return; }
+  const numbers = [...block.querySelectorAll('[data-score-number]')];
+  const started = performance.now();
+  const duration = 850;
+  function frame(now) {
+    const progress = Math.min(1, (now - started) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    numbers.forEach(number => {
+      number.textContent = Math.round(Number(number.dataset.value) * eased);
+    });
+    if (progress < 1) requestAnimationFrame(frame);
+    else setFinalScore(block);
+  }
+  requestAnimationFrame(frame);
+}
+if ('IntersectionObserver' in window) {
+  const scoreObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      animateScore(entry.target);
+      scoreObserver.unobserve(entry.target);
+    });
+  }, { threshold: .45 });
+  scoreBlocks.forEach(block => scoreObserver.observe(block));
+} else scoreBlocks.forEach(setFinalScore);
+
+// Product colours change only when the visitor uses the arrows.
+document.querySelectorAll('[data-product-carousel]').forEach(carousel => {
+  const slides = [...carousel.querySelectorAll('[data-product-slide]')];
+  if (slides.length < 2) return;
+  let active = 0;
+  let turning = false;
+  const show = (index, direction) => {
+    if (turning) return;
+    const nextIndex = (index + slides.length) % slides.length;
+    if (nextIndex === active) return;
+    turning = true;
+    const current = slides[active];
+    const next = slides[nextIndex];
+    const leavingClass = direction > 0 ? 'is-leaving-left' : 'is-leaving-right';
+    const enteringClass = direction > 0 ? 'is-entering-right' : 'is-entering-left';
+    slides.forEach(slide => slide.classList.remove('is-leaving-left', 'is-leaving-right', 'is-entering-left', 'is-entering-right', 'is-arriving'));
+    current.classList.remove('is-active');
+    current.classList.add(leavingClass);
+    next.classList.add(enteringClass, 'is-arriving');
+    next.getBoundingClientRect();
+    requestAnimationFrame(() => {
+      next.classList.add('is-active');
+      next.classList.remove(enteringClass);
+    });
+    active = nextIndex;
+    window.setTimeout(() => {
+      current.classList.remove(leavingClass);
+      next.classList.remove('is-arriving');
+      turning = false;
+    }, 680);
+  };
+  carousel.querySelector('[data-carousel-prev]')?.addEventListener('click', () => show(active - 1, -1));
+  carousel.querySelector('[data-carousel-next]')?.addEventListener('click', () => show(active + 1, 1));
+});
+
 let revealObserver;
 if ('IntersectionObserver' in window && !motion.matches) {
   revealObserver = new IntersectionObserver(entries => {

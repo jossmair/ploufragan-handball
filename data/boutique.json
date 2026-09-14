@@ -3,126 +3,436 @@
     "image": "assets/boutique/produit-01.webp",
     "name": "PLOUFRAGAN HB - VESTE FULL ZIP CAPUCHE",
     "price": "47€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip-capuche"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip-capuche",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-01-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/AB-2205b5c7-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-01-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/AB+2-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-02.webp",
     "name": "PLOUFRAGAN HB - VESTE FULL ZIP CAPUCHE FEMME",
     "price": "47€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip-capuche-capuche"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip-capuche-capuche",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-02-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.12.30-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-02-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.13.11-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-03.webp",
     "name": "PLOUFRAGAN HB - VESTE FULL ZIP",
     "price": "37€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-03-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.16.47-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-03-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.17.20-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-04.webp",
     "name": "PLOUFRAGAN HB - SWEAT 1/4 ZIP TRAINING",
     "price": "37€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-1-4-zip-training"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-1-4-zip-training",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-04-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.20.24-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-04-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.21.02-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-05.webp",
     "name": "PLOUFRAGAN HB - PULL COL ROND POLYESTER",
     "price": "35€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-pull-col-rond-polyester"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pull-col-rond-polyester",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-05-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.24.18-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-05-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.25.01-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-06.webp",
     "name": "PLOUFRAGAN HB - PANTALON",
     "price": "32€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-pantalon"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pantalon",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-06-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.41.11-1920w.png"
+      }
+    ],
+    "colors": ["Noir"]
   },
   {
     "image": "assets/boutique/produit-07.webp",
     "name": "PLOUFRAGAN HB - PANTALON FEMME",
     "price": "32€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-pantalon-femme"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pantalon-femme",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-07-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.41.44-1920w.png"
+      }
+    ],
+    "colors": ["Noir"]
   },
   {
     "image": "assets/boutique/produit-08.webp",
     "name": "PLOUFRAGAN HB - T SHIRT TECHNIQUE",
     "price": "21€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-technique"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-technique",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-08-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.28.19-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-08-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.28.58-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-09.webp",
     "name": "PLOUFRAGAN HB - T SHIRT TECHNIQUE FEMME",
     "price": "21€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-technique-femme"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-technique-femme",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-09-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.31.28-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-09-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.32.11-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-10.webp",
     "name": "PLOUFRAGAN HB - SHORT TRAINING",
     "price": "18€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-short-training"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-short-training",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-10-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.36.01-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-10-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.36.31-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-11.webp",
     "name": "PLOUFRAGAN HB - SHORT TRAINING FEMME",
     "price": "18€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-short-training-femme"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-short-training-femme",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-11-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.39.05-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-11-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.39.35-1920w.png"
+      }
+    ],
+    "colors": [
+      "Noir",
+      "Rouge"
+    ]
   },
   {
     "image": "assets/boutique/produit-12.webp",
     "name": "PLOUFRAGAN HB - SWEAT A CAPUCHE ADULTE",
     "price": "34€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-a-capuche-adulte"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-a-capuche-adulte",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-12-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.45.36-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-12-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.46.02-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-12-vue-3.webp",
+        "label": "Vue 3",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/AB10-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-12-vue-4.webp",
+        "label": "Vue 4",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/AB9-1920w.png"
+      }
+    ],
+    "colors": ["Gris", "Bordeaux", "Vert sauge", "Rose"]
   },
   {
     "image": "assets/boutique/produit-13.webp",
     "name": "PLOUFRAGAN HB - SWEAT A CAPUCHE ENFANT",
     "price": "29€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-a-capuche-enfant"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-a-capuche-enfant",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-13-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.47.56-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-13-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.48.41-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-13-vue-3.webp",
+        "label": "Vue 3",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.49.08-1920w.png"
+      }
+    ],
+    "colors": ["Gris", "Rose", "Vert sauge"]
   },
   {
     "image": "assets/boutique/produit-14.webp",
     "name": "PLOUFRAGAN HB - T SHIRT COTON FEMME",
     "price": "15€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-femme"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-femme",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-14-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.53.39-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-14-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.54.06-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-14-vue-3.webp",
+        "label": "Vue 3",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Boutique-87-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-14-vue-4.webp",
+        "label": "Vue 4",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Boutique-86-1920w.png"
+      }
+    ],
+    "colors": ["Gris", "Bordeaux", "Vert sauge", "Rose"]
   },
   {
     "image": "assets/boutique/produit-15.webp",
     "name": "PLOUFRAGAN HB - T SHIRT COTON HOMME",
     "price": "15€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-homme"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-homme",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-15-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.51.25-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-15-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.51.50-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-15-vue-3.webp",
+        "label": "Vue 3",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Boutique-83-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-15-vue-4.webp",
+        "label": "Vue 4",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Boutique-82.png-1920w.webp"
+      }
+    ],
+    "colors": ["Gris", "Bordeaux", "Vert sauge", "Rose"]
   },
   {
     "image": "assets/boutique/produit-16.webp",
     "name": "PLOUFRAGAN HB - T SHIRT COTON ENFANT",
     "price": "13€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-enfant"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-enfant",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-16-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Boutique-80-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-16-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Boutique-81-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-16-vue-3.webp",
+        "label": "Vue 3",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+11.51.25-1920w.png"
+      }
+    ],
+    "colors": ["Noir", "Rouge", "Gris"]
   },
   {
     "image": "assets/boutique/produit-17.webp",
     "name": "PLOUFRAGAN HB - SAC DE SPORT",
     "price": "35€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-sac-de-sport"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sac-de-sport",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-17-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+12.00.35-1920w.png"
+      }
+    ],
+    "colors": ["Noir"]
   },
   {
     "image": "assets/boutique/produit-18.webp",
     "name": "PLOUFRAGAN HB - SAC A DOS COMPARTIMENT",
     "price": "30€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-sac-a-dos-compartiment"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sac-a-dos-compartiment",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-18-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+13.37.03-1920w.png"
+      }
+    ],
+    "colors": ["Noir"]
   },
   {
     "image": "assets/boutique/produit-19.webp",
     "name": "PLOUFRAGAN HB - PAIRE DE CHAUSSETTES",
     "price": "8,50€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-paire-de-chaussettes"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-paire-de-chaussettes",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-19-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+13.51.17-1920w.png"
+      },
+      {
+        "image": "assets/boutique/produit-19-vue-2.webp",
+        "label": "Vue 2",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+13.51.49-1920w.png"
+      }
+    ],
+    "colors": ["Blanc", "Noir"]
   },
   {
     "image": "assets/boutique/produit-20.webp",
     "name": "PLOUFRAGAN HB - CLAQUETTES",
     "price": "23€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-claquettes"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-claquettes",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-20-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+13.47.27-1920w.png"
+      }
+    ],
+    "colors": ["Noir"]
   },
   {
     "image": "assets/boutique/produit-21.webp",
     "name": "PLOUFRAGAN HB - GOURDE",
     "price": "11€",
-    "url": "https://www.equipclub.com/product/ploufragan-hb-gourde"
+    "url": "https://www.equipclub.com/product/ploufragan-hb-gourde",
+    "variants": [
+      {
+        "image": "assets/boutique/produit-21-vue-1.webp",
+        "label": "Vue 1",
+        "source": "https://le-de.cdn-website.com/cc28d4e2b1154e3e993b901fa9e9c5c4/dms3rep/multi/opt/Capture+d-%C3%A9cran+2026-09-10+%C3%A0+13.43.15-1920w.png"
+      }
+    ],
+    "colors": ["Blanc"]
   }
 ]

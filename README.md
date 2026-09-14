@@ -7,14 +7,14 @@ Site : https://jossmair.github.io/ploufragan-handball/
 ## Pages
 
 - `index.html` : accueil et accès rapides.
-- `club.html` : présentation et salles.
+- `club.html` : présentation, présidence vérifiée, photo de l’encadrement bénévole et salles.
 - `equipes.html` : accès aux six pages de catégories.
 - `baby-hand.html`, `ecole-de-hand.html`, `jeunes.html`, `seniors-masculins.html`, `seniors-feminines.html`, `loisirs.html` : informations et horaires propres à chaque catégorie.
 - `entrainements.html` : les 11 catégories et les 19 créneaux, plus le planning original téléchargeable.
 - `inscriptions.html` : démarches et demande de renseignements par e-mail.
 - `resultats.html` : résultats du week-end, prochains matchs et accès aux neuf championnats FFHandball.
-- `boutique.html` : les 21 articles de la collection, avec commande sur la boutique officielle Equip Club.
-- `partenaires.html` : partenaires identifiés et contact partenariat.
+- `boutique.html` : les 21 articles et leurs variantes visuelles, avec commande sur la boutique officielle Equip Club.
+- `partenaires.html` : les 23 partenaires présentés par le club et contact partenariat.
 - `actualites.html` : sélection de photos réelles publiées par le club et accès aux réseaux sociaux.
 - `contact.html` : coordonnées et lieux.
 - `404.html` : page d’erreur avec liens vers le site public.
@@ -26,12 +26,15 @@ Chaque document contient son propre titre, sa navigation active, son contenu HTM
 `build.py` contient les données d’entraînement et les modèles communs. Après modification, lancer `python build.py` à la racine du projet. Python utilise uniquement sa bibliothèque standard. Les fichiers HTML générés sont suivis dans Git et directement publiables sur GitHub Pages.
 
 - `scripts/sync_results.py` récupère les rencontres publiques du PHB sur FFHandball.
+- `scripts/download_variants.py` reconstruit les variantes locales des articles depuis leurs visuels publics Equip Club.
+- `scripts/check_site.py` contrôle les références vers les fichiers locaux.
 - `data/results.json` alimente les scores, les prochains matchs et les liens de championnat.
 - `data/boutique.json` contient les noms, prix, visuels et liens Equip Club.
+- `data/partenaires.json` contient la liste publiée par le club et les liens Instagram disponibles.
 - `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures, reconstruit le site et le publie.
 
 - `assets/site.css` : mise en page, couleurs et effets visuels.
-- `assets/site.js` : menu mobile, apparitions au défilement, progression de lecture, parallaxe et légère inclinaison des cartes à la souris.
+- `assets/site.js` : menu mobile, apparitions au défilement, montée des scores, carrousels de la boutique, progression de lecture, parallaxe et légère inclinaison des cartes à la souris.
 
 Les effets respectent `prefers-reduced-motion`. Le menu utilise `aria-expanded`, se ferme avec Échap et après navigation. Le contenu reste accessible si les animations ou JavaScript sont indisponibles.
 
@@ -39,7 +42,7 @@ Les effets respectent `prefers-reduced-motion`. Le menu utilise `aria-expanded`,
 
 - Logo, animation du logo, fonds et véritables affiches des seniors : fournis par le commanditaire. Le GIF joue une fois à l’accueil, puis sa dernière image reste affichée.
 - `assets/photos/` : sélection de photos publiées par le compte Instagram du club, reliées à leur publication d’origine.
-- `assets/boutique/` : visuels officiels des produits Equip Club.
+- `assets/boutique/` : visuels officiels et variantes de couleurs des produits Equip Club.
 - `assets/planning-2026-2027.png` : affiche originale du planning fournie, conservée pour téléchargement.
 - `assets/background-phb.webp` : fond généré avec l’outil intégré imagegen, enregistré dans le projet après conversion WebP (223 520 octets). Texture noire, hermines discrètes et peinture rouge. Le logo officiel est superposé en CSS à faible opacité : il n’est pas redessiné par l’IA.
 
