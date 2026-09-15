@@ -299,6 +299,9 @@ body{padding-bottom:calc(var(--partner-dock-height) + env(safe-area-inset-bottom
 @media(max-width:850px){:root{--partner-dock-height:58px}.sponsor-marquee{grid-template-columns:auto minmax(0,1fr)}.sponsor-marquee-title{justify-self:stretch;padding:0 16px}.sponsor-marquee-window{padding-block:12px}.sponsor-track a>img{width:42px;height:32px}}
 @media(max-width:520px){.sponsor-marquee-title{padding-inline:12px}.sponsor-marquee-title span{font-size:.78rem;letter-spacing:.7px}.sponsor-track a{margin-right:26px}.sponsor-track a>img{width:38px;height:30px}}
 
-/* Direction-aware sticky header. */
-.site-header{will-change:transform;transition:transform .32s cubic-bezier(.22,.8,.28,1),background .25s}
+/* Direction-aware fixed header. */
+body{padding-top:88px}
+.site-header{position:fixed;left:0;right:0;top:0;will-change:transform;transition:transform .32s cubic-bezier(.22,.8,.28,1),background .25s}
 .site-header.is-hidden{transform:translateY(calc(-100% - 4px))}
+@media(max-width:850px){body{padding-top:76px}}
+@media(max-width:520px){body{padding-top:70px}}

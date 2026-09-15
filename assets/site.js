@@ -135,6 +135,7 @@ motion.addEventListener('change', () => {
 });
 
 let lastScrollY = Math.max(window.scrollY, 0);
+let downwardDistance = 0;
 let scrollQueued = false;
 function paintScroll() {
   const currentScrollY = Math.max(window.scrollY, 0);
@@ -145,12 +146,19 @@ function paintScroll() {
 
   const delta = currentScrollY - lastScrollY;
   const menuOpen = menuButton.getAttribute('aria-expanded') === 'true';
-  if (currentScrollY <= 20 || menuOpen || delta < -5) {
+  if (currentScrollY <= 20 || menuOpen) {
+    downwardDistance = 0;
     siteHeader.classList.remove('is-hidden');
-  } else if (delta > 5 && currentScrollY > siteHeader.offsetHeight + 24) {
-    siteHeader.classList.add('is-hidden');
+  } else if (delta < 0) {
+    downwardDistance = 0;
+    siteHeader.classList.remove('is-hidden');
+  } else if (delta > 0) {
+    downwardDistance += delta;
+    if (downwardDistance > 8 && currentScrollY > siteHeader.offsetHeight + 24) {
+      siteHeader.classList.add('is-hidden');
+    }
   }
-  if (Math.abs(delta) > 5 || currentScrollY <= 20) lastScrollY = currentScrollY;
+  lastScrollY = currentScrollY;
   scrollQueued = false;
 }
 window.addEventListener('scroll', () => {
