@@ -1,10 +1,12 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
+const siteHeader = document.querySelector('.site-header');
 const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 function setMenu(open) {
   navigation.classList.toggle('is-open', open);
   menuButton.setAttribute('aria-expanded', String(open));
   menuButton.querySelector('.menu-label').textContent = open ? 'Fermer' : 'Menu';
+  if (open) siteHeader.classList.remove('is-hidden');
 }
 menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
 navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
@@ -132,12 +134,23 @@ motion.addEventListener('change', () => {
   }
 });
 
+let lastScrollY = Math.max(window.scrollY, 0);
 let scrollQueued = false;
 function paintScroll() {
+  const currentScrollY = Math.max(window.scrollY, 0);
   const range = document.documentElement.scrollHeight - innerHeight;
-  document.documentElement.style.setProperty('--progress', range > 0 ? Math.min(1, scrollY / range) : 0);
-  document.documentElement.style.setProperty('--depth', motion.matches ? '0px' : Math.min(scrollY, 700) + 'px');
-  document.querySelector('.site-header').classList.toggle('is-scrolled', scrollY > 20);
+  document.documentElement.style.setProperty('--progress', range > 0 ? Math.min(1, currentScrollY / range) : 0);
+  document.documentElement.style.setProperty('--depth', motion.matches ? '0px' : Math.min(currentScrollY, 700) + 'px');
+  siteHeader.classList.toggle('is-scrolled', currentScrollY > 20);
+
+  const delta = currentScrollY - lastScrollY;
+  const menuOpen = menuButton.getAttribute('aria-expanded') === 'true';
+  if (currentScrollY <= 20 || menuOpen || delta < -5) {
+    siteHeader.classList.remove('is-hidden');
+  } else if (delta > 5 && currentScrollY > siteHeader.offsetHeight + 24) {
+    siteHeader.classList.add('is-hidden');
+  }
+  if (Math.abs(delta) > 5 || currentScrollY <= 20) lastScrollY = currentScrollY;
   scrollQueued = false;
 }
 window.addEventListener('scroll', () => {
