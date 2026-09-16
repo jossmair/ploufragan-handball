@@ -69,6 +69,17 @@ def sync_team(original, start, end):
                      'internalId': str(record['id']), 'teamId': str(record['ext_equipeId'])}
             found['url'] = found['base'] + 'equipe-' + found['teamId'] + '/'
             found['ranking'] = found['base'] + f'poule-{pid}/classements/'
+            ranking = fetch(found['ranking']).get('competitions---classement', {}).get('classements')
+            if not isinstance(ranking, list):
+                raise ValueError('Missing official standings for ' + found['label'])
+            found['standings'] = [
+                {'position': int(row['place']), 'team': row['equipe_libelle'],
+                 'points': int(row['point']), 'played': int(row['joue']),
+                 'club': str(row['equipeId']) == found['internalId']}
+                for row in ranking
+            ]
+            if not any(row['club'] for row in found['standings']):
+                raise ValueError('PHB missing from official standings for ' + found['label'])
             matches = []
             days = json.loads(sel.get('selected_poule', {}).get('journees') or '[]')
             selected = current.get('competitions---rencontre-list', {})
@@ -104,11 +115,18 @@ def main():
             for team, items in result:
                 teams.append(team)
                 for match in items: matches[match['id']] = match
+    target = ROOT / 'data/results.json'
+    if target.exists():
+        previous = json.loads(target.read_text(encoding='utf-8'))
+        if previous.get('season') == '2026–2027':
+            # Keep verified scores from earlier rounds when they leave the sync window.
+            for match in previous.get('matches', []):
+                if match.get('played') and match['id'] not in matches:
+                    matches[match['id']] = match
     output = {'updatedAt': now.isoformat(), 'season': '2026–2027',
               'source': 'FFHandball', 'teams': teams,
               'matches': sorted(matches.values(), key=lambda m: m['date'], reverse=True)}
     # Write only after every source succeeds; a partial fetch never erases good data.
-    target = ROOT / 'data/results.json'
     temp = target.with_suffix('.tmp')
     temp.write_text(json.dumps(output, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     temp.replace(target)

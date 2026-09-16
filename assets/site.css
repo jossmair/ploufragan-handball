@@ -305,3 +305,106 @@ body{padding-top:88px}
 .site-header.is-hidden{transform:translateY(calc(-100% - 4px))}
 @media(max-width:850px){body{padding-top:76px}}
 @media(max-width:520px){body{padding-top:70px}}
+
+/* Verified category details, legal content, registration and one-shot hero video. */
+.hero-logo-stage #hero-logo-final,.hero-logo-stage video{grid-area:1/1;width:min(100%,610px);height:auto;aspect-ratio:1;object-fit:contain}
+.hero-logo-stage video{position:relative;z-index:1;mix-blend-mode:screen}
+.hero-logo-stage video.is-complete{display:none}
+.category-facts{padding-top:0}.category-facts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.category-facts-grid>div,.verified-team{background:#111116e8;border:1px solid #ffffff30;padding:24px}.category-facts h3,.verified-team h4{font:800 italic 1.35rem var(--display);margin-bottom:10px}.category-facts p,.verified-team p,.category-photos>p,.registration-facts>p,.legal-content p{color:#c9c9d0;line-height:1.6}.category-facts a,.registration-facts a,.legal-content a{color:#fff;text-decoration:underline;text-decoration-color:#ed0719;text-underline-offset:4px}.category-competitions{padding-top:0}.verified-team{margin-top:22px}.verified-team-head{display:flex;justify-content:space-between;gap:22px;align-items:start}.verified-team-head h3{font-size:2rem}.verified-team-head>a{color:#fff;border-bottom:2px solid var(--red);white-space:nowrap}.verified-team-scores{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}.verified-matches .match-card{min-height:0;margin-top:12px;padding:18px}.verified-matches .match-main{gap:10px}.verified-matches .match-team-name{font-size:.75rem}.verified-empty{padding:22px;background:#ffffff0a;border-left:3px solid var(--red)}.category-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.category-photo-grid figure{background:#111116e8;border:1px solid #ffffff2c}.category-photo-grid img{width:100%;height:245px;object-fit:cover}.category-photo-grid figcaption{padding:12px 16px;font:800 italic 1.25rem var(--display)}.registration-facts{padding-top:0}.registration-facts>p{max-width:940px;margin-bottom:20px}.registration-table{width:100%;border-collapse:collapse;background:#15151aeb}.registration-table caption{text-align:left;font:800 italic 1.8rem var(--display);padding:18px 20px}.registration-table th,.registration-table td{text-align:left;vertical-align:top;padding:15px 13px;border-bottom:1px solid #ffffff28;font-size:.86rem}.registration-table thead{background:#ed0719}.registration-table tbody th{color:#fff}.registration-table tbody tr:nth-child(even){background:#ffffff08}.registration-table a{color:#fff}.registration-source{margin-top:18px}.legal-content{max-width:900px}.legal-content .information-panel{margin:0 0 22px}.footer-bottom nav{display:flex;flex-wrap:wrap;gap:18px}.footer-bottom nav a:hover{color:#fff}
+@media(max-width:850px){.category-facts-grid{grid-template-columns:1fr}.verified-team-scores{grid-template-columns:1fr}.category-photo-grid{grid-template-columns:1fr 1fr}.registration-table{min-width:900px}}
+@media(max-width:520px){.verified-team-head{display:block}.verified-team-head>a{display:inline-block;margin-top:14px}.category-photo-grid{grid-template-columns:1fr}.hero-logo-stage video,.hero-logo-stage #hero-logo-final{width:111%;max-width:none}}
+@media(prefers-reduced-motion:reduce){.hero-logo-stage video{display:none!important}}
+
+/* Clear youth navigation and a transparent home crest. */
+.hero-logo-stage #hero-logo-final{mix-blend-mode:normal;width:min(100%,610px);height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 28px 48px #000a) drop-shadow(0 0 28px #ed071955)}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"]{min-height:365px;border-color:#ed071957;background:#111116}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo{width:100%;inset:0}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo img{width:100%;height:100%;right:-12%;bottom:0;object-fit:contain;object-position:right bottom;opacity:.98}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo::after{background:linear-gradient(90deg,#101015 0%,#101015f0 25%,#1010159e 57%,#10101505 100%),linear-gradient(0deg,#101015e6,transparent 45%)}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-card-copy{width:84%;padding:32px}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] h2{font-size:clamp(2.35rem,3.4vw,3.25rem);line-height:.95;max-width:9ch}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-meta{font-weight:800;letter-spacing:.045em;color:#fff;background:#ed0719;padding:7px 10px;width:max-content;max-width:100%}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-bottom{font-weight:800}
+.youth-landing{padding-bottom:85px}.youth-landing-heading{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:28px}.youth-landing-heading h2{font-size:clamp(2.2rem,4vw,3.4rem)}.youth-landing-heading>p{max-width:310px;color:#c6c6ce;line-height:1.55}
+.youth-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.youth-choice{display:flex;align-items:center;gap:22px;min-height:135px;padding:20px 25px;background:linear-gradient(115deg,#16161be8,#0d0d12ee);border:1px solid #ffffff30;border-left:4px solid #ed0719;transition:background .2s,border-color .2s,transform .2s,box-shadow .2s}
+.youth-choice:hover,.youth-choice:focus-visible{background:linear-gradient(115deg,#271319f0,#141418f0);border-color:#ed0719;box-shadow:0 14px 34px #0007;transform:translateY(-3px)}
+.youth-choice-age{min-width:90px;font:900 italic clamp(2.4rem,4vw,3.8rem)/1 var(--display);color:#ed0719}.youth-choice-body{display:grid;gap:7px}.youth-choice-body strong{font:800 italic clamp(1.25rem,2vw,1.8rem)/1 var(--display);text-transform:uppercase}.youth-choice-body small{color:#c6c6ce;font-size:.85rem}.youth-choice-arrow{margin-left:auto;align-self:start;color:#ed0719;font-size:1.65rem}
+.youth-feature{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);min-height:440px;background:#111116eb;border:1px solid #ffffff32;overflow:hidden}.youth-feature-info{padding:clamp(28px,4vw,55px)}.youth-feature-info h2{font-size:clamp(2.3rem,4vw,3.6rem);margin:14px 0 30px}.youth-practice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.youth-practice{display:grid;gap:7px;padding:22px;border-top:3px solid #ed0719;background:#ffffff0a}.youth-practice>span{text-transform:uppercase;color:#ff6c75;font-size:.82rem;font-weight:800;letter-spacing:.08em}.youth-practice strong{font:800 italic 1.8rem var(--display)}.youth-practice small{color:#ccc;font-size:.95rem}.youth-age-note{margin-top:25px;color:#c9c9d0;line-height:1.6}.youth-age-note strong{color:#fff}.youth-age-note a{color:#fff;text-decoration:underline;text-decoration-color:#ed0719;text-underline-offset:4px}.youth-feature-info .actions{margin-top:27px}.youth-feature-photo{position:relative;display:flex;align-items:end;justify-content:center;margin:0;min-height:440px;background:radial-gradient(circle at 55% 65%,#ed071933,transparent 65%)}.youth-feature-photo img{width:100%;height:100%;max-height:540px;object-fit:contain;object-position:center bottom}.youth-feature-photo figcaption{position:absolute;left:15px;right:15px;bottom:15px;padding:8px 12px;background:#09090dcc;color:#ddd;font-size:.75rem;text-align:center}.youth-feature-mark{display:grid;place-items:center;font:900 italic clamp(7rem,19vw,17rem)/1 var(--display);color:#ffffff13;background:radial-gradient(circle at 50% 50%,#ed071932,transparent 62%)}.youth-competition{padding-top:45px}.youth-competition .verified-team{margin-top:0}
+.registration-table{table-layout:fixed}.registration-table th,.registration-table td{font-size:1rem;padding:17px 22px}.registration-table thead th{font-size:.94rem}.registration-table th:nth-child(1){width:38%}.registration-table th:nth-child(2){width:37%}.registration-table th:nth-child(3){width:25%}.registration-table tbody td:nth-child(2){font-weight:800;color:#fff}.registration-table tbody td:nth-child(3){color:#d8d8df}
+@media(max-width:850px){.youth-feature{grid-template-columns:1fr}.youth-feature-photo{min-height:300px}.youth-feature-photo img{max-height:390px}.registration-table{min-width:0}.youth-landing-heading{display:block}.youth-landing-heading>p{margin-top:16px;max-width:600px}}
+@media(max-width:520px){.hero-logo-stage #hero-logo-final{width:105%;max-width:none}.youth-choice-grid{grid-template-columns:1fr}.youth-choice{min-height:105px;padding:18px;gap:14px}.youth-choice-age{min-width:70px;font-size:2.7rem}.youth-choice-body strong{font-size:1.5rem}.youth-choice-body small{font-size:.77rem}.youth-feature-info{padding:25px 19px}.youth-practice-grid{gap:9px}.youth-practice{padding:15px 11px}.youth-practice strong{font-size:1.45rem}.youth-feature-info .actions{flex-direction:column}.youth-feature-info .button{width:100%}.registration-table th,.registration-table td{padding:12px 8px;font-size:.82rem}.registration-table thead th{font-size:.76rem}.registration-table caption{font-size:1.45rem}.registration-table th:nth-child(1){width:35%}.registration-table th:nth-child(2){width:37%}.registration-table th:nth-child(3){width:28%}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-card-copy{padding:24px;width:90%}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] h2{font-size:2.8rem}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo img{right:-6%}}
+@media(prefers-reduced-motion:reduce){.youth-choice{transition:none}.youth-choice:hover{transform:none}}
+
+/* Make the youth overview card read as a compact feature, not a dark poster. */
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"]{min-height:335px;align-items:stretch;background:linear-gradient(120deg,#190c11,#111116 58%)}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-card-copy{display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:335px}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-bottom{margin-top:auto}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo::after{background:linear-gradient(90deg,#120d12 0%,#120d12e8 25%,#120d1277 56%,transparent 100%),linear-gradient(0deg,#110e12b8,transparent 40%)}
+@media(max-width:520px){body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"]{min-height:315px}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-card-copy{min-height:315px}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo img{right:-13%;height:100%}.registration-table th,.registration-table td{font-size:.88rem;padding-inline:8px}.registration-table thead th{font-size:.81rem}}
+
+/* Youth pages use the same schedule panel as the other categories. */
+.youth-landing-heading{margin-bottom:25px}
+
+/* One visual language for every team tile. */
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"]{min-height:350px;align-items:flex-end;background:linear-gradient(135deg,#1d1d23e8,#0e0e13f0);border-color:#ffffff30}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo{inset:0 0 0 auto;width:80%;height:100%}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo img{inset:auto 0 0 auto;width:100%;height:100%;object-fit:contain;object-position:right bottom;opacity:.96}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo::after{background:linear-gradient(90deg,#0e0e13 0%,#0e0e13ed 18%,#0e0e13a8 42%,#0e0e1326 72%,transparent 100%),linear-gradient(0deg,#09090df5 0%,#09090d9c 23%,transparent 62%)}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-card-copy{display:block;width:72%;height:auto;min-height:0;padding:28px}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] h2{font-size:2.6rem;line-height:1.05;max-width:none}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-meta{font-weight:400;letter-spacing:normal;color:#c7c7cc;background:none;padding:0;width:auto;max-width:none}
+body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-bottom{font-weight:400;margin-top:24px}
+
+/* Team pages keep training, registration and the pool on the same visual plane. */
+.team-detail-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:24px;align-items:start;padding-bottom:90px}
+.team-detail-main,.team-season-stack{display:grid;gap:24px;min-width:0}
+.team-detail-grid .information-panel{margin:0}
+.team-detail-grid .schedule{table-layout:auto}
+.team-detail-grid .schedule tbody th>a{min-width:108px;font-size:1.2rem;padding:10px 13px}
+.team-detail-grid .slot strong{font-size:1.2rem}
+.team-detail-grid .slot strong>span{display:block}
+.team-detail-grid .venue{font-size:1.1rem}
+.team-detail-grid.no-ranking{grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr)}
+.team-season-card{min-width:0;background:#111116ef;border:1px solid #ffffff32;border-top:5px solid var(--red);box-shadow:0 20px 54px #0004;padding:29px}
+.team-season-head{display:flex;align-items:start;justify-content:space-between;gap:18px;padding-bottom:22px;border-bottom:1px solid #ffffff2b}
+.team-season-head .eyebrow{color:#ff747f;font-size:.69rem;letter-spacing:1.5px}
+.team-season-head h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-top:6px}
+.team-season-head>a,.season-ranking-link,.season-source{color:#e5e5e9;font-size:.77rem;font-weight:700;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px}
+.team-season-head>a{white-space:nowrap;margin-top:5px}
+.team-rank{padding:22px 0 16px}
+.team-rank>div{display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:end}
+.team-rank small{grid-column:1/-1;color:#b8b8c0;font-size:.7rem;font-weight:800;letter-spacing:1.7px}
+.team-rank strong{color:#fff;font:900 italic 3.7rem/1 var(--display)}
+.team-rank strong span{color:#90909b;font-size:1.4rem}
+.team-rank div>span{color:#c5c5cb;font-size:.82rem;padding-bottom:5px}
+.pool-table-scroll{overflow-x:auto}
+.pool-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.78rem;line-height:1.3}
+.pool-table thead{color:#a9a9b2;text-transform:uppercase;letter-spacing:.08em;font-size:.65rem}
+.pool-table th,.pool-table td{padding:8px 7px;border-bottom:1px solid #ffffff18;text-align:center}
+.pool-table th:nth-child(2){width:65%;text-align:left}
+.pool-table tbody th{font-weight:500;overflow-wrap:anywhere}
+.pool-table tbody tr.is-phb{background:#ed071921;color:#fff}
+.pool-table tbody tr.is-phb th{font-weight:800}
+.season-ranking-link{display:inline-block;margin-top:15px}
+.season-last{margin-top:27px;padding-top:22px;border-top:1px solid #ffffff2b}
+.season-last h3{font-size:1.55rem;margin-bottom:14px}
+.season-result{display:block;padding:16px;background:#ffffff09;border-left:3px solid var(--red);transition:background .2s}
+.season-result:hover{background:#ffffff13}
+.season-result time{display:block;color:#aaaab3;font-size:.72rem;text-transform:uppercase;margin-bottom:11px}
+.season-result-teams{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center;line-height:1.35}
+.season-result-teams>span:last-child{text-align:right}
+.season-result-teams strong{color:#fff;font:900 italic 1.9rem/1 var(--display);white-space:nowrap}
+.season-source{display:block;margin-top:14px}
+.season-empty{color:#c8c8d0;font-size:.88rem;padding:17px 0}
+.team-last-card{background:#111116ef;border:1px solid #ffffff32;border-left:5px solid var(--red);padding:26px 29px}
+.team-last-card .eyebrow{color:#ff747f;margin-bottom:8px}
+.team-last-card h2{font-size:1.95rem;margin-bottom:18px}
+@media(max-width:1000px){.team-detail-grid{grid-template-columns:1fr}.team-detail-main{grid-template-columns:1fr 1fr}.team-detail-grid.no-ranking{grid-template-columns:1fr 1fr}.team-season-head h2{font-size:2.2rem}}
+@media(min-width:701px) and (max-width:1000px){.team-detail-main .team-registration{grid-column:1/-1}}
+@media(max-width:700px){.team-detail-main,.team-detail-grid.no-ranking{grid-template-columns:1fr}.team-detail-grid{gap:18px}.team-detail-main,.team-season-stack{gap:18px}.team-season-card{padding:21px}.team-season-head{flex-wrap:wrap}.team-season-head>a{margin-top:0}.team-rank strong{font-size:3.2rem}.pool-table{font-size:.73rem}.pool-table th,.pool-table td{padding:8px 4px}.team-detail-grid .schedule tbody th>a{min-width:145px;font-size:1.45rem;padding:10px 14px}}
+@media(max-width:520px){body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"]{min-height:390px}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo{width:78%}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-card-copy{width:74%;padding:26px}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] h2{font-size:2.5rem}.season-result-teams{gap:6px}.season-result-teams strong{font-size:1.6rem}}
+.youth-choice{min-height:112px}
+.youth-choice-body strong{font-size:clamp(1.35rem,2.1vw,1.9rem)}
+@media(max-width:520px){.youth-choice{min-height:92px}}
+body[data-page="partenaires"] .participation{margin:0 0 30px}
