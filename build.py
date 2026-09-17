@@ -80,7 +80,7 @@ CARD_PHOTOS = {
     "seniors-masculins": "equipes/senior-masculin-card.webp",
     "seniors-feminines": "equipes/senior-feminine-card.webp",
 }
-NAV = [("index","Accueil"),("club","Club"),("equipes","Équipes"),("entrainements","Entraînements"),("resultats","Résultats"),("actualites","Blog"),("boutique","Boutique"),("partenaires","Partenaires"),("contact","Contact")]
+NAV = [("index","Accueil"),("club","Club"),("equipes","Équipes"),("entrainements","Entraînements"),("resultats","Résultats"),("blog","Blog"),("boutique","Boutique"),("partenaires","Partenaires"),("contact","Contact")]
 
 def button(text, href, secondary=False, external=False):
     extra = ' target="_blank" rel="noopener noreferrer"' if external else ""
@@ -167,7 +167,11 @@ def competition_detail(team):
         result = '<p class="season-empty">Aucun résultat publié pour cette équipe.</p>'
     standings_card = f'''<article class="team-season-card" data-reveal><div class="team-season-head"><div><p class="eyebrow">{escape(team["pool"])}</p><h2>CLASSEMENT · {escape(label)}</h2></div><a href="{escape(team["url"], quote=True)}" target="_blank" rel="noopener noreferrer">Fiche équipe ↗</a></div><div class="team-rank"><div><small>POSITION DANS LA POULE</small><strong>{rank}</strong><span>{rank_note}</span></div></div>{table}<a class="season-ranking-link" href="{escape(team["ranking"], quote=True)}" target="_blank" rel="noopener noreferrer">Classement complet sur FFHandball ↗</a></article>'''
     result_card = f'''<article class="team-last-card" data-reveal><p class="eyebrow">{escape(label)}</p><h2>DERNIER RÉSULTAT</h2>{result}</article>'''
-    return standings_card, result_card
+    future = [m for m in RESULTS["matches"] if m["category"] == team["label"] and not m["played"] and datetime.fromisoformat(m["date"]) >= datetime.now(timezone.utc)]
+    next_match = min(future, key=lambda match: match["date"], default=None)
+    next_content = match_card(next_match) if next_match else '<p class="season-empty">Aucun prochain match annoncé pour cette équipe.</p>'
+    next_card = f'<article class="team-next-card" data-reveal><p class="eyebrow">{escape(label)}</p><h2>PROCHAIN MATCH</h2>{next_content}</article>'
+    return standings_card, result_card, next_card
 
 def partner_image(name, alt=""):
     logo = PARTNER_DATA["logos"].get(name)
@@ -230,7 +234,9 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace('<a href="boutique.html">Boutique officielle</a>', '<a href="boutique.html">Boutique officielle</a><a href="actualites.html">Blog</a>')
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260917-layout8")
+    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260917-layout2")
+    doc=doc.replace('<a href="boutique.html">Boutique officielle</a>', '<a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a>')
     if slug=="404": doc=doc.replace("<head>",f'<head><base href="{SITE_URL}">',1)
     return doc
 
@@ -258,7 +264,7 @@ def home_news_section(articles):
         if len(summary) > 155:
             summary = summary[:152].rsplit(" ", 1)[0] + "…"
         cards.append(f'''<article class="home-news-card" data-reveal><div class="home-news-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" loading="lazy" decoding="async"></div><div class="home-news-copy"><time datetime="{article['date']}">{article_date(article['date'])}</time><h3>{escape(article['title'])}</h3><p>{escape(summary)}</p>{button('Lire l’article', path, True)}</div></article>''')
-    return f'''<section class="container section home-news" aria-labelledby="home-news-title"><div class="section-heading" data-reveal><div><p class="eyebrow">LA VIE DU CLUB</p><h2 id="home-news-title">LE <em>BLOG DU PHB</em></h2></div><a class="text-link" href="actualites.html">VOIR TOUT LE BLOG ↗</a></div><div class="home-news-grid count-{len(latest)}">{''.join(cards)}</div></section>'''
+    return f'''<section class="container section home-news" aria-labelledby="home-news-title"><div class="section-heading" data-reveal><div><p class="eyebrow">LA VIE DU CLUB</p><h2 id="home-news-title">LE <em>BLOG DU PHB</em></h2></div><a class="text-link" href="blog.html">VOIR TOUT LE BLOG ↗</a></div><div class="home-news-grid count-{len(latest)}">{''.join(cards)}</div></section>'''
 
 
 def prefix_article_paths(document):
@@ -287,12 +293,13 @@ def article_page(article):
     facebook_share = 'https://www.facebook.com/sharer/sharer.php?u=' + quote(canonical, safe='')
     body = f'''<article class="news-article">
       <header class="container article-heading">
-        <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><a href="actualites.html">Blog</a><span aria-hidden="true">/</span><span aria-current="page">{escape(article['title'])}</span></nav>
+        <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><a href="blog.html">Blog</a><span aria-hidden="true">/</span><span aria-current="page">{escape(article['title'])}</span></nav>
         <p class="eyebrow">{escape(category)} <span>· SAISON 2026 / 2027</span></p>
         <h1>{escape(article['title'])}</h1>
         <p class="article-byline">Publié le <time datetime="{article['date']}">{article_date(article['date'])}</time> · {escape(article['author'])}</p>
       </header>
       <div class="container article-feature">
+        <div class="article-feature-copy"><p class="article-intro">{escape(article['intro'])}</p><div class="article-copy">{paragraphs}</div></div>
         <section class="article-roster" aria-labelledby="portraits-title">
           <div class="article-roster-heading"><div><p class="eyebrow">{len(article['players'])} JOUEURS · {len(article['staff'])} COACHS</p><h2 id="portraits-title">L’ÉQUIPE <em>EN IMAGES</em></h2></div></div>
           <div class="article-carousel-shell">
@@ -301,16 +308,15 @@ def article_page(article):
           </div>
           <p class="article-carousel-hint">Sélectionnez un portrait pour l’agrandir.</p>
         </section>
-        <div class="article-feature-copy"><p class="article-intro">{escape(article['intro'])}</p><div class="article-copy">{paragraphs}</div></div>
       </div>
       <dialog class="article-lightbox" data-article-lightbox aria-labelledby="article-lightbox-title">
         <button class="article-lightbox-close" type="button" data-lightbox-close aria-label="Fermer le portrait agrandi" autofocus>×</button>
         <div class="article-lightbox-layout"><div class="article-lightbox-media"><img data-lightbox-image alt="" width="1080" height="1339"></div><div class="article-lightbox-info"><p class="eyebrow">SENIORS MASCULINS 1</p><p data-lightbox-meta></p><h2 id="article-lightbox-title" data-lightbox-title></h2><div class="article-lightbox-controls"><button type="button" data-lightbox-prev aria-label="Portrait précédent">←</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next aria-label="Portrait suivant">→</button></div></div></div>
       </dialog>
       <div class="container article-end"><a class="button" href="seniors-masculins-1.html">Voir la page de l’équipe <span aria-hidden="true">↗</span></a><div class="article-share"><span>Partager l’article</span><a href="{facebook_share}" target="_blank" rel="noopener noreferrer">Facebook ↗</a><button type="button" data-copy-article hidden>Copier le lien</button></div></div>
-      <div class="container article-back"><a class="text-link" href="actualites.html">← Retour au blog</a></div>
+      <div class="container article-back"><a class="text-link" href="blog.html">← Retour au blog</a></div>
     </article>'''
-    document = page(f"articles/{slug}", article["title"], body, active="actualites", description=article["meta_description"])
+    document = page(f"articles/{slug}", article["title"], body, active="blog", description=article["meta_description"])
     standard_title = escape(f'{article["title"]} | Ploufragan Handball', quote=True)
     meta_title = escape(article["meta_title"], quote=True)
     document = document.replace(f'<title>{standard_title}</title>', f'<title>{escape(article["meta_title"])}</title>')
@@ -324,7 +330,7 @@ def article_page(article):
     document = document.replace('property="og:image:width" content="1200"', 'property="og:image:width" content="1080"')
     document = document.replace('property="og:image:height" content="630"', 'property="og:image:height" content="1339"')
     document = document.replace('property="og:image:alt" content="Ploufragan Handball — club de handball près de Saint-Brieuc"', f'property="og:image:alt" content="{escape(article["image_alt"], quote=True)}"')
-    document = document.replace(f'data-page="articles/{slug}"', 'data-page="actualites"')
+    document = document.replace(f'data-page="articles/{slug}"', 'data-page="blog"')
     schema = {
         "@context": "https://schema.org", "@type": "Article", "headline": article["title"],
         "description": article["meta_description"], "datePublished": article["date"],
@@ -367,7 +373,7 @@ def home_weekend_section(matches, now=None):
 
 played=[m for m in RESULTS["matches"] if m["played"]]; upcoming=sorted([m for m in RESULTS["matches"] if not m["played"]],key=lambda m:m["date"])
 pages={}
-pages["index"]=page("index","Accueil",f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>2026 / 2027</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><p class="hero-location">Complexe sportif du Haut-Champ<br>22440 Ploufragan</p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}</div><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true">↗</b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true">↗</b></a></div></div><div class="hero-logo-stage"><img id="hero-logo-animation" src="assets/logo-animation.gif" data-final="assets/logo-animation-final.webp" data-duration="4550" alt="Animation du logo du Ploufragan Handball" width="640" height="640" fetchpriority="high"></div></section><section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>DERNIERS <em>RÉSULTATS</em></h2></div><a class="text-link" href="resultats.html">Tous les résultats ↗</a></div><div class="matches-grid">{''.join(match_card(m) for m in played[:4])}</div></section>''',description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
+pages["index"]=page("index","Accueil",f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>2026 / 2027</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><p class="hero-location">Complexe sportif du Haut-Champ<br>22440 Ploufragan</p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}</div><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true">↗</b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true">↗</b></a></div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section><section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>DERNIERS <em>RÉSULTATS</em></h2></div><a class="text-link" href="resultats.html">Tous les résultats ↗</a></div><div class="matches-grid">{''.join(match_card(m) for m in played[:4])}</div></section>''',description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
 pages["index"] = pages["index"].replace("</main>", home_weekend_section(upcoming) + home_news_section(ARTICLES) + "</main>", 1)
 pages["equipes"]=page("equipes","Les équipes",heading("LES <em>ÉQUIPES</em>","Équipes","Sélectionnez une catégorie pour consulter ses horaires et ses informations.")+f'<section class="container section after-heading"><div class="teams-grid">{"".join(team_card(g) for g in GROUPS)}</div></section>')
 
@@ -381,7 +387,7 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
     registration = f'''<div class="information-panel team-registration" data-reveal><h2>INSCRIPTION & ESSAI</h2><p>Contactez le club en indiquant la catégorie souhaitée.</p><div class="actions">{button('Renseignements', mail('Renseignements ' + name))}{button('Inscriptions', 'inscriptions.html', True)}</div></div>'''
     if teams:
         competitions = [competition_detail(team) for team in teams]
-        content = f'<div class="team-detail-main">{training}{"".join(result for _, result in competitions)}{registration}</div><div class="team-season-stack">{"".join(standings for standings, _ in competitions)}</div>'
+        content = f'<div class="team-detail-main">{training}{"".join(result + upcoming for _, result, upcoming in competitions)}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}</div>{registration}'
     else:
         content = training + registration
     return f'<section class="container team-detail-grid {"has-ranking" if teams else "no-ranking"} after-heading">{content}</section>'
@@ -622,11 +628,11 @@ pages["devenir-partenaire"] = page("devenir-partenaire", "Devenir partenaire du 
 
 def blog_heading():
     media = (
-        '<div class="blog-intro-media" data-blog-intro>'
-        '<img src="assets/blog/intro-final.webp" alt="" width="1280" height="720" aria-hidden="true">'
-        '<video data-blog-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true">'
-        '<source src="assets/blog/intro.mp4" type="video/mp4">'
-        '</video></div>'
+        '<div class="blog-intro-media">'
+        '<img id="blog-logo-animation" src="assets/logo-animation.gif" '
+        'data-final="assets/logo-animation-final.webp" data-duration="4550" '
+        'alt="" width="640" height="640" aria-hidden="true">'
+        '</div>'
     )
     base = heading("LE <em>BLOG DU PHB</em>", "Blog", "Portraits, histoires et coulisses du Ploufragan Handball.")
     return base.replace('class="page-heading container"', 'class="page-heading container blog-heading"', 1).replace('</header>', media + '</header>', 1)
@@ -634,15 +640,12 @@ def blog_heading():
 
 ARTICLES.sort(key=lambda article: article["date"], reverse=True)
 article_cards = ''.join(article_card(article) for article in ARTICLES)
-pages["actualites"] = page(
-    "actualites", "Le blog du PHB",
+pages["blog"] = page(
+    "blog", "Le blog du PHB",
     blog_heading()
     + f'<section class="container section after-heading news-list"><div class="news-grid">{article_cards}</div></section>',
     description="Le blog du PHB : portraits, histoires et coulisses du Ploufragan Handball près de Saint-Brieuc."
 )
-pages["actualites"] = pages["actualites"].replace(
-    "assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260917-blog-video2", 1
-).replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260917-blog-video1", 1)
 for article in ARTICLES:
     pages[f'articles/{article["slug"]}'] = article_page(article)
 contact_info='''<div class="contact-details"><div><span class="eyebrow">E-MAIL</span><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a></div><div><span class="eyebrow">TÉLÉPHONE</span><a href="tel:+33636618800">06 36 61 88 00</a></div><div><span class="eyebrow">ADRESSE</span><p>Complexe sportif du Haut-Champ<br>Allée des Glénan<br>22440 Ploufragan</p></div></div>'''
@@ -657,6 +660,15 @@ for slug, content in pages.items():
     target = ROOT / (slug + ".html")
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(content, encoding="utf-8")
+# Keep links shared before the rename usable without indexing duplicate content.
+(ROOT / "actualites.html").write_text(
+    '<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Blog du PHB</title>'
+    '<link rel="canonical" href="https://ploufragan-handball.fr/blog.html">'
+    '<meta name="robots" content="noindex,follow">'
+    '<meta http-equiv="refresh" content="0; url=blog.html"></head>'
+    '<body><p>Le blog du PHB est désormais à l’adresse <a href="blog.html">blog.html</a>.</p></body></html>',
+    encoding="utf-8",
+)
 public_slugs = [slug for slug in pages if slug != "404"]
 lastmod = datetime.now().date().isoformat()
 sitemap_urls = ''.join(

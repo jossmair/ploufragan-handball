@@ -1,7 +1,7 @@
 :root{--red:#ed0719;--ink:#0d0d10;--panel:#141418e8;--white:#f5f5f5;--muted:#bcbcc3;--line:#ffffff26;--display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;--body:'Inter',Arial,sans-serif;--depth:0px}
 *{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--ink)}body{margin:0;color:var(--white);font:400 16px/1.75 var(--body);isolation:isolate;min-height:100vh}body::after{content:'';position:fixed;inset:0;background:linear-gradient(90deg,#08080b30,#08080b15);z-index:-1;pointer-events:none}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}img{display:block;max-width:100%;height:auto}h1,h2,h3,p,figure{margin:0}h1,h2,h3{font-family:var(--display);font-style:italic;font-weight:800;line-height:1.05}h1{font-size:clamp(3.2rem,6.3vw,6rem);letter-spacing:-1px}h2{font-size:clamp(2rem,3.6vw,3.2rem)}h3{font-size:1.7rem}em{color:var(--red);font-style:inherit}p{overflow-wrap:break-word}a,button{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible{outline:3px solid #ffbf4b;outline-offset:5px}a,button{touch-action:manipulation}[id]{scroll-margin-top:110px}.container{width:min(1320px,calc(100% - 96px));margin-inline:auto}.section{padding-block:76px}.after-heading{padding-top:0}.eyebrow{font:600 .75rem/1.6 var(--body);letter-spacing:2px;color:var(--muted)}.eyebrow>span{color:var(--white);margin-left:12px}.muted{color:var(--muted)}.small-note{font-size:.8rem!important;color:var(--muted)}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.skip-link{position:fixed;top:-100px;left:20px;padding:12px 20px;background:#fff;color:#000;z-index:200}.skip-link:focus{top:12px}
 .site-texture{position:fixed;inset:-25px;z-index:-3;background:var(--page-background,url('background-phb.webp')) center center/cover no-repeat;pointer-events:none;transform:translate3d(0,calc(var(--depth) * -.025),0) scale(1.035);animation:surface-drift 18s ease-in-out infinite alternate;will-change:transform}.watermark{position:fixed;width:min(72vw,900px);height:auto;right:-9vw;top:4vh;filter:grayscale(1) invert(1);mix-blend-mode:screen;opacity:.075;z-index:-2;pointer-events:none;clip-path:circle(41% at 50% 50%);transform:translateY(calc(var(--depth) * -.08)) rotate(-12deg)}.scroll-progress{position:fixed;top:0;left:0;width:100%;height:3px;background:var(--red);z-index:100;transform:scaleX(var(--progress,0));transform-origin:left}.site-header{position:sticky;top:0;z-index:50;background:#0a0a0edd;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);transition:background .25s}.site-header.is-scrolled{background:#0a0a0ef5}.header-inner{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}.brand img{width:58px;height:58px;border-radius:50%;object-fit:cover}.brand>span{font:800 1.2rem/1 var(--display);letter-spacing:.6px}.brand small{display:block;font-size:.87rem;letter-spacing:4px;margin-top:6px}#navigation{display:flex;align-items:center;gap:27px}#navigation>a{font:600 1.05rem var(--display);padding:16px 0;position:relative}#navigation>a::after{content:'';position:absolute;height:2px;left:0;right:0;bottom:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s}#navigation>a:hover::after,#navigation>a[aria-current]::after{transform:scaleX(1)}#navigation>a[aria-current]{color:var(--red)}#navigation>.nav-registration{background:var(--red);color:white;padding:14px 20px;display:flex;gap:25px}#navigation>.nav-registration::after{display:none}.menu-toggle{display:none}
-body[data-page="index"]{--page-background:url('backgrounds/fond-1.webp?v=20260915-set2')}body[data-page="club"],body[data-page="contact"]{--page-background:url('backgrounds/fond-2.webp?v=20260915-set2')}body[data-page="equipes"],body[data-page="baby-hand"],body[data-page="ecole-de-hand"],body[data-page="jeunes"],body[data-page="seniors-masculins"],body[data-page="seniors-feminines"],body[data-page="loisirs"]{--page-background:url('backgrounds/fond-3.webp?v=20260915-set2')}body[data-page="entrainements"]{--page-background:url('backgrounds/fond-4.webp?v=20260915-set2')}body[data-page="resultats"]{--page-background:url('backgrounds/fond-5.webp?v=20260915-set2')}body[data-page="boutique"]{--page-background:url('backgrounds/fond-2.webp?v=20260915-set2')}body[data-page="partenaires"]{--page-background:url('backgrounds/fond-4.webp?v=20260915-set2')}body[data-page="actualites"]{--page-background:url('backgrounds/fond-1.webp?v=20260915-set2')}body[data-page="inscriptions"],body[data-page="404"]{--page-background:url('backgrounds/fond-5.webp?v=20260915-set2')}
+body[data-page="index"]{--page-background:url('backgrounds/fond-1.webp?v=20260915-set2')}body[data-page="club"],body[data-page="contact"]{--page-background:url('backgrounds/fond-2.webp?v=20260915-set2')}body[data-page="equipes"],body[data-page="baby-hand"],body[data-page="ecole-de-hand"],body[data-page="jeunes"],body[data-page="seniors-masculins"],body[data-page="seniors-feminines"],body[data-page="loisirs"]{--page-background:url('backgrounds/fond-3.webp?v=20260915-set2')}body[data-page="entrainements"]{--page-background:url('backgrounds/fond-4.webp?v=20260915-set2')}body[data-page="resultats"]{--page-background:url('backgrounds/fond-5.webp?v=20260915-set2')}body[data-page="boutique"]{--page-background:url('backgrounds/fond-2.webp?v=20260915-set2')}body[data-page="partenaires"]{--page-background:url('backgrounds/fond-4.webp?v=20260915-set2')}body[data-page="blog"]{--page-background:url('backgrounds/fond-1.webp?v=20260915-set2')}body[data-page="inscriptions"],body[data-page="404"]{--page-background:url('backgrounds/fond-5.webp?v=20260915-set2')}
 .button{display:inline-flex;align-items:center;justify-content:space-between;gap:30px;min-height:54px;padding:14px 24px;border:1px solid transparent;background:var(--red);color:white;font:700 1.18rem var(--display);position:relative;overflow:hidden;transition:transform .25s,background .25s,border-color .25s}.button::before{content:'';position:absolute;top:-60%;bottom:-60%;width:35%;left:-65%;transform:rotate(25deg);background:#ffffff20;transition:left .5s}.button:hover::before{left:135%}.button:hover{transform:translateY(-3px);background:#ce0516}.button>span{font:400 1.45rem var(--body);transition:transform .25s}.button:hover>span{transform:translate(3px,-3px)}.button-secondary{border-color:#ffffff65;background:#1111166b}.button-secondary:hover{background:#ffffff0f;border-color:white}.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}.text-link{display:inline-block;padding:8px 0;border-bottom:1px solid #ffffff5a;font-size:.875rem;font-weight:600;transition:color .2s,border-color .2s}.text-link:hover{color:var(--red);border-color:var(--red)}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:32px}.section-heading .eyebrow{margin-bottom:12px}
 .home-hero{position:relative;min-height:680px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px;padding-top:38px;padding-bottom:75px}.hero-copy{position:relative;z-index:3}.hero-copy .eyebrow{font:700 .95rem var(--body);margin-bottom:23px}.hero-copy .eyebrow span{display:inline-block;background:var(--red);padding:7px 14px;transform:skew(-8deg);letter-spacing:1px}.home-hero h1{font-size:clamp(4rem,7.3vw,7.2rem);font-weight:900;line-height:.94;letter-spacing:-1px}.home-hero h1 em{display:block;font-size:1.04em;line-height:1.15}.hero-rule{height:4px;width:100px;background:var(--red);margin-top:26px;transform:skew(-35deg);animation:line-enter 1s both}.hero-location{margin-top:24px;color:#cacacf;font-size:.875rem}.hero-visual{min-width:0;position:relative;height:570px;transform:translate3d(var(--px,0px),var(--py,0px),0);transition:transform .25s ease-out}.hero-photo-frame{position:absolute;inset:0;overflow:hidden;mask-image:linear-gradient(90deg,transparent 0%,black 19%,black 90%,transparent 100%),linear-gradient(0deg,transparent 0%,black 13%,black 82%,transparent 100%);mask-composite:intersect}.hero-photo-frame img{position:absolute;top:-25%;left:-2%;width:107%;max-width:none;height:auto}.hero-photo-caption{position:absolute;left:16%;right:0;bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:#0f0f12d9;border-left:3px solid var(--red);padding:18px 20px;font:800 italic 1.5rem var(--display);backdrop-filter:blur(10px)}.hero-photo-caption small{display:block;font:400 .8rem var(--body);color:var(--muted);margin-top:7px}.hero-photo-caption>span:last-child{font-style:normal;color:var(--red)}.hero-scroll{position:absolute;left:0;bottom:20px;font-size:.72rem;letter-spacing:2px;color:var(--muted);display:flex;align-items:center;gap:17px}.hero-scroll span{font-size:1.3rem;color:var(--white);animation:scroll-cue 2s ease-in-out infinite}
 .quick-links{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #ffffff30;background:#111115d9;backdrop-filter:blur(14px)}.quick-links>a{padding:27px 25px;display:flex;align-items:center;gap:17px;border-right:1px solid var(--line);transition:background .2s}.quick-links>a:last-child{border-right:0}.quick-links>a:hover{background:#ed071914}.quick-links h2{font-size:1.65rem}.quick-links p{font-size:.8rem;color:var(--muted);margin-top:8px}.link-index{font:800 italic 1.5rem var(--display);color:var(--red);align-self:start}.quick-links>a>span:last-child{margin-left:auto;color:var(--red);font-size:1.5rem}.home-seniors{display:grid;grid-template-columns:1fr 1fr;gap:30px}.home-seniors .team-card{min-height:410px}.home-seniors .team-card h2{font-size:2.9rem}.home-seniors .card-photo img{top:-42%}
@@ -44,7 +44,7 @@ body[data-page="entrainements"] .site-texture{background-image:linear-gradient(#
 body[data-page="resultats"] .site-texture{background-image:linear-gradient(#08080b24,#08080b55),url("backgrounds/fond-5.webp?v=20260915-set2")}
 body[data-page="boutique"] .site-texture{background-image:linear-gradient(#08080b25,#08080b56),url("backgrounds/fond-2.webp?v=20260915-set2")}
 body[data-page="partenaires"] .site-texture{background-image:linear-gradient(#08080b27,#08080b58),url("backgrounds/fond-4.webp?v=20260915-set2")}
-body[data-page="actualites"] .site-texture{background-image:linear-gradient(#08080b22,#08080b52),url("backgrounds/fond-1.webp?v=20260915-set2")}
+body[data-page="blog"] .site-texture{background-image:linear-gradient(#08080b22,#08080b52),url("backgrounds/fond-1.webp?v=20260915-set2")}
 body[data-page="inscriptions"] .site-texture,body[data-page="404"] .site-texture{background-image:linear-gradient(#08080b28,#08080b59),url("backgrounds/fond-5.webp?v=20260915-set2")}
 .hero-logo-stage{transform:none;transition:none}
 .hero-logo-stage::before,.hero-logo-stage::after,.logo-ring{display:none}
@@ -479,22 +479,73 @@ body[data-page="index"] .home-hero+.section{padding-top:34px}
 .home-weekend .section-heading{margin-bottom:25px}
 .home-weekend-empty{margin:0;padding:24px;border:1px solid var(--line);border-left:3px solid var(--red);background:#111116dd;color:#c9c9d0}
 
-/* Blog heading: the logo film blends into the existing black and red texture. */
+/* Preview: exchange the home film and blog logo animation. */
+.hero-intro-media{position:relative;width:min(112%,700px);aspect-ratio:16/9}
+.hero-intro-media::before{content:"";position:absolute;inset:14% 12%;background:#ed071927;filter:blur(32px)}
+.hero-intro-media img,.hero-intro-media video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;mask-image:radial-gradient(ellipse 50% 50% at center,#000 72%,transparent 100%)}
+.hero-intro-media img{opacity:0}
+.hero-intro-media video{z-index:1}
+.hero-intro-media.is-ended img{opacity:1}
+.hero-intro-media.is-ended video{display:none}
 .blog-heading{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);grid-template-rows:auto auto auto auto;column-gap:clamp(24px,4vw,58px);align-items:center;min-height:380px}
 .blog-heading .breadcrumb{grid-column:1/-1;grid-row:1;margin-bottom:30px}
 .blog-heading>.eyebrow{grid-column:1;grid-row:2;align-self:end}
 .blog-heading h1{grid-column:1;grid-row:3;font-size:clamp(3.8rem,5.2vw,5.8rem);line-height:1.03}
 .blog-heading .page-intro{grid-column:1;grid-row:4;align-self:start}
-.blog-intro-media{grid-column:2;grid-row:2/5;position:relative;width:100%;aspect-ratio:16/9;align-self:center;pointer-events:none}
+.blog-intro-media{grid-column:2;grid-row:2/5;position:relative;width:min(100%,380px);aspect-ratio:1;justify-self:center;align-self:center;pointer-events:none}
 .blog-intro-media::before{content:"";position:absolute;inset:18% 12%;background:#ed071927;filter:blur(32px)}
-.blog-intro-media img,.blog-intro-media video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;mask-image:radial-gradient(ellipse 50% 50% at center,#000 72%,transparent 100%)}
-.blog-intro-media video{z-index:1}
-.blog-intro-media.is-ended video{display:none}
-@media(max-width:900px){.blog-heading{grid-template-columns:1fr;grid-template-rows:auto;min-height:0}.blog-heading .breadcrumb,.blog-heading>.eyebrow,.blog-heading h1,.blog-heading .page-intro,.blog-intro-media{grid-column:1;grid-row:auto}.blog-heading .breadcrumb{margin-bottom:35px}.blog-heading h1{font-size:clamp(3.2rem,8vw,5rem)}.blog-intro-media{width:min(100%,620px);margin:20px auto 0}}
-@media(max-width:520px){.blog-intro-media{margin-top:18px}.blog-heading .breadcrumb{margin-bottom:30px}}
-@media(prefers-reduced-motion:reduce){.blog-intro-media video{display:none}}
+.blog-intro-media img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;clip-path:circle(50%);mix-blend-mode:screen}
+@media(max-width:900px){.blog-heading{grid-template-columns:1fr;grid-template-rows:auto;min-height:0}.blog-heading .breadcrumb,.blog-heading>.eyebrow,.blog-heading h1,.blog-heading .page-intro,.blog-intro-media{grid-column:1;grid-row:auto}.blog-heading .breadcrumb{margin-bottom:35px}.blog-heading h1{font-size:clamp(3.2rem,8vw,5rem)}.blog-intro-media{width:min(85%,380px);margin:20px auto 0}}
+@media(max-width:520px){.hero-intro-media{width:115%}.blog-intro-media{margin-top:18px}.blog-heading .breadcrumb{margin-bottom:30px}}
+@media(prefers-reduced-motion:reduce){.hero-intro-media video{display:none}.hero-intro-media img{opacity:1}}
 
-/* The final still is never visible through the film before playback ends. */
-.blog-intro-media img{opacity:0}
-.blog-intro-media.is-ended img{opacity:1}
-@media(prefers-reduced-motion:reduce){.blog-intro-media img{opacity:1}}
+/* Article copy first, then a single portrait at a time below it. */
+.article-feature{grid-template-columns:minmax(0,1fr) minmax(0,455px);gap:clamp(35px,5vw,78px)}
+.article-feature-copy{margin-top:0;max-width:76ch}
+.article-roster{width:100%}
+/* On team pages, the registration action closes the section after the pool. */
+.team-detail-grid.has-ranking>.team-registration{grid-column:1/-1}
+.team-next-card{min-width:0;background:#111116ef;border:1px solid #ffffff32;border-left:5px solid var(--red);padding:26px 29px}
+.team-next-card .eyebrow{color:#ff747f;margin-bottom:8px}
+.team-next-card h2{font-size:1.95rem;margin-bottom:18px}
+.team-next-card .match-card{display:block;margin:0;box-shadow:none}
+@media(max-width:900px){.article-feature{grid-template-columns:1fr;gap:34px}.article-roster{width:min(100%,455px);justify-self:start}}
+@media(max-width:700px){.team-next-card{padding:21px}}
+
+/* The wider film sits below the text on narrow screens, without covering it. */
+@media(max-width:850px){
+  .home-hero{grid-template-columns:1fr;gap:8px}
+  .home-hero .hero-copy{grid-column:1;grid-row:1;width:100%}
+  .home-hero .hero-logo-stage{grid-column:1;grid-row:2;width:100%;height:clamp(260px,47vw,390px);margin:0}
+  .hero-intro-media{width:min(100%,600px)}
+}
+@media(max-width:520px){.home-hero .hero-logo-stage{height:240px}.hero-intro-media{width:100%}}
+
+/* Keep the Blog emblem beside the heading on mid-width screens. */
+@media(min-width:600px) and (max-width:900px){
+  .blog-heading{grid-template-columns:minmax(0,1fr) minmax(0,280px);grid-template-rows:auto auto auto auto;column-gap:16px;min-height:360px}
+  .blog-heading .breadcrumb{grid-column:1/-1;grid-row:1}
+  .blog-heading>.eyebrow{grid-column:1;grid-row:2}
+  .blog-heading h1{grid-column:1;grid-row:3;font-size:clamp(2.8rem,6.3vw,3.6rem)}
+  .blog-heading .page-intro{grid-column:1;grid-row:4}
+  .blog-intro-media{grid-column:2;grid-row:2/5;width:100%;margin:0;align-self:center}
+}
+@media(max-width:599px){.blog-intro-media{margin-top:0}}
+
+/* Give the home film more presence and align it with the heading on desktop. */
+@media(min-width:851px){.hero-intro-media{width:min(125%,800px);transform:translate(-2%,-18%)}}
+
+/* Place the film between the title and location on tablet and mobile. */
+@media(max-width:850px){
+  .home-hero{align-items:start;grid-template-rows:none;gap:0}
+  .home-hero .hero-copy{display:contents}
+  .home-hero .hero-copy>.eyebrow{order:1}
+  .home-hero .hero-copy>h1{order:2}
+  .home-hero .hero-copy>.hero-rule{order:3}
+  .home-hero .hero-logo-stage{order:4;grid-row:auto;margin:-8px 0 -20px}
+  .home-hero .hero-copy>.hero-location{order:5}
+  .home-hero .hero-copy>.actions{order:6}
+  .home-hero .hero-copy>.hero-social-title{order:7}
+  .home-hero .hero-copy>.hero-socials{order:8}
+}
+@media(max-width:520px){.home-hero .hero-logo-stage{margin:-8px 0 -24px}}

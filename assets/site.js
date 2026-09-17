@@ -22,12 +22,12 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 
 // Keep links from the former single-page website usable.
 if (document.body.dataset.page === 'index') {
-  const destinations = { '#club':'club.html', '#equipes':'equipes.html', '#entrainements':'entrainements.html', '#actus':'actualites.html', '#inscriptions':'inscriptions.html', '#contact':'contact.html', '#partenaires':'partenaires.html', '#baby-hand':'baby-hand.html', '#ecole-hand':'ecole-de-hand.html', '#jeunes':'jeunes.html', '#seniors':'equipes.html', '#seniors-masculins':'seniors-masculins.html', '#seniors-feminines':'seniors-feminines.html', '#loisirs':'loisirs.html' };
+  const destinations = { '#club':'club.html', '#equipes':'equipes.html', '#entrainements':'entrainements.html', '#actus':'blog.html', '#inscriptions':'inscriptions.html', '#contact':'contact.html', '#partenaires':'partenaires.html', '#baby-hand':'baby-hand.html', '#ecole-hand':'ecole-de-hand.html', '#jeunes':'jeunes.html', '#seniors':'equipes.html', '#seniors-masculins':'seniors-masculins.html', '#seniors-feminines':'seniors-feminines.html', '#loisirs':'loisirs.html' };
   if (destinations[location.hash]) location.replace(destinations[location.hash]);
 }
 
-// Play the supplied logo animation once, then keep its final frame visible.
-const animatedLogo = document.querySelector('#hero-logo-animation');
+// Play the supplied logo animation once on the blog, then keep its final frame visible.
+const animatedLogo = document.querySelector('#blog-logo-animation');
 if (animatedLogo) {
   const freezeLogo = () => {
     if (animatedLogo.dataset.frozen === 'true') return;
@@ -38,10 +38,10 @@ if (animatedLogo) {
   else window.setTimeout(freezeLogo, Number(animatedLogo.dataset.duration));
 }
 
-// The blog film plays once; its exact final image then remains visible.
-const blogIntroVideo = document.querySelector('[data-blog-intro-video]');
+// The home film plays once; its exact final image then remains visible.
+const blogIntroVideo = document.querySelector('[data-intro-video]');
 if (blogIntroVideo) {
-  const stage = blogIntroVideo.closest('[data-blog-intro]');
+  const stage = blogIntroVideo.closest('[data-intro-video-stage]');
   const holdFinalImage = () => { blogIntroVideo.pause(); stage.classList.add('is-ended'); };
   blogIntroVideo.addEventListener('ended', holdFinalImage, { once: true });
   blogIntroVideo.addEventListener('error', holdFinalImage, { once: true });

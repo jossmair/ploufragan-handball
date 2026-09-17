@@ -15,7 +15,7 @@ Site : https://jossmair.github.io/ploufragan-handball/
 - `resultats.html` : résultats du week-end, prochains matchs et accès aux neuf championnats FFHandball.
 - `boutique.html` : les 21 articles et leurs variantes visuelles, avec commande sur la boutique officielle Equip Club.
 - `partenaires.html` : les 23 partenaires présentés par le club et contact partenariat.
-- `actualites.html` : liste des articles du club, du plus récent au plus ancien.
+- `blog.html` : liste des articles du club, du plus récent au plus ancien (`actualites.html` redirige vers cette page).
 - `articles/` : pages d’articles HTML générées, dont la présentation des Seniors masculins 1.
 - `contact.html` : coordonnées et lieux.
 - `404.html` : page d’erreur avec liens vers le site public.
