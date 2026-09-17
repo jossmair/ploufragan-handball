@@ -550,3 +550,14 @@ body[data-page="index"] .home-hero+.section{padding-top:34px}
   .home-hero .hero-copy>.hero-socials{order:8}
 }
 @media(max-width:520px){.home-hero .hero-logo-stage{margin:-8px 0 -24px}}
+
+/* Use wide desktop screens while preserving the existing laptop layout. */
+@media(min-width:1440px){
+  .container{width:min(calc(100% - 96px),clamp(1320px,calc(80vw + 168px),1840px))}
+}
+@media(min-width:1600px){
+  .home-hero{min-height:max(740px,calc(100svh - 88px));gap:clamp(35px,3vw,60px)}
+  .home-hero h1{font-size:clamp(7.2rem,7.3vw,9rem)}
+  .home-hero .hero-logo-stage{height:clamp(580px,33vw,650px)}
+  .hero-intro-media{width:min(118%,1000px);transform:translate(-2%,-12%)}
+}
