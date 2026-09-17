@@ -51,6 +51,7 @@ function animateScore(block) {
   block.dataset.counted = 'true';
   if (motion.matches) { setFinalScore(block); return; }
   const numbers = [...block.querySelectorAll('[data-score-number]')];
+  numbers.forEach(number => { number.textContent = '0'; });
   const started = performance.now();
   const duration = 850;
   function frame(now) {
@@ -188,5 +189,122 @@ document.querySelectorAll('[data-tilt], [data-parallax]').forEach(element => {
   element.addEventListener('pointerleave', () => {
     cancelAnimationFrame(frame);
     ['--tx','--ty','--px','--py'].forEach(prop => element.style.removeProperty(prop));
+  });
+});
+
+// The single-portrait carousel remains swipeable and keyboard-scrollable without JavaScript.
+document.querySelectorAll('[data-article-carousel]').forEach(track => {
+  const slides = [...track.querySelectorAll('.article-player')];
+  const controls = track.closest('.article-roster').querySelector('[data-article-controls]');
+  const dialog = track.closest('.news-article').querySelector('[data-article-lightbox]');
+  if (slides.length < 2) return;
+  const previous = controls.querySelector('[data-article-prev]');
+  const next = controls.querySelector('[data-article-next]');
+  const count = controls.querySelector('[data-article-count]');
+  controls.hidden = false;
+  let selectedIndex = 0;
+  let trackWidth = track.clientWidth;
+
+  function currentIndex() {
+    const first = slides[0].offsetLeft;
+    return slides.reduce((nearest, slide, index) =>
+      Math.abs(slide.offsetLeft - first - track.scrollLeft) < Math.abs(slides[nearest].offsetLeft - first - track.scrollLeft)
+        ? index : nearest, 0);
+  }
+  function update() {
+    const index = currentIndex();
+    if (Math.abs(track.clientWidth - trackWidth) < 1) selectedIndex = index;
+    count.textContent = `${index + 1} / ${slides.length}`;
+    previous.disabled = track.scrollLeft < 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+  }
+  function move(step) {
+    const index = Math.max(0, Math.min(slides.length - 1, currentIndex() + step));
+    track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: motion.matches ? 'auto' : 'smooth' });
+  }
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  track.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      move(event.key === 'ArrowRight' ? 1 : -1);
+    }
+  });
+  track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  window.addEventListener('resize', () => {
+    if (Math.abs(track.clientWidth - trackWidth) >= 1) {
+      track.scrollTo({ left: slides[selectedIndex].offsetLeft - slides[0].offsetLeft, behavior: 'auto' });
+      trackWidth = track.clientWidth;
+    }
+    update();
+  }, { passive: true });
+  update();
+
+  if (!dialog?.showModal) return;
+  const enlargedImage = dialog.querySelector('[data-lightbox-image]');
+  const enlargedMeta = dialog.querySelector('[data-lightbox-meta]');
+  const enlargedTitle = dialog.querySelector('[data-lightbox-title]');
+  const enlargedCount = dialog.querySelector('[data-lightbox-count]');
+  const enlargedPrevious = dialog.querySelector('[data-lightbox-prev]');
+  const enlargedNext = dialog.querySelector('[data-lightbox-next]');
+  let enlargedIndex = 0;
+  let opener = null;
+
+  function showEnlarged(index) {
+    enlargedIndex = Math.max(0, Math.min(slides.length - 1, index));
+    const slide = slides[enlargedIndex];
+    const portrait = slide.querySelector('img');
+    enlargedImage.src = portrait.src;
+    enlargedImage.alt = portrait.alt;
+    enlargedMeta.textContent = slide.querySelector('figcaption span').textContent;
+    enlargedTitle.textContent = slide.querySelector('figcaption strong').textContent;
+    enlargedCount.textContent = `${enlargedIndex + 1} / ${slides.length}`;
+    enlargedPrevious.disabled = enlargedIndex === 0;
+    enlargedNext.disabled = enlargedIndex === slides.length - 1;
+  }
+
+  slides.forEach((slide, index) => {
+    slide.querySelector('[data-article-open]').addEventListener('click', event => {
+      event.preventDefault();
+      opener = event.currentTarget;
+      showEnlarged(index);
+      dialog.showModal();
+    });
+  });
+  enlargedPrevious.addEventListener('click', () => showEnlarged(enlargedIndex - 1));
+  enlargedNext.addEventListener('click', () => showEnlarged(enlargedIndex + 1));
+  dialog.querySelector('[data-lightbox-close]').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      showEnlarged(enlargedIndex + (event.key === 'ArrowRight' ? 1 : -1));
+    }
+  });
+  dialog.addEventListener('close', () => opener?.focus());
+});
+
+document.querySelectorAll('[data-copy-article]').forEach(button => {
+  button.hidden = false;
+  button.addEventListener('click', async () => {
+    const url = location.href.split('#')[0];
+    try {
+      if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(url);
+      else {
+        const field = document.createElement('textarea');
+        field.value = url;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        const copied = document.execCommand('copy');
+        field.remove();
+        if (!copied) throw new Error('Copy unavailable');
+      }
+      button.textContent = 'Lien copié !';
+    } catch {
+      button.textContent = 'Copie impossible';
+    }
+    window.setTimeout(() => { button.textContent = 'Copier le lien'; }, 2400);
   });
 });

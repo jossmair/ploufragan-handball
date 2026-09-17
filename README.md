@@ -11,11 +11,12 @@ Site : https://jossmair.github.io/ploufragan-handball/
 - `equipes.html` : accès aux six pages de catégories.
 - `baby-hand.html`, `ecole-de-hand.html`, `jeunes.html`, `seniors-masculins.html`, `seniors-feminines.html`, `loisirs.html` : informations et horaires propres à chaque catégorie.
 - `entrainements.html` : les 11 catégories et les 19 créneaux, plus le planning original téléchargeable.
-- `inscriptions.html` : démarches et demande de renseignements par e-mail.
+- `inscriptions.html` : licences 2026–2027, catégories, tarifs, démarches, aides et contact.
 - `resultats.html` : résultats du week-end, prochains matchs et accès aux neuf championnats FFHandball.
 - `boutique.html` : les 21 articles et leurs variantes visuelles, avec commande sur la boutique officielle Equip Club.
 - `partenaires.html` : les 23 partenaires présentés par le club et contact partenariat.
-- `actualites.html` : sélection de photos réelles publiées par le club et accès aux réseaux sociaux.
+- `actualites.html` : liste des articles du club, du plus récent au plus ancien.
+- `articles/` : pages d’articles HTML générées, dont la présentation des Seniors masculins 1.
 - `contact.html` : coordonnées et lieux.
 - `404.html` : page d’erreur avec liens vers le site public.
 
@@ -31,6 +32,8 @@ Chaque document contient son propre titre, sa navigation active, son contenu HTM
 - `data/results.json` alimente les scores, les prochains matchs et les liens de championnat.
 - `data/boutique.json` contient les noms, prix, visuels et liens Equip Club.
 - `data/partenaires.json` contient la liste publiée par le club et les liens Instagram disponibles.
+- `data/inscriptions.json` contient tous les tarifs 2026–2027 et l’unique champ `helloasso_url` du bouton de paiement. Après modification, lancer `python build.py`. Laisser l’URL vide tant que le club n’a pas fourni de lien public ; le bouton reste alors indisponible et la page indique que le lien personnel arrive sur TeamPulse.
+- `data/articles.json` contient les actualités. Pour ajouter un article, ajouter un objet avec un `slug` unique, un titre, une date au format `AAAA-MM-JJ`, un auteur, une image, une introduction, des paragraphes dans `content`, un titre et une description SEO. Les tableaux `players` et `staff` alimentent le carrousel et l’encadrement de cette présentation d’équipe. Placer les images dans `assets/articles/`, puis lancer `python build.py`. La liste, la page de l’article et le sitemap sont générés automatiquement.
 - `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures, reconstruit le site et le publie.
 
 - `assets/site.css` : mise en page, couleurs et effets visuels.

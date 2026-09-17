@@ -1,0 +1,120 @@
+[
+  {
+    "slug": "presentation-seniors-masculins-1",
+    "title": "Présentation de l’équipe Seniors masculins 1",
+    "date": "2026-09-16",
+    "author": "Ploufragan Handball",
+    "categories": [
+      "Équipes",
+      "Seniors masculins"
+    ],
+    "image": "assets/articles/seniors-masculins-1/photo-03.webp",
+    "image_alt": "Jean Boizard, joueur de l’équipe Seniors masculins 1 du Ploufragan Handball, avec un ballon",
+    "intro": "Découvrez les joueurs et l’encadrement de l’équipe Seniors masculins 1 du Ploufragan Handball pour la saison 2026–2027.",
+    "content": [
+      "Les portraits de l’équipe sont réunis ici pour vous permettre de découvrir les visages, les postes et les numéros des joueurs.",
+      "L’équipe est encadrée par Jérôme Quemener et Guillaume Michel. Retrouvez également ses entraînements, son classement et son dernier résultat sur la page de l’équipe."
+    ],
+    "meta_title": "Seniors masculins 1 : présentation de l’équipe 2026–2027 | Ploufragan Handball",
+    "meta_description": "Découvrez les joueurs et les entraîneurs de l’équipe Seniors masculins 1 du Ploufragan Handball pour la saison 2026–2027, près de Saint-Brieuc.",
+    "og_image": "assets/articles/seniors-masculins-1/photo-03.webp",
+    "players": [
+      {
+        "name": "Pierre-Yves Boivin",
+        "position": "Gardien",
+        "number": "34",
+        "image": "assets/articles/seniors-masculins-1/photo-01.webp"
+      },
+      {
+        "name": "Joshua Eloy",
+        "position": "Ailier gauche",
+        "number": "26",
+        "image": "assets/articles/seniors-masculins-1/photo-02.webp"
+      },
+      {
+        "name": "Jean Boizard",
+        "position": "Ailier droit",
+        "number": "20",
+        "image": "assets/articles/seniors-masculins-1/photo-03.webp"
+      },
+      {
+        "name": "Darine Exurville",
+        "position": "Arrière droit",
+        "number": "18",
+        "image": "assets/articles/seniors-masculins-1/photo-04.webp"
+      },
+      {
+        "name": "Erwan Rouxel",
+        "position": "Demi-centre",
+        "number": "17",
+        "image": "assets/articles/seniors-masculins-1/photo-05.webp"
+      },
+      {
+        "name": "Nicolas Le Roy",
+        "position": "Pivot",
+        "number": "10",
+        "image": "assets/articles/seniors-masculins-1/photo-06.webp"
+      },
+      {
+        "name": "Arnaud Boulaire",
+        "position": "Demi-centre",
+        "number": "9",
+        "image": "assets/articles/seniors-masculins-1/photo-07.webp"
+      },
+      {
+        "name": "Max Le Mezec",
+        "position": "Arrière gauche",
+        "number": "8",
+        "image": "assets/articles/seniors-masculins-1/photo-08.webp"
+      },
+      {
+        "name": "Hugo Azevedo Mesquita",
+        "position": "Gardien",
+        "number": "1",
+        "image": "assets/articles/seniors-masculins-1/photo-09.webp"
+      },
+      {
+        "name": "Nathan Raoult",
+        "position": "Arrière gauche",
+        "number": "88",
+        "image": "assets/articles/seniors-masculins-1/photo-12.webp"
+      },
+      {
+        "name": "Emmanuel Pol",
+        "position": "Arrière droit",
+        "number": "86",
+        "image": "assets/articles/seniors-masculins-1/photo-13.webp"
+      },
+      {
+        "name": "Guillaume Chevalier",
+        "position": "Ailier gauche",
+        "number": "80",
+        "image": "assets/articles/seniors-masculins-1/photo-14.webp"
+      },
+      {
+        "name": "Morgan Pion",
+        "position": "Pivot",
+        "number": "74",
+        "image": "assets/articles/seniors-masculins-1/photo-15.webp"
+      },
+      {
+        "name": "David Imbaud",
+        "position": "Ailier droit",
+        "number": "43",
+        "image": "assets/articles/seniors-masculins-1/photo-16.webp"
+      }
+    ],
+    "staff": [
+      {
+        "name": "Guillaume Michel",
+        "role": "Coach",
+        "image": "assets/articles/seniors-masculins-1/photo-10.webp"
+      },
+      {
+        "name": "Jérôme Quemener",
+        "role": "Entraîneur-coach",
+        "image": "assets/articles/seniors-masculins-1/photo-11.webp"
+      }
+    ]
+  }
+]
