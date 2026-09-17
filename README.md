@@ -46,7 +46,7 @@ Les effets respectent `prefers-reduced-motion`. Le menu utilise `aria-expanded`,
 - Logo, animation du logo, fonds et véritables affiches des seniors : fournis par le commanditaire. Le GIF joue une fois à l’accueil, puis sa dernière image reste affichée.
 - `assets/photos/` : sélection de photos publiées par le compte Instagram du club, reliées à leur publication d’origine.
 - `assets/boutique/` : visuels officiels et variantes de couleurs des produits Equip Club.
-- `assets/planning-2026-2027.png` : affiche originale du planning fournie, conservée pour téléchargement.
+- `assets/planning-2026-2027.svg` : planning téléchargeable généré avec les horaires de `build.py`. L’ancienne affiche PNG est conservée comme archive, sans lien sur le site.
 - `assets/background-phb.webp` : fond généré avec l’outil intégré imagegen, enregistré dans le projet après conversion WebP (223 520 octets). Texture noire, hermines discrètes et peinture rouge. Le logo officiel est superposé en CSS à faible opacité : il n’est pas redessiné par l’IA.
 
 Prompt du fond : « Wide 16:9 premium club background using identite-phb.png as style reference only. Charcoal textured paper, very low contrast dark graphite Breton ermine motifs mainly in lower half, vivid red dry-brush diagonal strokes at top-right and lower-left edges, quiet black central 60%. No text, numbers, logos, badges, people, interface, circles, white or bright grey accents. »

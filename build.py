@@ -39,7 +39,7 @@ SCHEDULE = [
  ("−15 G", "jeunes", [("Mercredi","18h–19h30","Hoëdic"),("Vendredi","17h30–19h","Hoëdic")]),
  ("−18 G", "jeunes", [("Mercredi","19h30–21h","Hoëdic"),("Vendredi","19h–20h30","Hoëdic")]),
  ("Seniors féminines", "seniors-feminines", [("Jeudi","20h30–22h","Hoëdic")]),
- ("Seniors masculins", "seniors-masculins", [("Mardi","20h15–22h","Hoëdic"),("Jeudi","20h15–22h","Belle-Île")]),
+ ("Seniors masculins", "seniors-masculins", [("Mardi","20h15–22h","Hoëdic"),("Jeudi","20h30–22h","Belle-Île")]),
  ("Loisirs", "loisirs", [("Lundi","20h30–22h","Marcel Paul")]),
 ]
 TEAM_STAFF = {
@@ -98,7 +98,7 @@ NAV = [("index","Accueil"),("club","Club"),("equipes","Équipes"),("entrainement
 
 def button(text, href, secondary=False, external=False):
     extra = ' target="_blank" rel="noopener noreferrer"' if external else ""
-    download = ' download="PHB-planning-2026-2027.png"' if text.startswith("Télécharger") else ""
+    download = ' download="PHB-planning-2026-2027.svg"' if text.startswith("Télécharger le planning") else ""
     return f'<a class="button {"button-secondary" if secondary else ""}" href="{escape(href, quote=True)}"{extra}{download}>{text}<span aria-hidden="true">↗</span></a>'
 
 def social_icon(platform, branded=True):
@@ -121,7 +121,7 @@ def schedule(group=None, category=None):
         cells=''.join(f'<td><div class="slot"><strong>{day} <span>{time}</span></strong><span class="venue">{venue}</span></div></td>' for day,time,venue in slots)
         if len(slots)==1: cells += '<td class="empty-slot">—</td>'
         destination = YOUTH_BY_SCHEDULE[name][0] if name in YOUTH_BY_SCHEDULE else slug
-        rows.append(f'<tr><th scope="row"><a href="{destination}.html">{name}</a></th>{cells}</tr>')
+        rows.append(f'<tr data-schedule-name="{escape(name, quote=True)}"><th scope="row"><a href="{destination}.html">{name}</a></th>{cells}</tr>')
     return '<div class="table-scroll"><table class="schedule"><caption class="sr-only">Entraînements 2026–2027. F : filles, G : garçons.</caption><thead><tr><th>Catégorie</th><th>Séance 1</th><th>Séance 2</th></tr></thead><tbody>'+''.join(rows)+'</tbody></table></div>'
 
 def team_card(group):
@@ -248,8 +248,8 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260917-layout11")
-    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260917-layout2")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260918-layout17")
+    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260918-layout5")
     doc=doc.replace('<a href="boutique.html">Boutique officielle</a>', '<a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a>')
     if slug=="404": doc=doc.replace("<head>",f'<head><base href="{SITE_URL}">',1)
     return doc
@@ -460,7 +460,7 @@ pages["seniors-masculins"] = page(
     ''.join(senior_choices) + '</div></div></section>', "equipes",
     "Seniors masculins du Ploufragan Handball : horaires d’entraînement et accès aux deux équipes engagées en 2026–2027.")
 
-pages["entrainements"]=page("entrainements","Les entraînements",heading("LES <em>ENTRAÎNEMENTS</em>","Entraînements")+f'''<section class="container section after-heading"><div class="schedule-tools" data-reveal><p>Planning 2026–2027 · 11 catégories</p>{button('Télécharger le planning','assets/planning-2026-2027.png',True)}</div><div class="paper-panel full-schedule" data-reveal>{schedule()}<div class="schedule-notes"><p>F : filles · G : garçons</p><p>Hoëdic et Belle-Île : complexe sportif du Haut-Champ, 22440 Ploufragan.<br>Marcel Paul : 13 rue de Merlet, 22440 Ploufragan.<br>Trégueux : salle de motricité de l’école Pasteur.</p></div></div></section>''')
+pages["entrainements"]=page("entrainements","Les entraînements",heading("LES <em>ENTRAÎNEMENTS</em>","Entraînements")+f'''<section class="container section after-heading"><div class="schedule-tools" data-reveal><p>Planning 2026–2027 · 11 catégories</p>{button('Télécharger le planning','assets/planning-2026-2027.svg',True)}</div><div class="paper-panel full-schedule" data-reveal><div class="schedule-filter" data-schedule-filter hidden><span class="schedule-filter-title" id="schedule-filter-title">Trouver mon horaire</span><div class="schedule-choice"><button class="schedule-filter-trigger" type="button" data-schedule-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="schedule-options" aria-labelledby="schedule-filter-title schedule-selected"><span id="schedule-selected" data-schedule-selected>Toutes les catégories</span><span class="schedule-chevron" aria-hidden="true">⌄</span></button><div class="schedule-options" id="schedule-options" data-schedule-options role="listbox" aria-label="Catégories d’entraînement" hidden><button type="button" class="schedule-option" role="option" data-schedule-value="" aria-selected="true">Toutes les catégories</button>{''.join(f'<button type="button" class="schedule-option" role="option" data-schedule-value="{escape(name, quote=True)}" aria-selected="false">{escape(name)}</button>' for name, _, _ in SCHEDULE)}</div></div><span data-schedule-count aria-live="polite">{len(SCHEDULE)} catégories affichées</span></div>{schedule()}<div class="schedule-notes"><p>F : filles · G : garçons</p><p>Hoëdic et Belle-Île : complexe sportif du Haut-Champ, 22440 Ploufragan.<br>Marcel Paul : 13 rue de Merlet, 22440 Ploufragan.<br>Trégueux : salle de motricité de l’école Pasteur.</p></div></div></section>''')
 locations='''<div class="location-list" id="salles"><article data-reveal><span class="location-number">01</span><div><h2>HOËDIC / BELLE-ÎLE</h2><p>Complexe sportif du Haut-Champ<br>Allée des Glénan · 22440 Ploufragan</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Complexe+sportif+du+Haut-Champ+All%C3%A9e+des+Gl%C3%A9nan+22440+Ploufragan" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article><article data-reveal><span class="location-number">02</span><div><h2>MARCEL PAUL</h2><p>Complexe sportif Marcel Paul<br>13 rue de Merlet · 22440 Ploufragan</p><p class="muted">Entraînements loisirs · lundi, 20h30–22h</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Complexe+sportif+Marcel+Paul+13+rue+de+Merlet+22440+Ploufragan" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article><article data-reveal><span class="location-number">03</span><div><h2>TRÉGUEUX</h2><p>Salle de motricité de l’école Pasteur</p><p class="muted">Baby Hand · mercredi, 10h–11h</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Salle+de+motricit%C3%A9+de+l%27%C3%A9cole+Pasteur+Tr%C3%A9gueux" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article></div>'''
 
 # Reuse the club's verified room addresses and map links on the training page.
@@ -469,9 +469,20 @@ pages["entrainements"] = pages["entrainements"].replace(
     '<section class="container section"><div class="section-heading"><h2>LES <em>SALLES</em></h2></div>'
     + locations + '</section></main>', 1)
 
+ORG_EMAILS = {
+    "sponsor": "jay.quemener@gmail.com",
+    "comm": "erwan17rouxel@gmail.com",
+    "boutik": "laetitia.helie.jeunesse@gmail.com",
+}
+
+def org_contact(area, title):
+    address = ORG_EMAILS.get(area, "ploufraganhandball@gmail.com")
+    href = f'mailto:{address}?subject={quote("Contact " + title)}'
+    return f'<a class="button org-contact" href="{escape(href, quote=True)}" aria-label="Contacter {escape(title, quote=True)} par e-mail">CONTACTER <span aria-hidden="true">↗</span></a>'
+
 def org_team(area, title, members):
     people=''.join(f'<li><span>{escape(first)} <strong>{escape(last)}</strong></span></li>' for first,last in members)
-    return f'<article class="org-card org-{area}" data-reveal><h3>{escape(title)}</h3><ul>{people}</ul></article>'
+    return f'<article class="org-card org-{area}" data-reveal><h3>{escape(title)}</h3><ul>{people}</ul>{org_contact(area, title) if area in ORG_EMAILS else ""}</article>'
 
 office_members = [
     ("Présidente", "Elsa", "DA SILVA"),
@@ -482,7 +493,7 @@ office_members = [
     ("Vice-secrétaire", "Katia", "JAVOUHEY"),
 ]
 office_people=''.join(f'<li><span class="org-role">{escape(role)}</span><span>{escape(first)} <strong>{escape(last)}</strong></span></li>' for role,first,last in office_members)
-org_chart=f'''<div class="org-chart" id="organigramme" aria-label="Organigramme du Ploufragan Handball">{org_team("sponsor", "TEAM SPONSOR", [("Jérôme","QUEMENER"),("Thomas","MIEUDONNET"),("Arnaud","DE LA HAUSSERAY"),("Guillaume","MICHEL"),("Maxime","PHILIPPE")])}<article class="org-card org-office" data-reveal><h3>BUREAU</h3><ul class="org-office-list">{office_people}</ul></article>{org_team("comm", "TEAM COMM", [("Erwan","ROUXEL"),("Jean","BOIZARD"),("Josselin","MEAR")])}{org_team("buvette", "TEAM BUVETTE", [("Jérôme & Rozenn","LE JOLY"),("Francky","BLANCHET")])}{org_team("boutik", "TEAM « BOUTIK »", [("Jérôme","QUEMENER"),("Laetitia","HÉLIE")])}{org_team("coachs", "TEAM COACHS", [("Guillaume","MICHEL"),("David","IMBAUD"),("Olivier","BEAUX"),("Elsa","DA SILVA"),("Yohann","GUÉRIN"),("Jérôme","QUEMENER"),("Joshua","ELOY"),("Erwan","ROUXEL"),("Morgan","PION"),("Katia","JAVOUHEY"),("Nathan","RAOULT"),("Clara","TOQUET"),("Aurélien","GÉRARD")])}</div>'''
+org_chart=f'''<div class="org-chart" id="organigramme" aria-label="Organigramme du Ploufragan Handball">{org_team("sponsor", "TEAM SPONSOR", [("Jérôme","QUEMENER"),("Thomas","MIEUDONNET"),("Arnaud","DE LA HAUSSERAY"),("Guillaume","MICHEL"),("Maxime","PHILIPPE")])}<article class="org-card org-office" data-reveal><h3>BUREAU</h3><ul class="org-office-list">{office_people}</ul>{org_contact("office", "BUREAU")}</article>{org_team("comm", "TEAM COMM", [("Erwan","ROUXEL"),("Jean","BOIZARD"),("Josselin","MEAR")])}{org_team("buvette", "TEAM BUVETTE", [("Jérôme & Rozenn","LE JOLY"),("Francky","BLANCHET")])}{org_team("boutik", "TEAM « BOUTIK »", [("Jérôme","QUEMENER"),("Laetitia","HÉLIE")])}{org_team("coachs", "TEAM COACHS", [("Guillaume","MICHEL"),("David","IMBAUD"),("Olivier","BEAUX"),("Elsa","DA SILVA"),("Yohann","GUÉRIN"),("Jérôme","QUEMENER"),("Joshua","ELOY"),("Erwan","ROUXEL"),("Morgan","PION"),("Katia","JAVOUHEY"),("Nathan","RAOULT"),("Clara","TOQUET"),("Aurélien","GÉRARD")])}</div>'''
 
 staff_section='''<div class="staff-section" aria-labelledby="staff-title"><div class="staff-feature" data-reveal><div class="staff-copy"><p class="staff-kicker"><span aria-hidden="true"></span>SALARIÉ DU CLUB</p><h2 id="staff-title"><span>DAVID</span><strong>IMBAUD</strong></h2></div><figure class="staff-portrait"><img src="assets/david-imbaud.webp" alt="David Imbaud, salarié du Ploufragan Handball" width="950" height="1228" loading="lazy"></figure></div></div>'''
 
@@ -703,3 +714,32 @@ sitemap_urls = ''.join(
 )
 (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
 print(f"Generated {len(pages)} HTML pages, {len(PRODUCTS)} products and {len(RESULTS['teams'])} competitions.")
+
+# The downloadable timetable shares the source data with the on-page table.
+from xml.sax.saxutils import escape as xml_escape
+svg_lines = ['<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="1220" viewBox="0 0 1040 1220" role="img" aria-labelledby="title description">',
+             '<title id="title">Planning des entraînements du Ploufragan Handball 2026–2027</title>',
+             '<desc id="description">Horaires par catégorie et lieux d’entraînement</desc>',
+             '<rect width="1040" height="1220" fill="#111116"/>',
+             '<path d="M0 0H1040V14H0ZM0 1205H1040V1220H0Z" fill="#ed0719"/>',
+             '<text x="55" y="78" fill="#ed0719" font-size="25" font-weight="800" font-family="Arial,sans-serif" letter-spacing="4">PLOUFRAGAN HANDBALL</text>',
+             '<text x="55" y="149" fill="white" font-size="66" font-weight="900" font-family="Arial,sans-serif">ENTRAÎNEMENTS</text>',
+             '<text x="58" y="190" fill="#c7c7cd" font-size="23" font-family="Arial,sans-serif">SAISON 2026 / 2027</text>',
+             '<path d="M55 221H985" stroke="#ed0719" stroke-width="3"/>',
+             '<text x="55" y="254" fill="#aaaab2" font-size="19" font-weight="700" font-family="Arial,sans-serif">CATÉGORIE</text>',
+             '<text x="350" y="254" fill="#aaaab2" font-size="19" font-weight="700" font-family="Arial,sans-serif">SÉANCE 1</text>',
+             '<text x="685" y="254" fill="#aaaab2" font-size="19" font-weight="700" font-family="Arial,sans-serif">SÉANCE 2</text>']
+for index, (name, _, slots) in enumerate(SCHEDULE):
+    y = 291 + index * 75
+    if index % 2 == 0:
+        svg_lines.append(f'<rect x="45" y="{y - 26}" width="950" height="72" fill="#1c1c23"/>')
+    svg_lines.append(f'<text x="55" y="{y + 1}" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">{xml_escape(name)}</text>')
+    for column, (day, time, venue) in enumerate(slots):
+        x = 350 + column * 335
+        svg_lines.append(f'<text x="{x}" y="{y - 4}" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">{xml_escape(day)} {xml_escape(time)}</text>')
+        svg_lines.append(f'<text x="{x}" y="{y + 24}" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">{xml_escape(venue)}</text>')
+svg_lines += ['<path d="M55 1100H985" stroke="#ed0719" stroke-width="2"/>',
+              '<text x="55" y="1138" fill="#c7c7cd" font-size="18" font-family="Arial,sans-serif">Hoëdic / Belle-Île : Haut-Champ, Ploufragan</text>',
+              '<text x="55" y="1168" fill="#c7c7cd" font-size="18" font-family="Arial,sans-serif">Marcel Paul : 13 rue de Merlet · Trégueux : école Pasteur</text>',
+              '</svg>']
+(ROOT / "assets/planning-2026-2027.svg").write_text("\n".join(svg_lines), encoding="utf-8")

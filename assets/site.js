@@ -320,3 +320,47 @@ document.querySelectorAll('[data-copy-article]').forEach(button => {
     window.setTimeout(() => { button.textContent = 'Copier le lien'; }, 2400);
   });
 });
+
+// Filter the timetable without changing its content when JavaScript is unavailable.
+const scheduleFilter = document.querySelector('[data-schedule-filter]');
+if (scheduleFilter) {
+  const trigger = scheduleFilter.querySelector('[data-schedule-trigger]');
+  const selected = scheduleFilter.querySelector('[data-schedule-selected]');
+  const list = scheduleFilter.querySelector('[data-schedule-options]');
+  const options = [...list.querySelectorAll('[data-schedule-value]')];
+  const count = scheduleFilter.querySelector('[data-schedule-count]');
+  const rows = [...document.querySelectorAll('.full-schedule .schedule tbody tr')];
+  const close = () => { list.hidden = true; trigger.setAttribute('aria-expanded', 'false'); };
+  const open = () => {
+    list.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    (options.find(option => option.getAttribute('aria-selected') === 'true') || options[0]).focus();
+  };
+  scheduleFilter.hidden = false;
+  trigger.addEventListener('click', () => { if (list.hidden) open(); else close(); });
+  trigger.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown') { event.preventDefault(); open(); }
+  });
+  options.forEach(option => option.addEventListener('click', () => {
+    const value = option.dataset.scheduleValue;
+    options.forEach(item => item.setAttribute('aria-selected', String(item === option)));
+    rows.forEach(row => { row.hidden = !!value && row.dataset.scheduleName !== value; });
+    selected.textContent = option.textContent;
+    count.textContent = value ? '1 catégorie affichée' : `${rows.length} catégories affichées`;
+    close();
+    trigger.focus();
+  }));
+  list.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { event.preventDefault(); close(); trigger.focus(); return; }
+    const current = options.indexOf(document.activeElement);
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      options[(current + (event.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length].focus();
+    }
+    if (event.key === 'Home' || event.key === 'End') {
+      event.preventDefault();
+      options[event.key === 'Home' ? 0 : options.length - 1].focus();
+    }
+  });
+  document.addEventListener('click', event => { if (!scheduleFilter.contains(event.target)) close(); });
+}

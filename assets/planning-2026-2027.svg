@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="1220" viewBox="0 0 1040 1220" role="img" aria-labelledby="title description">
+<title id="title">Planning des entraînements du Ploufragan Handball 2026–2027</title>
+<desc id="description">Horaires par catégorie et lieux d’entraînement</desc>
+<rect width="1040" height="1220" fill="#111116"/>
+<path d="M0 0H1040V14H0ZM0 1205H1040V1220H0Z" fill="#ed0719"/>
+<text x="55" y="78" fill="#ed0719" font-size="25" font-weight="800" font-family="Arial,sans-serif" letter-spacing="4">PLOUFRAGAN HANDBALL</text>
+<text x="55" y="149" fill="white" font-size="66" font-weight="900" font-family="Arial,sans-serif">ENTRAÎNEMENTS</text>
+<text x="58" y="190" fill="#c7c7cd" font-size="23" font-family="Arial,sans-serif">SAISON 2026 / 2027</text>
+<path d="M55 221H985" stroke="#ed0719" stroke-width="3"/>
+<text x="55" y="254" fill="#aaaab2" font-size="19" font-weight="700" font-family="Arial,sans-serif">CATÉGORIE</text>
+<text x="350" y="254" fill="#aaaab2" font-size="19" font-weight="700" font-family="Arial,sans-serif">SÉANCE 1</text>
+<text x="685" y="254" fill="#aaaab2" font-size="19" font-weight="700" font-family="Arial,sans-serif">SÉANCE 2</text>
+<rect x="45" y="265" width="950" height="72" fill="#1c1c23"/>
+<text x="55" y="292" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">Baby Hand</text>
+<text x="350" y="287" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Mercredi 10h–11h</text>
+<text x="350" y="315" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Trégueux</text>
+<text x="685" y="287" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Samedi 10h30–11h30</text>
+<text x="685" y="315" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="55" y="367" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">École de hand</text>
+<text x="350" y="362" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Samedi 11h30–12h30</text>
+<text x="350" y="390" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<rect x="45" y="415" width="950" height="72" fill="#1c1c23"/>
+<text x="55" y="442" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">−11 mixte</text>
+<text x="350" y="437" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Lundi 17h30–19h</text>
+<text x="350" y="465" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="685" y="437" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Mercredi 15h30–16h45</text>
+<text x="685" y="465" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="55" y="517" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">−13 F</text>
+<text x="350" y="512" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Mardi 18h45–20h</text>
+<text x="350" y="540" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="685" y="512" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Jeudi 17h30–18h45</text>
+<text x="685" y="540" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Belle-Île</text>
+<rect x="45" y="565" width="950" height="72" fill="#1c1c23"/>
+<text x="55" y="592" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">−13 G</text>
+<text x="350" y="587" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Mardi 17h30–18h45</text>
+<text x="350" y="615" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="685" y="587" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Jeudi 18h45–20h</text>
+<text x="685" y="615" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Belle-Île</text>
+<text x="55" y="667" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">−15 F</text>
+<text x="350" y="662" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Mercredi 16h45–18h</text>
+<text x="350" y="690" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="685" y="662" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Jeudi 17h30–18h45</text>
+<text x="685" y="690" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Belle-Île</text>
+<rect x="45" y="715" width="950" height="72" fill="#1c1c23"/>
+<text x="55" y="742" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">−15 G</text>
+<text x="350" y="737" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Mercredi 18h–19h30</text>
+<text x="350" y="765" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="685" y="737" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Vendredi 17h30–19h</text>
+<text x="685" y="765" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="55" y="817" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">−18 G</text>
+<text x="350" y="812" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Mercredi 19h30–21h</text>
+<text x="350" y="840" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="685" y="812" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Vendredi 19h–20h30</text>
+<text x="685" y="840" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<rect x="45" y="865" width="950" height="72" fill="#1c1c23"/>
+<text x="55" y="892" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">Seniors féminines</text>
+<text x="350" y="887" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Jeudi 20h30–22h</text>
+<text x="350" y="915" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="55" y="967" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">Seniors masculins</text>
+<text x="350" y="962" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Mardi 20h15–22h</text>
+<text x="350" y="990" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Hoëdic</text>
+<text x="685" y="962" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Jeudi 20h30–22h</text>
+<text x="685" y="990" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Belle-Île</text>
+<rect x="45" y="1015" width="950" height="72" fill="#1c1c23"/>
+<text x="55" y="1042" fill="white" font-size="22" font-weight="800" font-family="Arial,sans-serif">Loisirs</text>
+<text x="350" y="1037" fill="white" font-size="20" font-weight="700" font-family="Arial,sans-serif">Lundi 20h30–22h</text>
+<text x="350" y="1065" fill="#ff4353" font-size="18" font-family="Arial,sans-serif">Marcel Paul</text>
+<path d="M55 1100H985" stroke="#ed0719" stroke-width="2"/>
+<text x="55" y="1138" fill="#c7c7cd" font-size="18" font-family="Arial,sans-serif">Hoëdic / Belle-Île : Haut-Champ, Ploufragan</text>
+<text x="55" y="1168" fill="#c7c7cd" font-size="18" font-family="Arial,sans-serif">Marcel Paul : 13 rue de Merlet · Trégueux : école Pasteur</text>
+</svg>
