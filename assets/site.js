@@ -38,6 +38,18 @@ if (animatedLogo) {
   else window.setTimeout(freezeLogo, Number(animatedLogo.dataset.duration));
 }
 
+// The blog film plays once; its exact final image then remains visible.
+const blogIntroVideo = document.querySelector('[data-blog-intro-video]');
+if (blogIntroVideo) {
+  const stage = blogIntroVideo.closest('[data-blog-intro]');
+  const holdFinalImage = () => { blogIntroVideo.pause(); stage.classList.add('is-ended'); };
+  blogIntroVideo.addEventListener('ended', holdFinalImage, { once: true });
+  blogIntroVideo.addEventListener('error', holdFinalImage, { once: true });
+  if (motion.matches) holdFinalImage();
+  else blogIntroVideo.play().catch(holdFinalImage);
+  motion.addEventListener('change', event => { if (event.matches) holdFinalImage(); });
+}
+
 // Count each published score once when the card enters the viewport.
 const scoreBlocks = document.querySelectorAll('[data-score]');
 function setFinalScore(block) {

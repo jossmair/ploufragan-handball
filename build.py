@@ -620,14 +620,29 @@ partner_body = f'''
 </div>'''
 pages["devenir-partenaire"] = page("devenir-partenaire", "Devenir partenaire du PHB", partner_body, active="partenaires", description="Devenez partenaire du Ploufragan Handball : visibilité, formules sur mesure, partenaires actuels et contact de la Team Sponsor près de Saint-Brieuc.")
 
+def blog_heading():
+    media = (
+        '<div class="blog-intro-media" data-blog-intro>'
+        '<img src="assets/blog/intro-final.webp" alt="" width="1280" height="720" aria-hidden="true">'
+        '<video data-blog-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true">'
+        '<source src="assets/blog/intro.mp4" type="video/mp4">'
+        '</video></div>'
+    )
+    base = heading("LE <em>BLOG DU PHB</em>", "Blog", "Portraits, histoires et coulisses du Ploufragan Handball.")
+    return base.replace('class="page-heading container"', 'class="page-heading container blog-heading"', 1).replace('</header>', media + '</header>', 1)
+
+
 ARTICLES.sort(key=lambda article: article["date"], reverse=True)
 article_cards = ''.join(article_card(article) for article in ARTICLES)
 pages["actualites"] = page(
     "actualites", "Le blog du PHB",
-    heading("LE <em>BLOG DU PHB</em>", "Blog", "Portraits, histoires et coulisses du Ploufragan Handball.")
+    blog_heading()
     + f'<section class="container section after-heading news-list"><div class="news-grid">{article_cards}</div></section>',
     description="Le blog du PHB : portraits, histoires et coulisses du Ploufragan Handball près de Saint-Brieuc."
 )
+pages["actualites"] = pages["actualites"].replace(
+    "assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260917-blog-video2", 1
+).replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260917-blog-video1", 1)
 for article in ARTICLES:
     pages[f'articles/{article["slug"]}'] = article_page(article)
 contact_info='''<div class="contact-details"><div><span class="eyebrow">E-MAIL</span><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a></div><div><span class="eyebrow">TÉLÉPHONE</span><a href="tel:+33636618800">06 36 61 88 00</a></div><div><span class="eyebrow">ADRESSE</span><p>Complexe sportif du Haut-Champ<br>Allée des Glénan<br>22440 Ploufragan</p></div></div>'''
