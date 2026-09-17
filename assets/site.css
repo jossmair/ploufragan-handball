@@ -499,17 +499,18 @@ body[data-page="index"] .home-hero+.section{padding-top:34px}
 @media(max-width:520px){.hero-intro-media{width:115%}.blog-intro-media{margin-top:18px}.blog-heading .breadcrumb{margin-bottom:30px}}
 @media(prefers-reduced-motion:reduce){.hero-intro-media video{display:none}.hero-intro-media img{opacity:1}}
 
-/* Article copy first, then a single portrait at a time below it. */
-.article-feature{grid-template-columns:minmax(0,1fr) minmax(0,455px);gap:clamp(35px,5vw,78px)}
-.article-feature-copy{margin-top:0;max-width:76ch}
-.article-roster{width:100%}
+/* Center the article as one reading column, with portraits below the copy. */
+.article-feature{grid-template-columns:minmax(0,1fr);justify-items:center;gap:46px}
+.article-feature-copy{margin-top:0;width:min(100%,760px);max-width:none}
+.article-roster{width:min(100%,455px);justify-self:center}
+@media(min-width:901px){.news-article :is(.article-heading,.article-feature,.article-end,.article-back){width:min(880px,calc(100% - 96px))}}
 /* On team pages, the registration action closes the section after the pool. */
 .team-detail-grid.has-ranking>.team-registration{grid-column:1/-1}
 .team-next-card{min-width:0;background:#111116ef;border:1px solid #ffffff32;border-left:5px solid var(--red);padding:26px 29px}
 .team-next-card .eyebrow{color:#ff747f;margin-bottom:8px}
 .team-next-card h2{font-size:1.95rem;margin-bottom:18px}
 .team-next-card .match-card{display:block;margin:0;box-shadow:none}
-@media(max-width:900px){.article-feature{grid-template-columns:1fr;gap:34px}.article-roster{width:min(100%,455px);justify-self:start}}
+@media(max-width:900px){.article-feature{gap:34px}.article-roster{justify-self:center}}
 @media(max-width:700px){.team-next-card{padding:21px}}
 
 /* The wider film sits below the text on narrow screens, without covering it. */

@@ -234,7 +234,7 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260917-layout8")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260917-layout9")
     doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260917-layout2")
     doc=doc.replace('<a href="boutique.html">Boutique officielle</a>', '<a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a>')
     if slug=="404": doc=doc.replace("<head>",f'<head><base href="{SITE_URL}">',1)
