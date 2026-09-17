@@ -561,3 +561,9 @@ body[data-page="index"] .home-hero+.section{padding-top:34px}
   .home-hero .hero-logo-stage{height:clamp(580px,33vw,650px)}
   .hero-intro-media{width:min(118%,1000px);transform:translate(-2%,-12%)}
 }
+
+
+/* Show the team contact alongside its training times. */
+.team-staff{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;margin:22px 0 0;padding-top:18px;border-top:1px solid #0002}
+.team-staff span{font:800 italic 1.35rem/1.15 var(--display);text-transform:uppercase;color:#bf0617}
+.team-staff strong{font:700 1rem/1.45 var(--body);color:#17171b}

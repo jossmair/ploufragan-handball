@@ -42,6 +42,20 @@ SCHEDULE = [
  ("Seniors masculins", "seniors-masculins", [("Mardi","20h15–22h","Hoëdic"),("Jeudi","20h15–22h","Belle-Île")]),
  ("Loisirs", "loisirs", [("Lundi","20h30–22h","Marcel Paul")]),
 ]
+TEAM_STAFF = {
+    "baby-hand": ("Encadrant", "David"),
+    "ecole-de-hand": ("Encadrant", "Olivier Beaux (« Papy »)"),
+    "u11-mixte": ("Coach", "Yohann Guérin"),
+    "u13-filles": ("Coach", "David"),
+    "u13-garcons": ("Coach", "Jérôme"),
+    "u15-filles": ("Coach", "Katia"),
+    "u15-garcons": ("Coach", "Erwann"),
+    "u18-garcons": ("Coach", "Nathan"),
+    "seniors-feminines": ("Coach", "Elsa (« Mamy »)"),
+    "seniors-masculins": ("Coachs", "Jérôme Quemener et Guillaume Michel (« Guigui »)"),
+    "loisirs": ("Coach", "Aurélien"),
+}
+
 GROUPS = [
  ("baby-hand","Baby Hand","BABY<br>HAND","Enfants","BH",None),
  ("ecole-de-hand","École de hand","ÉCOLE<br>DE HAND","Formation","EH",None),
@@ -234,7 +248,7 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260917-layout10")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260917-layout11")
     doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260917-layout2")
     doc=doc.replace('<a href="boutique.html">Boutique officielle</a>', '<a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a>')
     if slug=="404": doc=doc.replace("<head>",f'<head><base href="{SITE_URL}">',1)
@@ -377,13 +391,15 @@ pages["index"]=page("index","Accueil",f'''<section class="home-hero container"><
 pages["index"] = pages["index"].replace("</main>", home_weekend_section(upcoming) + home_news_section(ARTICLES) + "</main>", 1)
 pages["equipes"]=page("equipes","Les équipes",heading("LES <em>ÉQUIPES</em>","Équipes","Sélectionnez une catégorie pour consulter ses horaires et ses informations.")+f'<section class="container section after-heading"><div class="teams-grid">{"".join(team_card(g) for g in GROUPS)}</div></section>')
 
-def team_training(schedule_group, schedule_name=None):
-    return f'''<div class="paper-panel team-training" data-reveal><div class="panel-title"><p class="eyebrow">SAISON 2026 / 2027</p><h2>ENTRAÎNEMENTS</h2></div>{schedule(schedule_group, schedule_name)}<a class="text-link" href="entrainements.html">Planning complet ↗</a></div>'''
+def team_training(schedule_group, schedule_name=None, staff_key=None):
+    role, person = TEAM_STAFF.get(staff_key) or TEAM_STAFF[schedule_group]
+    staff = f'<p class="team-staff"><span>{escape(role)}</span><strong>{escape(person)}</strong></p>'
+    return f'''<div class="paper-panel team-training" data-reveal><div class="panel-title"><p class="eyebrow">SAISON 2026 / 2027</p><h2>ENTRAÎNEMENTS</h2></div>{schedule(schedule_group, schedule_name)}{staff}<a class="text-link" href="entrainements.html">Planning complet ↗</a></div>'''
 
 
 def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
     teams = teams or []
-    training = team_training(schedule_group, schedule_name)
+    training = team_training(schedule_group, schedule_name, slug)
     registration = f'''<div class="information-panel team-registration" data-reveal><h2>INSCRIPTION & ESSAI</h2><p>Contactez le club en indiquant la catégorie souhaitée.</p><div class="actions">{button('Renseignements', mail('Renseignements ' + name))}{button('Inscriptions', 'inscriptions.html', True)}</div></div>'''
     if teams:
         competitions = [competition_detail(team) for team in teams]
@@ -444,8 +460,14 @@ pages["seniors-masculins"] = page(
     ''.join(senior_choices) + '</div></div></section>', "equipes",
     "Seniors masculins du Ploufragan Handball : horaires d’entraînement et accès aux deux équipes engagées en 2026–2027.")
 
-pages["entrainements"]=page("entrainements","Les entraînements",heading("LES <em>ENTRAÎNEMENTS</em>","Entraînements")+f'''<section class="container section after-heading"><div class="schedule-tools" data-reveal><p>Planning 2026–2027 · 11 catégories</p>{button('Télécharger le planning','assets/planning-2026-2027.png',True)}</div><div class="paper-panel full-schedule" data-reveal>{schedule()}<div class="schedule-notes"><p>F : filles · G : garçons</p><p>Hoëdic et Belle-Île : complexe sportif du Haut-Champ, 22440 Ploufragan.<br>Trégueux : salle de motricité de l’école Pasteur.</p></div></div></section>''')
+pages["entrainements"]=page("entrainements","Les entraînements",heading("LES <em>ENTRAÎNEMENTS</em>","Entraînements")+f'''<section class="container section after-heading"><div class="schedule-tools" data-reveal><p>Planning 2026–2027 · 11 catégories</p>{button('Télécharger le planning','assets/planning-2026-2027.png',True)}</div><div class="paper-panel full-schedule" data-reveal>{schedule()}<div class="schedule-notes"><p>F : filles · G : garçons</p><p>Hoëdic et Belle-Île : complexe sportif du Haut-Champ, 22440 Ploufragan.<br>Marcel Paul : 13 rue de Merlet, 22440 Ploufragan.<br>Trégueux : salle de motricité de l’école Pasteur.</p></div></div></section>''')
 locations='''<div class="location-list" id="salles"><article data-reveal><span class="location-number">01</span><div><h2>HOËDIC / BELLE-ÎLE</h2><p>Complexe sportif du Haut-Champ<br>Allée des Glénan · 22440 Ploufragan</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Complexe+sportif+du+Haut-Champ+All%C3%A9e+des+Gl%C3%A9nan+22440+Ploufragan" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article><article data-reveal><span class="location-number">02</span><div><h2>MARCEL PAUL</h2><p>Complexe sportif Marcel Paul<br>13 rue de Merlet · 22440 Ploufragan</p><p class="muted">Entraînements loisirs · lundi, 20h30–22h</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Complexe+sportif+Marcel+Paul+13+rue+de+Merlet+22440+Ploufragan" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article><article data-reveal><span class="location-number">03</span><div><h2>TRÉGUEUX</h2><p>Salle de motricité de l’école Pasteur</p><p class="muted">Baby Hand · mercredi, 10h–11h</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Salle+de+motricit%C3%A9+de+l%27%C3%A9cole+Pasteur+Tr%C3%A9gueux" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article></div>'''
+
+# Reuse the club's verified room addresses and map links on the training page.
+pages["entrainements"] = pages["entrainements"].replace(
+    "</main>",
+    '<section class="container section"><div class="section-heading"><h2>LES <em>SALLES</em></h2></div>'
+    + locations + '</section></main>', 1)
 
 def org_team(area, title, members):
     people=''.join(f'<li><span>{escape(first)} <strong>{escape(last)}</strong></span></li>' for first,last in members)
