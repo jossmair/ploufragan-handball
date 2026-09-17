@@ -6,7 +6,7 @@ Site : https://jossmair.github.io/ploufragan-handball/
 
 ## Pages
 
-- `index.html` : accueil et accès rapides.
+- `index.html` : accueil, derniers résultats, matchs seniors du week-end et blog.
 - `club.html` : présentation, présidence vérifiée, photo de l’encadrement bénévole et salles.
 - `equipes.html` : accès aux six pages de catégories.
 - `baby-hand.html`, `ecole-de-hand.html`, `jeunes.html`, `seniors-masculins.html`, `seniors-feminines.html`, `loisirs.html` : informations et horaires propres à chaque catégorie.

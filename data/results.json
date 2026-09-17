@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16T12:59:01.081701+00:00",
+  "updatedAt": "2026-09-17T10:25:33.416274+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -161,14 +161,14 @@
         },
         {
           "position": 2,
-          "team": "U11M 2 HENANSAL ERQUY",
+          "team": "handball beaussais rance fremur 2",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
           "position": 3,
-          "team": "handball beaussais rance fremur 2",
+          "team": "U11M 2 HENANSAL ERQUY",
           "points": 0,
           "played": 0,
           "club": false
@@ -340,64 +340,64 @@
         },
         {
           "position": 4,
-          "team": "Pays de dinan handball club",
-          "points": 3,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 5,
-          "team": "HANDBALL BEAUSSAIS RANCE FREMUR 1",
-          "points": 3,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 6,
           "team": "AL CANCALE",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
-          "position": 7,
+          "position": 5,
+          "team": "Pays de dinan handball club",
+          "points": 2,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 6,
           "team": "HBC HENANSAL ERQUY 1",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 8,
-          "team": "LHBC",
-          "points": 1,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 9,
+          "position": 7,
           "team": "CSAL PAIMPOL HB1",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 10,
+          "position": 8,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 1,
           "played": 1,
           "club": true
         },
         {
-          "position": 11,
+          "position": 9,
           "team": "Tinteniac Combourg HBC 2",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
+          "position": 10,
+          "team": "HANDBALL BEAUSSAIS RANCE FREMUR 1",
+          "points": 0,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 11,
+          "team": "L'HANDBALLE CLUB",
+          "points": -1,
+          "played": 1,
+          "club": false
+        },
+        {
           "position": 12,
           "team": "LEHON DINAN COM HB 1",
-          "points": 1,
+          "points": -1,
           "played": 1,
           "club": false
         }
@@ -423,22 +423,22 @@
         },
         {
           "position": 2,
-          "team": "USMB LOUARGAT",
-          "points": 3,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 3,
           "team": "GUINGAMP HANDBALL 3",
           "points": 2,
           "played": 1,
           "club": false
         },
         {
-          "position": 4,
+          "position": 3,
           "team": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
           "points": 2,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "USMB LOUARGAT",
+          "points": 1,
           "played": 1,
           "club": false
         },
@@ -472,29 +472,29 @@
         },
         {
           "position": 9,
-          "team": "PLOEUC HAND 2",
-          "points": 0,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 10,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 0,
           "played": 0,
           "club": true
         },
         {
+          "position": 10,
+          "team": "PLOEUC HAND 2",
+          "points": 0,
+          "played": 1,
+          "club": false
+        },
+        {
           "position": 11,
           "team": "MENE MERDRIGNAC HANDBALL 1",
-          "points": 0,
+          "points": -2,
           "played": 0,
           "club": false
         },
         {
           "position": 12,
           "team": "HB.PELEMOIS",
-          "points": 0,
+          "points": -2,
           "played": 0,
           "club": false
         }

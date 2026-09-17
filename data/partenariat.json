@@ -1,0 +1,15 @@
+{
+  "chiffres": [
+    {"label": "Licenciés", "valeur": null},
+    {"label": "Équipes engagées", "valeur": 9, "source": "FFHandball 2026–2027"},
+    {"label": "Bénévoles", "valeur": null},
+    {"label": "Portée sur les réseaux", "valeur": null},
+    {"label": "Matchs par saison", "valeur": null}
+  ],
+  "formules": [
+    {"titre": "PARTENAIRE DU CLUB", "texte": "Construisons ensemble une présence adaptée à votre entreprise et à la vie du PHB."},
+    {"titre": "PARTENAIRE D’ÉQUIPE", "texte": "Étudions une association avec une équipe ou un projet sportif du club."},
+    {"titre": "PROJET SUR MESURE", "texte": "Échangeons sur un événement, une action locale ou un soutien matériel."}
+  ],
+  "dossier_pdf": ""
+}
