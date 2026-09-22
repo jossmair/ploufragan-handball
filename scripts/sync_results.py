@@ -60,6 +60,8 @@ def normalize_match(match, team, pool_id):
     return {
         'id': str(match['ext_rencontreId']), 'category': team['label'], 'group': team['group'],
         'date': match.get('date'), 'home': match['equipe1Libelle'], 'away': match['equipe2Libelle'],
+        'homeTeamId': str(match.get('equipe1Id') or ''),
+        'awayTeamId': str(match.get('equipe2Id') or ''),
         'homeScore': home_score if played else None,
         'awayScore': away_score if played else None,
         'clubSide': 'home' if side == 1 else 'away', 'played': played,

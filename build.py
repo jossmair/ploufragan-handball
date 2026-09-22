@@ -11,9 +11,11 @@ ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 RESULTS = json.loads((DATA / "results.json").read_text(encoding="utf-8"))
 PRODUCTS = json.loads((DATA / "boutique.json").read_text(encoding="utf-8"))
+IMAGE_DIMENSIONS = json.loads((DATA / "image_dimensions.json").read_text(encoding="utf-8"))
 PARTNER_DATA = json.loads((DATA / "partenaires.json").read_text(encoding="utf-8"))
 PARTNERS = PARTNER_DATA["partners"]
 TEAM_LOGOS = json.loads((DATA / "team_logos.json").read_text(encoding="utf-8"))
+TEAM_LOGO_IDS = json.loads((DATA / "team_logo_ids.json").read_text(encoding="utf-8")) if (DATA / "team_logo_ids.json").exists() else {}
 LICENSES = json.loads((DATA / "inscriptions.json").read_text(encoding="utf-8"))
 ARTICLES = json.loads((DATA / "articles.json").read_text(encoding="utf-8"))
 SPONSOR_DATA = json.loads((DATA / "partenariat.json").read_text(encoding="utf-8"))
@@ -24,7 +26,51 @@ INSTAGRAM = "https://www.instagram.com/ploufragan.hb/"
 SITE_URL = "https://ploufragan-handball.fr/"
 GESTHAND_URL = "https://gesthand.net/"
 TEAMPULSE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.digitalplumecompany.boostyourteam&hl=fr"
-SEO_KEYWORDS = "handball Ploufragan, club de handball Ploufragan, handball Saint-Brieuc, handball Côtes-d'Armor, PHB"
+ORG_ID = SITE_URL + "#organization"
+WEBSITE_ID = SITE_URL + "#website"
+OG_IMAGE = SITE_URL + "assets/og-phb.jpg"
+SEO_META = {
+    "index": ("Ploufragan Handball | Club de handball près de Saint-Brieuc", "Site officiel du Ploufragan Handball : équipes, entraînements, résultats, inscriptions et vie du club à Ploufragan, près de Saint-Brieuc."),
+    "equipes": ("Équipes de handball à Ploufragan | PHB", "Découvrez les équipes du Ploufragan Handball, du Baby Hand aux seniors et aux loisirs, ainsi que leurs pages et horaires."),
+    "baby-hand": ("Baby Hand à Ploufragan | Ploufragan Handball", "Le Baby Hand du PHB accueille les plus jeunes à Ploufragan et Trégueux. Retrouvez les entraînements et les renseignements pour participer."),
+    "ecole-de-hand": ("École de handball à Ploufragan | PHB", "L’école de hand du Ploufragan Handball : séances, encadrement et informations pour découvrir le handball près de Saint-Brieuc."),
+    "jeunes": ("Équipes jeunes U11 à U18 | Ploufragan Handball", "Retrouvez les équipes jeunes U11, U13, U15 et U18 du Ploufragan Handball et accédez à leurs horaires, matchs et classements."),
+    "u11-mixte": ("U11 mixte à Ploufragan | Ploufragan Handball", "Suivez l’équipe U11 mixte du PHB : entraînements, prochain match, dernier résultat et classement de sa poule."),
+    "u13-filles": ("U13 filles | Ploufragan Handball", "Horaires, encadrement, prochain match, dernier résultat et classement de l’équipe U13 filles du Ploufragan Handball."),
+    "u13-garcons": ("U13 garçons | Ploufragan Handball", "Retrouvez les entraînements, les matchs et le classement de l’équipe U13 garçons du Ploufragan Handball."),
+    "u15-filles": ("U15 filles | Ploufragan Handball", "Consultez les horaires, le prochain match, le dernier résultat et le classement des U15 filles du PHB."),
+    "u15-garcons": ("U15 garçons | Ploufragan Handball", "L’équipe U15 garçons du PHB : entraînements, encadrement, prochain match, résultats et classement."),
+    "u18-garcons": ("U18 garçons | Ploufragan Handball", "Suivez les U18 garçons du Ploufragan Handball : horaires d’entraînement, matchs, résultats et classement."),
+    "seniors-feminines": ("Seniors féminines | Ploufragan Handball", "Suivez les Seniors féminines du PHB à Ploufragan : entraînement, prochain match, dernier résultat et classement."),
+    "seniors-masculins": ("Seniors masculins 1 et 2 | Ploufragan Handball", "Retrouvez les horaires des Seniors masculins du PHB et accédez aux pages des équipes 1 et 2."),
+    "seniors-masculins-1": ("Seniors masculins 1 | Ploufragan Handball", "L’équipe Seniors masculins 1 du PHB : entraînements, prochain match, dernier résultat et classement de poule."),
+    "seniors-masculins-2": ("Seniors masculins 2 | Ploufragan Handball", "L’équipe Seniors masculins 2 du PHB : horaires, prochains matchs, derniers résultats et classement."),
+    "loisirs": ("Handball loisir à Ploufragan | PHB", "Pratiquez le handball en loisir avec le Ploufragan Handball : horaire, lieu et contact pour rejoindre la séance."),
+    "entrainements": ("Horaires des entraînements | Ploufragan Handball", "Consultez les horaires des entraînements du PHB par catégorie et les salles de Ploufragan et Trégueux."),
+    "club": ("Club de handball à Ploufragan | Ploufragan Handball", "Découvrez le Ploufragan Handball, son organisation, ses équipes et ses lieux de pratique près de Saint-Brieuc."),
+    "inscriptions": ("Inscription handball à Ploufragan 2026-2027 | PHB", "Rejoignez le Ploufragan Handball en 2026-2027 : catégories, années de naissance, tarifs et démarches de licence."),
+    "resultats": ("Résultats et matchs | Ploufragan Handball", "Scores, prochains matchs, championnats et classements des équipes du Ploufragan Handball, issus de FFHandball."),
+    "boutique": ("Boutique officielle du PHB | Ploufragan Handball", "Découvrez les vêtements et articles de la boutique officielle du Ploufragan Handball et commandez auprès du partenaire du club."),
+    "partenaires": ("Partenaires du club | Ploufragan Handball", "Découvrez les entreprises et collectivités qui soutiennent le Ploufragan Handball à Ploufragan et dans les Côtes-d’Armor."),
+    "devenir-partenaire": ("Devenir partenaire du PHB | Ploufragan Handball", "Soutenez le Ploufragan Handball : visibilité, partenariat adapté à votre entreprise et contact de la Team Sponsor."),
+    "blog": ("Blog du PHB | Ploufragan Handball", "Portraits, histoires et coulisses du Ploufragan Handball. Retrouvez les articles du club et ses équipes."),
+    "contact": ("Contact et salles | Ploufragan Handball", "Contactez le PHB et retrouvez les adresses des salles d’entraînement à Ploufragan et Trégueux."),
+    "mentions-legales": ("Mentions légales | Ploufragan Handball", "Informations légales sur l’éditeur, l’hébergeur et les contenus du site officiel du Ploufragan Handball."),
+    "confidentialite": ("Confidentialité et données personnelles | PHB", "Informations sur les données personnelles, les services externes et les moyens de contacter le Ploufragan Handball."),
+}
+SOCIAL_IMAGES = {
+    "baby-hand": ("assets/og/baby-hand.jpg", 1100, 1100, "Enfants du Baby Hand du Ploufragan Handball"),
+    "ecole-de-hand": ("assets/og/ecole-de-hand.jpg", 1100, 1100, "École de hand du Ploufragan Handball"),
+    "jeunes": ("assets/og/jeunes.jpg", 1100, 1100, "Équipes jeunes du Ploufragan Handball"),
+    "u11-mixte": ("assets/og/u11-mixte.jpg", 1154, 1440, "Jeunes joueurs U11 du Ploufragan Handball"),
+    "u13-filles": ("assets/og/u13-filles.jpg", 1151, 1440, "Jeunes joueuses U13 du Ploufragan Handball"),
+    "u18-garcons": ("assets/og/u18-garcons.jpg", 1151, 1440, "Jeunes joueurs U18 du Ploufragan Handball"),
+    "seniors-feminines": ("assets/og/seniors-feminines.jpg", 1100, 1100, "Seniors féminines du Ploufragan Handball"),
+    "seniors-masculins": ("assets/og/seniors-masculins.jpg", 1100, 1100, "Seniors masculins du Ploufragan Handball"),
+    "seniors-masculins-1": ("assets/og/seniors-masculins.jpg", 1100, 1100, "Seniors masculins du Ploufragan Handball"),
+    "seniors-masculins-2": ("assets/og/seniors-masculins.jpg", 1100, 1100, "Seniors masculins du Ploufragan Handball"),
+    "loisirs": ("assets/og/loisirs.jpg", 1100, 1100, "Handball loisir au Ploufragan Handball"),
+}
 FACEBOOK_ICON = '<svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 8.25H16l.5-3h-3c-3.334 0-5 2-5 5v2H5.5v3h3V24H12v-8.75h3l.5-3H12V10.5c0-1.105.395-2.25 1.5-2.25Z"/></svg>'
 INSTAGRAM_ICON = '<svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849C2.38 3.899 3.9 2.38 7.151 2.232 8.416 2.175 8.796 2.163 12 2.163ZM12 0C8.74 0 8.333.014 6.953.077 2.69.272.272 2.69.077 6.953.014 8.333 0 8.74 0 12s.014 3.668.077 5.048c.195 4.263 2.613 6.681 6.876 6.876C8.333 23.986 8.74 24 12 24s3.668-.014 5.048-.077c4.263-.195 6.681-2.613 6.876-6.876C23.986 15.668 24 15.26 24 12s-.014-3.668-.077-5.047C23.728 2.69 21.31.272 17.047.077 15.668.014 15.26 0 12 0Zm0 5.838A6.162 6.162 0 1 0 12 18.162 6.162 6.162 0 0 0 12 5.838ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg>'
 PARTNER_ASSET_VERSION = "20260916-2"
@@ -135,8 +181,9 @@ def fr_date(value):
     d=datetime.fromisoformat(value); months=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"]
     return f'{d.day} {months[d.month-1]} · {d:%Hh%M}'.replace("h00", "h")
 
-def match_team(name, side):
-    logo = TEAM_LOGOS_BY_NAME.get(name.casefold())
+def match_team(name, side, team_id=None):
+    logo = TEAM_LOGO_IDS.get(str(team_id)) if team_id else None
+    logo = logo or TEAM_LOGOS_BY_NAME.get(name.casefold())
     if logo:
         phb_class = " team-logo-phb" if name.casefold() == "ploufragan handball" else ""
         badge = f'<span class="team-logo-disc{phb_class}" aria-hidden="true"><img src="{escape(logo, quote=True)}?v={TEAM_ASSET_VERSION}" alt="" width="240" height="240" loading="lazy"></span>'
@@ -176,7 +223,7 @@ def match_card(m):
         accessible = f"Score {score_text(m['homeScore'])} à {score_text(m['awayScore'])}"
         score=f'''<div class="match-result"><strong class="match-score" data-score><span class="sr-only">{accessible}</span>{home}<i aria-hidden="true">—</i>{away}</strong><span class="outcome {outcome}">{badge}</span></div>'''
     else: score='<div class="match-result"><strong class="match-time">À venir</strong></div>'
-    return f'''<a class="match-card" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer" data-reveal><div class="match-top"><span>{escape(clean_label(m['category']))}</span><time datetime="{m['date']}">{fr_date(m['date'])}</time></div><div class="match-main">{match_team(m['home'], 'home')}{score}{match_team(m['away'], 'away')}</div><span class="match-source">FFHandball ↗</span></a>'''
+    return f'''<a class="match-card" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer" data-reveal><div class="match-top"><span>{escape(clean_label(m['category']))}</span><time datetime="{m['date']}">{fr_date(m['date'])}</time></div><div class="match-main">{match_team(m['home'], 'home', m.get('homeTeamId'))}{score}{match_team(m['away'], 'away', m.get('awayTeamId'))}</div><span class="match-source">FFHandball ↗</span></a>'''
 
 def clean_label(label):
     return (label.replace("feminines", "féminines")
@@ -224,57 +271,88 @@ def sponsor_marquee():
 def product_card(product):
     variants=product.get("variants") or [{"image":product["image"],"label":"Article"}]
     colors=product.get("colors") or [v.get("label",f"Vue {n+1}") for n,v in enumerate(variants)]
-    slides=''.join(f'''<img class="product-slide{' is-active' if n==0 else ''}" src="{escape(v['image'],quote=True)}" alt="{escape(product['name'].replace('PLOUFRAGAN HB - ','').title())} — {escape(colors[n] if n<len(colors) else v.get('label','Vue'))}" loading="lazy" data-product-slide data-label="{escape(colors[n] if n<len(colors) else v.get('label','Vue'), quote=True)}">''' for n,v in enumerate(variants))
+    slides=''.join(f'''<img class="product-slide{' is-active' if n==0 else ''}" src="{escape(v['image'],quote=True)}" alt="{escape(product['name'].replace('PLOUFRAGAN HB - ','').title())} — {escape(colors[n] if n<len(colors) else v.get('label','Vue'))}" width="{IMAGE_DIMENSIONS[v['image']][0]}" height="{IMAGE_DIMENSIONS[v['image']][1]}" loading="lazy" data-product-slide data-label="{escape(colors[n] if n<len(colors) else v.get('label','Vue'), quote=True)}">''' for n,v in enumerate(variants))
     controls='''<div class="product-controls"><button type="button" data-carousel-prev aria-label="Couleur précédente"><span class="carousel-arrow carousel-arrow-prev" aria-hidden="true"></span></button><button type="button" data-carousel-next aria-label="Couleur suivante"><span class="carousel-arrow carousel-arrow-next" aria-hidden="true"></span></button></div>''' if len(variants)>1 else ''
     return f'''<article class="product-card" data-reveal><div class="product-carousel" data-product-carousel><div class="product-slides">{slides}</div>{controls}</div><div class="product-copy"><h2>{escape(product['name'].replace('PLOUFRAGAN HB - ',''))}</h2><strong>{escape(product['price'])}</strong><a href="{escape(product['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Commander sur Equip Club <span aria-hidden="true">↗</span></a></div></article>'''
+
+def breadcrumb_schema(slug, title):
+    if slug in ("index", "404"):
+        return None
+    parents = [("Accueil", SITE_URL)]
+    if slug.startswith("articles/"):
+        parents.append(("Blog", SITE_URL + "blog.html"))
+    elif slug in {"baby-hand", "ecole-de-hand", "jeunes", "loisirs", "seniors-feminines", "seniors-masculins"}:
+        parents.append(("Équipes", SITE_URL + "equipes.html"))
+    elif slug.startswith("u") and "-" in slug:
+        parents.extend([("Équipes", SITE_URL + "equipes.html"), ("Équipes jeunes", SITE_URL + "jeunes.html")])
+    elif slug.startswith("seniors-masculins-"):
+        parents.extend([("Équipes", SITE_URL + "equipes.html"), ("Seniors masculins", SITE_URL + "seniors-masculins.html")])
+    url = SITE_URL + slug + ".html"
+    parents.append((title, url))
+    return {"@type": "BreadcrumbList", "@id": url + "#breadcrumb",
+            "itemListElement": [{"@type": "ListItem", "position": i, "name": name, "item": link}
+                                for i, (name, link) in enumerate(parents, 1)]}
+
+
+def structured_data_for(slug, title):
+    canonical = SITE_URL if slug == "index" else SITE_URL + slug + ".html"
+    data = []
+    if slug == "index":
+        data.append({
+            "@type": "SportsOrganization", "@id": ORG_ID,
+            "name": "Ploufragan Handball", "alternateName": "PHB",
+            "url": SITE_URL, "logo": SITE_URL + "assets/logo-phb.png",
+            "sport": "Handball", "email": "ploufraganhandball@gmail.com",
+            "telephone": "+33636618800",
+            "location": {"@type": "Place", "name": "Complexe sportif du Haut-Champ",
+                         "address": {"@type": "PostalAddress", "streetAddress": "Allée des Glénan",
+                                     "postalCode": "22440", "addressLocality": "Ploufragan",
+                                     "addressCountry": "FR"}},
+            "sameAs": ["https://www.facebook.com/ploufragan.hb/", INSTAGRAM],
+        })
+        data.append({"@type": "WebSite", "@id": WEBSITE_ID, "name": "Ploufragan Handball",
+                     "url": SITE_URL, "inLanguage": "fr-FR", "publisher": {"@id": ORG_ID}})
+    crumb = breadcrumb_schema(slug, title)
+    if crumb:
+        data.append(crumb)
+    competitive = {item[0] for item in YOUTH_TEAMS} | {"seniors-feminines", "seniors-masculins-1", "seniors-masculins-2"}
+    if slug in competitive:
+        data.append({"@type": "SportsTeam", "@id": canonical + "#team",
+                     "name": title, "sport": "Handball", "url": canonical,
+                     "memberOf": {"@id": ORG_ID}})
+    return json.dumps({"@context": "https://schema.org", "@graph": data},
+                      ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
 
 def page(slug, title, body, active=None, description=None):
     active=active or slug
     nav=''.join(f'<a href="{key}.html"'+(' aria-current="page"' if key==active else '')+f'>{label}</a>' for key,label in NAV)
-    description=description or f'{title} du Ploufragan Handball, club de handball près de Saint-Brieuc dans les Côtes-d’Armor. Saison 2026–2027.'
-    if "Saint-Brieuc" not in description:
-        description += " Club de handball à Ploufragan, près de Saint-Brieuc."
+    metadata = SEO_META.get(slug)
+    description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
     path = "" if slug == "index" else f"{slug}.html"
     canonical = SITE_URL + path
-    page_title = "Ploufragan Handball | Club près de Saint-Brieuc" if slug == "index" else f"{title} | Ploufragan Handball"
+    page_title = metadata[0] if metadata else f"{title} | Ploufragan Handball"
     robots = "noindex,follow" if slug == "404" else "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
-    schema = {
-        "@context": "https://schema.org",
-        "@type": "SportsOrganization",
-        "name": "Ploufragan Handball",
-        "alternateName": "PHB",
-        "url": SITE_URL,
-        "logo": SITE_URL + "assets/logo-phb.png",
-        "image": SITE_URL + "assets/og-phb.webp",
-        "sport": "Handball",
-        "email": "ploufraganhandball@gmail.com",
-        "telephone": "+33636618800",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Complexe sportif du Haut-Champ, Allée des Glénan",
-            "postalCode": "22440",
-            "addressLocality": "Ploufragan",
-            "addressRegion": "Bretagne",
-            "addressCountry": "FR",
-        },
-        "areaServed": [
-            {"@type": "City", "name": "Ploufragan"},
-            {"@type": "City", "name": "Saint-Brieuc"},
-        ],
-        "sameAs": [
-            "https://www.facebook.com/ploufragan.hb/",
-            INSTAGRAM,
-        ],
-    }
-    structured_data = json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\/")
-    seo=f'''<link rel="canonical" href="{canonical}"><meta name="robots" content="{robots}"><meta name="keywords" content="{escape(SEO_KEYWORDS,quote=True)}"><meta property="og:locale" content="fr_FR"><meta property="og:type" content="website"><meta property="og:site_name" content="Ploufragan Handball"><meta property="og:title" content="{escape(page_title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{SITE_URL}assets/og-phb.webp"><meta property="og:image:secure_url" content="{SITE_URL}assets/og-phb.webp"><meta property="og:image:type" content="image/webp"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ploufragan Handball — club de handball près de Saint-Brieuc"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(page_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{SITE_URL}assets/og-phb.webp"><link rel="sitemap" type="application/xml" href="{SITE_URL}sitemap.xml"><script type="application/ld+json">{structured_data}</script>'''
+    structured_data = structured_data_for(slug, title)
+    social_image = SOCIAL_IMAGES.get(slug)
+    og_url = SITE_URL + social_image[0] if social_image else OG_IMAGE
+    og_width, og_height = (social_image[1], social_image[2]) if social_image else (1200, 630)
+    og_type = "image/jpeg"
+    og_alt = social_image[3] if social_image else "Ploufragan Handball — club de handball près de Saint-Brieuc"
+    seo=f'''<link rel="canonical" href="{canonical}"><meta name="robots" content="{robots}"><meta property="og:locale" content="fr_FR"><meta property="og:type" content="website"><meta property="og:site_name" content="Ploufragan Handball"><meta property="og:title" content="{escape(page_title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{og_url}"><meta property="og:image:secure_url" content="{og_url}"><meta property="og:image:type" content="{og_type}"><meta property="og:image:width" content="{og_width}"><meta property="og:image:height" content="{og_height}"><meta property="og:image:alt" content="{escape(og_alt,quote=True)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(page_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{og_url}"><link rel="sitemap" type="application/xml" href="{SITE_URL}sitemap.xml"><script type="application/ld+json">{structured_data}</script>'''
     doc=f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101012"><meta name="description" content="{escape(description,quote=True)}">{seo}<title>{escape(page_title)}</title><link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/site.css?v=20260916-seniors1"><script src="assets/site.js?v=20260913-live" defer></script></head><body data-page="{slug}"><div class="site-texture" aria-hidden="true"></div><img class="watermark" src="assets/logo-phb.png" alt="" width="512" height="512" aria-hidden="true"><div class="scroll-progress" aria-hidden="true"></div><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><div class="header-inner container"><a class="brand" href="index.html" aria-label="Ploufragan Handball, accueil"><img src="assets/logo-phb.png" alt="" width="60" height="60"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><button class="menu-toggle" aria-controls="navigation" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button><nav id="navigation" aria-label="Navigation principale">{nav}<a class="nav-registration" href="inscriptions.html">Inscriptions <span aria-hidden="true">↗</span></a></nav></div></header><main id="contenu">{body}</main>{sponsor_marquee()}<footer class="site-footer"><div class="container footer-main"><a class="brand" href="index.html"><img src="assets/logo-phb.png" alt="Logo PHB" width="56" height="56"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><div><h2>CONTACT</h2><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a><a href="tel:+33636618800">06 36 61 88 00</a></div><div><h2>ACCÈS RAPIDE</h2><a href="resultats.html">Résultats et championnats</a><a href="boutique.html">Boutique officielle</a></div><div><h2>RÉSEAUX SOCIAUX</h2><a class="footer-social-link facebook" href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook", False)}Facebook ↗</a><a class="footer-social-link instagram" href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram", False)}Instagram ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year">2026</span> Ploufragan Handball</span><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></nav><a href="#contenu">Haut de page ↑</a></div></footer></body></html>'''
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
     doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260918-layout17")
     doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260918-layout5")
+    doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
+                    '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
+    remote_fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">'
+    local_fonts = '<link rel="preload" href="assets/fonts/barlow-condensed-italic-800.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="assets/fonts/inter-normal-400-700.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="assets/fonts/fonts.css">'
+    doc=doc.replace(remote_fonts, local_fonts)
     doc=doc.replace('<a href="boutique.html">Boutique officielle</a>', '<a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a>')
+    doc=doc.replace('href="index.html"', 'href="/"')
     if slug=="404": doc=doc.replace("<head>",f'<head><base href="{SITE_URL}">',1)
     return doc
 
@@ -301,7 +379,7 @@ def home_news_section(articles):
         summary = (article.get("summary") or article["intro"]).strip()
         if len(summary) > 155:
             summary = summary[:152].rsplit(" ", 1)[0] + "…"
-        cards.append(f'''<article class="home-news-card" data-reveal><div class="home-news-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" loading="lazy" decoding="async"></div><div class="home-news-copy"><time datetime="{article['date']}">{article_date(article['date'])}</time><h3>{escape(article['title'])}</h3><p>{escape(summary)}</p>{button('Lire l’article', path, True)}</div></article>''')
+        cards.append(f'''<article class="home-news-card" data-reveal><div class="home-news-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" width="1080" height="1339" loading="lazy" decoding="async"></div><div class="home-news-copy"><time datetime="{article['date']}">{article_date(article['date'])}</time><h3>{escape(article['title'])}</h3><p>{escape(summary)}</p>{button('Lire l’article', path, True)}</div></article>''')
     return f'''<section class="container section home-news" aria-labelledby="home-news-title"><div class="section-heading" data-reveal><div><p class="eyebrow">LA VIE DU CLUB</p><h2 id="home-news-title">LE <em>BLOG DU PHB</em></h2></div><a class="text-link" href="blog.html">VOIR TOUT LE BLOG ↗</a></div><div class="home-news-grid count-{len(latest)}">{''.join(cards)}</div></section>'''
 
 
@@ -360,7 +438,7 @@ def article_page(article):
     document = document.replace(f'<title>{standard_title}</title>', f'<title>{escape(article["meta_title"])}</title>')
     document = document.replace(f'content="{standard_title}"', f'content="{meta_title}"')
     document = document.replace('property="og:type" content="website"', 'property="og:type" content="article"')
-    default_image = SITE_URL + 'assets/og-phb.webp'
+    default_image = OG_IMAGE
     article_image = SITE_URL + article["og_image"]
     for property_name in ("og:image", "og:image:secure_url"):
         document = document.replace(f'property="{property_name}" content="{default_image}"', f'property="{property_name}" content="{article_image}"')
@@ -370,11 +448,12 @@ def article_page(article):
     document = document.replace('property="og:image:alt" content="Ploufragan Handball — club de handball près de Saint-Brieuc"', f'property="og:image:alt" content="{escape(article["image_alt"], quote=True)}"')
     document = document.replace(f'data-page="articles/{slug}"', 'data-page="blog"')
     schema = {
-        "@context": "https://schema.org", "@type": "Article", "headline": article["title"],
+        "@context": "https://schema.org", "@type": "BlogPosting",
+        "@id": canonical + "#article", "url": canonical, "headline": article["title"],
         "description": article["meta_description"], "datePublished": article["date"],
-        "image": article_image, "mainEntityOfPage": canonical, "inLanguage": "fr-FR",
+        "image": article_image, "mainEntityOfPage": {"@type": "WebPage", "@id": canonical}, "inLanguage": "fr-FR",
         "author": {"@type": "Organization" if article["author"] == "Ploufragan Handball" else "Person", "name": article["author"]},
-        "publisher": {"@type": "SportsOrganization", "name": "Ploufragan Handball", "logo": {"@type": "ImageObject", "url": SITE_URL + "assets/logo-phb.png"}},
+        "publisher": {"@id": ORG_ID},
         "articleSection": article.get("categories", []),
     }
     schema_json = json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
@@ -724,7 +803,7 @@ contact_info='''<div class="contact-details"><div><span class="eyebrow">E-MAIL</
 pages["contact"]=page("contact","Contact et accès",heading("CONTACT <em>& ACCÈS</em>","Contact")+f'''<section class="container section after-heading"><div class="contact-layout"><div class="information-panel" data-reveal><h2>COORDONNÉES DU CLUB</h2>{contact_info}</div><div>{locations}</div></div></section>''')
 legal = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>ÉDITEUR DU SITE</h2><p>Ploufragan Handball, association sportive basée à Ploufragan (22440). Présidente : Elsa DA SILVA.</p><p>Contact : <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a> · <a href="tel:+33636618800">06 36 61 88 00</a>.</p><p>Lieu d’activité : complexe sportif du Haut-Champ, allée des Glénan, 22440 Ploufragan. Cette adresse est celle du lieu de pratique ; le siège social est à confirmer auprès de l’association.</p></div><div class="information-panel"><h2>HÉBERGEMENT</h2><p>Site publié avec GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, États-Unis. Le nom de domaine est géré via OVHcloud.</p><p><a href="https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">Informations GitHub Pages ↗</a></p></div><div class="information-panel"><h2>CONTENUS</h2><p>Textes, photographies et logos sont utilisés pour présenter les activités du club et de ses partenaires. Pour toute question relative à un contenu ou à un droit à l’image, contactez l’association.</p></div></section>'''
 pages["mentions-legales"] = page("mentions-legales", "Mentions légales", heading("MENTIONS <em>LÉGALES</em>", "Mentions légales") + legal)
-privacy = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>VOS DONNÉES</h2><p>Ce site ne propose pas de formulaire de contact et ne dépose pas de cookie de mesure d’audience propre au club. GitHub Pages conserve l’adresse IP des visiteurs pour la sécurité du service. Si vous écrivez au club par courriel ou l’appelez, l’association utilise les informations que vous lui communiquez pour répondre à votre demande et traiter, le cas échéant, une inscription.</p><p>Pour demander l’accès, la rectification ou la suppression de vos informations, écrivez à <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a>. Vous pouvez également saisir la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener noreferrer">CNIL ↗</a>.</p></div><div class="information-panel"><h2>SERVICES EXTERNES</h2><p>Le site charge des polices depuis Google Fonts. Sur la page Résultats, le calendrier intégré de Score’n’co charge des ressources depuis ses domaines, Google Fonts et Sentry ; ce service tiers peut utiliser ses propres cookies. En ouvrant un lien vers FFHandball, les réseaux sociaux, Google Maps, Google Play ou la boutique, vous quittez le site du club ; ces services appliquent leurs propres politiques de confidentialité.</p></div><div class="information-panel"><h2>DURÉE DE CONSERVATION</h2><p>La durée de conservation des échanges adressés au club dépend de leur objet. Pour connaître celle qui s’applique à votre demande, contactez l’association.</p></div></section>'''
+privacy = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>VOS DONNÉES</h2><p>Ce site ne propose pas de formulaire de contact et ne dépose pas de cookie de mesure d’audience propre au club. GitHub Pages conserve l’adresse IP des visiteurs pour la sécurité du service. Si vous écrivez au club par courriel ou l’appelez, l’association utilise les informations que vous lui communiquez pour répondre à votre demande et traiter, le cas échéant, une inscription.</p><p>Pour demander l’accès, la rectification ou la suppression de vos informations, écrivez à <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a>. Vous pouvez également saisir la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener noreferrer">CNIL ↗</a>.</p></div><div class="information-panel"><h2>SERVICES EXTERNES</h2><p>Les polices du site sont hébergées sur le domaine du club. Sur la page Résultats, le calendrier intégré de Score’n’co charge des ressources depuis ses domaines, Google Fonts et Sentry ; ce service tiers peut utiliser ses propres cookies. En ouvrant un lien vers FFHandball, les réseaux sociaux, Google Maps, Google Play ou la boutique, vous quittez le site du club ; ces services appliquent leurs propres politiques de confidentialité.</p></div><div class="information-panel"><h2>DURÉE DE CONSERVATION</h2><p>La durée de conservation des échanges adressés au club dépend de leur objet. Pour connaître celle qui s’applique à votre demande, contactez l’association.</p></div></section>'''
 pages["confidentialite"] = page("confidentialite", "Confidentialité", heading("VIE <em>PRIVÉE</em>", "Confidentialité") + privacy)
 pages["404"]=page("404","Page introuvable",heading("PAGE <em>INTROUVABLE</em>","Page introuvable")+f'<section class="container section after-heading"><p>Cette adresse ne correspond à aucune page du site.</p><div class="actions">{button("Accueil","index.html")}</div></section>')
 
@@ -742,9 +821,8 @@ for slug, content in pages.items():
     encoding="utf-8",
 )
 public_slugs = [slug for slug in pages if slug != "404"]
-lastmod = datetime.now().date().isoformat()
 sitemap_urls = ''.join(
-    f'<url><loc>{SITE_URL if slug == "index" else SITE_URL + slug + ".html"}</loc><lastmod>{lastmod}</lastmod></url>'
+    f'<url><loc>{SITE_URL if slug == "index" else SITE_URL + slug + ".html"}</loc></url>'
     for slug in public_slugs
 )
 (ROOT / "sitemap.xml").write_text(

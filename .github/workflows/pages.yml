@@ -30,12 +30,16 @@ jobs:
         run: python -m unittest discover -s tests
       - name: Récupérer les résultats officiels
         run: python scripts/sync_results.py
+      - name: Mettre en cache les nouveaux écussons officiels
+        run: python scripts/fetch_team_logos.py
+        continue-on-error: true
       - name: Générer les pages
         run: python build.py
       - name: Vérifier les liens internes
         run: |
           python scripts/check_site.py
           python scripts/check_build.py
+          python scripts/seo_audit.py
       - name: Préparer les fichiers publics
         run: |
           mkdir _site
