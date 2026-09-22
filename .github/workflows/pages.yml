@@ -26,10 +26,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Vérifier le traitement des scores
+        run: python -m unittest discover -s tests
       - name: Récupérer les résultats officiels
         run: python scripts/sync_results.py
       - name: Générer les pages
         run: python build.py
+      - name: Vérifier les liens internes
+        run: |
+          python scripts/check_site.py
+          python scripts/check_build.py
       - name: Préparer les fichiers publics
         run: |
           mkdir _site

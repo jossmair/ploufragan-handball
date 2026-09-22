@@ -5,6 +5,8 @@ import os
 from datetime import datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
+from time import sleep
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,24 +28,40 @@ class Components(HTMLParser):
 def fetch(url):
     if not url.startswith('https://www.ffhandball.fr/competitions/'):
         raise ValueError('Unexpected source domain')
-    parser = Components()
-    with urlopen(Request(url, headers={'User-Agent': 'Ploufragan-Handball-Website/1.0'}), timeout=35) as response:
-        parser.feed(response.read().decode('utf-8-sig'))
-    if 'competitions---poule-selector' not in parser.items:
-        raise ValueError('FFHandball returned no competition data: ' + url)
-    return parser.items
+    for attempt in range(3):
+        try:
+            parser = Components()
+            with urlopen(Request(url, headers={'User-Agent': 'Ploufragan-Handball-Website/1.0'}), timeout=35) as response:
+                parser.feed(response.read().decode('utf-8-sig'))
+            if 'competitions---poule-selector' not in parser.items:
+                raise ValueError('FFHandball returned no competition data')
+            return parser.items
+        except (HTTPError, URLError, TimeoutError, ValueError) as exc:
+            if attempt == 2:
+                raise RuntimeError(f'FFHandball unavailable after 3 attempts: {url}') from exc
+            print(f'FFHandball retry {attempt + 1}/3: {url} ({exc})', flush=True)
+            sleep(2 ** attempt)
+
+def normalize_score(value):
+    """Keep FFHandball's non-numeric result codes, such as FO (forfait)."""
+    if value is None or str(value).strip() == '':
+        return None
+    value = str(value).strip()
+    return int(value) if value.isdecimal() else value.upper()
+
 
 def normalize_match(match, team, pool_id):
     side = next((i for i in (1, 2) if str(match.get(f'equipe{i}Id')) == str(team['internalId'])), None)
     if side is None:
         return None
-    home_score, away_score = match.get('equipe1Score'), match.get('equipe2Score')
+    home_score = normalize_score(match.get('equipe1Score'))
+    away_score = normalize_score(match.get('equipe2Score'))
     played = home_score is not None and away_score is not None
     return {
         'id': str(match['ext_rencontreId']), 'category': team['label'], 'group': team['group'],
         'date': match.get('date'), 'home': match['equipe1Libelle'], 'away': match['equipe2Libelle'],
-        'homeScore': int(home_score) if played else None,
-        'awayScore': int(away_score) if played else None,
+        'homeScore': home_score if played else None,
+        'awayScore': away_score if played else None,
         'clubSide': 'home' if side == 1 else 'away', 'played': played,
         'url': team['base'] + f"poule-{pool_id}/rencontre-{match['ext_rencontreId']}/",
     }

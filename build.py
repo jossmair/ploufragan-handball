@@ -145,13 +145,36 @@ def match_team(name, side):
     return f'<span class="match-team match-{side}"><span class="match-team-name">{escape(name)}</span>{badge}</span>'
 
 
+def score_text(value):
+    return 'forfait' if value == 'FO' else str(value)
+
+
+def score_span(value, is_phb=False, animate=False):
+    style = ' class="is-phb-score"' if is_phb else ''
+    counter = f' data-score-number data-value="{value}"' if animate and isinstance(value, int) else ''
+    return f'<span{style}{counter} aria-hidden="true">{escape(str(value))}</span>'
+
+
+def match_outcome(match):
+    club = match['homeScore'] if match['clubSide'] == 'home' else match['awayScore']
+    other = match['awayScore'] if match['clubSide'] == 'home' else match['homeScore']
+    if club == 'FO':
+        return 'loss', 'Forfait'
+    if other == 'FO':
+        return 'win', 'Victoire'
+    if isinstance(club, int) and isinstance(other, int):
+        outcome = 'win' if club > other else 'loss' if club < other else 'draw'
+        return outcome, {'win': 'Victoire', 'loss': 'Défaite', 'draw': 'Nul'}[outcome]
+    return 'draw', 'Résultat officiel'
+
+
 def match_card(m):
     if m["played"]:
-        cs=m["homeScore"] if m["clubSide"]=="home" else m["awayScore"]; os=m["awayScore"] if m["clubSide"]=="home" else m["homeScore"]
-        outcome="win" if cs>os else "loss" if cs<os else "draw"; badge={"win":"Victoire","loss":"Défaite","draw":"Nul"}[outcome]
-        home_class = ' class="is-phb-score"' if m["clubSide"] == "home" else ""
-        away_class = ' class="is-phb-score"' if m["clubSide"] == "away" else ""
-        score=f'''<div class="match-result"><strong class="match-score" data-score><span class="sr-only">Score {m["homeScore"]} à {m["awayScore"]}</span><span{home_class} data-score-number data-value="{m["homeScore"]}" aria-hidden="true">{m["homeScore"]}</span><i aria-hidden="true">—</i><span{away_class} data-score-number data-value="{m["awayScore"]}" aria-hidden="true">{m["awayScore"]}</span></strong><span class="outcome {outcome}">{badge}</span></div>'''
+        outcome, badge = match_outcome(m)
+        home = score_span(m['homeScore'], m['clubSide'] == 'home', animate=True)
+        away = score_span(m['awayScore'], m['clubSide'] == 'away', animate=True)
+        accessible = f"Score {score_text(m['homeScore'])} à {score_text(m['awayScore'])}"
+        score=f'''<div class="match-result"><strong class="match-score" data-score><span class="sr-only">{accessible}</span>{home}<i aria-hidden="true">—</i>{away}</strong><span class="outcome {outcome}">{badge}</span></div>'''
     else: score='<div class="match-result"><strong class="match-time">À venir</strong></div>'
     return f'''<a class="match-card" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer" data-reveal><div class="match-top"><span>{escape(clean_label(m['category']))}</span><time datetime="{m['date']}">{fr_date(m['date'])}</time></div><div class="match-main">{match_team(m['home'], 'home')}{score}{match_team(m['away'], 'away')}</div><span class="match-source">FFHandball ↗</span></a>'''
 
@@ -173,10 +196,11 @@ def competition_detail(team):
     related = [m for m in RESULTS["matches"] if m["category"] == team["label"] and m["played"]]
     latest = max(related, key=lambda match: match["date"], default=None)
     if latest:
-        home_class = ' class="is-phb-score"' if latest["clubSide"] == "home" else ""
-        away_class = ' class="is-phb-score"' if latest["clubSide"] == "away" else ""
-        score = f'<span{home_class}>{latest["homeScore"]}</span><i aria-hidden="true">–</i><span{away_class}>{latest["awayScore"]}</span>'
-        result = f'<a class="season-result" href="{escape(latest["url"], quote=True)}" target="_blank" rel="noopener noreferrer"><time datetime="{latest["date"]}">{fr_date(latest["date"])}</time><span class="season-result-teams"><span>{escape(clean_label(latest["home"]))}</span><strong class="season-result-score" aria-label="Score {latest["homeScore"]} à {latest["awayScore"]}">{score}</strong><span>{escape(clean_label(latest["away"]))}</span></span><span class="season-source">Feuille de match FFHandball ↗</span></a>'
+        home = score_span(latest['homeScore'], latest['clubSide'] == 'home')
+        away = score_span(latest['awayScore'], latest['clubSide'] == 'away')
+        score = f'{home}<i aria-hidden="true">–</i>{away}'
+        accessible = f"Score {score_text(latest['homeScore'])} à {score_text(latest['awayScore'])}"
+        result = f'<a class="season-result" href="{escape(latest["url"], quote=True)}" target="_blank" rel="noopener noreferrer"><time datetime="{latest["date"]}">{fr_date(latest["date"])}</time><span class="season-result-teams"><span>{escape(clean_label(latest["home"]))}</span><strong class="season-result-score" aria-label="{accessible}">{score}</strong><span>{escape(clean_label(latest["away"]))}</span></span><span class="season-source">Feuille de match FFHandball ↗</span></a>'
     else:
         result = '<p class="season-empty">Aucun résultat publié pour cette équipe.</p>'
     standings_card = f'''<article class="team-season-card" data-reveal><div class="team-season-head"><div><p class="eyebrow">{escape(team["pool"])}</p><h2>CLASSEMENT · {escape(label)}</h2></div><a href="{escape(team["url"], quote=True)}" target="_blank" rel="noopener noreferrer">Fiche équipe ↗</a></div><div class="team-rank"><div><small>POSITION DANS LA POULE</small><strong>{rank}</strong><span>{rank_note}</span></div></div>{table}<a class="season-ranking-link" href="{escape(team["ranking"], quote=True)}" target="_blank" rel="noopener noreferrer">Classement complet sur FFHandball ↗</a></article>'''
@@ -385,7 +409,22 @@ def home_weekend_section(matches, now=None):
     return f'<section class="container section home-weekend" aria-labelledby="home-weekend-title"><div class="section-heading" data-reveal><div><p class="eyebrow">PROGRAMME DES SENIORS</p><h2 id="home-weekend-title">CE <em>WEEK-END</em></h2></div><a class="text-link" href="resultats.html">Voir les matchs des autres équipes ↗</a></div>{content}</section>'
 
 
-played=[m for m in RESULTS["matches"] if m["played"]]; upcoming=sorted([m for m in RESULTS["matches"] if not m["played"]],key=lambda m:m["date"])
+def next_round_matches(matches):
+    """Show all fixtures in the first upcoming calendar week, including Sunday."""
+    if not matches:
+        return []
+    paris = ZoneInfo("Europe/Paris")
+    first_day = datetime.fromisoformat(matches[0]["date"]).astimezone(paris).date()
+    next_monday = first_day + timedelta(days=7 - first_day.weekday())
+    return [match for match in matches if datetime.fromisoformat(match["date"]).astimezone(paris).date() < next_monday]
+
+
+now_utc = datetime.now(timezone.utc)
+played = [m for m in RESULTS["matches"] if m["played"]]
+upcoming = sorted(
+    [m for m in RESULTS["matches"] if not m["played"] and datetime.fromisoformat(m["date"]) >= now_utc],
+    key=lambda m: m["date"],
+)
 pages={}
 pages["index"]=page("index","Accueil",f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>2026 / 2027</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><p class="hero-location">Complexe sportif du Haut-Champ<br>22440 Ploufragan</p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}</div><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true">↗</b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true">↗</b></a></div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section><section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>DERNIERS <em>RÉSULTATS</em></h2></div><a class="text-link" href="resultats.html">Tous les résultats ↗</a></div><div class="matches-grid">{''.join(match_card(m) for m in played[:4])}</div></section>''',description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
 pages["index"] = pages["index"].replace("</main>", home_weekend_section(upcoming) + home_news_section(ARTICLES) + "</main>", 1)
@@ -610,7 +649,7 @@ pages["inscriptions"] = page(
 
 
 competition_cards=''.join(f'''<article class="competition-card" data-reveal><p class="eyebrow">{escape(t['pool'])}</p><h3>{escape(clean_label(t['label']))}</h3><div><a href="{escape(t['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Calendrier FFHandball ↗</a><a href="{escape(t['ranking'],quote=True)}" target="_blank" rel="noopener noreferrer">Classement ↗</a></div></article>''' for t in RESULTS["teams"])
-pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS <em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont synchronisées automatiquement plusieurs fois par jour.")+f'''<section class="container section after-heading"><div class="section-heading"><div><p class="eyebrow">DERNIER WEEK-END</p><h2>LES <em>SCORES</em></h2></div><span class="data-source">Source : FFHandball</span></div><div class="matches-grid">{''.join(match_card(m) for m in played)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid">{''.join(match_card(m) for m in upcoming[:8])}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div><div class="score-widget" data-reveal><iframe src="https://widgets.scorenco.com/auto/week-events/123569" title="Matchs du Ploufragan Handball sur Score'n'co" loading="lazy"></iframe></div></section>''')
+pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS <em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont synchronisées automatiquement plusieurs fois par jour.")+f'''<section class="container section after-heading"><div class="section-heading"><div><p class="eyebrow">DERNIER WEEK-END</p><h2>LES <em>SCORES</em></h2></div><span class="data-source">Source : FFHandball</span></div><div class="matches-grid">{''.join(match_card(m) for m in played)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid">{''.join(match_card(m) for m in next_round_matches(upcoming))}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div><div class="score-widget" data-reveal><iframe src="https://widgets.scorenco.com/auto/week-events/123569" title="Matchs du Ploufragan Handball sur Score'n'co" loading="lazy"></iframe></div></section>''')
 
 product_cards=''.join(product_card(product) for product in PRODUCTS)
 pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Boutique","Les commandes et paiements sont réalisés sur la boutique Equip Club.")+f'''<section class="container section after-heading"><div class="shop-intro" data-reveal><div><p class="eyebrow">COLLECTION PLOUFRAGAN HB</p><h2>21 ARTICLES</h2><p>Les prix affichés ont été relevés le 13 septembre 2026. Les tailles, stocks et prix définitifs sont indiqués sur Equip Club.</p></div>{button('Ouvrir la boutique officielle',SHOP,False,True)}</div><div class="products-grid">{product_cards}</div></section>''')
