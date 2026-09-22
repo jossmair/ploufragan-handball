@@ -1,0 +1,29 @@
+{
+  "season": "2026–2027",
+  "source": "Planning des responsables de salle transmis par le club le 22 septembre 2026",
+  "note": "Le PDF porte un ancien en-tête 2025-2026, mais les dates du calendrier correspondent à la saison 2026-2027. Une date peut couvrir plusieurs matchs ; le document ne fournit pas un total de rencontres.",
+  "dates": [
+    {"date": "2026-09-12", "responsables": ["JAY"]},
+    {"date": "2026-09-19", "responsables": ["ERWAN", "NATHAN"]},
+    {"date": "2026-09-26", "responsables": ["PTIJU", "PIERROT", "LUCAS"]},
+    {"date": "2026-10-03", "responsables": ["NONO", "JOSS"]},
+    {"date": "2026-10-10", "responsables": ["MORGAN", "NAYAN", "JEAN"]},
+    {"date": "2026-11-07", "responsables": ["TITINE", "MAX LM", "LIAM"]},
+    {"date": "2026-11-14", "responsables": ["NICO D", "COCO", "THIBAUT"]},
+    {"date": "2026-11-28", "responsables": ["DARINE", "HUGO", "PABLO"]},
+    {"date": "2026-12-05", "responsables": ["MAXOU", "MANU", "TYBALT"]},
+    {"date": "2026-12-12", "responsables": ["GUILLAUME", "NICO LR", "ANTOINE"]},
+    {"date": "2027-01-09", "responsables": ["JOSH", "MAXIMILIEN", "JEROME"]},
+    {"date": "2027-01-16", "responsables": ["KRIS", "LOIC B", "JAY"]},
+    {"date": "2027-01-30", "responsables": ["DAVID", "JEROME", "LOGAN"]},
+    {"date": "2027-02-06", "responsables": ["PIERROT", "NAYAN", "LIAM"]},
+    {"date": "2027-02-13", "responsables": ["NONO", "MAXIMILIEN", "TYBALT"]},
+    {"date": "2027-03-13", "responsables": ["JOSS", "HUGO", "LUCAS"]},
+    {"date": "2027-03-20", "responsables": ["MORGAN", "COCO", "JEROME"]},
+    {"date": "2027-04-03", "responsables": ["TITINE", "GUILLAUME", "THIBAUT"]},
+    {"date": "2027-04-10", "responsables": ["MAX LM", "NICO LR", "JEAN"]},
+    {"date": "2027-04-17", "responsables": ["NICO D", "LOIC B", "JEROME"]},
+    {"date": "2027-05-15", "responsables": ["DARINE", "JOSH", "ANTOINE"]},
+    {"date": "2027-05-22", "responsables": ["MANU", "MAXOU", "PABLO"]}
+  ]
+}
