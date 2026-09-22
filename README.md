@@ -2,7 +2,7 @@
 
 Site statique HTML/CSS/JavaScript du club, saison 2026–2027.
 
-Site : https://jossmair.github.io/ploufragan-handball/
+Site officiel : https://ploufragan-handball.fr/
 
 ## Pages
 
@@ -43,7 +43,7 @@ Les effets respectent `prefers-reduced-motion`. Le menu utilise `aria-expanded`,
 
 ## Visuels
 
-- Logo, animation du logo, fonds et véritables affiches des seniors : fournis par le commanditaire. Le GIF joue une fois à l’accueil, puis sa dernière image reste affichée.
+- Logo, animations, fonds et véritables affiches des seniors : fournis par le commanditaire. La vidéo d’introduction joue une fois à l’accueil ; le GIF du blog conserve sa dernière image.
 - `assets/photos/` : sélection de photos publiées par le compte Instagram du club, reliées à leur publication d’origine.
 - `assets/boutique/` : visuels officiels et variantes de couleurs des produits Equip Club.
 - `assets/planning-2026-2027.svg` : planning téléchargeable généré avec les horaires de `build.py`. L’ancienne affiche PNG est conservée comme archive, sans lien sur le site.
@@ -67,4 +67,4 @@ GitHub Pages est publié par GitHub Actions depuis la branche `main`. Toutes les
 
 Aperçu local : `python -m http.server 4175 --bind 127.0.0.1`, puis http://127.0.0.1:4175/.
 
-Contrôles : liens et ancres des 17 documents, titres et navigation active, ressources locales, cohérence des 19 créneaux entre les pages, syntaxe Python, CSS et JavaScript. Les polices Inter et Barlow Condensed sont chargées depuis Google Fonts, avec des polices de remplacement. Aucun outil de suivi ou cookie applicatif ajouté.
+Contrôles : liens, ancres, titres, métadonnées, schémas JSON-LD, sitemap et ressources des pages générées, cohérence des créneaux, syntaxe Python, CSS et JavaScript. Les polices Inter et Barlow Condensed sont auto-hébergées en WOFF2. Aucun outil de suivi ou cookie applicatif ajouté.

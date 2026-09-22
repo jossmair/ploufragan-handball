@@ -312,6 +312,11 @@ def structured_data_for(slug, title):
         })
         data.append({"@type": "WebSite", "@id": WEBSITE_ID, "name": "Ploufragan Handball",
                      "url": SITE_URL, "inLanguage": "fr-FR", "publisher": {"@id": ORG_ID}})
+    if slug != "404":
+        data.append({"@type": "WebPage", "@id": canonical + "#webpage",
+                     "name": SEO_META.get(slug, (title,))[0], "url": canonical,
+                     "inLanguage": "fr-FR", "isPartOf": {"@id": WEBSITE_ID},
+                     "publisher": {"@id": ORG_ID}})
     crumb = breadcrumb_schema(slug, title)
     if crumb:
         data.append(crumb)
@@ -319,7 +324,7 @@ def structured_data_for(slug, title):
     if slug in competitive:
         data.append({"@type": "SportsTeam", "@id": canonical + "#team",
                      "name": title, "sport": "Handball", "url": canonical,
-                     "memberOf": {"@id": ORG_ID}})
+                     "parentOrganization": {"@id": ORG_ID}})
     return json.dumps({"@context": "https://schema.org", "@graph": data},
                       ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
@@ -451,8 +456,8 @@ def article_page(article):
         "@context": "https://schema.org", "@type": "BlogPosting",
         "@id": canonical + "#article", "url": canonical, "headline": article["title"],
         "description": article["meta_description"], "datePublished": article["date"],
-        "image": article_image, "mainEntityOfPage": {"@type": "WebPage", "@id": canonical}, "inLanguage": "fr-FR",
-        "author": {"@type": "Organization" if article["author"] == "Ploufragan Handball" else "Person", "name": article["author"]},
+        "image": article_image, "mainEntityOfPage": {"@id": canonical + "#webpage"}, "inLanguage": "fr-FR",
+        "author": ({"@id": ORG_ID} if article["author"] == "Ploufragan Handball" else {"@type": "Person", "name": article["author"]}),
         "publisher": {"@id": ORG_ID},
         "articleSection": article.get("categories", []),
     }
@@ -539,15 +544,15 @@ def youth_card(item):
     age = name.split()[0]
     return f'''<a class="youth-choice" href="{slug}.html" data-reveal><span class="youth-choice-age">{age}</span><span class="youth-choice-body"><strong>{name}</strong></span><span class="youth-choice-arrow" aria-hidden="true">↗</span></a>'''
 
-pages["jeunes"] = page("jeunes", "Équipe jeunes",
-    heading("ÉQUIPE <em>JEUNES</em>", "Équipe jeunes", back=("equipes.html", "Équipes")) +
+pages["jeunes"] = page("jeunes", "Équipes jeunes",
+    heading("ÉQUIPES <em>JEUNES</em>", "Équipes jeunes", back=("equipes.html", "Équipes")) +
     '<section class="container section youth-landing after-heading"><div class="youth-landing-heading"><div><p class="eyebrow">SAISON 2026 / 2027</p><h2>CHOISIS TON <em>ÉQUIPE</em></h2></div></div><div class="youth-choice-grid">' +
     ''.join(youth_card(item) for item in YOUTH_TEAMS) + '</div></section>', "equipes")
 
 for youth in YOUTH_TEAMS:
     slug, name, schedule_name, years, result_label, photo = youth
     team = next((team for team in RESULTS["teams"] if team["label"] == result_label), None)
-    body = heading(name.upper(), name, back=("jeunes.html", "Équipe jeunes"))
+    body = heading(name.upper(), name, back=("jeunes.html", "Équipes jeunes"))
     body += team_detail(slug, name, "jeunes", schedule_name, [team] if team else [])
     pages[slug] = page(slug, name, body, "equipes",
         f"{name} du Ploufragan Handball près de Saint-Brieuc : entraînements et classement 2026–2027.")

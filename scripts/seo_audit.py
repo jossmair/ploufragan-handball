@@ -32,9 +32,11 @@ class Page(HTMLParser):
         self.h1 = 0
         self.main = 0
         self.meta = {}
+        self.meta_counts = Counter()
         self.canonical = []
         self.references = []
         self.links = []
+        self.anchors = []
         self.images = []
         self.ids = set()
         self.refresh = False
@@ -55,6 +57,7 @@ class Page(HTMLParser):
             name = attrs.get("name") or attrs.get("property")
             if name:
                 self.meta[name] = attrs.get("content", "")
+                self.meta_counts[name] += 1
             if attrs.get("http-equiv", "").lower() == "refresh":
                 self.refresh = True
         elif tag == "link":
@@ -64,6 +67,7 @@ class Page(HTMLParser):
                 self.references.append(("resource", attrs["href"]))
         elif tag == "a":
             self.links.append(attrs.get("href", ""))
+            self.anchors.append(attrs)
             self.references.append(("link", attrs.get("href", "")))
         elif tag in ("img", "script", "source", "video", "iframe"):
             if tag == "img":
@@ -110,9 +114,28 @@ def local_path(page_file, url):
 
 
 def schema_types(node):
+    return {item.get("@type") for item in schema_nodes(node)}
+
+
+def schema_nodes(node):
     if isinstance(node, list):
-        return {item.get("@type") for item in node if isinstance(item, dict)}
-    return {item.get("@type") for item in node.get("@graph", [node]) if isinstance(item, dict)}
+        return [item for item in node if isinstance(item, dict)]
+    if isinstance(node, dict):
+        return [item for item in node.get("@graph", [node]) if isinstance(item, dict)]
+    return []
+
+
+def schema_asset_urls(value):
+    """Yield only image/logo URLs, not external identity or social URLs."""
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key in ("image", "logo") and isinstance(item, str):
+                yield item
+            else:
+                yield from schema_asset_urls(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from schema_asset_urls(item)
 
 
 def audit():
@@ -123,6 +146,7 @@ def audit():
     inbound = defaultdict(set)
     titles = Counter()
     descriptions = Counter()
+    canonicals = Counter()
     for file in FILES:
         relative = file.relative_to(ROOT).as_posix()
         page = Page()
@@ -150,10 +174,20 @@ def audit():
             if page.h1 != 1 or page.main != 1:
                 errors.append(f"{relative}: {page.h1} H1 et {page.main} main (attendu : 1 de chaque)")
             expected = SITE if relative == "index.html" else SITE + relative
+            canonicals[expected] += 1
             if page.canonical != [expected]:
                 errors.append(f"{relative}: canonical {page.canonical} au lieu de {expected}")
+            if len(page.title.strip()) < 24 or len(page.title.strip()) > 78:
+                warnings.append(f"{relative}: longueur du title à examiner ({len(page.title.strip())} caractères)")
+            if description and (len(description) < 65 or len(description) > 190):
+                warnings.append(f"{relative}: longueur de description à examiner ({len(description)} caractères)")
+            for name in ("description", "og:title", "og:description", "og:url", "og:image"):
+                if page.meta_counts[name] != 1:
+                    errors.append(f"{relative}: {name} présent {page.meta_counts[name]} fois")
             if page.meta.get("og:url") != expected:
                 errors.append(f"{relative}: og:url incohérent")
+            if page.meta.get("og:site_name") != "Ploufragan Handball" or page.meta.get("og:locale") != "fr_FR":
+                errors.append(f"{relative}: identité Open Graph incohérente")
             for item in REQUIRED_OG | REQUIRED_TWITTER:
                 if not page.meta.get(item):
                     errors.append(f"{relative}: balise {item} absente")
@@ -163,20 +197,54 @@ def audit():
                     errors.append(f"{relative}: {item} doit utiliser le domaine HTTPS officiel")
                 elif not (ROOT / image.removeprefix(SITE)).is_file():
                     errors.append(f"{relative}: image sociale absente : {image}")
-            schema = []
+            for name in ("og:image:width", "og:image:height"):
+                if not page.meta.get(name, "").isdigit() or int(page.meta[name]) <= 0:
+                    errors.append(f"{relative}: dimension Open Graph {name} invalide")
+            nodes = []
             for raw in page.schemas:
                 try:
-                    schema.extend(schema_types(json.loads(raw)))
+                    parsed = json.loads(raw)
+                    nodes.extend(schema_nodes(parsed))
+                    for image in schema_asset_urls(parsed):
+                        if image.startswith(SITE) and not (ROOT / image.removeprefix(SITE)).is_file():
+                            errors.append(f"{relative}: image JSON-LD absente : {image}")
                 except (ValueError, TypeError) as exc:
                     errors.append(f"{relative}: JSON-LD invalide ({exc})")
+            schema = [node.get("@type") for node in nodes]
+            ids = [node.get("@id") for node in nodes if node.get("@id")]
+            if len(ids) != len(set(ids)) or any(not item.startswith(SITE) for item in ids):
+                errors.append(f"{relative}: @id JSON-LD dupliqué ou non canonique")
+            webpage = next((node for node in nodes if node.get("@type") == "WebPage"), None)
+            if not webpage or webpage.get("@id") != expected + "#webpage" or webpage.get("url") != expected:
+                errors.append(f"{relative}: WebPage canonique absent ou incohérent")
+            elif webpage.get("isPartOf") != {"@id": SITE + "#website"} or webpage.get("publisher") != {"@id": SITE + "#organization"}:
+                errors.append(f"{relative}: WebPage non reliée au site et au club")
             if relative == "index.html" and not {"SportsOrganization", "WebSite"} <= set(schema):
                 errors.append(f"{relative}: identité SportsOrganization/WebSite absente")
+            if relative == "index.html":
+                organization = next((node for node in nodes if node.get("@type") == "SportsOrganization"), {})
+                website = next((node for node in nodes if node.get("@type") == "WebSite"), {})
+                if organization.get("@id") != SITE + "#organization" or website.get("@id") != SITE + "#website" or website.get("publisher") != {"@id": SITE + "#organization"}:
+                    errors.append(f"{relative}: identifiants Organisation/WebSite incohérents")
             if relative.startswith("articles/") and "BlogPosting" not in schema:
                 errors.append(f"{relative}: BlogPosting absent")
+            if relative.startswith("articles/"):
+                article = next((node for node in nodes if node.get("@type") == "BlogPosting"), {})
+                if article.get("@id") != expected + "#article" or article.get("mainEntityOfPage") != {"@id": expected + "#webpage"} or article.get("publisher") != {"@id": SITE + "#organization"}:
+                    errors.append(f"{relative}: BlogPosting non relié à sa page ou au club")
             if relative.removesuffix(".html") in COMPETITIVE and "SportsTeam" not in schema:
                 errors.append(f"{relative}: SportsTeam absent")
+            if relative.removesuffix(".html") in COMPETITIVE:
+                team = next((node for node in nodes if node.get("@type") == "SportsTeam"), {})
+                if team.get("@id") != expected + "#team" or team.get("parentOrganization") != {"@id": SITE + "#organization"}:
+                    errors.append(f"{relative}: SportsTeam non relié au club")
             if relative != "index.html" and "BreadcrumbList" not in schema:
                 errors.append(f"{relative}: BreadcrumbList absent")
+            if relative != "index.html":
+                crumb = next((node for node in nodes if node.get("@type") == "BreadcrumbList"), {})
+                trail = crumb.get("itemListElement", [])
+                if not trail or trail[-1].get("item") != expected or [part.get("position") for part in trail] != list(range(1, len(trail) + 1)):
+                    errors.append(f"{relative}: BreadcrumbList incohérent")
             if "keywords" in page.meta:
                 errors.append(f"{relative}: meta keywords interdite")
         if relative == "404.html" and not noindex:
@@ -203,12 +271,29 @@ def audit():
                 inbound[target].add(file.resolve())
                 if target.name == "actualites.html":
                     errors.append(f"{relative}: lien interne vers l’ancienne URL {url}")
+                if urlparse(url).path.endswith("/index.html") or urlparse(url).path == "index.html":
+                    errors.append(f"{relative}: lien interne non canonique vers index.html : {url}")
+        for anchor in page.anchors:
+            if anchor.get("target") == "_blank" and "noopener" not in anchor.get("rel", ""):
+                errors.append(f"{relative}: lien target=_blank sans noopener : {anchor.get('href', '')}")
     for value, count in titles.items():
         if count > 1:
             errors.append(f"title dupliqué ({count}) : {value}")
     for value, count in descriptions.items():
         if count > 1 and value:
             errors.append(f"description dupliquée ({count}) : {value}")
+    for value, count in canonicals.items():
+        if count > 1:
+            errors.append(f"canonical dupliquée ({count}) : {value}")
+    for file, page in pages.items():
+        relative = file.relative_to(ROOT).as_posix()
+        for url in page.links:
+            fragment = urlparse(url).fragment
+            if not fragment:
+                continue
+            target = local_path(file, url)
+            if target in pages and fragment not in pages[target].ids:
+                errors.append(f"{relative}: ancre interne introuvable : {url}")
     sitemap = ROOT / "sitemap.xml"
     try:
         entries = ElementTree.parse(sitemap).findall("{*}url")
@@ -238,9 +323,11 @@ def audit():
                 errors.append(f"{css.relative_to(ROOT)}: ressource CSS absente : {url}")
     print(f"SEO : {len(indexable)} pages indexables, {len(urls)} URL sitemap, {len(errors)} erreurs, {len(warnings)} avertissements")
     for message in errors:
-        print("ERREUR", message)
+        print("ERROR", message)
     for message in warnings:
-        print("AVERTISSEMENT", message)
+        print("WARNING", message)
+    if not errors:
+        print("PASS : aucune erreur SEO critique")
     return bool(errors)
 
 
