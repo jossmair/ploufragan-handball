@@ -6,9 +6,12 @@ from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
 results = json.loads((ROOT / 'data/results.json').read_text(encoding='utf-8'))
+configured = json.loads((ROOT / 'data/competitions.json').read_text(encoding='utf-8'))
 results_page = (ROOT / 'resultats.html').read_text(encoding='utf-8')
 
-assert len(results['teams']) == 9, 'Missing PHB competition'
+expected = {team['label'] for team in configured}
+actual = {team['label'] for team in results['teams']}
+assert expected <= actual, f'Missing PHB competitions: {sorted(expected - actual)}'
 assert results['matches'], 'No official matches were imported'
 for match in results['matches']:
     if match['played']:
