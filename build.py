@@ -92,7 +92,7 @@ SCHEDULE = [
  ("Loisirs", "loisirs", [("Lundi","20h30–22h","Marcel Paul")]),
 ]
 TEAM_STAFF = {
-    "baby-hand": ("Encadrant", "David"),
+    "baby-hand": ("Encadrants", "David, Clara et Erwan"),
     "ecole-de-hand": ("Encadrant", "Olivier Beaux (« Papy »)"),
     "u11-mixte": ("Coach", "Yohann Guérin"),
     "u13-filles": ("Coach", "David"),
@@ -121,7 +121,7 @@ SPONSOR_TEAM = [("Jérôme", "QUEMENER"), ("Thomas", "MIEUDONNET"),
 YOUTH_TEAMS = [
     ("u11-mixte", "U11 mixte", "−11 mixte", "2016–2017", "U11 mixte", "assets/photos/u11-equipe.webp"),
     ("u13-filles", "U13 filles", "−13 F", "2014–2015", "U13 filles", "assets/photos/u13-equipe.webp"),
-    ("u13-garcons", "U13 garçons", "−13 G", "2014–2015", "U13 garcons", None),
+    ("u13-garcons", "U13 garçons", "−13 G", "2014–2015", "U13 garcons", "assets/photos/u13-garcons-equipe-2026.webp"),
     ("u15-filles", "U15 filles", "−15 F", "2012–2013", "U15 filles", None),
     ("u15-garcons", "U15 garçons", "−15 G", "2012–2013", "U15 garcons", None),
     ("u18-garcons", "U18 garçons", "−18 G", "2009–2011", "U18 garcons", "assets/photos/u18-equipe.webp"),
@@ -369,7 +369,7 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-duty-layout1")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-team-photos3")
     doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-filters2")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
@@ -546,7 +546,8 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
     registration = f'''<div class="information-panel team-registration" data-reveal><h2>INSCRIPTION & ESSAI</h2><p>Contactez le club en indiquant la catégorie souhaitée.</p><div class="actions">{button('Renseignements', mail('Renseignements ' + name))}{button('Inscriptions', 'inscriptions.html', True)}</div></div>'''
     if teams:
         competitions = [competition_detail(team) for team in teams]
-        content = f'<div class="team-detail-main">{training}{"".join(result + upcoming for _, result, upcoming in competitions)}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}</div>{registration}'
+        sidebar_photo = team_sidebar_photo(slug)
+        content = f'<div class="team-detail-main">{training}{"".join(result + upcoming for _, result, upcoming in competitions)}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}{sidebar_photo}</div>{registration}'
     else:
         content = training + registration
     return f'<section class="container team-detail-grid {"has-ranking" if teams else "no-ranking"} after-heading">{content}</section>'
@@ -565,17 +566,43 @@ def category_values(slug):
     eyebrow, title, copy = CATEGORY_VALUE_COPY[slug]
     return f'<section class="container category-values after-heading" data-reveal><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{copy}</p></section>'
 
+
+TEAM_PAGE_PHOTOS = {
+    "baby-hand": ("assets/photos/baby-hand-seance-2026.webp", 1600, 1200,
+                  "Séance de Baby Hand encadrée au Ploufragan Handball"),
+    "u13-garcons": ("assets/photos/u13-garcons-equipe-2026.webp", 1080, 1178,
+                    "Équipe U13 garçons du Ploufragan Handball avec son entraîneur"),
+}
+
+
+def team_page_photo(slug):
+    photo = TEAM_PAGE_PHOTOS.get(slug)
+    if not photo:
+        return ""
+    src, width, height, alt = photo
+    return f'''<figure class="container team-page-photo after-heading" data-reveal><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy"></figure>'''
+
+
+def team_sidebar_photo(slug):
+    photo = TEAM_PAGE_PHOTOS.get(slug)
+    if not photo:
+        return ""
+    src, width, height, alt = photo
+    return f'''<figure class="team-sidebar-photo" data-reveal><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy"></figure>'''
+
 for slug,name,title,meta,mark,photo in GROUPS:
     if slug in ("jeunes", "seniors-masculins"):
         continue
     subtitle={"jeunes":"−11 mixte · −13 filles et garçons · −15 filles et garçons · −18 garçons","baby-hand":"Mercredi à la salle de motricité de l’école Pasteur à Trégueux et samedi à Hoëdic.","ecole-de-hand":"Samedi à Hoëdic.","loisirs":"Lundi à Marcel Paul."}.get(slug,meta)
     teams = [team for team in RESULTS["teams"] if team["group"] == slug]
-    pages[slug]=page(slug,name,heading(title.replace("<br>"," <em>")+"</em>",name,subtitle,("equipes.html","Équipes"))+category_values(slug)+team_detail(slug,name,slug,teams=teams),"equipes")
+    pages[slug]=page(slug,name,heading(title.replace("<br>"," <em>")+"</em>",name,subtitle,("equipes.html","Équipes"))+category_values(slug)+team_page_photo(slug)+team_detail(slug,name,slug,teams=teams),"equipes")
 
 def youth_card(item):
     slug, name, schedule_name, years, result_label, photo = item
     age = name.split()[0]
-    return f'''<a class="youth-choice" href="{slug}.html" data-reveal><span class="youth-choice-age">{age}</span><span class="youth-choice-body"><strong>{name}</strong></span><span class="youth-choice-arrow" aria-hidden="true">↗</span></a>'''
+    card_photo = "assets/equipes/u13-garcons-card.webp" if slug == "u13-garcons" else None
+    visual = f'<img class="youth-choice-photo" src="{card_photo}" alt="" width="1244" height="1264" loading="lazy" aria-hidden="true">' if card_photo else ""
+    return f'''<a class="youth-choice{' has-photo' if card_photo else ''}" href="{slug}.html" data-youth-team="{slug}" data-reveal>{visual}<span class="youth-choice-age">{age}</span><span class="youth-choice-body"><strong>{name}</strong></span><span class="youth-choice-arrow" aria-hidden="true">↗</span></a>'''
 
 pages["jeunes"] = page("jeunes", "Équipes jeunes",
     heading("ÉQUIPES <em>JEUNES</em>", "Équipes jeunes", back=("equipes.html", "Équipes")) +
