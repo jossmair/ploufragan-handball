@@ -26,6 +26,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Installer les tests navigateur
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
       - name: Vérifier le traitement des scores
         run: python -m unittest discover -s tests
       - name: Récupérer les résultats officiels
@@ -37,17 +45,21 @@ jobs:
         continue-on-error: true
       - name: Générer les pages
         run: python build.py
+      - name: Générer le dossier partenaire
+        run: npm run build:partner-pdf
       - name: Vérifier les liens internes
         run: |
           python scripts/check_site.py
           python scripts/check_build.py
           python scripts/seo_audit.py
+      - name: Tests navigateur
+        run: npm run test:e2e
       - name: Préparer les fichiers publics
         run: |
           mkdir _site
-          cp *.html *.txt *.xml CNAME .nojekyll _site/
+          cp *.html *.txt *.xml *.webmanifest CNAME .nojekyll _site/
           cp -r articles _site/
-          cp -r assets data _site/
+          cp -r assets _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

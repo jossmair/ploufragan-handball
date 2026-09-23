@@ -24,7 +24,7 @@ Chaque document contient son propre titre, sa navigation active, son contenu HTM
 
 ## Modifier le site
 
-`build.py` contient les données d’entraînement et les modèles communs. Après modification, lancer `python build.py` à la racine du projet. Python utilise uniquement sa bibliothèque standard. Les fichiers HTML générés sont suivis dans Git et directement publiables sur GitHub Pages.
+`build.py` contient les modèles communs. Les informations de catégories et la saison sont centralisées dans `data/categories.json` et `data/site.json`. Après modification, lancer `python build.py` à la racine du projet. Python utilise uniquement sa bibliothèque standard. Les fichiers HTML générés sont suivis dans Git et directement publiables sur GitHub Pages.
 
 - `scripts/sync_results.py` récupère les rencontres publiques du PHB sur FFHandball.
 - `scripts/download_variants.py` reconstruit les variantes locales des articles depuis leurs visuels publics Equip Club.
@@ -34,7 +34,11 @@ Chaque document contient son propre titre, sa navigation active, son contenu HTM
 - `data/partenaires.json` contient la liste publiée par le club et les liens Instagram disponibles.
 - `data/inscriptions.json` contient tous les tarifs 2026–2027 et l’unique champ `helloasso_url` du bouton de paiement. Après modification, lancer `python build.py`. Laisser l’URL vide tant que le club n’a pas fourni de lien public ; le bouton reste alors indisponible et la page indique que le lien personnel arrive sur TeamPulse.
 - `data/articles.json` contient les actualités. Pour ajouter un article, ajouter un objet avec un `slug` unique, un titre, une date au format `AAAA-MM-JJ`, un auteur, une image, une introduction, des paragraphes dans `content`, un titre et une description SEO. Les tableaux `players` et `staff` alimentent le carrousel et l’encadrement de cette présentation d’équipe. Placer les images dans `assets/articles/`, puis lancer `python build.py`. La liste, la page de l’article et le sitemap sont générés automatiquement.
+- `data/categories.json` est la source métier des catégories, âges ou années de naissance, créneaux, encadrement et liens d’équipe. Le Baby Hand y est défini par l’âge de 3 à 5 ans, sans fausse année de naissance.
+- `data/site.json` centralise la saison et les versions de ressources CSS/JavaScript.
 - `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures, reconstruit le site et le publie.
+
+Le dossier `data/` sert uniquement au build et n’est plus copié dans le site public : aucune page ni aucun script navigateur ne charge directement ces JSON. Si FFHandball est temporairement indisponible, les scripts conservent le dernier instantané valide, écrivent un avertissement explicite et laissent le build continuer.
 
 - `assets/site.css` : mise en page, couleurs et effets visuels.
 - `assets/site.js` : menu mobile, apparitions au défilement, montée des scores, carrousels de la boutique, progression de lecture, parallaxe et légère inclinaison des cartes à la souris.
@@ -68,3 +72,7 @@ GitHub Pages est publié par GitHub Actions depuis la branche `main`. Toutes les
 Aperçu local : `python -m http.server 4175 --bind 127.0.0.1`, puis http://127.0.0.1:4175/.
 
 Contrôles : liens, ancres, titres, métadonnées, schémas JSON-LD, sitemap et ressources des pages générées, cohérence des créneaux, syntaxe Python, CSS et JavaScript. Les polices Inter et Barlow Condensed sont auto-hébergées en WOFF2. Aucun outil de suivi ou cookie applicatif ajouté.
+
+Tests navigateur : `npm ci`, `npx playwright install chromium`, puis `npm run test:e2e`. Ils couvrent l’accueil sur ordinateur et mobile, le menu, les résultats, la boutique, le carrousel d’article et le dock partenaires.
+
+Le dossier partenaire est généré à partir des données vérifiées avec `npm run build:partner-pdf`. Cette commande reconstruit `scripts/dossier-partenaire-print.html` puis `assets/dossier-partenaire-phb.pdf` avec Chromium.

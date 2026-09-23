@@ -1,0 +1,11 @@
+{
+  "name": "ploufragan-handball-site",
+  "private": true,
+  "scripts": {
+    "test:e2e": "playwright test",
+    "build:partner-pdf": "python scripts/build_partner_kit.py && node scripts/build_partner_pdf.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}
