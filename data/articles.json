@@ -116,5 +116,275 @@
         "image": "assets/articles/seniors-masculins-1/photo-11.webp"
       }
     ]
+  },
+  {
+    "slug": "histoire-ploufragan-handball",
+    "layout": "timeline",
+    "title": "PHB : l’histoire d’un club qui a rebondi",
+    "date": "2026-09-23",
+    "author": "Ploufragan Handball",
+    "categories": [
+      "Club",
+      "Histoire"
+    ],
+    "image": "assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
+    "image_alt": "Membres du premier bureau du Ploufragan Handball en 2011",
+    "image_width": 960,
+    "image_height": 600,
+    "image_caption": "Le premier bureau du Ploufragan Handball en 2011.",
+    "image_source_label": "Archive Ouest-France",
+    "image_source_url": "https://www.ouest-france.fr/bretagne/saint-brieuc-22000/ploufragan-handball-une-premiere-annee-reussie-1330987",
+    "intro": "Avant les résultats, les montées et les équipes d’aujourd’hui, il y a eu une première aventure, une longue pause et surtout une bande de passionnés décidée à faire rebondir le handball à Ploufragan.",
+    "summary": "De la renaissance de 2011 aux équipes d’aujourd’hui, découvrez quinze ans de passion, de transmission et de vie collective au PHB.",
+    "content": [
+      "Le PHB actuel est né en 2011, mais le handball ploufraganais avait déjà une histoire. Mis en sommeil en 1990, il a attendu plus de vingt ans avant de reprendre sa place dans la commune.",
+      "Depuis, le club a grandi avec ses joueuses, ses joueurs, ses coachs, ses familles et ses bénévoles. Voici cette histoire racontée depuis l’intérieur : avec des classements, bien sûr, mais surtout avec les personnes qui ont fait vivre chaque saison."
+    ],
+    "meta_title": "L’histoire du Ploufragan Handball : de la renaissance de 2011 au PHB d’aujourd’hui",
+    "meta_description": "Découvrez l’histoire du Ploufragan Handball : renaissance en 2011, premières équipes, montées régionales, formation des jeunes et moments marquants du PHB.",
+    "og_image": "assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
+    "og_width": 960,
+    "og_height": 600,
+    "highlights": [
+      {
+        "value": "1990",
+        "label": "Une première aventure se met en pause"
+      },
+      {
+        "value": "2011",
+        "label": "Le PHB renaît officiellement"
+      },
+      {
+        "value": "2017",
+        "label": "Première montée masculine en région"
+      },
+      {
+        "value": "2019",
+        "label": "Les féminines rejoignent la région"
+      }
+    ],
+    "timeline": [
+      {
+        "year": "Avant 2011",
+        "title": "Le handball était déjà passé par Ploufragan",
+        "text": [
+          "L’histoire ne commence pas sur une page blanche. Une première structure avait existé avant une mise en sommeil en 1990.",
+          "Le ballon est rangé pendant plus de vingt ans. L’envie, elle, ne disparaît jamais vraiment."
+        ],
+        "aside": "Temps mort très long. Fin du match ? Pas du tout."
+      },
+      {
+        "year": "2011",
+        "title": "Trois passionnés relancent le jeu",
+        "text": [
+          "Gaëtan Le Gratiet, Pierre-Yves Boivin et Gilles Boivin remettent le handball sur le terrain. L’association Ploufragan Handball est créée le 18 avril 2011, puis publiée au Journal officiel le 30 avril.",
+          "Cette fois, le PHB est bien reparti. Il reste tout à construire, ce qui tombe bien : le club ne manque ni d’idées ni d’énergie."
+        ]
+      },
+      {
+        "year": "2012",
+        "title": "Le club grandit déjà",
+        "text": [
+          "Un an après la relance, une équipe féminine voit le jour. Deux nouvelles équipes sont annoncées à la rentrée et les premiers week-ends victorieux donnent rapidement le ton.",
+          "À Ploufragan, on comprend que cette renaissance n’est pas un simple essai. La dynamique est lancée."
+        ],
+        "aside": "Nouvelle équipe, nouveaux maillots, mêmes envies de jouer ensemble."
+      },
+      {
+        "year": "2013",
+        "title": "Les premiers résultats arrivent",
+        "text": [
+          "Deux ans seulement après la relance, les résultats suivent. Les féminines, entraînées par Corine Grandjean, gagnent leur accession à l’échelon supérieur. Les masculins réalisent eux aussi une saison remarquée.",
+          "Le jeune club commence à installer son identité sportive : travailler sérieusement sans perdre le plaisir d’être ensemble."
+        ],
+        "images": [
+          {
+            "image": "assets/articles/histoire-phb/phb-equipe-masculine-2013.webp",
+            "image_alt": "Équipe masculine du Ploufragan Handball lors de la saison 2012-2013",
+            "image_width": 960,
+            "image_height": 600,
+            "caption": "L’équipe masculine lors de la saison 2012–2013. Photo archives PHB."
+          },
+          {
+            "image": "assets/articles/histoire-phb/phb-equipe-feminine-2013.webp",
+            "image_alt": "Équipe féminine du Ploufragan Handball en 2013",
+            "image_width": 1260,
+            "image_height": 839,
+            "caption": "L’équipe féminine du PHB en 2013. Photo archives PHB."
+          }
+        ]
+      },
+      {
+        "year": "2014",
+        "title": "Trois équipes seniors, trois premières places",
+        "text": [
+          "Les trois formations seniors terminent premières de leur groupe. L’équipe fanion masculine monte en prérégionale.",
+          "Le PHB compte alors 114 licenciés et cherche déjà de nouveaux joueurs et dirigeants. Trois saisons ont suffi pour passer de la relance à un club solidement installé."
+        ],
+        "images": [
+          {
+            "image": "assets/articles/histoire-phb/phb-seniors-2014.jpg",
+            "image_alt": "Équipe fanion masculine du Ploufragan Handball en 2014",
+            "image_width": 960,
+            "image_height": 600,
+            "caption": "L’équipe fanion masculine lors de la saison 2013–2014.",
+            "source_label": "Archive Le Télégramme, 14 juin 2014",
+            "source_url": "https://www.letelegramme.fr/cotes-d-armor/ploufragan-22440/spanhandballspan-bonne-sante-des-equipes-seniors-2158822.php"
+          },
+          {
+            "image": "assets/articles/histoire-phb/phb-equipe-feminine-2014.webp",
+            "image_alt": "Équipe féminine du Ploufragan Handball en 2014",
+            "image_width": 960,
+            "image_height": 600,
+            "caption": "L’équipe féminine du PHB en 2014. Photo archives PHB."
+          }
+        ]
+      },
+      {
+        "year": "2016",
+        "title": "Les féminines s’installent en Prérégionale",
+        "text": [
+          "En 2016, les seniors féminines évoluent en Prérégionale. Le PHB confirme que sa progression se construit autant avec ses équipes féminines que masculines.",
+          "Le groupe prend de l’expérience et prépare déjà les saisons qui le conduiront, quelques années plus tard, jusqu’au niveau régional."
+        ],
+        "image": "assets/articles/histoire-phb/phb-feminines-preregionale-2016.webp",
+        "image_alt": "Équipe seniors féminines du Ploufragan Handball en Prérégionale en 2016",
+        "image_width": 960,
+        "image_height": 600,
+        "caption": "Les seniors féminines du PHB en Prérégionale en 2016. Photo archives PHB."
+      },
+      {
+        "year": "2017",
+        "title": "Les garçons ouvrent la porte de la région",
+        "text": [
+          "Les deux équipes fanions évoluent en prérégionale. En juin, une soirée de gala à Belle-Île accompagne un match décisif pour les masculins.",
+          "Le PHB termine premier de Pré-Région masculine et accède en Régional 2. C’est la première montée régionale masculine depuis la renaissance du club."
+        ],
+        "aside": "Belle-Île, une salle pleine et un ticket pour la région : le genre de soirée que l’on raconte encore après le dernier coup de sifflet."
+      },
+      {
+        "year": "2019",
+        "title": "Les féminines écrivent leur page",
+        "text": [
+          "Avec 14 victoires, un match nul et trois défaites, les seniors féminines terminent premières et deviennent championnes de D1 territoriale.",
+          "Sous la direction d’Aurélien Gérard, elles accèdent à l’Excellence régionale. Après les garçons, les filles font à leur tour entrer le PHB dans une nouvelle dimension."
+        ],
+        "aside": "Une montée de plus, mais surtout une histoire qui se conjugue enfin au féminin comme au masculin."
+      },
+      {
+        "year": "2021",
+        "title": "Le loisir entre dans le jeu",
+        "text": [
+          "En 2021, le PHB ouvre sa section loisirs. Une nouvelle porte d’entrée dans le club pour jouer sans pression, retrouver le terrain et partager un moment convivial.",
+          "Mixte et ouverte à tous les niveaux, la section complète le projet du club : il y a de la place pour la compétition, la formation et le simple plaisir de jouer ensemble."
+        ],
+        "aside": "Le lundi soir, le chrono compte moins que le sourire après le match.",
+        "image": "assets/photos/loisirs-plouagat-2026.webp",
+        "image_alt": "Équipes loisirs de Ploufragan et Plouagat réunies après une rencontre amicale",
+        "image_width": 1600,
+        "image_height": 1200,
+        "caption": "La section loisirs du PHB lors d’une rencontre amicale à Plouagat en 2026."
+      },
+      {
+        "year": "2021–2023",
+        "title": "Former, accueillir, transmettre",
+        "text": [
+          "Le PHB développe progressivement ses équipes de jeunes. L’ouverture du Baby Hand permet aux enfants dès 3 ans de découvrir le jeu, le mouvement et le plaisir du collectif.",
+          "Le club participe aussi à des opérations de découverte comme Handball Toi. Les enfants entrent par la motricité, apprennent les règles et grandissent parfois jusqu’aux équipes seniors."
+        ],
+        "image": "assets/articles/histoire-phb/phb-jeunes-2022.jpg",
+        "image_alt": "Jeunes du Ploufragan Handball avec des ballons devant un but en 2022",
+        "image_width": 353,
+        "image_height": 266,
+        "caption": "La transmission prend forme dès les premières catégories.",
+        "source_label": "Gazette de Ploufragan, été 2022",
+        "source_url": "https://www.ploufragan.fr/sites/default/files/gazette_406_juillet_aout22.pdf"
+      },
+      {
+        "year": "2024",
+        "title": "Jouer pour une cause plus grande que le score",
+        "text": [
+          "Le 15 décembre, une journée solidaire réunit le club autour d’Adaléa. Les U18 féminines portent un maillot conçu aux couleurs de l’opération.",
+          "Matchs, buvette et gâteaux permettent de reverser 390 € à l’association. Le tableau d’affichage finit par s’éteindre ; la solidarité, elle, reste."
+        ],
+        "images": [
+          {
+            "image": "assets/articles/histoire-phb/phb-solidarite-2024.jpg",
+            "image_alt": "Affiche de la journée solidaire organisée par le Ploufragan Handball en faveur d’Adaléa en 2024",
+            "image_width": 400,
+            "image_height": 600,
+            "caption": "Une journée de handball au profit d’Adaléa.",
+            "source_label": "Ville de Ploufragan, 15 décembre 2024",
+            "source_url": "https://www.ploufragan.fr/node/8492"
+          },
+          {
+            "image": "assets/articles/histoire-phb/affiche-gala-phb-2024.webp",
+            "image_alt": "Affiche d’une soirée gala du Ploufragan Handball en 2024",
+            "image_width": 400,
+            "image_height": 568,
+            "caption": "La convivialité passe aussi par les soirées gala du club.",
+            "source_label": "Ville de Ploufragan, 2024",
+            "source_url": "https://www.ploufragan.fr/agenda/soiree-gala-ploufragan-handball"
+          }
+        ]
+      },
+      {
+        "year": "2024–2025",
+        "title": "Six mois sans Hoëdic, mais jamais sans solution",
+        "text": [
+          "La fermeture de la salle Hoëdic, prévue pour trois mois, s’étend finalement de mai 2024 à janvier 2025. Le club inverse des rencontres, adapte ses séances et absorbe des frais supplémentaires.",
+          "Cette période arrive au moment où le PHB se structure avec le recrutement d’un salarié. Les effectifs baissent temporairement, puis retrouvent leur niveau. La Ville accompagne ce rebond avec une subvention exceptionnelle de 1 000 €."
+        ],
+        "aside": "Changer de salle, déplacer des matchs, refaire les plannings : le bénévolat a parfois des airs de sport de haut niveau."
+      },
+      {
+        "year": "Aujourd’hui",
+        "title": "Du Baby Hand aux seniors, la même maison",
+        "text": [
+          "Pour la saison 2026–2027, le PHB accueille les enfants dès le Baby Hand, puis l’école de hand, les U11, U13, U15 et U18, jusqu’aux seniors et aux loisirs.",
+          "Le club est présidé par Elsa Da Silva. David Imbaud, salarié du PHB, travaille avec les coachs, le bureau et les équipes de bénévoles qui font vivre les entraînements, les matchs, la buvette, la boutique, les partenariats et la communication."
+        ],
+        "image": "assets/photos/baby-hand-seance-2026.webp",
+        "image_alt": "Séance de Baby Hand du Ploufragan Handball en 2026",
+        "image_width": 1600,
+        "image_height": 1200,
+        "caption": "La prochaine page commence souvent avec un ballon tenu à deux mains.",
+        "source_label": "Photo Ploufragan Handball"
+      }
+    ],
+    "closing": [
+      "En quinze ans, le PHB s’est reconstruit presque entièrement. Les montées ont compté, les titres aussi. Mais la vraie continuité du club se trouve ailleurs : dans les joueuses et joueurs qui reviennent, dans les enfants qui apprennent, dans les parents qui donnent un coup de main et dans les bénévoles qui préparent la salle avant que le public n’arrive.",
+      "Cette histoire a été écrite par beaucoup de monde. Ses prochaines pages le seront encore collectivement — avec un ballon, quelques rouleaux de strap et, très probablement, du café à la buvette."
+    ],
+    "sources": [
+      {
+        "label": "Une première année réussie et les trois fondateurs — Ouest-France",
+        "url": "https://www.ouest-france.fr/bretagne/saint-brieuc-22000/ploufragan-handball-une-premiere-annee-reussie-1330987"
+      },
+      {
+        "label": "Création et identité officielle de l’association — Annuaire des Entreprises",
+        "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/534810460"
+      },
+      {
+        "label": "Bonne santé des équipes seniors — Le Télégramme, 14 juin 2014",
+        "url": "https://www.letelegramme.fr/cotes-d-armor/ploufragan-22440/spanhandballspan-bonne-sante-des-equipes-seniors-2158822.php"
+      },
+      {
+        "label": "Soirée de gala et accession régionale — Le Télégramme, 22 juin 2017",
+        "url": "https://www.letelegramme.fr/cotes-d-armor/ploufragan-22440/spanhandballspan-soiree-de-gala-samedi-2963091.php"
+      },
+      {
+        "label": "Création du Baby Hand et du loisir — Gazette de Ploufragan, été 2022",
+        "url": "https://www.ploufragan.fr/sites/default/files/gazette_406_juillet_aout22.pdf"
+      },
+      {
+        "label": "Journée solidaire en faveur d’Adaléa — Ville de Ploufragan",
+        "url": "https://www.ploufragan.fr/node/8492"
+      },
+      {
+        "label": "Travaux d’Hoëdic et soutien exceptionnel — Conseil municipal de Ploufragan, 12 novembre 2025",
+        "url": "https://www.ploufragan.fr/sites/default/files/atoms/files/proces-verbal_du_cm_du_12_novembre_2025.pdf"
+      }
+    ]
   }
 ]

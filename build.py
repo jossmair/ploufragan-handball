@@ -395,8 +395,8 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-team-gallery4")
-    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-team-gallery4")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-blog-eagle1")
+    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-history2")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
     remote_fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">'
@@ -417,7 +417,9 @@ def article_date(value):
 def article_card(article):
     path = f'articles/{article["slug"]}.html'
     categories = ' · '.join(article.get("categories", []))
-    return f'''<a class="news-card" href="{escape(path, quote=True)}" data-reveal><div class="news-card-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" width="1080" height="1339" loading="lazy"></div><div class="news-card-copy"><p class="eyebrow">{escape(categories)} <span>· <time datetime="{article['date']}">{article_date(article['date'])}</time></span></p><h2>{escape(article['title'])}</h2><p>{escape(article['intro'])}</p><span class="text-link">Lire l’article ↗</span></div></a>'''
+    width = article.get("image_width", 1080)
+    height = article.get("image_height", 1339)
+    return f'''<a class="news-card" href="{escape(path, quote=True)}" data-reveal><div class="news-card-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" width="{width}" height="{height}" loading="lazy"></div><div class="news-card-copy"><p class="eyebrow">{escape(categories)} <span>· <time datetime="{article['date']}">{article_date(article['date'])}</time></span></p><h2>{escape(article['title'])}</h2><p>{escape(article['intro'])}</p><span class="text-link">Lire l’article ↗</span></div></a>'''
 
 
 def home_news_section(articles):
@@ -428,9 +430,11 @@ def home_news_section(articles):
     for article in latest:
         path = f'articles/{article["slug"]}.html'
         summary = (article.get("summary") or article["intro"]).strip()
+        width = article.get("image_width", 1080)
+        height = article.get("image_height", 1339)
         if len(summary) > 155:
             summary = summary[:152].rsplit(" ", 1)[0] + "…"
-        cards.append(f'''<article class="home-news-card" data-reveal><div class="home-news-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" width="1080" height="1339" loading="lazy" decoding="async"></div><div class="home-news-copy"><time datetime="{article['date']}">{article_date(article['date'])}</time><h3>{escape(article['title'])}</h3><p>{escape(summary)}</p>{button('Lire l’article', path, True)}</div></article>''')
+        cards.append(f'''<article class="home-news-card" data-reveal><div class="home-news-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" width="{width}" height="{height}" loading="lazy" decoding="async"></div><div class="home-news-copy"><time datetime="{article['date']}">{article_date(article['date'])}</time><h3>{escape(article['title'])}</h3><p>{escape(summary)}</p>{button('Lire l’article', path, True)}</div></article>''')
     return f'''<section class="container section home-news" aria-labelledby="home-news-title"><div class="section-heading" data-reveal><div><p class="eyebrow">LA VIE DU CLUB</p><h2 id="home-news-title">LE <em>BLOG DU PHB</em></h2></div><a class="text-link" href="blog.html">VOIR TOUT LE BLOG ↗</a></div><div class="home-news-grid count-{len(latest)}">{''.join(cards)}</div></section>'''
 
 
@@ -443,7 +447,93 @@ def prefix_article_paths(document):
     return re.sub(r'(?P<attribute>\b(?:href|src)=")(?P<url>[^\"]+)"', prefix, document)
 
 
+def finalize_article_document(article, body):
+    slug = article["slug"]
+    canonical = SITE_URL + f"articles/{slug}.html"
+    document = page(f"articles/{slug}", article["title"], body, active="blog", description=article["meta_description"])
+    standard_title = escape(f'{article["title"]} | Ploufragan Handball', quote=True)
+    meta_title = escape(article["meta_title"], quote=True)
+    document = document.replace(f'<title>{standard_title}</title>', f'<title>{escape(article["meta_title"])}</title>')
+    document = document.replace(f'content="{standard_title}"', f'content="{meta_title}"')
+    document = document.replace('property="og:type" content="website"', 'property="og:type" content="article"')
+    default_image = OG_IMAGE
+    article_image = SITE_URL + article["og_image"]
+    for property_name in ("og:image", "og:image:secure_url"):
+        document = document.replace(f'property="{property_name}" content="{default_image}"', f'property="{property_name}" content="{article_image}"')
+    document = document.replace(f'name="twitter:image" content="{default_image}"', f'name="twitter:image" content="{article_image}"')
+    document = document.replace('property="og:image:width" content="1200"', f'property="og:image:width" content="{article.get("og_width", 1080)}"')
+    document = document.replace('property="og:image:height" content="630"', f'property="og:image:height" content="{article.get("og_height", 1339)}"')
+    document = document.replace('property="og:image:alt" content="Ploufragan Handball — club de handball près de Saint-Brieuc"', f'property="og:image:alt" content="{escape(article["image_alt"], quote=True)}"')
+    document = document.replace(f'data-page="articles/{slug}"', 'data-page="blog"')
+    schema = {
+        "@context": "https://schema.org", "@type": "BlogPosting",
+        "@id": canonical + "#article", "url": canonical, "headline": article["title"],
+        "description": article["meta_description"], "datePublished": article["date"],
+        "image": article_image, "mainEntityOfPage": {"@id": canonical + "#webpage"}, "inLanguage": "fr-FR",
+        "author": ({"@id": ORG_ID} if article["author"] == "Ploufragan Handball" else {"@type": "Person", "name": article["author"]}),
+        "publisher": {"@id": ORG_ID},
+        "articleSection": article.get("categories", []),
+    }
+    if article.get("date_modified"):
+        schema["dateModified"] = article["date_modified"]
+    schema_json = json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    extra_head = f'<meta property="article:published_time" content="{article["date"]}"><script type="application/ld+json">{schema_json}</script>'
+    document = document.replace('</head>', extra_head + '</head>', 1)
+    return prefix_article_paths(document)
+
+
+def history_timeline_entry(entry, index):
+    paragraphs = ''.join(f'<p>{escape(text)}</p>' for text in entry["text"])
+    aside = f'<p class="history-aside">{escape(entry["aside"])}</p>' if entry.get("aside") else ""
+    media_items = entry.get("images", [])
+    if not media_items and entry.get("image"):
+        media_items = [entry]
+    figures = []
+    for item in media_items:
+        source = ""
+        if item.get("source_url"):
+            source = f' <a href="{escape(item["source_url"], quote=True)}" target="_blank" rel="noopener noreferrer">{escape(item["source_label"])} ↗</a>'
+        elif item.get("source_label"):
+            source = f' <span>{escape(item["source_label"])}</span>'
+        figures.append(f'''<figure class="history-media"><img src="{escape(item['image'], quote=True)}" alt="{escape(item['image_alt'], quote=True)}" width="{item['image_width']}" height="{item['image_height']}" loading="lazy" decoding="async"><figcaption>{escape(item['caption'])}{source}</figcaption></figure>''')
+    media = ''.join(figures)
+    if len(figures) > 1:
+        media = f'<div class="history-media-grid">{media}</div>'
+    return f'''<section class="history-entry history-entry--{"left" if index % 2 == 0 else "right"}" data-reveal><div class="history-marker"><span>{escape(entry['year'])}</span></div><div class="history-card"><p class="eyebrow">ÉTAPE {index + 1:02d}</p><h2>{escape(entry['title'])}</h2><div class="history-copy">{paragraphs}</div>{aside}{media}</div></section>'''
+
+
+def history_article_page(article):
+    category = ' · '.join(article.get("categories", []))
+    intro_paragraphs = ''.join(f'<p>{escape(text)}</p>' for text in article["content"])
+    highlights = ''.join(f'<li><strong>{escape(item["value"])}</strong><span>{escape(item["label"])}</span></li>' for item in article["highlights"])
+    timeline = ''.join(history_timeline_entry(entry, index) for index, entry in enumerate(article["timeline"]))
+    closing = ''.join(f'<p>{escape(text)}</p>' for text in article["closing"])
+    sources = ''.join(f'<li><a href="{escape(source["url"], quote=True)}" target="_blank" rel="noopener noreferrer">{escape(source["label"])} <span aria-hidden="true">↗</span></a></li>' for source in article["sources"])
+    facebook_share = 'https://www.facebook.com/sharer/sharer.php?u=' + quote(SITE_URL + f'articles/{article["slug"]}.html', safe='')
+    body = f'''<article class="news-article history-article">
+      <header class="container article-heading history-heading">
+        <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><a href="blog.html">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Histoire du PHB</span></nav>
+        <p class="eyebrow">{escape(category)} <span>· 1990 → 2026</span></p>
+        <h1>{escape(article['title'])}</h1>
+        <p class="article-byline">Publié le <time datetime="{article['date']}">{article_date(article['date'])}</time> · {escape(article['author'])}</p>
+      </header>
+      <section class="container history-opening" aria-label="Introduction">
+        <div class="history-lead" data-reveal><p class="article-intro">{escape(article['intro'])}</p><div class="article-copy">{intro_paragraphs}</div></div>
+        <figure class="history-hero-photo" data-reveal><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" width="{article['image_width']}" height="{article['image_height']}"><figcaption>{escape(article['image_caption'])} <a href="{escape(article['image_source_url'], quote=True)}" target="_blank" rel="noopener noreferrer">{escape(article['image_source_label'])} ↗</a></figcaption></figure>
+      </section>
+      <ul class="container history-highlights" aria-label="Quatre dates clés">{highlights}</ul>
+      <div class="container history-timeline" aria-label="Frise chronologique du Ploufragan Handball">{timeline}</div>
+      <section class="container history-closing" data-reveal><p class="eyebrow">ET L’HISTOIRE CONTINUE…</p><h2>LES PROCHAINES PAGES <em>RESTENT À ÉCRIRE</em></h2><div>{closing}</div></section>
+      <section class="container history-sources" aria-labelledby="history-sources-title"><details><summary id="history-sources-title">Sources et archives consultées</summary><ul>{sources}</ul></details></section>
+      <div class="container article-end"><a class="button" href="club.html">Découvrir le club <span aria-hidden="true">↗</span></a><div class="article-share"><span>Partager l’article</span><a href="{facebook_share}" target="_blank" rel="noopener noreferrer">Facebook ↗</a><button type="button" data-copy-article hidden>Copier le lien</button></div></div>
+      <div class="container article-back"><a class="text-link" href="blog.html">← Retour au blog</a></div>
+    </article>'''
+    return finalize_article_document(article, body)
+
+
 def article_page(article):
+    if article.get("layout") == "timeline":
+        return history_article_page(article)
     slug = article["slug"]
     canonical = SITE_URL + f"articles/{slug}.html"
     category = ' · '.join(article.get("categories", []))
@@ -483,34 +573,7 @@ def article_page(article):
       <div class="container article-end"><a class="button" href="seniors-masculins-1.html">Voir la page de l’équipe <span aria-hidden="true">↗</span></a><div class="article-share"><span>Partager l’article</span><a href="{facebook_share}" target="_blank" rel="noopener noreferrer">Facebook ↗</a><button type="button" data-copy-article hidden>Copier le lien</button></div></div>
       <div class="container article-back"><a class="text-link" href="blog.html">← Retour au blog</a></div>
     </article>'''
-    document = page(f"articles/{slug}", article["title"], body, active="blog", description=article["meta_description"])
-    standard_title = escape(f'{article["title"]} | Ploufragan Handball', quote=True)
-    meta_title = escape(article["meta_title"], quote=True)
-    document = document.replace(f'<title>{standard_title}</title>', f'<title>{escape(article["meta_title"])}</title>')
-    document = document.replace(f'content="{standard_title}"', f'content="{meta_title}"')
-    document = document.replace('property="og:type" content="website"', 'property="og:type" content="article"')
-    default_image = OG_IMAGE
-    article_image = SITE_URL + article["og_image"]
-    for property_name in ("og:image", "og:image:secure_url"):
-        document = document.replace(f'property="{property_name}" content="{default_image}"', f'property="{property_name}" content="{article_image}"')
-    document = document.replace(f'name="twitter:image" content="{default_image}"', f'name="twitter:image" content="{article_image}"')
-    document = document.replace('property="og:image:width" content="1200"', 'property="og:image:width" content="1080"')
-    document = document.replace('property="og:image:height" content="630"', 'property="og:image:height" content="1339"')
-    document = document.replace('property="og:image:alt" content="Ploufragan Handball — club de handball près de Saint-Brieuc"', f'property="og:image:alt" content="{escape(article["image_alt"], quote=True)}"')
-    document = document.replace(f'data-page="articles/{slug}"', 'data-page="blog"')
-    schema = {
-        "@context": "https://schema.org", "@type": "BlogPosting",
-        "@id": canonical + "#article", "url": canonical, "headline": article["title"],
-        "description": article["meta_description"], "datePublished": article["date"],
-        "image": article_image, "mainEntityOfPage": {"@id": canonical + "#webpage"}, "inLanguage": "fr-FR",
-        "author": ({"@id": ORG_ID} if article["author"] == "Ploufragan Handball" else {"@type": "Person", "name": article["author"]}),
-        "publisher": {"@id": ORG_ID},
-        "articleSection": article.get("categories", []),
-    }
-    schema_json = json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-    extra_head = f'<meta property="article:published_time" content="{article["date"]}"><script type="application/ld+json">{schema_json}</script>'
-    document = document.replace('</head>', extra_head + '</head>', 1)
-    return prefix_article_paths(document)
+    return finalize_article_document(article, body)
 
 
 def home_weekend_section(matches, now=None):
@@ -982,10 +1045,13 @@ pages["devenir-partenaire"] = page("devenir-partenaire", "Devenir partenaire du 
 
 def blog_heading():
     media = (
-        '<div class="blog-intro-media">'
-        '<img id="blog-logo-animation" src="assets/logo-animation.gif" '
-        'data-final="assets/logo-animation-final.webp" data-duration="4550" '
-        'alt="" width="640" height="640" aria-hidden="true">'
+        '<div class="blog-intro-media" data-blog-logo-stage aria-hidden="true">'
+        '<video data-blog-logo-video muted playsinline preload="auto" '
+        'poster="assets/blog/blog-logo-first.webp" width="1280" height="720" tabindex="-1">'
+        '<source src="assets/blog/blog-logo-orbit.mp4" type="video/mp4">'
+        '</video>'
+        '<img data-blog-logo-final src="assets/blog/blog-eagle-final.png" '
+        'alt="" width="1672" height="941" decoding="async">'
         '</div>'
     )
     base = heading("LE <em>BLOG DU PHB</em>", "Blog", "Portraits, histoires et coulisses du Ploufragan Handball.")

@@ -26,16 +26,26 @@ if (document.body.dataset.page === 'index') {
   if (destinations[location.hash]) location.replace(destinations[location.hash]);
 }
 
-// Play the supplied logo animation once on the blog, then keep its final frame visible.
-const animatedLogo = document.querySelector('#blog-logo-animation');
-if (animatedLogo) {
-  const freezeLogo = () => {
-    if (animatedLogo.dataset.frozen === 'true') return;
-    animatedLogo.dataset.frozen = 'true';
-    animatedLogo.src = animatedLogo.dataset.final;
+// Play the Blog film once, hold its last frame, then crossfade to the final emblem.
+const blogLogoVideo = document.querySelector('[data-blog-logo-video]');
+if (blogLogoVideo) {
+  const stage = blogLogoVideo.closest('[data-blog-logo-stage]');
+  let finalLogoTimer;
+  const showFinalLogo = () => {
+    window.clearTimeout(finalLogoTimer);
+    blogLogoVideo.pause();
+    stage.classList.add('is-final');
   };
-  if (motion.matches) freezeLogo();
-  else window.setTimeout(freezeLogo, Number(animatedLogo.dataset.duration));
+  const holdLastFrame = () => {
+    blogLogoVideo.pause();
+    stage.classList.add('is-holding');
+    finalLogoTimer = window.setTimeout(showFinalLogo, 850);
+  };
+  blogLogoVideo.addEventListener('ended', holdLastFrame, { once: true });
+  blogLogoVideo.addEventListener('error', showFinalLogo, { once: true });
+  if (motion.matches) showFinalLogo();
+  else blogLogoVideo.play().catch(showFinalLogo);
+  motion.addEventListener('change', event => { if (event.matches) showFinalLogo(); });
 }
 
 // The home film plays once; its exact final image then remains visible.
