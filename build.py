@@ -355,7 +355,7 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-duty3")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-duty4")
     doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260918-layout5")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
@@ -610,23 +610,15 @@ upcoming_duties = [item for item in SENIOR_DUTIES["dates"]
 upcoming_duty_dates = {item["date"] for item in upcoming_duties}
 matches_by_duty_day = {}
 matches_without_duty = []
-future_home_matches = []
 for home_match in HOME_MATCHES["matches"]:
     match_day = datetime.fromisoformat(home_match["date"]).date()
     weekend_day = match_day - timedelta(days=1) if match_day.weekday() == 6 else match_day
     if weekend_day + timedelta(days=1) < today_local:
         continue
-    future_home_matches.append(home_match)
     if weekend_day.isoformat() in upcoming_duty_dates:
         matches_by_duty_day.setdefault(weekend_day.isoformat(), []).append(home_match)
     else:
         matches_without_duty.append(home_match)
-
-def duty_fixture(match):
-    team = clean_label(match["category"])
-    return (f'<a class="duty-fixture" href="{escape(match["url"], quote=True)}" target="_blank" rel="noopener noreferrer">'
-            f'<span>{team} · {fr_date(match["date"])}</span><strong>PHB – {escape(match["opponent"])}</strong>'
-            '<span class="duty-fixture-arrow" aria-hidden="true">↗</span></a>')
 
 senior_duty_months = {}
 for duty in upcoming_duties:
@@ -638,20 +630,26 @@ for (year, month), duties in senior_duty_months.items():
     for duty in duties:
         day = datetime.fromisoformat(duty["date"]).day
         names = ''.join(f'<li>{escape(name)}</li>' for name in duty["responsables"])
-        fixtures = ''.join(duty_fixture(match) for match in matches_by_duty_day.get(duty["date"], []))
-        fixture_note = '' if fixtures else '<span class="duty-no-fixture">Aucun match à domicile daté sur FFHandball pour ce week-end</span>'
-        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul><div class="duty-fixtures">{fixtures}{fixture_note}</div></div></li>')
+        match_count = len(matches_by_duty_day.get(duty["date"], []))
+        match_label = "match à domicile" if match_count == 1 else "matchs à domicile"
+        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul><div class="duty-match-total"><strong>{match_count:02d}</strong><span>{match_label}</span></div></div></li>')
     senior_duty_sections.append(f'<section class="duty-month" aria-label="{MONTHS_FR[month].title()} {year}" data-reveal><header><h2>{MONTHS_FR[month]} <em>{year}</em></h2><span>{len(duties)} date{"s" if len(duties) > 1 else ""}</span></header><ol>{"".join(rows)}</ol></section>')
 
-unmatched_matches = ''.join(duty_fixture(match) for match in matches_without_duty)
-unmatched_block = (f'<section class="duty-extra" data-reveal><p class="eyebrow">À VÉRIFIER AVEC LE CLUB</p><h2>MATCHS HORS <em>PLANNING</em></h2><p>FFHandball annonce aussi {len(matches_without_duty)} rencontre{"s" if len(matches_without_duty) > 1 else ""} à domicile sur un week-end absent du tableau des responsables transmis.</p>{unmatched_matches}</section>') if unmatched_matches else ''
+unmatched_by_weekend = {}
+for match in matches_without_duty:
+    match_day = datetime.fromisoformat(match["date"]).date()
+    weekend_day = match_day - timedelta(days=1) if match_day.weekday() == 6 else match_day
+    unmatched_by_weekend.setdefault(weekend_day, 0)
+    unmatched_by_weekend[weekend_day] += 1
+unmatched_rows = ''.join(f'<li><time datetime="{weekend.isoformat()}">{weekend.day} {MONTHS_FR[weekend.month].lower()} {weekend.year}</time><strong>{count:02d}</strong><span>{"match à domicile" if count == 1 else "matchs à domicile"}</span></li>' for weekend, count in sorted(unmatched_by_weekend.items()))
+unmatched_block = (f'<section class="duty-extra" data-reveal><p class="eyebrow">À VÉRIFIER AVEC LE CLUB</p><h2>WEEK-END HORS <em>PLANNING</em></h2><p>FFHandball annonce un ou plusieurs matchs à domicile sur une date absente du tableau des permanences.</p><ul class="duty-extra-counts">{unmatched_rows}</ul></section>') if unmatched_rows else ''
 
 pages["permanences-seniors-masculins"] = page(
     "permanences-seniors-masculins", "Permanences à domicile",
     heading("PERMANENCES <em>À DOMICILE</em>", "Permanences à domicile",
             "Prochains week-ends de permanence pour les matchs à domicile de toutes les équipes.",
             back=("seniors-masculins.html", "Seniors masculins")) +
-    f'<section class="container duty-page after-heading"><div class="duty-summary" data-reveal><div class="duty-number"><strong>{len(upcoming_duties):02d}</strong><span>week-ends à venir</span></div><div class="duty-number duty-match-count"><strong>{len(future_home_matches):02d}</strong><span>matchs à domicile actuellement datés</span></div><div class="duty-summary-copy"><p class="eyebrow">SAISON {escape(SENIOR_DUTIES["season"])}</p><h2>RESPONSABLES <em>DE SALLE</em></h2><p>Les prénoms et surnoms sont repris du tableau transmis par le club. Chaque permanence couvre tous les matchs du PHB joués à domicile pendant le week-end, jeunes et seniors. Les week-ends passés sont retirés automatiquement.</p></div></div><div class="duty-month-grid">{"".join(senior_duty_sections)}</div>{unmatched_block}<div class="duty-note" data-reveal><strong>À SAVOIR</strong><p>Pour chaque date : table de marque, ordinateur et responsable de salle. Buvette ou arbitrage selon les besoins. Les rencontres affichées proviennent des calendriers FFHandball et seront complétées à mesure de leur publication.</p></div></section>',
+    f'<section class="container duty-page after-heading"><div class="duty-month-grid">{"".join(senior_duty_sections)}</div>{unmatched_block}<div class="duty-note" data-reveal><strong>À SAVOIR</strong><p>Pour chaque date : table de marque, ordinateur et responsable de salle. Buvette ou arbitrage selon les besoins. Le nombre de matchs à domicile vient des calendriers FFHandball et se complète à mesure de leur publication. Les week-ends terminés disparaissent automatiquement.</p></div></section>',
     "equipes")
 
 pages["entrainements"]=page("entrainements","Les entraînements",heading("LES <em>ENTRAÎNEMENTS</em>","Entraînements")+f'''<section class="container section after-heading"><div class="schedule-tools" data-reveal><p>Planning 2026–2027 · 11 catégories</p>{button('Télécharger le planning','assets/planning-2026-2027.svg',True)}</div><div class="paper-panel full-schedule" data-reveal><div class="schedule-filter" data-schedule-filter hidden><span class="schedule-filter-title" id="schedule-filter-title">Trouver mon horaire</span><div class="schedule-choice"><button class="schedule-filter-trigger" type="button" data-schedule-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="schedule-options" aria-labelledby="schedule-filter-title schedule-selected"><span id="schedule-selected" data-schedule-selected>Toutes les catégories</span><span class="schedule-chevron" aria-hidden="true">⌄</span></button><div class="schedule-options" id="schedule-options" data-schedule-options role="listbox" aria-label="Catégories d’entraînement" hidden><button type="button" class="schedule-option" role="option" data-schedule-value="" aria-selected="true">Toutes les catégories</button>{''.join(f'<button type="button" class="schedule-option" role="option" data-schedule-value="{escape(name, quote=True)}" aria-selected="false">{escape(name)}</button>' for name, _, _ in SCHEDULE)}</div></div><span data-schedule-count aria-live="polite">{len(SCHEDULE)} catégories affichées</span></div>{schedule()}<div class="schedule-notes"><p>F : filles · G : garçons</p><p>Hoëdic et Belle-Île : complexe sportif du Haut-Champ, 22440 Ploufragan.<br>Marcel Paul : 13 rue de Merlet, 22440 Ploufragan.<br>Trégueux : salle de motricité de l’école Pasteur.</p></div></div></section>''')
