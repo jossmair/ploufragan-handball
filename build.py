@@ -395,8 +395,8 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-blog-eagle1")
-    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-history2")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-blog-freeze1")
+    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-blog-freeze1")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
     remote_fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">'
@@ -1050,8 +1050,6 @@ def blog_heading():
         'poster="assets/blog/blog-logo-first.webp" width="1280" height="720" tabindex="-1">'
         '<source src="assets/blog/blog-logo-orbit.mp4" type="video/mp4">'
         '</video>'
-        '<img data-blog-logo-final src="assets/blog/blog-eagle-final.png" '
-        'alt="" width="1672" height="941" decoding="async">'
         '</div>'
     )
     base = heading("LE <em>BLOG DU PHB</em>", "Blog", "Portraits, histoires et coulisses du Ploufragan Handball.")

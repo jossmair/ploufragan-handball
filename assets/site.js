@@ -26,26 +26,18 @@ if (document.body.dataset.page === 'index') {
   if (destinations[location.hash]) location.replace(destinations[location.hash]);
 }
 
-// Play the Blog film once, hold its last frame, then crossfade to the final emblem.
+// Play the Blog film once, then leave its exact last frame on screen.
 const blogLogoVideo = document.querySelector('[data-blog-logo-video]');
 if (blogLogoVideo) {
-  const stage = blogLogoVideo.closest('[data-blog-logo-stage]');
-  let finalLogoTimer;
-  const showFinalLogo = () => {
-    window.clearTimeout(finalLogoTimer);
-    blogLogoVideo.pause();
-    stage.classList.add('is-final');
-  };
-  const holdLastFrame = () => {
-    blogLogoVideo.pause();
-    stage.classList.add('is-holding');
-    finalLogoTimer = window.setTimeout(showFinalLogo, 850);
-  };
+  const holdLastFrame = () => blogLogoVideo.pause();
   blogLogoVideo.addEventListener('ended', holdLastFrame, { once: true });
-  blogLogoVideo.addEventListener('error', showFinalLogo, { once: true });
-  if (motion.matches) showFinalLogo();
-  else blogLogoVideo.play().catch(showFinalLogo);
-  motion.addEventListener('change', event => { if (event.matches) showFinalLogo(); });
+  if (motion.matches) {
+    const seekToEnd = () => { blogLogoVideo.currentTime = blogLogoVideo.duration; blogLogoVideo.pause(); };
+    if (blogLogoVideo.readyState >= 1) seekToEnd();
+    else blogLogoVideo.addEventListener('loadedmetadata', seekToEnd, { once: true });
+  } else {
+    blogLogoVideo.play().catch(holdLastFrame);
+  }
 }
 
 // The home film plays once; its exact final image then remains visible.
