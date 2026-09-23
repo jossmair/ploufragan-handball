@@ -395,8 +395,8 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-team-gallery3")
-    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-team-gallery3")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-team-gallery4")
+    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-team-gallery4")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
     remote_fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">'
@@ -668,6 +668,8 @@ def youth_card(item):
     card_photos = {
         "u13-garcons": ("assets/equipes/u13-garcons-card.webp", 1244, 1264),
         "u13-filles": ("assets/equipes/u13-filles-card.webp", 992, 1536),
+        "u15-garcons": ("assets/equipes/u15-garcons-card.webp", 1024, 1536),
+        "u18-garcons": ("assets/equipes/u18-garcons-card.webp", 821, 1536),
     }
     card_photo = card_photos.get(slug)
     visual = f'<img class="youth-choice-photo" src="{card_photo[0]}" alt="" width="{card_photo[1]}" height="{card_photo[2]}" loading="lazy" aria-hidden="true">' if card_photo else ""

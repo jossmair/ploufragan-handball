@@ -620,6 +620,8 @@ body[data-page="index"] .home-hero+.section{padding-top:34px}
 .youth-choice.has-photo>span{position:relative;z-index:2}
 .youth-choice-photo{position:absolute;right:3%;bottom:-50%;z-index:-2;width:auto;height:150%;max-width:none;filter:drop-shadow(0 12px 22px #0009);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 60%,transparent 78%);mask-image:linear-gradient(to bottom,#000 0%,#000 60%,transparent 78%);transition:transform .35s}
 .youth-choice[data-youth-team="u13-filles"] .youth-choice-photo{right:7%;bottom:-35%;width:auto;height:135%}
+.youth-choice[data-youth-team="u15-garcons"] .youth-choice-photo{right:7%}
+.youth-choice[data-youth-team="u18-garcons"] .youth-choice-photo{right:8%}
 .youth-choice.has-photo:hover .youth-choice-photo{transform:scale(1.025)}
 .team-page-photo{position:relative;margin-bottom:34px;overflow:hidden;border:1px solid #ffffff2d;border-top:4px solid var(--red);background:#111116}
 .team-page-photo::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 -60px 75px #09090d66}
