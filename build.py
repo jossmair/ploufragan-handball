@@ -92,7 +92,7 @@ SCHEDULE = [
  ("Loisirs", "loisirs", [("Lundi","20h30–22h","Marcel Paul")]),
 ]
 TEAM_STAFF = {
-    "baby-hand": ("Encadrants", "David, Clara et Erwan"),
+    "baby-hand": ("Encadrants", "David (salarié du club), Clara et Erwann"),
     "ecole-de-hand": ("Encadrant", "Olivier Beaux (« Papy »)"),
     "u11-mixte": ("Coach", "Yohann Guérin"),
     "u13-filles": ("Coach", "David"),
@@ -237,9 +237,8 @@ def match_location(match):
     venue = match.get("venue") or {}
     name = venue.get("name") or "Salle de l’équipe adverse"
     city = venue.get("city") or ""
-    latitude, longitude = venue.get("latitude"), venue.get("longitude")
-    address = " ".join(filter(None, (venue.get("street"), venue.get("postalCode"), city)))
-    query = f"{latitude},{longitude}" if latitude and longitude else address or f"{match['home']} handball"
+    address = " ".join(filter(None, (name, venue.get("street"), venue.get("postalCode"), city)))
+    query = address or f"{match['home']} handball"
     maps_url = "https://www.google.com/maps/search/?api=1&query=" + quote(query)
     venue_label = " · ".join(filter(None, (name, city)))
     return f'''<div class="match-location"><span class="match-location-badge is-away">À l’extérieur</span><span class="match-venue">{escape(venue_label)}</span><a class="match-map" href="{escape(maps_url, quote=True)}" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div>'''
@@ -396,8 +395,8 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-match-venues1")
-    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-match-venues1")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-team-gallery2")
+    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-team-gallery2")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
     remote_fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">'
@@ -550,8 +549,22 @@ def next_round_matches(matches):
     return [match for match in matches if datetime.fromisoformat(match["date"]).astimezone(paris).date() < next_monday]
 
 
+def latest_results_week(matches):
+    """Keep only the most recent completed match week shown as the last weekend."""
+    if not matches:
+        return []
+    paris = ZoneInfo("Europe/Paris")
+    latest_day = max(datetime.fromisoformat(match["date"]).astimezone(paris).date() for match in matches)
+    monday = latest_day - timedelta(days=latest_day.weekday())
+    following_monday = monday + timedelta(days=7)
+    return [
+        match for match in matches
+        if monday <= datetime.fromisoformat(match["date"]).astimezone(paris).date() < following_monday
+    ]
+
+
 now_utc = datetime.now(timezone.utc)
-played = [m for m in RESULTS["matches"] if m["played"]]
+played = latest_results_week([m for m in RESULTS["matches"] if m["played"]])
 upcoming = sorted(
     [m for m in RESULTS["matches"] if not m["played"] and datetime.fromisoformat(m["date"]) >= now_utc],
     key=lambda m: m["date"],
@@ -587,6 +600,16 @@ CATEGORY_VALUE_COPY = {
                       "À l’École de hand, les enfants progressent à leur rythme : coordination, découverte des règles, passes et premiers tirs. Le jeu reste au cœur de chaque séance, avec un encadrement bienveillant et l’ambiance familiale qui fait vivre le PHB."),
 }
 
+LOISIRS_STORY = (
+    "LE HANDBALL POUR LE PLAISIR",
+    "MIXTE, CONVIVIAL ET OUVERT À TOUS",
+    "Animée par Aurélien, la section loisirs réunit des joueuses et joueurs de tous niveaux dans une ambiance détendue. Chaque lundi commence par 30 minutes de renforcement avant l’entraînement. La saison alterne rencontres avec les équipes loisirs du secteur et échanges sportifs, comme une séance de rugby touch avec le club local : un vrai moment convivial à partager.",
+    "assets/photos/loisirs-plouagat-2026.webp",
+    1600,
+    1200,
+    "Rencontre loisirs entre Ploufragan et Plouagat",
+)
+
 def category_values(slug):
     if slug not in CATEGORY_VALUE_COPY:
         return ""
@@ -594,11 +617,26 @@ def category_values(slug):
     return f'<section class="container category-values after-heading" data-reveal><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{copy}</p></section>'
 
 
+def category_story(slug):
+    if slug != "loisirs":
+        return ""
+    eyebrow, title, copy, src, width, height, alt = LOISIRS_STORY
+    return f'''<section class="container category-story after-heading" data-reveal><div class="category-story-copy"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{copy}</p></div><figure><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy"></figure></section>'''
+
+
 TEAM_PAGE_PHOTOS = {
     "baby-hand": ("assets/photos/baby-hand-seance-2026.webp", 1600, 1200,
                   "Séance de Baby Hand encadrée au Ploufragan Handball"),
     "u13-garcons": ("assets/photos/u13-garcons-equipe-2026.webp", 1080, 1178,
                     "Équipe U13 garçons du Ploufragan Handball avec son entraîneur"),
+    "ecole-de-hand": ("assets/photos/ecole-hand-seance-2026.webp", 619, 310,
+                      "Séance de l’École de hand du Ploufragan Handball"),
+    "u13-filles": ("assets/photos/u13-filles-equipe-2026.webp", 965, 727,
+                   "Équipe U13 filles du Ploufragan Handball"),
+    "u15-garcons": ("assets/photos/u15-garcons-equipe-2026.webp", 814, 574,
+                    "Équipe U15 garçons du Ploufragan Handball"),
+    "u18-garcons": ("assets/photos/u18-garcons-equipe-2026.webp", 679, 517,
+                    "Équipe U18 garçons du Ploufragan Handball"),
 }
 
 
@@ -622,13 +660,17 @@ for slug,name,title,meta,mark,photo in GROUPS:
         continue
     subtitle={"jeunes":"−11 mixte · −13 filles et garçons · −15 filles et garçons · −18 garçons","baby-hand":"Mercredi à la salle de motricité de l’école Pasteur à Trégueux et samedi à Hoëdic.","ecole-de-hand":"Samedi à Hoëdic.","loisirs":"Lundi à Marcel Paul."}.get(slug,meta)
     teams = [team for team in RESULTS["teams"] if team["group"] == slug]
-    pages[slug]=page(slug,name,heading(title.replace("<br>"," <em>")+"</em>",name,subtitle,("equipes.html","Équipes"))+category_values(slug)+team_page_photo(slug)+team_detail(slug,name,slug,teams=teams),"equipes")
+    pages[slug]=page(slug,name,heading(title.replace("<br>"," <em>")+"</em>",name,subtitle,("equipes.html","Équipes"))+category_values(slug)+category_story(slug)+team_page_photo(slug)+team_detail(slug,name,slug,teams=teams),"equipes")
 
 def youth_card(item):
     slug, name, schedule_name, years, result_label, photo = item
     age = name.split()[0]
-    card_photo = "assets/equipes/u13-garcons-card.webp" if slug == "u13-garcons" else None
-    visual = f'<img class="youth-choice-photo" src="{card_photo}" alt="" width="1244" height="1264" loading="lazy" aria-hidden="true">' if card_photo else ""
+    card_photos = {
+        "u13-garcons": ("assets/equipes/u13-garcons-card.webp", 1244, 1264),
+        "u13-filles": ("assets/equipes/u13-filles-card.webp", 992, 1536),
+    }
+    card_photo = card_photos.get(slug)
+    visual = f'<img class="youth-choice-photo" src="{card_photo[0]}" alt="" width="{card_photo[1]}" height="{card_photo[2]}" loading="lazy" aria-hidden="true">' if card_photo else ""
     return f'''<a class="youth-choice{' has-photo' if card_photo else ''}" href="{slug}.html" data-youth-team="{slug}" data-reveal>{visual}<span class="youth-choice-age">{age}</span><span class="youth-choice-body"><strong>{name}</strong></span><span class="youth-choice-arrow" aria-hidden="true">↗</span></a>'''
 
 pages["jeunes"] = page("jeunes", "Équipes jeunes",
