@@ -427,7 +427,8 @@ if (shopFilter) {
     const category = option.dataset.shopFilterValue;
     let visible = 0;
     products.forEach(product => {
-      product.hidden = !!category && product.dataset.shopCategory !== category;
+      const categories = product.dataset.shopCategory.split(/\s+/);
+      product.hidden = !!category && !categories.includes(category);
       if (!product.hidden) visible += 1;
     });
     count.textContent = visible;

@@ -39,7 +39,7 @@ Dernière passe SEO du 22 septembre 2026 sur le dépôt du site officiel. Les co
 
 - Confirmer le siège officiel et désigner le ou la responsable de publication avant de modifier les mentions légales. Le [répertoire public des entreprises](https://annuaire-entreprises.data.gouv.fr/entreprise/534810460) indique « Pôle associatif, 22 rue de la Mairie, 22440 Ploufragan » ; la salle du Haut-Champ reste décrite comme lieu de pratique, pas comme siège.
 - Demander à l’entente `U13M TER ENTENTE DU TREGOR HB - LOUANNEC` un emblème officiel si elle souhaite en afficher un dans les futurs résultats ; FFHandball ne fournit pas de fichier exploitable pour cette équipe.
-- Après une éventuelle publication de cette passe, vérifier Search Console et Bing Webmaster Tools, puis suivre LCP, INP et CLS réels. Les services tiers intégrés, notamment Score’n’co, restent à mesurer séparément.
+- Après publication, vérifier Search Console et Bing Webmaster Tools, puis suivre LCP, INP et CLS réels. Les liens externes vers FFHandball, Google Maps, les réseaux sociaux et la boutique restent à surveiller.
 
 ## Audit classé
 

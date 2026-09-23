@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.sync_results import normalize_match, normalize_score
+from scripts.sync_results import clean_source_text, normalize_match, normalize_score
 
 
 class ScoreNormalizationTests(unittest.TestCase):
@@ -21,6 +21,10 @@ class ScoreNormalizationTests(unittest.TestCase):
         self.assertTrue(match['played'])
         self.assertEqual((match['homeScore'], match['awayScore']), (20, 'FO'))
         self.assertEqual(match['clubSide'], 'away')
+
+    def test_ffhandball_hall_accents_are_repaired(self):
+        self.assertEqual(clean_source_text('SALLE DU COLLA\u00a8GE EUGA\u00a8NE GUILLEVIC'),
+                         'SALLE DU COLLÈGE EUGÈNE GUILLEVIC')
 
 
 if __name__ == '__main__':

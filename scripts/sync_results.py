@@ -25,6 +25,11 @@ class Components(HTMLParser):
         except ValueError:
             pass
 
+
+def clean_source_text(value):
+    """Repair the accent sequence currently emitted by some FFHandball halls."""
+    return str(value or '').replace('A\u00a8', 'È').replace('a\u00a8', 'è').strip()
+
 def fetch(url):
     if not url.startswith('https://www.ffhandball.fr/competitions/'):
         raise ValueError('Unexpected source domain')
@@ -40,6 +45,35 @@ def fetch(url):
             if attempt == 2:
                 raise RuntimeError(f'FFHandball unavailable after 3 attempts: {url}') from exc
             print(f'FFHandball retry {attempt + 1}/3: {url} ({exc})', flush=True)
+            sleep(2 ** attempt)
+
+
+def fetch_match_venue(url):
+    """Return the official FFHandball hall attached to a match."""
+    if not url.startswith('https://www.ffhandball.fr/competitions/'):
+        raise ValueError('Unexpected source domain')
+    for attempt in range(3):
+        try:
+            parser = Components()
+            with urlopen(Request(url, headers={'User-Agent': 'Ploufragan-Handball-Website/1.0'}), timeout=35) as response:
+                parser.feed(response.read().decode('utf-8-sig'))
+            component = parser.items.get('competitions---rencontre-salle', {})
+            equipment = component.get('equipement') or {}
+            if not equipment:
+                return None
+            return {
+                'name': clean_source_text(equipment.get('libelle')),
+                'street': clean_source_text(equipment.get('rue')),
+                'postalCode': clean_source_text(equipment.get('codePostal')),
+                'city': clean_source_text(equipment.get('ville')),
+                'latitude': str(equipment.get('latitude') or '').strip(),
+                'longitude': str(equipment.get('longitude') or '').strip(),
+                'source': 'FFHandball',
+            }
+        except (HTTPError, URLError, TimeoutError, ValueError) as exc:
+            if attempt == 2:
+                print(f'FFHandball venue unavailable: {url} ({exc})', flush=True)
+                return None
             sleep(2 ** attempt)
 
 def normalize_score(value):
@@ -135,6 +169,17 @@ def main():
             for team, items in result:
                 teams.append(team)
                 for match in items: matches[match['id']] = match
+
+    away_upcoming = [
+        match for match in matches.values()
+        if not match['played'] and match['clubSide'] == 'away'
+        and datetime.fromisoformat(match['date']).astimezone(timezone.utc) >= now
+    ]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+        venues = executor.map(lambda match: fetch_match_venue(match['url']), away_upcoming)
+        for match, venue in zip(away_upcoming, venues):
+            if venue:
+                match['venue'] = venue
     target = ROOT / 'data/results.json'
     if target.exists():
         previous = json.loads(target.read_text(encoding='utf-8'))
