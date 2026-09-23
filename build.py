@@ -227,7 +227,7 @@ def match_card(m):
         accessible = f"Score {score_text(m['homeScore'])} à {score_text(m['awayScore'])}"
         score=f'''<div class="match-result"><strong class="match-score" data-score><span class="sr-only">{accessible}</span>{home}<i aria-hidden="true">—</i>{away}</strong><span class="outcome {outcome}">{badge}</span></div>'''
     else: score='<div class="match-result"><strong class="match-time">À venir</strong></div>'
-    return f'''<a class="match-card" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer" data-reveal><div class="match-top"><span>{escape(clean_label(m['category']))}</span><time datetime="{m['date']}">{fr_date(m['date'])}</time></div><div class="match-main">{match_team(m['home'], 'home', m.get('homeTeamId'))}{score}{match_team(m['away'], 'away', m.get('awayTeamId'))}</div><span class="match-source">FFHandball ↗</span></a>'''
+    return f'''<a class="match-card" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer" data-results-item data-team="{escape(m['category'], quote=True)}" data-reveal><div class="match-top"><span>{escape(clean_label(m['category']))}</span><time datetime="{m['date']}">{fr_date(m['date'])}</time></div><div class="match-main">{match_team(m['home'], 'home', m.get('homeTeamId'))}{score}{match_team(m['away'], 'away', m.get('awayTeamId'))}</div><span class="match-source">FFHandball ↗</span></a>'''
 
 def clean_label(label):
     return (label.replace("feminines", "féminines")
@@ -272,12 +272,24 @@ def sponsor_marquee():
     duplicate=items.replace('<a ', '<a tabindex="-1" ')
     return f'''<aside class="sponsor-marquee" id="sponsors" aria-label="Partenaires du Ploufragan Handball"><div class="sponsor-marquee-title"><span>PARTENAIRES</span></div><div class="sponsor-marquee-window"><div class="sponsor-track">{items}<div aria-hidden="true" inert>{duplicate}</div></div></div></aside>'''
 
+def product_category(product):
+    name = product["name"].upper()
+    if any(word in name for word in ("SAC ", "SAC A", "CHAUSSETTES", "CLAQUETTES", "GOURDE")):
+        return "accessoires"
+    if "ENFANT" in name:
+        return "enfant"
+    if "FEMME" in name:
+        return "femme"
+    return "homme"
+
+
 def product_card(product):
     variants=product.get("variants") or [{"image":product["image"],"label":"Article"}]
     colors=product.get("colors") or [v.get("label",f"Vue {n+1}") for n,v in enumerate(variants)]
     slides=''.join(f'''<img class="product-slide{' is-active' if n==0 else ''}" src="{escape(v['image'],quote=True)}" alt="{escape(product['name'].replace('PLOUFRAGAN HB - ','').title())} — {escape(colors[n] if n<len(colors) else v.get('label','Vue'))}" width="{IMAGE_DIMENSIONS[v['image']][0]}" height="{IMAGE_DIMENSIONS[v['image']][1]}" loading="lazy" data-product-slide data-label="{escape(colors[n] if n<len(colors) else v.get('label','Vue'), quote=True)}">''' for n,v in enumerate(variants))
     controls='''<div class="product-controls"><button type="button" data-carousel-prev aria-label="Couleur précédente"><span class="carousel-arrow carousel-arrow-prev" aria-hidden="true"></span></button><button type="button" data-carousel-next aria-label="Couleur suivante"><span class="carousel-arrow carousel-arrow-next" aria-hidden="true"></span></button></div>''' if len(variants)>1 else ''
-    return f'''<article class="product-card" data-reveal><div class="product-carousel" data-product-carousel><div class="product-slides">{slides}</div>{controls}</div><div class="product-copy"><h2>{escape(product['name'].replace('PLOUFRAGAN HB - ',''))}</h2><strong>{escape(product['price'])}</strong><a href="{escape(product['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Commander sur Equip Club <span aria-hidden="true">↗</span></a></div></article>'''
+    category = product_category(product)
+    return f'''<article class="product-card" data-shop-item data-shop-category="{category}" data-reveal><div class="product-carousel" data-product-carousel><div class="product-slides">{slides}</div>{controls}</div><div class="product-copy"><h2>{escape(product['name'].replace('PLOUFRAGAN HB - ',''))}</h2><strong>{escape(product['price'])}</strong><a href="{escape(product['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Commander sur Equip Club <span aria-hidden="true">↗</span></a></div></article>'''
 
 def breadcrumb_schema(slug, title):
     if slug in ("index", "404"):
@@ -310,6 +322,8 @@ def structured_data_for(slug, title):
             "url": SITE_URL, "logo": SITE_URL + "assets/logo-phb.png",
             "sport": "Handball", "email": "ploufraganhandball@gmail.com",
             "telephone": "+33636618800",
+            "address": {"@type": "PostalAddress", "streetAddress": "Pôle associatif, 22 rue de la Mairie",
+                        "postalCode": "22440", "addressLocality": "Ploufragan", "addressCountry": "FR"},
             "location": {"@type": "Place", "name": "Complexe sportif du Haut-Champ",
                          "address": {"@type": "PostalAddress", "streetAddress": "Allée des Glénan",
                                      "postalCode": "22440", "addressLocality": "Ploufragan",
@@ -355,8 +369,8 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-duty4")
-    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260918-layout5")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-filters1")
+    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-filters1")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
     remote_fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">'
@@ -438,7 +452,7 @@ def article_page(article):
       </div>
       <dialog class="article-lightbox" data-article-lightbox aria-labelledby="article-lightbox-title">
         <button class="article-lightbox-close" type="button" data-lightbox-close aria-label="Fermer le portrait agrandi" autofocus>×</button>
-        <div class="article-lightbox-layout"><div class="article-lightbox-media"><img data-lightbox-image alt="" width="1080" height="1339"></div><div class="article-lightbox-info"><p class="eyebrow">SENIORS MASCULINS 1</p><p data-lightbox-meta></p><h2 id="article-lightbox-title" data-lightbox-title></h2><div class="article-lightbox-controls"><button type="button" data-lightbox-prev aria-label="Portrait précédent">←</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next aria-label="Portrait suivant">→</button></div></div></div>
+        <div class="article-lightbox-layout"><div class="article-lightbox-media"><img data-lightbox-image alt="" width="1080" height="1339"></div><div class="article-lightbox-info"><p class="eyebrow">SENIORS MASCULINS 1</p><p data-lightbox-meta></p><p class="article-lightbox-title" id="article-lightbox-title" data-lightbox-title></p><div class="article-lightbox-controls"><button type="button" data-lightbox-prev aria-label="Portrait précédent">←</button><span data-lightbox-count aria-live="polite"></span><button type="button" data-lightbox-next aria-label="Portrait suivant">→</button></div></div></div>
       </dialog>
       <div class="container article-end"><a class="button" href="seniors-masculins-1.html">Voir la page de l’équipe <span aria-hidden="true">↗</span></a><div class="article-share"><span>Partager l’article</span><a href="{facebook_share}" target="_blank" rel="noopener noreferrer">Facebook ↗</a><button type="button" data-copy-article hidden>Copier le lien</button></div></div>
       <div class="container article-back"><a class="text-link" href="blog.html">← Retour au blog</a></div>
@@ -631,8 +645,12 @@ for (year, month), duties in senior_duty_months.items():
         day = datetime.fromisoformat(duty["date"]).day
         names = ''.join(f'<li>{escape(name)}</li>' for name in duty["responsables"])
         match_count = len(matches_by_duty_day.get(duty["date"], []))
-        match_label = "match à domicile" if match_count == 1 else "matchs à domicile"
-        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul><div class="duty-match-total"><strong>{match_count:02d}</strong><span>{match_label}</span></div></div></li>')
+        if match_count:
+            match_label = "match à domicile" if match_count == 1 else "matchs à domicile"
+            match_total = f'<div class="duty-match-total"><strong>{match_count:02d}</strong><span>{match_label}</span></div>'
+        else:
+            match_total = '<div class="duty-match-total is-pending"><span>Calendrier à venir</span></div>'
+        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul>{match_total}</div></li>')
     senior_duty_sections.append(f'<section class="duty-month" aria-label="{MONTHS_FR[month].title()} {year}" data-reveal><header><h2>{MONTHS_FR[month]} <em>{year}</em></h2><span>{len(duties)} date{"s" if len(duties) > 1 else ""}</span></header><ol>{"".join(rows)}</ol></section>')
 
 unmatched_by_weekend = {}
@@ -742,6 +760,9 @@ registration_body = heading(
     "Saison 2026–2027 · Trouvez votre catégorie, contactez le club, puis suivez les indications reçues pour compléter votre licence.",
 ) + f'''
 <div class="container licence-page">
+  <nav class="licence-anchor-nav" aria-label="Accès rapide aux rubriques d’inscription" data-reveal>
+    <a href="#categories">Catégories</a><a href="#essai">Essai</a><a href="#demarches">Démarches</a><a href="#gesthand">Gest’Hand</a><a href="#documents">Documents</a><a href="#tarifs">Tarifs</a><a href="#aides">Aides</a><a href="#paiement">Paiement</a><a href="#faq">FAQ</a><a href="#contact-inscriptions">Contact</a>
+  </nav>
   <section class="licence-section" id="categories" aria-labelledby="licence-categories-title">
     <div class="section-heading" data-reveal><div><p class="eyebrow">SAISON 2026 / 2027</p><h2 id="licence-categories-title">TROUVER MA <em>CATÉGORIE</em></h2></div></div>
     <div class="licence-category-grid">{"".join(registration_cards)}</div>
@@ -802,11 +823,14 @@ pages["inscriptions"] = page(
 )
 
 
-competition_cards=''.join(f'''<article class="competition-card" data-reveal><p class="eyebrow">{escape(t['pool'])}</p><h3>{escape(clean_label(t['label']))}</h3><div><a href="{escape(t['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Calendrier FFHandball ↗</a><a href="{escape(t['ranking'],quote=True)}" target="_blank" rel="noopener noreferrer">Classement ↗</a></div></article>''' for t in RESULTS["teams"])
-pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS <em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont synchronisées automatiquement plusieurs fois par jour.")+f'''<section class="container section after-heading"><div class="section-heading"><div><p class="eyebrow">DERNIER WEEK-END</p><h2>LES <em>SCORES</em></h2></div><span class="data-source">Source : FFHandball</span></div><div class="matches-grid">{''.join(match_card(m) for m in played)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid">{''.join(match_card(m) for m in next_round_matches(upcoming))}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div><div class="score-widget" data-reveal><iframe src="https://widgets.scorenco.com/auto/week-events/123569" title="Matchs du Ploufragan Handball sur Score'n'co" loading="lazy"></iframe></div></section>''')
+competition_cards=''.join(f'''<article class="competition-card" data-results-item data-team="{escape(t['label'], quote=True)}" data-reveal><p class="eyebrow">{escape(t['pool'])}</p><h3>{escape(clean_label(t['label']))}</h3><div><a href="{escape(t['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Calendrier FFHandball ↗</a><a href="{escape(t['ranking'],quote=True)}" target="_blank" rel="noopener noreferrer">Classement ↗</a></div></article>''' for t in RESULTS["teams"])
+result_filter_buttons = ''.join(f'<button type="button" data-results-team="{escape(team["label"], quote=True)}" aria-pressed="false">{escape(clean_label(team["label"]))}</button>' for team in RESULTS["teams"])
+results_filter = f'''<div class="content-filter" data-results-filter data-reveal><span class="content-filter-label">Filtrer par équipe</span><div class="content-filter-options" role="group" aria-label="Filtrer les résultats par équipe"><button type="button" class="is-active" data-results-team="" aria-pressed="true">Toutes</button>{result_filter_buttons}</div><span class="sr-only" data-results-status aria-live="polite"></span></div>'''
+pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS <em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont synchronisées automatiquement plusieurs fois par jour.")+f'''<section class="container section after-heading">{results_filter}<div class="section-heading"><div><p class="eyebrow">DERNIER WEEK-END</p><h2>LES <em>SCORES</em></h2></div><span class="data-source">Source : FFHandball</span></div><div class="matches-grid">{''.join(match_card(m) for m in played)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid">{''.join(match_card(m) for m in next_round_matches(upcoming))}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div><div class="score-widget" data-reveal><iframe src="https://widgets.scorenco.com/auto/week-events/123569" title="Matchs du Ploufragan Handball sur Score'n'co" loading="lazy"></iframe></div></section>''')
 
 product_cards=''.join(product_card(product) for product in PRODUCTS)
-pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Boutique","Les commandes et paiements sont réalisés sur la boutique Equip Club.")+f'''<section class="container section after-heading"><div class="shop-intro" data-reveal><div><p class="eyebrow">COLLECTION PLOUFRAGAN HB</p><h2>21 ARTICLES</h2><p>Les prix affichés ont été relevés le 13 septembre 2026. Les tailles, stocks et prix définitifs sont indiqués sur Equip Club.</p></div>{button('Ouvrir la boutique officielle',SHOP,False,True)}</div><div class="products-grid">{product_cards}</div></section>''')
+shop_filter = '''<div class="content-filter shop-filter" data-shop-filter data-reveal><span class="content-filter-label">Filtrer la collection</span><div class="content-filter-options" role="group" aria-label="Filtrer les articles de la boutique"><button type="button" class="is-active" data-shop-filter-value="" aria-pressed="true">Tous</button><button type="button" data-shop-filter-value="homme" aria-pressed="false">Homme</button><button type="button" data-shop-filter-value="femme" aria-pressed="false">Femme</button><button type="button" data-shop-filter-value="enfant" aria-pressed="false">Enfant</button><button type="button" data-shop-filter-value="accessoires" aria-pressed="false">Accessoires</button></div><span class="sr-only" data-shop-status aria-live="polite"></span></div>'''
+pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Boutique","Les commandes et paiements sont réalisés sur la boutique Equip Club.")+f'''<section class="container section after-heading"><div class="shop-intro" data-reveal><div><p class="eyebrow">COLLECTION PLOUFRAGAN HB</p><h2><span data-shop-count>{len(PRODUCTS)}</span> ARTICLES</h2><p>Les prix affichés ont été relevés le 13 septembre 2026. Les tailles, stocks et prix définitifs sont indiqués sur Equip Club.</p></div>{button('Ouvrir la boutique officielle',SHOP,False,True)}</div>{shop_filter}<div class="products-grid">{product_cards}</div></section>''')
 
 def partner_card(name, address):
     image = partner_image(name, f"Logo {name}")
@@ -824,10 +848,7 @@ partner_cards=''.join(partner_card(name, address) for name,address,handle in PAR
 pages["partenaires"]=page("partenaires","Partenaires",heading("LES <em>PARTENAIRES</em>","Partenaires",f"{len(PARTNERS)} partenaires du Ploufragan Handball.")+f'''<section class="container section after-heading"><a class="information-panel participation participation-link" href="devenir-partenaire.html" data-reveal><span class="eyebrow">ENTREPRISES & ACTEURS LOCAUX</span><h2>DEVENEZ PARTENAIRE DU PHB</h2><p>Découvrez le club, les supports de visibilité et la Team Sponsor.</p><span class="button">Découvrir le partenariat <span aria-hidden="true">↗</span></span></a><div class="partners-grid">{partner_cards}</div></section>''')
 
 def sponsor_metric(item):
-    value = item.get("valeur")
-    shown = str(value) if value is not None else "—"
-    note = item.get("source") if value is not None else "Chiffre à renseigner"
-    return f'<div class="sponsor-stat"><strong>{escape(shown)}</strong><span>{escape(item["label"])}</span><small>{escape(note)}</small></div>'
+    return f'<div class="sponsor-stat"><strong>{escape(str(item["valeur"]))}</strong><span>{escape(item["label"])}</span><small>{escape(item["source"])}</small></div>'
 
 def sponsor_formula(item):
     return f'<article class="information-panel sponsor-formula" data-reveal><h3>{escape(item["titre"])}</h3><p>{escape(item["texte"])}</p><span>Modalités et tarif sur demande</span></article>'
@@ -846,7 +867,7 @@ partner_body = f'''
 </header>
 <div class="container sponsor-page">
   <section class="sponsor-intro" aria-labelledby="sponsor-why"><div class="section-heading" data-reveal><div><p class="eyebrow">UN PROJET LOCAL</p><h2 id="sponsor-why">POURQUOI <em>NOUS SOUTENIR ?</em></h2></div></div><div class="information-panel" data-reveal><p>Le Ploufragan Handball accompagne ses équipes et fait vivre la pratique du handball à Ploufragan. Votre soutien contribue à cette activité associative. Ensemble, choisissons une présence qui a du sens pour votre entreprise et pour le club.</p></div></section>
-  <section class="sponsor-section" aria-labelledby="sponsor-figures"><div class="section-heading" data-reveal><div><p class="eyebrow">REPÈRES</p><h2 id="sponsor-figures">LE CLUB <em>EN CHIFFRES</em></h2></div></div><div class="sponsor-stats">{''.join(sponsor_metric(item) for item in SPONSOR_DATA["chiffres"])}</div></section>
+  <section class="sponsor-section" aria-labelledby="sponsor-figures"><div class="section-heading" data-reveal><div><p class="eyebrow">REPÈRES</p><h2 id="sponsor-figures">LE CLUB <em>EN CHIFFRES</em></h2></div></div><div class="sponsor-stats">{''.join(sponsor_metric(item) for item in SPONSOR_DATA["chiffres"] if item.get("valeur") is not None)}</div></section>
   <section class="sponsor-section" aria-labelledby="sponsor-visibility"><div class="section-heading" data-reveal><div><p class="eyebrow">SUPPORTS POSSIBLES</p><h2 id="sponsor-visibility">VOTRE <em>VISIBILITÉ</em></h2></div></div><p class="sponsor-section-intro">Les supports sont choisis avec la Team Sponsor selon le partenariat convenu.</p><ul class="sponsor-visibility">{''.join(f'<li>{escape(label)}</li>' for label in sponsor_visibility)}</ul></section>
   <section class="sponsor-section" aria-labelledby="sponsor-formulas"><div class="section-heading" data-reveal><div><p class="eyebrow">À CONSTRUIRE ENSEMBLE</p><h2 id="sponsor-formulas">FORMULES <em>DE PARTENARIAT</em></h2></div></div><div class="sponsor-formulas">{''.join(sponsor_formula(item) for item in SPONSOR_DATA["formules"])}</div></section>
   <section class="sponsor-section" aria-labelledby="sponsor-current"><div class="section-heading" data-reveal><div><p class="eyebrow">ILS ACCOMPAGNENT LE PHB</p><h2 id="sponsor-current">PARTENAIRES <em>ACTUELS</em></h2></div><a class="text-link" href="partenaires.html">Voir les partenaires ↗</a></div><div class="sponsor-logo-grid">{sponsor_logos}</div></section>
@@ -879,7 +900,7 @@ for article in ARTICLES:
     pages[f'articles/{article["slug"]}'] = article_page(article)
 contact_info='''<div class="contact-details"><div><span class="eyebrow">E-MAIL</span><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a></div><div><span class="eyebrow">TÉLÉPHONE</span><a href="tel:+33636618800">06 36 61 88 00</a></div><div><span class="eyebrow">ADRESSE</span><p>Complexe sportif du Haut-Champ<br>Allée des Glénan<br>22440 Ploufragan</p></div></div>'''
 pages["contact"]=page("contact","Contact et accès",heading("CONTACT <em>& ACCÈS</em>","Contact")+f'''<section class="container section after-heading"><div class="contact-layout"><div class="information-panel" data-reveal><h2>COORDONNÉES DU CLUB</h2>{contact_info}</div><div>{locations}</div></div></section>''')
-legal = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>ÉDITEUR DU SITE</h2><p>Ploufragan Handball, association sportive basée à Ploufragan (22440). Présidente : Elsa DA SILVA.</p><p>Contact : <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a> · <a href="tel:+33636618800">06 36 61 88 00</a>.</p><p>Lieu d’activité : complexe sportif du Haut-Champ, allée des Glénan, 22440 Ploufragan. Cette adresse est celle du lieu de pratique ; le siège social est à confirmer auprès de l’association.</p></div><div class="information-panel"><h2>HÉBERGEMENT</h2><p>Site publié avec GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, États-Unis. Le nom de domaine est géré via OVHcloud.</p><p><a href="https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">Informations GitHub Pages ↗</a></p></div><div class="information-panel"><h2>CONTENUS</h2><p>Textes, photographies et logos sont utilisés pour présenter les activités du club et de ses partenaires. Pour toute question relative à un contenu ou à un droit à l’image, contactez l’association.</p></div></section>'''
+legal = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>ÉDITEUR DU SITE</h2><p>Ploufragan Handball, association déclarée. SIREN : 534 810 460 · RNA : W224002757.</p><p>Siège social : Pôle associatif, 22 rue de la Mairie, 22440 Ploufragan.</p><p>Directrice de la publication : Elsa DA SILVA, présidente de l’association.</p><p>Contact : <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a> · <a href="tel:+33636618800">06 36 61 88 00</a>.</p><p>Lieu d’activité : complexe sportif du Haut-Champ, allée des Glénan, 22440 Ploufragan.</p></div><div class="information-panel"><h2>HÉBERGEMENT</h2><p>Site publié avec GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, États-Unis. Le nom de domaine est géré via OVHcloud.</p><p><a href="https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">Informations GitHub Pages ↗</a></p></div><div class="information-panel"><h2>CONTENUS</h2><p>Textes, photographies et logos sont utilisés pour présenter les activités du club et de ses partenaires. Pour toute question relative à un contenu ou à un droit à l’image, contactez l’association.</p></div></section>'''
 pages["mentions-legales"] = page("mentions-legales", "Mentions légales", heading("MENTIONS <em>LÉGALES</em>", "Mentions légales") + legal)
 privacy = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>VOS DONNÉES</h2><p>Ce site ne propose pas de formulaire de contact et ne dépose pas de cookie de mesure d’audience propre au club. GitHub Pages conserve l’adresse IP des visiteurs pour la sécurité du service. Si vous écrivez au club par courriel ou l’appelez, l’association utilise les informations que vous lui communiquez pour répondre à votre demande et traiter, le cas échéant, une inscription.</p><p>Pour demander l’accès, la rectification ou la suppression de vos informations, écrivez à <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a>. Vous pouvez également saisir la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener noreferrer">CNIL ↗</a>.</p></div><div class="information-panel"><h2>SERVICES EXTERNES</h2><p>Les polices du site sont hébergées sur le domaine du club. Sur la page Résultats, le calendrier intégré de Score’n’co charge des ressources depuis ses domaines, Google Fonts et Sentry ; ce service tiers peut utiliser ses propres cookies. En ouvrant un lien vers FFHandball, les réseaux sociaux, Google Maps, Google Play ou la boutique, vous quittez le site du club ; ces services appliquent leurs propres politiques de confidentialité.</p></div><div class="information-panel"><h2>DURÉE DE CONSERVATION</h2><p>La durée de conservation des échanges adressés au club dépend de leur objet. Pour connaître celle qui s’applique à votre demande, contactez l’association.</p></div></section>'''
 pages["confidentialite"] = page("confidentialite", "Confidentialité", heading("VIE <em>PRIVÉE</em>", "Confidentialité") + privacy)

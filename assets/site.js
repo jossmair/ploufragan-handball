@@ -364,3 +364,49 @@ if (scheduleFilter) {
   });
   document.addEventListener('click', event => { if (!scheduleFilter.contains(event.target)) close(); });
 }
+
+// Filter results and championship links by team while keeping every item in the initial HTML.
+const resultsFilter = document.querySelector('[data-results-filter]');
+if (resultsFilter) {
+  const buttons = [...resultsFilter.querySelectorAll('[data-results-team]')];
+  const items = [...document.querySelectorAll('[data-results-item]')];
+  const status = resultsFilter.querySelector('[data-results-status]');
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const selectedTeam = button.dataset.resultsTeam;
+    buttons.forEach(item => {
+      const active = item === button;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-pressed', String(active));
+    });
+    let visible = 0;
+    items.forEach(item => {
+      item.hidden = !!selectedTeam && item.dataset.team !== selectedTeam;
+      if (!item.hidden) visible += 1;
+    });
+    status.textContent = selectedTeam ? visible + ' éléments affichés pour ' + button.textContent : 'Toutes les équipes sont affichées';
+  }));
+}
+
+// Filter the shop locally; all products remain available without JavaScript.
+const shopFilter = document.querySelector('[data-shop-filter]');
+if (shopFilter) {
+  const buttons = [...shopFilter.querySelectorAll('[data-shop-filter-value]')];
+  const products = [...document.querySelectorAll('[data-shop-item]')];
+  const count = document.querySelector('[data-shop-count]');
+  const status = shopFilter.querySelector('[data-shop-status]');
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const category = button.dataset.shopFilterValue;
+    buttons.forEach(item => {
+      const active = item === button;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-pressed', String(active));
+    });
+    let visible = 0;
+    products.forEach(product => {
+      product.hidden = !!category && product.dataset.shopCategory !== category;
+      if (!product.hidden) visible += 1;
+    });
+    count.textContent = visible;
+    status.textContent = category ? visible + ' articles dans la catégorie ' + button.textContent : 'Tous les articles sont affichés';
+  }));
+}
