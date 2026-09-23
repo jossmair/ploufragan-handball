@@ -369,8 +369,8 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-filters1")
-    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-filters1")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-filters2")
+    doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-filters2")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
     remote_fonts = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">'
@@ -643,14 +643,20 @@ for (year, month), duties in senior_duty_months.items():
     rows = []
     for duty in duties:
         day = datetime.fromisoformat(duty["date"]).day
-        names = ''.join(f'<li>{escape(name)}</li>' for name in duty["responsables"])
+        if duty["responsables"]:
+            names = ''.join(f'<li>{escape(name)}</li>' for name in duty["responsables"])
+            volunteer_cta = ""
+        else:
+            names = '<li class="duty-volunteer-label">Volontaires recherchés</li>'
+            volunteer_subject = quote(f"Volontaire permanence du {day} {MONTHS_FR[month].lower()} {year}")
+            volunteer_cta = f'<a class="duty-volunteer-button" href="mailto:ploufraganhandball@gmail.com?subject={volunteer_subject}">Je me propose <span aria-hidden="true">↗</span></a>'
         match_count = len(matches_by_duty_day.get(duty["date"], []))
         if match_count:
             match_label = "match à domicile" if match_count == 1 else "matchs à domicile"
             match_total = f'<div class="duty-match-total"><strong>{match_count:02d}</strong><span>{match_label}</span></div>'
         else:
             match_total = '<div class="duty-match-total is-pending"><span>Calendrier à venir</span></div>'
-        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul>{match_total}</div></li>')
+        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul>{match_total}{volunteer_cta}</div></li>')
     senior_duty_sections.append(f'<section class="duty-month" aria-label="{MONTHS_FR[month].title()} {year}" data-reveal><header><h2>{MONTHS_FR[month]} <em>{year}</em></h2><span>{len(duties)} date{"s" if len(duties) > 1 else ""}</span></header><ol>{"".join(rows)}</ol></section>')
 
 unmatched_by_weekend = {}
@@ -660,7 +666,7 @@ for match in matches_without_duty:
     unmatched_by_weekend.setdefault(weekend_day, 0)
     unmatched_by_weekend[weekend_day] += 1
 unmatched_rows = ''.join(f'<li><time datetime="{weekend.isoformat()}">{weekend.day} {MONTHS_FR[weekend.month].lower()} {weekend.year}</time><strong>{count:02d}</strong><span>{"match à domicile" if count == 1 else "matchs à domicile"}</span></li>' for weekend, count in sorted(unmatched_by_weekend.items()))
-unmatched_block = (f'<section class="duty-extra" data-reveal><p class="eyebrow">À VÉRIFIER AVEC LE CLUB</p><h2>WEEK-END HORS <em>PLANNING</em></h2><p>FFHandball annonce un ou plusieurs matchs à domicile sur une date absente du tableau des permanences.</p><ul class="duty-extra-counts">{unmatched_rows}</ul></section>') if unmatched_rows else ''
+unmatched_block = (f'<section class="duty-extra" data-reveal><p class="eyebrow">APPEL AUX VOLONTAIRES</p><h2>DATE À <em>COUVRIR</em></h2><p>FFHandball annonce un ou plusieurs matchs à domicile sur une date qui ne possède pas encore de responsables.</p><ul class="duty-extra-counts">{unmatched_rows}</ul><a class="button duty-extra-action" href="mailto:ploufraganhandball@gmail.com?subject=Volontaire%20permanence%20de%20salle">Je me propose <span aria-hidden="true">↗</span></a></section>') if unmatched_rows else ''
 
 pages["permanences-seniors-masculins"] = page(
     "permanences-seniors-masculins", "Permanences à domicile",
@@ -824,12 +830,12 @@ pages["inscriptions"] = page(
 
 
 competition_cards=''.join(f'''<article class="competition-card" data-results-item data-team="{escape(t['label'], quote=True)}" data-reveal><p class="eyebrow">{escape(t['pool'])}</p><h3>{escape(clean_label(t['label']))}</h3><div><a href="{escape(t['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Calendrier FFHandball ↗</a><a href="{escape(t['ranking'],quote=True)}" target="_blank" rel="noopener noreferrer">Classement ↗</a></div></article>''' for t in RESULTS["teams"])
-result_filter_buttons = ''.join(f'<button type="button" data-results-team="{escape(team["label"], quote=True)}" aria-pressed="false">{escape(clean_label(team["label"]))}</button>' for team in RESULTS["teams"])
-results_filter = f'''<div class="content-filter" data-results-filter data-reveal><span class="content-filter-label">Filtrer par équipe</span><div class="content-filter-options" role="group" aria-label="Filtrer les résultats par équipe"><button type="button" class="is-active" data-results-team="" aria-pressed="true">Toutes</button>{result_filter_buttons}</div><span class="sr-only" data-results-status aria-live="polite"></span></div>'''
+result_filter_buttons = ''.join(f'<button type="button" role="option" data-results-team="{escape(team["label"], quote=True)}" aria-selected="false">{escape(clean_label(team["label"]))}</button>' for team in RESULTS["teams"])
+results_filter = f'''<div class="content-filter" data-results-filter data-reveal><span class="content-filter-label" id="results-filter-title">Filtrer par équipe</span><div class="content-filter-choice"><button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="results-filter-options" aria-labelledby="results-filter-title results-filter-selected"><span id="results-filter-selected" data-filter-selected>Toutes les équipes</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button><div class="content-filter-menu" id="results-filter-options" data-filter-menu role="listbox" aria-label="Équipes" hidden><button type="button" role="option" data-results-team="" aria-selected="true">Toutes les équipes</button>{result_filter_buttons}</div></div><span class="content-filter-count" data-results-status aria-live="polite">Toutes les équipes affichées</span></div>'''
 pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS <em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont synchronisées automatiquement plusieurs fois par jour.")+f'''<section class="container section after-heading">{results_filter}<div class="section-heading"><div><p class="eyebrow">DERNIER WEEK-END</p><h2>LES <em>SCORES</em></h2></div><span class="data-source">Source : FFHandball</span></div><div class="matches-grid">{''.join(match_card(m) for m in played)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid">{''.join(match_card(m) for m in next_round_matches(upcoming))}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div><div class="score-widget" data-reveal><iframe src="https://widgets.scorenco.com/auto/week-events/123569" title="Matchs du Ploufragan Handball sur Score'n'co" loading="lazy"></iframe></div></section>''')
 
 product_cards=''.join(product_card(product) for product in PRODUCTS)
-shop_filter = '''<div class="content-filter shop-filter" data-shop-filter data-reveal><span class="content-filter-label">Filtrer la collection</span><div class="content-filter-options" role="group" aria-label="Filtrer les articles de la boutique"><button type="button" class="is-active" data-shop-filter-value="" aria-pressed="true">Tous</button><button type="button" data-shop-filter-value="homme" aria-pressed="false">Homme</button><button type="button" data-shop-filter-value="femme" aria-pressed="false">Femme</button><button type="button" data-shop-filter-value="enfant" aria-pressed="false">Enfant</button><button type="button" data-shop-filter-value="accessoires" aria-pressed="false">Accessoires</button></div><span class="sr-only" data-shop-status aria-live="polite"></span></div>'''
+shop_filter = '''<div class="content-filter shop-filter" data-shop-filter data-reveal><span class="content-filter-label" id="shop-filter-title">Filtrer la collection</span><div class="content-filter-choice"><button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="shop-filter-options" aria-labelledby="shop-filter-title shop-filter-selected"><span id="shop-filter-selected" data-filter-selected>Tous les articles</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button><div class="content-filter-menu" id="shop-filter-options" data-filter-menu role="listbox" aria-label="Catégories de la boutique" hidden><button type="button" role="option" data-shop-filter-value="" aria-selected="true">Tous les articles</button><button type="button" role="option" data-shop-filter-value="homme" aria-selected="false">Homme</button><button type="button" role="option" data-shop-filter-value="femme" aria-selected="false">Femme</button><button type="button" role="option" data-shop-filter-value="enfant" aria-selected="false">Enfant</button><button type="button" role="option" data-shop-filter-value="accessoires" aria-selected="false">Accessoires</button></div></div><span class="content-filter-count" data-shop-status aria-live="polite">Tous les articles affichés</span></div>'''
 pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Boutique","Les commandes et paiements sont réalisés sur la boutique Equip Club.")+f'''<section class="container section after-heading"><div class="shop-intro" data-reveal><div><p class="eyebrow">COLLECTION PLOUFRAGAN HB</p><h2><span data-shop-count>{len(PRODUCTS)}</span> ARTICLES</h2><p>Les prix affichés ont été relevés le 13 septembre 2026. Les tailles, stocks et prix définitifs sont indiqués sur Equip Club.</p></div>{button('Ouvrir la boutique officielle',SHOP,False,True)}</div>{shop_filter}<div class="products-grid">{product_cards}</div></section>''')
 
 def partner_card(name, address):

@@ -365,48 +365,72 @@ if (scheduleFilter) {
   document.addEventListener('click', event => { if (!scheduleFilter.contains(event.target)) close(); });
 }
 
-// Filter results and championship links by team while keeping every item in the initial HTML.
+// Black custom dropdowns, matching the timetable interaction.
+function setupContentDropdown(root, optionSelector, applySelection) {
+  const trigger = root.querySelector('[data-filter-trigger]');
+  const selected = root.querySelector('[data-filter-selected]');
+  const menu = root.querySelector('[data-filter-menu]');
+  const options = [...menu.querySelectorAll(optionSelector)];
+  const close = () => { menu.hidden = true; trigger.setAttribute('aria-expanded', 'false'); };
+  const open = () => {
+    menu.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    (options.find(option => option.getAttribute('aria-selected') === 'true') || options[0]).focus();
+  };
+  trigger.addEventListener('click', () => { if (menu.hidden) open(); else close(); });
+  trigger.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown') { event.preventDefault(); open(); }
+  });
+  options.forEach(option => option.addEventListener('click', () => {
+    options.forEach(item => item.setAttribute('aria-selected', String(item === option)));
+    selected.textContent = option.textContent;
+    applySelection(option);
+    close();
+    trigger.focus();
+  }));
+  menu.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { event.preventDefault(); close(); trigger.focus(); return; }
+    const current = options.indexOf(document.activeElement);
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      options[(current + (event.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length].focus();
+    }
+    if (event.key === 'Home' || event.key === 'End') {
+      event.preventDefault();
+      options[event.key === 'Home' ? 0 : options.length - 1].focus();
+    }
+  });
+  document.addEventListener('click', event => { if (!root.contains(event.target)) close(); });
+}
+
 const resultsFilter = document.querySelector('[data-results-filter]');
 if (resultsFilter) {
-  const buttons = [...resultsFilter.querySelectorAll('[data-results-team]')];
   const items = [...document.querySelectorAll('[data-results-item]')];
   const status = resultsFilter.querySelector('[data-results-status]');
-  buttons.forEach(button => button.addEventListener('click', () => {
-    const selectedTeam = button.dataset.resultsTeam;
-    buttons.forEach(item => {
-      const active = item === button;
-      item.classList.toggle('is-active', active);
-      item.setAttribute('aria-pressed', String(active));
-    });
+  setupContentDropdown(resultsFilter, '[data-results-team]', option => {
+    const selectedTeam = option.dataset.resultsTeam;
     let visible = 0;
     items.forEach(item => {
       item.hidden = !!selectedTeam && item.dataset.team !== selectedTeam;
       if (!item.hidden) visible += 1;
     });
-    status.textContent = selectedTeam ? visible + ' éléments affichés pour ' + button.textContent : 'Toutes les équipes sont affichées';
-  }));
+    status.textContent = selectedTeam ? visible + ' éléments affichés pour ' + option.textContent : 'Toutes les équipes sont affichées';
+  });
 }
 
-// Filter the shop locally; all products remain available without JavaScript.
 const shopFilter = document.querySelector('[data-shop-filter]');
 if (shopFilter) {
-  const buttons = [...shopFilter.querySelectorAll('[data-shop-filter-value]')];
   const products = [...document.querySelectorAll('[data-shop-item]')];
   const count = document.querySelector('[data-shop-count]');
   const status = shopFilter.querySelector('[data-shop-status]');
-  buttons.forEach(button => button.addEventListener('click', () => {
-    const category = button.dataset.shopFilterValue;
-    buttons.forEach(item => {
-      const active = item === button;
-      item.classList.toggle('is-active', active);
-      item.setAttribute('aria-pressed', String(active));
-    });
+  setupContentDropdown(shopFilter, '[data-shop-filter-value]', option => {
+    const category = option.dataset.shopFilterValue;
     let visible = 0;
     products.forEach(product => {
       product.hidden = !!category && product.dataset.shopCategory !== category;
       if (!product.hidden) visible += 1;
     });
     count.textContent = visible;
-    status.textContent = category ? visible + ' articles dans la catégorie ' + button.textContent : 'Tous les articles sont affichés';
-  }));
+    status.textContent = category ? visible + ' articles dans la catégorie ' + option.textContent : 'Tous les articles sont affichés';
+  });
 }
