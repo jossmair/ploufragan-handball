@@ -64,6 +64,6 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as exc:
-        print(f"Calendrier FFHandball indisponible : {exc}", file=sys.stderr)
+        print(f"WARNING: FFHandball indisponible — utilisation des dernières données valides. ({exc})", file=sys.stderr)
         if not OUTPUT.exists():
             raise

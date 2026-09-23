@@ -18,6 +18,7 @@ COMPETITIVE = {
     "u18-garcons", "seniors-feminines", "seniors-masculins-1",
     "seniors-masculins-2",
 }
+ALLOWED_NOINDEX = {"404.html", "actualites.html", "permanences-seniors-masculins.html"}
 
 
 class Page(HTMLParser):
@@ -157,7 +158,7 @@ def audit():
             continue
         pages[file.resolve()] = page
         noindex = "noindex" in page.meta.get("robots", "").lower()
-        if relative not in ("404.html", "actualites.html") and noindex:
+        if relative not in ALLOWED_NOINDEX and noindex:
             errors.append(f"{relative}: noindex inattendu")
         if not noindex:
             indexable[file.resolve()] = relative

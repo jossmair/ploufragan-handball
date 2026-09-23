@@ -1,0 +1,169 @@
+{
+  "categories": {
+    "baby-hand": {
+      "label": "Baby Hand",
+      "gender": "mixte",
+      "age": "3 à 5 ans",
+      "publicIntro": "Pour les enfants de 3 à 5 ans, filles et garçons. Les séances de motricité permettent de bouger, jouer et prendre confiance dans l’ambiance familiale du PHB.",
+      "training": [
+        {"day": "Mercredi", "time": "10h–11h", "venue": "Trégueux"},
+        {"day": "Samedi", "time": "10h30–11h30", "venue": "Hoëdic"}
+      ],
+      "staff": {"role": "Encadrants", "names": "David (salarié du club), Clara et Erwann"},
+      "landing": {"title": "BABY<br>HAND", "meta": "3 à 5 ans", "mark": "BH", "cardPhoto": "equipes/baby-hand-card.webp"},
+      "pagePhoto": {"src": "assets/photos/baby-hand-seance-2026.webp", "width": 1600, "height": 1200, "alt": "Séance de Baby Hand encadrée au Ploufragan Handball"}
+    },
+    "ecole-de-hand": {
+      "label": "École de hand",
+      "gender": "mixte",
+      "birthYears": "2018–2020",
+      "publicIntro": "L’École de hand fait découvrir les règles, la coordination, les passes et les premiers tirs, en gardant le jeu et le plaisir au centre de chaque séance.",
+      "training": [{"day": "Samedi", "time": "11h30–12h30", "venue": "Hoëdic"}],
+      "staff": {"role": "Encadrant", "names": "Olivier Beaux (« Papy »)"},
+      "landing": {"title": "ÉCOLE<br>DE HAND", "meta": "Découverte et apprentissage", "mark": "EH", "cardPhoto": "equipes/ecole-de-hand-card.webp"},
+      "pagePhoto": {"src": "assets/photos/ecole-hand-seance-2026.webp", "width": 619, "height": 310, "alt": "Séance de l’École de hand du Ploufragan Handball"}
+    },
+    "jeunes": {
+      "label": "Équipes jeunes",
+      "landing": {"title": "ÉQUIPES<br>JEUNES", "meta": "U11 · U13 · U15 · U18", "mark": "U18", "cardPhoto": "equipes/jeunes-card.webp"}
+    },
+    "u11-mixte": {
+      "label": "U11 mixte",
+      "gender": "mixte",
+      "birthYears": "2016–2017",
+      "resultLabel": "U11 mixte",
+      "publicIntro": "L’équipe U11 mixte poursuit l’apprentissage du handball avec deux séances par semaine et les premiers repères du jeu collectif.",
+      "training": [
+        {"day": "Lundi", "time": "17h30–19h", "venue": "Hoëdic"},
+        {"day": "Mercredi", "time": "15h30–16h45", "venue": "Hoëdic"}
+      ],
+      "staff": {"role": "Coach", "names": "Yohann Guérin"},
+      "youthPhoto": "assets/photos/u11-equipe.webp",
+      "pagePhoto": {"src": "assets/photos/u11-equipe.webp", "width": 1154, "height": 1440, "alt": "Équipe U11 mixte du Ploufragan Handball"}
+    },
+    "u13-filles": {
+      "label": "U13 filles",
+      "gender": "filles",
+      "birthYears": "2014–2015",
+      "resultLabel": "U13 filles",
+      "publicIntro": "Les U13 filles progressent ensemble lors de deux entraînements hebdomadaires et retrouvent ici leurs matchs et leur classement officiel.",
+      "training": [
+        {"day": "Mardi", "time": "18h45–20h", "venue": "Hoëdic"},
+        {"day": "Jeudi", "time": "17h30–18h45", "venue": "Belle-Île"}
+      ],
+      "staff": {"role": "Coach", "names": "David"},
+      "youthPhoto": "assets/photos/u13-equipe.webp",
+      "cardPhoto": {"src": "assets/equipes/u13-filles-card.webp", "width": 992, "height": 1536},
+      "pagePhoto": {"src": "assets/photos/u13-filles-equipe-2026.webp", "width": 965, "height": 727, "alt": "Équipe U13 filles du Ploufragan Handball"}
+    },
+    "u13-garcons": {
+      "label": "U13 garçons",
+      "gender": "garçons",
+      "birthYears": "2014–2015",
+      "resultLabel": "U13 garcons",
+      "publicIntro": "Les U13 garçons développent leur jeu collectif lors de deux entraînements par semaine et suivent ici leur championnat.",
+      "training": [
+        {"day": "Mardi", "time": "17h30–18h45", "venue": "Hoëdic"},
+        {"day": "Jeudi", "time": "18h45–20h", "venue": "Belle-Île"}
+      ],
+      "staff": {"role": "Coach", "names": "Jérôme"},
+      "youthPhoto": "assets/photos/u13-garcons-equipe-2026.webp",
+      "cardPhoto": {"src": "assets/equipes/u13-garcons-card.webp", "width": 1244, "height": 1264},
+      "pagePhoto": {"src": "assets/photos/u13-garcons-equipe-2026.webp", "width": 1080, "height": 1178, "alt": "Équipe U13 garçons du Ploufragan Handball avec son entraîneur"}
+    },
+    "u15-filles": {
+      "label": "U15 filles",
+      "gender": "filles",
+      "birthYears": "2012–2013",
+      "resultLabel": "U15 filles",
+      "publicIntro": "Les U15 filles poursuivent leur formation avec deux séances hebdomadaires, en lien avec leur calendrier et leur classement FFHandball.",
+      "training": [
+        {"day": "Mercredi", "time": "16h45–18h", "venue": "Hoëdic"},
+        {"day": "Jeudi", "time": "17h30–18h45", "venue": "Belle-Île"}
+      ],
+      "staff": {"role": "Coach", "names": "Katia"}
+    },
+    "u15-garcons": {
+      "label": "U15 garçons",
+      "gender": "garçons",
+      "birthYears": "2012–2013",
+      "resultLabel": "U15 garcons",
+      "publicIntro": "Les U15 garçons travaillent leur progression collective lors de deux entraînements par semaine et retrouvent ici le suivi de leur saison.",
+      "training": [
+        {"day": "Mercredi", "time": "18h–19h30", "venue": "Hoëdic"},
+        {"day": "Vendredi", "time": "17h30–19h", "venue": "Hoëdic"}
+      ],
+      "staff": {"role": "Coach", "names": "Erwann"},
+      "cardPhoto": {"src": "assets/equipes/u15-garcons-card.webp", "width": 1024, "height": 1536},
+      "pagePhoto": {"src": "assets/photos/u15-garcons-equipe-2026.webp", "width": 814, "height": 574, "alt": "Équipe U15 garçons du Ploufragan Handball"}
+    },
+    "u18-garcons": {
+      "label": "U18 garçons",
+      "gender": "garçons",
+      "birthYears": "2009–2011",
+      "resultLabel": "U18 garcons",
+      "publicIntro": "Les U18 garçons préparent la transition vers le handball senior avec deux séances par semaine et un suivi complet de leur championnat.",
+      "training": [
+        {"day": "Mercredi", "time": "19h30–21h", "venue": "Hoëdic"},
+        {"day": "Vendredi", "time": "19h–20h30", "venue": "Hoëdic"}
+      ],
+      "staff": {"role": "Coach", "names": "Nathan"},
+      "youthPhoto": "assets/photos/u18-equipe.webp",
+      "cardPhoto": {"src": "assets/equipes/u18-garcons-card.webp", "width": 821, "height": 1536},
+      "pagePhoto": {"src": "assets/photos/u18-garcons-equipe-2026.webp", "width": 679, "height": 517, "alt": "Équipe U18 garçons du Ploufragan Handball"}
+    },
+    "seniors-feminines": {
+      "label": "Seniors féminines",
+      "gender": "femmes",
+      "birthYears": "2008 et avant",
+      "publicIntro": "L’équipe Seniors féminines représente le PHB en compétition et retrouve ici son entraînement, ses matchs et son classement officiel.",
+      "training": [{"day": "Jeudi", "time": "20h30–22h", "venue": "Hoëdic"}],
+      "staff": {"role": "Coach", "names": "Elsa (« Mamy »)"},
+      "landing": {"title": "SENIORS<br>FÉMININES", "meta": "Équipe féminine adulte", "mark": "SF", "cardPhoto": "equipes/senior-feminine-card.webp"},
+      "pagePhoto": {"src": "assets/seniors-feminines.png", "width": 733, "height": 910, "alt": "Affiche officielle de l’équipe Seniors féminines du Ploufragan Handball"}
+    },
+    "seniors-masculins": {
+      "label": "Seniors masculins",
+      "gender": "hommes",
+      "birthYears": "2008 et avant",
+      "training": [
+        {"day": "Mardi", "time": "20h15–22h", "venue": "Hoëdic"},
+        {"day": "Jeudi", "time": "20h30–22h", "venue": "Belle-Île"}
+      ],
+      "staff": {"role": "Coachs", "names": "Jérôme Quemener et Guillaume Michel (« Guigui »)"},
+      "landing": {"title": "SENIORS<br>MASCULINS", "meta": "2 équipes engagées", "mark": "SM", "cardPhoto": "equipes/senior-masculin-card.webp"}
+    },
+    "seniors-masculins-1": {
+      "label": "Seniors masculins 1",
+      "resultLabel": "Seniors masculins 1",
+      "publicIntro": "L’équipe première masculine du PHB dispute son championnat territorial et retrouve ici ses entraînements, résultats et classement."
+    },
+    "seniors-masculins-2": {
+      "label": "Seniors masculins 2",
+      "resultLabel": "Seniors masculins 2",
+      "publicIntro": "L’équipe Seniors masculins 2 permet au groupe adulte de vivre une seconde aventure en compétition avec son propre calendrier."
+    },
+    "loisirs": {
+      "label": "Loisirs",
+      "gender": "mixte",
+      "birthYears": "2008 et avant",
+      "publicIntro": "La section loisirs propose un handball adulte mixte, convivial et ouvert à tous les niveaux, le lundi soir à Marcel Paul.",
+      "training": [{"day": "Lundi", "time": "20h30–22h", "venue": "Marcel Paul"}],
+      "staff": {"role": "Coach", "names": "Aurélien"},
+      "landing": {"title": "HAND<br>LOISIRS", "meta": "Handball adulte loisir", "mark": "LH", "cardPhoto": "equipes/loisirs-card-v2.webp"}
+    }
+  },
+  "landingOrder": ["baby-hand", "ecole-de-hand", "jeunes", "seniors-masculins", "seniors-feminines", "loisirs"],
+  "youthOrder": ["u11-mixte", "u13-filles", "u13-garcons", "u15-filles", "u15-garcons", "u18-garcons"],
+  "registration": [
+    {"label": "Baby Hand", "category": "baby-hand", "training": ["baby-hand"], "links": [["Voir l’équipe", "baby-hand"]], "tariffKey": "baby_hand"},
+    {"label": "École de hand", "category": "ecole-de-hand", "training": ["ecole-de-hand"], "links": [["Voir l’équipe", "ecole-de-hand"]], "tariffKey": "ecole_de_hand"},
+    {"label": "U11", "category": "u11-mixte", "training": ["u11-mixte"], "links": [["U11 mixte", "u11-mixte"]], "tariffKey": "u11"},
+    {"label": "U13", "category": "u13-filles", "training": ["u13-filles", "u13-garcons"], "links": [["Filles", "u13-filles"], ["Garçons", "u13-garcons"]], "tariffKey": "u13"},
+    {"label": "U15", "category": "u15-filles", "training": ["u15-filles", "u15-garcons"], "links": [["Filles", "u15-filles"], ["Garçons", "u15-garcons"]], "tariffKey": "u15"},
+    {"label": "U18", "category": "u18-garcons", "training": ["u18-garcons"], "links": [["U18 garçons", "u18-garcons"]], "tariffKey": "u18"},
+    {"label": "Seniors F", "category": "seniors-feminines", "training": ["seniors-feminines"], "links": [["Voir l’équipe", "seniors-feminines"]], "tariffKey": "seniors_f"},
+    {"label": "Seniors M", "category": "seniors-masculins", "training": ["seniors-masculins"], "links": [["Voir les équipes", "seniors-masculins"]], "tariffKey": "seniors_m"},
+    {"label": "Loisirs", "category": "loisirs", "training": ["loisirs"], "links": [["Voir l’équipe", "loisirs"]], "tariffKey": "loisirs"}
+  ]
+}

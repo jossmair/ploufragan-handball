@@ -2,6 +2,7 @@
 import concurrent.futures
 import json
 import os
+import sys
 from datetime import datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
@@ -10,6 +11,10 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / 'data'
+TARGET = DATA / 'results.json'
+SITE_CONFIG = json.loads((DATA / 'site.json').read_text(encoding='utf-8'))
+SEASON = SITE_CONFIG['season']
 
 class Components(HTMLParser):
     def __init__(self):
@@ -156,13 +161,28 @@ def sync_team(original, start, end):
         raise ValueError('PHB team not found in current pools: ' + team['label'])
     return resolved
 
-def main():
+def is_valid_snapshot(path=TARGET):
+    """A fallback must be a complete, parseable snapshot from the current season."""
+    try:
+        snapshot = json.loads(Path(path).read_text(encoding='utf-8'))
+    except (OSError, ValueError, TypeError):
+        return False
+    return (
+        snapshot.get('season') == SEASON
+        and snapshot.get('source') == 'FFHandball'
+        and isinstance(snapshot.get('teams'), list) and bool(snapshot['teams'])
+        and isinstance(snapshot.get('matches'), list) and bool(snapshot['matches'])
+        and isinstance(snapshot.get('updatedAt'), str) and bool(snapshot['updatedAt'])
+    )
+
+
+def refresh(target=TARGET):
     now = datetime.now(timezone.utc)
     today = datetime.fromisoformat(os.environ.get('PHB_TODAY', now.date().isoformat())).date()
     monday = today - timedelta(days=today.weekday())
     start = (monday - timedelta(days=14)).isoformat()
     end = (monday + timedelta(days=13)).isoformat()
-    config = json.loads((ROOT / 'data/competitions.json').read_text(encoding='utf-8'))
+    config = json.loads((DATA / 'competitions.json').read_text(encoding='utf-8'))
     teams, matches = [], {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
         for result in executor.map(lambda team: sync_team(team, start, end), config):
@@ -180,15 +200,21 @@ def main():
         for match, venue in zip(away_upcoming, venues):
             if venue:
                 match['venue'] = venue
-    target = ROOT / 'data/results.json'
+    target = Path(target)
     if target.exists():
         previous = json.loads(target.read_text(encoding='utf-8'))
-        if previous.get('season') == '2026–2027':
+        if previous.get('season') == SEASON:
+            previous_matches = {match['id']: match for match in previous.get('matches', [])}
+            # Keep a verified official hall if its dedicated FFHandball component is temporarily unavailable.
+            for match_id, match in matches.items():
+                cached = previous_matches.get(match_id, {})
+                if not match.get('venue') and cached.get('venue'):
+                    match['venue'] = cached['venue']
             # Keep verified scores from earlier rounds when they leave the sync window.
-            for match in previous.get('matches', []):
+            for match in previous_matches.values():
                 if match.get('played') and match['id'] not in matches:
                     matches[match['id']] = match
-    output = {'updatedAt': now.isoformat(), 'season': '2026–2027',
+    output = {'updatedAt': now.isoformat(), 'season': SEASON,
               'source': 'FFHandball', 'teams': teams,
               'matches': sorted(matches.values(), key=lambda m: m['date'], reverse=True)}
     # Write only after every source succeeds; a partial fetch never erases good data.
@@ -196,6 +222,20 @@ def main():
     temp.write_text(json.dumps(output, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     temp.replace(target)
     print(f"FFHandball: {len(teams)} teams, {len(matches)} matches")
+    return output
+
+
+def main():
+    try:
+        refresh(TARGET)
+    except Exception as exc:
+        if is_valid_snapshot(TARGET):
+            print(
+                f"WARNING: FFHandball indisponible — utilisation des dernières données valides. ({exc})",
+                file=sys.stderr,
+            )
+            return 0
+        raise
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

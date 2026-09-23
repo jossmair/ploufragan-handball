@@ -10,13 +10,13 @@
     ],
     "image": "assets/articles/seniors-masculins-1/photo-03.webp",
     "image_alt": "Jean Boizard, joueur de l’équipe Seniors masculins 1 du Ploufragan Handball, avec un ballon",
-    "intro": "Découvrez les joueurs et l’encadrement de l’équipe Seniors masculins 1 du Ploufragan Handball pour la saison 2026–2027.",
+    "intro": "Découvrez les joueurs et l’encadrement de l’équipe Seniors masculins 1 du Ploufragan Handball pour la saison {{season}}.",
     "content": [
       "Les portraits de l’équipe sont réunis ici pour vous permettre de découvrir les visages, les postes et les numéros des joueurs.",
       "L’équipe est encadrée par Jérôme Quemener et Guillaume Michel. Retrouvez également ses entraînements, son classement et son dernier résultat sur la page de l’équipe."
     ],
-    "meta_title": "Seniors masculins 1 : présentation de l’équipe 2026–2027 | Ploufragan Handball",
-    "meta_description": "Découvrez les joueurs et les entraîneurs de l’équipe Seniors masculins 1 du Ploufragan Handball pour la saison 2026–2027, près de Saint-Brieuc.",
+    "meta_title": "Seniors masculins 1 : présentation de l’équipe {{season}} | Ploufragan Handball",
+    "meta_description": "Découvrez les joueurs et les entraîneurs de l’équipe Seniors masculins 1 du Ploufragan Handball pour la saison {{season}}, près de Saint-Brieuc.",
     "og_image": "assets/og/article-seniors-masculins-1.jpg",
     "players": [
       {
@@ -140,7 +140,7 @@
       "Le PHB actuel est né en 2011, mais le handball ploufraganais avait déjà une histoire. Mis en sommeil en 1990, il a attendu plus de vingt ans avant de reprendre sa place dans la commune.",
       "Depuis, le club a grandi avec ses joueuses, ses joueurs, ses coachs, ses familles et ses bénévoles. Voici cette histoire racontée depuis l’intérieur : avec des classements, bien sûr, mais surtout avec les personnes qui ont fait vivre chaque saison."
     ],
-    "meta_title": "L’histoire du Ploufragan Handball : de la renaissance de 2011 au PHB d’aujourd’hui",
+    "meta_title": "PHB : l’histoire d’un club qui a rebondi | Ploufragan Handball",
     "meta_description": "Découvrez l’histoire du Ploufragan Handball : renaissance en 2011, premières équipes, montées régionales, formation des jeunes et moments marquants du PHB.",
     "og_image": "assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
     "og_width": 960,
@@ -341,7 +341,7 @@
         "year": "Aujourd’hui",
         "title": "Du Baby Hand aux seniors, la même maison",
         "text": [
-          "Pour la saison 2026–2027, le PHB accueille les enfants dès le Baby Hand, puis l’école de hand, les U11, U13, U15 et U18, jusqu’aux seniors et aux loisirs.",
+          "Pour la saison {{season}}, le PHB accueille les enfants dès le Baby Hand, puis l’école de hand, les U11, U13, U15 et U18, jusqu’aux seniors et aux loisirs.",
           "Le club est présidé par Elsa Da Silva. David Imbaud, salarié du PHB, travaille avec les coachs, le bureau et les équipes de bénévoles qui font vivre les entraînements, les matchs, la buvette, la boutique, les partenariats et la communication."
         ],
         "image": "assets/photos/baby-hand-seance-2026.webp",
