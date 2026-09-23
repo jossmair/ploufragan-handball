@@ -235,13 +235,25 @@ def match_location(match):
     if match["clubSide"] == "home":
         return '<div class="match-location"><span class="match-location-badge is-home">À domicile</span></div>'
     venue = match.get("venue") or {}
-    name = venue.get("name") or "Salle de l’équipe adverse"
+    raw_name = venue.get("name") or "Salle de l’équipe adverse"
+    venue_names = {
+        "sos oceane": "Salle Océane",
+        "sos erquy": "Salle omnisports d’Erquy",
+        "chaptal": "Gymnase Chaptal",
+        "salle omnisport": "Salle omnisports",
+        "salle omnisports": "Salle omnisports",
+    }
+    name = venue_names.get(raw_name.casefold(), raw_name)
     city = venue.get("city") or ""
-    address = " ".join(filter(None, (name, venue.get("street"), venue.get("postalCode"), city)))
+    street = venue.get("street") or ""
+    postal_code = venue.get("postalCode") or ""
+    address = ", ".join(filter(None, (name, street, " ".join(filter(None, (postal_code, city))), "France")))
     query = address or f"{match['home']} handball"
-    maps_url = "https://www.google.com/maps/search/?api=1&query=" + quote(query)
+    maps_url = "https://www.google.com/maps/dir/?api=1&destination=" + quote(query) + "&travelmode=driving&dir_action=navigate"
     venue_label = " · ".join(filter(None, (name, city)))
-    return f'''<div class="match-location"><span class="match-location-badge is-away">À l’extérieur</span><span class="match-venue">{escape(venue_label)}</span><a class="match-map" href="{escape(maps_url, quote=True)}" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div>'''
+    street_label = " · ".join(filter(None, (street, " ".join(filter(None, (postal_code, city))))))
+    address_line = f'<small>{escape(street_label)}</small>' if street_label else ''
+    return f'''<div class="match-location"><span class="match-location-badge is-away">À l’extérieur</span><span class="match-venue"><strong>{escape(venue_label)}</strong>{address_line}</span><a class="match-map" href="{escape(maps_url, quote=True)}" target="_blank" rel="noopener noreferrer" aria-label="Démarrer l’itinéraire vers {escape(venue_label, quote=True)}">Démarrer l’itinéraire <span aria-hidden="true">↗</span></a></div>'''
 
 def clean_label(label):
     return (label.replace("feminines", "féminines")
@@ -395,7 +407,7 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-blog-freeze1")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-home-maps1")
     doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260923-blog-freeze1")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
@@ -434,7 +446,7 @@ def home_news_section(articles):
         height = article.get("image_height", 1339)
         if len(summary) > 155:
             summary = summary[:152].rsplit(" ", 1)[0] + "…"
-        cards.append(f'''<article class="home-news-card" data-reveal><div class="home-news-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" width="{width}" height="{height}" loading="lazy" decoding="async"></div><div class="home-news-copy"><time datetime="{article['date']}">{article_date(article['date'])}</time><h3>{escape(article['title'])}</h3><p>{escape(summary)}</p>{button('Lire l’article', path, True)}</div></article>''')
+        cards.append(f'''<article class="home-news-card" data-article="{escape(article['slug'], quote=True)}" data-reveal><div class="home-news-image"><img src="{escape(article['image'], quote=True)}" alt="{escape(article['image_alt'], quote=True)}" width="{width}" height="{height}" loading="lazy" decoding="async"></div><div class="home-news-copy"><time datetime="{article['date']}">{article_date(article['date'])}</time><h3>{escape(article['title'])}</h3><p>{escape(summary)}</p>{button('Lire l’article', path, True)}</div></article>''')
     return f'''<section class="container section home-news" aria-labelledby="home-news-title"><div class="section-heading" data-reveal><div><p class="eyebrow">LA VIE DU CLUB</p><h2 id="home-news-title">LE <em>BLOG DU PHB</em></h2></div><a class="text-link" href="blog.html">VOIR TOUT LE BLOG ↗</a></div><div class="home-news-grid count-{len(latest)}">{''.join(cards)}</div></section>'''
 
 
