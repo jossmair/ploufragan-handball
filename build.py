@@ -20,7 +20,7 @@ LICENSES = json.loads((DATA / "inscriptions.json").read_text(encoding="utf-8"))
 ARTICLES = json.loads((DATA / "articles.json").read_text(encoding="utf-8"))
 SPONSOR_DATA = json.loads((DATA / "partenariat.json").read_text(encoding="utf-8"))
 SENIOR_DUTIES = json.loads((DATA / "permanences-seniors-masculins.json").read_text(encoding="utf-8"))
-SENIOR_HOME = json.loads((DATA / "senior_home_matches.json").read_text(encoding="utf-8"))
+HOME_MATCHES = json.loads((DATA / "home_matches.json").read_text(encoding="utf-8"))
 HELLOASSO_URL = LICENSES["helloasso_url"].strip()
 TEAM_LOGOS_BY_NAME = {name.casefold(): path for name, path in TEAM_LOGOS.items()}
 SHOP = "https://www.equipclub.com/category/ploufragan-handball"
@@ -45,7 +45,7 @@ SEO_META = {
     "u18-garcons": ("U18 garçons | Ploufragan Handball", "Suivez les U18 garçons du Ploufragan Handball : horaires d’entraînement, matchs, résultats et classement."),
     "seniors-feminines": ("Seniors féminines | Ploufragan Handball", "Suivez les Seniors féminines du PHB à Ploufragan : entraînement, prochain match, dernier résultat et classement."),
     "seniors-masculins": ("Seniors masculins 1 et 2 | Ploufragan Handball", "Retrouvez les horaires des Seniors masculins du PHB et accédez aux pages des équipes 1 et 2."),
-    "permanences-seniors-masculins": ("Permanences à domicile des seniors masculins | PHB", "Dates et responsables des permanences à domicile des seniors masculins du Ploufragan Handball pour la saison 2026-2027."),
+    "permanences-seniors-masculins": ("Permanences des matchs à domicile | Ploufragan Handball", "Prochains week-ends à domicile du PHB : responsables de salle et matchs de toutes les équipes publiés par FFHandball."),
     "seniors-masculins-1": ("Seniors masculins 1 | Ploufragan Handball", "L’équipe Seniors masculins 1 du PHB : entraînements, prochain match, dernier résultat et classement de poule."),
     "seniors-masculins-2": ("Seniors masculins 2 | Ploufragan Handball", "L’équipe Seniors masculins 2 du PHB : horaires, prochains matchs, derniers résultats et classement."),
     "loisirs": ("Handball loisir à Ploufragan | PHB", "Pratiquez le handball en loisir avec le Ploufragan Handball : horaire, lieu et contact pour rejoindre la séance."),
@@ -355,7 +355,7 @@ def page(slug, title, body, active=None, description=None):
     doc=doc.replace("20260913-live", "20260917-blog4")
     doc=doc.replace("20260916-seniors1", "20260917-blog4")
     doc=doc.replace("assets/site.css?v=20260917-blog4", "assets/site.css?v=20260917-partner-blog1")
-    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260922-duty1")
+    doc=doc.replace("assets/site.css?v=20260917-partner-blog1", "assets/site.css?v=20260923-duty3")
     doc=doc.replace("assets/site.js?v=20260917-blog4", "assets/site.js?v=20260918-layout5")
     doc=doc.replace('<link rel="icon" href="assets/logo-phb.png" type="image/png">',
                     '<link rel="icon" href="assets/logo-phb.png" type="image/png"><link rel="apple-touch-icon" href="assets/logo-phb.png" sizes="512x512">')
@@ -538,12 +538,25 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
     return f'<section class="container team-detail-grid {"has-ranking" if teams else "no-ranking"} after-heading">{content}</section>'
 
 
+CATEGORY_VALUE_COPY = {
+    "baby-hand": ("GRANDIR EN BOUGEANT", "UNE AVENTURE À CHAQUE SÉANCE",
+                  "Au Baby Hand, les enfants développent leur motricité en jouant dans des univers qui stimulent leur imagination : le camping, les chevaliers, les dinosaures et bien d’autres aventures. Des séances joyeuses, pensées pour bouger, découvrir et prendre confiance dans l’esprit familial du PHB."),
+    "ecole-de-hand": ("APPRENDRE EN S’AMUSANT", "LES PREMIERS GESTES DU HANDBALL",
+                      "À l’École de hand, les enfants progressent à leur rythme : coordination, découverte des règles, passes et premiers tirs. Le jeu reste au cœur de chaque séance, avec un encadrement bienveillant et l’ambiance familiale qui fait vivre le PHB."),
+}
+
+def category_values(slug):
+    if slug not in CATEGORY_VALUE_COPY:
+        return ""
+    eyebrow, title, copy = CATEGORY_VALUE_COPY[slug]
+    return f'<section class="container category-values after-heading" data-reveal><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{copy}</p></section>'
+
 for slug,name,title,meta,mark,photo in GROUPS:
     if slug in ("jeunes", "seniors-masculins"):
         continue
     subtitle={"jeunes":"−11 mixte · −13 filles et garçons · −15 filles et garçons · −18 garçons","baby-hand":"Mercredi à la salle de motricité de l’école Pasteur à Trégueux et samedi à Hoëdic.","ecole-de-hand":"Samedi à Hoëdic.","loisirs":"Lundi à Marcel Paul."}.get(slug,meta)
     teams = [team for team in RESULTS["teams"] if team["group"] == slug]
-    pages[slug]=page(slug,name,heading(title.replace("<br>"," <em>")+"</em>",name,subtitle,("equipes.html","Équipes"))+team_detail(slug,name,slug,teams=teams),"equipes")
+    pages[slug]=page(slug,name,heading(title.replace("<br>"," <em>")+"</em>",name,subtitle,("equipes.html","Équipes"))+category_values(slug)+team_detail(slug,name,slug,teams=teams),"equipes")
 
 def youth_card(item):
     slug, name, schedule_name, years, result_label, photo = item
@@ -586,30 +599,37 @@ pages["seniors-masculins"] = page(
     '<section class="container senior-landing after-heading">' +
     team_training("seniors-masculins") +
     '<div class="senior-landing-choices"><div class="senior-landing-heading"><p class="eyebrow">SAISON 2026 / 2027</p><h2>LES DEUX <em>ÉQUIPES</em></h2></div><div class="senior-choice-grid">' +
-    ''.join(senior_choices) + '</div></div><div class="senior-duty-entry" data-reveal><div><p class="eyebrow">MATCHS À DOMICILE</p><h2>PERMANENCES <em>DE SALLE</em></h2><p>Les dates, les responsables et les matchs annoncés par FFHandball.</p></div>' +
+    ''.join(senior_choices) + '</div></div><div class="senior-duty-entry" data-reveal><div><p class="eyebrow">TOUTES LES ÉQUIPES</p><h2>PERMANENCES <em>DE SALLE</em></h2><p>Les prochains week-ends, les responsables et tous les matchs à domicile annoncés par FFHandball.</p></div>' +
     button('Voir le planning', 'permanences-seniors-masculins.html') + '</div></section>', "equipes",
     "Seniors masculins du Ploufragan Handball : horaires d’entraînement et accès aux deux équipes engagées en 2026–2027.")
 
 MONTHS_FR = ("", "JANVIER", "FÉVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOÛT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DÉCEMBRE")
-senior_duty_dates = {item["date"] for item in SENIOR_DUTIES["dates"]}
-senior_matches_by_day = {}
-senior_matches_without_duty = []
-for senior_match in SENIOR_HOME["matches"]:
-    match_day = datetime.fromisoformat(senior_match["date"]).date()
+today_local = datetime.now(ZoneInfo("Europe/Paris")).date()
+upcoming_duties = [item for item in SENIOR_DUTIES["dates"]
+                   if datetime.fromisoformat(item["date"]).date() + timedelta(days=1) >= today_local]
+upcoming_duty_dates = {item["date"] for item in upcoming_duties}
+matches_by_duty_day = {}
+matches_without_duty = []
+future_home_matches = []
+for home_match in HOME_MATCHES["matches"]:
+    match_day = datetime.fromisoformat(home_match["date"]).date()
     weekend_day = match_day - timedelta(days=1) if match_day.weekday() == 6 else match_day
-    if weekend_day.isoformat() in senior_duty_dates:
-        senior_matches_by_day.setdefault(weekend_day.isoformat(), []).append(senior_match)
+    if weekend_day + timedelta(days=1) < today_local:
+        continue
+    future_home_matches.append(home_match)
+    if weekend_day.isoformat() in upcoming_duty_dates:
+        matches_by_duty_day.setdefault(weekend_day.isoformat(), []).append(home_match)
     else:
-        senior_matches_without_duty.append(senior_match)
+        matches_without_duty.append(home_match)
 
 def duty_fixture(match):
-    team = "Équipe 1" if match["category"].endswith("1") else "Équipe 2"
+    team = clean_label(match["category"])
     return (f'<a class="duty-fixture" href="{escape(match["url"], quote=True)}" target="_blank" rel="noopener noreferrer">'
             f'<span>{team} · {fr_date(match["date"])}</span><strong>PHB – {escape(match["opponent"])}</strong>'
             '<span class="duty-fixture-arrow" aria-hidden="true">↗</span></a>')
 
 senior_duty_months = {}
-for duty in SENIOR_DUTIES["dates"]:
+for duty in upcoming_duties:
     duty_date = datetime.fromisoformat(duty["date"])
     senior_duty_months.setdefault((duty_date.year, duty_date.month), []).append(duty)
 senior_duty_sections = []
@@ -618,20 +638,20 @@ for (year, month), duties in senior_duty_months.items():
     for duty in duties:
         day = datetime.fromisoformat(duty["date"]).day
         names = ''.join(f'<li>{escape(name)}</li>' for name in duty["responsables"])
-        fixtures = ''.join(duty_fixture(match) for match in senior_matches_by_day.get(duty["date"], []))
-        fixture_note = '' if fixtures else '<span class="duty-no-fixture">Match seniors non daté sur FFHandball</span>'
-        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables seniors masculins du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul><div class="duty-fixtures">{fixtures}{fixture_note}</div></div></li>')
+        fixtures = ''.join(duty_fixture(match) for match in matches_by_duty_day.get(duty["date"], []))
+        fixture_note = '' if fixtures else '<span class="duty-no-fixture">Aucun match à domicile daté sur FFHandball pour ce week-end</span>'
+        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul><div class="duty-fixtures">{fixtures}{fixture_note}</div></div></li>')
     senior_duty_sections.append(f'<section class="duty-month" aria-label="{MONTHS_FR[month].title()} {year}" data-reveal><header><h2>{MONTHS_FR[month]} <em>{year}</em></h2><span>{len(duties)} date{"s" if len(duties) > 1 else ""}</span></header><ol>{"".join(rows)}</ol></section>')
 
-unmatched_matches = ''.join(duty_fixture(match) for match in senior_matches_without_duty)
-unmatched_block = (f'<section class="duty-extra" data-reveal><p class="eyebrow">À VÉRIFIER AVEC LE CLUB</p><h2>MATCH HORS <em>PLANNING</em></h2><p>FFHandball annonce aussi {len(senior_matches_without_duty)} rencontre{"s" if len(senior_matches_without_duty) > 1 else ""} à domicile à une date absente du tableau des responsables transmis.</p>{unmatched_matches}</section>') if unmatched_matches else ''
+unmatched_matches = ''.join(duty_fixture(match) for match in matches_without_duty)
+unmatched_block = (f'<section class="duty-extra" data-reveal><p class="eyebrow">À VÉRIFIER AVEC LE CLUB</p><h2>MATCHS HORS <em>PLANNING</em></h2><p>FFHandball annonce aussi {len(matches_without_duty)} rencontre{"s" if len(matches_without_duty) > 1 else ""} à domicile sur un week-end absent du tableau des responsables transmis.</p>{unmatched_matches}</section>') if unmatched_matches else ''
 
 pages["permanences-seniors-masculins"] = page(
-    "permanences-seniors-masculins", "Permanences seniors masculins",
-    heading("PERMANENCES <em>À DOMICILE</em>", "Permanences seniors masculins",
-            "Planning des responsables seniors masculins pour la saison 2026–2027.",
+    "permanences-seniors-masculins", "Permanences à domicile",
+    heading("PERMANENCES <em>À DOMICILE</em>", "Permanences à domicile",
+            "Prochains week-ends de permanence pour les matchs à domicile de toutes les équipes.",
             back=("seniors-masculins.html", "Seniors masculins")) +
-    f'<section class="container duty-page after-heading"><div class="duty-summary" data-reveal><div class="duty-number"><strong>{len(SENIOR_DUTIES["dates"]):02d}</strong><span>dates de permanence</span></div><div class="duty-number duty-match-count"><strong>{len(SENIOR_HOME["matches"]):02d}</strong><span>matchs à domicile datés par FFHandball</span></div><div class="duty-summary-copy"><p class="eyebrow">SAISON {escape(SENIOR_DUTIES["season"])}</p><h2>RESPONSABLES <em>DE SALLE</em></h2><p>Les prénoms et surnoms sont repris du tableau transmis par le club. Une date peut couvrir plusieurs matchs ; seuls ceux actuellement datés par FFHandball figurent ci-dessous.</p></div></div><div class="duty-month-grid">{"".join(senior_duty_sections)}</div>{unmatched_block}<div class="duty-note" data-reveal><strong>À SAVOIR</strong><p>Pour chaque date : table de marque, ordinateur et responsable de salle. Buvette ou arbitrage selon les besoins. Les postes non renseignés sur le planning ne sont pas attribués ici.</p></div></section>',
+    f'<section class="container duty-page after-heading"><div class="duty-summary" data-reveal><div class="duty-number"><strong>{len(upcoming_duties):02d}</strong><span>week-ends à venir</span></div><div class="duty-number duty-match-count"><strong>{len(future_home_matches):02d}</strong><span>matchs à domicile actuellement datés</span></div><div class="duty-summary-copy"><p class="eyebrow">SAISON {escape(SENIOR_DUTIES["season"])}</p><h2>RESPONSABLES <em>DE SALLE</em></h2><p>Les prénoms et surnoms sont repris du tableau transmis par le club. Chaque permanence couvre tous les matchs du PHB joués à domicile pendant le week-end, jeunes et seniors. Les week-ends passés sont retirés automatiquement.</p></div></div><div class="duty-month-grid">{"".join(senior_duty_sections)}</div>{unmatched_block}<div class="duty-note" data-reveal><strong>À SAVOIR</strong><p>Pour chaque date : table de marque, ordinateur et responsable de salle. Buvette ou arbitrage selon les besoins. Les rencontres affichées proviennent des calendriers FFHandball et seront complétées à mesure de leur publication.</p></div></section>',
     "equipes")
 
 pages["entrainements"]=page("entrainements","Les entraînements",heading("LES <em>ENTRAÎNEMENTS</em>","Entraînements")+f'''<section class="container section after-heading"><div class="schedule-tools" data-reveal><p>Planning 2026–2027 · 11 catégories</p>{button('Télécharger le planning','assets/planning-2026-2027.svg',True)}</div><div class="paper-panel full-schedule" data-reveal><div class="schedule-filter" data-schedule-filter hidden><span class="schedule-filter-title" id="schedule-filter-title">Trouver mon horaire</span><div class="schedule-choice"><button class="schedule-filter-trigger" type="button" data-schedule-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="schedule-options" aria-labelledby="schedule-filter-title schedule-selected"><span id="schedule-selected" data-schedule-selected>Toutes les catégories</span><span class="schedule-chevron" aria-hidden="true">⌄</span></button><div class="schedule-options" id="schedule-options" data-schedule-options role="listbox" aria-label="Catégories d’entraînement" hidden><button type="button" class="schedule-option" role="option" data-schedule-value="" aria-selected="true">Toutes les catégories</button>{''.join(f'<button type="button" class="schedule-option" role="option" data-schedule-value="{escape(name, quote=True)}" aria-selected="false">{escape(name)}</button>' for name, _, _ in SCHEDULE)}</div></div><span data-schedule-count aria-live="polite">{len(SCHEDULE)} catégories affichées</span></div>{schedule()}<div class="schedule-notes"><p>F : filles · G : garçons</p><p>Hoëdic et Belle-Île : complexe sportif du Haut-Champ, 22440 Ploufragan.<br>Marcel Paul : 13 rue de Merlet, 22440 Ploufragan.<br>Trégueux : salle de motricité de l’école Pasteur.</p></div></div></section>''')
@@ -792,11 +812,14 @@ pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Bou
 
 def partner_card(name, address):
     image = partner_image(name, f"Logo {name}")
-    logo = f'<span class="partner-logo">{image}</span>' if image else ''
-    missing = ' partner-card-no-logo' if not image else ''
     destination = PARTNER_DATA['websites'][name]
+    site_attrs = f'href="{escape(destination, quote=True)}" target="_blank" rel="noopener noreferrer sponsored"'
+    logo = f'<a class="partner-logo" {site_attrs} aria-label="Visiter le site de {escape(name, quote=True)}">{image}</a>' if image else ''
+    missing = ' partner-card-no-logo' if not image else ''
     label = 'Facebook' if 'facebook.com/' in destination else 'Site officiel'
-    return f'''<a class="partner-card{missing}" href="{escape(destination, quote=True)}" target="_blank" rel="noopener noreferrer sponsored" data-reveal>{logo}<div><h2>{escape(name)}</h2><p>{escape(address)}</p><small>{label}</small></div><b>↗</b></a>'''
+    maps_query = quote(f"{name}, {address.replace(' · ', ', ')}")
+    maps_url = f"https://www.google.com/maps/search/?api=1&query={maps_query}"
+    return f'''<article class="partner-card{missing}" data-reveal>{logo}<div><a class="partner-name" {site_attrs}><h2>{escape(name)}</h2></a><a class="partner-map" href="{escape(maps_url, quote=True)}" target="_blank" rel="noopener noreferrer" aria-label="Voir l’adresse de {escape(name, quote=True)} sur Google Maps">{escape(address)} <span aria-hidden="true">↗</span></a><a class="partner-site" {site_attrs}>{label}</a></div><a class="partner-arrow" {site_attrs} aria-label="Visiter le site de {escape(name, quote=True)}">↗</a></article>'''
 
 
 partner_cards=''.join(partner_card(name, address) for name,address,handle in PARTNERS)

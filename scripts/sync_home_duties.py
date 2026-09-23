@@ -1,4 +1,4 @@
-"""Match the club's senior-men duty dates with public FFHandball home fixtures."""
+"""Collect every dated PHB home fixture from public FFHandball calendars."""
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
@@ -9,7 +9,7 @@ from sync_results import fetch, normalize_match
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
-OUTPUT = DATA / "senior_home_matches.json"
+OUTPUT = DATA / "home_matches.json"
 
 
 def fetch_team_rounds(team):
@@ -38,11 +38,10 @@ def fetch_team_rounds(team):
 
 
 def main():
-    teams = [team for team in json.loads((DATA / "competitions.json").read_text(encoding="utf-8"))
-             if team["label"] in {"Seniors masculins 1", "Seniors masculins 2"}]
-    if len(teams) != 2:
-        raise ValueError("Les deux équipes seniors masculines sont requises")
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    teams = json.loads((DATA / "competitions.json").read_text(encoding="utf-8"))
+    if not teams:
+        raise ValueError("Aucune équipe configurée")
+    with ThreadPoolExecutor(max_workers=3) as executor:
         all_matches = [match for group in executor.map(fetch_team_rounds, teams)
                        for match in group]
     matches = {}
@@ -52,13 +51,13 @@ def main():
             "opponent": match["away"], "url": match["url"],
         }
     if not matches:
-        raise ValueError("Aucun match seniors masculin à domicile retrouvé : source à vérifier")
+        raise ValueError("Aucun match du PHB à domicile retrouvé : source à vérifier")
     result = {"source": "FFHandball", "updatedAt": datetime.now(timezone.utc).isoformat(),
               "matches": sorted(matches.values(), key=lambda match: match["date"])}
     temp = OUTPUT.with_suffix(".tmp")
     temp.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     temp.replace(OUTPUT)
-    print(f"FFHandball: {len(matches)} matchs seniors masculins à domicile datés")
+    print(f"FFHandball: {len(matches)} matchs du PHB à domicile datés")
 
 
 if __name__ == "__main__":

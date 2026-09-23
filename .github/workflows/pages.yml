@@ -30,8 +30,8 @@ jobs:
         run: python -m unittest discover -s tests
       - name: Récupérer les résultats officiels
         run: python scripts/sync_results.py
-      - name: Rapprocher les matchs seniors masculins du planning de salle
-        run: python scripts/sync_senior_home.py
+      - name: Rapprocher tous les matchs à domicile du planning de salle
+        run: python scripts/sync_home_duties.py
       - name: Mettre en cache les nouveaux écussons officiels
         run: python scripts/fetch_team_logos.py
         continue-on-error: true
