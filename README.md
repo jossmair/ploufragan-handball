@@ -31,15 +31,44 @@ Chaque document contient son propre titre, sa navigation active, son contenu HTM
 - `data/site.json` : saison publique, libellé FFHandball et versions de cache des ressources.
 - `data/categories.json` : catégories, âges ou années de naissance, genre, entraînements, encadrement et pages d’équipe.
 - `data/results.json` : dernier instantané FFHandball valide utilisé pour les résultats, calendriers et classements.
-- `data/home_matches.json` : matchs à domicile rapprochés des permanences ; le synchroniseur conserve le dernier instantané valide si FFHandball est momentanément indisponible.
+- `data/home_matches.json` : matchs à domicile rapprochés des permanences, validés avant toute écriture atomique.
 - `build.py` : générateur unique des pages HTML, du sitemap, du manifeste et des contenus structurés.
-- `scripts/` : synchronisations FFHandball, contrôles du build, audit SEO, audits de performance et responsive, génération du dossier partenaire.
+- `scripts/sync_results.py` et `scripts/sync_home_duties.py` : synchronisation, validation et fallback des données FFHandball.
+- `scripts/snapshot_store.py` : restauration et persistance des deux snapshots sportifs validés entre les exécutions GitHub Actions.
+- `scripts/` : contrôles du build, audit SEO, audits de performance et responsive, génération du dossier partenaire.
 - `assets/site.css` et `assets/site.js` : présentation et comportements communs. Les pages restent lisibles sans JavaScript.
 - `tests/` et `tests/e2e/` : tests unitaires Python et parcours Chromium Playwright sur ordinateur et mobile.
-- `.github/workflows/pages.yml` : build, tests, génération PDF et publication GitHub Pages sur Ubuntu 24.04.
+- `assets/dossier-partenaire-phb.pdf` : dossier partenaire A4 généré de façon reproductible par Chromium.
+- `.github/workflows/pages.yml` : synchronisation, build, tests, génération PDF et publication GitHub Pages.
 - `archive/` : sources graphiques et anciens assets conservés dans Git, mais exclus du site publié.
 
 Les fichiers de `data/` sont utilisés au build et ne sont pas copiés dans `_site`. Les HTML générés ne doivent pas être corrigés seuls : toute modification durable doit être faite dans `build.py` ou dans la source JSON correspondante, puis régénérée.
+
+## Pipeline GitHub Pages
+
+Le workflow principal s’exécute lors d’un push sur `main`, à la demande et toutes les quatre heures (`17 */4 * * *`, heure UTC). Il utilise le runner explicitement fixé à **Ubuntu 24.04** afin d’éviter qu’un changement futur de `ubuntu-latest` modifie silencieusement Python, Node, Chromium ou les bibliothèques système.
+
+Le pipeline suit cet ordre :
+
+1. checkout de `main` et de la branche de données `phb-data-snapshots` ;
+2. restauration des derniers snapshots sportifs validés ;
+3. installation de Python 3.12, Node 22, Playwright et Chromium ;
+4. tests unitaires ;
+5. synchronisation FFHandball des résultats et matchs à domicile ;
+6. génération du site et du PDF partenaires ;
+7. audits des liens, du build et du SEO, puis tests Playwright desktop/mobile ;
+8. persistance des snapshots validés sur la branche dédiée ;
+9. création de l’artefact public et déploiement GitHub Pages.
+
+### Snapshots sportifs
+
+La branche `phb-data-snapshots` ne contient que `data/results.json`, `data/home_matches.json` et sa documentation. Elle ne déclenche pas le workflow de déploiement, limité à `main`. La concurrence GitHub Actions est sérialisée, ce qui évite deux écritures simultanées.
+
+Lorsqu’une synchronisation réussit, les deux fichiers sont validés puis enregistrés sur cette branche par `github-actions[bot]`. Lors d’une panne FFHandball, les synchroniseurs conservent les fichiers restaurés et écrivent un `WARNING` explicite. Si aucun snapshot valide n’existe ni dans la branche dédiée ni dans le dépôt, la synchronisation échoue : un fichier vide, incomplet ou corrompu n’est jamais publié.
+
+### Identifiant de build
+
+Chaque page HTML contient une balise invisible de la forme `<meta name="phb-build" content="08c2672">`. Dans GitHub Actions, la valeur vient du SHA du commit déployé. En local, `build.py` lit le commit Git courant et utilise `local` seulement si Git n’est pas disponible. Le même identifiant est affiché dans les logs de génération.
 
 ## Changement de saison
 
@@ -66,9 +95,9 @@ La saison est centralisée. Pour passer de **2026–2027** à **2027–2028** :
 - `data/articles.json` contient les actualités. Pour ajouter un article, ajouter un objet avec un `slug` unique, un titre, une date au format `AAAA-MM-JJ`, un auteur, une image, une introduction, des paragraphes dans `content`, un titre et une description SEO. Les tableaux `players` et `staff` alimentent le carrousel et l’encadrement de cette présentation d’équipe. Placer les images dans `assets/articles/`, puis lancer `python build.py`. La liste, la page de l’article et le sitemap sont générés automatiquement.
 - `data/categories.json` est la source métier des catégories, âges ou années de naissance, créneaux, encadrement et liens d’équipe. Le Baby Hand y est défini par l’âge de 3 à 5 ans, sans fausse année de naissance.
 - `data/site.json` centralise la saison et les versions de ressources CSS/JavaScript.
-- `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures, reconstruit le site et le publie.
+- `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures, reconstruit le site, exécute les tests et le publie sur Ubuntu 24.04.
 
-Le dossier `data/` sert uniquement au build et n’est plus copié dans le site public : aucune page ni aucun script navigateur ne charge directement ces JSON. Si FFHandball est temporairement indisponible, les scripts conservent le dernier instantané valide, écrivent un avertissement explicite et laissent le build continuer.
+Le dossier `data/` sert uniquement au build et n’est plus copié dans le site public : aucune page ni aucun script navigateur ne charge directement ces JSON. Les derniers snapshots sportifs validés survivent aux runners éphémères grâce à la branche `phb-data-snapshots`.
 
 - `assets/site.css` : mise en page, couleurs et effets visuels.
 - `assets/site.js` : menu mobile, apparitions au défilement, montée des scores, carrousels de la boutique, progression de lecture, parallaxe et légère inclinaison des cartes à la souris.
@@ -93,7 +122,7 @@ Les résultats et calendriers proviennent des pages publiques FFHandball des neu
 
 Les coordonnées du club ont été vérifiées dans l’annuaire municipal le 12 septembre 2026 : https://www.ploufragan.fr/association/ploufragan-handball
 
-Les liens sociaux proviennent des fichiers fournis. Les renseignements d’édition et de responsable de publication restent à fournir pour compléter les mentions légales. Les liens de contact ouvrent la messagerie du visiteur ; le site n’envoie ni ne stocke de messages.
+Les liens sociaux proviennent des fichiers fournis. Les mentions légales indiquent l’association éditrice, son siège, ses identifiants, la directrice de publication et l’hébergeur. Les liens de contact ouvrent la messagerie du visiteur ; le site n’envoie ni ne stocke de messages.
 
 ## Publication et aperçu
 
