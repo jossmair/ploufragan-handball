@@ -7,7 +7,7 @@ on:
     - cron: '17 */4 * * *'
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -18,14 +18,24 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-24.04
+    env:
+      PHB_BUILD_ID: ${{ github.sha }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Récupérer le dernier snapshot sportif validé
+        uses: actions/checkout@v4
+        with:
+          ref: phb-data-snapshots
+          path: .phb-snapshots
+          fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Restaurer les snapshots sportifs
+        run: python scripts/snapshot_store.py restore .phb-snapshots
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -54,6 +64,19 @@ jobs:
           python scripts/seo_audit.py
       - name: Tests navigateur
         run: npm run test:e2e
+      - name: Persister les snapshots sportifs validés
+        run: |
+          python scripts/snapshot_store.py save .phb-snapshots
+          cd .phb-snapshots
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/results.json data/home_matches.json
+          if git diff --cached --quiet; then
+            echo "Snapshots sportifs inchangés."
+          else
+            git commit -m "data: actualise les snapshots FFHandball"
+            git push origin HEAD:phb-data-snapshots
+          fi
       - name: Préparer les fichiers publics
         run: |
           mkdir _site

@@ -3,5 +3,6 @@ test-results/
 playwright-report/
 debug.log
 _site/
+.phb-snapshots/
 __pycache__/
 *.pyc

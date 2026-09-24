@@ -5,10 +5,37 @@ from urllib.parse import quote
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 import json
+import os
 import re
+import subprocess
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
+
+
+def resolve_build_id():
+    """Return a deterministic deployed-version marker, with a safe local fallback."""
+    candidate = os.environ.get("PHB_BUILD_ID", "").strip()
+    if re.fullmatch(r"[0-9a-fA-F]{7,40}", candidate):
+        return candidate[:7].lower()
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short=7", "HEAD"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        candidate = result.stdout.strip()
+        if re.fullmatch(r"[0-9a-fA-F]{7}", candidate):
+            return candidate.lower()
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return "local"
+
+
+BUILD_ID = resolve_build_id()
 SITE_CONFIG = json.loads((DATA / "site.json").read_text(encoding="utf-8"))
 CATEGORY_DATA = json.loads((DATA / "categories.json").read_text(encoding="utf-8"))
 CATEGORIES = CATEGORY_DATA["categories"]
@@ -414,7 +441,7 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
     base_tag = f'<base href="{SITE_URL}">' if slug == "404" else ""
     favicon = '<link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="icon" href="assets/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180"><link rel="manifest" href="manifest.webmanifest">'
     fonts = '<link rel="preload" href="assets/fonts/barlow-condensed-italic-800.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="assets/fonts/inter-normal-400-700.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="assets/fonts/fonts.css">'
-    return f'''<!doctype html><html lang="fr"><head>{base_tag}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101012"><meta name="description" content="{escape(description,quote=True)}">{seo}<title>{escape(page_title)}</title>{favicon}{fonts}<link rel="stylesheet" href="assets/site.css?v={CSS_VERSION}"><script src="assets/site.js?v={JS_VERSION}" defer></script></head><body data-page="{body_page or slug}"><div class="site-texture" aria-hidden="true"></div><img class="watermark" src="assets/logo-phb.png" alt="" width="512" height="512" aria-hidden="true"><div class="scroll-progress" aria-hidden="true"></div><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><div class="header-inner container"><a class="brand" href="/" aria-label="Ploufragan Handball, accueil"><img src="assets/logo-phb.png" alt="" width="60" height="60"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><button class="menu-toggle" aria-controls="navigation" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button><nav id="navigation" aria-label="Navigation principale">{nav}<a class="nav-registration" href="inscriptions.html">Inscriptions <span aria-hidden="true">↗</span></a></nav></div></header><main id="contenu">{body}</main>{marquee}<footer class="site-footer"><div class="container footer-main"><a class="brand" href="/"><img src="assets/logo-phb.png" alt="Logo PHB" width="56" height="56"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><div><h2>CONTACT</h2><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a><a href="tel:+33636618800">06 36 61 88 00</a></div><div><h2>ACCÈS RAPIDE</h2><a href="resultats.html">Résultats et championnats</a><a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a></div><div><h2>RÉSEAUX SOCIAUX</h2><a class="footer-social-link facebook" href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook", False)}Facebook ↗</a><a class="footer-social-link instagram" href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram", False)}Instagram ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year">{SITE_CONFIG["copyrightYear"]}</span> Ploufragan Handball</span><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></nav><a href="#contenu">Haut de page ↑</a></div></footer></body></html>'''
+    return f'''<!doctype html><html lang="fr"><head>{base_tag}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101012"><meta name="description" content="{escape(description,quote=True)}"><meta name="phb-build" content="{BUILD_ID}">{seo}<title>{escape(page_title)}</title>{favicon}{fonts}<link rel="stylesheet" href="assets/site.css?v={CSS_VERSION}"><script src="assets/site.js?v={JS_VERSION}" defer></script></head><body data-page="{body_page or slug}"><div class="site-texture" aria-hidden="true"></div><img class="watermark" src="assets/logo-phb.png" alt="" width="512" height="512" aria-hidden="true"><div class="scroll-progress" aria-hidden="true"></div><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><div class="header-inner container"><a class="brand" href="/" aria-label="Ploufragan Handball, accueil"><img src="assets/logo-phb.png" alt="" width="60" height="60"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><button class="menu-toggle" aria-controls="navigation" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button><nav id="navigation" aria-label="Navigation principale">{nav}<a class="nav-registration" href="inscriptions.html">Inscriptions <span aria-hidden="true">↗</span></a></nav></div></header><main id="contenu">{body}</main>{marquee}<footer class="site-footer"><div class="container footer-main"><a class="brand" href="/"><img src="assets/logo-phb.png" alt="Logo PHB" width="56" height="56"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><div><h2>CONTACT</h2><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a><a href="tel:+33636618800">06 36 61 88 00</a></div><div><h2>ACCÈS RAPIDE</h2><a href="resultats.html">Résultats et championnats</a><a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a></div><div><h2>RÉSEAUX SOCIAUX</h2><a class="footer-social-link facebook" href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook", False)}Facebook ↗</a><a class="footer-social-link instagram" href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram", False)}Instagram ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year">{SITE_CONFIG["copyrightYear"]}</span> Ploufragan Handball</span><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></nav><a href="#contenu">Haut de page ↑</a></div></footer></body></html>'''
 
 
 def article_date(value):
@@ -1077,7 +1104,7 @@ for slug, content in pages.items():
     target.write_text(content, encoding="utf-8")
 # Keep links shared before the rename usable without indexing duplicate content.
 (ROOT / "actualites.html").write_text(
-    '<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Blog du PHB</title>'
+    f'<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="phb-build" content="{BUILD_ID}"><title>Blog du PHB</title>'
     '<link rel="canonical" href="https://ploufragan-handball.fr/blog.html">'
     '<meta name="robots" content="noindex,follow">'
     '<meta http-equiv="refresh" content="0; url=blog.html"></head>'
@@ -1094,7 +1121,7 @@ sitemap_urls = ''.join(
     encoding="utf-8",
 )
 (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
-print(f"Generated {len(pages)} HTML pages, {len(PRODUCTS)} products and {len(RESULTS['teams'])} competitions.")
+print(f"Generated {len(pages)} HTML pages, {len(PRODUCTS)} products and {len(RESULTS['teams'])} competitions. PHB build: {BUILD_ID}")
 
 # The downloadable timetable shares the source data with the on-page table.
 from xml.sax.saxutils import escape as xml_escape

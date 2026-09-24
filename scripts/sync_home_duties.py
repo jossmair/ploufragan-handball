@@ -13,6 +13,7 @@ except ImportError:  # Direct execution: python scripts/sync_home_duties.py
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUTPUT = DATA / "home_matches.json"
+CURRENT_SEASON = json.loads((DATA / "site.json").read_text(encoding="utf-8"))["season"]
 
 
 def validate_snapshot(snapshot):
@@ -20,6 +21,8 @@ def validate_snapshot(snapshot):
     if not isinstance(snapshot, dict):
         return False
     if snapshot.get("source") != "FFHandball":
+        return False
+    if "season" in snapshot and snapshot["season"] != CURRENT_SEASON:
         return False
     updated_at = snapshot.get("updatedAt")
     try:
@@ -56,6 +59,19 @@ def is_valid_snapshot(path=OUTPUT):
     except (OSError, ValueError, TypeError):
         return False
     return validate_snapshot(snapshot)
+
+
+def write_snapshot_atomic(snapshot, output=OUTPUT):
+    """Validate the serialized temporary file before replacing the last good snapshot."""
+    output = Path(output)
+    temp = output.with_name(f".{output.name}.tmp")
+    try:
+        temp.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        if not is_valid_snapshot(temp):
+            raise ValueError("Snapshot FFHandball temporaire invalide")
+        temp.replace(output)
+    finally:
+        temp.unlink(missing_ok=True)
 
 
 def fetch_team_rounds(team):
@@ -98,13 +114,12 @@ def refresh():
         }
     if not matches:
         raise ValueError("Aucun match du PHB à domicile retrouvé : source à vérifier")
-    result = {"source": "FFHandball", "updatedAt": datetime.now(timezone.utc).isoformat(),
+    result = {"source": "FFHandball", "season": CURRENT_SEASON,
+              "updatedAt": datetime.now(timezone.utc).isoformat(),
               "matches": sorted(matches.values(), key=lambda match: match["date"])}
     if not validate_snapshot(result):
         raise ValueError("Snapshot FFHandball des matchs à domicile incomplet")
-    temp = OUTPUT.with_suffix(".tmp")
-    temp.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    temp.replace(OUTPUT)
+    write_snapshot_atomic(result, OUTPUT)
     print(f"FFHandball: {len(matches)} matchs du PHB à domicile datés")
     return result
 

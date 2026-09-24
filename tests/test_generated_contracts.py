@@ -2,6 +2,7 @@ import subprocess
 import sys
 import unittest
 from pathlib import Path
+import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +29,14 @@ class GeneratedSiteContracts(unittest.TestCase):
         home = (ROOT / 'index.html').read_text(encoding='utf-8')
         clone = home.split('class="sponsor-clone"', 1)[1].split('</div>', 1)[0]
         self.assertNotIn('<a ', clone)
+        self.assertNotIn('data-sponsor-toggle', home)
+
+    def test_generated_pages_expose_a_deterministic_build_id(self):
+        for path in ROOT.glob('*.html'):
+            source = path.read_text(encoding='utf-8')
+            match = re.search(r'<meta name="phb-build" content="([^"]+)">', source)
+            self.assertIsNotNone(match, path.name)
+            self.assertRegex(match.group(1), r'^(?:[0-9a-f]{7}|local)$')
 
     def test_no_old_season_in_public_pages(self):
         generated = '\n'.join(path.read_text(encoding='utf-8') for path in ROOT.glob('*.html'))

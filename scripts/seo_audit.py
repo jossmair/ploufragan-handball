@@ -21,6 +21,11 @@ COMPETITIVE = {
 ALLOWED_NOINDEX = {"404.html", "actualites.html", "permanences-seniors-masculins.html"}
 
 
+def duplicate_html_ids(page):
+    """Return duplicate HTML ids without inspecting unrelated JSON-LD @id values."""
+    return sorted(item for item, count in page.ids.items() if count > 1)
+
+
 class Page(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -265,7 +270,7 @@ def audit():
             errors.append("404.html: noindex absent")
         if relative == "actualites.html" and not (noindex and page.refresh):
             errors.append("actualites.html: ancienne URL doit rester une redirection non indexable")
-        duplicates = sorted(item for item, count in page.ids.items() if count > 1)
+        duplicates = duplicate_html_ids(page)
         if duplicates:
             errors.append(f"{relative}: id dupliqué : {', '.join(duplicates)}")
         for item in page.text_elements:
