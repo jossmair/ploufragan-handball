@@ -119,8 +119,7 @@
       "publicIntro": "L’équipe Seniors féminines représente le PHB en compétition et retrouve ici son entraînement, ses matchs et son classement officiel.",
       "training": [{"day": "Jeudi", "time": "20h30–22h", "venue": "Hoëdic"}],
       "staff": {"role": "Coach", "names": "Elsa (« Mamy »)"},
-      "landing": {"title": "SENIORS<br>FÉMININES", "meta": "Équipe féminine adulte", "mark": "SF", "cardPhoto": "equipes/senior-feminine-card.webp"},
-      "pagePhoto": {"src": "assets/seniors-feminines.png", "width": 733, "height": 910, "alt": "Affiche officielle de l’équipe Seniors féminines du Ploufragan Handball"}
+      "landing": {"title": "SENIORS<br>FÉMININES", "meta": "Équipe féminine adulte", "mark": "SF", "cardPhoto": "equipes/senior-feminine-card.webp"}
     },
     "seniors-masculins": {
       "label": "Seniors masculins",
