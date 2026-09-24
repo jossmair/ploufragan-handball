@@ -490,6 +490,57 @@ body[data-page="index"] .home-hero+.section{padding-top:34px}
 .home-weekend .section-heading{margin-bottom:25px}
 .home-weekend-empty{margin:0;padding:24px;border:1px solid var(--line);border-left:3px solid var(--red);background:#111116dd;color:#c9c9d0}
 
+/* A discreet handball action sits behind the complete home hero. */
+body[data-page="index"] .home-hero::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  aspect-ratio:1507/660;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(#09090db5,#09090db5),url('photos/home-handball-action-bg.webp') center top/100% auto no-repeat;
+  filter:grayscale(1) contrast(1.2);
+  opacity:1;
+  -webkit-mask-image:linear-gradient(188deg,#000 0,#000 56%,transparent 64%);
+  mask-image:linear-gradient(188deg,#000 0,#000 56%,transparent 64%);
+}
+body[data-page="index"] .home-hero{isolation:isolate}
+body[data-page="index"] .home-hero>.hero-logo-stage{z-index:2}
+@media(max-width:850px){body[data-page="index"] .home-hero::before{background-position:center top;background-size:145% auto}}
+
+/* Panoramic handball photography for the nine main section headings. */
+body[data-page="club"]{--page-heading-photo:url('photos/page-headings/club.webp')}
+body[data-page="equipes"]{--page-heading-photo:url('photos/page-headings/equipes.webp')}
+body[data-page="entrainements"]{--page-heading-photo:url('photos/page-headings/entrainements.webp')}
+body[data-page="resultats"]{--page-heading-photo:url('photos/page-headings/resultats.webp')}
+body[data-page="blog"]{--page-heading-photo:url('photos/page-headings/blog.webp')}
+body[data-page="boutique"]{--page-heading-photo:url('photos/page-headings/boutique.webp')}
+body[data-page="partenaires"]{--page-heading-photo:url('photos/page-headings/partenaires.webp')}
+body[data-page="contact"]{--page-heading-photo:url('photos/page-headings/contact.webp')}
+body[data-page="inscriptions"]{--page-heading-photo:url('photos/page-headings/inscriptions.webp')}
+:is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading{
+  isolation:isolate;
+  min-height:clamp(330px,32vw,470px);
+  padding-top:clamp(32px,4vw,58px);
+  padding-bottom:clamp(45px,6vw,78px);
+}
+:is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,#09090de8 0%,#09090db5 48%,#09090da8 100%),var(--page-heading-photo) center top/100% auto no-repeat;
+  filter:grayscale(1) contrast(1.18);
+  -webkit-mask-image:linear-gradient(188deg,#000 0,#000 62%,transparent 76%);
+  mask-image:linear-gradient(188deg,#000 0,#000 62%,transparent 76%);
+}
+:is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading>*{position:relative;z-index:2}
+@media(max-width:850px){
+  :is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading{min-height:clamp(290px,64vw,420px);padding-top:24px;padding-bottom:45px}
+  :is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading::before{background-size:145% auto;background-position:center top;-webkit-mask-image:linear-gradient(188deg,#000 0,#000 58%,transparent 76%);mask-image:linear-gradient(188deg,#000 0,#000 58%,transparent 76%)}
+}
+
 /* Preview: exchange the home film and blog logo animation. */
 .hero-intro-media{position:relative;width:min(112%,700px);aspect-ratio:16/9}
 .hero-intro-media::before{content:"";position:absolute;inset:14% 12%;background:#ed071927;filter:blur(32px)}
@@ -573,6 +624,7 @@ body[data-page="index"] .home-hero+.section{padding-top:34px}
 @media(max-width:850px){
   .home-hero{align-items:start;grid-template-rows:none;gap:0}
   .home-hero .hero-copy{display:contents}
+  .home-hero .hero-copy>*{position:relative;z-index:3}
   .home-hero .hero-copy>.eyebrow{order:1}
   .home-hero .hero-copy>h1{order:2}
   .home-hero .hero-copy>.hero-rule{order:3}
