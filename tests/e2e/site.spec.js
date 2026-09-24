@@ -115,6 +115,32 @@ test('partenaires : dock unique sans commande superflue', async ({ page }) => {
   await expect(dock).toBeVisible();
   await expect(dock.locator('[data-sponsor-toggle]')).toHaveCount(0);
   await expect(dock.locator('.sponsor-clone a')).toHaveCount(0);
+  await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight * .7));
+  await page.evaluate(() => scrollBy(0, -500));
+  await expect(dock).toBeVisible();
+  const dockBox = await dock.boundingBox();
+  const viewport = page.viewportSize();
+  expect(dockBox).not.toBeNull();
+  expect(viewport).not.toBeNull();
+  expect(Math.abs(dockBox.y + dockBox.height - viewport.height)).toBeLessThanOrEqual(1);
+});
+
+test('mobile : le dernier résultat des équipes ne se chevauche pas', async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith('mobile'));
+  for (const path of ['/seniors-masculins-1.html', '/seniors-feminines.html', '/u13-garcons.html']) {
+    await page.goto(path);
+    const cards = page.locator('.season-result-teams');
+    for (let index = 0; index < await cards.count(); index += 1) {
+      const state = await cards.nth(index).evaluate(element => {
+        const children = [...element.children].map(child => child.getBoundingClientRect());
+        const overlaps = children.some((a, first) => children.slice(first + 1).some(b => (
+          a.left < b.right - 1 && a.right > b.left + 1 && a.top < b.bottom - 1 && a.bottom > b.top + 1
+        )));
+        return { overlaps, overflows: element.scrollWidth > element.clientWidth + 1 };
+      });
+      expect(state).toEqual({ overlaps: false, overflows: false });
+    }
+  }
 });
 
 test('inscriptions : navigation par menu déroulant', async ({ page }) => {

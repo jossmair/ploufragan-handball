@@ -80,12 +80,12 @@ body[data-page="inscriptions"] .site-texture,body[data-page="404"] .site-texture
 .sponsor-marquee-title span{transform:skew(8deg);font:900 italic 1.18rem var(--display);letter-spacing:1.5px}
 .sponsor-marquee-window{overflow:hidden;padding:16px 0}
 .sponsor-track,.sponsor-list,.sponsor-clone{display:flex;align-items:center;width:max-content}
-.sponsor-track{animation:sponsors-roll 52s linear infinite}
-.sponsor-track:hover{animation-play-state:paused}
+.sponsor-track{animation:sponsors-roll 52s linear infinite;will-change:transform;backface-visibility:hidden;transform:translate3d(0,0,0)}
+@media(hover:hover) and (pointer:fine){.sponsor-track:hover{animation-play-state:paused}}
 .sponsor-list{list-style:none;margin:0;padding:0}.sponsor-list li{display:flex}.sponsor-track a,.sponsor-clone>span{display:flex;align-items:center;gap:10px;white-space:nowrap;margin-right:42px;font:700 .9rem var(--display);text-transform:uppercase;color:#d4d4da}
 .sponsor-track a>img,.sponsor-clone>span>img{width:44px;height:32px;object-fit:contain;padding:3px 6px;border:1px solid #ffffff26;border-radius:3px;background:#fff}
 .site-footer{margin-top:0}
-@keyframes sponsors-roll{to{transform:translateX(-50%)}}
+@keyframes sponsors-roll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 
 @media(max-width:850px){.people-grid{grid-template-columns:1fr}.person-president{min-height:290px}.sponsor-marquee{grid-template-columns:1fr}.sponsor-marquee-title{justify-self:start;padding:7px 26px}.sponsor-marquee-window{padding-block:13px}}
 @media(max-width:520px){.person-card h3{font-size:1.9rem}.product-controls{bottom:9px}.product-copy>a{left:20px}.sponsor-track a{margin-right:30px;font-size:.8rem}}
@@ -295,7 +295,7 @@ body[data-page="equipes"] .teams-grid .team-card[data-team="ecole-de-hand"] .car
 /* Persistent partner dock. */
 :root{--partner-dock-height:66px}
 body{padding-bottom:calc(var(--partner-dock-height) + env(safe-area-inset-bottom,0px))}
-.sponsor-marquee{position:fixed;left:0;right:0;bottom:0;z-index:48;height:calc(var(--partner-dock-height) + env(safe-area-inset-bottom,0px));margin-top:0;padding-bottom:env(safe-area-inset-bottom,0px);grid-template-columns:auto minmax(0,1fr);box-shadow:0 -10px 34px #0009;backdrop-filter:blur(16px)}
+.sponsor-marquee{position:fixed;left:0;right:0;bottom:0;z-index:48;height:calc(var(--partner-dock-height) + env(safe-area-inset-bottom,0px));margin-top:0;padding-bottom:env(safe-area-inset-bottom,0px);grid-template-columns:auto minmax(0,1fr);box-shadow:0 -10px 34px #0009;transform:translate3d(0,0,0);backface-visibility:hidden;contain:layout paint style}
 .sponsor-marquee-title{padding-inline:24px}
 .sponsor-marquee-window{min-width:0;padding-block:15px}
 @media(max-width:850px){:root{--partner-dock-height:58px}.sponsor-marquee{grid-template-columns:auto minmax(0,1fr)}.sponsor-marquee-title{justify-self:stretch;padding:0 16px}.sponsor-marquee-window{padding-block:12px}.sponsor-track a>img,.sponsor-clone>span>img{width:42px;height:32px}}
@@ -395,6 +395,7 @@ body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-botto
 .season-result:hover{background:#ffffff13}
 .season-result time{display:block;color:#aaaab3;font-size:.72rem;text-transform:uppercase;margin-bottom:11px}
 .season-result-teams{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center;line-height:1.35}
+.season-result-teams>span{min-width:0;overflow-wrap:anywhere}
 .season-result-teams>span:last-child{text-align:right}
 .season-result-teams strong{color:#fff;font:900 italic 1.9rem/1 var(--display);white-space:nowrap}
 .season-source{display:block;margin-top:14px}
@@ -404,7 +405,7 @@ body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-botto
 .team-last-card h2{font-size:1.95rem;margin-bottom:18px}
 @media(max-width:1000px){.team-detail-grid{grid-template-columns:1fr}.team-detail-main{grid-template-columns:1fr 1fr}.team-detail-grid.no-ranking{grid-template-columns:1fr 1fr}.team-season-head h2{font-size:2.2rem}}
 @media(min-width:701px) and (max-width:1000px){.team-detail-main .team-registration{grid-column:1/-1}}
-@media(max-width:700px){.team-detail-main,.team-detail-grid.no-ranking{grid-template-columns:1fr}.team-detail-grid{gap:18px}.team-detail-main,.team-season-stack{gap:18px}.team-season-card{padding:21px}.team-season-head{flex-wrap:wrap}.team-season-head>a{margin-top:0}.team-rank strong{font-size:3.2rem}.pool-table{font-size:.73rem}.pool-table th,.pool-table td{padding:8px 4px}.team-detail-grid .schedule tbody th>a{min-width:145px;font-size:1.45rem;padding:10px 14px}}
+@media(max-width:700px){.team-detail-main,.team-detail-grid.no-ranking{grid-template-columns:1fr}.team-detail-grid{gap:18px}.team-detail-main,.team-season-stack{gap:18px}.team-season-card{padding:21px}.team-season-head{flex-wrap:wrap}.team-season-head>a{margin-top:0}.team-rank strong{font-size:3.2rem}.pool-table{font-size:.73rem}.pool-table th,.pool-table td{padding:8px 4px}.team-detail-grid .schedule tbody th>a{min-width:145px;font-size:1.45rem;padding:10px 14px}.team-last-card{padding:22px 20px}.season-result-teams{grid-template-columns:1fr;gap:10px;text-align:center}.season-result-teams>span:last-child{text-align:center}.season-result-teams strong{font-size:2.3rem}}
 @media(max-width:520px){body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"]{min-height:390px}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo{width:78%}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-card-copy{width:74%;padding:26px}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] h2{font-size:2.5rem}.season-result-teams{gap:6px}.season-result-teams strong{font-size:1.6rem}}
 .youth-choice{min-height:112px}
 .youth-choice-body strong{font-size:clamp(1.35rem,2.1vw,1.9rem)}
@@ -494,19 +495,23 @@ body[data-page="index"] .home-hero+.section{padding-top:34px}
 body[data-page="index"] .home-hero::before{
   content:"";
   position:absolute;
-  inset:0 0 auto;
+  inset:0 auto auto 50%;
+  width:100vw;
   aspect-ratio:1507/660;
   z-index:1;
   pointer-events:none;
   background:linear-gradient(#09090db5,#09090db5),url('photos/home-handball-action-bg.webp') center top/100% auto no-repeat;
+  background-color:#09090d;
+  background-size:auto,100% auto;
   filter:grayscale(1) contrast(1.2);
   opacity:1;
+  transform:translateX(-50%);
   -webkit-mask-image:linear-gradient(188deg,#000 0,#000 56%,transparent 64%);
   mask-image:linear-gradient(188deg,#000 0,#000 56%,transparent 64%);
 }
 body[data-page="index"] .home-hero{isolation:isolate}
 body[data-page="index"] .home-hero>.hero-logo-stage{z-index:2}
-@media(max-width:850px){body[data-page="index"] .home-hero::before{background-position:center top;background-size:145% auto}}
+@media(max-width:850px){body[data-page="index"] .home-hero::before{inset:0 auto auto 50%;height:clamp(300px,88vw,390px);aspect-ratio:auto;background-image:linear-gradient(#09090db5,#09090db5),url('photos/home-handball-action-bg.webp');background-position:center,center top;background-size:auto,190% auto;background-repeat:no-repeat,no-repeat;-webkit-mask-image:linear-gradient(198deg,#000 0,#000 38%,transparent 82%);mask-image:linear-gradient(198deg,#000 0,#000 38%,transparent 82%)}}
 
 /* Panoramic handball photography for the nine main section headings. */
 body[data-page="club"]{--page-heading-photo:url('photos/page-headings/club.webp')}
@@ -518,6 +523,7 @@ body[data-page="boutique"]{--page-heading-photo:url('photos/page-headings/boutiq
 body[data-page="partenaires"]{--page-heading-photo:url('photos/page-headings/partenaires.webp')}
 body[data-page="contact"]{--page-heading-photo:url('photos/page-headings/contact.webp')}
 body[data-page="inscriptions"]{--page-heading-photo:url('photos/page-headings/inscriptions.webp')}
+:is(body[data-page="club"],body[data-page="equipes"],body[data-page="resultats"],body[data-page="partenaires"],body[data-page="contact"]){--page-heading-mirror:-1;--page-heading-mask-angle:172deg}
 :is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading{
   isolation:isolate;
   min-height:clamp(330px,32vw,470px);
@@ -527,19 +533,25 @@ body[data-page="inscriptions"]{--page-heading-photo:url('photos/page-headings/in
 :is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading::before{
   content:"";
   position:absolute;
-  inset:0;
+  inset:0 auto 0 50%;
+  width:100vw;
   z-index:0;
   pointer-events:none;
-  background:linear-gradient(90deg,#09090de8 0%,#09090db5 48%,#09090da8 100%),var(--page-heading-photo) center top/100% auto no-repeat;
+  background:linear-gradient(#09090db8,#09090db8),var(--page-heading-photo) center top/100% auto no-repeat;
+  background-color:#09090d;
+  background-size:auto,100% auto;
   filter:grayscale(1) contrast(1.18);
-  -webkit-mask-image:linear-gradient(188deg,#000 0,#000 62%,transparent 76%);
-  mask-image:linear-gradient(188deg,#000 0,#000 62%,transparent 76%);
+  transform:translateX(-50%) scaleX(var(--page-heading-mirror,1));
+  transform-origin:center;
+  -webkit-mask-image:linear-gradient(var(--page-heading-mask-angle,188deg),#000 0,#000 62%,transparent 76%);
+  mask-image:linear-gradient(var(--page-heading-mask-angle,188deg),#000 0,#000 62%,transparent 76%);
 }
 :is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading>*{position:relative;z-index:2}
 @media(max-width:850px){
   :is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading{min-height:clamp(290px,64vw,420px);padding-top:24px;padding-bottom:45px}
-  :is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading::before{background-size:145% auto;background-position:center top;-webkit-mask-image:linear-gradient(188deg,#000 0,#000 58%,transparent 76%);mask-image:linear-gradient(188deg,#000 0,#000 58%,transparent 76%)}
+  :is(body[data-page="club"],body[data-page="equipes"],body[data-page="entrainements"],body[data-page="resultats"],body[data-page="blog"],body[data-page="boutique"],body[data-page="partenaires"],body[data-page="contact"],body[data-page="inscriptions"]) .page-heading::before{inset:0 auto auto 50%;height:clamp(280px,84vw,340px);background-image:linear-gradient(#09090db8,#09090db8),var(--page-heading-photo);background-size:auto,190% auto;background-position:center,center top;background-repeat:no-repeat,no-repeat;-webkit-mask-image:linear-gradient(var(--page-heading-mobile-mask-angle,198deg),#000 0,#000 38%,transparent 82%);mask-image:linear-gradient(var(--page-heading-mobile-mask-angle,198deg),#000 0,#000 38%,transparent 82%)}
 }
+@media(max-width:850px){:is(body[data-page="club"],body[data-page="equipes"],body[data-page="resultats"],body[data-page="partenaires"],body[data-page="contact"]){--page-heading-mobile-mask-angle:162deg}}
 
 /* Preview: exchange the home film and blog logo animation. */
 .hero-intro-media{position:relative;width:min(112%,700px);aspect-ratio:16/9}
@@ -674,7 +686,6 @@ body[data-page="inscriptions"]{--page-heading-photo:url('photos/page-headings/in
 .org-card ul{margin-bottom:25px}
 .org-office .org-contact{align-self:center}
 @media(max-width:1000px){body[data-page="seniors-masculins-1"] .team-detail-main,body[data-page="seniors-masculins-2"] .team-detail-main{grid-template-columns:1fr}body[data-page^="seniors-masculins-"] .team-last-card .season-result{padding:18px 0 0;background:none;border:0;border-top:1px solid #ffffff30}}
-@media(max-width:700px){body[data-page^="seniors-masculins-"] .team-last-card{padding:22px 20px}body[data-page^="seniors-masculins-"] .team-last-card .season-result-teams{grid-template-columns:1fr;gap:10px;text-align:center}body[data-page^="seniors-masculins-"] .team-last-card .season-result-teams>span:last-child{text-align:center}body[data-page^="seniors-masculins-"] .team-last-card .season-result-teams strong{font-size:2.3rem}}
 @media(max-width:520px){.schedule-filter{align-items:stretch;flex-direction:column}.schedule-choice{width:100%}}
 
 /* New team photography: transparent card cutout and editorial page photos. */
