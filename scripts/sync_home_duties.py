@@ -5,11 +5,57 @@ from pathlib import Path
 import json
 import sys
 
-from sync_results import fetch, normalize_match
+try:
+    from .sync_results import fetch, normalize_match
+except ImportError:  # Direct execution: python scripts/sync_home_duties.py
+    from sync_results import fetch, normalize_match
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUTPUT = DATA / "home_matches.json"
+
+
+def validate_snapshot(snapshot):
+    """Return whether a home-fixture snapshot is complete enough for fallback use."""
+    if not isinstance(snapshot, dict):
+        return False
+    if snapshot.get("source") != "FFHandball":
+        return False
+    updated_at = snapshot.get("updatedAt")
+    try:
+        parsed_updated_at = datetime.fromisoformat(updated_at)
+    except (TypeError, ValueError):
+        return False
+    if parsed_updated_at.tzinfo is None:
+        return False
+    matches = snapshot.get("matches")
+    if not isinstance(matches, list) or not matches:
+        return False
+    required = ("id", "category", "date", "opponent", "url")
+    ids = set()
+    for match in matches:
+        if not isinstance(match, dict):
+            return False
+        if any(not isinstance(match.get(key), str) or not match[key].strip() for key in required):
+            return False
+        if match["id"] in ids or not match["url"].startswith("https://www.ffhandball.fr/competitions/"):
+            return False
+        try:
+            if datetime.fromisoformat(match["date"]).tzinfo is None:
+                return False
+        except ValueError:
+            return False
+        ids.add(match["id"])
+    return True
+
+
+def is_valid_snapshot(path=OUTPUT):
+    """A fallback must be parseable, non-empty and structurally complete."""
+    try:
+        snapshot = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError, TypeError):
+        return False
+    return validate_snapshot(snapshot)
 
 
 def fetch_team_rounds(team):
@@ -37,7 +83,7 @@ def fetch_team_rounds(team):
         return [match for matches in executor.map(get_round, wanted) for match in matches]
 
 
-def main():
+def refresh():
     teams = json.loads((DATA / "competitions.json").read_text(encoding="utf-8"))
     if not teams:
         raise ValueError("Aucune équipe configurée")
@@ -54,16 +100,28 @@ def main():
         raise ValueError("Aucun match du PHB à domicile retrouvé : source à vérifier")
     result = {"source": "FFHandball", "updatedAt": datetime.now(timezone.utc).isoformat(),
               "matches": sorted(matches.values(), key=lambda match: match["date"])}
+    if not validate_snapshot(result):
+        raise ValueError("Snapshot FFHandball des matchs à domicile incomplet")
     temp = OUTPUT.with_suffix(".tmp")
     temp.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     temp.replace(OUTPUT)
     print(f"FFHandball: {len(matches)} matchs du PHB à domicile datés")
+    return result
+
+
+def main():
+    try:
+        refresh()
+    except Exception as exc:
+        if is_valid_snapshot(OUTPUT):
+            print(
+                f"WARNING: FFHandball indisponible — utilisation des dernières données valides. ({exc})",
+                file=sys.stderr,
+            )
+            return 0
+        raise
+    return 0
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as exc:
-        print(f"WARNING: FFHandball indisponible — utilisation des dernières données valides. ({exc})", file=sys.stderr)
-        if not OUTPUT.exists():
-            raise
+    raise SystemExit(main())
