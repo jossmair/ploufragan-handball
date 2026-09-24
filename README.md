@@ -26,6 +26,36 @@ Chaque document contient son propre titre, sa navigation active, son contenu HTM
 
 `build.py` contient les modèles communs. Les informations de catégories et la saison sont centralisées dans `data/categories.json` et `data/site.json`. Après modification, lancer `python build.py` à la racine du projet. Python utilise uniquement sa bibliothèque standard. Les fichiers HTML générés sont suivis dans Git et directement publiables sur GitHub Pages.
 
+## Architecture
+
+- `data/site.json` : saison publique, libellé FFHandball et versions de cache des ressources.
+- `data/categories.json` : catégories, âges ou années de naissance, genre, entraînements, encadrement et pages d’équipe.
+- `data/results.json` : dernier instantané FFHandball valide utilisé pour les résultats, calendriers et classements.
+- `data/home_matches.json` : matchs à domicile rapprochés des permanences ; le synchroniseur conserve le dernier instantané valide si FFHandball est momentanément indisponible.
+- `build.py` : générateur unique des pages HTML, du sitemap, du manifeste et des contenus structurés.
+- `scripts/` : synchronisations FFHandball, contrôles du build, audit SEO, audits de performance et responsive, génération du dossier partenaire.
+- `assets/site.css` et `assets/site.js` : présentation et comportements communs. Les pages restent lisibles sans JavaScript.
+- `tests/` et `tests/e2e/` : tests unitaires Python et parcours Chromium Playwright sur ordinateur et mobile.
+- `.github/workflows/pages.yml` : build, tests, génération PDF et publication GitHub Pages sur Ubuntu 24.04.
+- `archive/` : sources graphiques et anciens assets conservés dans Git, mais exclus du site publié.
+
+Les fichiers de `data/` sont utilisés au build et ne sont pas copiés dans `_site`. Les HTML générés ne doivent pas être corrigés seuls : toute modification durable doit être faite dans `build.py` ou dans la source JSON correspondante, puis régénérée.
+
+## Changement de saison
+
+La saison est centralisée. Pour passer de **2026–2027** à **2027–2028** :
+
+1. changer `season.display`, `season.slug` et `season.ffhandball` dans `data/site.json` ;
+2. mettre à jour les catégories, tranches d’âge et années de naissance fiables dans `data/categories.json` ;
+3. vérifier tous les horaires et salles d’entraînement ;
+4. vérifier les coachs et encadrants ;
+5. mettre à jour les compétitions et identifiants publics FFHandball dans `data/results.json`, puis lancer les synchronisations ;
+6. vérifier les tarifs et démarches dans `data/inscriptions.json` ;
+7. vérifier les photos d’équipes, les textes saisonniers et les images Open Graph ;
+8. lancer `python build.py` deux fois et contrôler que la sortie reste déterministe ;
+9. lancer tous les tests indiqués ci-dessous ;
+10. publier seulement lorsque tous les contrôles sont verts.
+
 - `scripts/sync_results.py` récupère les rencontres publiques du PHB sur FFHandball.
 - `scripts/download_variants.py` reconstruit les variantes locales des articles depuis leurs visuels publics Equip Club.
 - `scripts/check_site.py` contrôle les références vers les fichiers locaux.
@@ -47,13 +77,13 @@ Les effets respectent `prefers-reduced-motion`. Le menu utilise `aria-expanded`,
 
 ## Visuels
 
-- Logo, animations, fonds et véritables affiches des seniors : fournis par le commanditaire. La vidéo d’introduction joue une fois à l’accueil ; le GIF du blog conserve sa dernière image.
+- Logo, animations, fonds et véritables affiches des seniors : fournis par le commanditaire. Les vidéos d’introduction jouent une fois et restent figées sur leur dernière image ; elles respectent aussi `prefers-reduced-motion`.
 - `assets/photos/` : sélection de photos publiées par le compte Instagram du club, reliées à leur publication d’origine.
 - `assets/boutique/` : visuels officiels et variantes de couleurs des produits Equip Club.
-- `assets/planning-2026-2027.svg` : planning téléchargeable généré avec les horaires de `build.py`. L’ancienne affiche PNG est conservée comme archive, sans lien sur le site.
+- `assets/planning-2026-2027.svg` : planning téléchargeable généré avec les horaires des catégories. L’ancienne affiche PNG est conservée dans `archive/graphics/`, sans publication.
 - `assets/background-phb.webp` : fond généré avec l’outil intégré imagegen, enregistré dans le projet après conversion WebP (223 520 octets). Texture noire, hermines discrètes et peinture rouge. Le logo officiel est superposé en CSS à faible opacité : il n’est pas redessiné par l’IA.
 
-Prompt du fond : « Wide 16:9 premium club background using identite-phb.png as style reference only. Charcoal textured paper, very low contrast dark graphite Breton ermine motifs mainly in lower half, vivid red dry-brush diagonal strokes at top-right and lower-left edges, quiet black central 60%. No text, numbers, logos, badges, people, interface, circles, white or bright grey accents. »
+Prompt du fond : « Wide 16:9 premium club background using `archive/graphics/identite-phb.png` as style reference only. Charcoal textured paper, very low contrast dark graphite Breton ermine motifs mainly in lower half, vivid red dry-brush diagonal strokes at top-right and lower-left edges, quiet black central 60%. No text, numbers, logos, badges, people, interface, circles, white or bright grey accents. »
 
 ## Informations du club
 
@@ -73,6 +103,14 @@ Aperçu local : `python -m http.server 4175 --bind 127.0.0.1`, puis http://127.0
 
 Contrôles : liens, ancres, titres, métadonnées, schémas JSON-LD, sitemap et ressources des pages générées, cohérence des créneaux, syntaxe Python, CSS et JavaScript. Les polices Inter et Barlow Condensed sont auto-hébergées en WOFF2. Aucun outil de suivi ou cookie applicatif ajouté.
 
-Tests navigateur : `npm ci`, `npx playwright install chromium`, puis `npm run test:e2e`. Ils couvrent l’accueil sur ordinateur et mobile, le menu, les résultats, la boutique, le carrousel d’article et le dock partenaires.
+Tests complets : `npm ci`, `npx playwright install chromium`, puis `npm test`. La suite couvre l’accueil sur ordinateur et mobile, le menu, les résultats, la boutique, le carrousel d’article, le dock partenaires, les erreurs JavaScript, les ressources critiques, le mouvement réduit et les violations Axe sérieuses.
+
+Audits complémentaires :
+
+- `npm run audit:performance` mesure LCP, CLS et poids transféré sur les cinq parcours prioritaires ;
+- `npm run audit:responsive` vérifie dix pages à 375, 390, 430, 768, 1024, 1440 et 1920 px ;
+- `npm run audit:sitemap` charge chaque page indexable sur mobile et ordinateur ;
+- `python scripts/audit_assets.py --output reports/assets-audit.md` inventorie les assets publics ;
+- `npm run audit:partner-pdf` vérifie les quatre pages A4 du dossier partenaire.
 
 Le dossier partenaire est généré à partir des données vérifiées avec `npm run build:partner-pdf`. Cette commande reconstruit `scripts/dossier-partenaire-print.html` puis `assets/dossier-partenaire-phb.pdf` avec Chromium.

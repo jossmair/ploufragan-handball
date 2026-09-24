@@ -39,13 +39,19 @@ class Page(HTMLParser):
         self.links = []
         self.anchors = []
         self.images = []
-        self.ids = set()
+        self.ids = Counter()
+        self.text_elements = []
+        self.open_text_elements = []
         self.refresh = False
 
     def handle_starttag(self, tag, attributes):
         attrs = dict(attributes)
         if "id" in attrs:
-            self.ids.add(attrs["id"])
+            self.ids[attrs["id"]] += 1
+        if tag in ("h2", "h3", "button"):
+            item = {"tag": tag, "attrs": attrs, "text": ""}
+            self.text_elements.append(item)
+            self.open_text_elements.append(item)
         if tag == "html":
             self.lang = attrs.get("lang", "")
         elif tag == "title":
@@ -80,6 +86,11 @@ class Page(HTMLParser):
                 self.schema_text = ""
 
     def handle_endtag(self, tag):
+        if tag in ("h2", "h3", "button"):
+            for index in range(len(self.open_text_elements) - 1, -1, -1):
+                if self.open_text_elements[index]["tag"] == tag:
+                    self.open_text_elements.pop(index)
+                    break
         if tag == "title":
             self.reading_title = False
         elif tag == "script" and self.reading_schema:
@@ -87,6 +98,8 @@ class Page(HTMLParser):
             self.reading_schema = False
 
     def handle_data(self, data):
+        for item in self.open_text_elements:
+            item["text"] += data
         if self.reading_title:
             self.title += data
         if self.reading_schema:
@@ -252,6 +265,16 @@ def audit():
             errors.append("404.html: noindex absent")
         if relative == "actualites.html" and not (noindex and page.refresh):
             errors.append("actualites.html: ancienne URL doit rester une redirection non indexable")
+        duplicates = sorted(item for item, count in page.ids.items() if count > 1)
+        if duplicates:
+            errors.append(f"{relative}: id dupliqué : {', '.join(duplicates)}")
+        for item in page.text_elements:
+            if item["text"].strip():
+                continue
+            attrs = item["attrs"]
+            if item["tag"] == "button" and (attrs.get("aria-label", "").strip() or attrs.get("title", "").strip()):
+                continue
+            errors.append(f"{relative}: {item['tag']} vide ou sans nom accessible")
         for image in page.images:
             if "alt" not in image:
                 errors.append(f"{relative}: image sans alt ({image.get('src', '')})")

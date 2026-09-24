@@ -933,8 +933,8 @@ registration_body = heading(
   <section class="licence-section" id="demarches" aria-labelledby="licence-demarches-title">
     <div class="section-heading" data-reveal><div><p class="eyebrow">VOTRE SITUATION</p><h2 id="licence-demarches-title">NOUVELLE LICENCE <em>OU RENOUVELLEMENT</em></h2></div></div>
     <div class="licence-route-grid">
-      <article class="information-panel licence-route" data-reveal><span class="licence-route-number">01</span><h3>NOUVELLE LICENCE</h3><p>Écrivez au club avec le nom, l’année de naissance et la catégorie souhaitée. Le club vous transmettra les indications pour commencer votre demande.</p><a class="text-link" href="{escape(mail(f"Nouvelle licence PHB {SEASON_SLUG}"), quote=True)}">Contacter le club ↗</a></article>
-      <article class="information-panel licence-route" data-reveal><span class="licence-route-number">02</span><h3>RENOUVELLEMENT</h3><p>Signalez que vous renouvelez votre licence. Suivez ensuite le courriel Gest’Hand et les modalités communiquées par le club pour cette saison.</p><a class="text-link" href="{escape(mail(f"Renouvellement PHB {SEASON_SLUG}"), quote=True)}">Demander les indications ↗</a></article>
+      <article class="information-panel licence-route" data-reveal><span class="licence-route-number" aria-hidden="true">01</span><h3>NOUVELLE LICENCE</h3><p>Écrivez au club avec le nom, l’année de naissance et la catégorie souhaitée. Le club vous transmettra les indications pour commencer votre demande.</p><a class="text-link" href="{escape(mail(f"Nouvelle licence PHB {SEASON_SLUG}"), quote=True)}">Contacter le club ↗</a></article>
+      <article class="information-panel licence-route" data-reveal><span class="licence-route-number" aria-hidden="true">02</span><h3>RENOUVELLEMENT</h3><p>Signalez que vous renouvelez votre licence. Suivez ensuite le courriel Gest’Hand et les modalités communiquées par le club pour cette saison.</p><a class="text-link" href="{escape(mail(f"Renouvellement PHB {SEASON_SLUG}"), quote=True)}">Demander les indications ↗</a></article>
     </div>
   </section>
   <section class="licence-section" id="gesthand" aria-labelledby="licence-gesthand-title">

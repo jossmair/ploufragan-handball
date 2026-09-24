@@ -1,4 +1,34 @@
 import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+
+test.beforeEach(async ({ page }) => {
+  page.__phbErrors = [];
+  page.on('console', message => {
+    if (message.type() === 'error' && !message.text().startsWith('Failed to load resource:')) {
+      page.__phbErrors.push(`console: ${message.text()}`);
+    }
+  });
+  page.on('pageerror', error => page.__phbErrors.push(`pageerror: ${error.message}`));
+  page.on('requestfailed', request => {
+    const url = new URL(request.url());
+    const failure = request.failure()?.errorText || 'erreur réseau';
+    // Chromium annule normalement les médias encore en cours lors d'une navigation.
+    // Ces ERR_ABORTED ne signalent ni un asset absent ni une erreur du site.
+    if (url.hostname === '127.0.0.1' && failure !== 'net::ERR_ABORTED') {
+      page.__phbErrors.push(`requestfailed: ${url.pathname} (${failure})`);
+    }
+  });
+  page.on('response', response => {
+    const url = new URL(response.url());
+    if (url.hostname === '127.0.0.1' && response.status() >= 400) {
+      page.__phbErrors.push(`${response.status()} ${url.pathname}`);
+    }
+  });
+});
+
+test.afterEach(async ({ page }) => {
+  expect(page.__phbErrors, 'La page ne doit produire aucune erreur JS ou ressource locale en échec').toEqual([]);
+});
 
 test('accueil : navigation, CTA et scores', async ({ page }, testInfo) => {
   await page.goto('/');
@@ -21,6 +51,20 @@ test('mobile : menu clavier et absence de débordement', async ({ page }, testIn
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
+});
+
+test('mobile : pages principales sans débordement horizontal', async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith('mobile'));
+  const pages = [
+    '/', '/equipes.html', '/jeunes.html', '/resultats.html', '/inscriptions.html',
+    '/boutique.html', '/blog.html', '/articles/presentation-seniors-masculins-1.html',
+    '/partenaires.html', '/contact.html',
+  ];
+  for (const path of pages) {
+    await page.goto(path);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow, `${path} ne doit pas déborder`).toBeLessThanOrEqual(1);
+  }
 });
 
 test('résultats : filtres, données et date FFHandball', async ({ page }) => {
@@ -83,3 +127,41 @@ test('inscriptions : navigation par menu déroulant', async ({ page }) => {
   await expect(page).toHaveURL(/#essai$/);
   await expect(trigger).toContainText('Essai');
 });
+
+test('blog : animation présente et non bouclée', async ({ page }) => {
+  await page.goto('/blog.html');
+  const video = page.locator('[data-blog-logo-video]');
+  await expect(video).toHaveCount(1);
+  await expect(video).toHaveAttribute('muted', '');
+  await expect(video).toHaveAttribute('playsinline', '');
+  expect(await video.evaluate(element => element.loop)).toBe(false);
+});
+
+test('mouvement réduit : vidéos et ticker restent statiques', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/blog.html');
+  const video = page.locator('[data-blog-logo-video]');
+  await expect.poll(() => video.evaluate(element => element.paused)).toBe(true);
+  await page.goto('/');
+  const animationName = await page.locator('.sponsor-track').evaluate(element => getComputedStyle(element).animationName);
+  expect(animationName).toBe('none');
+});
+
+test('permanences : page navigable mais non indexable', async ({ page }) => {
+  await page.goto('/permanences-seniors-masculins.html');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex,follow');
+  await expect(page.locator('h1')).toBeVisible();
+});
+
+for (const path of ['/', '/resultats.html', '/inscriptions.html', '/boutique.html', '/blog.html']) {
+  test(`accessibilité : aucune violation sérieuse sur ${path}`, async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name.startsWith('mobile'));
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(path);
+    const audit = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    const serious = audit.violations.filter(item => item.impact === 'serious' || item.impact === 'critical');
+    expect(serious, `${path}: violations Axe sérieuses`).toEqual([]);
+  });
+}

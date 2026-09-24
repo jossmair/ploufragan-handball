@@ -1,0 +1,167 @@
+[
+  {
+    "path": "/",
+    "lcpMs": 272,
+    "cls": 0,
+    "domContentLoadedMs": 164,
+    "loadMs": 269,
+    "encodedBytes": 4108116,
+    "decodedBytes": 4108116,
+    "requests": 38,
+    "largest": [
+      {
+        "name": "/assets/blog/intro.mp4",
+        "bytes": 2844023
+      },
+      {
+        "name": "/assets/backgrounds/fond-1.webp",
+        "bytes": 331584
+      },
+      {
+        "name": "/assets/logo-phb.png",
+        "bytes": 150878
+      },
+      {
+        "name": "/assets/site.css",
+        "bytes": 135926
+      },
+      {
+        "name": "/assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
+        "bytes": 85058
+      }
+    ],
+    "failed": []
+  },
+  {
+    "path": "/blog.html",
+    "lcpMs": 188,
+    "cls": 0,
+    "domContentLoadedMs": 86,
+    "loadMs": 160,
+    "encodedBytes": 6451353,
+    "decodedBytes": 6451353,
+    "requests": 27,
+    "largest": [
+      {
+        "name": "/assets/blog/blog-logo-orbit.mp4",
+        "bytes": 5160628
+      },
+      {
+        "name": "/assets/backgrounds/fond-1.webp",
+        "bytes": 331584
+      },
+      {
+        "name": "/assets/articles/seniors-masculins-1/photo-03.webp",
+        "bytes": 201102
+      },
+      {
+        "name": "/assets/logo-phb.png",
+        "bytes": 150878
+      },
+      {
+        "name": "/assets/site.css",
+        "bytes": 135926
+      }
+    ],
+    "failed": []
+  },
+  {
+    "path": "/boutique.html",
+    "lcpMs": 188,
+    "cls": 0,
+    "domContentLoadedMs": 101,
+    "loadMs": 130,
+    "encodedBytes": 1190713,
+    "decodedBytes": 1190713,
+    "requests": 34,
+    "largest": [
+      {
+        "name": "/assets/backgrounds/fond-2.webp",
+        "bytes": 355218
+      },
+      {
+        "name": "/assets/logo-phb.png",
+        "bytes": 150878
+      },
+      {
+        "name": "/assets/site.css",
+        "bytes": 135926
+      },
+      {
+        "name": "/assets/fonts/inter-normal-400-700.woff2",
+        "bytes": 48256
+      },
+      {
+        "name": "/assets/partenaires/le-picca.webp",
+        "bytes": 46840
+      }
+    ],
+    "failed": []
+  },
+  {
+    "path": "/resultats.html",
+    "lcpMs": 224,
+    "cls": 0,
+    "domContentLoadedMs": 116,
+    "loadMs": 163,
+    "encodedBytes": 1141471,
+    "decodedBytes": 1141471,
+    "requests": 35,
+    "largest": [
+      {
+        "name": "/assets/backgrounds/fond-5.webp",
+        "bytes": 368218
+      },
+      {
+        "name": "/assets/logo-phb.png",
+        "bytes": 150878
+      },
+      {
+        "name": "/assets/site.css",
+        "bytes": 135926
+      },
+      {
+        "name": "/assets/fonts/inter-normal-400-700.woff2",
+        "bytes": 48256
+      },
+      {
+        "name": "/assets/partenaires/le-picca.webp",
+        "bytes": 46840
+      }
+    ],
+    "failed": []
+  },
+  {
+    "path": "/articles/presentation-seniors-masculins-1.html",
+    "lcpMs": 188,
+    "cls": 0,
+    "domContentLoadedMs": 97,
+    "loadMs": 129,
+    "encodedBytes": 2161643,
+    "decodedBytes": 2161643,
+    "requests": 29,
+    "largest": [
+      {
+        "name": "/assets/backgrounds/fond-1.webp",
+        "bytes": 331584
+      },
+      {
+        "name": "/assets/articles/seniors-masculins-1/photo-01.webp",
+        "bytes": 218084
+      },
+      {
+        "name": "/assets/articles/seniors-masculins-1/photo-04.webp",
+        "bytes": 217182
+      },
+      {
+        "name": "/assets/articles/seniors-masculins-1/photo-02.webp",
+        "bytes": 215212
+      },
+      {
+        "name": "/assets/articles/seniors-masculins-1/photo-03.webp",
+        "bytes": 201102
+      }
+    ],
+    "failed": []
+  }
+]
