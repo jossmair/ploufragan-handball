@@ -1,0 +1,1248 @@
+{
+  "updatedAt": "2026-09-23T08:18:08.889063+00:00",
+  "season": "2026–2027",
+  "source": "FFHandball",
+  "teams": [
+    {
+      "label": "Seniors feminines",
+      "group": "seniors-feminines",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/",
+      "poolId": "190429",
+      "pool": "D1F POULE 3",
+      "internalId": "1764919",
+      "teamId": "2119151",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/equipe-2119151/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "GOELO HBC",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "BAIE D'ARMOR HB - SF1",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "ENTENTE BRO LEON 4",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "PLOUDIRY SIZUN HB 2",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 5,
+          "team": "ALS PLOUAGAT 3",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 6,
+          "team": "PLOUVORN HB 2",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 7,
+          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 8,
+          "team": "PSM HANDBALL",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 9,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 1,
+          "played": 1,
+          "club": true
+        },
+        {
+          "position": 10,
+          "team": "MORLAIX PLOUGONVEN HB 1",
+          "points": 0,
+          "played": 0,
+          "club": false
+        }
+      ]
+    },
+    {
+      "label": "U18 garcons",
+      "group": "jeunes",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/",
+      "poolId": "192879",
+      "pool": "U18M BRASSAGES TER POULE 2",
+      "internalId": "1793827",
+      "teamId": "2165107",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/equipe-2165107/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "BAIE D'ARMOR HB - 18G2",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "HANDBALL CLUB BELLE-ISLE/PLOUNEVEZ",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "CSAL PAIMPOL HB - 18g",
+          "points": 3,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 4,
+          "played": 2,
+          "club": true
+        },
+        {
+          "position": 5,
+          "team": "U18M TER BAIE DE MORLAIX",
+          "points": 5,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 6,
+          "team": "U18M TER ENTENTE COTE DE GRANIT ROSE 2",
+          "points": 2,
+          "played": 2,
+          "club": false
+        }
+      ]
+    },
+    {
+      "label": "U11 mixte",
+      "group": "jeunes",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/",
+      "poolId": "195183",
+      "pool": "U11MX BR MOYEN PH1 - POULE 2",
+      "internalId": "1801196",
+      "teamId": "2175410",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/equipe-2175410/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "BAIE D'ARMOR HB - 11G2",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "HANDBALL BEAUSSAIS RANCE FREMUR 2",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "U11 mixte 2",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 0,
+          "played": 0,
+          "club": true
+        }
+      ]
+    },
+    {
+      "label": "U13 filles",
+      "group": "jeunes",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/",
+      "poolId": "194492",
+      "pool": "U13F BR BAS POULE 1",
+      "internalId": "1799196",
+      "teamId": "2171762",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/equipe-2171762/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "L'HANDBALLE CLUB",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "ALS PLOUAGAT 2",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "BAIE D'ARMOR HB -13F2",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "LANNION HANDBALL",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 5,
+          "team": "PLESTIN HB",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 6,
+          "team": "LEHON DINAN'COM HB 2",
+          "points": 3,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 7,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 3,
+          "played": 2,
+          "club": true
+        },
+        {
+          "position": 8,
+          "team": "ALVMP HANDBALL",
+          "points": 2,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 9,
+          "team": "US BOURBRIAC",
+          "points": 2,
+          "played": 2,
+          "club": false
+        }
+      ]
+    },
+    {
+      "label": "U15 filles",
+      "group": "jeunes",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/",
+      "poolId": "192996",
+      "pool": "U15F BRASSAGES TER POULE 10",
+      "internalId": "1794284",
+      "teamId": "2164840",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/equipe-2164840/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "U15F TER - ENT MONTS D'ARREE CARHAIX CHATEAUNEUF DU FAOU",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "PLOEUC HAND",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "GOELO HBC",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 1,
+          "played": 1,
+          "club": true
+        },
+        {
+          "position": 5,
+          "team": "U15F HENANSAL ERQUY",
+          "points": 1,
+          "played": 2,
+          "club": false
+        }
+      ]
+    },
+    {
+      "label": "Seniors masculins 1",
+      "group": "seniors-masculins",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/",
+      "poolId": "190425",
+      "pool": "D1M POULE 2",
+      "internalId": "1765012",
+      "teamId": "2119088",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/equipe-2119088/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "+16M TER EMERAUDE 2 DOL",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "AL CANCALE",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "Pays de dinan handball club",
+          "points": 5,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "CSAL PAIMPOL HB1",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 5,
+          "team": "PLOEUC HAND",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 6,
+          "team": "SC Mevennais handball",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 7,
+          "team": "HBC HENANSAL ERQUY 1",
+          "points": 2,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 8,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 2,
+          "played": 2,
+          "club": true
+        },
+        {
+          "position": 9,
+          "team": "Tinteniac Combourg HBC 2",
+          "points": 2,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 10,
+          "team": "HANDBALL BEAUSSAIS RANCE FREMUR 1",
+          "points": 0,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 11,
+          "team": "L'HANDBALLE CLUB",
+          "points": 0,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 12,
+          "team": "LEHON DINAN COM HB 1",
+          "points": -1,
+          "played": 1,
+          "club": false
+        }
+      ]
+    },
+    {
+      "label": "Seniors masculins 2",
+      "group": "seniors-masculins",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/",
+      "poolId": "192928",
+      "pool": "D2M POULE 1",
+      "internalId": "1793646",
+      "teamId": "2165343",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/equipe-2165343/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "BAIE D'ARMOR HB - SG2",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "PLOEUC HAND 2",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "USMB LOUARGAT",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
+          "points": 3,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 5,
+          "team": "GUINGAMP HANDBALL 3",
+          "points": 2,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 6,
+          "team": "AL VX MARCHE PLOUARET HB",
+          "points": 2,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 7,
+          "team": "+16M TER ENTENTE DU TREGOR HB (D2)",
+          "points": 2,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 8,
+          "team": "MENE MERDRIGNAC HANDBALL 1",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 9,
+          "team": "BAIE D'ARMOR HB - SG3",
+          "points": 1,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 10,
+          "team": "Henansal-Erquy SM 2",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 11,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 0,
+          "played": 1,
+          "club": true
+        },
+        {
+          "position": 12,
+          "team": "HB.PELEMOIS",
+          "points": -2,
+          "played": 0,
+          "club": false
+        }
+      ]
+    },
+    {
+      "label": "U13 garcons",
+      "group": "jeunes",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/",
+      "poolId": "194043",
+      "pool": "U13M BR HAUT POULE 1",
+      "internalId": "1796135",
+      "teamId": "2169789",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/equipe-2169789/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "BAIE D'ARMOR HB - 13G1",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "U13M TER ENTENTE LOUDEAC LA MOTTE",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "CSAL PAIMPOL HB - 13 GARS 1",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "GOELO HANDBALL CLUB",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 5,
+          "team": "AL Trebeurden HANDBALL",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 6,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 4,
+          "played": 2,
+          "club": true
+        },
+        {
+          "position": 7,
+          "team": "LANNION HANDBALL",
+          "points": 2,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 8,
+          "team": "GUINGAMP HB 1",
+          "points": 2,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 9,
+          "team": "U13M TER ENTENTE DU TREGOR HB - LOUANNEC",
+          "points": 2,
+          "played": 2,
+          "club": false
+        }
+      ]
+    },
+    {
+      "label": "U15 garcons",
+      "group": "jeunes",
+      "base": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/",
+      "poolId": "193010",
+      "pool": "U15M BRASSAGES TER POULE 6",
+      "internalId": "1794165",
+      "teamId": "2164938",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/equipe-2164938/",
+      "ranking": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/classements/",
+      "standings": [
+        {
+          "position": 1,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 4,
+          "played": 2,
+          "club": true
+        },
+        {
+          "position": 2,
+          "team": "PLOEUC HAND",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "GUINGAMP HB 2",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "U15M TER - ENTENTE DU TREGOR HB2 - LOUANNEC",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 5,
+          "team": "ENTENTE LOUDEAC LA MOTTE 2",
+          "points": 1,
+          "played": 1,
+          "club": false
+        }
+      ]
+    }
+  ],
+  "matches": [
+    {
+      "id": "2681025",
+      "category": "Seniors masculins 2",
+      "group": "seniors-masculins",
+      "date": "2026-10-31T19:00:00+01:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "HB.PELEMOIS",
+      "homeTeamId": "1793646",
+      "awayTeamId": "1793637",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681025/"
+    },
+    {
+      "id": "2681044",
+      "category": "Seniors masculins 2",
+      "group": "seniors-masculins",
+      "date": "2026-10-03T21:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "AL VX MARCHE PLOUARET HB",
+      "homeTeamId": "1793646",
+      "awayTeamId": "1793642",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681044/"
+    },
+    {
+      "id": "2627147",
+      "category": "Seniors masculins 1",
+      "group": "seniors-masculins",
+      "date": "2026-10-03T19:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "L'HANDBALLE CLUB",
+      "homeTeamId": "1765012",
+      "awayTeamId": "1765015",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627147/"
+    },
+    {
+      "id": "2681978",
+      "category": "U18 garcons",
+      "group": "jeunes",
+      "date": "2026-10-03T17:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "HANDBALL CLUB BELLE-ISLE/PLOUNEVEZ",
+      "homeTeamId": "1793827",
+      "awayTeamId": "1793825",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681978/"
+    },
+    {
+      "id": "2683533",
+      "category": "U15 filles",
+      "group": "jeunes",
+      "date": "2026-10-03T15:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "U15F HENANSAL ERQUY",
+      "homeTeamId": "1794284",
+      "awayTeamId": "1794282",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683533/"
+    },
+    {
+      "id": "2708196",
+      "category": "U11 mixte",
+      "group": "jeunes",
+      "date": "2026-10-03T14:00:00+02:00",
+      "home": "BAIE D'ARMOR HB - 11G2",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1801198",
+      "awayTeamId": "1801196",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708196/",
+      "venue": {
+        "name": "chaptal",
+        "street": "rue de la roche jano",
+        "postalCode": "22000",
+        "city": "ST BRIEUC",
+        "latitude": "48.51387",
+        "longitude": "-2.73487",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2696278",
+      "category": "U13 garcons",
+      "group": "jeunes",
+      "date": "2026-10-03T13:30:00+02:00",
+      "home": "GUINGAMP HB 1",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1796129",
+      "awayTeamId": "1796135",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696278/",
+      "venue": {
+        "name": "SALLE CORVAISIER",
+        "street": "PARC DE KERGOZ",
+        "postalCode": "22200",
+        "city": "PABU",
+        "latitude": "48.56249",
+        "longitude": "-3.14006",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2696279",
+      "category": "U13 garcons",
+      "group": "jeunes",
+      "date": "2026-10-03T13:30:00+02:00",
+      "home": "U13M TER ENTENTE DU TREGOR HB - LOUANNEC",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1796132",
+      "awayTeamId": "1796135",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696279/",
+      "venue": {
+        "name": "SALLE CORVAISIER",
+        "street": "PARC DE KERGOZ",
+        "postalCode": "22200",
+        "city": "PABU",
+        "latitude": "48.56249",
+        "longitude": "-3.14006",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2697255",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-10-03T13:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "ALVMP HANDBALL",
+      "homeTeamId": "1799196",
+      "awayTeamId": "1799193",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697255/"
+    },
+    {
+      "id": "2697256",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-10-03T13:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "US BOURBRIAC",
+      "homeTeamId": "1799196",
+      "awayTeamId": "1799199",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697256/"
+    },
+    {
+      "id": "2681037",
+      "category": "Seniors masculins 2",
+      "group": "seniors-masculins",
+      "date": "2026-09-27T15:00:00+02:00",
+      "home": "Henansal-Erquy SM 2",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1793644",
+      "awayTeamId": "1793646",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681037/",
+      "venue": {
+        "name": "SOS ERQUY",
+        "street": "4  RUE VILLE LOUIS",
+        "postalCode": "22430",
+        "city": "ERQUY",
+        "latitude": "48.62267",
+        "longitude": "-2.45511",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2696274",
+      "category": "U13 garcons",
+      "group": "jeunes",
+      "date": "2026-09-27T13:30:00+02:00",
+      "home": "CSAL PAIMPOL HB - 13 GARS 1",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1796130",
+      "awayTeamId": "1796135",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696274/",
+      "venue": {
+        "name": "SALLE KERRAOUL",
+        "street": "RUE HENT KERVIK",
+        "postalCode": "22500",
+        "city": "PAIMPOL",
+        "latitude": "48.78379",
+        "longitude": "-3.05994",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2696276",
+      "category": "U13 garcons",
+      "group": "jeunes",
+      "date": "2026-09-27T13:30:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "GOELO HANDBALL CLUB",
+      "homeTeamId": "1796135",
+      "awayTeamId": "1796134",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696276/"
+    },
+    {
+      "id": "2627140",
+      "category": "Seniors masculins 1",
+      "group": "seniors-masculins",
+      "date": "2026-09-26T20:00:00+02:00",
+      "home": "Pays de dinan handball club",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1765017",
+      "awayTeamId": "1765012",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627140/",
+      "venue": {
+        "name": "salle omnisport",
+        "street": "rue des plantations",
+        "postalCode": "22980",
+        "city": "PLELAN LE PETIT",
+        "latitude": "48.42919",
+        "longitude": "-2.22234",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2625943",
+      "category": "Seniors feminines",
+      "group": "seniors-feminines",
+      "date": "2026-09-26T19:00:00+02:00",
+      "home": "BAIE D'ARMOR HB - SF1",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1764918",
+      "awayTeamId": "1764919",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625943/",
+      "venue": {
+        "name": "SOS OCEANE",
+        "street": "RUE DE LA CROIX",
+        "postalCode": "22190",
+        "city": "PLERIN",
+        "latitude": "48.53086",
+        "longitude": "-2.76553",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2683530",
+      "category": "U15 filles",
+      "group": "jeunes",
+      "date": "2026-09-26T17:00:00+02:00",
+      "home": "GOELO HBC",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1794283",
+      "awayTeamId": "1794284",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683530/",
+      "venue": {
+        "name": "SALLE PASS'SPORT",
+        "street": "dixmude",
+        "postalCode": "22580",
+        "city": "PLOUHA",
+        "latitude": "48.67387",
+        "longitude": "-2.93279",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2683696",
+      "category": "U15 garcons",
+      "group": "jeunes",
+      "date": "2026-09-26T16:30:00+02:00",
+      "home": "PLOEUC HAND",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1794166",
+      "awayTeamId": "1794165",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683696/",
+      "venue": {
+        "name": "SALLE DU COLLÈGE EUGÈNE GUILLEVIC",
+        "street": "RUE DU 19 MARS 1962",
+        "postalCode": "22150",
+        "city": "PLOEUC SUR LIE",
+        "latitude": "48.34623",
+        "longitude": "-2.75342",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2681975",
+      "category": "U18 garcons",
+      "group": "jeunes",
+      "date": "2026-09-26T15:45:00+02:00",
+      "home": "CSAL PAIMPOL HB - 18g",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1793826",
+      "awayTeamId": "1793827",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681975/",
+      "venue": {
+        "name": "SALLE KERRAOUL",
+        "street": "RUE HENT KERVIK",
+        "postalCode": "22500",
+        "city": "PAIMPOL",
+        "latitude": "48.78379",
+        "longitude": "-3.05994",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2708194",
+      "category": "U11 mixte",
+      "group": "jeunes",
+      "date": "2026-09-26T14:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "U11 mixte 2",
+      "homeTeamId": "1801196",
+      "awayTeamId": "1801199",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708194/"
+    },
+    {
+      "id": "2697247",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-09-26T12:45:00+02:00",
+      "home": "ALS PLOUAGAT 2",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1799192",
+      "awayTeamId": "1799196",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697247/",
+      "venue": {
+        "name": "SALLE OMNISPORTS",
+        "street": "LE BOURG - RUE DE LA GRANDE VILLE NEUVE",
+        "postalCode": "22170",
+        "city": "PLOUAGAT",
+        "latitude": "48.53625",
+        "longitude": "-3.00097",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2697248",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-09-26T12:45:00+02:00",
+      "home": "L'HANDBALLE CLUB",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1799197",
+      "awayTeamId": "1799196",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697248/",
+      "venue": {
+        "name": "SALLE OMNISPORTS",
+        "street": "LE BOURG - RUE DE LA GRANDE VILLE NEUVE",
+        "postalCode": "22170",
+        "city": "PLOUAGAT",
+        "latitude": "48.53625",
+        "longitude": "-3.00097",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2625937",
+      "category": "Seniors feminines",
+      "group": "seniors-feminines",
+      "date": "2026-09-20T11:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "PSM HANDBALL",
+      "homeTeamId": "1764919",
+      "awayTeamId": "1764920",
+      "homeScore": 20,
+      "awayScore": 24,
+      "clubSide": "home",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625937/"
+    },
+    {
+      "id": "2627133",
+      "category": "Seniors masculins 1",
+      "group": "seniors-masculins",
+      "date": "2026-09-19T21:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "AL CANCALE",
+      "homeTeamId": "1765012",
+      "awayTeamId": "1765019",
+      "homeScore": 32,
+      "awayScore": 34,
+      "clubSide": "home",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627133/"
+    },
+    {
+      "id": "2681030",
+      "category": "Seniors masculins 2",
+      "group": "seniors-masculins",
+      "date": "2026-09-19T19:30:00+02:00",
+      "home": "PLOEUC HAND 2",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1793636",
+      "awayTeamId": "1793646",
+      "homeScore": 20,
+      "awayScore": "FO",
+      "clubSide": "away",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681030/"
+    },
+    {
+      "id": "2681974",
+      "category": "U18 garcons",
+      "group": "jeunes",
+      "date": "2026-09-19T19:00:00+02:00",
+      "home": "U18M TER BAIE DE MORLAIX",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1793830",
+      "awayTeamId": "1793827",
+      "homeScore": 47,
+      "awayScore": 14,
+      "clubSide": "away",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681974/"
+    },
+    {
+      "id": "2683693",
+      "category": "U15 garcons",
+      "group": "jeunes",
+      "date": "2026-09-19T16:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "ENTENTE LOUDEAC LA MOTTE 2",
+      "homeTeamId": "1794165",
+      "awayTeamId": "1794163",
+      "homeScore": 40,
+      "awayScore": 20,
+      "clubSide": "home",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683693/"
+    },
+    {
+      "id": "2697235",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-09-19T14:00:00+02:00",
+      "home": "LEHON DINAN'COM HB 2",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1799194",
+      "awayTeamId": "1799196",
+      "homeScore": 6,
+      "awayScore": 6,
+      "clubSide": "away",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697235/"
+    },
+    {
+      "id": "2697236",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-09-19T14:00:00+02:00",
+      "home": "BAIE D'ARMOR HB -13F2",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1799195",
+      "awayTeamId": "1799196",
+      "homeScore": 13,
+      "awayScore": 11,
+      "clubSide": "away",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697236/"
+    },
+    {
+      "id": "2696265",
+      "category": "U13 garcons",
+      "group": "jeunes",
+      "date": "2026-09-19T13:30:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "LANNION HANDBALL",
+      "homeTeamId": "1796135",
+      "awayTeamId": "1796136",
+      "homeScore": 14,
+      "awayScore": 13,
+      "clubSide": "home",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696265/"
+    },
+    {
+      "id": "2696266",
+      "category": "U13 garcons",
+      "group": "jeunes",
+      "date": "2026-09-19T13:30:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "U13M TER ENTENTE LOUDEAC LA MOTTE",
+      "homeTeamId": "1796135",
+      "awayTeamId": "1796137",
+      "homeScore": 13,
+      "awayScore": 16,
+      "clubSide": "home",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696266/"
+    },
+    {
+      "id": "2627126",
+      "category": "Seniors masculins 1",
+      "group": "seniors-masculins",
+      "date": "2026-09-12T19:30:00+02:00",
+      "home": "SC Mevennais handball",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1765021",
+      "awayTeamId": "1765012",
+      "homeScore": 34,
+      "awayScore": 24,
+      "clubSide": "away",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627126/"
+    },
+    {
+      "id": "2681970",
+      "category": "U18 garcons",
+      "group": "jeunes",
+      "date": "2026-09-12T17:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "U18M TER ENTENTE COTE DE GRANIT ROSE 2",
+      "homeTeamId": "1793827",
+      "awayTeamId": "1793829",
+      "homeScore": 32,
+      "awayScore": 24,
+      "clubSide": "home",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681970/"
+    },
+    {
+      "id": "2683525",
+      "category": "U15 filles",
+      "group": "jeunes",
+      "date": "2026-09-12T15:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "U15F TER - ENT MONTS D'ARREE CARHAIX CHATEAUNEUF DU FAOU",
+      "homeTeamId": "1794284",
+      "awayTeamId": "1794286",
+      "homeScore": 17,
+      "awayScore": 20,
+      "clubSide": "home",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683525/"
+    },
+    {
+      "id": "2683689",
+      "category": "U15 garcons",
+      "group": "jeunes",
+      "date": "2026-09-12T13:00:00+02:00",
+      "home": "GUINGAMP HB 2",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1794162",
+      "awayTeamId": "1794165",
+      "homeScore": 28,
+      "awayScore": 27,
+      "clubSide": "away",
+      "played": true,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683689/"
+    }
+  ]
+}

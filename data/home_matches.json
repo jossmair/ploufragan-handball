@@ -1,0 +1,160 @@
+{
+  "source": "FFHandball",
+  "updatedAt": "2026-09-23T00:05:35.204466+00:00",
+  "matches": [
+    {
+      "id": "2683525",
+      "category": "U15 filles",
+      "date": "2026-09-12T15:00:00+02:00",
+      "opponent": "U15F TER - ENT MONTS D'ARREE CARHAIX CHATEAUNEUF DU FAOU",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683525/"
+    },
+    {
+      "id": "2681970",
+      "category": "U18 garcons",
+      "date": "2026-09-12T17:00:00+02:00",
+      "opponent": "U18M TER ENTENTE COTE DE GRANIT ROSE 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681970/"
+    },
+    {
+      "id": "2696265",
+      "category": "U13 garcons",
+      "date": "2026-09-19T13:30:00+02:00",
+      "opponent": "LANNION HANDBALL",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696265/"
+    },
+    {
+      "id": "2696266",
+      "category": "U13 garcons",
+      "date": "2026-09-19T13:30:00+02:00",
+      "opponent": "U13M TER ENTENTE LOUDEAC LA MOTTE",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696266/"
+    },
+    {
+      "id": "2683693",
+      "category": "U15 garcons",
+      "date": "2026-09-19T16:00:00+02:00",
+      "opponent": "ENTENTE LOUDEAC LA MOTTE 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683693/"
+    },
+    {
+      "id": "2627133",
+      "category": "Seniors masculins 1",
+      "date": "2026-09-19T21:00:00+02:00",
+      "opponent": "AL CANCALE",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627133/"
+    },
+    {
+      "id": "2625937",
+      "category": "Seniors feminines",
+      "date": "2026-09-20T11:00:00+02:00",
+      "opponent": "PSM HANDBALL",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625937/"
+    },
+    {
+      "id": "2708194",
+      "category": "U11 mixte",
+      "date": "2026-09-26T14:00:00+02:00",
+      "opponent": "U11 mixte 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708194/"
+    },
+    {
+      "id": "2696276",
+      "category": "U13 garcons",
+      "date": "2026-09-27T13:30:00+02:00",
+      "opponent": "GOELO HANDBALL CLUB",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696276/"
+    },
+    {
+      "id": "2697255",
+      "category": "U13 filles",
+      "date": "2026-10-03T13:00:00+02:00",
+      "opponent": "ALVMP HANDBALL",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697255/"
+    },
+    {
+      "id": "2697256",
+      "category": "U13 filles",
+      "date": "2026-10-03T13:00:00+02:00",
+      "opponent": "US BOURBRIAC",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697256/"
+    },
+    {
+      "id": "2683533",
+      "category": "U15 filles",
+      "date": "2026-10-03T15:00:00+02:00",
+      "opponent": "U15F HENANSAL ERQUY",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683533/"
+    },
+    {
+      "id": "2681978",
+      "category": "U18 garcons",
+      "date": "2026-10-03T17:00:00+02:00",
+      "opponent": "HANDBALL CLUB BELLE-ISLE/PLOUNEVEZ",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681978/"
+    },
+    {
+      "id": "2627147",
+      "category": "Seniors masculins 1",
+      "date": "2026-10-03T19:00:00+02:00",
+      "opponent": "L'HANDBALLE CLUB",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627147/"
+    },
+    {
+      "id": "2681044",
+      "category": "Seniors masculins 2",
+      "date": "2026-10-03T21:00:00+02:00",
+      "opponent": "AL VX MARCHE PLOUARET HB",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681044/"
+    },
+    {
+      "id": "2708198",
+      "category": "U11 mixte",
+      "date": "2026-10-10T13:30:00+02:00",
+      "opponent": "HANDBALL BEAUSSAIS RANCE FREMUR 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708198/"
+    },
+    {
+      "id": "2697258",
+      "category": "U13 filles",
+      "date": "2026-10-10T14:30:00+02:00",
+      "opponent": "LANNION HANDBALL",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697258/"
+    },
+    {
+      "id": "2697259",
+      "category": "U13 filles",
+      "date": "2026-10-10T14:30:00+02:00",
+      "opponent": "PLESTIN HB",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697259/"
+    },
+    {
+      "id": "2696294",
+      "category": "U13 garcons",
+      "date": "2026-10-10T15:00:00+02:00",
+      "opponent": "BAIE D'ARMOR HB - 13G1",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696294/"
+    },
+    {
+      "id": "2683702",
+      "category": "U15 garcons",
+      "date": "2026-10-10T16:30:00+02:00",
+      "opponent": "U15M TER - ENTENTE DU TREGOR HB2 - LOUANNEC",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683702/"
+    },
+    {
+      "id": "2625948",
+      "category": "Seniors feminines",
+      "date": "2026-10-11T14:00:00+02:00",
+      "opponent": "ALS PLOUAGAT 3",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625948/"
+    },
+    {
+      "id": "2681025",
+      "category": "Seniors masculins 2",
+      "date": "2026-10-31T19:00:00+01:00",
+      "opponent": "HB.PELEMOIS",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681025/"
+    }
+  ]
+}
