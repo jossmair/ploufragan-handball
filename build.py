@@ -301,7 +301,7 @@ def partner_image(name, alt=""):
 def sponsor_marquee():
     items=''.join(f'<li><a href="{escape(PARTNER_DATA["websites"][name], quote=True)}" target="_blank" rel="sponsored noopener">{partner_image(name)}{escape(name)}</a></li>' for name,address,handle in PARTNERS)
     duplicate=''.join(f'<span>{partner_image(name)}{escape(name)}</span>' for name,address,handle in PARTNERS)
-    return f'''<aside class="sponsor-marquee" id="sponsors" aria-label="Partenaires du Ploufragan Handball"><div class="sponsor-marquee-title"><span>PARTENAIRES</span><button class="sponsor-toggle" type="button" data-sponsor-toggle aria-pressed="false" aria-label="Mettre en pause le défilement des partenaires"><span aria-hidden="true">Ⅱ</span></button></div><div class="sponsor-marquee-window"><div class="sponsor-track"><ul class="sponsor-list">{items}</ul><div class="sponsor-clone" aria-hidden="true">{duplicate}</div></div></div></aside>'''
+    return f'''<aside class="sponsor-marquee" id="sponsors" aria-label="Partenaires du Ploufragan Handball"><div class="sponsor-marquee-title"><span>PARTENAIRES</span></div><div class="sponsor-marquee-window"><div class="sponsor-track"><ul class="sponsor-list">{items}</ul><div class="sponsor-clone" aria-hidden="true">{duplicate}</div></div></div></aside>'''
 
 def product_category(product):
     name = product["name"].upper()
@@ -912,8 +912,14 @@ registration_body = heading(
     f"Saison {SEASON} · Trouvez votre catégorie, contactez le club, puis suivez les indications reçues pour compléter votre licence.",
 ) + f'''
 <div class="container licence-page">
-  <nav class="licence-anchor-nav" aria-label="Accès rapide aux rubriques d’inscription" data-reveal>
-    <a href="#categories">Catégories</a><a href="#essai">Essai</a><a href="#demarches">Démarches</a><a href="#gesthand">Gest’Hand</a><a href="#documents">Documents</a><a href="#tarifs">Tarifs</a><a href="#aides">Aides</a><a href="#paiement">Paiement</a><a href="#faq">FAQ</a><a href="#contact-inscriptions">Contact</a>
+  <nav class="content-filter licence-anchor-nav" aria-label="Accès rapide aux rubriques d’inscription" data-registration-nav data-reveal>
+    <span class="content-filter-label" id="registration-nav-title">Aller à</span>
+    <div class="content-filter-choice">
+      <button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="registration-nav-options" aria-labelledby="registration-nav-title registration-nav-selected"><span id="registration-nav-selected" data-filter-selected>Catégories</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button>
+      <div class="content-filter-menu" id="registration-nav-options" data-filter-menu role="listbox" aria-label="Rubriques d’inscription" hidden>
+        <button type="button" role="option" data-registration-target="categories" aria-selected="true">Catégories</button><button type="button" role="option" data-registration-target="essai" aria-selected="false">Essai</button><button type="button" role="option" data-registration-target="demarches" aria-selected="false">Démarches</button><button type="button" role="option" data-registration-target="gesthand" aria-selected="false">Gest’Hand</button><button type="button" role="option" data-registration-target="documents" aria-selected="false">Documents</button><button type="button" role="option" data-registration-target="tarifs" aria-selected="false">Tarifs</button><button type="button" role="option" data-registration-target="aides" aria-selected="false">Aides</button><button type="button" role="option" data-registration-target="paiement" aria-selected="false">Paiement</button><button type="button" role="option" data-registration-target="faq" aria-selected="false">FAQ</button><button type="button" role="option" data-registration-target="contact-inscriptions" aria-selected="false">Contact</button>
+      </div>
+    </div>
   </nav>
   <section class="licence-section" id="categories" aria-labelledby="licence-categories-title">
     <div class="section-heading" data-reveal><div><p class="eyebrow">SAISON {SEASON_DISPLAY}</p><h2 id="licence-categories-title">TROUVER MA <em>CATÉGORIE</em></h2></div></div>

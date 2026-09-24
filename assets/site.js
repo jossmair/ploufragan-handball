@@ -438,20 +438,16 @@ if (shopFilter) {
   });
 }
 
-// The partner dock keeps one accessible link list; the moving copy is visual only.
-document.querySelectorAll('.sponsor-marquee').forEach(marquee => {
-  const toggle = marquee.querySelector('[data-sponsor-toggle]');
-  if (!toggle) return;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const setPaused = paused => {
-    marquee.classList.toggle('is-paused', paused);
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.setAttribute('aria-label', paused
-      ? 'Reprendre le défilement des partenaires'
-      : 'Mettre en pause le défilement des partenaires');
-    toggle.querySelector('span').textContent = paused ? '▶' : 'Ⅱ';
-  };
-  setPaused(reducedMotion.matches);
-  toggle.addEventListener('click', () => setPaused(toggle.getAttribute('aria-pressed') !== 'true'));
-  reducedMotion.addEventListener?.('change', event => { if (event.matches) setPaused(true); });
-});
+const registrationNav = document.querySelector('[data-registration-nav]');
+if (registrationNav) {
+  setupContentDropdown(registrationNav, '[data-registration-target]', option => {
+    const sectionId = option.dataset.registrationTarget;
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    history.replaceState(null, '', `#${sectionId}`);
+    window.requestAnimationFrame(() => section.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start'
+    }));
+  });
+}

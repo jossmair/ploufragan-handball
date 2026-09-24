@@ -81,8 +81,6 @@ body[data-page="inscriptions"] .site-texture,body[data-page="404"] .site-texture
 .sponsor-marquee{display:grid;grid-template-columns:auto 1fr;align-items:stretch;margin-top:40px;border-block:1px solid #ffffff2c;background:#09090df2;overflow:hidden}
 .sponsor-marquee-title{display:flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:2;padding:0 24px;background:var(--red);transform:skew(-8deg);margin-left:-10px}
 .sponsor-marquee-title span{transform:skew(8deg);font:900 italic 1.05rem var(--display);letter-spacing:1.5px}
-.sponsor-toggle{display:grid;place-items:center;width:27px;height:27px;padding:0;border:1px solid #fff9;background:#09090d2e;color:#fff;cursor:pointer;transform:skew(8deg);font:800 .72rem/1 var(--body)}
-.sponsor-toggle:hover,.sponsor-toggle:focus-visible{background:#fff;color:var(--red)}
 .sponsor-marquee-window{overflow:hidden;padding:16px 0}
 .sponsor-track,.sponsor-list,.sponsor-clone{display:flex;align-items:center;width:max-content}
 .sponsor-track{animation:sponsors-roll 52s linear infinite}
@@ -666,3 +664,8 @@ body[data-page="ecole-de-hand"] .team-page-photo img{height:clamp(260px,35vw,480
 .match-venue{display:grid;gap:3px;min-width:0;color:#fff;font-size:.76rem;line-height:1.25}.match-venue strong{overflow-wrap:anywhere}.match-venue small{color:#a9a9b3;font-size:.68rem;line-height:1.35}.match-map{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:36px;padding:8px 11px;border:1px solid #ed071980;background:#ed071914;color:#fff;font-size:.7rem;font-weight:800;white-space:nowrap}.match-map:hover{border-color:var(--red);background:#ed07192b;color:#fff}.match-map span{color:var(--red);font-size:.95rem}
 @media(max-width:760px){.match-location{grid-template-columns:auto minmax(0,1fr)}.match-map{grid-column:1/-1;width:100%}}
 @media(max-width:520px){.match-location{grid-template-columns:1fr;align-items:start}.match-map{grid-column:auto}.match-location-badge{justify-self:start}}
+
+/* Compact section navigation for licences and registrations. */
+.licence-anchor-nav.content-filter{position:relative;z-index:7;display:flex;flex-wrap:nowrap;align-items:center;gap:18px;overflow:visible;margin:0 0 52px;padding:18px 20px}
+.licence-anchor-nav .content-filter-choice{width:min(100%,360px)}
+@media(max-width:700px){.licence-anchor-nav.content-filter{display:block;overflow:visible;margin-bottom:38px;padding:16px}.licence-anchor-nav .content-filter-label{display:block;padding:0 0 12px}.licence-anchor-nav .content-filter-choice{width:100%}}
