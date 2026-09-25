@@ -8,7 +8,7 @@ on:
     - cron: '17 */4 * * 0-5'
     # Chaque heure le samedi. Le calcul de bascule utilise Europe/Paris,
     # ce qui conserve 9 h locale lors des changements heure d'été/hiver.
-    - cron: '5 * * * 6'
+    - cron: '0 * * * 6'
 
 permissions:
   contents: write

@@ -48,7 +48,7 @@ class MatchWindowTests(unittest.TestCase):
 
     def test_workflow_syncs_hourly_on_saturday(self):
         workflow = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
-        self.assertIn("cron: '5 * * * 6'", workflow)
+        self.assertIn("cron: '0 * * * 6'", workflow)
 
 
 if __name__ == "__main__":
