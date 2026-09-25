@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T20:01:16.748391+00:00",
+  "updatedAt": "2026-09-25T23:18:26.151895+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -340,23 +340,23 @@
         },
         {
           "position": 4,
-          "team": "CSAL PAIMPOL HB1",
-          "points": 4,
-          "played": 2,
-          "club": false
-        },
-        {
-          "position": 5,
           "team": "PLOEUC HAND",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
-          "position": 6,
+          "position": 5,
           "team": "SC Mevennais handball",
           "points": 3,
           "played": 1,
+          "club": false
+        },
+        {
+          "position": 6,
+          "team": "CSAL PAIMPOL HB1",
+          "points": 3,
+          "played": 2,
           "club": false
         },
         {
@@ -430,51 +430,51 @@
         },
         {
           "position": 3,
+          "team": "GUINGAMP HANDBALL 3",
+          "points": 5,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 4,
           "team": "USMB LOUARGAT",
           "points": 4,
           "played": 2,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
           "points": 3,
           "played": 2,
           "club": false
         },
         {
-          "position": 5,
-          "team": "GUINGAMP HANDBALL 3",
-          "points": 2,
-          "played": 2,
-          "club": false
-        },
-        {
           "position": 6,
-          "team": "AL VX MARCHE PLOUARET HB",
+          "team": "BAIE D'ARMOR HB - SG3",
           "points": 2,
           "played": 2,
           "club": false
         },
         {
           "position": 7,
-          "team": "+16M TER ENTENTE DU TREGOR HB (D2)",
+          "team": "AL VX MARCHE PLOUARET HB",
           "points": 2,
           "played": 2,
           "club": false
         },
         {
           "position": 8,
-          "team": "MENE MERDRIGNAC HANDBALL 1",
-          "points": 1,
-          "played": 1,
+          "team": "+16M TER ENTENTE DU TREGOR HB (D2)",
+          "points": 2,
+          "played": 2,
           "club": false
         },
         {
           "position": 9,
-          "team": "BAIE D'ARMOR HB - SG3",
+          "team": "MENE MERDRIGNAC HANDBALL 1",
           "points": 1,
-          "played": 2,
+          "played": 1,
           "club": false
         },
         {
