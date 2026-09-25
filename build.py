@@ -9,6 +9,8 @@ import os
 import re
 import subprocess
 
+from scripts.match_windows import PARIS, first_calendar_week, paris_now, select_score_and_upcoming
+
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 
@@ -262,15 +264,17 @@ def match_outcome(match):
     return 'draw', 'Résultat officiel'
 
 
-def match_card(m):
+def match_card(m, pending_score=False):
     if m["played"]:
         outcome, badge = match_outcome(m)
         home = score_span(m['homeScore'], m['clubSide'] == 'home', animate=True)
         away = score_span(m['awayScore'], m['clubSide'] == 'away', animate=True)
         accessible = f"Score {score_text(m['homeScore'])} à {score_text(m['awayScore'])}"
         score=f'''<div class="match-result"><strong class="match-score" data-score><span class="sr-only">{accessible}</span>{home}<i aria-hidden="true">—</i>{away}</strong><span class="outcome {outcome}">{badge}</span></div>'''
-    else: score='<div class="match-result"><strong class="match-time">À venir</strong></div>'
-    location = match_location(m) if not m["played"] else ""
+    else:
+        label = "En attente" if pending_score else "À venir"
+        score=f'<div class="match-result"><strong class="match-time">{label}</strong></div>'
+    location = match_location(m) if not m["played"] and not pending_score else ""
     return f'''<article class="match-card" data-results-item data-team="{escape(m['category'], quote=True)}" data-reveal><a class="match-card-primary" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer"><div class="match-top"><span>{escape(clean_label(m['category']))}</span><time datetime="{m['date']}">{fr_date(m['date'])}</time></div><div class="match-main">{match_team(m['home'], 'home', m.get('homeTeamId'))}{score}{match_team(m['away'], 'away', m.get('awayTeamId'))}</div><span class="match-source">FFHandball ↗</span></a>{location}</article>'''
 
 
@@ -616,63 +620,37 @@ def article_page(article):
 
 
 def home_weekend_section(matches, now=None):
-    """Show only the upcoming seniors fixtures for the current/next weekend."""
-    paris = ZoneInfo("Europe/Paris")
-    now = now or datetime.now(paris)
-    now = now.astimezone(paris)
-    today = now.date()
-    days_to_saturday = -1 if today.weekday() == 6 else (5 - today.weekday()) % 7
-    saturday = today + timedelta(days=days_to_saturday)
-    monday = saturday + timedelta(days=2)
+    """Show the first upcoming calendar week containing a senior fixture."""
+    now = (now or paris_now()).astimezone(PARIS)
     senior_groups = {"seniors-masculins", "seniors-feminines"}
-    fixtures = []
-    for match in matches:
-        if match["played"] or match["group"] not in senior_groups:
-            continue
-        kick_off = datetime.fromisoformat(match["date"]).astimezone(paris)
-        if kick_off >= now and saturday <= kick_off.date() < monday:
-            fixtures.append(match)
-    fixtures.sort(key=lambda match: match["date"])
+    senior_matches = [match for match in matches if match["group"] in senior_groups]
+    fixtures = first_calendar_week(senior_matches)
+    current_monday = now.date() - timedelta(days=now.weekday())
+    fixture_monday = None
+    if fixtures:
+        first_day = datetime.fromisoformat(fixtures[0]["date"]).astimezone(PARIS).date()
+        fixture_monday = first_day - timedelta(days=first_day.weekday())
+    title = "CE <em>WEEK-END</em>" if fixture_monday == current_monday else "PROCHAIN <em>WEEK-END</em>"
     content = (
         f'<div class="matches-grid">{"".join(match_card(match) for match in fixtures)}</div>'
         if fixtures else
-        '<p class="home-weekend-empty">Aucun match senior annoncé pour ce week-end.</p>'
+        '<p class="home-weekend-empty">Aucun prochain match senior annoncé.</p>'
     )
-    return f'<section class="container section home-weekend" aria-labelledby="home-weekend-title"><div class="section-heading" data-reveal><div><p class="eyebrow">PROGRAMME DES SENIORS</p><h2 id="home-weekend-title">CE <em>WEEK-END</em></h2></div><a class="text-link" href="resultats.html">Voir les matchs des autres équipes ↗</a></div>{content}</section>'
+    return f'<section class="container section home-weekend" aria-labelledby="home-weekend-title"><div class="section-heading" data-reveal><div><p class="eyebrow">PROGRAMME DES SENIORS</p><h2 id="home-weekend-title">{title}</h2></div><a class="text-link" href="resultats.html">Voir les matchs des autres équipes ↗</a></div>{content}</section>'
 
 
 def next_round_matches(matches):
     """Show all fixtures in the first upcoming calendar week, including Sunday."""
-    if not matches:
-        return []
-    paris = ZoneInfo("Europe/Paris")
-    first_day = datetime.fromisoformat(matches[0]["date"]).astimezone(paris).date()
-    next_monday = first_day + timedelta(days=7 - first_day.weekday())
-    return [match for match in matches if datetime.fromisoformat(match["date"]).astimezone(paris).date() < next_monday]
+    return first_calendar_week(matches)
 
 
-def latest_results_week(matches):
-    """Keep only the most recent completed match week shown as the last weekend."""
-    if not matches:
-        return []
-    paris = ZoneInfo("Europe/Paris")
-    latest_day = max(datetime.fromisoformat(match["date"]).astimezone(paris).date() for match in matches)
-    monday = latest_day - timedelta(days=latest_day.weekday())
-    following_monday = monday + timedelta(days=7)
-    return [
-        match for match in matches
-        if monday <= datetime.fromisoformat(match["date"]).astimezone(paris).date() < following_monday
-    ]
-
-
-now_utc = datetime.now(timezone.utc)
-played = latest_results_week([m for m in RESULTS["matches"] if m["played"]])
-upcoming = sorted(
-    [m for m in RESULTS["matches"] if not m["played"] and datetime.fromisoformat(m["date"]) >= now_utc],
-    key=lambda m: m["date"],
+display_now = paris_now()
+score_matches, upcoming, weekend_switch_active = select_score_and_upcoming(
+    RESULTS["matches"], display_now
 )
+home_scores_title = "SCORES DU <em>WEEK-END</em>" if weekend_switch_active else "DERNIERS <em>RÉSULTATS</em>"
 pages={}
-home_body = f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>{SEASON_DISPLAY}</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><p class="hero-location">Complexe sportif du Haut-Champ<br>22440 Ploufragan</p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}{button('Essayer / s’inscrire','inscriptions.html',True)}</div><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true">↗</b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true">↗</b></a></div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section><section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>DERNIERS <em>RÉSULTATS</em></h2></div><a class="text-link" href="resultats.html">Tous les résultats ↗</a></div><div class="matches-grid">{''.join(match_card(m) for m in played[:4])}</div></section>''' + home_weekend_section(upcoming) + home_news_section(ARTICLES)
+home_body = f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>{SEASON_DISPLAY}</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><p class="hero-location">Complexe sportif du Haut-Champ<br>22440 Ploufragan</p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}{button('Essayer / s’inscrire','inscriptions.html',True)}</div><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true">↗</b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true">↗</b></a></div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section><section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>{home_scores_title}</h2></div><a class="text-link" href="resultats.html">Tous les résultats ↗</a></div><div class="matches-grid">{''.join(match_card(m, pending_score=not m["played"]) for m in score_matches[:4])}</div></section>''' + home_weekend_section(upcoming, display_now) + home_news_section(ARTICLES)
 pages["index"]=page("index","Accueil",home_body,description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
 pages["equipes"]=page("equipes","Les équipes",heading("LES <em>ÉQUIPES</em>","Équipes","À Ploufragan, près de Saint-Brieuc, le PHB accueille les enfants dès 3 ans, les jeunes, les seniors et les adultes en loisir. Sélectionnez une catégorie pour découvrir son projet, ses horaires et ses informations pratiques.")+f'<section class="container section after-heading"><div class="teams-grid">{"".join(team_card(g) for g in GROUPS)}</div></section>')
 
@@ -1051,7 +1029,8 @@ results_heading_media = heading_video(
     "data-results-logo-video",
     "results-intro-media",
 )
-pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS<br><em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont synchronisées automatiquement plusieurs fois par jour.",css_class="animated-heading results-heading",extra=results_heading_media)+f'''<section class="container section after-heading">{results_filter}<div class="section-heading"><div><p class="eyebrow">DERNIER WEEK-END</p><h2>LES <em>SCORES</em></h2></div>{sync_source}</div><div class="matches-grid">{''.join(match_card(m) for m in played)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid">{''.join(match_card(m) for m in next_round_matches(upcoming))}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div></section>''')
+scores_eyebrow = "WEEK-END EN COURS" if weekend_switch_active else "DERNIER WEEK-END"
+pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS<br><em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont actualisées toutes les heures le samedi et plusieurs fois par jour le reste de la semaine.",css_class="animated-heading results-heading",extra=results_heading_media)+f'''<section class="container section after-heading">{results_filter}<div class="section-heading"><div><p class="eyebrow">{scores_eyebrow}</p><h2>LES <em>SCORES</em></h2></div>{sync_source}</div><div class="matches-grid" data-results-scores>{''.join(match_card(m, pending_score=not m["played"]) for m in score_matches)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid" data-results-upcoming>{''.join(match_card(m) for m in next_round_matches(upcoming))}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div></section>''')
 
 product_cards=''.join(product_card(product) for product in PRODUCTS)
 shop_filter = '''<div class="content-filter shop-filter" data-shop-filter data-reveal><span class="content-filter-label" id="shop-filter-title">Filtrer la collection</span><div class="content-filter-choice"><button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="shop-filter-options" aria-labelledby="shop-filter-title shop-filter-selected"><span id="shop-filter-selected" data-filter-selected>Tous les articles</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button><div class="content-filter-menu" id="shop-filter-options" data-filter-menu role="listbox" aria-label="Catégories de la boutique" hidden><button type="button" role="option" data-shop-filter-value="" aria-selected="true">Tous les articles</button><button type="button" role="option" data-shop-filter-value="homme" aria-selected="false">Homme</button><button type="button" role="option" data-shop-filter-value="femme" aria-selected="false">Femme</button><button type="button" role="option" data-shop-filter-value="enfant" aria-selected="false">Enfant</button><button type="button" role="option" data-shop-filter-value="accessoires" aria-selected="false">Accessoires</button></div></div><span class="content-filter-count" data-shop-status aria-live="polite">Tous les articles affichés</span></div>'''
