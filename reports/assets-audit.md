@@ -1,7 +1,7 @@
 # Audit des assets
 
-- Assets publics : **233 fichiers, 28.5 Mo**.
-- Référencés par le site généré ou ses sources : **231**.
+- Assets publics : **235 fichiers, 32.5 Mo**.
+- Référencés par le site généré ou ses sources : **233**.
 - À examiner manuellement : **2**.
 - Sources graphiques archivées hors publication : **15 fichiers, 16.4 Mo**.
 
@@ -10,6 +10,7 @@
 | Fichier | Poids |
 |---|---:|
 | `assets/blog/blog-logo-orbit.mp4` | 4.9 Mo |
+| `assets/videos/entrainements-animation.mp4` | 3.8 Mo |
 | `assets/blog/intro.mp4` | 2.7 Mo |
 | `assets/blog/blog-ploufy-reading.mp4` | 1.8 Mo |
 | `assets/equipes/u18-garcons-card.webp` | 582.2 Ko |
@@ -28,7 +29,6 @@
 | `assets/equipes/u13-garcons-card.webp` | 321.6 Ko |
 | `assets/backgrounds/fond-3.webp` | 317.8 Ko |
 | `assets/logo-phb-club-v2.webp` | 309.3 Ko |
-| `assets/og/article-seniors-masculins-1.jpg` | 306.9 Ko |
 
 ## Assets potentiellement inutilisés
 

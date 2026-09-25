@@ -11,8 +11,9 @@ BUDGETS = {
     "Vidéo accueil": (ASSETS / "blog" / "intro.mp4", 3_200_000),
     "Vidéo Résultats": (ASSETS / "blog" / "blog-logo-orbit.mp4", 5_700_000),
     "Vidéo Blog": (ASSETS / "blog" / "blog-ploufy-reading.mp4", 2_200_000),
+    "Vidéo Entraînements": (ASSETS / "videos" / "entrainements-animation.mp4", 4_500_000),
 }
-TOTAL_ASSETS_BUDGET = 33_000_000
+TOTAL_ASSETS_BUDGET = 38_000_000
 
 
 def main():

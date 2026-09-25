@@ -184,6 +184,17 @@ test('inscriptions : navigation par menu déroulant', async ({ page }) => {
   await expect(trigger).toContainText('Essai');
 });
 
+test('entraînements : animation présente et non bouclée', async ({ page }) => {
+  await page.goto('/entrainements.html');
+  const video = page.locator('[data-training-logo-video]');
+  await expect(video).toHaveCount(1);
+  await expect(video.locator('source')).toHaveAttribute('src', 'assets/videos/entrainements-animation.mp4');
+  await expect(video).toHaveAttribute('poster', 'assets/videos/entrainements-animation-first.webp');
+  await expect(video).toHaveAttribute('muted', '');
+  await expect(video).toHaveAttribute('playsinline', '');
+  expect(await video.evaluate(element => element.loop)).toBe(false);
+});
+
 test('blog : animation présente et non bouclée', async ({ page }) => {
   await page.goto('/blog.html');
   const video = page.locator('[data-blog-logo-video]');

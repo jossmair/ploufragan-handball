@@ -66,7 +66,7 @@ INP avant intervention : **NON MESURÉ**. L’audit local de chargement n’exé
 
 Les écarts de quelques dizaines de millisecondes sont du bruit normal d’une mesure locale. Le gain mesurable se situe sur le Blog : le transfert observé durant les 1,8 premières secondes passe de 3,24 Mo à 1,38 Mo grâce au préchargement `metadata`. La vidéo continue ensuite à se charger pendant sa lecture. La vidéo Résultats de 5,16 Mo reste la ressource la plus lourde ; elle a été conservée car elle fait partie du comportement validé.
 
-Poids final : CSS 142 668 o, JS 22 250 o, assets publics 29 919 557 o. Les 20 plus gros fichiers figurent dans `reports/assets-audit.md`. Les budgets laissent environ 10 à 15 % de marge sur les médias actuels et 10 % sur l’ensemble des assets afin de détecter une régression brutale sans bloquer les évolutions normales.
+Poids actuel après intégration de l’animation Entraînements : CSS 142 752 o, JS 22 250 o, assets publics 34 038 349 o. Les 20 plus gros fichiers figurent dans `reports/assets-audit.md`. Les budgets conservent une marge destinée à détecter une régression brutale sans bloquer les évolutions validées.
 
 INP après intervention : **NON MESURÉ** pour la même raison que la baseline. Aucune erreur de console ni exception n’a été observée dans les parcours automatisés.
 
@@ -114,7 +114,7 @@ Le samedi, le workflow tourne chaque heure ; du dimanche au vendredi, toutes les
 
 ## 11. Médias, sécurité et confidentialité
 
-L’inventaire contient 233 fichiers publics pour environ 28,5 Mio. Les deux fichiers signalés comme non référencés sont les licences des polices auto-hébergées et sont conservés volontairement. Les archives graphiques ne sont pas déployées.
+L’inventaire contient 235 fichiers publics pour environ 32,5 Mio. Les deux fichiers signalés comme non référencés sont les licences des polices auto-hébergées et sont conservés volontairement. Les archives graphiques ne sont pas déployées.
 
 Les ressources visiteur sont locales : polices, images, vidéos, CSS et JS. Aucun analytics, tracker, embed social, cookie applicatif ou requête tierce automatique n’a été trouvé. Les services externes sont uniquement ouverts par action du visiteur. Les 134 liens externes ont été contrôlés : 130 réponses normales, 4 hôtes joignables mais protégés par anti-bot/authentification, 0 lien cassé, 0 indisponibilité.
 
