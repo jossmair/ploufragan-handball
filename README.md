@@ -46,7 +46,7 @@ Les fichiers de `data/` sont utilisés au build et ne sont pas copiés dans `_si
 
 ## Pipeline GitHub Pages
 
-Le workflow principal s’exécute lors d’un push sur `main`, à la demande et toutes les quatre heures (`17 */4 * * *`, heure UTC). Il utilise le runner explicitement fixé à **Ubuntu 24.04** afin d’éviter qu’un changement futur de `ubuntu-latest` modifie silencieusement Python, Node, Chromium ou les bibliothèques système.
+Le workflow principal s’exécute lors d’un push sur `main`, à la demande, toutes les quatre heures du dimanche au vendredi (`17 */4 * * 0-5`, heure UTC) et chaque heure le samedi (`0 * * * 6`). La bascule métier du samedi utilise le fuseau `Europe/Paris`. Le runner est explicitement fixé à **Ubuntu 24.04** afin d’éviter qu’un changement futur de `ubuntu-latest` modifie silencieusement Python, Node, Chromium ou les bibliothèques système.
 
 Le pipeline suit cet ordre :
 
@@ -58,7 +58,10 @@ Le pipeline suit cet ordre :
 6. génération du site et du PDF partenaires ;
 7. audits des liens, du build et du SEO, puis tests Playwright desktop/mobile ;
 8. persistance des snapshots validés sur la branche dédiée ;
-9. création de l’artefact public et déploiement GitHub Pages.
+9. création de l’artefact public ;
+10. déploiement GitHub Pages dans un job séparé.
+
+Le job de build possède uniquement la permission `contents: write`, nécessaire pour la branche de snapshots. Le job de déploiement possède uniquement `pages: write` et `id-token: write`. Le checkout du code du site ne conserve pas d’identifiants Git ; seul le checkout isolé de la branche de snapshots peut publier les deux JSON validés. Les jobs ont des délais maximaux explicites de 35 et 10 minutes.
 
 ### Snapshots sportifs
 
@@ -95,7 +98,7 @@ La saison est centralisée. Pour passer de **2026–2027** à **2027–2028** :
 - `data/articles.json` contient les actualités. Pour ajouter un article, ajouter un objet avec un `slug` unique, un titre, une date au format `AAAA-MM-JJ`, un auteur, une image, une introduction, des paragraphes dans `content`, un titre et une description SEO. Les tableaux `players` et `staff` alimentent le carrousel et l’encadrement de cette présentation d’équipe. Placer les images dans `assets/articles/`, puis lancer `python build.py`. La liste, la page de l’article et le sitemap sont générés automatiquement.
 - `data/categories.json` est la source métier des catégories, âges ou années de naissance, créneaux, encadrement et liens d’équipe. Le Baby Hand y est défini par l’âge de 3 à 5 ans, sans fausse année de naissance.
 - `data/site.json` centralise la saison et les versions de ressources CSS/JavaScript.
-- `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures, reconstruit le site, exécute les tests et le publie sur Ubuntu 24.04.
+- `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures du dimanche au vendredi et chaque heure le samedi, reconstruit le site, exécute les tests et le publie sur Ubuntu 24.04.
 
 Le dossier `data/` sert uniquement au build et n’est plus copié dans le site public : aucune page ni aucun script navigateur ne charge directement ces JSON. Les derniers snapshots sportifs validés survivent aux runners éphémères grâce à la branche `phb-data-snapshots`.
 
@@ -139,6 +142,8 @@ Audits complémentaires :
 - `npm run audit:performance` mesure LCP, CLS et poids transféré sur les cinq parcours prioritaires ;
 - `npm run audit:responsive` vérifie dix pages à 375, 390, 430, 768, 1024, 1440 et 1920 px ;
 - `npm run audit:sitemap` charge chaque page indexable sur mobile et ordinateur ;
+- `npm run audit:nojs` charge treize parcours essentiels sur mobile et ordinateur avec JavaScript désactivé ;
+- `npm run audit:budgets` contrôle les limites de poids fondées sur la baseline 2026 ;
 - `python scripts/audit_assets.py --output reports/assets-audit.md` inventorie les assets publics ;
 - `npm run audit:partner-pdf` vérifie les quatre pages A4 du dossier partenaire.
 

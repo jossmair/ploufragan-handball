@@ -7,6 +7,9 @@
     "audit:performance": "node scripts/audit_runtime.mjs",
     "audit:responsive": "node scripts/audit_responsive.mjs",
     "audit:sitemap": "node scripts/audit_sitemap.mjs",
+    "audit:nojs": "node scripts/audit_nojs.mjs",
+    "audit:budgets": "python scripts/check_budgets.py",
+    "audit:external": "python scripts/audit_external_links.py",
     "audit:partner-pdf": "node scripts/audit_partner_pdf.mjs",
     "build:partner-pdf": "python scripts/build_partner_kit.py && node scripts/build_partner_pdf.mjs"
   },

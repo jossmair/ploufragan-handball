@@ -1,0 +1,262 @@
+[
+  {
+    "path": "/",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1894,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/club.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1510,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/equipes.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 759,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/seniors-masculins-1.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1645,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/entrainements.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1425,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/resultats.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 4117,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/inscriptions.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 4489,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/blog.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 653,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/articles/presentation-seniors-masculins-1.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1452,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/partenaires.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1717,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/devenir-partenaire.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 2263,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/boutique.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1452,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/contact.html",
+    "width": 390,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 596,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1894,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/club.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1510,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/equipes.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 759,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/seniors-masculins-1.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1648,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/entrainements.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1469,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/resultats.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 4117,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/inscriptions.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 4489,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/blog.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 653,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/articles/presentation-seniors-masculins-1.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1452,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/partenaires.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1717,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/devenir-partenaire.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 2263,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/boutique.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 1452,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  },
+  {
+    "path": "/contact.html",
+    "width": 1440,
+    "status": 200,
+    "h1": 1,
+    "mainCharacters": 596,
+    "navigationLinks": 10,
+    "navigationVisible": true,
+    "overflow": 0
+  }
+]

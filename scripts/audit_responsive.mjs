@@ -9,7 +9,7 @@ const pages = [
   '/boutique.html', '/blog.html', '/articles/presentation-seniors-masculins-1.html',
   '/partenaires.html', '/contact.html',
 ];
-const screenshotRoot = join('test-results', 'responsive-audit');
+const screenshotRoot = process.env.PHB_AUDIT_SCREENSHOT_DIR || join('test-results', 'responsive-audit');
 const saveScreenshots = process.env.PHB_AUDIT_SCREENSHOTS === '1';
 
 if (saveScreenshots) await mkdir(screenshotRoot, { recursive: true });

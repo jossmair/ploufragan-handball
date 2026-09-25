@@ -1,0 +1,806 @@
+[
+  {
+    "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/534810460",
+    "domain": "annuaire-entreprises.data.gouv.fr",
+    "status": 403,
+    "result": "reachable"
+  },
+  {
+    "url": "https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages",
+    "domain": "docs.github.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://garage-des-chatelets.fr/",
+    "domain": "garage-des-chatelets.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://gesthand.net/",
+    "domain": "gesthand.net",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://lexotique-traiteur.eatbu.com/",
+    "domain": "lexotique-traiteur.eatbu.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://marmousse.bzh/fr/",
+    "domain": "marmousse.bzh",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://pizzerialaproue-saintbrieuc.fr/",
+    "domain": "pizzerialaproue-saintbrieuc.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://play.google.com/store/apps/details?id=com.digitalplumecompany.boostyourteam&hl=fr",
+    "domain": "play.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://unikalo.com/magasins/nuances-unikalo-st-brieuc/",
+    "domain": "unikalo.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.afflelou.com/opticien/langueux/afflelou-c-c-carrefour-22360",
+    "domain": "www.afflelou.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.belles-baies.fr/",
+    "domain": "www.belles-baies.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.cholet22.fr/",
+    "domain": "www.cholet22.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.clictonbox.fr/",
+    "domain": "www.clictonbox.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.cnil.fr/fr/plaintes",
+    "domain": "www.cnil.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.credit-agricole.fr/particulier/agence/cotes-d-armor/credit-agricole-agence-de-ploufragan-3078.html",
+    "domain": "www.credit-agricole.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.creperie-bleu-marine.fr/",
+    "domain": "www.creperie-bleu-marine.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.cuisines-et-passions.fr/",
+    "domain": "www.cuisines-et-passions.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.e.leclerc/mag/e-leclerc-ploufragan",
+    "domain": "www.e.leclerc",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/category/ploufragan-handball",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-claquettes",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-gourde",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-paire-de-chaussettes",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pantalon",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pantalon-femme",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-pull-col-rond-polyester",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sac-a-dos-compartiment",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sac-de-sport",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-short-training",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-short-training-femme",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-1-4-zip-training",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-a-capuche-adulte",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-sweat-a-capuche-enfant",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-enfant",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-femme",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-coton-homme",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-technique",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-t-shirt-technique-femme",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip-capuche",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.equipclub.com/product/ploufragan-hb-veste-full-zip-capuche-capuche",
+    "domain": "www.equipclub.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.facebook.com/piccadilly.saintbrieuc/",
+    "domain": "www.facebook.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.facebook.com/ploufragan.hb/",
+    "domain": "www.facebook.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fploufragan-handball.fr%2Farticles%2Fhistoire-ploufragan-handball.html",
+    "domain": "www.facebook.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fploufragan-handball.fr%2Farticles%2Fpresentation-seniors-masculins-1.html",
+    "domain": "www.facebook.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/equipe-2119151/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625937/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625943/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/equipe-2119088/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627133/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627140/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/equipe-2165343/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681030/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681037/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/equipe-2175410/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708194/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/equipe-2171762/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697235/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697236/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697247/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697248/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/equipe-2169789/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696265/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696266/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696274/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696276/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/equipe-2164840/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683525/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683530/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/equipe-2164938/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683693/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683696/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/equipe-2165107/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/classements/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681974/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681975/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/wp-content/uploads/2026/06/05_Reglement-medical_2026-27.pdf",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=SALLE%20DU%20COLL%C3%88GE%20EUG%C3%88NE%20GUILLEVIC%2C%20RUE%20DU%2019%20MARS%201962%2C%2022150%20PLOEUC%20SUR%20LIE%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=SALLE%20KERRAOUL%2C%20RUE%20HENT%20KERVIK%2C%2022500%20PAIMPOL%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=SALLE%20PASS%27SPORT%2C%20dixmude%2C%2022580%20PLOUHA%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=Salle%20Oc%C3%A9ane%2C%20RUE%20DE%20LA%20CROIX%2C%2022190%20PLERIN%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=Salle%20omnisports%20d%E2%80%99Erquy%2C%204%20%20RUE%20VILLE%20LOUIS%2C%2022430%20ERQUY%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=Salle%20omnisports%2C%20LE%20BOURG%20-%20RUE%20DE%20LA%20GRANDE%20VILLE%20NEUVE%2C%2022170%20PLOUAGAT%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=Salle%20omnisports%2C%20rue%20des%20plantations%2C%2022980%20PLELAN%20LE%20PETIT%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Alain%20Afflelou%2C%20Galerie%20Carrefour%2C%20Langueux",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Belles%20Baies%2C%20Rue%20Amp%C3%A8re%2C%20Saint-Brieuc",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Biotech%2C%20Rue%20Ir%C3%A8ne%20Joliot-Curie%2C%20Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Carrosserie%20Cholet%20Motrio%2C%2010%20ter%20avenue%20des%20Ch%C3%A2telets%2C%20Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Clic%20Ton%20Box%2C%20La%20Br%C3%A9hamette%2C%20Pordic",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Complexe+sportif+Marcel+Paul+13+rue+de+Merlet+22440+Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Complexe+sportif+du+Haut-Champ+All%C3%A9e+des+Gl%C3%A9nan+22440+Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Cr%C3%A9dit%20Agricole%2C%2014%20rue%20de%20la%20Fontaine%20Morin%2C%20Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Cr%C3%AAperie%20Bleu%20Marine%2C%2028%20rue%20Aristide%20Briand%2C%20Saint-Brieuc",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Cuisines%20et%20Passions%2C%20Rue%20Jean%20Monnet%2C%20Tr%C3%A9gueux",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=E.Leclerc%20Ploufragan%2C%20Rue%20d%E2%80%99Abas%2C%20Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=L%E2%80%99Exotique%2C%20Restaurant-traiteur%2C%20Pl%C3%A9lo",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Le%20Coiffeur%2C%20Rue%20des%20Jonquilles%2C%20Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Le%20Picca%2C%208%20rue%20Michelet%2C%20Saint-Brieuc",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Le%20Vieux%20Bourg%2C%20Chemin%20des%20Loges%2C%20Pl%C5%93uc-sur-Li%C3%A9",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=MP%20Constructions%2C%20Rue%20Paul%20Richet%2C%20Pommeret",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Marmousse%2C%20Rue%20Adolf%20Le%20Bail%2C%20Pl%C3%A9rin",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Missenard%2C%20Rue%20Ren%C3%A9%20Descartes%2C%20Pl%C3%A9rin",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Nuances%20Unikalo%2C%20Rue%20Marc%20Seguin%2C%20Langueux",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Paillardon%20TP%2C%20Rue%20Nicolas%20Copernic%2C%20Tr%C3%A9gueux",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Passion%20Vin%20/%20Le%20Cru%20Gourmand%2C%201%20rue%20du%20Stade%2C%20Pl%C3%A9rin",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Pizzeria%20La%20Proue%2C%207%20rue%20Fardel%2C%20Saint-Brieuc",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Renault%20Les%20Ch%C3%A2telets%2C%20Rue%20de%20la%20Loge%2C%20Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Salle+de+motricit%C3%A9+de+l%27%C3%A9cole+Pasteur+Tr%C3%A9gueux",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Ti%20Ced%20Chauffage%2C%20Yffiniac",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/search/?api=1&query=Ville%20de%20Ploufragan%2C%2022%20rue%20de%20la%20Mairie%2C%20Ploufragan",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.instagram.com/ploufragan.hb/",
+    "domain": "www.instagram.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.le-coiffeur-visagiste.fr/",
+    "domain": "www.le-coiffeur-visagiste.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.le-vieux-bourg.com/",
+    "domain": "www.le-vieux-bourg.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.letelegramme.fr/cotes-d-armor/ploufragan-22440/spanhandballspan-bonne-sante-des-equipes-seniors-2158822.php",
+    "domain": "www.letelegramme.fr",
+    "status": 403,
+    "result": "reachable"
+  },
+  {
+    "url": "https://www.letelegramme.fr/cotes-d-armor/ploufragan-22440/spanhandballspan-soiree-de-gala-samedi-2963091.php",
+    "domain": "www.letelegramme.fr",
+    "status": 403,
+    "result": "reachable"
+  },
+  {
+    "url": "https://www.missenard-climatique.fr/agences/agence-saint-brieuc-plerin/",
+    "domain": "www.missenard-climatique.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.mpconstructions-22.fr/",
+    "domain": "www.mpconstructions-22.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ouest-france.fr/bretagne/saint-brieuc-22000/ploufragan-handball-une-premiere-annee-reussie-1330987",
+    "domain": "www.ouest-france.fr",
+    "status": 403,
+    "result": "reachable"
+  },
+  {
+    "url": "https://www.paillardontp.bzh/",
+    "domain": "www.paillardontp.bzh",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.passion-vin-22.fr/",
+    "domain": "www.passion-vin-22.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ploufragan.fr/",
+    "domain": "www.ploufragan.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ploufragan.fr/agenda/soiree-gala-ploufragan-handball",
+    "domain": "www.ploufragan.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ploufragan.fr/node/8492",
+    "domain": "www.ploufragan.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ploufragan.fr/sites/default/files/atoms/files/proces-verbal_du_cm_du_12_novembre_2025.pdf",
+    "domain": "www.ploufragan.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ploufragan.fr/sites/default/files/gazette_406_juillet_aout22.pdf",
+    "domain": "www.ploufragan.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.qualit-enr.org/entreprises/ti-cedchauffage/",
+    "domain": "www.qualit-enr.org",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.rvbiotech.fr/",
+    "domain": "www.rvbiotech.fr",
+    "status": 200,
+    "result": "ok"
+  }
+]

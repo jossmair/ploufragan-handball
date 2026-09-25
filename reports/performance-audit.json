@@ -1,13 +1,58 @@
 [
   {
     "path": "/",
-    "lcpMs": 272,
+    "lcpMs": 244,
+    "lcpElement": {
+      "tag": "section",
+      "id": null,
+      "classes": [
+        "home-hero",
+        "container"
+      ],
+      "url": "/assets/photos/home-handball-action-bg.webp"
+    },
     "cls": 0,
-    "domContentLoadedMs": 164,
-    "loadMs": 269,
-    "encodedBytes": 4108116,
-    "decodedBytes": 4108116,
+    "fcpMs": 244,
+    "ttfbMs": 4,
+    "domContentLoadedMs": 147,
+    "loadMs": 231,
+    "domElements": 451,
+    "encodedBytes": 4164816,
+    "decodedBytes": 4164816,
     "requests": 38,
+    "byType": {
+      "link": {
+        "requests": 4,
+        "encodedBytes": 216103,
+        "decodedBytes": 216103
+      },
+      "img": {
+        "requests": 22,
+        "encodedBytes": 507248,
+        "decodedBytes": 507248
+      },
+      "script": {
+        "requests": 1,
+        "encodedBytes": 22250,
+        "decodedBytes": 22250
+      },
+      "video": {
+        "requests": 2,
+        "encodedBytes": 2896723,
+        "decodedBytes": 2896723
+      },
+      "css": {
+        "requests": 8,
+        "encodedBytes": 522492,
+        "decodedBytes": 522492
+      }
+    },
+    "renderBlocking": [
+      "/assets/fonts/fonts.css",
+      "/assets/site.css"
+    ],
+    "inpMs": null,
+    "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
         "name": "/assets/blog/intro.mp4",
@@ -23,7 +68,7 @@
       },
       {
         "name": "/assets/site.css",
-        "bytes": 135926
+        "bytes": 142668
       },
       {
         "name": "/assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
@@ -34,18 +79,56 @@
   },
   {
     "path": "/blog.html",
-    "lcpMs": 188,
+    "lcpMs": 192,
+    "lcpElement": {
+      "tag": "video",
+      "id": null,
+      "classes": [],
+      "url": "/assets/blog/blog-ploufy-reading.mp4"
+    },
     "cls": 0,
-    "domContentLoadedMs": 86,
-    "loadMs": 160,
-    "encodedBytes": 6451353,
-    "decodedBytes": 6451353,
-    "requests": 27,
-    "largest": [
-      {
-        "name": "/assets/blog/blog-logo-orbit.mp4",
-        "bytes": 5160628
+    "fcpMs": 144,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 67,
+    "loadMs": 133,
+    "domElements": 250,
+    "encodedBytes": 1375779,
+    "decodedBytes": 1375779,
+    "requests": 30,
+    "byType": {
+      "link": {
+        "requests": 4,
+        "encodedBytes": 216103,
+        "decodedBytes": 216103
       },
+      "img": {
+        "requests": 14,
+        "encodedBytes": 547896,
+        "decodedBytes": 547896
+      },
+      "script": {
+        "requests": 1,
+        "encodedBytes": 22250,
+        "decodedBytes": 22250
+      },
+      "video": {
+        "requests": 4,
+        "encodedBytes": 96348,
+        "decodedBytes": 96348
+      },
+      "css": {
+        "requests": 6,
+        "encodedBytes": 493182,
+        "decodedBytes": 493182
+      }
+    },
+    "renderBlocking": [
+      "/assets/fonts/fonts.css",
+      "/assets/site.css"
+    ],
+    "inpMs": null,
+    "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
+    "largest": [
       {
         "name": "/assets/backgrounds/fond-1.webp",
         "bytes": 331584
@@ -60,20 +143,63 @@
       },
       {
         "name": "/assets/site.css",
-        "bytes": 135926
+        "bytes": 142668
+      },
+      {
+        "name": "/assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
+        "bytes": 85058
       }
     ],
     "failed": []
   },
   {
     "path": "/boutique.html",
-    "lcpMs": 188,
+    "lcpMs": 160,
+    "lcpElement": {
+      "tag": "img",
+      "id": null,
+      "classes": [
+        "watermark"
+      ],
+      "url": "/assets/logo-phb.png"
+    },
     "cls": 0,
-    "domContentLoadedMs": 101,
-    "loadMs": 130,
-    "encodedBytes": 1190713,
-    "decodedBytes": 1190713,
-    "requests": 34,
+    "fcpMs": 160,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 88,
+    "loadMs": 114,
+    "domElements": 535,
+    "encodedBytes": 1227177,
+    "decodedBytes": 1227177,
+    "requests": 35,
+    "byType": {
+      "link": {
+        "requests": 4,
+        "encodedBytes": 216103,
+        "decodedBytes": 216103
+      },
+      "script": {
+        "requests": 1,
+        "encodedBytes": 22250,
+        "decodedBytes": 22250
+      },
+      "img": {
+        "requests": 23,
+        "encodedBytes": 514486,
+        "decodedBytes": 514486
+      },
+      "css": {
+        "requests": 6,
+        "encodedBytes": 474338,
+        "decodedBytes": 474338
+      }
+    },
+    "renderBlocking": [
+      "/assets/fonts/fonts.css",
+      "/assets/site.css"
+    ],
+    "inpMs": null,
+    "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
         "name": "/assets/backgrounds/fond-2.webp",
@@ -85,7 +211,7 @@
       },
       {
         "name": "/assets/site.css",
-        "bytes": 135926
+        "bytes": 142668
       },
       {
         "name": "/assets/fonts/inter-normal-400-700.woff2",
@@ -100,14 +226,60 @@
   },
   {
     "path": "/resultats.html",
-    "lcpMs": 224,
+    "lcpMs": 256,
+    "lcpElement": {
+      "tag": "video",
+      "id": null,
+      "classes": [],
+      "url": "/assets/blog/blog-logo-orbit.mp4"
+    },
     "cls": 0,
-    "domContentLoadedMs": 116,
-    "loadMs": 163,
-    "encodedBytes": 1141471,
-    "decodedBytes": 1141471,
-    "requests": 35,
+    "fcpMs": 244,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 139,
+    "loadMs": 239,
+    "domElements": 773,
+    "encodedBytes": 6427229,
+    "decodedBytes": 6427229,
+    "requests": 38,
+    "byType": {
+      "link": {
+        "requests": 4,
+        "encodedBytes": 216103,
+        "decodedBytes": 216103
+      },
+      "script": {
+        "requests": 1,
+        "encodedBytes": 22250,
+        "decodedBytes": 22250
+      },
+      "img": {
+        "requests": 22,
+        "encodedBytes": 406480,
+        "decodedBytes": 406480
+      },
+      "video": {
+        "requests": 2,
+        "encodedBytes": 5250864,
+        "decodedBytes": 5250864
+      },
+      "css": {
+        "requests": 8,
+        "encodedBytes": 531532,
+        "decodedBytes": 531532
+      }
+    },
+    "renderBlocking": [
+      "/assets/fonts/fonts.css",
+      "/assets/site.css"
+    ],
+    "inpMs": null,
+    "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
+      {
+        "name": "/assets/blog/blog-logo-orbit.mp4",
+        "bytes": 5160628
+      },
       {
         "name": "/assets/backgrounds/fond-5.webp",
         "bytes": 368218
@@ -118,28 +290,63 @@
       },
       {
         "name": "/assets/site.css",
-        "bytes": 135926
+        "bytes": 142668
       },
       {
-        "name": "/assets/fonts/inter-normal-400-700.woff2",
-        "bytes": 48256
-      },
-      {
-        "name": "/assets/partenaires/le-picca.webp",
-        "bytes": 46840
+        "name": "/assets/blog/blog-logo-first.webp",
+        "bytes": 90236
       }
     ],
     "failed": []
   },
   {
     "path": "/articles/presentation-seniors-masculins-1.html",
-    "lcpMs": 188,
+    "lcpMs": 168,
+    "lcpElement": {
+      "tag": "img",
+      "id": null,
+      "classes": [
+        "watermark"
+      ],
+      "url": "/assets/logo-phb.png"
+    },
     "cls": 0,
-    "domContentLoadedMs": 97,
-    "loadMs": 129,
-    "encodedBytes": 2161643,
-    "decodedBytes": 2161643,
+    "fcpMs": 168,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 93,
+    "loadMs": 119,
+    "domElements": 367,
+    "encodedBytes": 2169415,
+    "decodedBytes": 2169415,
     "requests": 29,
+    "byType": {
+      "link": {
+        "requests": 4,
+        "encodedBytes": 216103,
+        "decodedBytes": 216103
+      },
+      "script": {
+        "requests": 1,
+        "encodedBytes": 22250,
+        "decodedBytes": 22250
+      },
+      "img": {
+        "requests": 18,
+        "encodedBytes": 1509050,
+        "decodedBytes": 1509050
+      },
+      "css": {
+        "requests": 5,
+        "encodedBytes": 422012,
+        "decodedBytes": 422012
+      }
+    },
+    "renderBlocking": [
+      "/assets/fonts/fonts.css",
+      "/assets/site.css"
+    ],
+    "inpMs": null,
+    "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
         "name": "/assets/backgrounds/fond-1.webp",

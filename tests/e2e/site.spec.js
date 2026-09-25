@@ -44,6 +44,9 @@ test('mobile : menu clavier et absence de débordement', async ({ page }, testIn
   test.skip(!testInfo.project.name.startsWith('mobile'));
   await page.goto('/');
   const toggle = page.locator('.menu-toggle');
+  const toggleBox = await toggle.boundingBox();
+  expect(toggleBox?.width).toBeGreaterThanOrEqual(44);
+  expect(toggleBox?.height).toBeGreaterThanOrEqual(44);
   await toggle.click();
   await expect(toggle).toHaveAttribute('aria-expanded', 'true');
   await expect(page.getByRole('navigation', { name: 'Navigation principale' })).toBeVisible();
@@ -51,6 +54,16 @@ test('mobile : menu clavier et absence de débordement', async ({ page }, testIn
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
+});
+
+test('navigation clavier : le lien d’évitement atteint le contenu', async ({ page }) => {
+  await page.goto('/');
+  await page.keyboard.press('Tab');
+  const skip = page.getByRole('link', { name: 'Aller au contenu' });
+  await expect(skip).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/#contenu$/);
+  await expect(page.locator('main#contenu')).toBeVisible();
 });
 
 test('mobile : pages principales sans débordement horizontal', async ({ page }, testInfo) => {
@@ -191,15 +204,35 @@ test('mouvement réduit : vidéos et ticker restent statiques', async ({ page })
   expect(animationName).toBe('none');
 });
 
+test('médias indisponibles : le contenu essentiel reste utilisable', async ({ page }) => {
+  await page.route('**/*.mp4', route => route.fulfill({ status: 204, contentType: 'video/mp4', body: '' }));
+  await page.goto('/');
+  await expect(page.locator('h1')).toContainText('PLOUFRAGAN');
+  await expect(page.getByRole('link', { name: /Essayer \/ s’inscrire/i })).toBeVisible();
+  await page.goto('/blog.html');
+  await expect(page.locator('h1')).toContainText('BLOG DU PHB');
+});
+
 test('permanences : page navigable mais non indexable', async ({ page }) => {
   await page.goto('/permanences-seniors-masculins.html');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex,follow');
   await expect(page.locator('h1')).toBeVisible();
 });
 
-for (const path of ['/', '/resultats.html', '/inscriptions.html', '/boutique.html', '/blog.html']) {
-  test(`accessibilité : aucune violation sérieuse sur ${path}`, async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name.startsWith('mobile'));
+test('404 : identité, noindex et retour vers le site', async ({ page }) => {
+  await page.goto('/404.html');
+  await expect(page.locator('h1')).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex,follow');
+  await expect(page.locator('main .actions').getByRole('link', { name: /^Accueil/i })).toHaveAttribute('href', '/');
+});
+
+for (const path of [
+  '/', '/club.html', '/equipes.html', '/seniors-masculins-1.html',
+  '/entrainements.html', '/resultats.html', '/inscriptions.html', '/blog.html',
+  '/articles/presentation-seniors-masculins-1.html', '/partenaires.html',
+  '/devenir-partenaire.html', '/boutique.html', '/contact.html',
+]) {
+  test(`accessibilité : aucune violation sérieuse sur ${path}`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(path);
     const audit = await new AxeBuilder({ page })

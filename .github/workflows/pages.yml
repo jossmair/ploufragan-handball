@@ -10,25 +10,24 @@ on:
     # ce qui conserve 9 h locale lors des changements heure d'été/hiver.
     - cron: '0 * * * 6'
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
   group: phb-pages
   cancel-in-progress: false
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    permissions:
+      contents: write
     env:
       PHB_BUILD_ID: ${{ github.sha }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Récupérer le dernier snapshot sportif validé
         uses: actions/checkout@v4
         with:
@@ -66,8 +65,11 @@ jobs:
           python scripts/check_site.py
           python scripts/check_build.py
           python scripts/seo_audit.py
+          python scripts/check_budgets.py
       - name: Tests navigateur
         run: npm run test:e2e
+      - name: Vérifier le contenu sans JavaScript
+        run: npm run audit:nojs
       - name: Persister les snapshots sportifs validés
         run: |
           python scripts/snapshot_store.py save .phb-snapshots
@@ -91,6 +93,18 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Publier
         id: deployment
         uses: actions/deploy-pages@v4

@@ -31,9 +31,7 @@ document.querySelectorAll('[data-heading-video]').forEach(headingVideo => {
   const holdLastFrame = () => headingVideo.pause();
   headingVideo.addEventListener('ended', holdLastFrame, { once: true });
   if (motion.matches) {
-    const seekToEnd = () => { headingVideo.currentTime = headingVideo.duration; headingVideo.pause(); };
-    if (headingVideo.readyState >= 1) seekToEnd();
-    else headingVideo.addEventListener('loadedmetadata', seekToEnd, { once: true });
+    headingVideo.pause();
   } else {
     headingVideo.play().catch(holdLastFrame);
   }
