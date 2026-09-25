@@ -26,19 +26,18 @@ if (document.body.dataset.page === 'index') {
   if (destinations[location.hash]) location.replace(destinations[location.hash]);
 }
 
-// Play the Blog film once, then leave its exact last frame on screen.
-const blogLogoVideo = document.querySelector('[data-blog-logo-video]');
-if (blogLogoVideo) {
-  const holdLastFrame = () => blogLogoVideo.pause();
-  blogLogoVideo.addEventListener('ended', holdLastFrame, { once: true });
+// Heading films play once, then leave their exact last frame on screen.
+document.querySelectorAll('[data-heading-video]').forEach(headingVideo => {
+  const holdLastFrame = () => headingVideo.pause();
+  headingVideo.addEventListener('ended', holdLastFrame, { once: true });
   if (motion.matches) {
-    const seekToEnd = () => { blogLogoVideo.currentTime = blogLogoVideo.duration; blogLogoVideo.pause(); };
-    if (blogLogoVideo.readyState >= 1) seekToEnd();
-    else blogLogoVideo.addEventListener('loadedmetadata', seekToEnd, { once: true });
+    const seekToEnd = () => { headingVideo.currentTime = headingVideo.duration; headingVideo.pause(); };
+    if (headingVideo.readyState >= 1) seekToEnd();
+    else headingVideo.addEventListener('loadedmetadata', seekToEnd, { once: true });
   } else {
-    blogLogoVideo.play().catch(holdLastFrame);
+    headingVideo.play().catch(holdLastFrame);
   }
-}
+});
 
 // The home film plays once; its exact final image then remains visible.
 const blogIntroVideo = document.querySelector('[data-intro-video]');
@@ -296,6 +295,44 @@ document.querySelectorAll('[data-article-carousel]').forEach(track => {
     }
   });
   dialog.addEventListener('close', () => opener?.focus());
+});
+
+document.querySelectorAll('[data-team-gallery]').forEach(gallery => {
+  const track = gallery.querySelector('[data-team-gallery-track]');
+  const slides = [...track.children];
+  const previous = gallery.querySelector('[data-team-gallery-prev]');
+  const next = gallery.querySelector('[data-team-gallery-next]');
+  const count = gallery.querySelector('[data-team-gallery-count]');
+  if (slides.length < 2) return;
+
+  function currentIndex() {
+    const first = slides[0].offsetLeft;
+    return slides.reduce((nearest, slide, index) =>
+      Math.abs(slide.offsetLeft - first - track.scrollLeft) < Math.abs(slides[nearest].offsetLeft - first - track.scrollLeft)
+        ? index : nearest, 0);
+  }
+  function update() {
+    const index = currentIndex();
+    count.textContent = `${index + 1} / ${slides.length}`;
+    previous.disabled = index === 0;
+    next.disabled = index === slides.length - 1;
+  }
+  function move(step) {
+    const index = Math.max(0, Math.min(slides.length - 1, currentIndex() + step));
+    track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: motion.matches ? 'auto' : 'smooth' });
+  }
+
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  track.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      move(event.key === 'ArrowRight' ? 1 : -1);
+    }
+  });
+  window.addEventListener('resize', update, { passive: true });
+  update();
 });
 
 document.querySelectorAll('[data-copy-article]').forEach(button => {

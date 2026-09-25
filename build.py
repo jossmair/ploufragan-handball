@@ -194,6 +194,17 @@ def heading(title, section, intro="", back=None, css_class="", extra=""):
     crumb = f'<a href="{back[0]}">{back[1]}</a><span aria-hidden="true">/</span>' if back else ""
     return f'''<header class="page-heading container{f' {css_class}' if css_class else ''}" data-reveal><nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span>{crumb}<span aria-current="page">{section}</span></nav><p class="eyebrow">PLOUFRAGAN HANDBALL <span>{SEASON_DISPLAY}</span></p><h1>{title}</h1>{f'<p class="page-intro">{intro}</p>' if intro else ''}{extra}</header>'''
 
+
+def heading_video(source, poster, marker, css_class):
+    return (
+        f'<div class="heading-intro-media {css_class}" data-heading-video-stage aria-hidden="true">'
+        f'<video data-heading-video {marker} muted playsinline preload="auto" '
+        f'poster="{poster}" width="1280" height="720" tabindex="-1">'
+        f'<source src="{source}" type="video/mp4">'
+        '</video>'
+        '</div>'
+    )
+
 def schedule(group=None, category=None):
     rows=[]
     for name, slug, slots in SCHEDULE:
@@ -678,7 +689,7 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
     if teams:
         competitions = [competition_detail(team) for team in teams]
         sidebar_photo = team_sidebar_photo(slug)
-        content = f'<div class="team-detail-main">{training}{"".join(result + upcoming for _, result, upcoming in competitions)}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}{sidebar_photo}</div>{registration}'
+        content = f'<div class="team-detail-main">{training}{"".join(result + upcoming for _, result, upcoming in competitions)}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}{team_gallery(slug)}{sidebar_photo}</div>{registration}'
     else:
         content = training + registration
     return f'<section class="container team-detail-grid {"has-ranking" if teams else "no-ranking"} after-heading">{content}</section>'
@@ -740,6 +751,22 @@ def team_sidebar_photo(slug):
         return ""
     src, width, height, alt = photo
     return f'''<figure class="team-sidebar-photo" data-reveal><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async"></figure>'''
+
+
+def team_gallery(slug):
+    if slug != "seniors-feminines":
+        return ""
+    photos = (
+        ("assets/equipes/seniors-feminines-gallery-01.webp", 864, 844,
+         "Deux joueuses Seniors féminines du PHB échangent pendant un match"),
+        ("assets/equipes/seniors-feminines-gallery-02.webp", 803, 806,
+         "Deux joueuses Seniors féminines du PHB s'encouragent sur le terrain"),
+    )
+    slides = ''.join(
+        f'<figure class="team-gallery-slide"><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async"></figure>'
+        for src, width, height, alt in photos
+    )
+    return f'''<section class="team-gallery" data-team-gallery data-reveal aria-labelledby="seniors-feminines-gallery-title"><header><div><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="seniors-feminines-gallery-title">LES FILLES <em>EN IMAGES</em></h2></div><div class="team-gallery-controls"><button type="button" data-team-gallery-prev aria-label="Photo précédente">←</button><span data-team-gallery-count aria-live="polite">1 / {len(photos)}</span><button type="button" data-team-gallery-next aria-label="Photo suivante">→</button></div></header><div class="team-gallery-track" data-team-gallery-track tabindex="0" role="region" aria-label="Photos des Seniors féminines">{slides}</div></section>'''
 
 for slug,name,title,meta,mark,photo in GROUPS:
     if slug in ("jeunes", "seniors-masculins"):
@@ -1018,7 +1045,13 @@ else:
     sync_source = '<span class="data-source">Source : FFHandball<br>Dernière synchronisation non disponible</span>'
 result_filter_buttons = ''.join(f'<button type="button" role="option" data-results-team="{escape(team["label"], quote=True)}" aria-selected="false">{escape(clean_label(team["label"]))}</button>' for team in RESULTS["teams"])
 results_filter = f'''<div class="content-filter" data-results-filter data-reveal><span class="content-filter-label" id="results-filter-title">Filtrer par équipe</span><div class="content-filter-choice"><button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="results-filter-options" aria-labelledby="results-filter-title results-filter-selected"><span id="results-filter-selected" data-filter-selected>Toutes les équipes</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button><div class="content-filter-menu" id="results-filter-options" data-filter-menu role="listbox" aria-label="Équipes" hidden><button type="button" role="option" data-results-team="" aria-selected="true">Toutes les équipes</button>{result_filter_buttons}</div></div><span class="content-filter-count" data-results-status aria-live="polite">Toutes les équipes affichées</span></div>'''
-pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS <em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont synchronisées automatiquement plusieurs fois par jour.")+f'''<section class="container section after-heading">{results_filter}<div class="section-heading"><div><p class="eyebrow">DERNIER WEEK-END</p><h2>LES <em>SCORES</em></h2></div>{sync_source}</div><div class="matches-grid">{''.join(match_card(m) for m in played)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid">{''.join(match_card(m) for m in next_round_matches(upcoming))}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div></section>''')
+results_heading_media = heading_video(
+    "assets/blog/blog-logo-orbit.mp4",
+    "assets/blog/blog-logo-first.webp",
+    "data-results-logo-video",
+    "results-intro-media",
+)
+pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS<br><em>& CHAMPIONNATS</em>","Résultats","Les données FFHandball sont synchronisées automatiquement plusieurs fois par jour.",css_class="animated-heading results-heading",extra=results_heading_media)+f'''<section class="container section after-heading">{results_filter}<div class="section-heading"><div><p class="eyebrow">DERNIER WEEK-END</p><h2>LES <em>SCORES</em></h2></div>{sync_source}</div><div class="matches-grid">{''.join(match_card(m) for m in played)}</div><div class="section-heading spaced"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid">{''.join(match_card(m) for m in next_round_matches(upcoming))}</div><div class="section-heading spaced"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div></section>''')
 
 product_cards=''.join(product_card(product) for product in PRODUCTS)
 shop_filter = '''<div class="content-filter shop-filter" data-shop-filter data-reveal><span class="content-filter-label" id="shop-filter-title">Filtrer la collection</span><div class="content-filter-choice"><button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="shop-filter-options" aria-labelledby="shop-filter-title shop-filter-selected"><span id="shop-filter-selected" data-filter-selected>Tous les articles</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button><div class="content-filter-menu" id="shop-filter-options" data-filter-menu role="listbox" aria-label="Catégories de la boutique" hidden><button type="button" role="option" data-shop-filter-value="" aria-selected="true">Tous les articles</button><button type="button" role="option" data-shop-filter-value="homme" aria-selected="false">Homme</button><button type="button" role="option" data-shop-filter-value="femme" aria-selected="false">Femme</button><button type="button" role="option" data-shop-filter-value="enfant" aria-selected="false">Enfant</button><button type="button" role="option" data-shop-filter-value="accessoires" aria-selected="false">Accessoires</button></div></div><span class="content-filter-count" data-shop-status aria-live="polite">Tous les articles affichés</span></div>'''
@@ -1069,15 +1102,13 @@ partner_body = f'''
 pages["devenir-partenaire"] = page("devenir-partenaire", "Devenir partenaire du PHB", partner_body, active="partenaires", description="Devenez partenaire du Ploufragan Handball : visibilité, formules sur mesure, partenaires actuels et contact de la Team Sponsor près de Saint-Brieuc.")
 
 def blog_heading():
-    media = (
-        '<div class="blog-intro-media" data-blog-logo-stage aria-hidden="true">'
-        '<video data-blog-logo-video muted playsinline preload="auto" '
-        'poster="assets/blog/blog-logo-first.webp" width="1280" height="720" tabindex="-1">'
-        '<source src="assets/blog/blog-logo-orbit.mp4" type="video/mp4">'
-        '</video>'
-        '</div>'
+    media = heading_video(
+        "assets/blog/blog-ploufy-reading.mp4",
+        "assets/blog/blog-ploufy-reading-first.webp",
+        "data-blog-logo-video",
+        "blog-intro-media",
     )
-    return heading("LE <em>BLOG DU PHB</em>", "Blog", "Portraits, histoires et coulisses du Ploufragan Handball.", css_class="blog-heading", extra=media)
+    return heading("LE <em>BLOG DU PHB</em>", "Blog", "Portraits, histoires et coulisses du Ploufragan Handball.", css_class="animated-heading blog-heading", extra=media)
 
 
 ARTICLES.sort(key=lambda article: article["date"], reverse=True)

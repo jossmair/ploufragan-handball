@@ -69,6 +69,8 @@ test('mobile : pages principales sans débordement horizontal', async ({ page },
 
 test('résultats : filtres, données et date FFHandball', async ({ page }) => {
   await page.goto('/resultats.html');
+  await expect(page.locator('.results-heading h1 br')).toHaveCount(1);
+  await expect(page.locator('[data-results-logo-video] source')).toHaveAttribute('src', 'assets/blog/blog-logo-orbit.mp4');
   await expect(page.locator('.match-card').first()).toBeVisible();
   await expect(page.locator('.data-source time')).toContainText(/Données FFHandball actualisées/i);
   const trigger = page.locator('[data-results-filter] [data-filter-trigger]');
@@ -105,6 +107,21 @@ test('article SM1 : carrousel et lightbox clavier', async ({ page }) => {
   await expect(dialog).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).not.toBeVisible();
+});
+
+test('Seniors féminines : carrousel sous le classement', async ({ page }) => {
+  await page.goto('/seniors-feminines.html');
+  const ranking = page.locator('.team-season-card');
+  const gallery = page.locator('[data-team-gallery]');
+  await expect(ranking).toBeVisible();
+  await expect(gallery).toBeVisible();
+  expect(await ranking.evaluate((element, next) => Boolean(element.compareDocumentPosition(next) & Node.DOCUMENT_POSITION_FOLLOWING), await gallery.elementHandle())).toBe(true);
+  await expect(gallery.locator('.team-gallery-slide')).toHaveCount(2);
+  await gallery.locator('[data-team-gallery-next]').click();
+  await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('2 / 2');
+  await gallery.locator('[data-team-gallery-track]').focus();
+  await page.keyboard.press('ArrowLeft');
+  await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('1 / 2');
 });
 
 test('partenaires : dock unique sans commande superflue', async ({ page }) => {
@@ -158,6 +175,7 @@ test('blog : animation présente et non bouclée', async ({ page }) => {
   await page.goto('/blog.html');
   const video = page.locator('[data-blog-logo-video]');
   await expect(video).toHaveCount(1);
+  await expect(video.locator('source')).toHaveAttribute('src', 'assets/blog/blog-ploufy-reading.mp4');
   await expect(video).toHaveAttribute('muted', '');
   await expect(video).toHaveAttribute('playsinline', '');
   expect(await video.evaluate(element => element.loop)).toBe(false);
