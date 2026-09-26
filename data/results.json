@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-26T13:20:39.074877+00:00",
+  "updatedAt": "2026-09-26T16:59:06.166191+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -99,23 +99,23 @@
       "standings": [
         {
           "position": 1,
+          "team": "U18M TER BAIE DE MORLAIX",
+          "points": 8,
+          "played": 3,
+          "club": false
+        },
+        {
+          "position": 2,
           "team": "BAIE D'ARMOR HB - 18G2",
           "points": 6,
           "played": 2,
           "club": false
         },
         {
-          "position": 2,
-          "team": "HANDBALL CLUB BELLE-ISLE/PLOUNEVEZ",
-          "points": 4,
-          "played": 2,
-          "club": false
-        },
-        {
           "position": 3,
-          "team": "CSAL PAIMPOL HB - 18g",
-          "points": 3,
-          "played": 2,
+          "team": "HANDBALL CLUB BELLE-ISLE/PLOUNEVEZ",
+          "points": 5,
+          "played": 3,
           "club": false
         },
         {
@@ -127,8 +127,8 @@
         },
         {
           "position": 5,
-          "team": "U18M TER BAIE DE MORLAIX",
-          "points": 5,
+          "team": "CSAL PAIMPOL HB - 18g",
+          "points": 3,
           "played": 2,
           "club": false
         },
@@ -169,15 +169,15 @@
         {
           "position": 3,
           "team": "U11 mixte 2",
-          "points": 0,
-          "played": 0,
+          "points": 3,
+          "played": 1,
           "club": false
         },
         {
           "position": 4,
           "team": "PLOUFRAGAN HANDBALL",
-          "points": 0,
-          "played": 0,
+          "points": 1,
+          "played": 1,
           "club": true
         }
       ]
@@ -513,16 +513,16 @@
       "standings": [
         {
           "position": 1,
-          "team": "BAIE D'ARMOR HB - 13G1",
-          "points": 6,
-          "played": 2,
+          "team": "U13M TER ENTENTE LOUDEAC LA MOTTE",
+          "points": 12,
+          "played": 4,
           "club": false
         },
         {
           "position": 2,
-          "team": "U13M TER ENTENTE LOUDEAC LA MOTTE",
-          "points": 6,
-          "played": 2,
+          "team": "BAIE D'ARMOR HB - 13G1",
+          "points": 7,
+          "played": 3,
           "club": false
         },
         {
@@ -555,14 +555,14 @@
         },
         {
           "position": 7,
-          "team": "LANNION HANDBALL",
-          "points": 2,
-          "played": 2,
+          "team": "GUINGAMP HB 1",
+          "points": 3,
+          "played": 3,
           "club": false
         },
         {
           "position": 8,
-          "team": "GUINGAMP HB 1",
+          "team": "LANNION HANDBALL",
           "points": 2,
           "played": 2,
           "club": false
@@ -589,24 +589,24 @@
       "standings": [
         {
           "position": 1,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 4,
+          "team": "PLOEUC HAND",
+          "points": 6,
           "played": 2,
-          "club": true
+          "club": false
         },
         {
           "position": 2,
-          "team": "PLOEUC HAND",
-          "points": 3,
-          "played": 1,
+          "team": "GUINGAMP HB 2",
+          "points": 4,
+          "played": 2,
           "club": false
         },
         {
           "position": 3,
-          "team": "GUINGAMP HB 2",
-          "points": 3,
-          "played": 1,
-          "club": false
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 4,
+          "played": 2,
+          "club": true
         },
         {
           "position": 4,
@@ -971,10 +971,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1815872",
       "awayTeamId": "1815873",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 43,
+      "awayScore": 23,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681975/",
       "venue": {
         "name": "SALLE KERRAOUL",
@@ -995,10 +995,10 @@
       "away": "U11 mixte 2",
       "homeTeamId": "1816287",
       "awayTeamId": "1816290",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 14,
+      "awayScore": 34,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708194/"
     },
     {
