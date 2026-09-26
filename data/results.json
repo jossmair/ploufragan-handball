@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-26T08:09:40.499371+00:00",
+  "updatedAt": "2026-09-26T12:54:42.473815+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -23,59 +23,59 @@
         },
         {
           "position": 2,
-          "team": "BAIE D'ARMOR HB - SF1",
-          "points": 3,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 3,
-          "team": "ENTENTE BRO LEON 4",
-          "points": 1,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 4,
-          "team": "PLOUDIRY SIZUN HB 2",
-          "points": 1,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 5,
-          "team": "ALS PLOUAGAT 3",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
-          "position": 6,
-          "team": "PLOUVORN HB 2",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
-          "position": 7,
-          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
-          "position": 8,
           "team": "PSM HANDBALL",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
-          "position": 9,
+          "position": 3,
+          "team": "BAIE D'ARMOR HB - SF1",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "ENTENTE BRO LEON 4",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 5,
+          "team": "PLOUDIRY SIZUN HB 2",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 6,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 1,
           "played": 1,
           "club": true
+        },
+        {
+          "position": 7,
+          "team": "ALS PLOUAGAT 3",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 8,
+          "team": "PLOUVORN HB 2",
+          "points": 0,
+          "played": 0,
+          "club": false
+        },
+        {
+          "position": 9,
+          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
+          "points": 0,
+          "played": 0,
+          "club": false
         },
         {
           "position": 10,
@@ -196,51 +196,51 @@
         {
           "position": 1,
           "team": "L'HANDBALLE CLUB",
-          "points": 6,
-          "played": 2,
+          "points": 12,
+          "played": 4,
           "club": false
         },
         {
           "position": 2,
           "team": "ALS PLOUAGAT 2",
-          "points": 6,
-          "played": 2,
+          "points": 10,
+          "played": 4,
           "club": false
         },
         {
           "position": 3,
           "team": "BAIE D'ARMOR HB -13F2",
-          "points": 6,
-          "played": 2,
+          "points": 9,
+          "played": 3,
           "club": false
         },
         {
           "position": 4,
+          "team": "PLESTIN HB",
+          "points": 7,
+          "played": 3,
+          "club": false
+        },
+        {
+          "position": 5,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 5,
+          "played": 4,
+          "club": true
+        },
+        {
+          "position": 6,
           "team": "LANNION HANDBALL",
           "points": 4,
           "played": 2,
           "club": false
         },
         {
-          "position": 5,
-          "team": "PLESTIN HB",
-          "points": 4,
-          "played": 2,
-          "club": false
-        },
-        {
-          "position": 6,
+          "position": 7,
           "team": "LEHON DINAN'COM HB 2",
           "points": 3,
           "played": 2,
           "club": false
-        },
-        {
-          "position": 7,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 3,
-          "played": 2,
-          "club": true
         },
         {
           "position": 8,
@@ -253,7 +253,7 @@
           "position": 9,
           "team": "US BOURBRIAC",
           "points": 2,
-          "played": 2,
+          "played": 4,
           "club": false
         }
       ]
@@ -1010,10 +1010,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1816156",
       "awayTeamId": "1816160",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 8,
+      "awayScore": 6,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697247/",
       "venue": {
         "name": "SALLE OMNISPORTS",
@@ -1034,10 +1034,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1816161",
       "awayTeamId": "1816160",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 7,
+      "awayScore": 6,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697248/",
       "venue": {
         "name": "SALLE OMNISPORTS",
