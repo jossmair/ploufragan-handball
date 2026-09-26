@@ -86,6 +86,14 @@ test('résultats : filtres, données et date FFHandball', async ({ page }) => {
   await expect(page.locator('[data-results-logo-video] source')).toHaveAttribute('src', 'assets/blog/blog-logo-orbit.mp4');
   await expect(page.locator('.match-card').first()).toBeVisible();
   await expect(page.locator('.data-source time')).toContainText(/Données FFHandball actualisées/i);
+  const pendingScore = page.locator('[data-results-scores] .match-card').filter({ hasText: 'En attente' }).first();
+  if (await pendingScore.count()) {
+    await expect(pendingScore.locator('.match-location-badge')).toContainText(/À domicile|À l’extérieur/);
+    if (await pendingScore.locator('.match-location-badge.is-away').count()) {
+      await expect(pendingScore.locator('.match-venue')).toBeVisible();
+      await expect(pendingScore.locator('.match-map')).toHaveAttribute('href', /google\.com\/maps\/dir\/\?api=1&destination=/);
+    }
+  }
   const trigger = page.locator('[data-results-filter] [data-filter-trigger]');
   await trigger.click();
   const option = page.locator('[data-results-team]').nth(1);

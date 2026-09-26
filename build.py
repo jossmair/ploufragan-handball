@@ -274,7 +274,7 @@ def match_card(m, pending_score=False):
     else:
         label = "En attente" if pending_score else "À venir"
         score=f'<div class="match-result"><strong class="match-time">{label}</strong></div>'
-    location = match_location(m) if not m["played"] and not pending_score else ""
+    location = match_location(m) if not m["played"] else ""
     return f'''<article class="match-card" data-results-item data-team="{escape(m['category'], quote=True)}" data-reveal><a class="match-card-primary" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer"><div class="match-top"><span>{escape(clean_label(m['category']))}</span><time datetime="{m['date']}">{fr_date(m['date'])}</time></div><div class="match-main">{match_team(m['home'], 'home', m.get('homeTeamId'))}{score}{match_team(m['away'], 'away', m.get('awayTeamId'))}</div><span class="match-source">FFHandball ↗</span></a>{location}</article>'''
 
 
