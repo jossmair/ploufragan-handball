@@ -6,10 +6,12 @@ on:
   schedule:
     # Synchronisation courante du dimanche au vendredi.
     - cron: '17 */4 * * 0-5'
-    # Chaque heure le samedi, hors de la minute 00 souvent congestionnée
-    # sur GitHub Actions. Deux passages supplémentaires sécurisent la
-    # bascule de 9 h locale en heure d'été comme en heure d'hiver.
-    - cron: '37 * * * 6'
+    # Deux tentatives espacées par heure le samedi : GitHub peut retarder ou
+    # omettre un cron isolé lors des périodes chargées. Les minutes 07 et 37
+    # évitent aussi la minute 00, souvent congestionnée.
+    - cron: '7,37 * * * 6'
+    # Deux passages supplémentaires sécurisent la bascule de 9 h locale
+    # en heure d'été comme en heure d'hiver.
     - cron: '5 7,8 * * 6'
 
 permissions: {}

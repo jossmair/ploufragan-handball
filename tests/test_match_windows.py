@@ -37,6 +37,10 @@ class MatchWindowTests(unittest.TestCase):
             {match["id"] for match in scores},
             {"current-pending", "current-published", "current-sunday"},
         )
+        self.assertEqual(
+            [match["id"] for match in scores],
+            ["current-pending", "current-published", "current-sunday"],
+        )
         self.assertEqual([match["id"] for match in upcoming], ["next"])
 
     def test_monday_keeps_finished_weekend_until_next_switch(self):
@@ -48,7 +52,7 @@ class MatchWindowTests(unittest.TestCase):
 
     def test_workflow_syncs_hourly_on_saturday(self):
         workflow = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
-        self.assertIn("cron: '37 * * * 6'", workflow)
+        self.assertIn("cron: '7,37 * * * 6'", workflow)
         self.assertIn("cron: '5 7,8 * * 6'", workflow)
 
 

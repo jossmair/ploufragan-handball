@@ -49,7 +49,8 @@ def select_score_and_upcoming(matches, now=None):
                 upcoming.append(match)
         elif kick_off >= now:
             upcoming.append(match)
-    scores.sort(key=lambda match: match["date"], reverse=True)
+    # Read the weekend naturally from its first fixture to its last one.
+    scores.sort(key=lambda match: match["date"])
     upcoming.sort(key=lambda match: match["date"])
     return scores, upcoming, switch_active
 
