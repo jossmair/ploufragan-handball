@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-26T21:37:58.166683+00:00",
+  "updatedAt": "2026-09-26T23:56:42.220933+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -23,56 +23,56 @@
         },
         {
           "position": 2,
+          "team": "BAIE D'ARMOR HB - SF1",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
+          "team": "PLOUDIRY SIZUN HB 2",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 4,
           "team": "PSM HANDBALL",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
-          "position": 3,
-          "team": "BAIE D'ARMOR HB - SF1",
-          "points": 3,
-          "played": 1,
-          "club": false
+          "position": 5,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 2,
+          "played": 2,
+          "club": true
         },
         {
-          "position": 4,
+          "position": 6,
           "team": "ENTENTE BRO LEON 4",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 5,
-          "team": "PLOUDIRY SIZUN HB 2",
-          "points": 1,
-          "played": 1,
-          "club": false
-        },
-        {
-          "position": 6,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 1,
-          "played": 1,
-          "club": true
-        },
-        {
           "position": 7,
-          "team": "MORLAIX PLOUGONVEN HB 1",
+          "team": "PLOUVORN HB 2",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
           "position": 8,
-          "team": "ALS PLOUAGAT 3",
-          "points": 0,
-          "played": 0,
+          "team": "MORLAIX PLOUGONVEN HB 1",
+          "points": 1,
+          "played": 1,
           "club": false
         },
         {
           "position": 9,
-          "team": "PLOUVORN HB 2",
+          "team": "ALS PLOUAGAT 3",
           "points": 0,
           "played": 0,
           "club": false
@@ -217,15 +217,15 @@
         {
           "position": 4,
           "team": "BAIE D'ARMOR HB -13F2",
-          "points": 9,
-          "played": 3,
+          "points": 12,
+          "played": 4,
           "club": false
         },
         {
           "position": 5,
           "team": "PLESTIN HB",
-          "points": 7,
-          "played": 3,
+          "points": 8,
+          "played": 4,
           "club": false
         },
         {
@@ -319,44 +319,44 @@
       "standings": [
         {
           "position": 1,
+          "team": "+16M TER EMERAUDE 2 DOL",
+          "points": 9,
+          "played": 3,
+          "club": false
+        },
+        {
+          "position": 2,
+          "team": "AL CANCALE",
+          "points": 9,
+          "played": 3,
+          "club": false
+        },
+        {
+          "position": 3,
           "team": "Pays de dinan handball club",
           "points": 7,
           "played": 3,
           "club": false
         },
         {
-          "position": 2,
-          "team": "+16M TER EMERAUDE 2 DOL",
-          "points": 6,
-          "played": 2,
-          "club": false
-        },
-        {
-          "position": 3,
-          "team": "AL CANCALE",
-          "points": 6,
-          "played": 2,
-          "club": false
-        },
-        {
           "position": 4,
+          "team": "SC Mevennais handball",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 5,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 4,
           "played": 3,
           "club": true
         },
         {
-          "position": 5,
-          "team": "PLOEUC HAND",
-          "points": 3,
-          "played": 1,
-          "club": false
-        },
-        {
           "position": 6,
-          "team": "SC Mevennais handball",
-          "points": 3,
-          "played": 1,
+          "team": "PLOEUC HAND",
+          "points": 4,
+          "played": 2,
           "club": false
         },
         {
@@ -611,15 +611,15 @@
         {
           "position": 4,
           "team": "U15M TER - ENTENTE DU TREGOR HB2 - LOUANNEC",
-          "points": 1,
-          "played": 1,
+          "points": 4,
+          "played": 2,
           "club": false
         },
         {
           "position": 5,
           "team": "ENTENTE LOUDEAC LA MOTTE 2",
-          "points": 1,
-          "played": 1,
+          "points": 2,
+          "played": 2,
           "club": false
         }
       ]
@@ -899,10 +899,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1815411",
       "awayTeamId": "1815412",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 24,
+      "awayScore": 16,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625943/",
       "venue": {
         "name": "SOS OCEANE",
@@ -947,10 +947,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1816629",
       "awayTeamId": "1816628",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 39,
+      "awayScore": 31,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683696/",
       "venue": {
         "name": "SALLE DU COLLÈGE EUGÈNE GUILLEVIC",
