@@ -55,6 +55,12 @@ class MatchWindowTests(unittest.TestCase):
         self.assertIn("cron: '7,22,37,52 * * * 6'", workflow)
         self.assertIn("cron: '5 7,8 * * 6'", workflow)
 
+    def test_workflow_refreshes_sunday_scores_twice_per_hour(self):
+        workflow = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
+        self.assertIn("cron: '17 */4 * * 1-5'", workflow)
+        self.assertIn("cron: '17 0,4,8,12 * * 0'", workflow)
+        self.assertIn("cron: '7,37 13-21 * * 0'", workflow)
+
 
 if __name__ == "__main__":
     unittest.main()

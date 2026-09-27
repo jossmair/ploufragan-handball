@@ -100,7 +100,7 @@ Les captures avant/après ont été produites pour ces 70 combinaisons. Une comp
 
 Les tests simulent panne réseau, snapshot corrompu, JSON invalide, tableau vide, rencontre partielle, saison incohérente, fichier absent et écriture atomique invalide. Avec un snapshot valide, la panne produit un `WARNING` et conserve les données. Sans aucun fallback valide, la synchronisation échoue avant déploiement. Aucun fichier valide n’est remplacé par un fichier vide ou partiel.
 
-Le samedi, le workflow tourne chaque heure ; du dimanche au vendredi, toutes les quatre heures. La logique métier utilise `Europe/Paris`, indépendamment de l’UTC du cron.
+Le samedi, le workflow tourne chaque heure. Du lundi au vendredi et le dimanche matin, il tourne toutes les quatre heures. Le dimanche en fin de journée, deux tentatives par heure accélèrent la récupération des scores publiés progressivement. La logique métier utilise `Europe/Paris`, indépendamment de l’UTC du cron.
 
 ## 10. GitHub Actions et chaîne d’approvisionnement
 

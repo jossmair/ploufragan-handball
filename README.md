@@ -46,7 +46,7 @@ Les fichiers de `data/` sont utilisés au build et ne sont pas copiés dans `_si
 
 ## Pipeline GitHub Pages
 
-Le workflow principal s’exécute lors d’un push sur `main`, à la demande, toutes les quatre heures du dimanche au vendredi (`17 */4 * * 0-5`, heure UTC) et chaque heure le samedi (`0 * * * 6`). La bascule métier du samedi utilise le fuseau `Europe/Paris`. Le runner est explicitement fixé à **Ubuntu 24.04** afin d’éviter qu’un changement futur de `ubuntu-latest` modifie silencieusement Python, Node, Chromium ou les bibliothèques système.
+Le workflow principal s’exécute lors d’un push sur `main`, à la demande, toutes les quatre heures du lundi au vendredi (`17 */4 * * 1-5`, heure UTC) et chaque heure le samedi. Le dimanche matin conserve un passage toutes les quatre heures ; de la fin d’après-midi à la soirée, deux tentatives par heure (`7,37 13-21 * * 0`) récupèrent plus rapidement les scores publiés progressivement. La bascule métier du samedi utilise le fuseau `Europe/Paris`. Le runner est explicitement fixé à **Ubuntu 24.04** afin d’éviter qu’un changement futur de `ubuntu-latest` modifie silencieusement Python, Node, Chromium ou les bibliothèques système.
 
 Le pipeline suit cet ordre :
 
@@ -98,7 +98,7 @@ La saison est centralisée. Pour passer de **2026–2027** à **2027–2028** :
 - `data/articles.json` contient les actualités. Pour ajouter un article, ajouter un objet avec un `slug` unique, un titre, une date au format `AAAA-MM-JJ`, un auteur, une image, une introduction, des paragraphes dans `content`, un titre et une description SEO. Les tableaux `players` et `staff` alimentent le carrousel et l’encadrement de cette présentation d’équipe. Placer les images dans `assets/articles/`, puis lancer `python build.py`. La liste, la page de l’article et le sitemap sont générés automatiquement.
 - `data/categories.json` est la source métier des catégories, âges ou années de naissance, créneaux, encadrement et liens d’équipe. Le Baby Hand y est défini par l’âge de 3 à 5 ans, sans fausse année de naissance.
 - `data/site.json` centralise la saison et les versions de ressources CSS/JavaScript.
-- `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures du dimanche au vendredi et chaque heure le samedi, reconstruit le site, exécute les tests et le publie sur Ubuntu 24.04.
+- `.github/workflows/pages.yml` actualise les résultats toutes les quatre heures en semaine et le dimanche matin, renforce la fréquence le dimanche en fin de journée, puis reconstruit et publie le site sur Ubuntu 24.04.
 
 Le dossier `data/` sert uniquement au build et n’est plus copié dans le site public : aucune page ni aucun script navigateur ne charge directement ces JSON. Les derniers snapshots sportifs validés survivent aux runners éphémères grâce à la branche `phb-data-snapshots`.
 
