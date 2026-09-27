@@ -867,7 +867,7 @@ def senior_player_card_experience():
           <div class="senior-position-hotspots">{"".join(hotspots)}</div>
         </div>
         <div class="senior-player-stage" id="senior-player-stage" data-player-stage tabindex="-1" aria-live="polite" aria-label="Cartes des joueurs sélectionnés">
-          <div class="senior-player-stage-placeholder"><span aria-hidden="true">PHB</span><p class="eyebrow">COMPOSE TON SEPT</p><h3>CHOISIS UN POSTE</h3><p>Les cartes correspondantes seront distribuées ici.</p></div>
+          <div class="senior-player-stage-placeholder"><span class="senior-player-stage-emblem" aria-hidden="true"><img src="assets/seniors-masculins/logo-phb-glow.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span><p class="eyebrow">COMPOSE TON SEPT</p><h3>CHOISIS UN POSTE</h3><p>Les cartes correspondantes seront distribuées ici.</p></div>
         </div>
       </div>
       <div class="senior-position-shortcuts" aria-label="Choisir un poste">{"".join(shortcuts)}</div>

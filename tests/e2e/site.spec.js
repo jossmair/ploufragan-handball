@@ -136,6 +136,7 @@ test('Seniors masculins : les cartes se révèlent dans la page', async ({ page 
   const showcase = page.locator('[data-player-position-showcase]');
   const stage = showcase.locator('[data-player-stage]');
   await expect(showcase).toBeVisible();
+  await expect(stage.locator('.senior-player-stage-emblem img')).toHaveAttribute('src', 'assets/seniors-masculins/logo-phb-glow.webp');
   await showcase.getByRole('button', { name: 'Voir les joueurs au poste Gardien', exact: true }).click();
   await expect(stage.getByRole('heading', { name: 'Gardien' })).toBeVisible();
   const cards = stage.locator('[data-player-card]');
