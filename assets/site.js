@@ -183,6 +183,13 @@ paintScroll();
 document.querySelectorAll('[data-player-position-showcase]').forEach(showcase => {
   const stage = showcase.querySelector('[data-player-stage]');
   const controls = [...showcase.querySelectorAll('[data-player-position]')];
+  const hotspots = controls.filter(control => control.classList.contains('senior-position-hotspot'));
+  const overlays = [...showcase.querySelectorAll('[data-position-overlay]')];
+  let selectedPosition = '';
+
+  function previewPosition(position = '') {
+    overlays.forEach(overlay => overlay.classList.toggle('is-visible', overlay.dataset.positionOverlay === position));
+  }
 
   function setFlipped(card, flipped) {
     card.classList.toggle('is-flipped', flipped);
@@ -193,6 +200,8 @@ document.querySelectorAll('[data-player-position-showcase]').forEach(showcase =>
   function selectPosition(position) {
     const template = showcase.querySelector(`template[data-position-template="${position}"]`);
     if (!template) return;
+    selectedPosition = position;
+    previewPosition(position);
     controls.forEach(control => control.setAttribute('aria-pressed', String(control.dataset.playerPosition === position)));
     stage.replaceChildren(template.content.cloneNode(true));
     stage.querySelectorAll('[data-player-card]').forEach(card => {
@@ -203,6 +212,12 @@ document.querySelectorAll('[data-player-position-showcase]').forEach(showcase =>
     }
   }
 
+  hotspots.forEach(control => {
+    control.addEventListener('pointerenter', () => previewPosition(control.dataset.playerPosition));
+    control.addEventListener('pointerleave', () => previewPosition(selectedPosition));
+    control.addEventListener('focus', () => previewPosition(control.dataset.playerPosition));
+    control.addEventListener('blur', () => previewPosition(selectedPosition));
+  });
   controls.forEach(control => control.addEventListener('click', () => selectPosition(control.dataset.playerPosition)));
 });
 

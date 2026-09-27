@@ -801,13 +801,13 @@ SENIOR_PLAYER_CARD_FRONTS = {
 }
 
 SENIOR_POSITIONS = [
-    ("gardien", "GB", "Gardien", 50, 22),
-    ("ailier-gauche", "AG", "Ailier gauche", 26.5, 31.5),
-    ("ailier-droit", "AD", "Ailier droit", 73.5, 31.5),
-    ("pivot", "P", "Pivot", 50, 49.5),
-    ("arriere-gauche", "ARG", "Arrière gauche", 32, 59.5),
-    ("arriere-droit", "ARD", "Arrière droit", 68, 59.5),
-    ("demi-centre", "DC", "Demi-centre", 50, 70.5),
+    ("gardien", "GB", "Gardien", 50, 24.5),
+    ("ailier-gauche", "AG", "Ailier gauche", 26.4, 30.5),
+    ("ailier-droit", "AD", "Ailier droit", 73.6, 30.7),
+    ("pivot", "P", "Pivot", 50, 42),
+    ("arriere-gauche", "ARG", "Arrière gauche", 32.6, 54.7),
+    ("arriere-droit", "ARD", "Arrière droit", 67.4, 54.7),
+    ("demi-centre", "DC", "Demi-centre", 50, 64.8),
 ]
 
 
@@ -819,6 +819,7 @@ def senior_player_card_experience():
         raise ValueError(f"Cartes joueurs seniors incomplètes ou inconnues : {sorted(missing)}")
 
     hotspots = []
+    position_overlays = []
     shortcuts = []
     templates = []
     for position_id, abbreviation, label, x, y in SENIOR_POSITIONS:
@@ -831,6 +832,11 @@ def senior_player_card_experience():
             f'style="--position-x:{x}%;--position-y:{y}%" aria-controls="senior-player-stage" '
             f'aria-pressed="false" aria-label="{escape(control_label, quote=True)}" title="{escape(control_label, quote=True)}">'
             f'<span aria-hidden="true">{abbreviation}</span></button>'
+        )
+        position_overlays.append(
+            f'<img class="senior-position-overlay" data-position-overlay="{position_id}" '
+            f'src="assets/seniors-masculins/positions/{position_id}.webp" alt="" width="1536" height="1024" '
+            f'decoding="async" aria-hidden="true">'
         )
         shortcuts.append(
             f'<button type="button" class="senior-position-shortcut" data-player-position="{position_id}" '
@@ -863,7 +869,8 @@ def senior_player_card_experience():
       <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS MASCULINS 1</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES JOUEURS</em></h2></div><p>Clique sur un poste du terrain, puis sur chaque carte pour révéler les joueurs.</p></div>
       <div class="senior-position-experience">
         <div class="senior-position-court" data-reveal>
-          <img src="assets/seniors-masculins/terrain.webp" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
+          <img class="senior-position-base" src="assets/seniors-masculins/terrain.webp" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
+          {"".join(position_overlays)}
           <div class="senior-position-hotspots">{"".join(hotspots)}</div>
         </div>
         <div class="senior-player-stage" id="senior-player-stage" data-player-stage tabindex="-1" aria-live="polite" aria-label="Cartes des joueurs sélectionnés">
