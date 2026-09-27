@@ -183,7 +183,6 @@ paintScroll();
 document.querySelectorAll('[data-player-position-showcase]').forEach(showcase => {
   const stage = showcase.querySelector('[data-player-stage]');
   const controls = [...showcase.querySelectorAll('[data-player-position]')];
-  let flipTimers = [];
 
   function setFlipped(card, flipped) {
     card.classList.toggle('is-flipped', flipped);
@@ -194,15 +193,10 @@ document.querySelectorAll('[data-player-position-showcase]').forEach(showcase =>
   function selectPosition(position) {
     const template = showcase.querySelector(`template[data-position-template="${position}"]`);
     if (!template) return;
-    flipTimers.forEach(window.clearTimeout);
-    flipTimers = [];
     controls.forEach(control => control.setAttribute('aria-pressed', String(control.dataset.playerPosition === position)));
     stage.replaceChildren(template.content.cloneNode(true));
-    const cards = [...stage.querySelectorAll('[data-player-card]')];
-    cards.forEach((card, index) => {
+    stage.querySelectorAll('[data-player-card]').forEach(card => {
       card.addEventListener('click', () => setFlipped(card, !card.classList.contains('is-flipped')));
-      if (motion.matches) setFlipped(card, true);
-      else flipTimers.push(window.setTimeout(() => setFlipped(card, true), 520 + index * 190));
     });
     if (innerWidth <= 850) {
       requestAnimationFrame(() => stage.scrollIntoView({ behavior: motion.matches ? 'auto' : 'smooth', block: 'center' }));

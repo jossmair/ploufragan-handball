@@ -140,14 +140,24 @@ test('Seniors masculins : les cartes se révèlent dans la page', async ({ page 
   await expect(stage.getByRole('heading', { name: 'Gardien' })).toBeVisible();
   const cards = stage.locator('[data-player-card]');
   await expect(cards).toHaveCount(2);
-  await expect(cards.first()).toHaveClass(/is-flipped/);
+  await expect(cards.first()).not.toHaveClass(/is-flipped/);
   await expect(stage.locator('img')).toHaveCount(4);
   await expect(page.locator('dialog[open]')).toHaveCount(0);
   await cards.first().click();
-  await expect(cards.first()).not.toHaveClass(/is-flipped/);
+  await expect(cards.first()).toHaveClass(/is-flipped/);
   await showcase.getByRole('button', { name: /AG\s*Ailier gauche/i }).click();
   await expect(stage.getByRole('heading', { name: 'Ailier gauche' })).toBeVisible();
   await expect(stage.locator('[data-player-card]')).toHaveCount(2);
+});
+
+test('mobile : les cartes seniors sont empilées', async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith('mobile'));
+  await page.goto('/seniors-masculins.html');
+  await page.getByRole('button', { name: 'Voir les joueurs au poste Gardien', exact: true }).click();
+  const cards = page.locator('[data-player-card]');
+  await expect(cards).toHaveCount(2);
+  const boxes = await cards.evaluateAll(elements => elements.map(element => element.getBoundingClientRect()));
+  expect(boxes[1].top).toBeGreaterThanOrEqual(boxes[0].bottom - 1);
 });
 
 test('Seniors féminines : carrousel sous le classement', async ({ page }) => {
@@ -228,6 +238,17 @@ test('blog : animation présente et non bouclée', async ({ page }) => {
   const video = page.locator('[data-blog-logo-video]');
   await expect(video).toHaveCount(1);
   await expect(video.locator('source')).toHaveAttribute('src', 'assets/blog/blog-ploufy-reading.mp4');
+  await expect(video).toHaveAttribute('muted', '');
+  await expect(video).toHaveAttribute('playsinline', '');
+  expect(await video.evaluate(element => element.loop)).toBe(false);
+});
+
+test('boutique : animation présente et non bouclée', async ({ page }) => {
+  await page.goto('/boutique.html');
+  const video = page.locator('[data-shop-logo-video]');
+  await expect(video).toHaveCount(1);
+  await expect(video.locator('source')).toHaveAttribute('src', 'assets/videos/boutique-animation.mp4');
+  await expect(video).toHaveAttribute('poster', 'assets/videos/boutique-animation-first.webp');
   await expect(video).toHaveAttribute('muted', '');
   await expect(video).toHaveAttribute('playsinline', '');
   expect(await video.evaluate(element => element.loop)).toBe(false);

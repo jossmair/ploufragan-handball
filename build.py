@@ -860,7 +860,7 @@ def senior_player_card_experience():
         )
 
     return f'''<section class="section senior-position-showcase" data-player-position-showcase>
-      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS MASCULINS 1</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES JOUEURS</em></h2></div><p>Clique sur un poste du terrain : les cartes des joueurs apparaissent et se retournent directement dans la page.</p></div>
+      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS MASCULINS 1</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES JOUEURS</em></h2></div><p>Clique sur un poste du terrain, puis sur chaque carte pour révéler les joueurs.</p></div>
       <div class="senior-position-experience">
         <div class="senior-position-court" data-reveal>
           <img src="assets/seniors-masculins/terrain.webp" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
@@ -1141,7 +1141,13 @@ pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSUL
 
 product_cards=''.join(product_card(product) for product in PRODUCTS)
 shop_filter = '''<div class="content-filter shop-filter" data-shop-filter data-reveal><span class="content-filter-label" id="shop-filter-title">Filtrer la collection</span><div class="content-filter-choice"><button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="shop-filter-options" aria-labelledby="shop-filter-title shop-filter-selected"><span id="shop-filter-selected" data-filter-selected>Tous les articles</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button><div class="content-filter-menu" id="shop-filter-options" data-filter-menu role="listbox" aria-label="Catégories de la boutique" hidden><button type="button" role="option" data-shop-filter-value="" aria-selected="true">Tous les articles</button><button type="button" role="option" data-shop-filter-value="homme" aria-selected="false">Homme</button><button type="button" role="option" data-shop-filter-value="femme" aria-selected="false">Femme</button><button type="button" role="option" data-shop-filter-value="enfant" aria-selected="false">Enfant</button><button type="button" role="option" data-shop-filter-value="accessoires" aria-selected="false">Accessoires</button></div></div><span class="content-filter-count" data-shop-status aria-live="polite">Tous les articles affichés</span></div>'''
-pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Boutique","Les commandes et paiements sont réalisés sur la boutique Equip Club.")+f'''<section class="container section after-heading"><div class="shop-intro" data-reveal><div><p class="eyebrow">COLLECTION PLOUFRAGAN HB</p><h2><span data-shop-count>{len(PRODUCTS)}</span> ARTICLES</h2><p>Les prix affichés ont été relevés le 13 septembre 2026. Les tailles, stocks et prix définitifs sont indiqués sur Equip Club.</p></div>{button('Ouvrir la boutique officielle',SHOP,False,True)}</div>{shop_filter}<div class="products-grid">{product_cards}</div></section>''')
+shop_heading_media = heading_video(
+    "assets/videos/boutique-animation.mp4",
+    "assets/videos/boutique-animation-first.webp",
+    "data-shop-logo-video",
+    "boutique-intro-media",
+)
+pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Boutique","Les commandes et paiements sont réalisés sur la boutique Equip Club.",css_class="animated-heading boutique-heading",extra=shop_heading_media)+f'''<section class="container section after-heading"><div class="shop-intro" data-reveal><div><p class="eyebrow">COLLECTION PLOUFRAGAN HB</p><h2><span data-shop-count>{len(PRODUCTS)}</span> ARTICLES</h2><p>Les prix affichés ont été relevés le 13 septembre 2026. Les tailles, stocks et prix définitifs sont indiqués sur Equip Club.</p></div>{button('Ouvrir la boutique officielle',SHOP,False,True)}</div>{shop_filter}<div class="products-grid">{product_cards}</div></section>''')
 
 def partner_card(name, address):
     image = partner_image(name, f"Logo {name}")
