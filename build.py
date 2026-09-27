@@ -830,7 +830,7 @@ def senior_player_card_experience():
         hotspots.append(
             f'<button class="senior-position-hotspot" type="button" data-player-position="{position_id}" '
             f'style="--position-x:{x}%;--position-y:{y}%" aria-controls="senior-player-stage" '
-            f'aria-pressed="false" aria-label="{escape(control_label, quote=True)}" title="{escape(control_label, quote=True)}">'
+            f'aria-pressed="false" aria-label="{escape(control_label, quote=True)}">'
             f'<span aria-hidden="true">{abbreviation}</span></button>'
         )
         position_overlays.append(
