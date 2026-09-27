@@ -748,10 +748,8 @@ body[data-page="ecole-de-hand"] .team-page-photo img{height:clamp(260px,35vw,480
 .senior-position-court::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,transparent 72%,#07070a 100%),linear-gradient(0deg,#07070a8c,transparent 18%)}
 .senior-position-court img{display:block;width:100%;height:auto}
 .senior-position-hotspots{position:absolute;inset:0;z-index:2}
-.senior-position-hotspot{position:absolute;left:var(--position-x);top:var(--position-y);display:grid;place-items:center;width:clamp(46px,6.3vw,86px);aspect-ratio:1;transform:translate(-50%,-50%);border:2px solid transparent;border-radius:50%;background:transparent;cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s,transform .2s}
-.senior-position-hotspot span{opacity:0;font:900 italic clamp(.82rem,1.35vw,1.2rem)/1 var(--display);transition:opacity .2s}
-.senior-position-hotspot:hover,.senior-position-hotspot:focus-visible,.senior-position-hotspot[aria-pressed="true"]{border-color:#ff2739;background:#09090dbf;box-shadow:0 0 0 5px #ed07192b,0 0 26px #ed0719c7;transform:translate(-50%,-50%) scale(1.08)}
-.senior-position-hotspot:hover span,.senior-position-hotspot:focus-visible span,.senior-position-hotspot[aria-pressed="true"] span{opacity:1}
+.senior-position-hotspot{position:absolute;left:var(--position-x);top:var(--position-y);display:grid;place-items:center;width:clamp(46px,6.3vw,86px);aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent;cursor:pointer}
+.senior-position-hotspot span{display:none}
 .senior-position-hotspot:focus-visible{outline:3px solid #ffbf4b;outline-offset:4px}
 .senior-player-stage{position:relative;display:grid;place-items:center;min-width:0;padding:clamp(24px,3vw,42px);overflow:hidden;outline:0;background:radial-gradient(circle at 50% 42%,#ed071930,transparent 48%),linear-gradient(145deg,#16161ced,#09090df5)}
 .senior-player-stage::before{content:'';position:absolute;inset:-30%;pointer-events:none;background:repeating-linear-gradient(118deg,transparent 0 24px,#ed07190a 25px 27px,transparent 28px 52px);transform:rotate(-5deg)}

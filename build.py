@@ -847,8 +847,8 @@ def senior_player_card_experience():
                 f'data-player-name="{escape(player["name"], quote=True)}" style="--card-order:{index}" '
                 f'aria-label="Afficher le recto de la carte de {escape(player["name"], quote=True)}">'
                 f'<span class="senior-player-card-inner">'
-                f'<span class="senior-player-card-face senior-player-card-back"><img src="{back}" alt="" width="720" height="1008" loading="lazy" decoding="async"></span>'
-                f'<span class="senior-player-card-face senior-player-card-front"><img src="{front}" alt="{escape(card_description, quote=True)}" width="720" height="1008" loading="lazy" decoding="async"></span>'
+                f'<span class="senior-player-card-face senior-player-card-back"><img src="{back}" alt="" width="640" height="896" loading="lazy" decoding="async"></span>'
+                f'<span class="senior-player-card-face senior-player-card-front"><img src="{front}" alt="{escape(card_description, quote=True)}" width="640" height="896" loading="lazy" decoding="async"></span>'
                 f'</span><span class="senior-player-card-hint" aria-hidden="true">Cliquer pour retourner</span></button>'
             )
         player_word = "joueur" if len(players) == 1 else "joueurs"
