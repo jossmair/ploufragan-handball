@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-27T15:04:10.597538+00:00",
+  "updatedAt": "2026-09-27T19:14:44.641182+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -154,31 +154,31 @@
       "standings": [
         {
           "position": 1,
-          "team": "BAIE D'ARMOR HB - 11G2",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
-          "position": 2,
-          "team": "HANDBALL BEAUSSAIS RANCE FREMUR 2",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
-          "position": 3,
           "team": "U11 mixte 2",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
-          "position": 4,
+          "position": 2,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 1,
           "played": 1,
           "club": true
+        },
+        {
+          "position": 3,
+          "team": "BAIE D'ARMOR HB - 11G2",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "HANDBALL BEAUSSAIS RANCE FREMUR 2",
+          "points": 1,
+          "played": 1,
+          "club": false
         }
       ]
     },
@@ -272,37 +272,37 @@
         {
           "position": 1,
           "team": "U15F TER - ENT MONTS D'ARREE CARHAIX CHATEAUNEUF DU FAOU",
-          "points": 6,
-          "played": 2,
+          "points": 9,
+          "played": 3,
           "club": false
         },
         {
           "position": 2,
-          "team": "PLOEUC HAND",
-          "points": 4,
-          "played": 2,
-          "club": false
-        },
-        {
-          "position": 3,
           "team": "GOELO HBC",
           "points": 6,
           "played": 2,
           "club": false
         },
         {
-          "position": 4,
-          "team": "U15F HENANSAL ERQUY",
-          "points": 1,
-          "played": 2,
+          "position": 3,
+          "team": "PLOEUC HAND",
+          "points": 5,
+          "played": 3,
           "club": false
         },
         {
-          "position": 5,
+          "position": 4,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 2,
           "played": 2,
           "club": true
+        },
+        {
+          "position": 5,
+          "team": "U15F HENANSAL ERQUY",
+          "points": 1,
+          "played": 2,
+          "club": false
         }
       ]
     },
@@ -368,30 +368,30 @@
         },
         {
           "position": 8,
-          "team": "HBC HENANSAL ERQUY 1",
-          "points": 2,
+          "team": "HANDBALL BEAUSSAIS RANCE FREMUR 1",
+          "points": 3,
           "played": 2,
           "club": false
         },
         {
           "position": 9,
           "team": "Tinteniac Combourg HBC 2",
-          "points": 2,
-          "played": 2,
+          "points": 3,
+          "played": 3,
           "club": false
         },
         {
           "position": 10,
-          "team": "HANDBALL BEAUSSAIS RANCE FREMUR 1",
-          "points": 0,
-          "played": 1,
+          "team": "HBC HENANSAL ERQUY 1",
+          "points": 5,
+          "played": 3,
           "club": false
         },
         {
           "position": 11,
           "team": "L'HANDBALLE CLUB",
-          "points": 0,
-          "played": 2,
+          "points": 1,
+          "played": 3,
           "club": false
         },
         {
@@ -416,22 +416,22 @@
       "standings": [
         {
           "position": 1,
-          "team": "BAIE D'ARMOR HB - SG2",
-          "points": 6,
-          "played": 2,
+          "team": "GUINGAMP HANDBALL 3",
+          "points": 8,
+          "played": 3,
           "club": false
         },
         {
           "position": 2,
           "team": "PLOEUC HAND 2",
-          "points": 6,
-          "played": 2,
+          "points": 7,
+          "played": 3,
           "club": false
         },
         {
           "position": 3,
-          "team": "GUINGAMP HANDBALL 3",
-          "points": 5,
+          "team": "BAIE D'ARMOR HB - SG2",
+          "points": 6,
           "played": 2,
           "club": false
         },
@@ -458,45 +458,45 @@
         },
         {
           "position": 7,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 3,
+          "played": 2,
+          "club": true
+        },
+        {
+          "position": 8,
           "team": "AL VX MARCHE PLOUARET HB",
           "points": 3,
           "played": 3,
           "club": false
         },
         {
-          "position": 8,
+          "position": 9,
           "team": "+16M TER ENTENTE DU TREGOR HB (D2)",
           "points": 3,
           "played": 3,
           "club": false
         },
         {
-          "position": 9,
+          "position": 10,
           "team": "BAIE D'ARMOR HB - SG3",
           "points": 2,
           "played": 2,
           "club": false
         },
         {
-          "position": 10,
+          "position": 11,
           "team": "HB.PELEMOIS",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 11,
-          "team": "Henansal-Erquy SM 2",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
           "position": 12,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 0,
+          "team": "Henansal-Erquy SM 2",
+          "points": 1,
           "played": 1,
-          "club": true
+          "club": false
         }
       ]
     },
@@ -520,52 +520,52 @@
         },
         {
           "position": 2,
+          "team": "CSAL PAIMPOL HB - 13 GARS 1",
+          "points": 12,
+          "played": 4,
+          "club": false
+        },
+        {
+          "position": 3,
           "team": "BAIE D'ARMOR HB - 13G1",
           "points": 10,
           "played": 4,
           "club": false
         },
         {
-          "position": 3,
+          "position": 4,
           "team": "AL Trebeurden HANDBALL",
           "points": 9,
           "played": 4,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 8,
+          "played": 4,
+          "club": true
+        },
+        {
+          "position": 6,
           "team": "LANNION HANDBALL",
           "points": 7,
           "played": 4,
           "club": false
         },
         {
-          "position": 5,
-          "team": "CSAL PAIMPOL HB - 13 GARS 1",
-          "points": 6,
-          "played": 2,
-          "club": false
-        },
-        {
-          "position": 6,
-          "team": "GOELO HANDBALL CLUB",
-          "points": 4,
-          "played": 2,
-          "club": false
-        },
-        {
           "position": 7,
-          "team": "U13M TER ENTENTE DU TREGOR HB - LOUANNEC",
-          "points": 4,
+          "team": "GOELO HANDBALL CLUB",
+          "points": 6,
           "played": 4,
           "club": false
         },
         {
           "position": 8,
-          "team": "PLOUFRAGAN HANDBALL",
+          "team": "U13M TER ENTENTE DU TREGOR HB - LOUANNEC",
           "points": 4,
-          "played": 2,
-          "club": true
+          "played": 4,
+          "club": false
         },
         {
           "position": 9,
@@ -812,10 +812,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1815558",
       "awayTeamId": "1815560",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 23,
+      "awayScore": 25,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681037/",
       "venue": {
         "name": "SOS ERQUY",
@@ -836,10 +836,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1816428",
       "awayTeamId": "1816433",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 20,
+      "awayScore": 10,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696274/",
       "venue": {
         "name": "SALLE KERRAOUL",
@@ -860,10 +860,10 @@
       "away": "GOELO HANDBALL CLUB",
       "homeTeamId": "1816433",
       "awayTeamId": "1816432",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 13,
+      "awayScore": 12,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696276/"
     },
     {
