@@ -179,6 +179,39 @@ window.addEventListener('scroll', () => {
 window.addEventListener('resize', paintScroll, { passive: true });
 paintScroll();
 
+// Reveal the Seniors M1 cards inside the page when a playing position is selected.
+document.querySelectorAll('[data-player-position-showcase]').forEach(showcase => {
+  const stage = showcase.querySelector('[data-player-stage]');
+  const controls = [...showcase.querySelectorAll('[data-player-position]')];
+  let flipTimers = [];
+
+  function setFlipped(card, flipped) {
+    card.classList.toggle('is-flipped', flipped);
+    card.setAttribute('aria-pressed', String(flipped));
+    card.setAttribute('aria-label', `${flipped ? 'Afficher le dos' : 'Afficher le recto'} de la carte de ${card.dataset.playerName}`);
+  }
+
+  function selectPosition(position) {
+    const template = showcase.querySelector(`template[data-position-template="${position}"]`);
+    if (!template) return;
+    flipTimers.forEach(window.clearTimeout);
+    flipTimers = [];
+    controls.forEach(control => control.setAttribute('aria-pressed', String(control.dataset.playerPosition === position)));
+    stage.replaceChildren(template.content.cloneNode(true));
+    const cards = [...stage.querySelectorAll('[data-player-card]')];
+    cards.forEach((card, index) => {
+      card.addEventListener('click', () => setFlipped(card, !card.classList.contains('is-flipped')));
+      if (motion.matches) setFlipped(card, true);
+      else flipTimers.push(window.setTimeout(() => setFlipped(card, true), 520 + index * 190));
+    });
+    if (innerWidth <= 850) {
+      requestAnimationFrame(() => stage.scrollIntoView({ behavior: motion.matches ? 'auto' : 'smooth', block: 'center' }));
+    }
+  }
+
+  controls.forEach(control => control.addEventListener('click', () => selectPosition(control.dataset.playerPosition)));
+});
+
 document.querySelectorAll('[data-tilt], [data-parallax]').forEach(element => {
   let frame = 0;
   element.addEventListener('pointermove', event => {

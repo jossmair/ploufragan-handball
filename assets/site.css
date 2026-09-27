@@ -739,3 +739,42 @@ body[data-page="ecole-de-hand"] .team-page-photo img{height:clamp(260px,35vw,480
 .licence-anchor-nav.content-filter{position:relative;z-index:7;display:flex;flex-wrap:nowrap;align-items:center;gap:18px;overflow:visible;margin:0 0 52px;padding:18px 20px}
 .licence-anchor-nav .content-filter-choice{width:min(100%,360px)}
 @media(max-width:700px){.licence-anchor-nav.content-filter{display:block;overflow:visible;margin-bottom:38px;padding:16px}.licence-anchor-nav .content-filter-label{display:block;padding:0 0 12px}.licence-anchor-nav .content-filter-choice{width:100%}}
+
+/* Interactive Seniors M1 player cards, embedded directly in the landing page. */
+.senior-position-showcase{grid-column:1/-1;margin-top:34px;padding-block:58px 18px;border-top:1px solid #ffffff28}
+.senior-position-heading{align-items:end;margin-bottom:28px}.senior-position-heading>p{max-width:470px;color:#bdbdc5;font-size:.9rem;line-height:1.65}
+.senior-position-experience{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(360px,.78fr);min-height:560px;overflow:hidden;border:1px solid #ffffff2b;border-top:4px solid var(--red);background:#07070a;box-shadow:0 30px 80px #0008}
+.senior-position-court{position:relative;align-self:center;isolation:isolate;overflow:hidden;background:#000}
+.senior-position-court::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,transparent 72%,#07070a 100%),linear-gradient(0deg,#07070a8c,transparent 18%)}
+.senior-position-court img{display:block;width:100%;height:auto}
+.senior-position-hotspots{position:absolute;inset:0;z-index:2}
+.senior-position-hotspot{position:absolute;left:var(--position-x);top:var(--position-y);display:grid;place-items:center;width:clamp(46px,6.3vw,86px);aspect-ratio:1;transform:translate(-50%,-50%);border:2px solid transparent;border-radius:50%;background:transparent;cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s,transform .2s}
+.senior-position-hotspot span{opacity:0;font:900 italic clamp(.82rem,1.35vw,1.2rem)/1 var(--display);transition:opacity .2s}
+.senior-position-hotspot:hover,.senior-position-hotspot:focus-visible,.senior-position-hotspot[aria-pressed="true"]{border-color:#ff2739;background:#09090dbf;box-shadow:0 0 0 5px #ed07192b,0 0 26px #ed0719c7;transform:translate(-50%,-50%) scale(1.08)}
+.senior-position-hotspot:hover span,.senior-position-hotspot:focus-visible span,.senior-position-hotspot[aria-pressed="true"] span{opacity:1}
+.senior-position-hotspot:focus-visible{outline:3px solid #ffbf4b;outline-offset:4px}
+.senior-player-stage{position:relative;display:grid;place-items:center;min-width:0;padding:clamp(24px,3vw,42px);overflow:hidden;outline:0;background:radial-gradient(circle at 50% 42%,#ed071930,transparent 48%),linear-gradient(145deg,#16161ced,#09090df5)}
+.senior-player-stage::before{content:'';position:absolute;inset:-30%;pointer-events:none;background:repeating-linear-gradient(118deg,transparent 0 24px,#ed07190a 25px 27px,transparent 28px 52px);transform:rotate(-5deg)}
+.senior-player-stage::after{content:'PHB';position:absolute;right:-.08em;bottom:-.2em;color:#ffffff08;font:900 italic clamp(9rem,15vw,16rem)/1 var(--display);pointer-events:none}
+.senior-player-stage-placeholder{position:relative;z-index:1;max-width:330px;text-align:center}.senior-player-stage-placeholder>span{display:grid;place-items:center;width:94px;aspect-ratio:1;margin:0 auto 24px;border:2px solid var(--red);border-radius:50%;box-shadow:0 0 0 8px #ed07191f,0 0 42px #ed071955;color:#fff;font:900 italic 1.7rem var(--display)}
+.senior-player-stage-placeholder h3{margin:9px 0 12px;font-size:clamp(2rem,3.2vw,3rem)}.senior-player-stage-placeholder>p:last-child{color:#aaaab4;font-size:.85rem}
+.senior-position-selection{position:relative;z-index:1;width:100%}.senior-position-selection-heading{margin-bottom:22px;text-align:center}.senior-position-selection-heading h3{margin:7px 0 5px;font-size:clamp(2.1rem,3.1vw,3.25rem);text-transform:uppercase}.senior-position-selection-heading>p:last-child{color:#aaaab4;font-size:.75rem;text-transform:uppercase;letter-spacing:.09em}
+.senior-position-deck{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);align-items:start}
+.senior-player-card{position:relative;display:block;width:100%;aspect-ratio:5/7;padding:0;border:0;background:none;perspective:1200px;cursor:pointer;animation:senior-card-deal .7s cubic-bezier(.16,.78,.25,1) calc(var(--card-order) * 120ms) both}
+.senior-player-card-inner{position:absolute;inset:0;display:block;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.2,.75,.2,1)}
+.senior-player-card.is-flipped .senior-player-card-inner{transform:rotateY(180deg)}
+.senior-player-card-face{position:absolute;inset:0;display:block;overflow:hidden;border:1px solid #ffffff4f;border-radius:4.2%/3%;background:#0a0a0d;box-shadow:0 18px 24px #000a;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.senior-player-card-front{transform:rotateY(180deg)}.senior-player-card-face img{width:100%;height:100%;object-fit:cover}
+.senior-player-card-hint{position:absolute;left:50%;bottom:9px;z-index:3;min-width:max-content;padding:5px 8px;transform:translateX(-50%);background:#07070adc;border:1px solid #ffffff36;color:#fff;font:700 .55rem/1 var(--body);letter-spacing:.07em;text-transform:uppercase;opacity:0;transition:opacity .2s}
+.senior-player-card:hover .senior-player-card-hint,.senior-player-card:focus-visible .senior-player-card-hint{opacity:1}.senior-player-card:focus-visible{outline:3px solid #ffbf4b;outline-offset:6px}
+.senior-position-shortcuts{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:10px}
+.senior-position-shortcut{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 10px;border:1px solid #ffffff28;background:#101014;color:#d3d3da;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.senior-position-shortcut strong{color:#ff737d;font:900 italic 1rem var(--display)}.senior-position-shortcut span{font-size:.67rem;font-weight:700;line-height:1.15;text-transform:uppercase}
+.senior-position-shortcut:hover,.senior-position-shortcut[aria-pressed="true"]{border-color:var(--red);background:#ed07191d;color:#fff;transform:translateY(-2px)}
+.senior-position-noscript{margin-top:14px;padding:14px;border-left:3px solid var(--red);background:#ffffff0a;color:#c6c6cc;font-size:.82rem}
+.senior-position-noscript a{color:#fff;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+@keyframes senior-card-deal{from{opacity:0;transform:translate3d(55px,35px,0) rotate(7deg) scale(.74)}to{opacity:1;transform:none}}
+@media(max-width:1050px){.senior-position-experience{grid-template-columns:minmax(0,1.08fr) minmax(330px,.92fr);min-height:500px}.senior-player-stage{padding:26px 22px}}
+@media(max-width:850px){.senior-position-showcase{padding-top:46px}.senior-position-heading{display:block}.senior-position-heading>p{margin-top:14px}.senior-position-experience{grid-template-columns:1fr;min-height:0}.senior-position-court::after{background:linear-gradient(0deg,#07070a 0%,transparent 16%)}.senior-player-stage{min-height:470px}.senior-position-shortcuts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:520px){.senior-position-showcase{width:calc(100% + 40px);margin-left:-20px;padding-top:38px}.senior-position-heading{padding-inline:20px}.senior-position-heading h2{font-size:2.05rem}.senior-position-court{min-height:245px}.senior-position-court img{width:100%;height:100%;object-fit:contain}.senior-position-hotspot{width:44px}.senior-player-stage{min-height:390px;padding:24px 15px}.senior-position-selection-heading{margin-bottom:17px}.senior-position-deck{gap:10px}.senior-position-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:10px}.senior-position-shortcut:last-child{grid-column:1/-1}.senior-player-card-hint{display:none}}
+@media(prefers-reduced-motion:reduce){.senior-player-card{opacity:1;transform:none}.senior-player-card-inner{transition:none}.senior-position-hotspot,.senior-position-shortcut{transition:none}}

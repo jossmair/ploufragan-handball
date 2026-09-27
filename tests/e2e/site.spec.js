@@ -70,6 +70,7 @@ test('mobile : pages principales sans débordement horizontal', async ({ page },
   test.skip(!testInfo.project.name.startsWith('mobile'));
   const pages = [
     '/', '/equipes.html', '/jeunes.html', '/resultats.html', '/inscriptions.html',
+    '/seniors-masculins.html',
     '/boutique.html', '/blog.html', '/articles/presentation-seniors-masculins-1.html',
     '/partenaires.html', '/contact.html',
   ];
@@ -128,6 +129,25 @@ test('article SM1 : carrousel et lightbox clavier', async ({ page }) => {
   await expect(dialog).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).not.toBeVisible();
+});
+
+test('Seniors masculins : les cartes se révèlent dans la page', async ({ page }) => {
+  await page.goto('/seniors-masculins.html');
+  const showcase = page.locator('[data-player-position-showcase]');
+  const stage = showcase.locator('[data-player-stage]');
+  await expect(showcase).toBeVisible();
+  await showcase.getByRole('button', { name: 'Voir les joueurs au poste Gardien', exact: true }).click();
+  await expect(stage.getByRole('heading', { name: 'Gardien' })).toBeVisible();
+  const cards = stage.locator('[data-player-card]');
+  await expect(cards).toHaveCount(2);
+  await expect(cards.first()).toHaveClass(/is-flipped/);
+  await expect(stage.locator('img')).toHaveCount(4);
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  await cards.first().click();
+  await expect(cards.first()).not.toHaveClass(/is-flipped/);
+  await showcase.getByRole('button', { name: /AG\s*Ailier gauche/i }).click();
+  await expect(stage.getByRole('heading', { name: 'Ailier gauche' })).toBeVisible();
+  await expect(stage.locator('[data-player-card]')).toHaveCount(2);
 });
 
 test('Seniors féminines : carrousel sous le classement', async ({ page }) => {
@@ -246,7 +266,7 @@ test('404 : identité, noindex et retour vers le site', async ({ page }) => {
 });
 
 for (const path of [
-  '/', '/club.html', '/equipes.html', '/seniors-masculins-1.html',
+  '/', '/club.html', '/equipes.html', '/seniors-masculins.html', '/seniors-masculins-1.html',
   '/entrainements.html', '/resultats.html', '/inscriptions.html', '/blog.html',
   '/articles/presentation-seniors-masculins-1.html', '/partenaires.html',
   '/devenir-partenaire.html', '/boutique.html', '/contact.html',

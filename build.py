@@ -782,6 +782,99 @@ SENIOR_MEN = [
     ("seniors-masculins-1", "Équipe 1", "Seniors masculins 1"),
     ("seniors-masculins-2", "Équipe 2", "Seniors masculins 2"),
 ]
+
+SENIOR_PLAYER_CARD_FRONTS = {
+    "Nathan Raoult": "01-nathan-raoult.webp",
+    "Emmanuel Pol": "02-emmanuel-pol.webp",
+    "Guillaume Chevalier": "03-guillaume-chevalier.webp",
+    "Morgan Pion": "04-morgan-pion.webp",
+    "David Imbaud": "05-david-imbaud.webp",
+    "Pierre-Yves Boivin": "06-pierre-yves-boivin.webp",
+    "Joshua Eloy": "07-joshua-eloy.webp",
+    "Jean Boizard": "08-jean-boizard.webp",
+    "Darine Exurville": "09-darine-exurville.webp",
+    "Erwan Rouxel": "10-erwan-rouxel.webp",
+    "Nicolas Le Roy": "11-nicolas-le-roy.webp",
+    "Arnaud Boulaire": "12-arnaud-boulaire.webp",
+    "Max Le Mezec": "13-max-le-mezec.webp",
+    "Hugo Azevedo Mesquita": "14-hugo-azevedo-mesquita.webp",
+}
+
+SENIOR_POSITIONS = [
+    ("gardien", "GB", "Gardien", 50, 22),
+    ("ailier-gauche", "AG", "Ailier gauche", 26.5, 31.5),
+    ("ailier-droit", "AD", "Ailier droit", 73.5, 31.5),
+    ("pivot", "P", "Pivot", 50, 49.5),
+    ("arriere-gauche", "ARG", "Arrière gauche", 32, 59.5),
+    ("arriere-droit", "ARD", "Arrière droit", 68, 59.5),
+    ("demi-centre", "DC", "Demi-centre", 50, 70.5),
+]
+
+
+def senior_player_card_experience():
+    article = next(item for item in ARTICLES if item["slug"] == "presentation-seniors-masculins-1")
+    player_names = {player["name"] for player in article["players"]}
+    if player_names != set(SENIOR_PLAYER_CARD_FRONTS):
+        missing = player_names.symmetric_difference(SENIOR_PLAYER_CARD_FRONTS)
+        raise ValueError(f"Cartes joueurs seniors incomplètes ou inconnues : {sorted(missing)}")
+
+    hotspots = []
+    shortcuts = []
+    templates = []
+    for position_id, abbreviation, label, x, y in SENIOR_POSITIONS:
+        players = [player for player in article["players"] if player["position"] == label]
+        if not players:
+            raise ValueError(f"Aucun joueur senior au poste {label}")
+        control_label = f"Voir les joueurs au poste {label}"
+        hotspots.append(
+            f'<button class="senior-position-hotspot" type="button" data-player-position="{position_id}" '
+            f'style="--position-x:{x}%;--position-y:{y}%" aria-controls="senior-player-stage" '
+            f'aria-pressed="false" aria-label="{escape(control_label, quote=True)}" title="{escape(control_label, quote=True)}">'
+            f'<span aria-hidden="true">{abbreviation}</span></button>'
+        )
+        shortcuts.append(
+            f'<button type="button" class="senior-position-shortcut" data-player-position="{position_id}" '
+            f'aria-controls="senior-player-stage" aria-pressed="false"><strong>{abbreviation}</strong><span>{escape(label)}</span></button>'
+        )
+        cards = []
+        back = f"assets/seniors-masculins/cards/back/{position_id}.webp"
+        for index, player in enumerate(players):
+            front = f"assets/seniors-masculins/cards/front/{SENIOR_PLAYER_CARD_FRONTS[player['name']]}"
+            name = escape(player["name"])
+            card_description = f"Carte de {name}, #{escape(player['number'])}, {escape(label)}"
+            cards.append(
+                f'<button type="button" class="senior-player-card" data-player-card aria-pressed="false" '
+                f'data-player-name="{escape(player["name"], quote=True)}" style="--card-order:{index}" '
+                f'aria-label="Afficher le recto de la carte de {escape(player["name"], quote=True)}">'
+                f'<span class="senior-player-card-inner">'
+                f'<span class="senior-player-card-face senior-player-card-back"><img src="{back}" alt="" width="720" height="1008" loading="lazy" decoding="async"></span>'
+                f'<span class="senior-player-card-face senior-player-card-front"><img src="{front}" alt="{escape(card_description, quote=True)}" width="720" height="1008" loading="lazy" decoding="async"></span>'
+                f'</span><span class="senior-player-card-hint" aria-hidden="true">Cliquer pour retourner</span></button>'
+            )
+        player_word = "joueur" if len(players) == 1 else "joueurs"
+        templates.append(
+            f'<template data-position-template="{position_id}"><div class="senior-position-selection">'
+            f'<div class="senior-position-selection-heading"><p class="eyebrow">POSTE · {abbreviation}</p>'
+            f'<h3>{escape(label)}</h3><p>{len(players)} {player_word} · cartes {SEASON_DISPLAY}</p></div>'
+            f'<div class="senior-position-deck">{"".join(cards)}</div></div></template>'
+        )
+
+    return f'''<section class="section senior-position-showcase" data-player-position-showcase>
+      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS MASCULINS 1</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES JOUEURS</em></h2></div><p>Clique sur un poste du terrain : les cartes des joueurs apparaissent et se retournent directement dans la page.</p></div>
+      <div class="senior-position-experience">
+        <div class="senior-position-court" data-reveal>
+          <img src="assets/seniors-masculins/terrain.webp" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
+          <div class="senior-position-hotspots">{"".join(hotspots)}</div>
+        </div>
+        <div class="senior-player-stage" id="senior-player-stage" data-player-stage tabindex="-1" aria-live="polite" aria-label="Cartes des joueurs sélectionnés">
+          <div class="senior-player-stage-placeholder"><span aria-hidden="true">PHB</span><p class="eyebrow">COMPOSE TON SEPT</p><h3>CHOISIS UN POSTE</h3><p>Les cartes correspondantes seront distribuées ici.</p></div>
+        </div>
+      </div>
+      <div class="senior-position-shortcuts" aria-label="Choisir un poste">{"".join(shortcuts)}</div>
+      {"".join(templates)}
+      <noscript><p class="senior-position-noscript">Les portraits et les postes restent disponibles dans <a href="articles/presentation-seniors-masculins-1.html">la présentation de l’équipe</a>.</p></noscript>
+    </section>'''
+
 senior_choices = []
 for slug, name, result_label in SENIOR_MEN:
     team = next(team for team in RESULTS["teams"] if team["label"] == result_label)
@@ -802,7 +895,9 @@ pages["seniors-masculins"] = page(
     '<section class="container senior-landing after-heading">' +
     team_training("seniors-masculins") +
     f'<div class="senior-landing-choices"><div class="senior-landing-heading"><p class="eyebrow">SAISON {SEASON_DISPLAY}</p><h2>LES DEUX <em>ÉQUIPES</em></h2></div><div class="senior-choice-grid">' +
-    ''.join(senior_choices) + '</div></div><div class="senior-duty-entry" data-reveal><div><p class="eyebrow">TOUTES LES ÉQUIPES</p><h2>PERMANENCES <em>DE SALLE</em></h2><p>Les prochains week-ends, les responsables et tous les matchs à domicile annoncés par FFHandball.</p></div>' +
+    ''.join(senior_choices) + '</div></div>' +
+    senior_player_card_experience() +
+    '<div class="senior-duty-entry" data-reveal><div><p class="eyebrow">TOUTES LES ÉQUIPES</p><h2>PERMANENCES <em>DE SALLE</em></h2><p>Les prochains week-ends, les responsables et tous les matchs à domicile annoncés par FFHandball.</p></div>' +
     button('Voir le planning', 'permanences-seniors-masculins.html') + '</div></section>', "equipes",
     f"Seniors masculins du Ploufragan Handball : horaires d’entraînement et accès aux deux équipes engagées en {SEASON}.")
 
