@@ -501,15 +501,38 @@ if (shopFilter) {
 }
 
 const registrationNav = document.querySelector('[data-registration-nav]');
+const registrationSections = [...document.querySelectorAll('[data-registration-section]')];
+function openRegistrationSection(section, updateHistory = true) {
+  if (!section) return;
+  registrationSections.forEach(item => { if (item !== section) item.open = false; });
+  section.open = true;
+  if (updateHistory) history.replaceState(null, '', `#${section.id}`);
+  if (registrationNav) {
+    const options = [...registrationNav.querySelectorAll('[data-registration-target]')];
+    const selectedOption = options.find(option => option.dataset.registrationTarget === section.id);
+    options.forEach(option => option.setAttribute('aria-selected', String(option === selectedOption)));
+    if (selectedOption) registrationNav.querySelector('[data-filter-selected]').textContent = selectedOption.textContent;
+  }
+}
+
+registrationSections.forEach(section => section.addEventListener('toggle', () => {
+  if (section.open) openRegistrationSection(section);
+}));
+
 if (registrationNav) {
   setupContentDropdown(registrationNav, '[data-registration-target]', option => {
     const sectionId = option.dataset.registrationTarget;
     const section = document.getElementById(sectionId);
     if (!section) return;
-    history.replaceState(null, '', `#${sectionId}`);
+    openRegistrationSection(section);
     window.requestAnimationFrame(() => section.scrollIntoView({
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
       block: 'start'
     }));
   });
+}
+
+if (location.hash) {
+  const hashSection = registrationSections.find(section => `#${section.id}` === location.hash);
+  if (hashSection) openRegistrationSection(hashSection, false);
 }

@@ -211,15 +211,32 @@ test('mobile : le dernier résultat des équipes ne se chevauche pas', async ({ 
   }
 });
 
-test('inscriptions : navigation par menu déroulant', async ({ page }) => {
+test('inscriptions : rubriques pliables et navigation directe', async ({ page }) => {
   await page.goto('/inscriptions.html');
   const navigation = page.locator('[data-registration-nav]');
   const trigger = navigation.locator('[data-filter-trigger]');
+  const categories = page.locator('#categories');
+  const essai = page.locator('#essai');
   await expect(trigger).toContainText('Catégories');
-  await trigger.click();
-  await navigation.locator('[data-registration-target="essai"]').click();
+  await expect(categories).not.toHaveAttribute('open', '');
+  await expect(essai).not.toHaveAttribute('open', '');
+  await essai.locator('summary').click();
+  await expect(essai).toHaveAttribute('open', '');
+  await expect(categories).not.toHaveAttribute('open', '');
   await expect(page).toHaveURL(/#essai$/);
   await expect(trigger).toContainText('Essai');
+  await trigger.click();
+  await navigation.locator('[data-registration-target="tarifs"]').click();
+  await expect(page).toHaveURL(/#tarifs$/);
+  await expect(trigger).toContainText('Tarifs');
+  await expect(page.locator('#tarifs')).toHaveAttribute('open', '');
+  await expect(essai).not.toHaveAttribute('open', '');
+});
+
+test('inscriptions : un lien profond ouvre la bonne rubrique', async ({ page }) => {
+  await page.goto('/inscriptions.html#contact-inscriptions');
+  await expect(page.locator('#contact-inscriptions')).toHaveAttribute('open', '');
+  await expect(page.locator('#categories')).not.toHaveAttribute('open', '');
 });
 
 test('entraînements : animation présente et non bouclée', async ({ page }) => {

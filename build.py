@@ -1060,57 +1060,87 @@ registration_body = heading(
       </div>
     </div>
   </nav>
-  <section class="licence-section" id="categories" aria-labelledby="licence-categories-title">
+  <details class="licence-fold licence-section" id="categories" name="licence-rubriques" data-registration-section>
+    <summary><span class="licence-fold-index">01</span><strong>CATÉGORIES</strong><small>Âges, équipes et entraînements</small></summary>
+    <div class="licence-fold-body">
     <div class="section-heading" data-reveal><div><p class="eyebrow">SAISON {SEASON_DISPLAY}</p><h2 id="licence-categories-title">TROUVER MA <em>CATÉGORIE</em></h2></div></div>
     <div class="licence-category-grid">{"".join(registration_cards)}</div>
     <p class="licence-footnote">Une question sur l’âge ou les horaires ? Contactez le club avant de commencer votre demande.</p>
-  </section>
-  <section class="licence-section licence-try" id="essai" aria-labelledby="licence-try-title" data-reveal>
+    </div>
+  </details>
+  <details class="licence-fold licence-section" id="essai" name="licence-rubriques" data-registration-section>
+    <summary><span class="licence-fold-index">02</span><strong>ESSAI</strong><small>Découvrir le club avant de s’inscrire</small></summary>
+    <div class="licence-fold-body licence-try" data-reveal>
     <div><p class="eyebrow">DÉCOUVRIR LE CLUB</p><h2 id="licence-try-title">ENVIE D’ESSAYER <em>AVANT DE VOUS INSCRIRE ?</em></h2><p>Indiquez l’année de naissance et la catégorie souhaitée. Le club vous confirmera le créneau et les conditions de l’essai.</p></div>
     {button("Demander un essai", mail(f"Essai handball PHB {SEASON_SLUG}"))}
-  </section>
-  <section class="licence-section" id="demarches" aria-labelledby="licence-demarches-title">
+    </div>
+  </details>
+  <details class="licence-fold licence-section" id="demarches" name="licence-rubriques" data-registration-section>
+    <summary><span class="licence-fold-index">03</span><strong>DÉMARCHES</strong><small>Nouvelle licence ou renouvellement</small></summary>
+    <div class="licence-fold-body">
     <div class="section-heading" data-reveal><div><p class="eyebrow">VOTRE SITUATION</p><h2 id="licence-demarches-title">NOUVELLE LICENCE <em>OU RENOUVELLEMENT</em></h2></div></div>
     <div class="licence-route-grid">
       <article class="information-panel licence-route" data-reveal><span class="licence-route-number" aria-hidden="true">01</span><h3>NOUVELLE LICENCE</h3><p>Écrivez au club avec le nom, l’année de naissance et la catégorie souhaitée. Le club vous transmettra les indications pour commencer votre demande.</p><a class="text-link" href="{escape(mail(f"Nouvelle licence PHB {SEASON_SLUG}"), quote=True)}">Contacter le club ↗</a></article>
       <article class="information-panel licence-route" data-reveal><span class="licence-route-number" aria-hidden="true">02</span><h3>RENOUVELLEMENT</h3><p>Signalez que vous renouvelez votre licence. Suivez ensuite le courriel Gest’Hand et les modalités communiquées par le club pour cette saison.</p><a class="text-link" href="{escape(mail(f"Renouvellement PHB {SEASON_SLUG}"), quote=True)}">Demander les indications ↗</a></article>
     </div>
-  </section>
-  <section class="licence-section" id="gesthand" aria-labelledby="licence-gesthand-title">
+    </div>
+  </details>
+  <details class="licence-fold licence-section" id="gesthand" name="licence-rubriques" data-registration-section>
+    <summary><span class="licence-fold-index">04</span><strong>GEST’HAND</strong><small>Compléter la demande de licence</small></summary>
+    <div class="licence-fold-body">
     <div class="section-heading" data-reveal><div><p class="eyebrow">PARCOURS DE LICENCE</p><h2 id="licence-gesthand-title">TUTORIEL <em>GEST’HAND</em></h2></div></div>
     <ol class="gesthand-grid">{gesthand_cards}</ol>
     <div class="licence-service-links" data-reveal><p>Pour compléter une licence, utilisez le lien personnel envoyé par courriel après la demande au club. L’accès général Gest’Hand est réservé aux comptes habilités.</p><a class="text-link" href="{GESTHAND_URL}" target="_blank" rel="noopener noreferrer">Accéder à Gest’Hand ↗</a></div>
-  </section>
+    </div>
+  </details>
   <div class="licence-paired">
-    <section class="licence-section licence-documents" id="documents" aria-labelledby="licence-documents-title">
+    <details class="licence-fold licence-section licence-documents" id="documents" name="licence-rubriques" data-registration-section>
+      <summary><span class="licence-fold-index">05</span><strong>DOCUMENTS</strong><small>Pièces à prévoir</small></summary>
+      <div class="licence-fold-body">
       <div class="section-heading" data-reveal><div><p class="eyebrow">DOSSIER</p><h2 id="licence-documents-title">DOCUMENTS <em>À PRÉVOIR</em></h2></div></div>
       <div class="information-panel" data-reveal><h3>AUTRES DOCUMENTS</h3><p>Pour les seniors pratiquant le handball en compétition, le certificat médical doit être renouvelé au minimum toutes les trois saisons sportives. Entre deux renouvellements, une attestation de questionnaire de santé est demandée.</p><p>Certains licenciés exerçant des fonctions d’encadrement ou d’officiel sont soumis aux obligations d’honorabilité prévues par la FFHandball. Le club vous précisera les démarches correspondant à votre situation.</p><a class="text-link" href="https://www.ffhandball.fr/wp-content/uploads/2026/06/05_Reglement-medical_2026-27.pdf" target="_blank" rel="noopener noreferrer">Règlement médical FFHandball {SEASON} ↗</a><p class="licence-pending-label">Le club précisera les autres pièces nécessaires selon votre situation.</p></div>
-    </section>
-    <section class="licence-section licence-tariffs" id="tarifs" aria-labelledby="licence-tarifs-title">
+      </div>
+    </details>
+    <details class="licence-fold licence-section licence-tariffs" id="tarifs" name="licence-rubriques" data-registration-section>
+      <summary><span class="licence-fold-index">06</span><strong>TARIFS</strong><small>Prix des licences par catégorie</small></summary>
+      <div class="licence-fold-body">
       <div class="section-heading" data-reveal><div><p class="eyebrow">SAISON {SEASON_DISPLAY}</p><h2 id="licence-tarifs-title">TARIFS <em>LICENCES</em></h2></div></div>
       <div class="paper-panel" data-reveal><table class="licence-tariff-table"><caption class="sr-only">Tarifs des licences {SEASON} par catégorie</caption><thead><tr><th>Catégorie</th><th>Tarif</th></tr></thead><tbody>{"".join(tariff_rows)}</tbody></table></div>
-    </section>
+      </div>
+    </details>
   </div>
-  <section class="licence-section" id="aides" aria-labelledby="licence-aides-title">
+  <details class="licence-fold licence-section" id="aides" name="licence-rubriques" data-registration-section>
+    <summary><span class="licence-fold-index">07</span><strong>AIDES & RÉDUCTIONS</strong><small>Familles, bénévoles et dispositifs</small></summary>
+    <div class="licence-fold-body">
     <div class="section-heading" data-reveal><div><p class="eyebrow">SITUATIONS PARTICULIÈRES</p><h2 id="licence-aides-title">AIDES <em>& RÉDUCTIONS</em></h2></div></div>
     <div class="licence-aids-grid">
       <article class="information-panel" data-reveal><h3>PLUSIEURS LICENCES</h3><p>Une réduction est applicable dès deux licences dans la même famille. Écrivez aux trésorières pour connaître le montant et la marche à suivre.</p><a class="text-link" href="mailto:tresoreriephb@gmail.com">tresoreriephb@gmail.com ↗</a></article>
       <article class="information-panel" data-reveal><h3>BÉNÉVOLES</h3><p>La licence est offerte aux bénévoles non pratiquants. Pour les bénévoles pratiquants, elle est proposée à prix coûtant avec un chèque de caution égal au prix total.</p></article>
       <article class="information-panel" data-reveal><h3>AUTRES AIDES</h3><p>Bon CAF et ANCV : contactez les trésorières pour les modalités. Pass’Sport et autres dispositifs : éligibilité et acceptation à confirmer auprès du club.</p></article>
     </div>
-  </section>
-  <section class="licence-section licence-payment" id="paiement" aria-labelledby="licence-payment-title" data-reveal>
+    </div>
+  </details>
+  <details class="licence-fold licence-section" id="paiement" name="licence-rubriques" data-registration-section>
+    <summary><span class="licence-fold-index">08</span><strong>PAIEMENT</strong><small>Finaliser l’inscription</small></summary>
+    <div class="licence-fold-body licence-payment" data-reveal>
     <div><p class="eyebrow">PAIEMENT DE LA LICENCE</p><h2 id="licence-payment-title">FINALISER <em>MON INSCRIPTION</em></h2><p>Le lien de paiement par carte bancaire est communiqué sur TeamPulse. Les licences avec réduction (bon CAF, ANCV, bénévole pratiquant…) ne peuvent pas utiliser ce paiement CB : contactez les trésorières pour les modalités adaptées.</p><p class="licence-pack-note">Un pack rentrée maillot + short sera proposé pour démarrer la saison.</p></div>
     <div class="licence-payment-action">{payment_cta}<small>{"Ouvrir le paiement sécurisé HelloAsso." if HELLOASSO_URL else "Le lien de paiement sera communiqué sur TeamPulse."}</small><a class="text-link" href="{escape(TEAMPULSE_PLAY_URL, quote=True)}" target="_blank" rel="noopener noreferrer">Installer TeamPulse sur Google Play ↗</a></div>
-  </section>
-  <section class="licence-section licence-faq" id="faq" aria-labelledby="licence-faq-title">
+    </div>
+  </details>
+  <details class="licence-fold licence-section licence-faq" id="faq" name="licence-rubriques" data-registration-section>
+    <summary><span class="licence-fold-index">09</span><strong>QUESTIONS FRÉQUENTES</strong><small>Les réponses aux demandes courantes</small></summary>
+    <div class="licence-fold-body">
     <div class="section-heading" data-reveal><div><p class="eyebrow">BESOIN D’AIDE ?</p><h2 id="licence-faq-title">QUESTIONS <em>FRÉQUENTES</em></h2></div></div>
     <div class="licence-faq-list">{faq_html}</div>
-  </section>
-  <section class="licence-section licence-contact" id="contact-inscriptions" aria-labelledby="licence-contact-title" data-reveal>
+    </div>
+  </details>
+  <details class="licence-fold licence-section" id="contact-inscriptions" name="licence-rubriques" data-registration-section>
+    <summary><span class="licence-fold-index">10</span><strong>CONTACT</strong><small>Une question sur votre licence</small></summary>
+    <div class="licence-fold-body licence-contact" data-reveal>
     <div><p class="eyebrow">LE CLUB VOUS RÉPOND</p><h2 id="licence-contact-title">UNE QUESTION <em>SUR VOTRE LICENCE ?</em></h2><p>Précisez la catégorie et l’année de naissance de la personne concernée.</p></div>
     <div class="licence-contact-links"><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a><a href="tel:+33636618800">06 36 61 88 00</a></div>
-  </section>
+    </div>
+  </details>
 </div>'''
 pages["inscriptions"] = page(
     "inscriptions",
