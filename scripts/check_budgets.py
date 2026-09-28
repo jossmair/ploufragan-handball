@@ -6,8 +6,8 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
 BUDGETS = {
-    "CSS commun": (ASSETS / "site.css", 164_000),
-    "JavaScript commun": (ASSETS / "site.js", 31_000),
+    "CSS commun": (ASSETS / "site.css", 166_000),
+    "JavaScript commun": (ASSETS / "site.js", 33_000),
     "Vidéo accueil": (ASSETS / "blog" / "intro.mp4", 3_200_000),
     "Vidéo Résultats": (ASSETS / "blog" / "blog-logo-orbit.mp4", 5_700_000),
     "Vidéo Blog": (ASSETS / "blog" / "blog-ploufy-reading.mp4", 2_200_000),

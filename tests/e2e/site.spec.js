@@ -134,6 +134,28 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   const firstDownload = await download.getAttribute('href');
   expect(firstDownload).toContain('/assets/galeries/seniors-1-pays-de-dinan-2026/originals/');
   await expect(download).toHaveAttribute('download', /\.jpg$/);
+  const zoom = carousel.locator('.photo-carousel-zoom');
+  await expect(zoom).toBeVisible();
+  await zoom.click();
+  const zoomDialog = page.locator('.photo-zoom-dialog');
+  await expect(zoomDialog).toBeVisible();
+  await expect(zoomDialog.locator('img')).toHaveAttribute('src', /photo-1\.webp/);
+  await zoomDialog.locator('img').dblclick();
+  await expect(zoomDialog).not.toBeVisible();
+  await carousel.locator('[data-photo-slide]').first().locator('img').dblclick();
+  await expect(zoomDialog).toBeVisible();
+  await zoomDialog.locator('.photo-zoom-close').click();
+  await expect(zoomDialog).not.toBeVisible();
+  if (test.info().project.name === 'mobile-chromium') {
+    const imageBox = await carousel.locator('[data-photo-slide]').first().locator('img').boundingBox();
+    await page.touchscreen.tap(imageBox.x + imageBox.width / 2, imageBox.y + imageBox.height / 2);
+    await page.touchscreen.tap(imageBox.x + imageBox.width / 2, imageBox.y + imageBox.height / 2);
+    await expect(zoomDialog).toBeVisible();
+    const zoomedBox = await zoomDialog.locator('img').boundingBox();
+    await page.touchscreen.tap(zoomedBox.x + zoomedBox.width / 2, zoomedBox.y + zoomedBox.height / 2);
+    await page.touchscreen.tap(zoomedBox.x + zoomedBox.width / 2, zoomedBox.y + zoomedBox.height / 2);
+    await expect(zoomDialog).not.toBeVisible();
+  }
   const thumbnails = carousel.locator('[data-photo-thumb]');
   await expect(thumbnails).toHaveCount(slides);
   await expect(thumbnails.first()).toHaveAttribute('aria-current', 'true');

@@ -389,6 +389,21 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
   const thumbnailNext = carousel.querySelector('[data-photo-thumb-next]');
   if (!track || !slides.length) return;
 
+  const zoomButton = document.createElement('button');
+  zoomButton.className = 'photo-carousel-zoom';
+  zoomButton.type = 'button';
+  zoomButton.setAttribute('aria-label', 'Agrandir la photo');
+  zoomButton.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 5 5M10.5 8v5m-2.5-2.5h5"/></svg>';
+  carousel.appendChild(zoomButton);
+
+  const zoomDialog = document.createElement('dialog');
+  zoomDialog.className = 'photo-zoom-dialog';
+  zoomDialog.setAttribute('aria-label', 'Photo agrandie');
+  zoomDialog.innerHTML = '<button class="photo-zoom-close" type="button" aria-label="Fermer la photo agrandie">&times;</button><div class="photo-zoom-media"><img alt=""></div>';
+  document.body.appendChild(zoomDialog);
+  const zoomImage = zoomDialog.querySelector('img');
+  const zoomClose = zoomDialog.querySelector('.photo-zoom-close');
+
   function currentIndex() {
     const origin = slides[0].offsetLeft;
     return slides.reduce((nearest, slide, index) =>
@@ -430,6 +445,35 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
     if (!thumbnailTrack) return;
     thumbnailTrack.scrollBy({ left: step * Math.max(220, thumbnailTrack.clientWidth * .72), behavior: motion.matches ? 'auto' : 'smooth' });
   }
+  function openZoom() {
+    const image = slides[currentIndex()].querySelector('img');
+    zoomImage.src = image.currentSrc || image.src;
+    zoomImage.alt = image.alt;
+    document.body.classList.add('is-photo-zoom-open');
+    document.documentElement.classList.add('is-photo-zoom-open');
+    zoomDialog.showModal();
+  }
+  function closeZoom() {
+    if (zoomDialog.open) zoomDialog.close();
+  }
+  function enableDoubleTap(element, action) {
+    let lastTap = 0;
+    let lastX = 0;
+    let lastY = 0;
+    element.addEventListener('pointerup', event => {
+      if (event.pointerType !== 'touch') return;
+      const now = performance.now();
+      if (now - lastTap < 420 && Math.hypot(event.clientX - lastX, event.clientY - lastY) < 32) {
+        event.preventDefault();
+        lastTap = 0;
+        action();
+      } else {
+        lastTap = now;
+        lastX = event.clientX;
+        lastY = event.clientY;
+      }
+    }, { passive: false });
+  }
 
   previous.addEventListener('click', () => move(-1));
   next.addEventListener('click', () => move(1));
@@ -439,6 +483,23 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
     const index = Number(thumbnail.dataset.photoIndex);
     track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: motion.matches ? 'auto' : 'smooth' });
   }));
+  zoomButton.addEventListener('click', openZoom);
+  zoomClose.addEventListener('click', closeZoom);
+  track.addEventListener('dblclick', event => {
+    if (!event.target.closest('.photo-carousel-slide img')) return;
+    event.preventDefault();
+    openZoom();
+  });
+  zoomImage.addEventListener('dblclick', closeZoom);
+  zoomDialog.addEventListener('click', event => {
+    if (event.target === zoomDialog) closeZoom();
+  });
+  zoomDialog.addEventListener('close', () => {
+    document.body.classList.remove('is-photo-zoom-open');
+    document.documentElement.classList.remove('is-photo-zoom-open');
+  });
+  enableDoubleTap(track, openZoom);
+  enableDoubleTap(zoomImage, closeZoom);
   track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
   if (thumbnailTrack) thumbnailTrack.addEventListener('scroll', () => requestAnimationFrame(updateThumbnailControls), { passive: true });
   track.addEventListener('keydown', event => {
