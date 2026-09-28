@@ -136,12 +136,46 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   await expect(download).toHaveAttribute('download', /\.jpg$/);
   const zoom = carousel.locator('.photo-carousel-zoom');
   await expect(zoom).toBeVisible();
+  await expect(carousel.locator('[data-photo-slide]').first().locator('img')).toHaveCSS('cursor', 'zoom-in');
   await zoom.click();
   const zoomDialog = page.locator('.photo-zoom-dialog');
   await expect(zoomDialog).toBeVisible();
   await expect(zoomDialog.locator('img')).toHaveAttribute('src', /photo-1\.webp/);
+  const zoomFit = await zoomDialog.locator('img').evaluate(image => {
+    const rect = image.getBoundingClientRect();
+    return {
+      left: rect.left,
+      top: rect.top,
+      right: rect.right,
+      bottom: rect.bottom,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+      objectFit: getComputedStyle(image).objectFit,
+    };
+  });
+  expect(zoomFit.objectFit).toBe('contain');
+  expect(zoomFit.left).toBeGreaterThanOrEqual(0);
+  expect(zoomFit.top).toBeGreaterThanOrEqual(0);
+  expect(zoomFit.right).toBeLessThanOrEqual(zoomFit.viewportWidth);
+  expect(zoomFit.bottom).toBeLessThanOrEqual(zoomFit.viewportHeight);
   await zoomDialog.locator('img').click();
   await expect(zoomDialog).not.toBeVisible();
+  const portraitThumb = carousel.locator('[data-photo-thumb]').nth(1);
+  await portraitThumb.click();
+  await expect(carousel.locator('[data-photo-count]')).toContainText(`2 / ${slides}`);
+  await carousel.locator('[data-photo-slide]').nth(1).locator('img').click();
+  await expect(zoomDialog).toBeVisible();
+  await expect(zoomDialog.locator('img')).toHaveAttribute('src', /photo-2\.webp/);
+  const portraitFit = await zoomDialog.locator('img').evaluate(image => ({
+    naturalWidth: image.naturalWidth,
+    naturalHeight: image.naturalHeight,
+    objectFit: getComputedStyle(image).objectFit,
+  }));
+  expect(portraitFit.naturalHeight).toBeGreaterThan(portraitFit.naturalWidth);
+  expect(portraitFit.objectFit).toBe('contain');
+  await zoomDialog.locator('img').click();
+  await carousel.locator('[data-photo-thumb]').first().click();
+  await expect(carousel.locator('[data-photo-count]')).toContainText(`1 / ${slides}`);
   await carousel.locator('[data-photo-slide]').first().locator('img').click();
   await expect(zoomDialog).toBeVisible();
   await zoomDialog.locator('.photo-zoom-close').click();
