@@ -37,7 +37,7 @@ for (const width of widths) {
       brokenImages: [...document.images].filter(image => image.currentSrc && image.complete && image.naturalWidth === 0).map(image => image.currentSrc),
       clippedControls: [...document.querySelectorAll('a,button,input,select,textarea')]
         .filter(element => {
-          if (element.closest('.sponsor-marquee, .article-carousel-track')) return false;
+          if (element.closest('.sponsor-marquee, .article-carousel-track, .photo-carousel-thumbnails')) return false;
           const style = getComputedStyle(element);
           if (style.display === 'none' || style.visibility === 'hidden') return false;
           const rect = element.getBoundingClientRect();

@@ -131,10 +131,16 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   const download = carousel.locator('[data-photo-download]');
   await expect(download.locator('svg')).toBeVisible();
   const firstDownload = await download.getAttribute('href');
+  const thumbnails = carousel.locator('[data-photo-thumb]');
+  await expect(thumbnails).toHaveCount(slides);
+  await expect(thumbnails.first()).toHaveAttribute('aria-current', 'true');
   if (slides > 1) {
     await carousel.locator('[data-photo-next]').click();
     await expect(carousel.locator('[data-photo-count]')).toContainText(`2 / ${slides}`);
     await expect(download).not.toHaveAttribute('href', firstDownload);
+    await thumbnails.nth(9).click();
+    await expect(carousel.locator('[data-photo-count]')).toContainText(`10 / ${slides}`);
+    await expect(thumbnails.nth(9)).toHaveAttribute('aria-current', 'true');
   }
 });
 

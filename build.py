@@ -1267,12 +1267,17 @@ def gallery_index_card(album):
 def gallery_album_page(album):
     total = len(album["photos"])
     slides = []
+    thumbnails = []
     for index, photo in enumerate(album["photos"]):
         loading = "eager" if index == 0 else "lazy"
         priority = ' fetchpriority="high"' if index == 0 else ""
         alt = f"Seniors masculins 1 du Ploufragan Handball face au Pays de Dinan — photo {photo['number']}"
         slides.append(
             f'''<figure class="photo-carousel-slide" data-photo-slide data-original-url="{escape(photo['original_url'], quote=True)}"><img src="{escape(photo['src'], quote=True)}" alt="{escape(alt, quote=True)}" width="{photo['width']}" height="{photo['height']}" loading="{loading}" decoding="async"{priority}><figcaption>PHB Seniors 1 · Pays de Dinan · {article_date(album['date'])}</figcaption></figure>'''
+        )
+        current = ' aria-current="true"' if index == 0 else ""
+        thumbnails.append(
+            f'''<button class="photo-carousel-thumb" type="button" data-photo-thumb data-photo-index="{index}" aria-label="Afficher la photo {index + 1}"{current}><img src="{escape(photo['thumb'], quote=True)}" alt="" width="200" height="130" loading="lazy" decoding="async"></button>'''
         )
     disabled = " disabled" if total < 2 else ""
     first_original_url = escape(album["photos"][0]["original_url"], quote=True)
@@ -1283,7 +1288,7 @@ def gallery_album_page(album):
         back=("galerie.html", "Galerie photo"),
         css_class="gallery-album-heading",
     )
-    body = album_heading + f'''<section class="container section after-heading gallery-album" aria-labelledby="gallery-carousel-title"><div class="gallery-album-intro" data-reveal><div><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="gallery-carousel-title">LE MATCH <em>EN IMAGES</em></h2></div></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span><a class="photo-carousel-download" data-photo-download href="{first_original_url}" target="_blank" rel="noopener noreferrer" aria-label="Télécharger la photo 1 en qualité originale"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 18v2h14v-2"/></svg></a></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos du match des Seniors 1 à Pays de Dinan">{''.join(slides)}</div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / max(total, 1):.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente"{disabled}>←</button><button type="button" data-photo-next aria-label="Photo suivante"{disabled}>→</button></div></div></div><aside class="gallery-credit" data-reveal><div><p class="eyebrow">CRÉDIT PHOTOS</p><h2>UN GRAND <em>MERCI</em></h2></div><p>{escape(album['credit_note'])}</p></aside><div class="gallery-back"><a class="text-link" href="galerie.html">← Retour aux galeries</a></div></section>'''
+    body = album_heading + f'''<section class="container section after-heading gallery-album" aria-labelledby="gallery-carousel-title"><div class="gallery-album-intro" data-reveal><div><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="gallery-carousel-title">LE MATCH <em>EN IMAGES</em></h2></div></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span><a class="photo-carousel-download" data-photo-download href="{first_original_url}" target="_blank" rel="noopener noreferrer" aria-label="Télécharger la photo 1 en qualité originale"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 18v2h14v-2"/></svg></a></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos du match des Seniors 1 à Pays de Dinan">{''.join(slides)}</div><div class="photo-carousel-thumbnails" data-photo-thumbnails aria-label="Miniatures des photos">{''.join(thumbnails)}</div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / max(total, 1):.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente"{disabled}>←</button><button type="button" data-photo-next aria-label="Photo suivante"{disabled}>→</button></div></div></div><aside class="gallery-credit" data-reveal><div><p class="eyebrow">CRÉDIT PHOTOS</p><h2>UN GRAND <em>MERCI</em></h2></div><p>{escape(album['credit_note'])}</p></aside><div class="gallery-back"><a class="text-link" href="galerie.html">← Retour aux galeries</a></div></section>'''
     document = page(
         f"galeries/{album['slug']}", album["title"], body, active="galerie",
         body_page="galerie", social_image=("assets/og/galerie-pays-de-dinan.jpg", 1200, 630, "Match des Seniors masculins 1 du PHB à Pays de Dinan"),

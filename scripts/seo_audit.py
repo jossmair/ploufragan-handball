@@ -9,7 +9,11 @@ from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://ploufragan-handball.fr/"
-FILES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html"))
+FILES = (
+    sorted(ROOT.glob("*.html"))
+    + sorted((ROOT / "articles").glob("*.html"))
+    + sorted((ROOT / "galeries").glob("*.html"))
+)
 REQUIRED_OG = {"og:type", "og:site_name", "og:locale", "og:title",
                "og:description", "og:url", "og:image"}
 REQUIRED_TWITTER = {"twitter:card", "twitter:title", "twitter:description", "twitter:image"}

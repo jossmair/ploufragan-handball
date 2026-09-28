@@ -383,6 +383,8 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
   const count = carousel.querySelector('[data-photo-count]');
   const progress = carousel.querySelector('[data-photo-progress]');
   const download = carousel.querySelector('[data-photo-download]');
+  const thumbnailTrack = carousel.querySelector('[data-photo-thumbnails]');
+  const thumbnails = [...carousel.querySelectorAll('[data-photo-thumb]')];
   if (!track || !slides.length) return;
 
   function currentIndex() {
@@ -401,6 +403,15 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
       download.href = slides[index].dataset.originalUrl;
       download.setAttribute('aria-label', `Télécharger la photo ${index + 1} en qualité originale`);
     }
+    thumbnails.forEach((thumbnail, thumbnailIndex) => {
+      if (thumbnailIndex === index) thumbnail.setAttribute('aria-current', 'true');
+      else thumbnail.removeAttribute('aria-current');
+    });
+    if (thumbnailTrack && thumbnails[index]) {
+      const thumbnail = thumbnails[index];
+      const left = thumbnail.offsetLeft - (thumbnailTrack.clientWidth - thumbnail.offsetWidth) / 2;
+      thumbnailTrack.scrollTo({ left: Math.max(0, left), behavior: motion.matches ? 'auto' : 'smooth' });
+    }
     slides.forEach((slide, slideIndex) => slide.setAttribute('aria-label', `Photo ${slideIndex + 1} sur ${slides.length}`));
   }
   function move(step) {
@@ -410,6 +421,10 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
 
   previous.addEventListener('click', () => move(-1));
   next.addEventListener('click', () => move(1));
+  thumbnails.forEach(thumbnail => thumbnail.addEventListener('click', () => {
+    const index = Number(thumbnail.dataset.photoIndex);
+    track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: motion.matches ? 'auto' : 'smooth' });
+  }));
   track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
   track.addEventListener('keydown', event => {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
