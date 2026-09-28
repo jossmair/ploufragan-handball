@@ -9,7 +9,8 @@ const port = process.env.PHB_NOJS_PORT || '4179';
 const baseURL = process.env.PHB_BASE_URL || `http://127.0.0.1:${port}`;
 const paths = [
   '/', '/club.html', '/equipes.html', '/seniors-masculins-1.html',
-  '/entrainements.html', '/resultats.html', '/inscriptions.html', '/blog.html',
+  '/entrainements.html', '/resultats.html', '/inscriptions.html', '/blog.html', '/galerie.html',
+  '/galeries/seniors-1-pays-de-dinan-2026.html',
   '/articles/presentation-seniors-masculins-1.html', '/partenaires.html',
   '/devenir-partenaire.html', '/boutique.html', '/contact.html',
 ];

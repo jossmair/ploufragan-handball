@@ -5,6 +5,8 @@ const baseURL = process.env.PHB_BASE_URL || 'http://127.0.0.1:4176';
 const paths = [
   '/',
   '/blog.html',
+  '/galerie.html',
+  '/galeries/seniors-1-pays-de-dinan-2026.html',
   '/boutique.html',
   '/resultats.html',
   '/articles/presentation-seniors-masculins-1.html',

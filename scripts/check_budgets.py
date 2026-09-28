@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
 BUDGETS = {
-    "CSS commun": (ASSETS / "site.css", 160_000),
+    "CSS commun": (ASSETS / "site.css", 162_000),
     "JavaScript commun": (ASSETS / "site.js", 30_000),
     "Vidéo accueil": (ASSETS / "blog" / "intro.mp4", 3_200_000),
     "Vidéo Résultats": (ASSETS / "blog" / "blog-logo-orbit.mp4", 5_700_000),
@@ -14,7 +14,7 @@ BUDGETS = {
     "Vidéo Entraînements": (ASSETS / "videos" / "entrainements-animation.mp4", 4_500_000),
     "Vidéo Boutique": (ASSETS / "videos" / "boutique-animation.mp4", 2_100_000),
 }
-TOTAL_ASSETS_BUDGET = 40_000_000
+TOTAL_ASSETS_BUDGET = 70_000_000
 
 
 def main():

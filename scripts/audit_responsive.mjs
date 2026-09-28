@@ -6,7 +6,8 @@ const baseURL = process.env.PHB_BASE_URL || 'http://127.0.0.1:4176';
 const widths = [375, 390, 430, 768, 1024, 1440, 1920];
 const pages = [
   '/', '/equipes.html', '/jeunes.html', '/resultats.html', '/inscriptions.html',
-  '/boutique.html', '/blog.html', '/articles/presentation-seniors-masculins-1.html',
+  '/boutique.html', '/blog.html', '/galerie.html', '/galeries/seniors-1-pays-de-dinan-2026.html',
+  '/articles/presentation-seniors-masculins-1.html',
   '/partenaires.html', '/contact.html',
 ];
 const screenshotRoot = process.env.PHB_AUDIT_SCREENSHOT_DIR || join('test-results', 'responsive-audit');

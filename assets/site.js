@@ -375,6 +375,52 @@ document.querySelectorAll('[data-team-gallery]').forEach(gallery => {
   update();
 });
 
+document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
+  const track = carousel.querySelector('[data-photo-track]');
+  const slides = [...carousel.querySelectorAll('[data-photo-slide]')];
+  const previous = carousel.querySelector('[data-photo-prev]');
+  const next = carousel.querySelector('[data-photo-next]');
+  const count = carousel.querySelector('[data-photo-count]');
+  const progress = carousel.querySelector('[data-photo-progress]');
+  const download = carousel.querySelector('[data-photo-download]');
+  if (!track || !slides.length) return;
+
+  function currentIndex() {
+    const origin = slides[0].offsetLeft;
+    return slides.reduce((nearest, slide, index) =>
+      Math.abs(slide.offsetLeft - origin - track.scrollLeft) < Math.abs(slides[nearest].offsetLeft - origin - track.scrollLeft)
+        ? index : nearest, 0);
+  }
+  function update() {
+    const index = currentIndex();
+    count.textContent = `${index + 1} / ${slides.length}`;
+    progress.style.setProperty('--gallery-progress', `${((index + 1) / slides.length) * 100}%`);
+    previous.disabled = index === 0;
+    next.disabled = index === slides.length - 1;
+    if (download) {
+      download.href = slides[index].dataset.originalUrl;
+      download.setAttribute('aria-label', `Télécharger la photo ${index + 1} en qualité originale`);
+    }
+    slides.forEach((slide, slideIndex) => slide.setAttribute('aria-label', `Photo ${slideIndex + 1} sur ${slides.length}`));
+  }
+  function move(step) {
+    const index = Math.max(0, Math.min(slides.length - 1, currentIndex() + step));
+    track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: motion.matches ? 'auto' : 'smooth' });
+  }
+
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  track.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      move(event.key === 'ArrowRight' ? 1 : -1);
+    }
+  });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+});
+
 document.querySelectorAll('[data-copy-article]').forEach(button => {
   button.hidden = false;
   button.addEventListener('click', async () => {

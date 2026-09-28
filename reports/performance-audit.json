@@ -1,7 +1,7 @@
 [
   {
     "path": "/",
-    "lcpMs": 244,
+    "lcpMs": 1516,
     "lcpElement": {
       "tag": "section",
       "id": null,
@@ -12,29 +12,29 @@
       "url": "/assets/photos/home-handball-action-bg.webp"
     },
     "cls": 0,
-    "fcpMs": 244,
-    "ttfbMs": 4,
-    "domContentLoadedMs": 147,
-    "loadMs": 231,
-    "domElements": 451,
-    "encodedBytes": 4164816,
-    "decodedBytes": 4164816,
-    "requests": 38,
+    "fcpMs": 1516,
+    "ttfbMs": 8,
+    "domContentLoadedMs": 1409,
+    "loadMs": 1512,
+    "domElements": 430,
+    "encodedBytes": 4322004,
+    "decodedBytes": 4322004,
+    "requests": 37,
     "byType": {
       "link": {
         "requests": 4,
-        "encodedBytes": 216103,
-        "decodedBytes": 216103
+        "encodedBytes": 233726,
+        "decodedBytes": 233726
       },
       "img": {
-        "requests": 22,
-        "encodedBytes": 507248,
-        "decodedBytes": 507248
+        "requests": 21,
+        "encodedBytes": 641262,
+        "decodedBytes": 641262
       },
       "script": {
         "requests": 1,
-        "encodedBytes": 22250,
-        "decodedBytes": 22250
+        "encodedBytes": 27801,
+        "decodedBytes": 27801
       },
       "video": {
         "requests": 2,
@@ -63,23 +63,23 @@
         "bytes": 331584
       },
       {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/articles/seniors-masculins-1/photo-03.webp",
+        "bytes": 201102
       },
       {
         "name": "/assets/site.css",
-        "bytes": 142668
+        "bytes": 160291
       },
       {
-        "name": "/assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
-        "bytes": 85058
+        "name": "/assets/logo-phb.png",
+        "bytes": 150878
       }
     ],
     "failed": []
   },
   {
     "path": "/blog.html",
-    "lcpMs": 192,
+    "lcpMs": 184,
     "lcpElement": {
       "tag": "video",
       "id": null,
@@ -87,19 +87,19 @@
       "url": "/assets/blog/blog-ploufy-reading.mp4"
     },
     "cls": 0,
-    "fcpMs": 144,
+    "fcpMs": 172,
     "ttfbMs": 3,
-    "domContentLoadedMs": 67,
-    "loadMs": 133,
-    "domElements": 250,
-    "encodedBytes": 1375779,
-    "decodedBytes": 1375779,
+    "domContentLoadedMs": 87,
+    "loadMs": 164,
+    "domElements": 252,
+    "encodedBytes": 2313231,
+    "decodedBytes": 2313231,
     "requests": 30,
     "byType": {
       "link": {
         "requests": 4,
-        "encodedBytes": 216103,
-        "decodedBytes": 216103
+        "encodedBytes": 233726,
+        "decodedBytes": 233726
       },
       "img": {
         "requests": 14,
@@ -108,13 +108,13 @@
       },
       "script": {
         "requests": 1,
-        "encodedBytes": 22250,
-        "decodedBytes": 22250
+        "encodedBytes": 27801,
+        "decodedBytes": 27801
       },
       "video": {
         "requests": 4,
-        "encodedBytes": 96348,
-        "decodedBytes": 96348
+        "encodedBytes": 1010626,
+        "decodedBytes": 1010626
       },
       "css": {
         "requests": 6,
@@ -130,6 +130,10 @@
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
+        "name": "/assets/blog/blog-ploufy-reading.mp4",
+        "bytes": 914278
+      },
+      {
         "name": "/assets/backgrounds/fond-1.webp",
         "bytes": 331584
       },
@@ -138,23 +142,19 @@
         "bytes": 201102
       },
       {
+        "name": "/assets/site.css",
+        "bytes": 160291
+      },
+      {
         "name": "/assets/logo-phb.png",
         "bytes": 150878
-      },
-      {
-        "name": "/assets/site.css",
-        "bytes": 142668
-      },
-      {
-        "name": "/assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
-        "bytes": 85058
       }
     ],
     "failed": []
   },
   {
-    "path": "/boutique.html",
-    "lcpMs": 160,
+    "path": "/galerie.html",
+    "lcpMs": 144,
     "lcpElement": {
       "tag": "img",
       "id": null,
@@ -164,29 +164,181 @@
       "url": "/assets/logo-phb.png"
     },
     "cls": 0,
-    "fcpMs": 160,
+    "fcpMs": 144,
     "ttfbMs": 3,
-    "domContentLoadedMs": 88,
-    "loadMs": 114,
-    "domElements": 535,
-    "encodedBytes": 1227177,
-    "decodedBytes": 1227177,
-    "requests": 35,
+    "domContentLoadedMs": 76,
+    "loadMs": 187,
+    "domElements": 239,
+    "encodedBytes": 1172627,
+    "decodedBytes": 1172627,
+    "requests": 24,
     "byType": {
       "link": {
         "requests": 4,
-        "encodedBytes": 216103,
-        "decodedBytes": 216103
+        "encodedBytes": 233726,
+        "decodedBytes": 233726
       },
       "script": {
         "requests": 1,
-        "encodedBytes": 22250,
-        "decodedBytes": 22250
+        "encodedBytes": 27801,
+        "decodedBytes": 27801
       },
       "img": {
-        "requests": 23,
-        "encodedBytes": 514486,
-        "decodedBytes": 514486
+        "requests": 13,
+        "encodedBytes": 489088,
+        "decodedBytes": 489088
+      },
+      "css": {
+        "requests": 5,
+        "encodedBytes": 422012,
+        "decodedBytes": 422012
+      }
+    },
+    "renderBlocking": [
+      "/assets/fonts/fonts.css",
+      "/assets/site.css"
+    ],
+    "inpMs": null,
+    "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
+    "largest": [
+      {
+        "name": "/assets/backgrounds/fond-1.webp",
+        "bytes": 331584
+      },
+      {
+        "name": "/assets/galeries/seniors-1-pays-de-dinan-2026/photo-36.webp",
+        "bytes": 227352
+      },
+      {
+        "name": "/assets/site.css",
+        "bytes": 160291
+      },
+      {
+        "name": "/assets/logo-phb.png",
+        "bytes": 150878
+      },
+      {
+        "name": "/assets/fonts/inter-normal-400-700.woff2",
+        "bytes": 48256
+      }
+    ],
+    "failed": []
+  },
+  {
+    "path": "/galeries/seniors-1-pays-de-dinan-2026.html",
+    "lcpMs": 180,
+    "lcpElement": {
+      "tag": "img",
+      "id": null,
+      "classes": [
+        "watermark"
+      ],
+      "url": "/assets/logo-phb.png"
+    },
+    "cls": 0,
+    "fcpMs": 180,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 95,
+    "loadMs": 126,
+    "domElements": 748,
+    "encodedBytes": 1874283,
+    "decodedBytes": 1874283,
+    "requests": 29,
+    "byType": {
+      "link": {
+        "requests": 4,
+        "encodedBytes": 233726,
+        "decodedBytes": 233726
+      },
+      "img": {
+        "requests": 18,
+        "encodedBytes": 1190744,
+        "decodedBytes": 1190744
+      },
+      "script": {
+        "requests": 1,
+        "encodedBytes": 27801,
+        "decodedBytes": 27801
+      },
+      "css": {
+        "requests": 5,
+        "encodedBytes": 422012,
+        "decodedBytes": 422012
+      }
+    },
+    "renderBlocking": [
+      "/assets/fonts/fonts.css",
+      "/assets/site.css"
+    ],
+    "inpMs": null,
+    "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
+    "largest": [
+      {
+        "name": "/assets/backgrounds/fond-1.webp",
+        "bytes": 331584
+      },
+      {
+        "name": "/assets/galeries/seniors-1-pays-de-dinan-2026/photo-36.webp",
+        "bytes": 227352
+      },
+      {
+        "name": "/assets/galeries/seniors-1-pays-de-dinan-2026/photo-5.webp",
+        "bytes": 161048
+      },
+      {
+        "name": "/assets/site.css",
+        "bytes": 160291
+      },
+      {
+        "name": "/assets/logo-phb.png",
+        "bytes": 150878
+      }
+    ],
+    "failed": []
+  },
+  {
+    "path": "/boutique.html",
+    "lcpMs": 268,
+    "lcpElement": {
+      "tag": "header",
+      "id": null,
+      "classes": [
+        "page-heading",
+        "container",
+        "animated-heading",
+        "boutique-heading"
+      ],
+      "url": "/assets/photos/page-headings/boutique.webp"
+    },
+    "cls": 0,
+    "fcpMs": 204,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 129,
+    "loadMs": 213,
+    "domElements": 540,
+    "encodedBytes": 3127283,
+    "decodedBytes": 3127283,
+    "requests": 36,
+    "byType": {
+      "link": {
+        "requests": 4,
+        "encodedBytes": 233726,
+        "decodedBytes": 233726
+      },
+      "video": {
+        "requests": 2,
+        "encodedBytes": 1891338,
+        "decodedBytes": 1891338
+      },
+      "img": {
+        "requests": 22,
+        "encodedBytes": 500080,
+        "decodedBytes": 500080
+      },
+      "script": {
+        "requests": 1,
+        "encodedBytes": 27801,
+        "decodedBytes": 27801
       },
       "css": {
         "requests": 6,
@@ -202,61 +354,66 @@
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
+        "name": "/assets/videos/boutique-animation.mp4",
+        "bytes": 1803286
+      },
+      {
         "name": "/assets/backgrounds/fond-2.webp",
         "bytes": 355218
+      },
+      {
+        "name": "/assets/site.css",
+        "bytes": 160291
       },
       {
         "name": "/assets/logo-phb.png",
         "bytes": 150878
       },
       {
-        "name": "/assets/site.css",
-        "bytes": 142668
-      },
-      {
-        "name": "/assets/fonts/inter-normal-400-700.woff2",
-        "bytes": 48256
-      },
-      {
-        "name": "/assets/partenaires/le-picca.webp",
-        "bytes": 46840
+        "name": "/assets/videos/boutique-animation-first.webp",
+        "bytes": 88052
       }
     ],
     "failed": []
   },
   {
     "path": "/resultats.html",
-    "lcpMs": 256,
+    "lcpMs": 312,
     "lcpElement": {
-      "tag": "video",
+      "tag": "header",
       "id": null,
-      "classes": [],
-      "url": "/assets/blog/blog-logo-orbit.mp4"
+      "classes": [
+        "page-heading",
+        "container",
+        "animated-heading",
+        "results-heading"
+      ],
+      "url": "/assets/photos/page-headings/resultats.webp"
     },
     "cls": 0,
-    "fcpMs": 244,
-    "ttfbMs": 3,
-    "domContentLoadedMs": 139,
-    "loadMs": 239,
-    "domElements": 773,
-    "encodedBytes": 6427229,
-    "decodedBytes": 6427229,
+    "fcpMs": 224,
+    "ttfbMs": 5,
+    "domContentLoadedMs": 149,
+    "loadMs": 272,
+    "domElements": 756,
+    "encodedBytes": 6360809,
+    "decodedBytes": 6360809,
     "requests": 38,
     "byType": {
       "link": {
         "requests": 4,
-        "encodedBytes": 216103,
-        "decodedBytes": 216103
-      },
-      "script": {
-        "requests": 1,
-        "encodedBytes": 22250,
-        "decodedBytes": 22250
+        "encodedBytes": 233726,
+        "decodedBytes": 233726
       },
       "img": {
         "requests": 22,
-        "encodedBytes": 406480,
-        "decodedBytes": 406480
+        "encodedBytes": 316886,
+        "decodedBytes": 316886
+      },
+      "script": {
+        "requests": 1,
+        "encodedBytes": 27801,
+        "decodedBytes": 27801
       },
       "video": {
         "requests": 2,
@@ -285,12 +442,12 @@
         "bytes": 368218
       },
       {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/site.css",
+        "bytes": 160291
       },
       {
-        "name": "/assets/site.css",
-        "bytes": 142668
+        "name": "/assets/logo-phb.png",
+        "bytes": 150878
       },
       {
         "name": "/assets/blog/blog-logo-first.webp",
@@ -301,7 +458,7 @@
   },
   {
     "path": "/articles/presentation-seniors-masculins-1.html",
-    "lcpMs": 168,
+    "lcpMs": 192,
     "lcpElement": {
       "tag": "img",
       "id": null,
@@ -311,24 +468,24 @@
       "url": "/assets/logo-phb.png"
     },
     "cls": 0,
-    "fcpMs": 168,
-    "ttfbMs": 3,
-    "domContentLoadedMs": 93,
-    "loadMs": 119,
-    "domElements": 367,
-    "encodedBytes": 2169415,
-    "decodedBytes": 2169415,
+    "fcpMs": 192,
+    "ttfbMs": 6,
+    "domContentLoadedMs": 107,
+    "loadMs": 139,
+    "domElements": 369,
+    "encodedBytes": 2192589,
+    "decodedBytes": 2192589,
     "requests": 29,
     "byType": {
       "link": {
         "requests": 4,
-        "encodedBytes": 216103,
-        "decodedBytes": 216103
+        "encodedBytes": 233726,
+        "decodedBytes": 233726
       },
       "script": {
         "requests": 1,
-        "encodedBytes": 22250,
-        "decodedBytes": 22250
+        "encodedBytes": 27801,
+        "decodedBytes": 27801
       },
       "img": {
         "requests": 18,

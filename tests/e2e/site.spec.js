@@ -71,7 +71,8 @@ test('mobile : pages principales sans débordement horizontal', async ({ page },
   const pages = [
     '/', '/equipes.html', '/jeunes.html', '/resultats.html', '/inscriptions.html',
     '/seniors-masculins.html',
-    '/boutique.html', '/blog.html', '/articles/presentation-seniors-masculins-1.html',
+    '/boutique.html', '/blog.html', '/galerie.html',
+    '/galeries/seniors-1-pays-de-dinan-2026.html', '/articles/presentation-seniors-masculins-1.html',
     '/partenaires.html', '/contact.html',
   ];
   for (const path of pages) {
@@ -114,6 +115,27 @@ test('boutique : filtre, images et commande', async ({ page }) => {
   await page.locator('[data-shop-filter-value="enfant"]').click();
   await expect(page.locator('[data-shop-status]')).toContainText(/Enfant/i);
   await expect(page.locator('[data-shop-item]:visible').first().getByRole('link', { name: /Commander/i })).toHaveAttribute('href', /equipclub/i);
+});
+
+test('galerie : album accessible, responsive et pilotable', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.home-gallery-card').getByRole('link', { name: /Voir les photos/i })).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
+  await page.goto('/galeries/seniors-1-pays-de-dinan-2026.html');
+  const carousel = page.locator('[data-photo-carousel]');
+  await expect(carousel).toBeVisible();
+  await expect(carousel.locator('[data-photo-slide]').first().locator('img')).toBeVisible();
+  await expect(page.locator('.gallery-credit')).toContainText(/papa de Tybalt/i);
+  const slides = await carousel.locator('[data-photo-slide]').count();
+  expect(slides).toBe(164);
+  await expect(carousel.locator('[data-photo-count]')).toContainText(`1 / ${slides}`);
+  const download = carousel.locator('[data-photo-download]');
+  await expect(download.locator('svg')).toBeVisible();
+  const firstDownload = await download.getAttribute('href');
+  if (slides > 1) {
+    await carousel.locator('[data-photo-next]').click();
+    await expect(carousel.locator('[data-photo-count]')).toContainText(`2 / ${slides}`);
+    await expect(download).not.toHaveAttribute('href', firstDownload);
+  }
 });
 
 test('article SM1 : carrousel et lightbox clavier', async ({ page }) => {
@@ -321,7 +343,8 @@ test('404 : identité, noindex et retour vers le site', async ({ page }) => {
 
 for (const path of [
   '/', '/club.html', '/equipes.html', '/seniors-masculins.html', '/seniors-masculins-1.html',
-  '/entrainements.html', '/resultats.html', '/inscriptions.html', '/blog.html',
+  '/entrainements.html', '/resultats.html', '/inscriptions.html', '/blog.html', '/galerie.html',
+  '/galeries/seniors-1-pays-de-dinan-2026.html',
   '/articles/presentation-seniors-masculins-1.html', '/partenaires.html',
   '/devenir-partenaire.html', '/boutique.html', '/contact.html',
 ]) {

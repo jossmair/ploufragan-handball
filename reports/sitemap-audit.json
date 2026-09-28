@@ -260,6 +260,26 @@
     "brokenImages": []
   },
   {
+    "path": "/galerie.html",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "h1": 1,
+    "overflow": 0,
+    "title": "Galerie photo du PHB | Ploufragan Handball",
+    "brokenImages": []
+  },
+  {
+    "path": "/galeries/seniors-1-pays-de-dinan-2026.html",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "h1": 1,
+    "overflow": 0,
+    "title": "Seniors 1 à Pays de Dinan en photos | Ploufragan Handball",
+    "brokenImages": []
+  },
+  {
     "path": "/contact.html",
     "width": 390,
     "status": 200,
@@ -547,6 +567,26 @@
     "h1": 1,
     "overflow": 0,
     "title": "Seniors masculins 1 : présentation de l’équipe 2026–2027 | Ploufragan Handball",
+    "brokenImages": []
+  },
+  {
+    "path": "/galerie.html",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "h1": 1,
+    "overflow": 0,
+    "title": "Galerie photo du PHB | Ploufragan Handball",
+    "brokenImages": []
+  },
+  {
+    "path": "/galeries/seniors-1-pays-de-dinan-2026.html",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "h1": 1,
+    "overflow": 0,
+    "title": "Seniors 1 à Pays de Dinan en photos | Ploufragan Handball",
     "brokenImages": []
   },
   {
