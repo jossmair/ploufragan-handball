@@ -385,6 +385,8 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
   const download = carousel.querySelector('[data-photo-download]');
   const thumbnailTrack = carousel.querySelector('[data-photo-thumbnails]');
   const thumbnails = [...carousel.querySelectorAll('[data-photo-thumb]')];
+  const thumbnailPrevious = carousel.querySelector('[data-photo-thumb-prev]');
+  const thumbnailNext = carousel.querySelector('[data-photo-thumb-next]');
   if (!track || !slides.length) return;
 
   function currentIndex() {
@@ -401,6 +403,7 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
     next.disabled = index === slides.length - 1;
     if (download) {
       download.href = slides[index].dataset.originalUrl;
+      download.download = slides[index].dataset.originalName;
       download.setAttribute('aria-label', `Télécharger la photo ${index + 1} en qualité originale`);
     }
     thumbnails.forEach((thumbnail, thumbnailIndex) => {
@@ -418,14 +421,26 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
     const index = Math.max(0, Math.min(slides.length - 1, currentIndex() + step));
     track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: motion.matches ? 'auto' : 'smooth' });
   }
+  function updateThumbnailControls() {
+    if (!thumbnailTrack) return;
+    if (thumbnailPrevious) thumbnailPrevious.disabled = thumbnailTrack.scrollLeft <= 2;
+    if (thumbnailNext) thumbnailNext.disabled = thumbnailTrack.scrollLeft + thumbnailTrack.clientWidth >= thumbnailTrack.scrollWidth - 2;
+  }
+  function browseThumbnails(step) {
+    if (!thumbnailTrack) return;
+    thumbnailTrack.scrollBy({ left: step * Math.max(220, thumbnailTrack.clientWidth * .72), behavior: motion.matches ? 'auto' : 'smooth' });
+  }
 
   previous.addEventListener('click', () => move(-1));
   next.addEventListener('click', () => move(1));
+  if (thumbnailPrevious) thumbnailPrevious.addEventListener('click', () => browseThumbnails(-1));
+  if (thumbnailNext) thumbnailNext.addEventListener('click', () => browseThumbnails(1));
   thumbnails.forEach(thumbnail => thumbnail.addEventListener('click', () => {
     const index = Number(thumbnail.dataset.photoIndex);
     track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: motion.matches ? 'auto' : 'smooth' });
   }));
   track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  if (thumbnailTrack) thumbnailTrack.addEventListener('scroll', () => requestAnimationFrame(updateThumbnailControls), { passive: true });
   track.addEventListener('keydown', event => {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       event.preventDefault();
@@ -434,6 +449,7 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
   });
   window.addEventListener('resize', update, { passive: true });
   update();
+  updateThumbnailControls();
 });
 
 document.querySelectorAll('[data-copy-article]').forEach(button => {

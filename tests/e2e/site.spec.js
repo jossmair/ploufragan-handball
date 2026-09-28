@@ -131,9 +131,16 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   const download = carousel.locator('[data-photo-download]');
   await expect(download.locator('svg')).toBeVisible();
   const firstDownload = await download.getAttribute('href');
+  expect(firstDownload).toContain('/assets/galeries/seniors-1-pays-de-dinan-2026/originals/');
+  await expect(download).toHaveAttribute('download', /\.jpg$/);
   const thumbnails = carousel.locator('[data-photo-thumb]');
   await expect(thumbnails).toHaveCount(slides);
   await expect(thumbnails.first()).toHaveAttribute('aria-current', 'true');
+  const thumbnailTrack = carousel.locator('[data-photo-thumbnails]');
+  const thumbnailNext = carousel.locator('[data-photo-thumb-next]');
+  await expect(thumbnailNext).toBeVisible();
+  await thumbnailNext.click();
+  await expect.poll(() => thumbnailTrack.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
   if (slides > 1) {
     await carousel.locator('[data-photo-next]').click();
     await expect(carousel.locator('[data-photo-count]')).toContainText(`2 / ${slides}`);
