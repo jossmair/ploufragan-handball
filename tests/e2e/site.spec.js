@@ -140,19 +140,17 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   const zoomDialog = page.locator('.photo-zoom-dialog');
   await expect(zoomDialog).toBeVisible();
   await expect(zoomDialog.locator('img')).toHaveAttribute('src', /photo-1\.webp/);
-  await zoomDialog.locator('img').dblclick();
+  await zoomDialog.locator('img').click();
   await expect(zoomDialog).not.toBeVisible();
-  await carousel.locator('[data-photo-slide]').first().locator('img').dblclick();
+  await carousel.locator('[data-photo-slide]').first().locator('img').click();
   await expect(zoomDialog).toBeVisible();
   await zoomDialog.locator('.photo-zoom-close').click();
   await expect(zoomDialog).not.toBeVisible();
   if (test.info().project.name === 'mobile-chromium') {
     const imageBox = await carousel.locator('[data-photo-slide]').first().locator('img').boundingBox();
     await page.touchscreen.tap(imageBox.x + imageBox.width / 2, imageBox.y + imageBox.height / 2);
-    await page.touchscreen.tap(imageBox.x + imageBox.width / 2, imageBox.y + imageBox.height / 2);
     await expect(zoomDialog).toBeVisible();
     const zoomedBox = await zoomDialog.locator('img').boundingBox();
-    await page.touchscreen.tap(zoomedBox.x + zoomedBox.width / 2, zoomedBox.y + zoomedBox.height / 2);
     await page.touchscreen.tap(zoomedBox.x + zoomedBox.width / 2, zoomedBox.y + zoomedBox.height / 2);
     await expect(zoomDialog).not.toBeVisible();
   }
@@ -165,7 +163,14 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   await thumbnailNext.click();
   await expect.poll(() => thumbnailTrack.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
   if (slides > 1) {
-    await carousel.locator('[data-photo-next]').click();
+    const photoNext = carousel.locator('[data-photo-next]');
+    if (test.info().project.name === 'mobile-chromium') {
+      await expect(photoNext).toBeHidden();
+      await thumbnails.nth(1).click();
+    } else {
+      await expect(photoNext).toBeVisible();
+      await photoNext.click();
+    }
     await expect(carousel.locator('[data-photo-count]')).toContainText(`2 / ${slides}`);
     await expect(download).not.toHaveAttribute('href', firstDownload);
     await thumbnails.nth(9).click();
