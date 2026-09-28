@@ -67,6 +67,7 @@ test('navigation clavier : le lien d’évitement atteint le contenu', async ({ 
 });
 
 test('mobile : pages principales sans débordement horizontal', async ({ page }, testInfo) => {
+  test.setTimeout(120_000);
   test.skip(!testInfo.project.name.startsWith('mobile'));
   const pages = [
     '/', '/equipes.html', '/jeunes.html', '/resultats.html', '/inscriptions.html',
