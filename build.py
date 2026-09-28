@@ -835,7 +835,7 @@ def senior_player_card_experience():
         )
         position_overlays.append(
             f'<img class="senior-position-overlay" data-position-overlay="{position_id}" '
-            f'src="assets/seniors-masculins/positions/{position_id}.webp" alt="" width="1536" height="1024" '
+            f'src="assets/seniors-masculins/positions/{position_id}.webp?v=20260927-exact" alt="" width="1536" height="1024" '
             f'decoding="async" aria-hidden="true">'
         )
         shortcuts.append(
@@ -869,7 +869,7 @@ def senior_player_card_experience():
       <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS MASCULINS 1</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES JOUEURS</em></h2></div><p>Clique sur un poste du terrain, puis sur chaque carte pour révéler les joueurs.</p></div>
       <div class="senior-position-experience">
         <div class="senior-position-court" data-reveal>
-          <img class="senior-position-base" src="assets/seniors-masculins/terrain.webp" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
+          <img class="senior-position-base" src="assets/seniors-masculins/terrain.webp?v=20260927-exact" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
           {"".join(position_overlays)}
           <div class="senior-position-hotspots">{"".join(hotspots)}</div>
         </div>
