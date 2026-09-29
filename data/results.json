@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T17:20:35.615952+00:00",
+  "updatedAt": "2026-09-29T00:23:42.332830+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -99,16 +99,16 @@
       "standings": [
         {
           "position": 1,
-          "team": "U18M TER BAIE DE MORLAIX",
-          "points": 8,
+          "team": "BAIE D'ARMOR HB - 18G2",
+          "points": 9,
           "played": 3,
           "club": false
         },
         {
           "position": 2,
-          "team": "BAIE D'ARMOR HB - 18G2",
-          "points": 6,
-          "played": 2,
+          "team": "U18M TER BAIE DE MORLAIX",
+          "points": 8,
+          "played": 3,
           "club": false
         },
         {
@@ -135,8 +135,8 @@
         {
           "position": 6,
           "team": "U18M TER ENTENTE COTE DE GRANIT ROSE 2",
-          "points": 2,
-          "played": 2,
+          "points": 3,
+          "played": 3,
           "club": false
         }
       ]
