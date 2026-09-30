@@ -822,6 +822,17 @@ U13_F_PLAYER_CARDS = (
     ("Yaëlle", "yaelle.webp"),
     ("Loelia", "loelia.webp"),
 )
+U13_F_CARD_BACKS = (
+    "ailier-droit.webp",
+    "ailier-gauche.webp",
+    "arriere-droit.webp",
+    "arriere-gauche.webp",
+    "demi-centre.webp",
+    "gardien.webp",
+    "pivot.webp",
+    "ailier-droit.webp",
+)
+U13_F_CARD_VERSION = "20260930-3"
 U13_F_MATCH_PHOTOS = (
     ("01.webp", 960, 720, "Les U13 filles du PHB en défense devant leur but"),
     ("02.webp", 960, 720, "Les U13 filles du PHB réunies sur le terrain"),
@@ -835,19 +846,21 @@ U13_F_MATCH_PHOTOS = (
 
 
 def u13_filles_presentation():
-    back = "assets/seniors-masculins/cards/back/arriere-gauche.webp"
     cards = ''.join(
-        f'''<button class="senior-player-card u13-f-card" type="button" data-u13-card data-player-name="{escape(name, quote=True)}" aria-pressed="false" aria-label="Afficher la carte de {escape(name, quote=True)}" style="--card-order:{index}"><span class="senior-player-card-inner"><span class="senior-player-card-face senior-player-card-back"><img src="{back}" alt="" width="640" height="896" loading="lazy" decoding="async"></span><span class="senior-player-card-face senior-player-card-front"><img src="assets/u13-filles/cards/front/{filename}" alt="Carte de {escape(name)} avec les U13 filles du Ploufragan Handball" width="450" height="630" loading="lazy" decoding="async"></span></span><span class="senior-player-card-hint" aria-hidden="true">Voir la carte</span></button>'''
-        for index, (name, filename) in enumerate(U13_F_PLAYER_CARDS)
+        f'''<button class="senior-player-card u13-f-card" type="button" data-u13-card data-player-name="{escape(name, quote=True)}" aria-pressed="false" aria-label="Afficher la carte de {escape(name, quote=True)}" style="--card-order:{index}"><span class="senior-player-card-inner"><span class="senior-player-card-face senior-player-card-back"><img src="assets/seniors-masculins/cards/back/{back}" alt="" width="640" height="896" loading="lazy" decoding="async"></span><span class="senior-player-card-face senior-player-card-front"><img src="assets/u13-filles/cards/front/{filename}?v={U13_F_CARD_VERSION}" alt="Carte de {escape(name)} avec les U13 filles du Ploufragan Handball" width="450" height="630" loading="lazy" decoding="async"></span></span><span class="senior-player-card-hint" aria-hidden="true">Voir la carte</span></button>'''
+        for index, ((name, filename), back) in enumerate(zip(U13_F_PLAYER_CARDS, U13_F_CARD_BACKS))
     )
     slides = ''.join(
         f'<figure class="photo-carousel-slide" data-photo-slide><img src="assets/u13-filles/gallery/{filename}" alt="{escape(alt, quote=True)}" width="{width}" height="{height}" loading="lazy" decoding="async"><figcaption>U13 filles du PHB en match</figcaption></figure>'
         for filename, width, height, alt in U13_F_MATCH_PHOTOS
     )
-    thumbnails = ''.join(
-        f'<button class="photo-carousel-thumb" type="button" data-photo-thumb data-photo-index="{index}" aria-label="Afficher la photo {index + 1}"{" aria-current=\"true\"" if index == 0 else ""}><img src="assets/u13-filles/gallery/{filename}" alt="" width="{width}" height="{height}" loading="lazy" decoding="async"></button>'
-        for index, (filename, width, height, _) in enumerate(U13_F_MATCH_PHOTOS)
-    )
+    thumbnail_items = []
+    for index, (filename, width, height, _) in enumerate(U13_F_MATCH_PHOTOS):
+        aria_current = ' aria-current="true"' if index == 0 else ''
+        thumbnail_items.append(
+            f'<button class="photo-carousel-thumb" type="button" data-photo-thumb data-photo-index="{index}" aria-label="Afficher la photo {index + 1}"{aria_current}><img src="assets/u13-filles/gallery/{filename}" alt="" width="{width}" height="{height}" loading="lazy" decoding="async"></button>'
+        )
+    thumbnails = ''.join(thumbnail_items)
     total = len(U13_F_MATCH_PHOTOS)
     return f'''<section class="container section u13-f-presentation" aria-labelledby="u13-f-cards-title"><div class="section-heading" data-reveal><div><p class="eyebrow">L’ÉQUIPE U13 FILLES</p><h2 id="u13-f-cards-title">LES <em>JOUEUSES</em></h2></div><p class="u13-f-temporary">Cette première présentation est temporaire : les cartes des autres joueuses arriveront très vite.</p></div><div class="u13-f-card-grid" data-reveal>{cards}</div><section class="u13-f-gallery" aria-labelledby="u13-f-gallery-title"><div class="u13-f-gallery-heading" data-reveal><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="u13-f-gallery-title">LES U13F <em>EN IMAGES</em></h2></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos de match des U13 filles">{slides}</div><div class="photo-carousel-thumbnails-shell"><button class="photo-carousel-thumb-nav is-prev" type="button" data-photo-thumb-prev aria-label="Miniatures précédentes" disabled>←</button><div class="photo-carousel-thumbnails" data-photo-thumbnails aria-label="Miniatures des photos">{thumbnails}</div><button class="photo-carousel-thumb-nav is-next" type="button" data-photo-thumb-next aria-label="Miniatures suivantes">→</button></div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / total:.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div></section></section>'''
 
