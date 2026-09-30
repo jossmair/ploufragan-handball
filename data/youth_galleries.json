@@ -1,0 +1,237 @@
+{
+  "u13-filles": {
+    "label": "U13 filles",
+    "photos": [
+      {
+        "file": "01.webp",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "file": "02.webp",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "file": "03.webp",
+        "width": 720,
+        "height": 960
+      },
+      {
+        "file": "04.webp",
+        "width": 720,
+        "height": 960
+      },
+      {
+        "file": "05.webp",
+        "width": 720,
+        "height": 960
+      },
+      {
+        "file": "06.webp",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "file": "07.webp",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "file": "08.webp",
+        "width": 960,
+        "height": 720
+      }
+    ]
+  },
+  "u11-mixte": {
+    "label": "U11 mixtes",
+    "photos": [
+      {
+        "file": "01.webp",
+        "width": 1440,
+        "height": 1113
+      },
+      {
+        "file": "02.webp",
+        "width": 982,
+        "height": 1095
+      },
+      {
+        "file": "03.webp",
+        "width": 759,
+        "height": 1031
+      },
+      {
+        "file": "04.webp",
+        "width": 1440,
+        "height": 686
+      },
+      {
+        "file": "05.webp",
+        "width": 1440,
+        "height": 989
+      },
+      {
+        "file": "06.webp",
+        "width": 1440,
+        "height": 1051
+      },
+      {
+        "file": "07.webp",
+        "width": 657,
+        "height": 765
+      },
+      {
+        "file": "08.webp",
+        "width": 1350,
+        "height": 829
+      },
+      {
+        "file": "09.webp",
+        "width": 759,
+        "height": 628
+      }
+    ]
+  },
+  "u13-garcons": {
+    "label": "U13 gar\u00e7ons",
+    "photos": [
+      {
+        "file": "01.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "02.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "03.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "04.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "05.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "06.webp",
+        "width": 810,
+        "height": 1440
+      },
+      {
+        "file": "07.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "08.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "09.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "10.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "11.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "12.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "13.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "14.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "15.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "16.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "17.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "18.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "19.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "20.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "21.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "22.webp",
+        "width": 1440,
+        "height": 1080
+      },
+      {
+        "file": "23.webp",
+        "width": 1080,
+        "height": 1440
+      },
+      {
+        "file": "24.webp",
+        "width": 1440,
+        "height": 936
+      },
+      {
+        "file": "25.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "26.webp",
+        "width": 1440,
+        "height": 810
+      },
+      {
+        "file": "27.webp",
+        "width": 1440,
+        "height": 810
+      }
+    ]
+  }
+}

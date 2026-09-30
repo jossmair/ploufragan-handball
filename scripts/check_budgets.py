@@ -14,7 +14,7 @@ BUDGETS = {
     "Vidéo Entraînements": (ASSETS / "videos" / "entrainements-animation.mp4", 4_500_000),
     "Vidéo Boutique": (ASSETS / "videos" / "boutique-animation.mp4", 2_100_000),
 }
-TOTAL_ASSETS_BUDGET = 70_000_000
+TOTAL_ASSETS_BUDGET = 74_000_000
 GALLERY_ORIGINALS = ASSETS / "galeries" / "seniors-1-pays-de-dinan-2026" / "originals"
 GALLERY_ORIGINALS_BUDGET = 330_000_000
 

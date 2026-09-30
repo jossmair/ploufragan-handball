@@ -1,0 +1,4 @@
+.youth-photo-gallery{width:min(100%,1000px);margin:0 auto;padding-top:74px}
+.youth-photo-gallery-heading{margin-bottom:22px}.youth-photo-gallery-heading h2{margin-top:8px;font-size:clamp(2.3rem,4vw,4rem)}
+@media(max-width:900px){.youth-photo-gallery{padding-top:58px}}
+@media(max-width:520px){.youth-photo-gallery{width:100%;padding-top:50px}.youth-photo-gallery .photo-carousel{width:calc(100% + 40px);margin-left:-20px}}
