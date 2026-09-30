@@ -1,7 +1,7 @@
 .org-coach-entry{min-width:0}
 .org-coach-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:8px 10px;border:1px solid transparent;background:transparent;color:#d8d8de;font:inherit;line-height:1.35;text-align:center;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
 .org-coach-icon{position:relative;top:-1px;flex:0 0 21px;width:21px;height:21px;background:url('icons/coach-card-hummel-medium.svg') center/21px 21px no-repeat;transition:transform .3s cubic-bezier(.2,.8,.2,1),filter .2s ease}
-.org-coach-toggle:hover,.org-coach-toggle:focus-visible,.org-coach-entry.is-open .org-coach-toggle{border-color:transparent;background:#ed07190b;color:#fff}
+.org-coach-toggle:hover,.org-coach-toggle:focus-visible,.org-coach-entry.is-open .org-coach-toggle{border-color:transparent;background:#ed071918;color:#fff}
 .org-coach-toggle:focus-visible{outline:2px solid #ffffffb8;outline-offset:2px}
 .org-coach-toggle:hover .org-coach-icon,.org-coach-toggle:focus-visible .org-coach-icon{filter:drop-shadow(0 0 4px #ed071980)}
 .org-coach-entry.is-open .org-coach-icon{transform:rotate(180deg)}
