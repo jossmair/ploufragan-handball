@@ -9,7 +9,7 @@
         {"day": "Mercredi", "time": "10h–11h", "venue": "Trégueux"},
         {"day": "Samedi", "time": "10h30–11h30", "venue": "Hoëdic"}
       ],
-      "staff": {"role": "Encadrants", "names": "David (salarié du club), Clara et Erwann"},
+      "staff": {"role": "Encadrants", "names": "David (salarié du club), Clara et Erwan"},
       "landing": {"title": "BABY<br>HAND", "meta": "3 à 5 ans", "mark": "BH", "cardPhoto": "equipes/baby-hand-card.webp"},
       "pagePhoto": {"src": "assets/photos/baby-hand-seance-2026.webp", "width": 1600, "height": 1200, "alt": "Séance de Baby Hand encadrée au Ploufragan Handball"}
     },
@@ -95,7 +95,7 @@
         {"day": "Mercredi", "time": "18h–19h30", "venue": "Hoëdic"},
         {"day": "Vendredi", "time": "17h30–19h", "venue": "Hoëdic"}
       ],
-      "staff": {"role": "Coach", "names": "Erwann"},
+      "staff": {"role": "Coach", "names": "Erwan"},
       "cardPhoto": {"src": "assets/equipes/u15-garcons-card.webp", "width": 1024, "height": 1536},
       "pagePhoto": {"src": "assets/photos/u15-garcons-equipe-2026.webp", "width": 814, "height": 574, "alt": "Équipe U15 garçons du Ploufragan Handball"}
     },

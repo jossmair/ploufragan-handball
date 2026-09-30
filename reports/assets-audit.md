@@ -1,7 +1,28 @@
 # Audit des assets
 
-- Assets publics : **235 fichiers, 32.5 Mo**.
-- Référencés par le site généré ou ses sources : **233**.
+## Poids du site publié
+
+- Source du calcul : **simulation du paquet GitHub Pages**.
+- Paquet public : **904 fichiers, 371.8 Mo**.
+- Plafond surveillé : **400.0 Mo** — **OK**.
+- Marge restante : **28.2 Mo**.
+
+## Galeries et originaux HD
+
+| Galerie | Images web | Miniatures | Originaux HD | Total |
+|---|---:|---:|---:|---:|
+| `seniors-1-pays-de-dinan-2026` | 164 · 26.5 Mo | 164 · 850.3 Ko | 164 · 301.4 Mo | 328.7 Mo |
+| `u11-mixte` | 9 · 420.6 Ko | 9 · 47.1 Ko | 0 · 0 o | 467.7 Ko |
+| `u13-filles` | 8 · 272.8 Ko | 8 · 35.1 Ko | 0 · 0 o | 307.9 Ko |
+| `u13-garcons` | 27 · 2.2 Mo | 27 · 135.5 Ko | 0 · 0 o | 2.3 Mo |
+
+- Total des originaux HD publiés : **164 fichiers, 301.4 Mo**.
+- Les cartes du hub Galerie réutilisent ces fichiers existants ; elles ne créent aucune copie.
+
+## Inventaire général
+
+- Assets publics : **864 fichiers, 370.8 Mo**.
+- Référencés par le site généré ou ses sources : **862**.
 - À examiner manuellement : **2**.
 - Sources graphiques archivées hors publication : **15 fichiers, 16.4 Mo**.
 
@@ -11,24 +32,24 @@
 |---|---:|
 | `assets/blog/blog-logo-orbit.mp4` | 4.9 Mo |
 | `assets/videos/entrainements-animation.mp4` | 3.8 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-27.jpg` | 2.9 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-28.jpg` | 2.8 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-53.jpg` | 2.8 Mo |
 | `assets/blog/intro.mp4` | 2.7 Mo |
-| `assets/blog/blog-ploufy-reading.mp4` | 1.8 Mo |
-| `assets/equipes/u18-garcons-card.webp` | 582.2 Ko |
-| `assets/og/u13-filles.jpg` | 560.6 Ko |
-| `assets/equipes/u13-filles-card.webp` | 525.8 Ko |
-| `assets/og/u18-garcons.jpg` | 454.0 Ko |
-| `assets/equipes/u15-garcons-card.webp` | 436.2 Ko |
-| `assets/equipes/baby-hand-card.webp` | 427.0 Ko |
-| `assets/og/baby-hand.jpg` | 370.4 Ko |
-| `assets/backgrounds/fond-5.webp` | 359.6 Ko |
-| `assets/photos/u13-equipe.webp` | 358.4 Ko |
-| `assets/photos/loisirs-plouagat-2026.webp` | 352.0 Ko |
-| `assets/backgrounds/fond-4.webp` | 347.5 Ko |
-| `assets/backgrounds/fond-2.webp` | 346.9 Ko |
-| `assets/backgrounds/fond-1.webp` | 323.8 Ko |
-| `assets/equipes/u13-garcons-card.webp` | 321.6 Ko |
-| `assets/backgrounds/fond-3.webp` | 317.8 Ko |
-| `assets/logo-phb-club-v2.webp` | 309.3 Ko |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-31.jpg` | 2.6 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-49.jpg` | 2.5 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-54.jpg` | 2.5 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-36.jpg` | 2.5 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-71.jpg` | 2.4 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-70.jpg` | 2.4 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-84.jpg` | 2.3 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-16.jpg` | 2.3 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-83.jpg` | 2.3 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-58.jpg` | 2.3 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-61.jpg` | 2.2 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-82.jpg` | 2.2 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-52.jpg` | 2.2 Mo |
+| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-163.jpg` | 2.2 Mo |
 
 ## Assets potentiellement inutilisés
 

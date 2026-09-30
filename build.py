@@ -90,6 +90,7 @@ INSTAGRAM = "https://www.instagram.com/ploufragan.hb/"
 SITE_URL = SITE_CONFIG["siteUrl"]
 GESTHAND_URL = "https://gesthand.net/"
 TEAMPULSE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.digitalplumecompany.boostyourteam&hl=fr"
+TEAMPULSE_APP_STORE_URL = "https://apps.apple.com/fr/app/teampulse-gestion-d%C3%A9quipe/id1281004043"
 ORG_ID = SITE_URL + "#organization"
 WEBSITE_ID = SITE_URL + "#website"
 OG_IMAGE = SITE_URL + "assets/og-phb.jpg"
@@ -959,7 +960,7 @@ def senior_player_card_experience():
                 f'<span class="senior-player-card-inner">'
                 f'<span class="senior-player-card-face senior-player-card-back"><img src="{back}" alt="" width="640" height="896" loading="lazy" decoding="async"></span>'
                 f'<span class="senior-player-card-face senior-player-card-front"><img src="{front}" alt="{escape(card_description, quote=True)}" width="640" height="896" loading="lazy" decoding="async"></span>'
-                f'</span><span class="senior-player-card-hint" aria-hidden="true">Cliquer pour retourner</span></button>'
+                f'</span><span class="senior-player-card-hint" aria-hidden="true">Sélectionner pour retourner</span></button>'
             )
         player_word = "joueur" if len(players) == 1 else "joueurs"
         templates.append(
@@ -970,7 +971,7 @@ def senior_player_card_experience():
         )
 
     return f'''<section class="section senior-position-showcase" data-player-position-showcase>
-      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS MASCULINS 1</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES JOUEURS</em></h2></div><p>Clique sur un poste du terrain, puis sur chaque carte pour révéler les joueurs.</p></div>
+      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS MASCULINS 1</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES JOUEURS</em></h2></div><p>Sélectionne un poste du terrain, puis chaque carte pour révéler les joueurs.</p></div>
       <div class="senior-position-experience">
         <div class="senior-position-court" data-reveal>
           <img class="senior-position-base" src="assets/seniors-masculins/terrain.webp?v=20260927-exact" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
@@ -1252,7 +1253,7 @@ registration_body = heading(
     <summary><span class="licence-fold-index">08</span><strong>PAIEMENT</strong><small>Finaliser l’inscription</small></summary>
     <div class="licence-fold-body licence-payment" data-reveal>
     <div><p class="eyebrow">PAIEMENT DE LA LICENCE</p><h2 id="licence-payment-title">FINALISER <em>MON INSCRIPTION</em></h2><p>Le lien de paiement par carte bancaire est communiqué sur TeamPulse. Les licences avec réduction (bon CAF, ANCV, bénévole pratiquant…) ne peuvent pas utiliser ce paiement CB : contactez les trésorières pour les modalités adaptées.</p><p class="licence-pack-note">Un pack rentrée maillot + short sera proposé pour démarrer la saison.</p></div>
-    <div class="licence-payment-action">{payment_cta}<small>{"Ouvrir le paiement sécurisé HelloAsso." if HELLOASSO_URL else "Le lien de paiement sera communiqué sur TeamPulse."}</small><a class="text-link" href="{escape(TEAMPULSE_PLAY_URL, quote=True)}" target="_blank" rel="noopener noreferrer">Installer TeamPulse sur Google Play ↗</a></div>
+    <div class="licence-payment-action">{payment_cta}<small>{"Ouvrir le paiement sécurisé HelloAsso." if HELLOASSO_URL else "Le lien de paiement sera communiqué sur TeamPulse."}</small><a class="text-link" href="{escape(TEAMPULSE_PLAY_URL, quote=True)}" target="_blank" rel="noopener noreferrer">Installer TeamPulse sur Google Play ↗</a><a class="text-link" href="{escape(TEAMPULSE_APP_STORE_URL, quote=True)}" target="_blank" rel="noopener noreferrer">Installer TeamPulse sur l’App Store ↗</a></div>
     </div>
   </details>
   <details class="licence-fold licence-section licence-faq" id="faq" name="licence-rubriques" data-registration-section>
@@ -1373,8 +1374,8 @@ for article in ARTICLES:
     pages[f'articles/{article["slug"]}'] = article_page(article)
 
 
-def gallery_index_card(album):
-    return f'''<a class="gallery-index-card" href="galeries/{escape(album['slug'], quote=True)}.html" data-reveal><figure><img src="{escape(album['cover'], quote=True)}" alt="Match des Seniors masculins 1 du PHB à Pays de Dinan" width="{album['cover_width']}" height="{album['cover_height']}" loading="lazy" decoding="async"></figure><div class="gallery-index-copy"><p class="eyebrow">{escape(album['eyebrow'])} <span>· <time datetime="{album['date']}">{article_date(album['date'])}</time></span></p><h2>{escape(album['title'])}</h2><p>{escape(album['intro'])}</p><span class="text-link">OUVRIR L’ALBUM ↗</span></div></a>'''
+def gallery_index_card(entry):
+    return f'''<a class="gallery-index-card" href="{escape(entry['href'], quote=True)}" data-reveal><figure><img src="{escape(entry['cover'], quote=True)}" alt="{escape(entry['alt'], quote=True)}" width="{entry['cover_width']}" height="{entry['cover_height']}" loading="lazy" decoding="async"></figure><div class="gallery-index-copy"><p class="eyebrow">{escape(entry['eyebrow'])} <span>· {escape(entry['meta'])}</span></p><h2>{escape(entry['title'])}</h2><p>{escape(entry['intro'])}</p><span class="text-link">{escape(entry['cta'])} ↗</span></div></a>'''
 
 
 def gallery_album_page(album):
@@ -1410,7 +1411,37 @@ def gallery_album_page(album):
     return prefix_article_paths(document)
 
 
-gallery_cards = ''.join(gallery_index_card(album) for album in sorted(GALLERIES, key=lambda item: item["date"], reverse=True))
+gallery_hub_entries = []
+for slug in ("u11-mixte", "u13-filles", "u13-garcons"):
+    config = YOUTH_GALLERIES[slug]
+    first_photo = config["photos"][0]
+    label = config["label"]
+    gallery_hub_entries.append({
+        "href": f"{slug}.html#{slug}-gallery-title",
+        "cover": f"assets/{slug}/gallery/{first_photo['file']}",
+        "cover_width": first_photo["width"],
+        "cover_height": first_photo["height"],
+        "alt": f"{label} du Ploufragan Handball en match",
+        "eyebrow": "ÉQUIPES JEUNES",
+        "meta": f"{len(config['photos'])} photos",
+        "title": f"{label} en images",
+        "intro": f"Retrouvez le carrousel et les miniatures des photos de match des {label}.",
+        "cta": "VOIR LE CARROUSEL",
+    })
+for album in sorted(GALLERIES, key=lambda item: item["date"], reverse=True):
+    gallery_hub_entries.append({
+        "href": f"galeries/{album['slug']}.html",
+        "cover": album["cover"],
+        "cover_width": album["cover_width"],
+        "cover_height": album["cover_height"],
+        "alt": "Match des Seniors masculins 1 du PHB à Pays de Dinan",
+        "eyebrow": album["eyebrow"],
+        "meta": f"{len(album['photos'])} photos · {article_date(album['date'])}",
+        "title": album["title"],
+        "intro": album["intro"],
+        "cta": "OUVRIR L’ALBUM",
+    })
+gallery_cards = ''.join(gallery_index_card(entry) for entry in gallery_hub_entries)
 pages["galerie"] = page(
     "galerie", "Galerie photo",
     heading("GALERIE <em>PHOTO</em>", "Galerie photo", "Les matchs et les temps forts du Ploufragan Handball en images.")
@@ -1423,7 +1454,7 @@ contact_info='''<div class="contact-details"><div><span class="eyebrow">E-MAIL</
 pages["contact"]=page("contact","Contact et accès",heading("CONTACT <em>& ACCÈS</em>","Contact")+f'''<section class="container section after-heading"><div class="contact-layout"><div class="information-panel" data-reveal><h2>COORDONNÉES DU CLUB</h2>{contact_info}</div><div>{locations}</div></div></section>''')
 legal = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>ÉDITEUR DU SITE</h2><p>Ploufragan Handball, association déclarée. SIREN : 534 810 460 · RNA : W224002757.</p><p>Siège social : Pôle associatif, 22 rue de la Mairie, 22440 Ploufragan.</p><p>Directrice de la publication : Elsa DA SILVA, présidente de l’association.</p><p>Contact : <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a> · <a href="tel:+33636618800">06 36 61 88 00</a>.</p><p>Lieu d’activité : complexe sportif du Haut-Champ, allée des Glénan, 22440 Ploufragan.</p></div><div class="information-panel"><h2>HÉBERGEMENT</h2><p>Site publié avec GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, États-Unis. Le nom de domaine est géré via OVHcloud.</p><p><a href="https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">Informations GitHub Pages ↗</a></p></div><div class="information-panel"><h2>CONTENUS</h2><p>Textes, photographies et logos sont utilisés pour présenter les activités du club et de ses partenaires. Pour toute question relative à un contenu ou à un droit à l’image, contactez l’association.</p></div></section>'''
 pages["mentions-legales"] = page("mentions-legales", "Mentions légales", heading("MENTIONS <em>LÉGALES</em>", "Mentions légales") + legal)
-privacy = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>VOS DONNÉES</h2><p>Ce site ne propose pas de formulaire de contact et ne dépose pas de cookie de mesure d’audience propre au club. GitHub Pages conserve l’adresse IP des visiteurs pour la sécurité du service. Si vous écrivez au club par courriel ou l’appelez, l’association utilise les informations que vous lui communiquez pour répondre à votre demande et traiter, le cas échéant, une inscription.</p><p>Pour demander l’accès, la rectification ou la suppression de vos informations, écrivez à <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a>. Vous pouvez également saisir la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener noreferrer">CNIL ↗</a>.</p></div><div class="information-panel"><h2>SERVICES EXTERNES</h2><p>Les polices du site sont hébergées sur le domaine du club. En ouvrant un lien vers FFHandball, les réseaux sociaux, Google Maps, Google Play ou la boutique, vous quittez le site du club ; ces services appliquent leurs propres politiques de confidentialité.</p></div><div class="information-panel"><h2>DURÉE DE CONSERVATION</h2><p>La durée de conservation des échanges adressés au club dépend de leur objet. Pour connaître celle qui s’applique à votre demande, contactez l’association.</p></div></section>'''
+privacy = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>VOS DONNÉES</h2><p>Ce site ne propose pas de formulaire de contact et ne dépose pas de cookie de mesure d’audience propre au club. GitHub Pages conserve l’adresse IP des visiteurs pour la sécurité du service. Si vous écrivez au club par courriel ou l’appelez, l’association utilise les informations que vous lui communiquez pour répondre à votre demande et traiter, le cas échéant, une inscription.</p><p>Pour demander l’accès, la rectification ou la suppression de vos informations, écrivez à <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a>. Vous pouvez également saisir la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener noreferrer">CNIL ↗</a>.</p></div><div class="information-panel"><h2>SERVICES EXTERNES</h2><p>Les polices du site sont hébergées sur le domaine du club. En ouvrant un lien vers FFHandball, les réseaux sociaux, Google Maps, Google Play, l’App Store ou la boutique, vous quittez le site du club ; ces services appliquent leurs propres politiques de confidentialité.</p></div><div class="information-panel"><h2>DURÉE DE CONSERVATION</h2><p>La durée de conservation des échanges adressés au club dépend de leur objet. Pour connaître celle qui s’applique à votre demande, contactez l’association.</p></div></section>'''
 pages["confidentialite"] = page("confidentialite", "Confidentialité", heading("VIE <em>PRIVÉE</em>", "Confidentialité") + privacy)
 pages["404"]=page("404","Page introuvable",heading("PAGE <em>INTROUVABLE</em>","Page introuvable")+f'<section class="container section after-heading"><p>Cette adresse ne correspond à aucune page du site.</p><div class="actions">{button("Accueil","/")}</div></section>')
 

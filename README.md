@@ -144,7 +144,7 @@ Audits complémentaires :
 - `npm run audit:sitemap` charge chaque page indexable sur mobile et ordinateur ;
 - `npm run audit:nojs` charge treize parcours essentiels sur mobile et ordinateur avec JavaScript désactivé ;
 - `npm run audit:budgets` contrôle les limites de poids fondées sur la baseline 2026 ;
-- `python scripts/audit_assets.py --output reports/assets-audit.md` inventorie les assets publics ;
+- `npm run audit:assets` inventorie les assets publics, détaille le poids des galeries et des originaux HD, puis vérifie le plafond de 400 Mo du paquet GitHub Pages ; le workflow relance ce contrôle sur `_site` et publie le rapport dans le résumé GitHub Actions ;
 - `npm run audit:partner-pdf` vérifie les quatre pages A4 du dossier partenaire.
 
 Le dossier partenaire est généré à partir des données vérifiées avec `npm run build:partner-pdf`. Cette commande reconstruit `scripts/dossier-partenaire-print.html` puis `assets/dossier-partenaire-phb.pdf` avec Chromium.

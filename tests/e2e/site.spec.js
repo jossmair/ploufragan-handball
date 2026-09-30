@@ -121,6 +121,13 @@ test('boutique : filtre, images et commande', async ({ page }) => {
 test('galerie : album accessible, responsive et pilotable', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.home-gallery-card').getByRole('link', { name: /Voir les photos/i })).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
+  await page.goto('/galerie.html');
+  const hubCards = page.locator('.gallery-index-card');
+  await expect(hubCards).toHaveCount(4);
+  await expect(hubCards.nth(0)).toHaveAttribute('href', 'u11-mixte.html#u11-mixte-gallery-title');
+  await expect(hubCards.nth(1)).toHaveAttribute('href', 'u13-filles.html#u13-filles-gallery-title');
+  await expect(hubCards.nth(2)).toHaveAttribute('href', 'u13-garcons.html#u13-garcons-gallery-title');
+  await expect(hubCards.nth(3)).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
   await page.goto('/galeries/seniors-1-pays-de-dinan-2026.html');
   const carousel = page.locator('[data-photo-carousel]');
   await expect(carousel).toBeVisible();
@@ -326,6 +333,7 @@ test('mobile : le dernier résultat des équipes ne se chevauche pas', async ({ 
 
 test('inscriptions : rubriques pliables et navigation directe', async ({ page }) => {
   await page.goto('/inscriptions.html');
+  await expect(page.locator('a[href*="apps.apple.com/fr/app/teampulse-gestion-d%C3%A9quipe/id1281004043"]')).toHaveAttribute('href', /apps\.apple\.com\/fr\/app\/teampulse-gestion-d%C3%A9quipe\/id1281004043/);
   const navigation = page.locator('[data-registration-nav]');
   const trigger = navigation.locator('[data-filter-trigger]');
   const categories = page.locator('#categories');
