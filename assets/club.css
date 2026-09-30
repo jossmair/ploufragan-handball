@@ -1,7 +1,9 @@
 .org-coach-entry{min-width:0}
-.org-coach-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:8px 10px;border:1px solid transparent;background:transparent;color:#d8d8de;font:inherit;line-height:1.35;text-align:center;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.org-coach-toggle{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:8px 10px;border:1px solid transparent;background:transparent;color:#d8d8de;font:inherit;line-height:1.35;text-align:center;cursor:pointer;transition:color .2s}
+.org-coach-toggle::before{content:"";position:absolute;z-index:-1;left:5%;right:5%;top:3px;bottom:3px;background:linear-gradient(96deg,transparent 0%,#ed0719 9%,#c40012 55%,#ed0719 91%,transparent 100%);clip-path:polygon(1% 27%,9% 14%,31% 19%,55% 6%,79% 15%,99% 3%,96% 72%,88% 91%,64% 82%,39% 96%,14% 85%,3% 94%);opacity:0;transform:skewX(-7deg) scaleX(.94);transition:opacity .2s ease,transform .25s ease}
 .org-coach-icon{position:relative;top:-1px;flex:0 0 21px;width:21px;height:21px;background:url('icons/coach-card-hummel-medium.svg') center/21px 21px no-repeat;transition:transform .3s cubic-bezier(.2,.8,.2,1),filter .2s ease}
-.org-coach-toggle:hover,.org-coach-toggle:focus-visible,.org-coach-entry.is-open .org-coach-toggle{border-color:transparent;background:#ed071918;color:#fff}
+.org-coach-toggle:hover,.org-coach-toggle:focus-visible,.org-coach-entry.is-open .org-coach-toggle{border-color:transparent;background:transparent;color:#fff}
+.org-coach-toggle:hover::before,.org-coach-toggle:focus-visible::before,.org-coach-entry.is-open .org-coach-toggle::before{opacity:.34;transform:skewX(-7deg) scaleX(1)}
 .org-coach-toggle:focus-visible{outline:2px solid #ffffffb8;outline-offset:2px}
 .org-coach-toggle:hover .org-coach-icon,.org-coach-toggle:focus-visible .org-coach-icon{filter:drop-shadow(0 0 4px #ed071980)}
 .org-coach-entry.is-open .org-coach-icon{transform:rotate(180deg)}
