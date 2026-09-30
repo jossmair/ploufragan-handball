@@ -657,9 +657,19 @@ display_now = paris_now()
 score_matches, upcoming, weekend_switch_active = select_score_and_upcoming(
     RESULTS["matches"], display_now
 )
+HOME_SCORE_PRIORITY = {
+    "Seniors feminines": 0,
+    "Seniors masculins 1": 1,
+    "Seniors masculins 2": 2,
+    "U18 garcons": 3,
+}
+home_score_matches = sorted(
+    score_matches,
+    key=lambda match: (HOME_SCORE_PRIORITY.get(match["category"], 99), match["date"]),
+)
 home_scores_title = "SCORES DU <em>WEEK-END</em>" if weekend_switch_active else "DERNIERS <em>RÉSULTATS</em>"
 pages={}
-home_body = f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>{SEASON_DISPLAY}</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><p class="hero-location">Complexe sportif du Haut-Champ<br>22440 Ploufragan</p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}{button('Essayer / s’inscrire','inscriptions.html',True)}</div><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true">↗</b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true">↗</b></a></div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section><section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>{home_scores_title}</h2></div><a class="text-link" href="resultats.html">Tous les résultats ↗</a></div><div class="matches-grid">{''.join(match_card(m, pending_score=not m["played"]) for m in score_matches[:4])}</div></section>''' + home_weekend_section(upcoming, display_now) + home_news_section(ARTICLES)
+home_body = f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>{SEASON_DISPLAY}</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><p class="hero-location">Complexe sportif du Haut-Champ<br>22440 Ploufragan</p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}{button('Essayer / s’inscrire','inscriptions.html',True)}</div><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true">↗</b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true">↗</b></a></div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section><section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>{home_scores_title}</h2></div><a class="text-link" href="resultats.html">Tous les résultats ↗</a></div><div class="matches-grid">{''.join(match_card(m, pending_score=not m["played"]) for m in home_score_matches[:4])}</div></section>''' + home_weekend_section(upcoming, display_now) + home_news_section(ARTICLES)
 pages["index"]=page("index","Accueil",home_body,description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
 pages["equipes"]=page("equipes","Les équipes",heading("LES <em>ÉQUIPES</em>","Équipes","À Ploufragan, près de Saint-Brieuc, le PHB accueille les enfants dès 3 ans, les jeunes, les seniors et les adultes en loisir. Sélectionnez une catégorie pour découvrir son projet, ses horaires et ses informations pratiques.")+f'<section class="container section after-heading"><div class="teams-grid">{"".join(team_card(g) for g in GROUPS)}</div></section>')
 
@@ -798,15 +808,60 @@ def youth_card(item):
 pages["jeunes"] = page("jeunes", "Équipes jeunes",
     heading("ÉQUIPES <em>JEUNES</em>", "Équipes jeunes", "À Ploufragan, près de Saint-Brieuc, le parcours jeunes accompagne les U11, U13, U15 et U18 dans leur apprentissage du handball. Chaque équipe dispose de sa page avec ses entraînements, ses matchs et son classement lorsqu’il est publié.", back=("equipes.html", "Équipes")) +
     f'<section class="container section youth-landing after-heading"><div class="youth-landing-heading"><div><p class="eyebrow">SAISON {SEASON_DISPLAY}</p><h2>CHOISIS TON <em>ÉQUIPE</em></h2></div></div><div class="youth-choice-grid">' +
-    ''.join(youth_card(item) for item in YOUTH_TEAMS) + '</div></section>', "equipes")
+    ''.join(youth_card(item) for item in YOUTH_TEAMS) + '</div></section>', "equipes",
+    extra_head='<link rel="stylesheet" href="assets/jeunes.css?v=20260930-1">')
+
+
+U13_F_PLAYER_CARDS = (
+    ("Sarah", "sarah.webp"),
+    ("Jade", "jade.webp"),
+    ("Naïs", "nais.webp"),
+    ("Elise", "elise.webp"),
+    ("Luna", "luna.webp"),
+    ("Cylia", "cylia.webp"),
+    ("Yaëlle", "yaelle.webp"),
+    ("Loelia", "loelia.webp"),
+)
+U13_F_MATCH_PHOTOS = (
+    ("01.webp", 960, 720, "Les U13 filles du PHB en défense devant leur but"),
+    ("02.webp", 960, 720, "Les U13 filles du PHB réunies sur le terrain"),
+    ("03.webp", 720, 960, "La gardienne U13 filles du PHB devant son but"),
+    ("04.webp", 720, 960, "Une joueuse U13 du PHB face à son adversaire"),
+    ("05.webp", 720, 960, "Une joueuse U13 du PHB avec le ballon"),
+    ("06.webp", 960, 720, "Les U13 filles du PHB en place sur le terrain"),
+    ("07.webp", 960, 720, "La défense des U13 filles du PHB"),
+    ("08.webp", 960, 720, "Les U13 filles du PHB alignées en défense"),
+)
+
+
+def u13_filles_presentation():
+    back = "assets/seniors-masculins/cards/back/arriere-gauche.webp"
+    cards = ''.join(
+        f'''<button class="senior-player-card u13-f-card" type="button" data-u13-card data-player-name="{escape(name, quote=True)}" aria-pressed="false" aria-label="Afficher la carte de {escape(name, quote=True)}" style="--card-order:{index}"><span class="senior-player-card-inner"><span class="senior-player-card-face senior-player-card-back"><img src="{back}" alt="" width="640" height="896" loading="lazy" decoding="async"></span><span class="senior-player-card-face senior-player-card-front"><img src="assets/u13-filles/cards/front/{filename}" alt="Carte de {escape(name)} avec les U13 filles du Ploufragan Handball" width="450" height="630" loading="lazy" decoding="async"></span></span><span class="senior-player-card-hint" aria-hidden="true">Voir la carte</span></button>'''
+        for index, (name, filename) in enumerate(U13_F_PLAYER_CARDS)
+    )
+    slides = ''.join(
+        f'<figure class="photo-carousel-slide" data-photo-slide><img src="assets/u13-filles/gallery/{filename}" alt="{escape(alt, quote=True)}" width="{width}" height="{height}" loading="lazy" decoding="async"><figcaption>U13 filles du PHB en match</figcaption></figure>'
+        for filename, width, height, alt in U13_F_MATCH_PHOTOS
+    )
+    thumbnails = ''.join(
+        f'<button class="photo-carousel-thumb" type="button" data-photo-thumb data-photo-index="{index}" aria-label="Afficher la photo {index + 1}"{" aria-current=\"true\"" if index == 0 else ""}><img src="assets/u13-filles/gallery/{filename}" alt="" width="{width}" height="{height}" loading="lazy" decoding="async"></button>'
+        for index, (filename, width, height, _) in enumerate(U13_F_MATCH_PHOTOS)
+    )
+    total = len(U13_F_MATCH_PHOTOS)
+    return f'''<section class="container section u13-f-presentation" aria-labelledby="u13-f-cards-title"><div class="section-heading" data-reveal><div><p class="eyebrow">L’ÉQUIPE U13 FILLES</p><h2 id="u13-f-cards-title">LES <em>JOUEUSES</em></h2></div><p class="u13-f-temporary">Cette première présentation est temporaire : les cartes des autres joueuses arriveront très vite.</p></div><div class="u13-f-card-grid" data-reveal>{cards}</div><section class="u13-f-gallery" aria-labelledby="u13-f-gallery-title"><div class="u13-f-gallery-heading" data-reveal><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="u13-f-gallery-title">LES U13F <em>EN IMAGES</em></h2></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos de match des U13 filles">{slides}</div><div class="photo-carousel-thumbnails-shell"><button class="photo-carousel-thumb-nav is-prev" type="button" data-photo-thumb-prev aria-label="Miniatures précédentes" disabled>←</button><div class="photo-carousel-thumbnails" data-photo-thumbnails aria-label="Miniatures des photos">{thumbnails}</div><button class="photo-carousel-thumb-nav is-next" type="button" data-photo-thumb-next aria-label="Miniatures suivantes">→</button></div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / total:.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div></section></section>'''
 
 for youth in YOUTH_TEAMS:
     slug, name, schedule_name, years, result_label, photo = youth
     team = next((team for team in RESULTS["teams"] if team["label"] == result_label), None)
     body = heading(name.upper(), name, TEAM_INTROS[slug], back=("jeunes.html", "Équipes jeunes"))
     body += team_detail(slug, name, "jeunes", schedule_name, [team] if team else [])
+    if slug == "u13-filles":
+        body += u13_filles_presentation()
     pages[slug] = page(slug, name, body, "equipes",
-        f"{name} du Ploufragan Handball près de Saint-Brieuc : entraînements et classement {SEASON}.")
+        f"{name} du Ploufragan Handball près de Saint-Brieuc : entraînements et classement {SEASON}.",
+        extra_head=('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-1">'
+                    '<script src="assets/u13-filles.js?v=20260930-1" defer></script>') if slug == "u13-filles" else "")
 
 
 SENIOR_MEN = [

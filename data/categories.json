@@ -40,7 +40,8 @@
       "staff": {"role": "Coach", "names": "Yohann Guérin"},
       "youthPhoto": "assets/photos/u11-mixte-equipe-2026-2027.webp",
       "coachPhoto": {"src": "assets/photos/u11-mixte-coach-yohann-guerin.webp", "width": 1024, "height": 1536, "alt": "Yohann Guérin, coach de l'équipe U11 mixte du Ploufragan Handball", "name": "Yohann Guérin", "role": "Coach U11 mixte"},
-      "pagePhoto": {"src": "assets/photos/u11-mixte-equipe-2026-2027.webp", "width": 759, "height": 628, "alt": "Équipe U11 mixte du Ploufragan Handball, saison 2026-2027", "className": "is-team-photo", "eyebrow": "U11 mixte", "caption": "L’équipe 2026 / 2027"}
+      "pagePhoto": {"src": "assets/photos/u11-mixte-equipe-2026-2027.webp", "width": 759, "height": 628, "alt": "Équipe U11 mixte du Ploufragan Handball, saison 2026-2027", "className": "is-team-photo", "eyebrow": "U11 mixte", "caption": "L’équipe 2026 / 2027"},
+      "cardPhoto": {"src": "assets/equipes/u11-mixte-action.webp", "width": 683, "height": 720}
     },
     "u13-filles": {
       "label": "U13 filles",
