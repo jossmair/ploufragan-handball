@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-30T14:58:51.101521+00:00",
+  "updatedAt": "2026-09-30T17:40:46.564682+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -230,7 +230,7 @@
         },
         {
           "position": 6,
-          "team": "ALVMP HANDBALL",
+          "team": "ALVMP HanDBALL",
           "points": 6,
           "played": 4,
           "club": false
@@ -989,7 +989,7 @@
       "group": "jeunes",
       "date": "2026-10-03T13:00:00+02:00",
       "home": "PLOUFRAGAN HANDBALL",
-      "away": "ALVMP HANDBALL",
+      "away": "ALVMP HanDBALL",
       "homeTeamId": "1816160",
       "awayTeamId": "1816157",
       "homeScore": null,
