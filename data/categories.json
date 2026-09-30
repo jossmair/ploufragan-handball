@@ -56,7 +56,7 @@
       "staff": {"role": "Coach", "names": "David"},
       "youthPhoto": "assets/photos/u13-equipe.webp",
       "cardPhoto": {"src": "assets/equipes/u13-filles-card.webp", "width": 992, "height": 1536},
-      "pagePhoto": {"src": "assets/photos/u13-filles-equipe-2026.webp", "width": 965, "height": 727, "alt": "Équipe U13 filles du Ploufragan Handball"}
+      "pagePhoto": {"src": "assets/photos/u13-filles-equipe-2026.webp", "width": 965, "height": 727, "alt": "Équipe U13 filles du Ploufragan Handball", "className": "is-team-photo"}
     },
     "u13-garcons": {
       "label": "U13 garçons",
