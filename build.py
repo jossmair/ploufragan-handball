@@ -860,8 +860,8 @@ for youth in YOUTH_TEAMS:
         body += u13_filles_presentation()
     pages[slug] = page(slug, name, body, "equipes",
         f"{name} du Ploufragan Handball près de Saint-Brieuc : entraînements et classement {SEASON}.",
-        extra_head=('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-1">'
-                    '<script src="assets/u13-filles.js?v=20260930-1" defer></script>') if slug == "u13-filles" else "")
+        extra_head=('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-2">'
+                    '<script src="assets/u13-filles.js?v=20260930-2" defer></script>') if slug == "u13-filles" else "")
 
 
 SENIOR_MEN = [
