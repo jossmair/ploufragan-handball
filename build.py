@@ -676,7 +676,7 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
     if teams:
         competitions = [competition_detail(team) for team in teams]
         sidebar_photo = team_sidebar_photo(slug)
-        content = f'<div class="team-detail-main">{training}{"".join(result + upcoming for _, result, upcoming in competitions)}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}{team_gallery(slug)}{sidebar_photo}</div>{registration}'
+        content = f'<div class="team-detail-main">{training}{"".join(result + upcoming for _, result, upcoming in competitions)}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}{team_gallery(slug)}{team_coach_card(slug)}{sidebar_photo}</div>{registration}'
     else:
         content = training + registration
     return f'<section class="container team-detail-grid {"has-ranking" if teams else "no-ranking"} after-heading">{content}</section>'
@@ -733,11 +733,34 @@ def team_page_photo(slug):
 
 
 def team_sidebar_photo(slug):
-    photo = TEAM_PAGE_PHOTOS.get(slug)
-    if not photo:
+    config = CATEGORIES.get(slug, {}).get("pagePhoto")
+    if not config:
         return ""
-    src, width, height, alt = photo
-    return f'''<figure class="team-sidebar-photo" data-reveal><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async"></figure>'''
+    src = escape(str(config["src"]), quote=True)
+    alt = escape(str(config["alt"]), quote=True)
+    width = int(config["width"])
+    height = int(config["height"])
+    class_name = escape(str(config.get("className", "")), quote=True)
+    classes = f'team-sidebar-photo {class_name}'.strip()
+    caption = ""
+    if config.get("caption"):
+        eyebrow = escape(str(config.get("eyebrow", "")))
+        caption = f'<figcaption><span>{eyebrow}</span><strong>{escape(str(config["caption"]))}</strong></figcaption>'
+    return f'''<figure class="{classes}" data-reveal><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async">{caption}</figure>'''
+
+
+def team_coach_card(slug):
+    config = CATEGORIES.get(slug, {}).get("coachPhoto")
+    if not config:
+        return ""
+    src = escape(str(config["src"]), quote=True)
+    alt = escape(str(config["alt"]), quote=True)
+    name = escape(str(config["name"]))
+    role = escape(str(config["role"]))
+    width = int(config["width"])
+    height = int(config["height"])
+    title_id = f"{slug}-coach-title"
+    return f'''<section class="team-people team-people-compact" aria-labelledby="{title_id}" data-reveal><div class="team-people-heading"><div><p class="eyebrow">ENCADREMENT</p><h2 id="{title_id}">LE COACH</h2></div></div><div class="team-people-grid"><figure class="team-person-card"><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async"><figcaption><span>{role}</span><strong>{name}</strong></figcaption></figure></div></section>'''
 
 
 def team_gallery(slug):
@@ -890,6 +913,22 @@ def senior_player_card_experience():
       <noscript><p class="senior-position-noscript">Les portraits et les postes restent disponibles dans <a href="articles/presentation-seniors-masculins-1.html">la présentation de l’équipe</a>.</p></noscript>
     </section>'''
 
+
+def senior_coaches_section():
+    coaches = (
+        ("assets/seniors-masculins/coachs/guillaume-michel.webp",
+         "Guillaume Michel, dit Guigui, coach des Seniors masculins du Ploufragan Handball",
+         "Guillaume Michel", "« Guigui »"),
+        ("assets/seniors-masculins/coachs/jerome-quemener.webp",
+         "Jérôme Quemener, dit Jay, coach des Seniors masculins du Ploufragan Handball",
+         "Jérôme Quemener", "« Jay »"),
+    )
+    cards = ''.join(
+        f'<figure class="team-person-card"><img src="{src}" alt="{alt}" width="1024" height="1536" loading="lazy" decoding="async"><figcaption><span>Coach Seniors masculins</span><strong>{name}</strong><small>{nickname}</small></figcaption></figure>'
+        for src, alt, name, nickname in coaches
+    )
+    return f'''<section class="team-people senior-coaches" aria-labelledby="senior-coaches-title" data-reveal><div class="team-people-heading"><div><p class="eyebrow">AU BORD DU TERRAIN</p><h2 id="senior-coaches-title">LE STAFF <em>SENIORS</em></h2></div><p>Deux coachs, une même ambition pour accompagner les équipes masculines.</p></div><div class="team-people-grid">{cards}</div></section>'''
+
 senior_choices = []
 for slug, name, result_label in SENIOR_MEN:
     team = next(team for team in RESULTS["teams"] if team["label"] == result_label)
@@ -911,6 +950,7 @@ pages["seniors-masculins"] = page(
     team_training("seniors-masculins") +
     f'<div class="senior-landing-choices"><div class="senior-landing-heading"><p class="eyebrow">SAISON {SEASON_DISPLAY}</p><h2>LES DEUX <em>ÉQUIPES</em></h2></div><div class="senior-choice-grid">' +
     ''.join(senior_choices) + '</div></div>' +
+    senior_coaches_section() +
     senior_player_card_experience() +
     '<div class="senior-duty-entry" data-reveal><div><p class="eyebrow">TOUTES LES ÉQUIPES</p><h2>PERMANENCES <em>DE SALLE</em></h2><p>Les prochains week-ends, les responsables et tous les matchs à domicile annoncés par FFHandball.</p></div>' +
     button('Voir le planning', 'permanences-seniors-masculins.html') + '</div></section>', "equipes",
