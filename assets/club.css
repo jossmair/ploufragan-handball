@@ -1,0 +1,15 @@
+.org-coach-entry{min-width:0}
+.org-coach-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:8px 10px;border:1px solid transparent;background:transparent;color:#d8d8de;font:inherit;line-height:1.35;text-align:center;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.org-coach-icon{position:relative;top:-1px;flex:0 0 21px;width:21px;height:21px;background:url('icons/coach-card-hummel-medium.svg') center/21px 21px no-repeat;transition:transform .3s cubic-bezier(.2,.8,.2,1),filter .2s ease}
+.org-coach-toggle:hover,.org-coach-toggle:focus-visible,.org-coach-entry.is-open .org-coach-toggle{border-color:#ed071966;background:#ed071912;color:#fff;outline:0}
+.org-coach-toggle:focus-visible{box-shadow:0 0 0 3px #ed071940}
+.org-coach-toggle:hover .org-coach-icon,.org-coach-toggle:focus-visible .org-coach-icon{filter:drop-shadow(0 0 4px #ed071980)}
+.org-coach-entry.is-open .org-coach-icon{transform:rotate(180deg)}
+.org-coach-panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .32s ease,opacity .25s ease}
+.org-coach-panel>div{min-height:0;overflow:hidden}
+.org-coach-entry.is-open .org-coach-panel{grid-template-rows:1fr;opacity:1}
+.org-coach-image{display:block;width:min(100%,240px);margin:10px auto 4px;padding:0;border:0;border-radius:18px;background:transparent;cursor:pointer;overflow:hidden;box-shadow:0 15px 32px #000b}
+.org-coach-image img{display:block;width:100%;height:auto;border-radius:18px}
+.org-coach-image:focus-visible{outline:3px solid #ed0719;outline-offset:4px}
+@media(max-width:650px){.org-coach-toggle{padding:9px 6px}.org-coach-image{width:min(100%,210px)}}
+@media(prefers-reduced-motion:reduce){.org-coach-toggle,.org-coach-icon,.org-coach-panel{transition:none}}

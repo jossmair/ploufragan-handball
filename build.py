@@ -1120,6 +1120,23 @@ def org_team(area, title, members):
     people=''.join(f'<li><span>{escape(first)} <strong>{escape(last)}</strong></span></li>' for first,last in members)
     return f'<article class="org-card org-{area}" data-reveal><h3>{escape(title)}</h3><ul>{people}</ul>{org_contact(area, title) if area in ORG_EMAILS else ""}</article>'
 
+def org_coach_team(members):
+    coach_cards = {
+        ("Yohann", "GUÉRIN"): ("yohann", "assets/photos/u11-mixte-coach-yohann-guerin.webp", "Carte de Yohann Guérin, coach des U11 mixtes"),
+        ("Guillaume", "MICHEL"): ("guigui", "assets/seniors-masculins/coachs/guillaume-michel.webp", "Carte de Guillaume Michel, Guigui, coach des seniors masculins"),
+        ("Jérôme", "QUEMENER"): ("jay", "assets/seniors-masculins/coachs/jerome-quemener.webp", "Carte de Jérôme Quemener, Jay, coach des seniors masculins"),
+    }
+    people = []
+    for first, last in members:
+        card = coach_cards.get((first, last))
+        if not card:
+            people.append(f'<li><span>{escape(first)} <strong>{escape(last)}</strong></span></li>')
+            continue
+        key, image, alt = card
+        display_name = f'{escape(first)} <strong>{escape(last)}</strong>'
+        people.append(f'''<li class="org-coach-entry" data-org-coach><button class="org-coach-toggle" type="button" data-org-coach-toggle aria-expanded="false" aria-controls="org-coach-card-{key}"><span>{display_name}</span><span class="org-coach-icon" aria-hidden="true"></span></button><div class="org-coach-panel" id="org-coach-card-{key}" data-org-coach-panel aria-hidden="true"><div><button class="org-coach-image" type="button" data-org-coach-close tabindex="-1" aria-label="Replier la carte de {escape(first + ' ' + last, quote=True)}"><img src="{escape(image, quote=True)}" alt="{escape(alt, quote=True)}" width="1024" height="1536" loading="lazy" decoding="async"></button></div></div></li>''')
+    return f'<article class="org-card org-coachs" data-reveal><h3>TEAM COACHS</h3><ul>{"".join(people)}</ul></article>'
+
 office_members = [
     ("Présidente", "Elsa", "DA SILVA"),
     ("Vice-président", "Jérôme", "QUEMENER"),
@@ -1129,11 +1146,11 @@ office_members = [
     ("Vice-secrétaire", "Katia", "JAVOUHEY"),
 ]
 office_people=''.join(f'<li><span class="org-role">{escape(role)}</span><span>{escape(first)} <strong>{escape(last)}</strong></span></li>' for role,first,last in office_members)
-org_chart=f'''<div class="org-chart" id="organigramme" aria-label="Organigramme du Ploufragan Handball">{org_team("sponsor", "TEAM SPONSOR", [("Jérôme","QUEMENER"),("Thomas","MIEUDONNET"),("Arnaud","DE LA HAUSSERAY"),("Guillaume","MICHEL"),("Maxime","PHILIPPE")])}<article class="org-card org-office" data-reveal><h3>BUREAU</h3><ul class="org-office-list">{office_people}</ul>{org_contact("office", "BUREAU")}</article>{org_team("comm", "TEAM COMM", [("Erwan","ROUXEL"),("Jean","BOIZARD"),("Josselin","MEAR")])}{org_team("buvette", "TEAM BUVETTE", [("Jérôme & Rozenn","LE JOLY"),("Francky","BLANCHET")])}{org_team("boutik", "TEAM « BOUTIK »", [("Jérôme","QUEMENER"),("Laetitia","HÉLIE")])}{org_team("coachs", "TEAM COACHS", [("Guillaume","MICHEL"),("David","IMBAUD"),("Olivier","BEAUX"),("Elsa","DA SILVA"),("Yohann","GUÉRIN"),("Jérôme","QUEMENER"),("Joshua","ELOY"),("Erwan","ROUXEL"),("Morgan","PION"),("Katia","JAVOUHEY"),("Nathan","RAOULT"),("Clara","TOQUET"),("Aurélien","GÉRARD")])}</div>'''
+org_chart=f'''<div class="org-chart" id="organigramme" aria-label="Organigramme du Ploufragan Handball">{org_team("sponsor", "TEAM SPONSOR", [("Jérôme","QUEMENER"),("Thomas","MIEUDONNET"),("Arnaud","DE LA HAUSSERAY"),("Guillaume","MICHEL"),("Maxime","PHILIPPE")])}<article class="org-card org-office" data-reveal><h3>BUREAU</h3><ul class="org-office-list">{office_people}</ul>{org_contact("office", "BUREAU")}</article>{org_team("comm", "TEAM COMM", [("Erwan","ROUXEL"),("Jean","BOIZARD"),("Josselin","MEAR")])}{org_team("buvette", "TEAM BUVETTE", [("Jérôme & Rozenn","LE JOLY"),("Francky","BLANCHET")])}{org_team("boutik", "TEAM « BOUTIK »", [("Jérôme","QUEMENER"),("Laetitia","HÉLIE")])}{org_coach_team([("Guillaume","MICHEL"),("David","IMBAUD"),("Olivier","BEAUX"),("Elsa","DA SILVA"),("Yohann","GUÉRIN"),("Jérôme","QUEMENER"),("Joshua","ELOY"),("Erwan","ROUXEL"),("Morgan","PION"),("Katia","JAVOUHEY"),("Nathan","RAOULT"),("Clara","TOQUET"),("Aurélien","GÉRARD")])}</div>'''
 
 staff_section='''<div class="staff-section" aria-labelledby="staff-title"><div class="staff-feature" data-reveal><div class="staff-copy"><p class="staff-kicker"><span aria-hidden="true"></span>SALARIÉ DU CLUB</p><h2 id="staff-title"><span>DAVID</span><strong>IMBAUD</strong></h2></div><figure class="staff-portrait"><img src="assets/david-imbaud.webp" alt="David Imbaud, salarié du Ploufragan Handball" width="950" height="1228" loading="lazy"></figure></div></div>'''
 
-pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''')
+pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20260930-8"><script src="assets/club.js?v=20260930-2" defer></script>')
 registration_cards = []
 tariff_rows = []
 for registration in CATEGORY_DATA["registration"]:
@@ -1426,7 +1443,7 @@ for slug in ("u11-mixte", "u13-filles", "u13-garcons"):
         "meta": f"{len(config['photos'])} photos",
         "title": f"{label} en images",
         "intro": f"Retrouvez le carrousel et les miniatures des photos de match des {label}.",
-        "cta": "VOIR LE CARROUSEL",
+        "cta": "OUVRIR L’ALBUM",
     })
 for album in sorted(GALLERIES, key=lambda item: item["date"], reverse=True):
     gallery_hub_entries.append({

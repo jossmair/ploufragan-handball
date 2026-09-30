@@ -128,6 +128,7 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   await expect(hubCards.nth(1)).toHaveAttribute('href', 'u13-filles.html#u13-filles-gallery-title');
   await expect(hubCards.nth(2)).toHaveAttribute('href', 'u13-garcons.html#u13-garcons-gallery-title');
   await expect(hubCards.nth(3)).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
+  await expect(page.locator('.gallery-index-card .text-link').filter({ hasText: /OUVRIR L.ALBUM/ })).toHaveCount(4);
   await page.goto('/galeries/seniors-1-pays-de-dinan-2026.html');
   const carousel = page.locator('[data-photo-carousel]');
   await expect(carousel).toBeVisible();
@@ -220,6 +221,25 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   }
 });
 
+test('club : les cartes des coachs se déplient et se replient', async ({ page }) => {
+  await page.goto('/club.html#organigramme');
+  const cards = page.locator('[data-org-coach]');
+  await expect(cards).toHaveCount(3);
+  const yohann = cards.filter({ hasText: 'Yohann' });
+  const trigger = yohann.locator('[data-org-coach-toggle]');
+  const panel = yohann.locator('[data-org-coach-panel]');
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await trigger.click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  await expect(panel).toHaveAttribute('aria-hidden', 'false');
+  await expect(panel.locator('img')).toBeVisible();
+  await panel.locator('[data-org-coach-close]').click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await trigger.click();
+  await trigger.click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+});
+
 test('article SM1 : carrousel et lightbox clavier', async ({ page }) => {
   await page.goto('/articles/presentation-seniors-masculins-1.html');
   const carousel = page.locator('[data-article-carousel]');
@@ -246,10 +266,13 @@ test('Seniors masculins : les cartes se révèlent dans la page', async ({ page 
   const gardienOverlay = showcase.locator('[data-position-overlay="gardien"]');
   const ailierDroitOverlay = showcase.locator('[data-position-overlay="ailier-droit"]');
   await expect(gardienOverlay).toHaveCSS('opacity', '0');
-  await gardienHotspot.hover();
-  await expect(gardienOverlay).toHaveCSS('opacity', '1');
-  await page.mouse.move(0, 0);
-  await expect(gardienOverlay).toHaveCSS('opacity', '0');
+  const supportsHover = await page.evaluate(() => matchMedia('(hover: hover)').matches);
+  if (supportsHover) {
+    await gardienHotspot.hover();
+    await expect(gardienOverlay).toHaveCSS('opacity', '1');
+    await page.mouse.move(0, 0);
+    await expect(gardienOverlay).toHaveCSS('opacity', '0');
+  }
   await gardienHotspot.click();
   await expect(gardienOverlay).toHaveCSS('opacity', '1');
   await expect(stage.getByRole('heading', { name: 'Gardien' })).toBeVisible();
@@ -260,11 +283,13 @@ test('Seniors masculins : les cartes se révèlent dans la page', async ({ page 
   await expect(page.locator('dialog[open]')).toHaveCount(0);
   await cards.first().click();
   await expect(cards.first()).toHaveClass(/is-flipped/);
-  await showcase.getByRole('button', { name: 'Voir les joueurs au poste Ailier droit', exact: true }).hover();
-  await expect(ailierDroitOverlay).toHaveCSS('opacity', '1');
-  await expect(gardienOverlay).toHaveCSS('opacity', '0');
-  await page.mouse.move(0, 0);
-  await expect(gardienOverlay).toHaveCSS('opacity', '1');
+  if (supportsHover) {
+    await showcase.getByRole('button', { name: 'Voir les joueurs au poste Ailier droit', exact: true }).hover();
+    await expect(ailierDroitOverlay).toHaveCSS('opacity', '1');
+    await expect(gardienOverlay).toHaveCSS('opacity', '0');
+    await page.mouse.move(0, 0);
+    await expect(gardienOverlay).toHaveCSS('opacity', '1');
+  }
   await showcase.getByRole('button', { name: /AG\s*Ailier gauche/i }).click();
   await expect(stage.getByRole('heading', { name: 'Ailier gauche' })).toBeVisible();
   await expect(stage.locator('[data-player-card]')).toHaveCount(2);
