@@ -261,6 +261,9 @@ test('U11 mobile : la carte est centrée entre Yohann et Joshua', async ({ page 
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/u11-mixte.html');
     const toggle = page.locator('.team-training [data-org-coach-toggle]');
+    const role = await page.locator('.team-staff-coaches > span').boundingBox();
+    const coach = await toggle.boundingBox();
+    expect(coach.x).toBeGreaterThanOrEqual(role.x + role.width + 8);
     await toggle.click();
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
     await expect.poll(async () => {
