@@ -881,7 +881,6 @@ pages["jeunes"] = page("jeunes", "Équipes jeunes",
 U13_F_PLAYER_CARDS = (
     ("Sarah", "sarah.webp"),
     ("Jade", "jade.webp"),
-    ("Naïs", "nais.webp"),
     ("Elise", "elise.webp"),
     ("Luna", "luna.webp"),
     ("Cylia", "cylia.webp"),
@@ -891,7 +890,6 @@ U13_F_PLAYER_CARDS = (
 U13_F_CARD_BACKS = (
     "ailier-droit.webp",
     "ailier-gauche.webp",
-    "arriere-droit.webp",
     "arriere-gauche.webp",
     "demi-centre.webp",
     "gardien.webp",
