@@ -13,5 +13,16 @@
 .org-coach-image{display:block;width:min(100%,240px);margin:10px auto 4px;padding:0;border:0;border-radius:18px;background:transparent;cursor:pointer;overflow:hidden;box-shadow:0 15px 32px #000b}
 .org-coach-image img{display:block;width:100%;height:auto;border-radius:18px}
 .org-coach-image:focus-visible{outline:3px solid #ed0719;outline-offset:4px}
-@media(max-width:650px){.org-coach-toggle{padding:9px 6px}.org-coach-image{width:min(100%,210px)}}
+.team-staff-coaches{align-items:flex-start}
+.team-training-coach-list{display:grid;grid-template-columns:max-content max-content;align-items:start;justify-content:start;flex:1;gap:8px 20px;min-width:0}
+.team-training-coach-list .org-coach-entry{display:contents}
+.team-training-coach-list .org-coach-toggle{grid-column:1;grid-row:1;justify-content:flex-start;width:max-content;padding:0;color:#17171b}
+.team-training-coach-list .org-coach-toggle::before{content:none}
+.team-training-coach-list .org-coach-toggle:focus-visible{outline-color:#bf0617}
+.team-training-coach-list .org-coach-panel{grid-column:1/-1;grid-row:2;width:min(240px,100%)}
+.team-training-coach-list .org-coach-image{box-shadow:none;border-radius:0;overflow:visible}
+.team-training-coach-list .org-coach-image img{border-radius:0}
+.team-staff-coaches .org-coach-toggle>span:first-child{font:700 1rem/1.45 var(--body);text-transform:none;color:inherit}
+.team-training-coach-name{grid-column:2;grid-row:1;padding-top:1px}
+@media(max-width:650px){.org-coach-toggle{padding:9px 6px}.org-coach-image{width:min(100%,210px)}.team-training-coach-list{grid-template-columns:minmax(0,1fr)}.team-training-coach-name{grid-column:1;grid-row:2}.team-training-coach-list .org-coach-panel{grid-row:3}}
 @media(prefers-reduced-motion:reduce){.org-coach-toggle,.org-coach-icon,.org-coach-panel{transition:none}}

@@ -677,7 +677,21 @@ pages["equipes"]=page("equipes","Les équipes",heading("LES <em>ÉQUIPES</em>","
 
 def team_training(schedule_group, schedule_name=None, staff_key=None):
     role, person = TEAM_STAFF.get(staff_key) or TEAM_STAFF[schedule_group]
-    staff = f'<p class="team-staff"><span>{escape(role)}</span><strong>{escape(person)}</strong></p>'
+    category = CATEGORIES.get(staff_key, {})
+    coach_photo = category.get("coachPhoto") if category.get("coachPhotoInline") else None
+    if coach_photo:
+        coach_name = escape(str(coach_photo["name"]))
+        coach_alt = escape(str(coach_photo["alt"]), quote=True)
+        coach_src = escape(str(coach_photo["src"]), quote=True)
+        coach_width = int(coach_photo["width"])
+        coach_height = int(coach_photo["height"])
+        additional_coaches = ''.join(
+            f'<strong class="team-training-coach-name">{escape(str(name))}</strong>'
+            for name in category.get("additionalCoaches", [])
+        )
+        staff = f'''<div class="team-staff team-staff-coaches"><span>{escape(role)}</span><div class="team-training-coach-list"><div class="org-coach-entry" data-org-coach><button class="org-coach-toggle" type="button" data-org-coach-toggle aria-expanded="false" aria-controls="team-training-coach-card"><span><strong>{coach_name}</strong></span><span class="org-coach-icon" aria-hidden="true"></span></button><div class="org-coach-panel" id="team-training-coach-card" data-org-coach-panel aria-hidden="true"><div><button class="org-coach-image" type="button" data-org-coach-close tabindex="-1" aria-label="Replier la carte de {coach_name}"><img src="{coach_src}" alt="{coach_alt}" width="{coach_width}" height="{coach_height}" loading="lazy" decoding="async"></button></div></div></div>{additional_coaches}</div></div>'''
+    else:
+        staff = f'<p class="team-staff"><span>{escape(role)}</span><strong>{escape(person)}</strong></p>'
     return f'''<div class="paper-panel team-training" data-reveal><div class="panel-title"><p class="eyebrow">SAISON {SEASON_DISPLAY}</p><h2>ENTRAÎNEMENTS</h2></div>{schedule(schedule_group, schedule_name)}{staff}<a class="text-link" href="entrainements.html">Planning complet ↗</a></div>'''
 
 
@@ -763,7 +777,7 @@ def team_sidebar_photo(slug):
 
 def team_coach_card(slug):
     config = CATEGORIES.get(slug, {}).get("coachPhoto")
-    if not config:
+    if not config or CATEGORIES.get(slug, {}).get("coachPhotoInline"):
         return ""
     src = escape(str(config["src"]), quote=True)
     alt = escape(str(config["alt"]), quote=True)
@@ -876,11 +890,13 @@ for youth in YOUTH_TEAMS:
         body += u13_filles_presentation()
     body += youth_match_gallery(slug)
     gallery_head = '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">' if slug in YOUTH_GALLERIES else ''
+    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261001-1">'
+                         '<script src="assets/club.js?v=20260930-2" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
                       '<script src="assets/u13-filles.js?v=20260930-2" defer></script>') if slug == "u13-filles" else ''
     pages[slug] = page(slug, name, body, "equipes",
         f"{name} du Ploufragan Handball près de Saint-Brieuc : entraînements et classement {SEASON}.",
-        extra_head=gallery_head + u13_cards_head)
+        extra_head=gallery_head + inline_coach_head + u13_cards_head)
 
 
 SENIOR_MEN = [
@@ -1122,7 +1138,7 @@ def org_team(area, title, members):
 
 def org_coach_team(members):
     coach_cards = {
-        ("Yohann", "GUÉRIN"): ("yohann", "assets/photos/u11-mixte-coach-yohann-guerin.webp", "Carte de Yohann Guérin, coach des U11 mixtes"),
+        ("Yohann", "GUÉRIN"): ("yohann", "assets/photos/u11-mixte-coach-yohann-guerin-transparent.webp", "Carte de Yohann Guérin, coach des U11 mixtes"),
         ("Guillaume", "MICHEL"): ("guigui", "assets/seniors-masculins/coachs/guillaume-michel.webp", "Carte de Guillaume Michel, Guigui, coach des seniors masculins"),
         ("Jérôme", "QUEMENER"): ("jay", "assets/seniors-masculins/coachs/jerome-quemener.webp", "Carte de Jérôme Quemener, Jay, coach des seniors masculins"),
     }
@@ -1150,7 +1166,7 @@ org_chart=f'''<div class="org-chart" id="organigramme" aria-label="Organigramme 
 
 staff_section='''<div class="staff-section" aria-labelledby="staff-title"><div class="staff-feature" data-reveal><div class="staff-copy"><p class="staff-kicker"><span aria-hidden="true"></span>SALARIÉ DU CLUB</p><h2 id="staff-title"><span>DAVID</span><strong>IMBAUD</strong></h2></div><figure class="staff-portrait"><img src="assets/david-imbaud.webp" alt="David Imbaud, salarié du Ploufragan Handball" width="950" height="1228" loading="lazy"></figure></div></div>'''
 
-pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20260930-14"><script src="assets/club.js?v=20260930-2" defer></script>')
+pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261001-1"><script src="assets/club.js?v=20260930-2" defer></script>')
 registration_cards = []
 tariff_rows = []
 for registration in CATEGORY_DATA["registration"]:

@@ -3,9 +3,9 @@
 ## Poids du site publié
 
 - Source du calcul : **simulation du paquet GitHub Pages**.
-- Paquet public : **908 fichiers, 371.9 Mo**.
+- Paquet public : **909 fichiers, 372.4 Mo**.
 - Plafond surveillé : **400.0 Mo** — **OK**.
-- Marge restante : **28.1 Mo**.
+- Marge restante : **27.6 Mo**.
 
 ## Galeries et originaux HD
 
@@ -21,9 +21,9 @@
 
 ## Inventaire général
 
-- Assets publics : **868 fichiers, 370.9 Mo**.
+- Assets publics : **869 fichiers, 371.4 Mo**.
 - Référencés par le site généré ou ses sources : **866**.
-- À examiner manuellement : **2**.
+- À examiner manuellement : **3**.
 - Sources graphiques archivées hors publication : **15 fichiers, 16.4 Mo**.
 
 ## 20 plus gros assets publics
@@ -55,6 +55,7 @@
 
 Une absence de référence statique ne suffit pas à autoriser une suppression : les sources graphiques et chemins construits dynamiquement doivent être vérifiés manuellement.
 
+- `assets/photos/u11-mixte-coach-yohann-guerin.webp` — 249.1 Ko
 - `assets/fonts/barlowcondensed-OFL.txt` — 4.3 Ko
 - `assets/fonts/inter-OFL.txt` — 4.3 Ko
 

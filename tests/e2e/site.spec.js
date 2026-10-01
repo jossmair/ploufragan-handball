@@ -240,6 +240,22 @@ test('club : les cartes des coachs se déplient et se replient', async ({ page }
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
 });
 
+test('U11 : la carte de Yohann est intégrée aux entraînements', async ({ page }) => {
+  await page.goto('/u11-mixte.html');
+  const training = page.locator('.team-training');
+  await expect(training).toContainText('Yohann Guérin');
+  await expect(training).toContainText('Joshua Eloy');
+  await expect(page.locator('.team-people')).toHaveCount(0);
+  const trigger = training.locator('[data-org-coach-toggle]');
+  const panel = training.locator('[data-org-coach-panel]');
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await trigger.click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  await expect(panel.locator('img')).toBeVisible();
+  await panel.locator('[data-org-coach-close]').click();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+});
+
 test('article SM1 : carrousel et lightbox clavier', async ({ page }) => {
   await page.goto('/articles/presentation-seniors-masculins-1.html');
   const carousel = page.locator('[data-article-carousel]');
