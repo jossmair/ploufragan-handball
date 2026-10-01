@@ -358,9 +358,9 @@ body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] h2{font-siz
 body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-meta{font-weight:400;letter-spacing:normal;color:#c7c7cc;background:none;padding:0;width:auto;max-width:none}
 body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-bottom{font-weight:400;margin-top:24px}
 
-/* Team pages keep training, registration and the pool on the same visual plane. */
+
 .team-detail-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:24px;align-items:start;padding-bottom:90px}
-.team-detail-main,.team-season-stack{display:grid;gap:24px;min-width:0}
+.team-detail-main,.team-season-stack{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;min-width:0}.team-detail-main>*,.team-season-stack>*{min-width:0}
 .team-detail-grid .information-panel{margin:0}
 .team-detail-grid .schedule{table-layout:auto}
 .team-detail-grid .schedule tbody th>a{min-width:108px;font-size:1.2rem;padding:10px 13px}
@@ -403,7 +403,7 @@ body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-botto
 .team-last-card{background:#111116ef;border:1px solid #ffffff32;border-left:5px solid var(--red);padding:26px 29px}
 .team-last-card .eyebrow{color:#ff747f;margin-bottom:8px}
 .team-last-card h2{font-size:1.95rem;margin-bottom:18px}
-@media(max-width:1000px){.team-detail-grid{grid-template-columns:1fr}.team-detail-main{grid-template-columns:1fr 1fr}.team-detail-grid.no-ranking{grid-template-columns:1fr 1fr}.team-season-head h2{font-size:2.2rem}}
+@media(max-width:1000px){.team-detail-grid{grid-template-columns:1fr}.team-detail-main{grid-template-columns:repeat(2,minmax(0,1fr))}.team-detail-grid.no-ranking{grid-template-columns:1fr 1fr}.team-season-head h2{font-size:2.2rem}}
 @media(min-width:701px) and (max-width:1000px){.team-detail-main .team-registration{grid-column:1/-1}}
 @media(max-width:700px){.team-detail-main,.team-detail-grid.no-ranking{grid-template-columns:1fr}.team-detail-grid{gap:18px}.team-detail-main,.team-season-stack{gap:18px}.team-season-card{padding:21px}.team-season-head{flex-wrap:wrap}.team-season-head>a{margin-top:0}.team-rank strong{font-size:3.2rem}.pool-table{font-size:.73rem}.pool-table th,.pool-table td{padding:8px 4px}.team-detail-grid .schedule tbody th>a{min-width:145px;font-size:1.45rem;padding:10px 14px}.team-last-card{padding:22px 20px}.season-result-teams{grid-template-columns:1fr;gap:10px;text-align:center}.season-result-teams>span:last-child{text-align:center}.season-result-teams strong{font-size:2.3rem;justify-self:center}}
 @media(max-width:520px){body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"]{min-height:390px}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-photo{width:78%}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .team-card-copy{width:74%;padding:26px}body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] h2{font-size:2.5rem}.season-result-teams{gap:6px}.season-result-teams strong{font-size:1.6rem}}
@@ -412,7 +412,7 @@ body[data-page="equipes"] .teams-grid .team-card[data-team="jeunes"] .card-botto
 @media(max-width:520px){.youth-choice{min-height:92px}}
 body[data-page="partenaires"] .participation{margin:0 0 30px}
 
-/* Shared training and team links on the senior men's overview. */
+
 .senior-landing{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:24px;align-items:start;padding-bottom:90px}
 .senior-landing .team-training{min-width:0}
 .senior-landing-choices{min-width:0}

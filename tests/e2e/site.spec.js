@@ -256,6 +256,25 @@ test('U11 : la carte de Yohann est intégrée aux entraînements', async ({ page
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
 });
 
+test('U11 : les cartes restent dans leurs colonnes, carte coach ouverte ou fermée', async ({ page }) => {
+  for (const width of [390, 768, 900, 1100, 1440, 1840]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto('/u11-mixte.html');
+    const trigger = page.locator('.team-training [data-org-coach-toggle]');
+    for (const open of [false, true]) {
+      if (open) await trigger.click();
+      const cards = page.locator('.team-detail-main > *, .team-season-stack > *');
+      const contained = await cards.evaluateAll(elements => elements.every(element => {
+        const card = element.getBoundingClientRect();
+        const column = element.parentElement.getBoundingClientRect();
+        return card.left >= column.left - 1 && card.right <= column.right + 1
+          && element.scrollWidth <= element.clientWidth + 1;
+      }));
+      expect(contained, `Cartes contenues à ${width}px, coach ouvert : ${open}`).toBe(true);
+    }
+  }
+});
+
 test('article SM1 : carrousel et lightbox clavier', async ({ page }) => {
   await page.goto('/articles/presentation-seniors-masculins-1.html');
   const carousel = page.locator('[data-article-carousel]');
