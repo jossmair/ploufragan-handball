@@ -7,7 +7,7 @@ Le header fixe et son animation au défilement sont conservés. Le panneau mobil
 - **Club** : Le club, Organigramme, Histoire du club, Documents d’inscription.
 - **Équipes** : Seniors masculins, Seniors masculins 1 et 2, Seniors féminines, Loisirs ; Équipes jeunes, U18 garçons, U15 filles et garçons, U13 filles et garçons, U11 mixte ; Baby Hand, École de hand ; Voir toutes les équipes.
 - **Entraînements** : Planning des entraînements, Les salles.
-- **Galerie** : U11 mixte, U13 filles, U13 garçons, Seniors féminines, Seniors masculins 1, Tous les albums. Les liens jeunes et Seniors féminines atteignent directement le carrousel existant de leur page équipe.
+- **Galerie** : U13 filles, U13 garçons, Seniors féminines, Seniors masculins 1, Tous les albums. Les liens jeunes et Seniors féminines atteignent directement le carrousel existant de leur page équipe. L’album et les photos U11 ont été retirés à la demande du club.
 - **Liens directs** : Accueil, Résultats, Blog, Boutique, Partenaires, Contact, Inscriptions. Les intitulés Club, Équipes, Entraînements et Galerie restent également des liens directs.
 
 Sur la page Licences & inscriptions, le texte du bouton actif reste blanc sur rouge et le header reste visible au défilement.
