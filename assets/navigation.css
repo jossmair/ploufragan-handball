@@ -9,3 +9,5 @@
 @media(min-width:851px){#nav-sub-galerie{left:auto;right:0}}
 @media(min-width:1301px){#navigation{gap:21px}.nav-sub-toggle{width:18px}}
 @media(min-width:851px) and (max-width:1300px){#navigation{gap:clamp(6px,.95vw,12px)}.nav-sub-toggle{width:17px}}
+@media(min-width:1001px) and (max-width:1300px){#navigation>a,.nav-group-heading>a{font-size:1rem}}
+@media(min-width:851px) and (max-width:1000px){#navigation>a,.nav-group-heading>a{font-size:.9rem}#navigation{gap:6px}}
