@@ -431,6 +431,19 @@ test('entraînements : animation présente et non bouclée', async ({ page }) =>
   expect(await video.evaluate(element => element.loop)).toBe(false);
 });
 
+test('galerie : animation intégrée, lecture unique et mouvement réduit', async ({ page }) => {
+  await page.goto('/galerie.html');
+  const video = page.locator('[data-gallery-logo-video]');
+  await expect(video).toHaveAttribute('poster', 'assets/videos/galerie-animation-first.webp');
+  await expect(video.locator('source')).toHaveAttribute('src', 'assets/videos/galerie-animation.mp4');
+  await expect.poll(() => video.evaluate(element => element.ended && element.paused)).toBe(true);
+  expect(await video.evaluate(element => element.loop || !element.muted || !element.playsInline)).toBe(false);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.reload();
+  expect(await video.evaluate(element => element.paused && element.currentTime === 0)).toBe(true);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+});
+
 test('blog : animation présente et non bouclée', async ({ page }) => {
   await page.goto('/blog.html');
   const video = page.locator('[data-blog-logo-video]');

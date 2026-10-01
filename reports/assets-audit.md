@@ -3,9 +3,9 @@
 ## Poids du site publié
 
 - Source du calcul : **simulation du paquet GitHub Pages**.
-- Paquet public : **911 fichiers, 372.5 Mo**.
+- Paquet public : **913 fichiers, 373.0 Mo**.
 - Plafond surveillé : **400.0 Mo** — **OK**.
-- Marge restante : **27.5 Mo**.
+- Marge restante : **27.0 Mo**.
 
 ## Galeries et originaux HD
 
@@ -21,8 +21,8 @@
 
 ## Inventaire général
 
-- Assets publics : **871 fichiers, 371.4 Mo**.
-- Référencés par le site généré ou ses sources : **868**.
+- Assets publics : **873 fichiers, 371.9 Mo**.
+- Référencés par le site généré ou ses sources : **870**.
 - À examiner manuellement : **3**.
 - Sources graphiques archivées hors publication : **15 fichiers, 16.4 Mo**.
 

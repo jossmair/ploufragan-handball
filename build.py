@@ -1525,9 +1525,16 @@ for album in sorted(GALLERIES, key=lambda item: item["date"], reverse=True):
         "cta": "OUVRIR L’ALBUM",
     })
 gallery_cards = ''.join(gallery_index_card(entry) for entry in gallery_hub_entries)
+gallery_heading_media = heading_video(
+    "assets/videos/galerie-animation.mp4",
+    "assets/videos/galerie-animation-first.webp",
+    "data-gallery-logo-video",
+    "gallery-intro-media",
+)
 pages["galerie"] = page(
     "galerie", "Galerie photo",
-    heading("GALERIE <em>PHOTO</em>", "Galerie photo", "Les matchs et les temps forts du Ploufragan Handball en images.")
+    heading("GALERIE <em>PHOTO</em>", "Galerie photo", "Les matchs et les temps forts du Ploufragan Handball en images.",
+            css_class="animated-heading gallery-heading", extra=gallery_heading_media)
     + f'''<section class="container section after-heading gallery-index"><div class="gallery-index-grid">{gallery_cards}</div></section>''',
 )
 for gallery in GALLERIES:
