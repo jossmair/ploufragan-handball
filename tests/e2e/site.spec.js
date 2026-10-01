@@ -256,6 +256,27 @@ test('U11 : la carte de Yohann est intégrée aux entraînements', async ({ page
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
 });
 
+test('U11 mobile : la carte est centrée entre Yohann et Joshua', async ({ page }) => {
+  for (const width of [360, 390, 430, 650]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto('/u11-mixte.html');
+    const toggle = page.locator('.team-training [data-org-coach-toggle]');
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await expect.poll(async () => {
+      const card = await page.locator('.team-training .org-coach-image').boundingBox();
+      const staff = await page.locator('.team-staff-coaches').boundingBox();
+      const name = await page.locator('.team-training-coach-name').boundingBox();
+      const yohann = await toggle.boundingBox();
+      return Math.abs(card.x + card.width / 2 - staff.x - staff.width / 2) < 1
+        && card.y >= yohann.y + yohann.height
+        && name.y >= card.y + card.height;
+    }).toBe(true);
+    await page.locator('.team-training [data-org-coach-close]').click();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  }
+});
+
 test('U11 : les cartes restent dans leurs colonnes, carte coach ouverte ou fermée', async ({ page }) => {
   for (const width of [390, 768, 900, 1100, 1440, 1840]) {
     await page.setViewportSize({ width, height: 1000 });
