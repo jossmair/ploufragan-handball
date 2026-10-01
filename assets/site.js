@@ -157,8 +157,8 @@ function paintScroll() {
   siteHeader.classList.toggle('is-scrolled', currentScrollY > 20);
 
   const delta = currentScrollY - lastScrollY;
-  const menuOpen = menuButton.getAttribute('aria-expanded') === 'true';
-  if (currentScrollY <= 20 || menuOpen) {
+  const menuOpen = menuButton.getAttribute('aria-expanded') === 'true' || Boolean(navigation.querySelector('.nav-group.is-open'));
+  if (currentScrollY <= 20 || menuOpen || document.body.dataset.page === 'inscriptions') {
     downwardDistance = 0;
     siteHeader.classList.remove('is-hidden');
   } else if (delta < 0) {

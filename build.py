@@ -441,11 +441,61 @@ def structured_data_for(slug, title):
                       ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
+NAV_SECTIONS = {
+    "club": [("", [("club.html", "Le club"), ("club.html#organigramme", "Organigramme"),
+                    ("articles/histoire-ploufragan-handball.html", "Histoire du club"),
+                    ("inscriptions.html#documents", "Documents d’inscription")])],
+    "equipes": [
+        ("Seniors et loisirs", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
+            for key in ("seniors-masculins", "seniors-masculins-1", "seniors-masculins-2", "seniors-feminines", "loisirs")]),
+        ("Équipes jeunes", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
+            for key in ("jeunes", "u18-garcons", "u15-filles", "u15-garcons", "u13-filles", "u13-garcons", "u11-mixte")]),
+        ("École de hand", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
+            for key in ("baby-hand", "ecole-de-hand")]),
+    ],
+    "entrainements": [("", [("entrainements.html", "Planning des entraînements"),
+                            ("entrainements.html#salles", "Les salles")])],
+    "galerie": [("Albums photo", [
+        ("u11-mixte.html#u11-mixte-gallery-title", "U11 mixte"),
+        ("u13-filles.html#u13-filles-gallery-title", "U13 filles"),
+        ("u13-garcons.html#u13-garcons-gallery-title", "U13 garçons"),
+        ("seniors-feminines.html#seniors-feminines-gallery-title", "Seniors féminines"),
+        ("galeries/seniors-1-pays-de-dinan-2026.html", "Seniors masculins 1"),
+        ("galerie.html", "Tous les albums"),
+    ])],
+}
+
+
+def navigation_html(slug, active):
+    items = []
+    for key, label in NAV:
+        href = "/" if key == "index" else key + ".html"
+        sections = NAV_SECTIONS.get(key)
+        paths = {url.split("#")[0].removesuffix(".html") for _, links in sections or [] for url, _ in links}
+        selected = active == key or slug in paths and key == "equipes"
+        if slug == "articles/histoire-ploufragan-handball":
+            selected = key == "club"
+        current = ' aria-current="page"' if slug == key else ''
+        state = ' class="is-active"' if selected else ''
+        link = f'<a href="{href}"{current}{state}>{label}</a>'
+        if not sections:
+            items.append(link)
+            continue
+        groups = []
+        for heading_text, links in sections:
+            heading_html = f'<p class="nav-section-title">{heading_text}</p>' if heading_text else ''
+            entries = ''.join(f'<li><a href="{url}"' + (' aria-current="page"' if url == slug + '.html' else '') + f'>{escape(text)}</a></li>' for url, text in links)
+            groups.append(f'<div class="nav-section">{heading_html}<ul>{entries}</ul></div>')
+        footer = '<a class="nav-all" href="equipes.html">Voir toutes les équipes <span aria-hidden="true">→</span></a>' if key == "equipes" else ''
+        items.append(f'<div class="nav-group{" is-active" if selected else ""}" data-nav-group><div class="nav-group-heading">{link}<button type="button" class="nav-sub-toggle" aria-label="Sous-menu {label}" aria-expanded="false" aria-controls="nav-sub-{key}" aria-haspopup="true"><span aria-hidden="true"></span></button></div><div class="nav-submenu{" nav-teams" if key == "equipes" else ""}" id="nav-sub-{key}"><div class="nav-submenu-inner">{"".join(groups)}{footer}</div></div></div>')
+    return ''.join(items)
+
+
 def page(slug, title, body, active=None, description=None, show_partner_marquee=True,
          page_title=None, social_image=None, open_graph_type="website", body_page=None,
          extra_head=""):
     active=active or slug
-    nav=''.join(f'<a href="{"/" if key == "index" else key + ".html"}"'+(' aria-current="page"' if key==active else '')+f'>{label}</a>' for key,label in NAV)
+    nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
     path = "" if slug == "index" else f"{slug}.html"
@@ -463,8 +513,8 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
     base_tag = f'<base href="{SITE_URL}">' if slug == "404" else ""
     favicon = '<link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="icon" href="assets/favicon-48.png" type="image/png" sizes="48x48"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180"><link rel="manifest" href="manifest.webmanifest">'
     fonts = '<link rel="preload" href="assets/fonts/barlow-condensed-italic-800.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="assets/fonts/inter-normal-400-700.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="assets/fonts/fonts.css">'
-    no_script_navigation = '''<noscript><style>@media(max-width:850px){.menu-toggle{display:none!important}.header-inner{flex-wrap:wrap}#navigation{position:static!important;display:flex!important;flex:1 0 100%;max-height:none!important;padding:8px 0 18px!important;flex-direction:column;align-items:stretch;gap:0}}</style></noscript>'''
-    return f'''<!doctype html><html lang="fr"><head>{base_tag}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101012"><meta name="description" content="{escape(description,quote=True)}"><meta name="phb-build" content="{BUILD_ID}">{seo}<title>{escape(page_title)}</title>{favicon}{fonts}<link rel="stylesheet" href="assets/site.css?v={CSS_VERSION}">{no_script_navigation}<script src="assets/site.js?v={JS_VERSION}" defer></script></head><body data-page="{body_page or slug}"><div class="site-texture" aria-hidden="true"></div><img class="watermark" src="assets/logo-phb.png" alt="" width="512" height="512" aria-hidden="true"><div class="scroll-progress" aria-hidden="true"></div><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><div class="header-inner container"><a class="brand" href="/" aria-label="Ploufragan Handball, accueil"><img src="assets/logo-phb.png" alt="" width="60" height="60"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><button class="menu-toggle" aria-controls="navigation" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button><nav id="navigation" aria-label="Navigation principale">{nav}<a class="nav-registration" href="inscriptions.html">Inscriptions <span aria-hidden="true">↗</span></a></nav></div></header><main id="contenu">{body}</main>{marquee}<footer class="site-footer"><div class="container footer-main"><a class="brand" href="/"><img src="assets/logo-phb.png" alt="Logo PHB" width="56" height="56"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><div><h2>CONTACT</h2><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a><a href="tel:+33636618800">06 36 61 88 00</a></div><div><h2>ACCÈS RAPIDE</h2><a href="resultats.html">Résultats et championnats</a><a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a><a href="galerie.html">Galerie photo</a></div><div><h2>RÉSEAUX SOCIAUX</h2><a class="footer-social-link facebook" href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook", False)}Facebook ↗</a><a class="footer-social-link instagram" href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram", False)}Instagram ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year">{SITE_CONFIG["copyrightYear"]}</span> Ploufragan Handball</span><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></nav><a href="#contenu">Haut de page ↑</a></div></footer></body></html>'''
+    no_script_navigation = '''<noscript><style>.nav-group:hover>.nav-submenu,.nav-group:focus-within>.nav-submenu{visibility:visible;opacity:1;transform:none}@media(max-width:850px){.menu-toggle{display:none!important}.header-inner{flex-wrap:wrap}#navigation{position:static!important;display:flex!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important;clip-path:none!important;width:100%!important;flex:1 0 100%;max-height:none!important;padding:8px 0 18px!important;flex-direction:column;align-items:stretch;gap:0}.nav-sub-toggle{display:none!important}.nav-submenu{grid-template-rows:1fr!important;visibility:visible!important}.nav-submenu-inner{visibility:visible!important}}</style></noscript>'''
+    return f'''<!doctype html><html lang="fr"><head>{base_tag}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101012"><meta name="description" content="{escape(description,quote=True)}"><meta name="phb-build" content="{BUILD_ID}">{seo}<title>{escape(page_title)}</title>{favicon}{fonts}<link rel="stylesheet" href="assets/site.css?v={CSS_VERSION}"><link rel="stylesheet" href="assets/navigation.css?v=20261001-2"><script src="assets/navigation.js?v=20261001-1" defer></script>{no_script_navigation}<script src="assets/site.js?v={JS_VERSION}" defer></script></head><body data-page="{body_page or slug}"><div class="site-texture" aria-hidden="true"></div><img class="watermark" src="assets/logo-phb.png" alt="" width="512" height="512" aria-hidden="true"><div class="scroll-progress" aria-hidden="true"></div><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><div class="header-inner container"><a class="brand" href="/" aria-label="Ploufragan Handball, accueil"><img src="assets/logo-phb.png" alt="" width="60" height="60"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><button class="menu-toggle" aria-controls="navigation" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button><nav id="navigation" aria-label="Navigation principale">{nav}<a class="nav-registration" href="inscriptions.html"{' aria-current="page"' if slug == "inscriptions" else ''}>Inscriptions <span aria-hidden="true">↗</span></a></nav></div></header><main id="contenu">{body}</main>{marquee}<footer class="site-footer"><div class="container footer-main"><a class="brand" href="/"><img src="assets/logo-phb.png" alt="Logo PHB" width="56" height="56"><span>PLOUFRAGAN<small>HANDBALL</small></span></a><div><h2>CONTACT</h2><a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a><a href="tel:+33636618800">06 36 61 88 00</a></div><div><h2>ACCÈS RAPIDE</h2><a href="resultats.html">Résultats et championnats</a><a href="boutique.html">Boutique officielle</a><a href="blog.html">Blog</a><a href="galerie.html">Galerie photo</a></div><div><h2>RÉSEAUX SOCIAUX</h2><a class="footer-social-link facebook" href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook", False)}Facebook ↗</a><a class="footer-social-link instagram" href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram", False)}Instagram ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year">{SITE_CONFIG["copyrightYear"]}</span> Ploufragan Handball</span><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></nav><a href="#contenu">Haut de page ↑</a></div></footer></body></html>'''
 
 
 def article_date(value):
