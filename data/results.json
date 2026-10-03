@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T13:04:59.264525+00:00",
+  "updatedAt": "2026-10-03T14:51:33.955100+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -195,14 +195,14 @@
       "standings": [
         {
           "position": 1,
-          "team": "BAIE D'ARMOR HB -13F2",
-          "points": 12,
-          "played": 4,
+          "team": "L'HANDBALLE CLUB",
+          "points": 15,
+          "played": 5,
           "club": false
         },
         {
           "position": 2,
-          "team": "L'HANDBALLE CLUB",
+          "team": "BAIE D'ARMOR HB -13F2",
           "points": 12,
           "played": 4,
           "club": false
@@ -237,17 +237,17 @@
         },
         {
           "position": 7,
+          "team": "LEHON DINAN'COM HB 2",
+          "points": 6,
+          "played": 5,
+          "club": false
+        },
+        {
+          "position": 8,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 5,
           "played": 4,
           "club": true
-        },
-        {
-          "position": 8,
-          "team": "LEHON DINAN'COM HB 2",
-          "points": 5,
-          "played": 4,
-          "club": false
         },
         {
           "position": 9,
