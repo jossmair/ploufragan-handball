@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T18:22:47.634105+00:00",
+  "updatedAt": "2026-10-03T21:43:32.438144+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -196,8 +196,8 @@
         {
           "position": 1,
           "team": "L'HANDBALLE CLUB",
-          "points": 15,
-          "played": 5,
+          "points": 18,
+          "played": 6,
           "club": false
         },
         {
@@ -209,37 +209,37 @@
         },
         {
           "position": 3,
+          "team": "PLESTIN HB",
+          "points": 12,
+          "played": 6,
+          "club": false
+        },
+        {
+          "position": 4,
           "team": "LANNION HANDBALL",
           "points": 10,
           "played": 4,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "ALS PLOUAGAT 2",
           "points": 10,
           "played": 4,
           "club": false
         },
         {
-          "position": 5,
-          "team": "PLESTIN HB",
-          "points": 8,
-          "played": 4,
-          "club": false
-        },
-        {
           "position": 6,
           "team": "ALVMP HanDBALL",
-          "points": 6,
-          "played": 4,
+          "points": 9,
+          "played": 5,
           "club": false
         },
         {
           "position": 7,
           "team": "LEHON DINAN'COM HB 2",
-          "points": 6,
-          "played": 5,
+          "points": 7,
+          "played": 6,
           "club": false
         },
         {
@@ -252,8 +252,8 @@
         {
           "position": 9,
           "team": "US BOURBRIAC",
-          "points": 2,
-          "played": 4,
+          "points": 3,
+          "played": 5,
           "club": false
         }
       ]
@@ -334,44 +334,44 @@
         {
           "position": 3,
           "team": "Pays de dinan handball club",
+          "points": 8,
+          "played": 4,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "SC Mevennais handball",
           "points": 7,
           "played": 3,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "CSAL PAIMPOL HB1",
           "points": 6,
           "played": 3,
           "club": false
         },
         {
-          "position": 5,
+          "position": 6,
           "team": "HBC HENANSAL ERQUY 1",
           "points": 5,
           "played": 3,
           "club": false
         },
         {
-          "position": 6,
-          "team": "SC Mevennais handball",
-          "points": 4,
-          "played": 2,
-          "club": false
-        },
-        {
           "position": 7,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 4,
-          "played": 3,
-          "club": true
-        },
-        {
-          "position": 8,
           "team": "PLOEUC HAND",
           "points": 4,
           "played": 2,
           "club": false
+        },
+        {
+          "position": 8,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 4,
+          "played": 3,
+          "club": true
         },
         {
           "position": 9,
@@ -445,21 +445,21 @@
         {
           "position": 5,
           "team": "MENE MERDRIGNAC HANDBALL 1",
-          "points": 4,
-          "played": 2,
+          "points": 7,
+          "played": 3,
           "club": false
         },
         {
           "position": 6,
-          "team": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
+          "team": "BAIE D'ARMOR HB - SG3",
           "points": 3,
-          "played": 2,
+          "played": 3,
           "club": false
         },
         {
           "position": 7,
-          "team": "BAIE D'ARMOR HB - SG3",
-          "points": 3,
+          "team": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
+          "points": 4,
           "played": 3,
           "club": false
         },
