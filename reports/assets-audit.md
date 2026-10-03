@@ -3,9 +3,9 @@
 ## Poids du site publié
 
 - Source du calcul : **simulation du paquet GitHub Pages**.
-- Paquet public : **905 fichiers, 373.0 Mo**.
-- Plafond surveillé : **400.0 Mo** — **OK**.
-- Marge restante : **27.0 Mo**.
+- Paquet public : **1313 fichiers, 470.4 Mo**.
+- Plafond surveillé : **500.0 Mo** — **OK**.
+- Marge restante : **29.6 Mo**.
 
 ## Galeries et originaux HD
 
@@ -20,8 +20,8 @@
 
 ## Inventaire général
 
-- Assets publics : **865 fichiers, 371.9 Mo**.
-- Référencés par le site généré ou ses sources : **861**.
+- Assets publics : **1272 fichiers, 469.2 Mo**.
+- Référencés par le site généré ou ses sources : **1268**.
 - À examiner manuellement : **4**.
 - Sources graphiques archivées hors publication : **15 fichiers, 16.4 Mo**.
 
@@ -29,6 +29,12 @@
 
 | Fichier | Poids |
 |---|---:|
+| `assets/stage-ete/jour-4.mp4` | 19.4 Mo |
+| `assets/stage-ete/jour-5.mp4` | 16.8 Mo |
+| `assets/stage-ete/jour-1.mp4` | 9.9 Mo |
+| `assets/stage-ete/jour-2.mp4` | 9.0 Mo |
+| `assets/stage-ete/jour-3.mp4` | 6.4 Mo |
+| `assets/stage-ete/coulisses-2.mp4` | 5.6 Mo |
 | `assets/blog/blog-logo-orbit.mp4` | 4.9 Mo |
 | `assets/videos/entrainements-animation.mp4` | 3.8 Mo |
 | `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-27.jpg` | 2.9 Mo |
@@ -43,12 +49,6 @@
 | `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-70.jpg` | 2.4 Mo |
 | `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-84.jpg` | 2.3 Mo |
 | `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-16.jpg` | 2.3 Mo |
-| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-83.jpg` | 2.3 Mo |
-| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-58.jpg` | 2.3 Mo |
-| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-61.jpg` | 2.2 Mo |
-| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-82.jpg` | 2.2 Mo |
-| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-52.jpg` | 2.2 Mo |
-| `assets/galeries/seniors-1-pays-de-dinan-2026/originals/photo-163.jpg` | 2.2 Mo |
 
 ## Assets potentiellement inutilisés
 

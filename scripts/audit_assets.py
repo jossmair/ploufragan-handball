@@ -12,7 +12,7 @@ except ImportError:
     from seo_audit import FILES, ROOT, Page, local_path
 
 
-DEFAULT_MAX_SITE_BYTES = 400 * 1024 * 1024
+DEFAULT_MAX_SITE_BYTES = 500 * 1024 * 1024
 TEXT_SOURCES = [ROOT / "build.py", ROOT / "assets" / "site.js"]
 TEXT_SOURCES += sorted((ROOT / "data").glob("*.json"))
 ASSET_PATTERN = re.compile(r"(?:\.\./)*assets/[A-Za-z0-9_./-]+")

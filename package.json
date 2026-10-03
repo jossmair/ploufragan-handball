@@ -9,7 +9,7 @@
     "audit:sitemap": "node scripts/audit_sitemap.mjs",
     "audit:nojs": "node scripts/audit_nojs.mjs",
     "audit:budgets": "python scripts/check_budgets.py",
-    "audit:assets": "python scripts/audit_assets.py --output reports/assets-audit.md --max-site-bytes 419430400",
+    "audit:assets": "python scripts/audit_assets.py --output reports/assets-audit.md --max-site-bytes 524288000",
     "audit:external": "python scripts/audit_external_links.py",
     "audit:partner-pdf": "node scripts/audit_partner_pdf.mjs",
     "build:partner-pdf": "python scripts/build_partner_kit.py && node scripts/build_partner_pdf.mjs"

@@ -445,7 +445,7 @@ def structured_data_for(slug, title):
 
 
 NAV_SECTIONS = {
-    "club": [("", [("club.html", "Le club"), ("club.html#organigramme", "Organigramme"),
+    "club": [("", [("club.html", "Le club"), ("club.html#organigramme", "Organigramme"), ("stage-ete.html", "Stage d’été · 13–15 ans"),
                     ("articles/histoire-ploufragan-handball.html", "Histoire du club"),
                     ("inscriptions.html#documents", "Documents d’inscription")])],
     "equipes": [
@@ -457,12 +457,13 @@ NAV_SECTIONS = {
             for key in ("baby-hand", "ecole-de-hand")]),
     ],
     "entrainements": [("", [("entrainements.html", "Planning des entraînements"),
-                            ("entrainements.html#salles", "Les salles")])],
+                            ("entrainements.html#salles", "Les salles"), ("stage-ete.html", "Stage d’été · 13–15 ans")])],
     "galerie": [("Albums photo", [
         ("u13-filles.html#u13-filles-gallery-title", "U13 filles"),
         ("u13-garcons.html#u13-garcons-gallery-title", "U13 garçons"),
         ("seniors-feminines.html#seniors-feminines-gallery-title", "Seniors féminines"),
         ("galeries/seniors-1-pays-de-dinan-2026.html", "Seniors masculins 1"),
+        ("stage-ete.html#souvenirs", "Stage d’été 2026"),
         ("galerie.html", "Tous les albums"),
     ])],
 }
@@ -1575,6 +1576,13 @@ for album in sorted(GALLERIES, key=lambda item: item["date"], reverse=True):
         "intro": album["intro"],
         "cta": "OUVRIR L’ALBUM",
     })
+gallery_hub_entries.append({
+    "href": "stage-ete.html#souvenirs", "cover": "assets/stage-ete/photo-003.webp",
+    "cover_width": 1400, "cover_height": 1050, "alt": "Le groupe du stage PHB à Guerlédan",
+    "eyebrow": "LA VIE DU CLUB", "meta": "194 photos · 8 vidéos · juillet 2026",
+    "title": "Le stage d’été à Guerlédan", "intro": "Handball et aventures : revivez la première édition du stage PHB.",
+    "cta": "REVIVRE LE STAGE",
+})
 gallery_cards = ''.join(gallery_index_card(entry) for entry in gallery_hub_entries)
 gallery_heading_media = heading_video(
     "assets/videos/galerie-animation.mp4",
@@ -1599,6 +1607,17 @@ privacy = '''<section class="container section after-heading legal-content"><div
 pages["confidentialite"] = page("confidentialite", "Confidentialité", heading("VIE <em>PRIVÉE</em>", "Confidentialité") + privacy)
 pages["404"]=page("404","Page introuvable",heading("PAGE <em>INTROUVABLE</em>","Page introuvable")+f'<section class="container section after-heading"><p>Cette adresse ne correspond à aucune page du site.</p><div class="actions">{button("Accueil","/")}</div></section>')
 
+from stage_page import stage_body
+pages["stage-ete"] = page(
+    "stage-ete", "Stage d’été PHB à Guerlédan", stage_body(ROOT), active="club",
+    page_title="Stage handball été 2027 à Guerlédan · 13–15 ans | PHB",
+    social_image=("assets/og/stage-ete.jpg", 1200, 630, "Le groupe du stage d’été PHB à Guerlédan"),
+    description="Stage d’été du Ploufragan Handball à Guerlédan pour les filles et garçons de 13 à 15 ans. Revivez 2026 en photos et vidéos et découvrez la prochaine édition 2027.",
+    extra_head='<link rel="stylesheet" href="assets/stage-ete.css?v=20261003-1"><script src="assets/stage-ete.js?v=20261003-1" defer></script>',
+)
+pages["stage-ete"] = re.sub(r'<a class="footer-social-link instagram".*?</a>', '', pages["stage-ete"])
+stage_promo = '''<section class="container section"><div class="team-article-entry"><div><p class="eyebrow">ÉTÉ 2027 · 13–15 ANS · FILLES & GARÇONS</p><h2>CAP SUR <em>GUERLÉDAN</em></h2><p>Handball, aventure et esprit d’équipe : le stage d’été PHB revient pour une deuxième édition. Revivez la première en photos et vidéos.</p></div><a class="button" href="stage-ete.html">DÉCOUVRIR LE STAGE ↗</a></div></section>'''
+pages["index"] = pages["index"].replace('</main>', stage_promo + '</main>')
 for slug, content in pages.items():
     target = ROOT / (slug + ".html")
     target.parent.mkdir(parents=True, exist_ok=True)

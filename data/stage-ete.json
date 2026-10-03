@@ -1,0 +1,1412 @@
+{
+  "photos": [
+    {
+      "src": "assets/stage-ete/photo-001.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-001.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-002.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-002.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-003.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-003.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-004.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-004.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-005.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-005.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-006.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-006.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-007.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-007.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-008.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-008.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-009.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-009.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-010.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-010.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-011.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-011.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-012.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-012.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-013.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-013.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-014.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-014.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-015.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-015.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-016.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-016.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-017.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-017.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-018.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-018.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-019.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-019.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-020.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-020.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-021.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-021.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-022.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-022.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-023.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-023.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-024.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-024.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-025.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-025.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-026.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-026.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-027.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-027.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-028.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-028.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-029.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-029.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-030.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-030.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-031.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-031.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-032.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-032.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-033.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-033.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-034.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-034.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-035.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-035.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-036.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-036.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-037.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-037.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-038.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-038.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-039.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-039.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-040.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-040.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-041.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-041.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-042.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-042.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-043.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-043.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-044.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-044.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-045.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-045.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-046.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-046.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-047.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-047.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-048.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-048.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-049.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-049.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-050.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-050.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-051.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-051.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-052.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-052.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-053.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-053.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-054.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-054.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-055.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-055.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-056.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-056.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-057.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-057.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-058.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-058.webp",
+      "width": 1400,
+      "height": 1050,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-059.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-059.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-060.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-060.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-061.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-061.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-062.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-062.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-063.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-063.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-064.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-064.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-065.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-065.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-066.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-066.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-067.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-067.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-068.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-068.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-069.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-069.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-070.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-070.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-071.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-071.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-072.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-072.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-073.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-073.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-074.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-074.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-075.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-075.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-076.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-076.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-077.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-077.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-078.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-078.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-079.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-079.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-080.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-080.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-081.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-081.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-082.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-082.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-083.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-083.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-084.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-084.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-085.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-085.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-086.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-086.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-087.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-087.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-088.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-088.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-089.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-089.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-090.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-090.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-091.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-091.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-092.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-092.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-093.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-093.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-094.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-094.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-095.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-095.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-096.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-096.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-097.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-097.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-098.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-098.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-099.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-099.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-100.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-100.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-101.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-101.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-102.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-102.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-103.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-103.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-104.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-104.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-105.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-105.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-106.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-106.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-107.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-107.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-108.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-108.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-109.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-109.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-110.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-110.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-111.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-111.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-112.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-112.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-113.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-113.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-114.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-114.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-115.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-115.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-116.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-116.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-117.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-117.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-118.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-118.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-119.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-119.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-120.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-120.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-121.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-121.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-122.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-122.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-123.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-123.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-124.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-124.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-125.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-125.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-126.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-126.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-127.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-127.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-128.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-128.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-129.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-129.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-130.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-130.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-131.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-131.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-132.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-132.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-133.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-133.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-134.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-134.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-135.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-135.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-136.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-136.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-137.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-137.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-138.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-138.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-139.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-139.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-140.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-140.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-141.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-141.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-142.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-142.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-143.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-143.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-144.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-144.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-145.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-145.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-146.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-146.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-147.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-147.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-148.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-148.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-149.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-149.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-150.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-150.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-151.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-151.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-152.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-152.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-153.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-153.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-154.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-154.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-155.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-155.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-156.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-156.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-157.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-157.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-158.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-158.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-159.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-159.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-160.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-160.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-161.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-161.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-162.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-162.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-163.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-163.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-164.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-164.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-165.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-165.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-166.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-166.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-167.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-167.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-168.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-168.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-169.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-169.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-170.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-170.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-171.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-171.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-172.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-172.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-173.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-173.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-174.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-174.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-175.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-175.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "handball"
+    },
+    {
+      "src": "assets/stage-ete/photo-176.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-176.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-177.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-177.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-178.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-178.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-179.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-179.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-180.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-180.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-181.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-181.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-182.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-182.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-183.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-183.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-184.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-184.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-185.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-185.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-186.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-186.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-187.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-187.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-188.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-188.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-189.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-189.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-190.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-190.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-191.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-191.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    },
+    {
+      "src": "assets/stage-ete/photo-192.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-192.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-193.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-193.webp",
+      "width": 1400,
+      "height": 788,
+      "category": "ensemble"
+    },
+    {
+      "src": "assets/stage-ete/photo-194.webp",
+      "thumb": "assets/stage-ete/thumbs/photo-194.webp",
+      "width": 787,
+      "height": 1400,
+      "category": "aventure"
+    }
+  ],
+  "videos": [
+    {
+      "src": "assets/stage-ete/jour-1.mp4",
+      "poster": "assets/stage-ete/jour-1.webp",
+      "title": "Premiers pas, premières passes",
+      "description": "Installation, montée de balle, repli défensif et concours de cross bar."
+    },
+    {
+      "src": "assets/stage-ete/jour-2.mp4",
+      "poster": "assets/stage-ete/jour-2.webp",
+      "title": "Escalade & défense",
+      "description": "Une matinée sur les rochers du lac et une séance consacrée à la défense."
+    },
+    {
+      "src": "assets/stage-ete/jour-3.mp4",
+      "poster": "assets/stage-ete/jour-3.webp",
+      "title": "Gardiens & tir à l’arc",
+      "description": "Une séance spéciale gardiens et de nouveaux défis à l’arc."
+    },
+    {
+      "src": "assets/stage-ete/jour-4.mp4",
+      "poster": "assets/stage-ete/jour-4.webp",
+      "title": "Kayak & beach handball",
+      "description": "Du duel, une randonnée, du kayak et du beach handball au bord du lac."
+    },
+    {
+      "src": "assets/stage-ete/jour-5.mp4",
+      "poster": "assets/stage-ete/jour-5.webp",
+      "title": "Derniers défis & accrobranche",
+      "description": "Des tactiques d’attaque et une dernière aventure dans les arbres."
+    },
+    {
+      "src": "assets/stage-ete/coulisses-1.mp4",
+      "poster": "assets/stage-ete/coulisses-1.webp",
+      "title": "Le groupe en mouvement",
+      "description": "Un moment de la première édition, filmé au cœur du stage."
+    },
+    {
+      "src": "assets/stage-ete/coulisses-2.mp4",
+      "poster": "assets/stage-ete/coulisses-2.webp",
+      "title": "Découverte du tir à l’arc",
+      "description": "Un moment de la première édition, filmé au cœur du stage."
+    },
+    {
+      "src": "assets/stage-ete/coulisses-3.mp4",
+      "poster": "assets/stage-ete/coulisses-3.webp",
+      "title": "Défis à l’arc",
+      "description": "Un moment de la première édition, filmé au cœur du stage."
+    }
+  ]
+}
