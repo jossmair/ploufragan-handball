@@ -77,6 +77,8 @@ test('navigation : clavier, pages actives et accessibilité', async ({ page }) =
     if (group) {
       await nav.locator(`[aria-controls="nav-sub-${group}"]`).focus();
       await expect(nav.locator(`[aria-controls="nav-sub-${group}"]`)).toHaveAttribute('aria-expanded', 'true');
+      // Audit the final colours, rather than a frame of the opening fade.
+      await expect(nav.locator(`#nav-sub-${group}`)).toHaveCSS('opacity', '1');
     }
     await expect(nav.getByRole('link', { name: current, exact: true }).first()).toHaveAttribute('aria-current', 'page');
     const audit = await new AxeBuilder({ page }).include('#navigation').analyze();
