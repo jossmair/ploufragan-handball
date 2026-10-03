@@ -20,3 +20,17 @@ test('David: rotation automatique, pause et mouvement réduit', async ({ page })
   await expect(feature.locator('[data-staff-motion]')).toBeHidden();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+
+ test('David: mobile portraits stay below the title', async ({page}) => {
+  await page.goto('/club.html');
+  for (const width of [360,390,430,768,850]) {
+    await page.setViewportSize({width,height:900});
+    const geometry = await page.locator('[data-staff-animation]').evaluate(element => {
+      const title=element.querySelector('.staff-copy').getBoundingClientRect();
+      const portrait=element.querySelector('.staff-portrait').getBoundingClientRect();
+      const frame=element.getBoundingClientRect();
+      return {clear:title.bottom < portrait.top, inside:portrait.left>=frame.left && portrait.right<=frame.right, overflow:document.documentElement.scrollWidth>innerWidth};
+    });
+    expect(geometry).toEqual({clear:true,inside:true,overflow:false});
+  }
+});
