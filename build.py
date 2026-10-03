@@ -1181,7 +1181,12 @@ def org_contact(area, title):
     return f'<a class="button org-contact" href="{escape(href, quote=True)}" aria-label="Contacter {escape(title, quote=True)} par e-mail">CONTACTER <span aria-hidden="true">↗</span></a>'
 
 def org_team(area, title, members):
-    people=''.join(f'<li><span>{escape(first)} <strong>{escape(last)}</strong></span></li>' for first,last in members)
+    people = ''
+    for first, last in members:
+        if area == "comm" and (first, last) == ("Erwan", "ROUXEL"):
+            people += f'<li class="org-coach-entry" data-org-coach>{org_person_card(first, last, "erwan-comm", [("assets/club/cartes/erwan-team-comm.webp", "Erwan Rouxel, Team Comm", 512, 768)])}</li>'
+        else:
+            people += f'<li><span>{escape(first)} <strong>{escape(last)}</strong></span></li>'
     return f'<article class="org-card org-{area}" data-reveal><h3>{escape(title)}</h3><ul>{people}</ul>{org_contact(area, title) if area in ORG_EMAILS else ""}</article>'
 
 def org_person_card(first, last, key, cards):
@@ -1199,6 +1204,7 @@ def org_coach_team(members):
         ("Olivier", "BEAUX"): ("olivier", "assets/club/cartes/olivier-ecole-hand.webp", "Olivier Beaux, coach de l’école de hand"),
         ("Clara", "TOQUET"): ("clara", "assets/club/cartes/clara-baby-hand.webp", "Clara Toquet, encadrante Baby Hand"),
         ("David", "IMBAUD"): ("david", "assets/club/cartes/david-u13-filles.webp", "David Imbaud, coach U13 filles"),
+        ("Erwan", "ROUXEL"): ("erwan-coach", "assets/club/cartes/erwan-u15-garcons.webp", "Erwan Rouxel, coach U15 garçons"),
     }
     people = []
     for first, last in members:
@@ -1208,8 +1214,8 @@ def org_coach_team(members):
             continue
         key, image, alt = card
         cards = [(image, alt, 1024, 1536)]
-        if key in {"elsa-coach", "olivier", "clara", "david"}:
-            cards = [(image, alt, 640, 960)]
+        if key in {"elsa-coach", "olivier", "clara", "david", "erwan-coach"}:
+            cards = [(image, alt, 512, 768)]
         if key == "david":
             cards.append(("assets/club/cartes/david-baby-hand.webp", "David Imbaud, encadrant Baby Hand", 640, 960))
         if key == "clara":
