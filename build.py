@@ -323,9 +323,13 @@ def competition_detail(team):
         for row in rows
     )
     table = f'<div class="pool-table-scroll"><table class="pool-table"><thead><tr><th scope="col">#</th><th scope="col">Équipe</th><th scope="col">J</th><th scope="col">Pts</th></tr></thead><tbody>{standings}</tbody></table></div>' if rows else '<p class="season-empty">Classement non publié à ce jour.</p>'
-    related = [m for m in RESULTS["matches"] if m["category"] == team["label"] and m["played"]]
+    team_matches = [m for m in RESULTS["matches"] if m["category"] == team["label"]]
+    weekend_matches, future, weekend_active = select_score_and_upcoming(team_matches, paris_now())
+    related = [m for m in team_matches if m["played"]]
     latest = max(related, key=lambda match: match["date"], default=None)
-    if latest:
+    if weekend_active:
+        result = ''.join(match_card(match, pending_score=not match["played"]) for match in weekend_matches) or '<p class="season-empty">Aucun match annoncé pour cette équipe ce week-end.</p>'
+    elif latest:
         home = score_span(latest['homeScore'], latest['clubSide'] == 'home')
         away = score_span(latest['awayScore'], latest['clubSide'] == 'away')
         score = f'{home}<i aria-hidden="true">–</i>{away}'
@@ -334,8 +338,8 @@ def competition_detail(team):
     else:
         result = '<p class="season-empty">Aucun résultat publié pour cette équipe.</p>'
     standings_card = f'''<article class="team-season-card" data-reveal><div class="team-season-head"><div><p class="eyebrow">{escape(team["pool"])}</p><h2>CLASSEMENT · {escape(label)}</h2></div><a href="{escape(team["url"], quote=True)}" target="_blank" rel="noopener noreferrer">Fiche équipe ↗</a></div><div class="team-rank"><div><small>POSITION DANS LA POULE</small><strong>{rank}</strong><span>{rank_note}</span></div></div>{table}<a class="season-ranking-link" href="{escape(team["ranking"], quote=True)}" target="_blank" rel="noopener noreferrer">Classement complet sur FFHandball ↗</a></article>'''
-    result_card = f'''<article class="team-last-card" data-reveal><p class="eyebrow">{escape(label)}</p><h2>DERNIER RÉSULTAT</h2>{result}</article>'''
-    future = [m for m in RESULTS["matches"] if m["category"] == team["label"] and not m["played"] and datetime.fromisoformat(m["date"]) >= datetime.now(timezone.utc)]
+    result_title = "SCORES DU WEEK-END" if weekend_active else "DERNIER RÉSULTAT"
+    result_card = f'''<article class="team-last-card" data-reveal><p class="eyebrow">{escape(label)}</p><h2>{result_title}</h2>{result}</article>'''
     next_match = min(future, key=lambda match: match["date"], default=None)
     next_content = match_card(next_match) if next_match else '<p class="season-empty">Aucun prochain match annoncé pour cette équipe.</p>'
     next_card = f'<article class="team-next-card" data-reveal><p class="eyebrow">{escape(label)}</p><h2>PROCHAIN MATCH</h2>{next_content}</article>'
