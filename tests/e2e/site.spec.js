@@ -244,9 +244,11 @@ test('club : les cartes des coachs se déplient et se replient', async ({ page }
   const davidToggle = david.locator('[data-org-coach-toggle]');
   await davidToggle.click();
   await expect(david.locator('img')).toHaveCount(2);
-  for (const close of await david.locator('[data-org-coach-close]').all()) {
-    await expect(close).toHaveAttribute('tabindex', '0');
-  }
+  await expect(david.locator('[data-org-coach-close]').first()).toHaveAttribute('tabindex', '0');
+  await david.locator('[data-org-next]').click();
+  await expect(david.locator('[data-org-position]')).toHaveText('2 / 2');
+  await expect(david.locator('[data-org-role]')).toHaveText('encadrant Baby Hand');
+  await expect(david.locator('[data-org-coach-close]').last()).toHaveAttribute('tabindex', '0');
   await david.locator('[data-org-coach-close]').last().click();
   await expect(davidToggle).toHaveAttribute('aria-expanded', 'false');
   await office.locator('[aria-controls="org-coach-card-elsa-office"]').click();
