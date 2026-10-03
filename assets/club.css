@@ -27,3 +27,4 @@
 @media(max-width:1000px){body[data-page="u11-mixte"] .team-detail-main{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:650px){.org-coach-toggle{padding:9px 6px}.org-coach-image{width:min(100%,210px)}.team-training .team-staff-coaches{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px}.team-staff-coaches>span{grid-column:1;grid-row:1}.team-training-coach-list .org-coach-toggle{grid-column:2}.team-training-coach-list{display:contents}.team-training-coach-name{grid-column:2;grid-row:3}.team-training-coach-list .org-coach-panel{grid-column:1/-1;grid-row:2;justify-self:center}}
 @media(prefers-reduced-motion:reduce){.org-coach-toggle,.org-coach-icon,.org-coach-panel{transition:none}}
+.org-office-list .org-coach-toggle{justify-content:flex-start;text-align:left;padding:0}.org-office-list .org-coach-toggle::before{content:none}

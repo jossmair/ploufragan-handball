@@ -223,7 +223,7 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
 test('club : les cartes des coachs se déplient et se replient', async ({ page }) => {
   await page.goto('/club.html#organigramme');
   const cards = page.locator('[data-org-coach]');
-  await expect(cards).toHaveCount(3);
+  await expect(cards).toHaveCount(9);
   const yohann = cards.filter({ hasText: 'Yohann' });
   const trigger = yohann.locator('[data-org-coach-toggle]');
   const panel = yohann.locator('[data-org-coach-panel]');
@@ -237,6 +237,21 @@ test('club : les cartes des coachs se déplient et se replient', async ({ page }
   await trigger.click();
   await trigger.click();
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  const office = page.locator('.org-office');
+  await expect(office.locator('#org-coach-card-elsa-office img')).toHaveAttribute('src', /elsa-presidente/);
+  await expect(office.locator('#org-coach-card-fanny img')).toHaveAttribute('src', /fanny-secretaire/);
+  const david = page.locator('.org-coachs [data-org-coach]').filter({ hasText: 'David' });
+  const davidToggle = david.locator('[data-org-coach-toggle]');
+  await davidToggle.click();
+  await expect(david.locator('img')).toHaveCount(2);
+  for (const close of await david.locator('[data-org-coach-close]').all()) {
+    await expect(close).toHaveAttribute('tabindex', '0');
+  }
+  await david.locator('[data-org-coach-close]').last().click();
+  await expect(davidToggle).toHaveAttribute('aria-expanded', 'false');
+  await office.locator('[aria-controls="org-coach-card-elsa-office"]').click();
+  await expect(office.locator('#org-coach-card-elsa-office img')).toBeVisible();
+  await expect(david.locator('[data-org-coach-close]').last()).toHaveAttribute('tabindex', '-1');
 });
 
 test('U11 : la carte de Yohann est intégrée aux entraînements', async ({ page }) => {
