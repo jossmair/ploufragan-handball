@@ -494,7 +494,7 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
          extra_head=""):
     active=active or slug
     if 'data-org-coach' in body and 'assets/club.css' not in extra_head:
-        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261003-7"><script src="assets/club.js?v=20261003-7" defer></script>'
+        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261003-8"><script src="assets/club.js?v=20261003-7" defer></script>'
     nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
@@ -961,7 +961,7 @@ for youth in YOUTH_TEAMS:
         body += u13_filles_presentation()
     body += youth_match_gallery(slug)
     gallery_head = '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">' if slug in YOUTH_GALLERIES else ''
-    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261003-7">'
+    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261003-8">'
                          '<script src="assets/club.js?v=20261003-7" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
                       '<script src="assets/u13-filles.js?v=20260930-2" defer></script>') if slug == "u13-filles" else ''
@@ -1261,7 +1261,7 @@ org_chart=f'''<div class="org-chart" id="organigramme" aria-label="Organigramme 
 
 staff_section='''<div class="staff-section" aria-labelledby="staff-title"><div class="staff-feature" data-reveal data-staff-animation><div class="staff-copy"><p class="staff-kicker"><span aria-hidden="true"></span>SALARIÉ DU CLUB</p><h2 id="staff-title"><span>DAVID</span><strong>IMBAUD</strong></h2></div><figure class="staff-portrait staff-portrait-3d" aria-label="David Imbaud : handball, stages et encadrement"><div class="staff-rotor"><div class="staff-face"><img src="assets/david-imbaud.webp" alt="David Imbaud, salarié du Ploufragan Handball" width="950" height="1228" loading="lazy"></div><div class="staff-face"><img src="assets/club/david-stage.webp" alt="David Imbaud lors d’un stage du club" width="507" height="900" loading="lazy"></div><div class="staff-face"><img src="assets/club/david-encadrant.webp" alt="Portrait de David Imbaud en tenue du club" width="600" height="800" loading="lazy"></div></div></figure><button class="staff-motion-toggle" type="button" data-staff-motion aria-pressed="false" aria-label="Mettre en pause la rotation des portraits" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></button></div></div>'''
 
-pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261003-7"><script src="assets/club.js?v=20261003-7" defer></script>')
+pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261003-8"><script src="assets/club.js?v=20261003-7" defer></script>')
 registration_cards = []
 tariff_rows = []
 for registration in CATEGORY_DATA["registration"]:

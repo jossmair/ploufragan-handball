@@ -29,6 +29,9 @@
 @media(prefers-reduced-motion:reduce){.org-coach-toggle,.org-coach-icon,.org-coach-panel{transition:none}}
 .org-office-list .org-coach-toggle{justify-content:flex-start;text-align:left;padding:0}.org-office-list .org-coach-toggle::before{content:none}
 .org-office-list{align-items:start}.org-office-list li{align-content:start}
+.org-coach-image,.team-training .org-coach-image{border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+.org-coach-image img,.team-training .org-coach-image img{border-radius:6% / 4%;clip-path:inset(0 round 6% / 4%)}
+.org-coach-image img[src*="yohann"]{border-radius:0;clip-path:none}
 .org-comm .org-coach-toggle{justify-content:flex-start;text-align:left;padding:0}.org-comm .org-coach-toggle::before{content:none}
 @media(max-width:650px){.org-comm .org-coach-toggle{justify-content:center;text-align:center}}
 .org-card-carousel{width:min(100%,240px);margin:0 auto}.org-card-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}.org-card-track::-webkit-scrollbar{display:none}.org-card-track .org-coach-image{flex:0 0 100%;width:100%;scroll-snap-align:center;scroll-snap-stop:always;box-shadow:none}.org-card-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 0}.org-card-controls button{width:44px;height:40px;border:1px solid #ffffff30;background:#ffffff08;color:#fff;font-size:22px;cursor:pointer;transition:background .18s}.org-card-controls button:hover{background:#ed0719}.org-card-controls button:focus-visible{outline:2px solid #fff;outline-offset:2px}.org-card-controls span{font-size:.75rem;color:#bcbcc4;letter-spacing:.12em}.org-card-role{margin:8px 0 12px;text-align:center;color:#ff7b85;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
