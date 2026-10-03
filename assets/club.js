@@ -48,3 +48,26 @@ document.querySelectorAll('[data-org-carousel]').forEach(carousel => {
   });
   new ResizeObserver(update).observe(track);
 });
+
+const staffAnimation = document.querySelector('[data-staff-animation]');
+if (staffAnimation) {
+  const button = staffAnimation.querySelector('[data-staff-motion]');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = false;
+  let paused = false;
+  const update = () => {
+    staffAnimation.classList.toggle('is-animating', visible && !paused && !document.hidden && !reduced.matches);
+    button.hidden = reduced.matches;
+  };
+  new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); }, {threshold:.15}).observe(staffAnimation);
+  button.addEventListener('click', () => {
+    paused = !paused;
+    button.setAttribute('aria-pressed', String(paused));
+    button.setAttribute('aria-label', paused ? 'Reprendre la rotation des portraits' : 'Mettre en pause la rotation des portraits');
+    button.innerHTML = paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4l12 8-12 8z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
+    update();
+  });
+  reduced.addEventListener('change', update);
+  document.addEventListener('visibilitychange', update);
+  update();
+}

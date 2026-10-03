@@ -493,6 +493,8 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
          page_title=None, social_image=None, open_graph_type="website", body_page=None,
          extra_head=""):
     active=active or slug
+    if 'data-org-coach' in body and 'assets/club.css' not in extra_head:
+        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261003-7"><script src="assets/club.js?v=20261003-7" defer></script>'
     nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
@@ -724,6 +726,16 @@ home_body = f'''<section class="home-hero container"><div class="hero-copy" data
 pages["index"]=page("index","Accueil",home_body,description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
 pages["equipes"]=page("equipes","Les équipes",heading("LES <em>ÉQUIPES</em>","Équipes","À Ploufragan, près de Saint-Brieuc, le PHB accueille les enfants dès 3 ans, les jeunes, les seniors et les adultes en loisir. Sélectionnez une catégorie pour découvrir son projet, ses horaires et ses informations pratiques.")+f'<section class="container section after-heading"><div class="teams-grid">{"".join(team_card(g) for g in GROUPS)}</div></section>')
 
+def org_person_card(first, last, key, cards):
+    display_name = f'{escape(first)} <strong>{escape(last)}</strong>'
+    images = ''.join(f'<button class="org-coach-image" type="button" data-org-coach-close tabindex="-1" aria-label="Replier la carte de {escape(first + " " + last, quote=True)}"><img src="{escape(image, quote=True)}" alt="{escape(alt, quote=True)}" width="{width}" height="{height}" loading="lazy" decoding="async"></button>' for image, alt, width, height in cards)
+    if len(cards) > 1:
+        labels = [alt.split(", ", 1)[-1] for _, alt, _, _ in cards]
+        images = f'<div class="org-card-carousel" data-org-carousel role="region" aria-roledescription="carrousel" aria-label="Cartes de {escape(first + " " + last, quote=True)}"><div class="org-card-track" data-org-track>{images}</div><div class="org-card-controls"><button type="button" data-org-prev aria-label="Carte précédente" tabindex="-1">←</button><span data-org-position aria-live="polite">1 / {len(cards)}</span><button type="button" data-org-next aria-label="Carte suivante" tabindex="-1">→</button></div><p class="org-card-role" data-org-role data-labels="{escape(json.dumps(labels, ensure_ascii=False), quote=True)}">{escape(labels[0])}</p></div>'
+    return f'<button class="org-coach-toggle" type="button" data-org-coach-toggle aria-expanded="false" aria-controls="org-coach-card-{key}"><span>{display_name}</span><span class="org-coach-icon" aria-hidden="true"></span></button><div class="org-coach-panel" id="org-coach-card-{key}" data-org-coach-panel aria-hidden="true"><div>{images}</div></div>'
+
+
+
 def team_training(schedule_group, schedule_name=None, staff_key=None):
     role, person = TEAM_STAFF.get(staff_key) or TEAM_STAFF[schedule_group]
     category = CATEGORIES.get(staff_key, {})
@@ -739,6 +751,17 @@ def team_training(schedule_group, schedule_name=None, staff_key=None):
             for name in category.get("additionalCoaches", [])
         )
         staff = f'''<div class="team-staff team-staff-coaches"><span>{escape(role)}</span><div class="team-training-coach-list"><div class="org-coach-entry" data-org-coach><button class="org-coach-toggle" type="button" data-org-coach-toggle aria-expanded="false" aria-controls="team-training-coach-card"><span><strong>{coach_name}</strong></span><span class="org-coach-icon" aria-hidden="true"></span></button><div class="org-coach-panel" id="team-training-coach-card" data-org-coach-panel aria-hidden="true"><div><button class="org-coach-image" type="button" data-org-coach-close tabindex="-1" aria-label="Replier la carte de {coach_name}"><img src="{coach_src}" alt="{coach_alt}" width="{coach_width}" height="{coach_height}" loading="lazy" decoding="async"></button></div></div></div>{additional_coaches}</div></div>'''
+    elif category.get("staffCards") or CATEGORIES.get(schedule_group, {}).get("staffCards"):
+        entries = category.get("staffCards") or CATEGORIES[schedule_group]["staffCards"]
+        people = ''
+        for index, entry in enumerate(entries):
+            if entry.get("src"):
+                first, last = entry["name"].rsplit(" ", 1)
+                card = org_person_card(first, last, f"training-{staff_key or schedule_group}-{index}", [(entry["src"], entry["name"] + ", " + entry["role"], 512, 768)])
+                people += f'<div class="org-coach-entry" data-org-coach>{card}</div>'
+            else:
+                people += f'<strong>{escape(entry["name"])}</strong>'
+        staff = f'<div class="team-staff team-staff-coaches"><span>{escape(role)}</span><div class="team-training-coach-list team-training-coach-list-many">{people}</div></div>'
     else:
         staff = f'<p class="team-staff"><span>{escape(role)}</span><strong>{escape(person)}</strong></p>'
     duties = f'<div class="actions">{button("Permanences de salle", "permanences-seniors-masculins.html")}</div>' if schedule_group == "seniors-masculins" else ''
@@ -938,8 +961,8 @@ for youth in YOUTH_TEAMS:
         body += u13_filles_presentation()
     body += youth_match_gallery(slug)
     gallery_head = '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">' if slug in YOUTH_GALLERIES else ''
-    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261003-4">'
-                         '<script src="assets/club.js?v=20261003-4" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
+    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261003-7">'
+                         '<script src="assets/club.js?v=20261003-7" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
                       '<script src="assets/u13-filles.js?v=20260930-2" defer></script>') if slug == "u13-filles" else ''
     pages[slug] = page(slug, name, body, "equipes",
@@ -1189,14 +1212,6 @@ def org_team(area, title, members):
             people += f'<li><span>{escape(first)} <strong>{escape(last)}</strong></span></li>'
     return f'<article class="org-card org-{area}" data-reveal><h3>{escape(title)}</h3><ul>{people}</ul>{org_contact(area, title) if area in ORG_EMAILS else ""}</article>'
 
-def org_person_card(first, last, key, cards):
-    display_name = f'{escape(first)} <strong>{escape(last)}</strong>'
-    images = ''.join(f'<button class="org-coach-image" type="button" data-org-coach-close tabindex="-1" aria-label="Replier la carte de {escape(first + " " + last, quote=True)}"><img src="{escape(image, quote=True)}" alt="{escape(alt, quote=True)}" width="{width}" height="{height}" loading="lazy" decoding="async"></button>' for image, alt, width, height in cards)
-    if len(cards) > 1:
-        labels = [alt.split(", ", 1)[-1] for _, alt, _, _ in cards]
-        images = f'<div class="org-card-carousel" data-org-carousel role="region" aria-roledescription="carrousel" aria-label="Cartes de {escape(first + " " + last, quote=True)}"><div class="org-card-track" data-org-track>{images}</div><div class="org-card-controls"><button type="button" data-org-prev aria-label="Carte précédente" tabindex="-1">←</button><span data-org-position aria-live="polite">1 / {len(cards)}</span><button type="button" data-org-next aria-label="Carte suivante" tabindex="-1">→</button></div><p class="org-card-role" data-org-role data-labels="{escape(json.dumps(labels, ensure_ascii=False), quote=True)}">{escape(labels[0])}</p></div>'
-    return f'<button class="org-coach-toggle" type="button" data-org-coach-toggle aria-expanded="false" aria-controls="org-coach-card-{key}"><span>{display_name}</span><span class="org-coach-icon" aria-hidden="true"></span></button><div class="org-coach-panel" id="org-coach-card-{key}" data-org-coach-panel aria-hidden="true"><div>{images}</div></div>'
-
 
 def org_coach_team(members):
     coach_cards = {
@@ -1244,9 +1259,9 @@ for role, first, last in office_members:
         office_people += f'<li><span class="org-role">{escape(role)}</span><span>{escape(first)} <strong>{escape(last)}</strong></span></li>'
 org_chart=f'''<div class="org-chart" id="organigramme" aria-label="Organigramme du Ploufragan Handball">{org_team("sponsor", "TEAM SPONSOR", [("Jérôme","QUEMENER"),("Thomas","MIEUDONNET"),("Arnaud","DE LA HAUSSERAY"),("Guillaume","MICHEL"),("Maxime","PHILIPPE")])}<article class="org-card org-office" data-reveal><h3>BUREAU</h3><ul class="org-office-list">{office_people}</ul>{org_contact("office", "BUREAU")}</article>{org_team("comm", "TEAM COMM", [("Erwan","ROUXEL"),("Jean","BOIZARD"),("Josselin","MEAR")])}{org_team("buvette", "TEAM BUVETTE", [("Jérôme & Rozenn","LE JOLY"),("Francky","BLANCHET")])}{org_team("boutik", "TEAM « BOUTIK »", [("Jérôme","QUEMENER"),("Laetitia","HÉLIE")])}{org_coach_team([("Guillaume","MICHEL"),("David","IMBAUD"),("Olivier","BEAUX"),("Elsa","DA SILVA"),("Yohann","GUÉRIN"),("Jérôme","QUEMENER"),("Joshua","ELOY"),("Erwan","ROUXEL"),("Morgan","PION"),("Katia","JAVOUHEY"),("Nathan","RAOULT"),("Clara","TOQUET"),("Aurélien","GÉRARD")])}</div>'''
 
-staff_section='''<div class="staff-section" aria-labelledby="staff-title"><div class="staff-feature" data-reveal><div class="staff-copy"><p class="staff-kicker"><span aria-hidden="true"></span>SALARIÉ DU CLUB</p><h2 id="staff-title"><span>DAVID</span><strong>IMBAUD</strong></h2></div><figure class="staff-portrait"><img src="assets/david-imbaud.webp" alt="David Imbaud, salarié du Ploufragan Handball" width="950" height="1228" loading="lazy"></figure></div></div>'''
+staff_section='''<div class="staff-section" aria-labelledby="staff-title"><div class="staff-feature" data-reveal data-staff-animation><div class="staff-copy"><p class="staff-kicker"><span aria-hidden="true"></span>SALARIÉ DU CLUB</p><h2 id="staff-title"><span>DAVID</span><strong>IMBAUD</strong></h2></div><figure class="staff-portrait staff-portrait-3d" aria-label="David Imbaud : handball, stages et encadrement"><div class="staff-rotor"><div class="staff-face"><img src="assets/david-imbaud.webp" alt="David Imbaud, salarié du Ploufragan Handball" width="950" height="1228" loading="lazy"></div><div class="staff-face"><img src="assets/club/david-stage.webp" alt="David Imbaud lors d’un stage du club" width="507" height="900" loading="lazy"></div><div class="staff-face"><img src="assets/club/david-encadrant.webp" alt="Portrait de David Imbaud en tenue du club" width="600" height="800" loading="lazy"></div></div></figure><button class="staff-motion-toggle" type="button" data-staff-motion aria-pressed="false" aria-label="Mettre en pause la rotation des portraits" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></button></div></div>'''
 
-pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261003-4"><script src="assets/club.js?v=20261003-4" defer></script>')
+pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261003-7"><script src="assets/club.js?v=20261003-7" defer></script>')
 registration_cards = []
 tariff_rows = []
 for registration in CATEGORY_DATA["registration"]:
