@@ -446,7 +446,7 @@ def structured_data_for(slug, title):
 
 
 NAV_SECTIONS = {
-    "club": [("", [("club.html", "Le club"), ("club.html#organigramme", "Organigramme"), ("stage-ete.html", "Stage d’été · 13–15 ans"),
+    "club": [("", [("club.html", "Le club"), ("club.html#organigramme", "Organigramme"), ("stage-ete.html", "Stage d’été · U13 et U15"),
                     ("articles/histoire-ploufragan-handball.html", "Histoire du club"),
                     ("inscriptions.html#documents", "Documents d’inscription")])],
     "equipes": [
@@ -458,10 +458,11 @@ NAV_SECTIONS = {
             for key in ("baby-hand", "ecole-de-hand")]),
     ],
     "entrainements": [("", [("entrainements.html", "Planning des entraînements"),
-                            ("entrainements.html#salles", "Les salles"), ("stage-ete.html", "Stage d’été · 13–15 ans")])],
+                            ("entrainements.html#salles", "Les salles"), ("stage-ete.html", "Stage d’été · U13 et U15")])],
     "galerie": [("Albums photo", [
         ("u13-filles.html#u13-filles-gallery-title", "U13 filles"),
         ("u13-garcons.html#u13-garcons-gallery-title", "U13 garçons"),
+        ("u15-filles.html#u15-filles-gallery-title", "U15 filles"),
         ("u18-garcons.html#u18-garcons-gallery-title", "U18 garçons"),
         ("seniors-feminines.html#seniors-feminines-gallery-title", "Seniors féminines"),
         ("galeries/seniors-1-pays-de-dinan-2026.html", "Seniors masculins 1"),
@@ -501,7 +502,7 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
          extra_head=""):
     active=active or slug
     if 'data-org-coach' in body and 'assets/club.css' not in extra_head:
-        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261004-1"><script src="assets/club.js?v=20261003-7" defer></script>'
+        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261004-2"><script src="assets/club.js?v=20261003-7" defer></script>'
     nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
@@ -979,7 +980,7 @@ for youth in YOUTH_TEAMS:
         body += u18_garcons_presentation()
     body += youth_match_gallery(slug)
     gallery_head = '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">' if slug in YOUTH_GALLERIES else ''
-    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261004-1">'
+    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261004-2">'
                          '<script src="assets/club.js?v=20261003-7" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
                       '<script src="assets/u13-filles.js?v=20260930-2" defer></script>') if slug in {"u13-filles", "u18-garcons"} else ''
@@ -1287,9 +1288,9 @@ for role, first, last in office_members:
         office_people += f'<li><span class="org-role">{escape(role)}</span><span>{escape(first)} <strong>{escape(last)}</strong></span></li>'
 org_chart=f'''<div class="org-chart" id="organigramme" aria-label="Organigramme du Ploufragan Handball">{org_team("sponsor", "TEAM SPONSOR", [("Jérôme","QUEMENER"),("Thomas","MIEUDONNET"),("Arnaud","DE LA HAUSSERAY"),("Guillaume","MICHEL"),("Maxime","PHILIPPE")])}<article class="org-card org-office" data-reveal><h3>BUREAU</h3><ul class="org-office-list">{office_people}</ul>{org_contact("office", "BUREAU")}</article>{org_team("comm", "TEAM COMM", [("Erwan","ROUXEL"),("Jean","BOIZARD"),("Josselin","MEAR")])}{org_team("buvette", "TEAM BUVETTE", [("Jérôme","LE JOLY"),("Rozenn","LE JOLY"),("Franckie","BLANCHET")])}{org_team("boutik", "TEAM « BOUTIK »", [("Jérôme","QUEMENER"),("Laetitia","HÉLIE")])}{org_coach_team([("Guillaume","MICHEL"),("David","IMBAUD"),("Olivier","BEAUX"),("Elsa","DA SILVA"),("Yohann","GUÉRIN"),("Jérôme","QUEMENER"),("Joshua","ELOY"),("Erwan","ROUXEL"),("Morgan","PION"),("Katia","JAVOUHEY"),("Nathan","RAOULT"),("Clara","TOQUET"),("Aurélien","GÉRARD")])}{org_team("arbitre", "TEAM ARBITRE", [("Christopher", "LE GRAND"), ("Joshua", "ELOY")])}</div>'''
 
-staff_section='''<div class="staff-section" aria-labelledby="staff-title"><div class="staff-feature" data-reveal data-staff-animation><div class="staff-copy"><p class="staff-kicker"><span aria-hidden="true"></span>SALARIÉ DU CLUB</p><h2 id="staff-title"><span>DAVID</span><strong>IMBAUD</strong></h2></div><figure class="staff-portrait staff-portrait-3d" aria-label="David Imbaud : handball, stages et encadrement"><div class="staff-rotor"><div class="staff-face"><img src="assets/david-imbaud.webp" alt="David Imbaud, salarié du Ploufragan Handball" width="950" height="1228" loading="lazy"></div><div class="staff-face"><img src="assets/club/david-stage.webp" alt="David Imbaud lors d’un stage du club" width="507" height="900" loading="lazy"></div><div class="staff-face"><img src="assets/club/david-encadrant.webp" alt="Portrait de David Imbaud en tenue du club" width="600" height="800" loading="lazy"></div></div></figure><button class="staff-motion-toggle" type="button" data-staff-motion aria-pressed="false" aria-label="Mettre en pause la rotation des portraits" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></button></div></div>'''
+staff_section='''<div class="staff-section" aria-labelledby="staff-title"><div class="staff-feature" data-reveal data-staff-animation><div class="staff-copy"><p class="staff-kicker"><span aria-hidden="true"></span>ÉDUCATEUR SPORTIF, SALARIÉ DU CLUB</p><h2 id="staff-title"><span>DAVID</span><strong>IMBAUD</strong></h2></div><figure class="staff-portrait staff-portrait-3d" aria-label="David Imbaud : handball, stages et encadrement"><div class="staff-rotor"><div class="staff-face"><img src="assets/club/david-stage.webp" alt="David Imbaud lors d’un stage du club" width="507" height="900" loading="lazy"></div><div class="staff-face"><img src="assets/club/david-encadrant.webp" alt="Portrait de David Imbaud en tenue du club" width="600" height="800" loading="lazy"></div></div></figure><button class="staff-motion-toggle" type="button" data-staff-motion aria-pressed="false" aria-label="Mettre en pause la rotation des portraits" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></button></div></div>'''
 
-pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro"><div class="club-logo" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo lumineux du Ploufragan Handball" width="900" height="900"></div><div data-reveal><h2>PLOUFRAGAN HANDBALL</h2><p>Le club est situé à Ploufragan, dans les Côtes-d’Armor, collé à la ville de Saint-Brieuc. Les catégories vont du Baby Hand aux seniors, avec une pratique loisirs.</p><p>Les entraînements ont lieu à Hoëdic, Belle-Île, Marcel Paul et à Trégueux.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261004-1"><script src="assets/club.js?v=20261003-7" defer></script>')
+pages["club"]=page("club","Le club",heading("LE <em>CLUB</em>","Le club")+f'''<section class="container section after-heading"><div class="club-intro club-intro-editorial"><div class="club-intro-copy" data-reveal><p class="eyebrow">PHB · CÔTES-D’ARMOR</p><h2>LE HANDBALL<br>À <em>PLOUFRAGAN</em></h2><p class="club-intro-lead">Du premier ballon aux matchs des seniors, une même passion du handball.</p><p>À Ploufragan, près de Saint-Brieuc, le PHB accueille les catégories du Baby Hand aux seniors et propose aussi une pratique loisirs.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div><div class="club-intro-emblem" data-reveal><img src="assets/logo-phb-club-v2.webp" alt="Logo du Ploufragan Handball" width="900" height="900"><span>ROUGE &amp; NOIR</span></div><div class="club-intro-landmarks"><div><span>LES ÉQUIPES</span><strong>Du Baby aux seniors</strong></div><div><span>LES PRATIQUES</span><strong>Compétition &amp; loisirs</strong></div><div><span>LES SALLES</span><strong>Hoëdic · Belle-Île<br>Marcel Paul · Trégueux</strong></div></div></div><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2>ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}{staff_section}<div class="section-heading spaced"><h2>LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261004-2"><script src="assets/club.js?v=20261003-7" defer></script>')
 registration_cards = []
 tariff_rows = []
 for registration in CATEGORY_DATA["registration"]:
@@ -1568,7 +1569,7 @@ def gallery_album_page(album):
 
 
 gallery_hub_entries = []
-for slug in ("u13-filles", "u13-garcons", "u18-garcons"):
+for slug in ("u13-filles", "u13-garcons", "u15-filles", "u18-garcons"):
     config = YOUTH_GALLERIES[slug]
     first_photo = config["photos"][0]
     label = config["label"]
@@ -1631,13 +1632,13 @@ pages["404"]=page("404","Page introuvable",heading("PAGE <em>INTROUVABLE</em>","
 from stage_page import stage_body
 pages["stage-ete"] = page(
     "stage-ete", "Stage d’été PHB à Guerlédan", stage_body(ROOT), active="club",
-    page_title="Stage handball été 2027 à Guerlédan · 13–15 ans | PHB",
+    page_title="Stage handball été 2027 à Guerlédan · U13 et U15 | PHB",
     social_image=("assets/og/stage-ete.jpg", 1200, 630, "Le groupe du stage d’été PHB à Guerlédan"),
-    description="Stage d’été du Ploufragan Handball à Guerlédan pour les filles et garçons de 13 à 15 ans. Revivez 2026 en photos et vidéos et découvrez la prochaine édition 2027.",
+    description="Stage d’été du Ploufragan Handball à Guerlédan pour les filles et garçons des catégories U13 et U15. Revivez 2026 en photos et vidéos et découvrez la prochaine édition 2027.",
     extra_head='<link rel="stylesheet" href="assets/stage-ete.css?v=20261003-1"><script src="assets/stage-ete.js?v=20261003-1" defer></script>',
 )
 pages["stage-ete"] = re.sub(r'<a class="footer-social-link instagram".*?</a>', '', pages["stage-ete"])
-stage_promo = '''<section class="container section"><div class="team-article-entry"><div><p class="eyebrow">ÉTÉ 2027 · 13–15 ANS · FILLES & GARÇONS</p><h2>CAP SUR <em>GUERLÉDAN</em></h2><p>Handball, aventure et esprit d’équipe : le stage d’été PHB revient pour une deuxième édition. Revivez la première en photos et vidéos.</p></div><a class="button" href="stage-ete.html">DÉCOUVRIR LE STAGE ↗</a></div></section>'''
+stage_promo = '''<section class="container section"><div class="team-article-entry"><div><p class="eyebrow">ÉTÉ 2027 · U13 & U15 · FILLES & GARÇONS</p><h2>CAP SUR <em>GUERLÉDAN</em></h2><p>Handball, aventure et esprit d’équipe : le stage d’été PHB revient pour une deuxième édition. Revivez la première en photos et vidéos.</p></div><a class="button" href="stage-ete.html">DÉCOUVRIR LE STAGE ↗</a></div></section>'''
 pages["index"] = pages["index"].replace('</main>', stage_promo + '</main>')
 for slug, content in pages.items():
     target = ROOT / (slug + ".html")

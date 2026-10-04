@@ -5,7 +5,7 @@ test('David: rotation automatique, pause et mouvement réduit', async ({ page })
   const feature = page.locator('[data-staff-animation]');
   await feature.scrollIntoViewIfNeeded();
   const rotor = feature.locator('.staff-rotor');
-  await expect(feature.locator('.staff-face img')).toHaveCount(3);
+  await expect(feature.locator('.staff-face img')).toHaveCount(2);
   await expect(feature.locator('[data-staff-motion]')).toHaveText('');
   await expect(feature.locator('[data-staff-motion] svg')).toHaveCount(1);
   await expect(rotor).toHaveCSS('animation-play-state', 'running');
