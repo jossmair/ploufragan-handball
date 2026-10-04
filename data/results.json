@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T17:49:26.614442+00:00",
+  "updatedAt": "2026-10-04T19:44:50.364927+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -590,8 +590,8 @@
         {
           "position": 1,
           "team": "PLOEUC HAND",
-          "points": 9,
-          "played": 3,
+          "points": 12,
+          "played": 4,
           "club": false
         },
         {
@@ -618,8 +618,8 @@
         {
           "position": 5,
           "team": "U15M TER - ENTENTE LOUDEAC LA MOTTE",
-          "points": 2,
-          "played": 2,
+          "points": 3,
+          "played": 3,
           "club": false
         }
       ]
