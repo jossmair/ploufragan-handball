@@ -10,7 +10,7 @@
  body .match-team{grid-template-rows:minmax(56px,auto) 44px;gap:8px}body .match-team-name{min-height:56px}
  body .team-logo-disc{width:44px;height:44px}body :is(.match-result,.match-score){min-width:108px}
  body .match-score{font-size:2.3rem}body .match-location{margin-top:12px;padding-top:10px}
- .team-detail-grid .team-season-head{padding-bottom:15px}.team-detail-grid .team-season-head h2{font-size:2rem}
+ .team-detail-grid .team-season-head{padding-bottom:15px}.team-detail-grid .team-season-head h2{font-size:1.8rem}
  .team-detail-grid .team-rank{padding:16px 0 12px}.team-detail-grid .team-rank strong{font-size:3.2rem}
  .team-detail-grid .pool-table :is(th,td){padding:7px 6px}
  body .team-detail-grid .u13-f-card-grid{gap:20px;width:min(100%,920px)}
@@ -44,4 +44,38 @@
  body .home-hero{min-height:630px;padding-top:30px;padding-bottom:55px}
  body .home-hero h1{font-size:clamp(3.8rem,6.8vw,6.6rem)}
  body .home-hero .hero-logo-stage{height:clamp(540px,30vw,600px)}
+}
+
+/* A quieter desktop type scale brings useful content into the first screen. */
+@media(min-width:1024px){
+ body{font-size:.9375rem}
+ body .page-heading h1{font-size:clamp(3rem,4vw,4.2rem)}
+ body .section-heading h2{font-size:clamp(1.9rem,2.8vw,2.65rem)}
+ body[data-page] .page-heading{min-height:320px;padding-top:24px;padding-bottom:36px}
+ body .page-heading:not(.animated-heading){min-height:0}
+ body .heading-intro-media{width:min(94%,400px)}
+ body .home-hero{min-height:570px;padding-block:24px 36px}
+ body .home-hero h1{font-size:clamp(3rem,5.2vw,4.8rem)}
+ body .home-hero .hero-logo-stage{height:clamp(480px,27vw,540px)}
+ body .home-hero .actions{gap:10px;margin-top:22px}
+ body .hero-rule,body .hero-location{margin-top:18px}
+ body .button{font-size:1rem;min-height:44px;padding:11px 18px;gap:20px}
+ body .information-panel h2,body .panel-title h2{font-size:1.8rem}
+ body .schedule tbody th>a{font-size:1.1rem;padding:8px 12px;min-width:0}
+ body .slot strong{font-size:1.1rem}body .venue{font-size:1.05rem}
+ body .schedule :is(th,td){padding-block:12px}
+ body .section-heading{margin-bottom:22px}
+ body main>.section:not(.after-heading):not(.home-news):not(.category-facts):not(.category-photos):not(.category-competitions):not(.home-weekend):not(.stage-shortcuts){padding-block:52px}
+ body .news-card-copy h2{font-size:clamp(1.8rem,2.4vw,2.4rem)}
+ body .gallery-index-copy h2{font-size:clamp(2rem,2.7vw,2.8rem)}
+
+ body .club-intro-editorial h2{font-size:clamp(2.8rem,4vw,4rem)}
+ body .team-overview h2{font-size:clamp(2rem,3vw,2.5rem)}
+ body .match-team-name{font-size:1rem;line-height:1.2}
+ body .stage-hero{min-height:600px}.stage-hero-copy{padding-top:45px;padding-bottom:65px}
+ body .stage-hero h1{font-size:clamp(3.5rem,6vw,6.5rem)}
+ body .stage-page h2{font-size:clamp(2.3rem,3.3vw,3.3rem)}
+ body .training-intro-media{width:min(82%,320px)}
+ body .hero-socials a{font-size:.9375rem;min-height:44px;padding:10px 16px}
+ body .home-news-copy h3{font-size:1.6rem}
 }

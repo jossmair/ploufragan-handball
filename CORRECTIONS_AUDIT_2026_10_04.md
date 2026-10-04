@@ -90,3 +90,9 @@ Les cartes Panini sont exclues de cette réduction : comparaison des dimensions 
 Les cartes de résultats et prochains matchs utilisent deux rangées partagées sur mobile : noms dans une rangée de hauteur automatique, logos dans une seconde rangée alignée. Le score occupe la colonne centrale. Les mots longs peuvent se couper sans déborder sur le score. Cela supprime le chevauchement visible sur la carte U18 contre Belle-Isle/Plounévez.
 
 Deux scénarios vérifient les pages U18 et Résultats à 320, 360, 390, 430 et 650 px : absence de chevauchement entre noms, logos et score, absence de texte débordant et de défilement horizontal. Capture U18 contrôlée à 390 px. Les dimensions des cartes Panini ne sont pas modifiées.
+
+## Échelle typographique de bureau et contenu plus visible
+
+Les grands titres, titres de sections, libellés des horaires et boutons sont réduits sur PC. Le corps de texte hérité reste à 15 px, les boutons conservent une hauteur minimale de 44 px, les horaires sont affichés à environ 18 px. Les animations d’en-tête occupent moins de place ; les espacements entre sections sont raccourcis. L’échelle est également appliquée aux titres du Club et du Stage. Les dimensions des cartes Panini U18 et U13 ont été comparées à la version précédente et restent identiques.
+
+Huit scénarios de noms, portraits, disposition, navigation et chevauchement réussis ; 64 rendus du sitemap sans anomalie. Le module de bureau reste inférieur à 6 Ko. Les contrôles complets de publication sont exécutés à nouveau.
