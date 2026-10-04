@@ -659,9 +659,14 @@ function openRegistrationSection(section, updateHistory = true) {
   }
 }
 
-registrationSections.forEach(section => section.addEventListener('toggle', () => {
-  if (section.open) openRegistrationSection(section);
-}));
+registrationSections.forEach(section => {
+  section.addEventListener('toggle', () => {
+    if (section.open) openRegistrationSection(section, false);
+  });
+  section.querySelector(':scope > summary').addEventListener('click', () => {
+    if (!section.open) history.replaceState(null, '', `#${section.id}`);
+  });
+});
 
 if (registrationNav) {
   setupContentDropdown(registrationNav, '[data-registration-target]', option => {
