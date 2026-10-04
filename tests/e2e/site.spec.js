@@ -224,7 +224,7 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
 test('club : les cartes des coachs se déplient et se replient', async ({ page }) => {
   await page.goto('/club.html#organigramme');
   const cards = page.locator('[data-org-coach]');
-  await expect(cards).toHaveCount(12);
+  await expect(cards).toHaveCount(17);
   const yohann = cards.filter({ hasText: 'Yohann' });
   const trigger = yohann.locator('[data-org-coach-toggle]');
   const panel = yohann.locator('[data-org-coach-panel]');
