@@ -1,7 +1,7 @@
 [
   {
     "path": "/",
-    "lcpMs": 1012,
+    "lcpMs": 532,
     "lcpElement": {
       "tag": "section",
       "id": null,
@@ -12,34 +12,34 @@
       "url": "/assets/photos/home-handball-action-bg.webp"
     },
     "cls": 0,
-    "fcpMs": 856,
-    "ttfbMs": 68,
-    "domContentLoadedMs": 794,
-    "loadMs": 1068,
-    "domElements": 555,
-    "encodedBytes": 4543426,
-    "decodedBytes": 4543426,
-    "requests": 39,
+    "fcpMs": 532,
+    "ttfbMs": 9,
+    "domContentLoadedMs": 398,
+    "loadMs": 596,
+    "domElements": 557,
+    "encodedBytes": 3362984,
+    "decodedBytes": 3362984,
+    "requests": 38,
     "byType": {
       "link": {
         "requests": 5,
-        "encodedBytes": 243790,
-        "decodedBytes": 243790
+        "encodedBytes": 238655,
+        "decodedBytes": 238655
       },
       "script": {
         "requests": 2,
-        "encodedBytes": 34859,
-        "decodedBytes": 34859
+        "encodedBytes": 23377,
+        "decodedBytes": 23377
       },
       "img": {
-        "requests": 22,
-        "encodedBytes": 867530,
-        "decodedBytes": 867530
+        "requests": 21,
+        "encodedBytes": 726462,
+        "decodedBytes": 726462
       },
       "video": {
         "requests": 2,
-        "encodedBytes": 2896723,
-        "decodedBytes": 2896723
+        "encodedBytes": 1873966,
+        "decodedBytes": 1873966
       },
       "css": {
         "requests": 7,
@@ -49,7 +49,7 @@
     },
     "renderBlocking": [
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
+      "/assets/site.min.css",
       "/assets/navigation.css"
     ],
     "inpMs": null,
@@ -57,7 +57,7 @@
     "largest": [
       {
         "name": "/assets/blog/intro.mp4",
-        "bytes": 2844023
+        "bytes": 1821266
       },
       {
         "name": "/assets/backgrounds/fond-1.webp",
@@ -72,15 +72,15 @@
         "bytes": 201102
       },
       {
-        "name": "/assets/site.css",
-        "bytes": 165924
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       }
     ],
     "failed": []
   },
   {
     "path": "/blog.html",
-    "lcpMs": 488,
+    "lcpMs": 264,
     "lcpElement": {
       "tag": "video",
       "id": null,
@@ -88,34 +88,34 @@
       "url": "/assets/blog/blog-ploufy-reading.mp4"
     },
     "cls": 0,
-    "fcpMs": 328,
-    "ttfbMs": 7,
-    "domContentLoadedMs": 188,
-    "loadMs": 396,
-    "domElements": 358,
-    "encodedBytes": 1416075,
-    "decodedBytes": 1416075,
+    "fcpMs": 200,
+    "ttfbMs": 4,
+    "domContentLoadedMs": 111,
+    "loadMs": 210,
+    "domElements": 360,
+    "encodedBytes": 2112920,
+    "decodedBytes": 2112920,
     "requests": 32,
     "byType": {
       "link": {
         "requests": 5,
-        "encodedBytes": 243790,
-        "decodedBytes": 243790
+        "encodedBytes": 238655,
+        "decodedBytes": 238655
       },
       "script": {
         "requests": 2,
-        "encodedBytes": 34859,
-        "decodedBytes": 34859
+        "encodedBytes": 23377,
+        "decodedBytes": 23377
       },
       "img": {
         "requests": 14,
-        "encodedBytes": 547896,
-        "decodedBytes": 547896
+        "encodedBytes": 412616,
+        "decodedBytes": 412616
       },
       "video": {
         "requests": 4,
-        "encodedBytes": 96348,
-        "decodedBytes": 96348
+        "encodedBytes": 945090,
+        "decodedBytes": 945090
       },
       "css": {
         "requests": 6,
@@ -125,12 +125,16 @@
     },
     "renderBlocking": [
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
+      "/assets/site.min.css",
       "/assets/navigation.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
+      {
+        "name": "/assets/blog/blog-ploufy-reading.mp4",
+        "bytes": 848742
+      },
       {
         "name": "/assets/backgrounds/fond-1.webp",
         "bytes": 331584
@@ -140,12 +144,8 @@
         "bytes": 201102
       },
       {
-        "name": "/assets/site.css",
-        "bytes": 165924
-      },
-      {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       },
       {
         "name": "/assets/articles/histoire-phb/premier-bureau-phb-2011.webp",
@@ -156,37 +156,39 @@
   },
   {
     "path": "/galerie.html",
-    "lcpMs": 404,
+    "lcpMs": 176,
     "lcpElement": {
-      "tag": "video",
+      "tag": "img",
       "id": null,
-      "classes": [],
-      "url": "/assets/videos/galerie-animation.mp4"
+      "classes": [
+        "watermark"
+      ],
+      "url": "/assets/logo-phb.webp"
     },
     "cls": 0,
-    "fcpMs": 384,
-    "ttfbMs": 26,
-    "domContentLoadedMs": 218,
-    "loadMs": 376,
-    "domElements": 401,
-    "encodedBytes": 2061364,
-    "decodedBytes": 2061364,
+    "fcpMs": 176,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 89,
+    "loadMs": 160,
+    "domElements": 403,
+    "encodedBytes": 1909467,
+    "decodedBytes": 1909467,
     "requests": 33,
     "byType": {
       "link": {
         "requests": 5,
-        "encodedBytes": 243790,
-        "decodedBytes": 243790
+        "encodedBytes": 238655,
+        "decodedBytes": 238655
       },
       "script": {
         "requests": 2,
-        "encodedBytes": 34859,
-        "decodedBytes": 34859
+        "encodedBytes": 23377,
+        "decodedBytes": 23377
       },
       "img": {
         "requests": 18,
-        "encodedBytes": 895684,
-        "decodedBytes": 895684
+        "encodedBytes": 760404,
+        "decodedBytes": 760404
       },
       "video": {
         "requests": 2,
@@ -201,8 +203,8 @@
     },
     "renderBlocking": [
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
-      "/assets/navigation.css"
+      "/assets/navigation.css",
+      "/assets/site.min.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
@@ -220,51 +222,51 @@
         "bytes": 227352
       },
       {
-        "name": "/assets/site.css",
-        "bytes": 165924
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       },
       {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/u18-garcons/gallery/01.webp",
+        "bytes": 115120
       }
     ],
     "failed": []
   },
   {
     "path": "/galeries/seniors-1-pays-de-dinan-2026.html",
-    "lcpMs": 668,
+    "lcpMs": 176,
     "lcpElement": {
       "tag": "img",
       "id": null,
       "classes": [
         "watermark"
       ],
-      "url": "/assets/logo-phb.png"
+      "url": "/assets/logo-phb.webp"
     },
     "cls": 0,
-    "fcpMs": 668,
-    "ttfbMs": 22,
-    "domContentLoadedMs": 403,
-    "loadMs": 524,
-    "domElements": 1194,
-    "encodedBytes": 2022045,
-    "decodedBytes": 2022045,
-    "requests": 56,
+    "fcpMs": 176,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 94,
+    "loadMs": 127,
+    "domElements": 1196,
+    "encodedBytes": 1864360,
+    "decodedBytes": 1864360,
+    "requests": 55,
     "byType": {
       "link": {
         "requests": 5,
-        "encodedBytes": 243790,
-        "decodedBytes": 243790
+        "encodedBytes": 238655,
+        "decodedBytes": 238655
+      },
+      "img": {
+        "requests": 42,
+        "encodedBytes": 1180316,
+        "decodedBytes": 1180316
       },
       "script": {
         "requests": 2,
-        "encodedBytes": 34859,
-        "decodedBytes": 34859
-      },
-      "img": {
-        "requests": 43,
-        "encodedBytes": 1321384,
-        "decodedBytes": 1321384
+        "encodedBytes": 23377,
+        "decodedBytes": 23377
       },
       "css": {
         "requests": 5,
@@ -274,8 +276,8 @@
     },
     "renderBlocking": [
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
-      "/assets/navigation.css"
+      "/assets/navigation.css",
+      "/assets/site.min.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
@@ -289,23 +291,23 @@
         "bytes": 227352
       },
       {
-        "name": "/assets/site.css",
-        "bytes": 165924
-      },
-      {
         "name": "/assets/galeries/seniors-1-pays-de-dinan-2026/photo-5.webp",
         "bytes": 161048
       },
       {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/site.min.css",
+        "bytes": 160780
+      },
+      {
+        "name": "/assets/galeries/seniors-1-pays-de-dinan-2026/photo-4.webp",
+        "bytes": 148580
       }
     ],
     "failed": []
   },
   {
     "path": "/boutique.html",
-    "lcpMs": 616,
+    "lcpMs": 200,
     "lcpElement": {
       "tag": "video",
       "id": null,
@@ -313,34 +315,34 @@
       "url": "/assets/videos/boutique-animation.mp4"
     },
     "cls": 0,
-    "fcpMs": 596,
-    "ttfbMs": 20,
-    "domContentLoadedMs": 356,
-    "loadMs": 574,
-    "domElements": 646,
-    "encodedBytes": 3144405,
-    "decodedBytes": 3144405,
+    "fcpMs": 184,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 105,
+    "loadMs": 176,
+    "domElements": 648,
+    "encodedBytes": 2992508,
+    "decodedBytes": 2992508,
     "requests": 38,
     "byType": {
       "link": {
         "requests": 5,
-        "encodedBytes": 243790,
-        "decodedBytes": 243790
+        "encodedBytes": 238655,
+        "decodedBytes": 238655
       },
       "script": {
         "requests": 2,
-        "encodedBytes": 34859,
-        "decodedBytes": 34859
-      },
-      "img": {
-        "requests": 22,
-        "encodedBytes": 500080,
-        "decodedBytes": 500080
+        "encodedBytes": 23377,
+        "decodedBytes": 23377
       },
       "video": {
         "requests": 2,
         "encodedBytes": 1891338,
         "decodedBytes": 1891338
+      },
+      "img": {
+        "requests": 22,
+        "encodedBytes": 364800,
+        "decodedBytes": 364800
       },
       "css": {
         "requests": 6,
@@ -350,8 +352,8 @@
     },
     "renderBlocking": [
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
-      "/assets/navigation.css"
+      "/assets/navigation.css",
+      "/assets/site.min.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
@@ -365,63 +367,58 @@
         "bytes": 355218
       },
       {
-        "name": "/assets/site.css",
-        "bytes": 165924
-      },
-      {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       },
       {
         "name": "/assets/videos/boutique-animation-first.webp",
         "bytes": 88052
+      },
+      {
+        "name": "/assets/fonts/inter-normal-400-700.woff2",
+        "bytes": 48256
       }
     ],
     "failed": []
   },
   {
     "path": "/resultats.html",
-    "lcpMs": 664,
+    "lcpMs": 216,
     "lcpElement": {
-      "tag": "header",
+      "tag": "video",
       "id": null,
-      "classes": [
-        "page-heading",
-        "container",
-        "animated-heading",
-        "results-heading"
-      ],
-      "url": "/assets/photos/page-headings/resultats.webp"
+      "classes": [],
+      "url": "/assets/blog/blog-logo-orbit.mp4"
     },
     "cls": 0,
-    "fcpMs": 408,
-    "ttfbMs": 18,
-    "domContentLoadedMs": 291,
-    "loadMs": 577,
-    "domElements": 829,
-    "encodedBytes": 6349401,
-    "decodedBytes": 6349401,
+    "fcpMs": 200,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 112,
+    "loadMs": 191,
+    "domElements": 831,
+    "encodedBytes": 3897260,
+    "decodedBytes": 3897260,
     "requests": 37,
     "byType": {
       "link": {
         "requests": 5,
-        "encodedBytes": 243790,
-        "decodedBytes": 243790
+        "encodedBytes": 238655,
+        "decodedBytes": 238655
       },
       "script": {
         "requests": 2,
-        "encodedBytes": 34859,
-        "decodedBytes": 34859
-      },
-      "img": {
-        "requests": 20,
-        "encodedBytes": 310324,
-        "decodedBytes": 310324
+        "encodedBytes": 23377,
+        "decodedBytes": 23377
       },
       "video": {
         "requests": 2,
-        "encodedBytes": 5250864,
-        "decodedBytes": 5250864
+        "encodedBytes": 2950620,
+        "decodedBytes": 2950620
+      },
+      "img": {
+        "requests": 20,
+        "encodedBytes": 175044,
+        "decodedBytes": 175044
       },
       "css": {
         "requests": 7,
@@ -431,70 +428,70 @@
     },
     "renderBlocking": [
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
-      "/assets/navigation.css"
+      "/assets/navigation.css",
+      "/assets/site.min.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
         "name": "/assets/blog/blog-logo-orbit.mp4",
-        "bytes": 5160628
+        "bytes": 2860384
       },
       {
         "name": "/assets/backgrounds/fond-5.webp",
         "bytes": 368218
       },
       {
-        "name": "/assets/site.css",
-        "bytes": 165924
-      },
-      {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       },
       {
         "name": "/assets/blog/blog-logo-first.webp",
         "bytes": 90236
+      },
+      {
+        "name": "/assets/fonts/inter-normal-400-700.woff2",
+        "bytes": 48256
       }
     ],
     "failed": []
   },
   {
     "path": "/articles/presentation-seniors-masculins-1.html",
-    "lcpMs": 432,
+    "lcpMs": 168,
     "lcpElement": {
       "tag": "img",
       "id": null,
       "classes": [
         "watermark"
       ],
-      "url": "/assets/logo-phb.png"
+      "url": "/assets/logo-phb.webp"
     },
     "cls": 0,
-    "fcpMs": 432,
-    "ttfbMs": 10,
-    "domContentLoadedMs": 227,
-    "loadMs": 302,
-    "domElements": 475,
-    "encodedBytes": 2209711,
-    "decodedBytes": 2209711,
+    "fcpMs": 168,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 90,
+    "loadMs": 120,
+    "domElements": 477,
+    "encodedBytes": 2057814,
+    "decodedBytes": 2057814,
     "requests": 31,
     "byType": {
       "link": {
         "requests": 5,
-        "encodedBytes": 243790,
-        "decodedBytes": 243790
+        "encodedBytes": 238655,
+        "decodedBytes": 238655
       },
       "img": {
         "requests": 18,
-        "encodedBytes": 1509050,
-        "decodedBytes": 1509050
+        "encodedBytes": 1373770,
+        "decodedBytes": 1373770
       },
       "script": {
         "requests": 2,
-        "encodedBytes": 34859,
-        "decodedBytes": 34859
+        "encodedBytes": 23377,
+        "decodedBytes": 23377
       },
       "css": {
         "requests": 5,
@@ -503,8 +500,8 @@
       }
     },
     "renderBlocking": [
-      "/assets/site.css",
       "/assets/fonts/fonts.css",
+      "/assets/site.min.css",
       "/assets/navigation.css"
     ],
     "inpMs": null,
@@ -535,59 +532,55 @@
   },
   {
     "path": "/club.html",
-    "lcpMs": 888,
+    "lcpMs": 212,
     "lcpElement": {
       "tag": "img",
       "id": null,
       "classes": [
         "watermark"
       ],
-      "url": "/assets/logo-phb.png"
+      "url": "/assets/logo-phb.webp"
     },
     "cls": 0,
-    "fcpMs": 888,
-    "ttfbMs": 7,
-    "domContentLoadedMs": 513,
-    "loadMs": 715,
-    "domElements": 672,
-    "encodedBytes": 4596384,
-    "decodedBytes": 4596384,
-    "requests": 52,
+    "fcpMs": 212,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 130,
+    "loadMs": 211,
+    "domElements": 674,
+    "encodedBytes": 3879075,
+    "decodedBytes": 3879075,
+    "requests": 53,
     "byType": {
       "link": {
         "requests": 6,
-        "encodedBytes": 258090,
-        "decodedBytes": 258090
+        "encodedBytes": 252955,
+        "decodedBytes": 252955
       },
       "script": {
         "requests": 3,
-        "encodedBytes": 38815,
-        "decodedBytes": 38815
+        "encodedBytes": 27333,
+        "decodedBytes": 27333
       },
       "img": {
         "requests": 32,
-        "encodedBytes": 3141520,
-        "decodedBytes": 3141520
+        "encodedBytes": 2289950,
+        "decodedBytes": 2289950
       },
       "css": {
-        "requests": 10,
-        "encodedBytes": 1157959,
-        "decodedBytes": 1157959
+        "requests": 11,
+        "encodedBytes": 1308837,
+        "decodedBytes": 1308837
       }
     },
     "renderBlocking": [
       "/assets/club.css",
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
+      "/assets/site.min.css",
       "/assets/navigation.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
-      {
-        "name": "/assets/photos/u11-mixte-coach-yohann-guerin-transparent.webp",
-        "bytes": 529392
-      },
       {
         "name": "/assets/backgrounds/fond-4.webp",
         "bytes": 355880
@@ -597,67 +590,71 @@
         "bytes": 355218
       },
       {
-        "name": "/assets/seniors-masculins/coachs/jerome-quemener.webp",
-        "bytes": 348152
+        "name": "/assets/seniors-masculins/coachs/guillaume-michel.webp",
+        "bytes": 271816
+      },
+      {
+        "name": "/assets/background-phb.webp",
+        "bytes": 223520
       },
       {
         "name": "/assets/logo-phb-club-v2.webp",
-        "bytes": 316712
+        "bytes": 200254
       }
     ],
     "failed": []
   },
   {
     "path": "/stage-ete.html",
-    "lcpMs": 440,
+    "lcpMs": 196,
     "lcpElement": {
       "tag": "img",
       "id": null,
       "classes": [
         "stage-hero-image"
       ],
-      "url": "/assets/stage-ete/photo-003.webp"
+      "url": "/assets/stage-ete/hero-mobile-480.webp"
     },
     "cls": 0,
-    "fcpMs": 440,
-    "ttfbMs": 6,
-    "domContentLoadedMs": 282,
-    "loadMs": 531,
-    "domElements": 1100,
-    "encodedBytes": 2275179,
-    "decodedBytes": 2275179,
-    "requests": 44,
+    "fcpMs": 196,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 121,
+    "loadMs": 171,
+    "domElements": 1102,
+    "encodedBytes": 1450765,
+    "decodedBytes": 1450765,
+    "requests": 43,
     "byType": {
       "link": {
         "requests": 6,
-        "encodedBytes": 252971,
-        "decodedBytes": 252971
+        "encodedBytes": 247836,
+        "decodedBytes": 247836
       },
       "script": {
         "requests": 3,
-        "encodedBytes": 37546,
-        "decodedBytes": 37546
+        "encodedBytes": 26647,
+        "decodedBytes": 26647
       },
       "img": {
-        "requests": 20,
-        "encodedBytes": 1383316,
-        "decodedBytes": 1383316
+        "requests": 19,
+        "encodedBytes": 1028552,
+        "decodedBytes": 1028552
       },
       "video": {
         "requests": 8,
-        "encodedBytes": 265430,
-        "decodedBytes": 265430
+        "encodedBytes": 16598,
+        "decodedBytes": 16598
       },
       "css": {
         "requests": 6,
-        "encodedBytes": 335916,
-        "decodedBytes": 335916
+        "encodedBytes": 131132,
+        "decodedBytes": 131132
       }
     },
     "renderBlocking": [
       "/assets/stage-ete.css",
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
+      "/assets/site.min.css",
       "/assets/navigation.css"
     ],
     "inpMs": null,
@@ -668,162 +665,154 @@
         "bytes": 318048
       },
       {
-        "name": "/assets/stage-ete/photo-003.webp",
-        "bytes": 270490
-      },
-      {
-        "name": "/assets/background-phb.webp",
-        "bytes": 223520
-      },
-      {
-        "name": "/assets/site.css",
-        "bytes": 165924
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       },
       {
         "name": "/assets/stage-ete/photo-083.webp",
         "bytes": 160376
+      },
+      {
+        "name": "/assets/stage-ete/photo-188.webp",
+        "bytes": 132740
+      },
+      {
+        "name": "/assets/stage-ete/photo-118.webp",
+        "bytes": 107336
       }
     ],
     "failed": []
   },
   {
     "path": "/u11-mixte.html",
-    "lcpMs": 416,
+    "lcpMs": 192,
     "lcpElement": {
       "tag": "img",
       "id": null,
       "classes": [
         "watermark"
       ],
-      "url": "/assets/logo-phb.png"
+      "url": "/assets/logo-phb.webp"
     },
     "cls": 0,
-    "fcpMs": 416,
-    "ttfbMs": 4,
-    "domContentLoadedMs": 260,
-    "loadMs": 325,
-    "domElements": 534,
-    "encodedBytes": 1849245,
-    "decodedBytes": 1849245,
+    "fcpMs": 192,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 114,
+    "loadMs": 167,
+    "domElements": 536,
+    "encodedBytes": 1127108,
+    "decodedBytes": 1127108,
     "requests": 45,
     "byType": {
       "link": {
         "requests": 7,
-        "encodedBytes": 258517,
-        "decodedBytes": 258517
+        "encodedBytes": 253382,
+        "decodedBytes": 253382
       },
       "script": {
         "requests": 3,
-        "encodedBytes": 38815,
-        "decodedBytes": 38815
+        "encodedBytes": 27333,
+        "decodedBytes": 27333
       },
       "img": {
         "requests": 26,
-        "encodedBytes": 1116794,
-        "decodedBytes": 1116794
+        "encodedBytes": 616058,
+        "decodedBytes": 616058
       },
       "css": {
         "requests": 8,
-        "encodedBytes": 435119,
-        "decodedBytes": 435119
+        "encodedBytes": 230335,
+        "decodedBytes": 230335
       }
     },
     "renderBlocking": [
       "/assets/youth-galleries.css",
       "/assets/club.css",
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
-      "/assets/navigation.css"
+      "/assets/navigation.css",
+      "/assets/site.min.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
         "name": "/assets/photos/u11-mixte-coach-yohann-guerin-transparent.webp",
-        "bytes": 529392
+        "bytes": 163936
       },
       {
-        "name": "/assets/background-phb.webp",
-        "bytes": 223520
-      },
-      {
-        "name": "/assets/site.css",
-        "bytes": 165924
-      },
-      {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       },
       {
         "name": "/assets/ui/coach-name-brush.webp",
         "bytes": 97112
+      },
+      {
+        "name": "/assets/u11-mixte/gallery/04.webp",
+        "bytes": 70820
+      },
+      {
+        "name": "/assets/u11-mixte/gallery/02.webp",
+        "bytes": 53990
       }
     ],
     "failed": []
   },
   {
     "path": "/u15-filles.html",
-    "lcpMs": 1008,
+    "lcpMs": 192,
     "lcpElement": {
       "tag": "img",
       "id": null,
       "classes": [
         "watermark"
       ],
-      "url": "/assets/logo-phb.png"
+      "url": "/assets/logo-phb.webp"
     },
     "cls": 0,
-    "fcpMs": 1008,
-    "ttfbMs": 21,
-    "domContentLoadedMs": 617,
-    "loadMs": 857,
-    "domElements": 550,
-    "encodedBytes": 1689235,
-    "decodedBytes": 1689235,
+    "fcpMs": 192,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 121,
+    "loadMs": 167,
+    "domElements": 552,
+    "encodedBytes": 1332554,
+    "decodedBytes": 1332554,
     "requests": 48,
     "byType": {
       "link": {
         "requests": 7,
-        "encodedBytes": 258517,
-        "decodedBytes": 258517
+        "encodedBytes": 253382,
+        "decodedBytes": 253382
       },
       "script": {
         "requests": 3,
-        "encodedBytes": 38815,
-        "decodedBytes": 38815
+        "encodedBytes": 27333,
+        "decodedBytes": 27333
       },
       "img": {
         "requests": 29,
-        "encodedBytes": 956784,
-        "decodedBytes": 956784
+        "encodedBytes": 821504,
+        "decodedBytes": 821504
       },
       "css": {
         "requests": 8,
-        "encodedBytes": 435119,
-        "decodedBytes": 435119
+        "encodedBytes": 230335,
+        "decodedBytes": 230335
       }
     },
     "renderBlocking": [
       "/assets/youth-galleries.css",
       "/assets/club.css",
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
+      "/assets/site.min.css",
       "/assets/navigation.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
-        "name": "/assets/background-phb.webp",
-        "bytes": 223520
-      },
-      {
-        "name": "/assets/site.css",
-        "bytes": 165924
-      },
-      {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       },
       {
         "name": "/assets/club/cartes/katia-u15-filles.webp",
@@ -832,83 +821,91 @@
       {
         "name": "/assets/u15-filles/gallery/04.webp",
         "bytes": 113588
+      },
+      {
+        "name": "/assets/u15-filles/gallery/05.webp",
+        "bytes": 112904
+      },
+      {
+        "name": "/assets/u15-filles/gallery/01.webp",
+        "bytes": 103084
       }
     ],
     "failed": []
   },
   {
     "path": "/u18-garcons.html",
-    "lcpMs": 1460,
+    "lcpMs": 168,
     "lcpElement": {
       "tag": "img",
       "id": null,
       "classes": [
         "watermark"
       ],
-      "url": "/assets/logo-phb.png"
+      "url": "/assets/logo-phb.webp"
     },
     "cls": 0,
-    "fcpMs": 816,
-    "ttfbMs": 18,
-    "domContentLoadedMs": 1023,
-    "loadMs": 1225,
-    "domElements": 624,
-    "encodedBytes": 2175263,
-    "decodedBytes": 2175263,
-    "requests": 51,
+    "fcpMs": 168,
+    "ttfbMs": 3,
+    "domContentLoadedMs": 130,
+    "loadMs": 147,
+    "domElements": 626,
+    "encodedBytes": 1477146,
+    "decodedBytes": 1477146,
+    "requests": 47,
     "byType": {
       "link": {
         "requests": 9,
-        "encodedBytes": 259974,
-        "decodedBytes": 259974
+        "encodedBytes": 254839,
+        "decodedBytes": 254839
       },
       "script": {
         "requests": 4,
-        "encodedBytes": 39678,
-        "decodedBytes": 39678
+        "encodedBytes": 28196,
+        "decodedBytes": 28196
       },
       "img": {
-        "requests": 29,
-        "encodedBytes": 1440492,
-        "decodedBytes": 1440492
+        "requests": 25,
+        "encodedBytes": 963776,
+        "decodedBytes": 963776
       },
       "css": {
         "requests": 8,
-        "encodedBytes": 435119,
-        "decodedBytes": 435119
+        "encodedBytes": 230335,
+        "decodedBytes": 230335
       }
     },
     "renderBlocking": [
       "/assets/youth-galleries.css",
       "/assets/u13-filles.css",
-      "/assets/club.css",
       "/assets/u18-garcons.css",
+      "/assets/club.css",
       "/assets/fonts/fonts.css",
-      "/assets/site.css",
-      "/assets/navigation.css"
+      "/assets/navigation.css",
+      "/assets/site.min.css"
     ],
     "inpMs": null,
     "inpNote": "NON MESURÉ : aucune interaction utilisateur représentative dans cet audit de chargement local.",
     "largest": [
       {
-        "name": "/assets/background-phb.webp",
-        "bytes": 223520
-      },
-      {
-        "name": "/assets/site.css",
-        "bytes": 165924
-      },
-      {
-        "name": "/assets/logo-phb.png",
-        "bytes": 150878
-      },
-      {
-        "name": "/assets/u18-garcons/cards/front/sean.webp",
-        "bytes": 97274
+        "name": "/assets/site.min.css",
+        "bytes": 160780
       },
       {
         "name": "/assets/ui/coach-name-brush.webp",
         "bytes": 97112
+      },
+      {
+        "name": "/assets/u18-garcons/cards/front/08.webp",
+        "bytes": 96104
+      },
+      {
+        "name": "/assets/u18-garcons/cards/front/01.webp",
+        "bytes": 94526
+      },
+      {
+        "name": "/assets/u18-garcons/cards/front/05.webp",
+        "bytes": 92868
       }
     ],
     "failed": []

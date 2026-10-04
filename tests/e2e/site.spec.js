@@ -399,7 +399,7 @@ test('Seniors féminines : carrousel sous le classement', async ({ page }) => {
   await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('1 / 2');
 });
 
-test('partenaires : dock unique sans commande superflue', async ({ page }) => {
+test('partenaires : dock unique avec pause accessible', async ({ page }) => {
   await page.goto('/partenaires.html');
   await expect(page.locator('.sponsor-marquee')).toHaveCount(0);
   await page.goto('/');
@@ -552,7 +552,7 @@ for (const path of [
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(path);
     const audit = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
       .analyze();
     const serious = audit.violations.filter(item => item.impact === 'serious' || item.impact === 'critical');
     expect(serious, `${path}: violations Axe sérieuses`).toEqual([]);

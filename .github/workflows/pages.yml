@@ -76,8 +76,11 @@ jobs:
           python scripts/check_build.py
           python scripts/seo_audit.py
           python scripts/check_budgets.py
+          python scripts/check_media.py
       - name: Tests navigateur
         run: npm run test:e2e
+      - name: Auditer toutes les pages, le responsive et les performances
+        run: npm run audit:ci
       - name: Vérifier le contenu sans JavaScript
         run: npm run audit:nojs
       - name: Persister les snapshots sportifs validés

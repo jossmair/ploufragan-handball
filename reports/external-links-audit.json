@@ -6,6 +6,12 @@
     "result": "reachable"
   },
   {
+    "url": "https://apps.apple.com/fr/app/teampulse-gestion-d%C3%A9quipe/id1281004043",
+    "domain": "apps.apple.com",
+    "status": 429,
+    "result": "reachable"
+  },
+  {
     "url": "https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages",
     "domain": "docs.github.com",
     "status": 200,
@@ -276,13 +282,7 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625937/",
-    "domain": "www.ffhandball.fr",
-    "status": 200,
-    "result": "ok"
-  },
-  {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625943/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625948/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -300,13 +300,13 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627133/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627147/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627140/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627154/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -324,13 +324,13 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681030/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681044/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681037/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681051/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -348,7 +348,13 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708194/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708196/",
+    "domain": "www.ffhandball.fr",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195183/rencontre-2708198/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -366,25 +372,25 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697235/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697255/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697236/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697256/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697247/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697258/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697248/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697259/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -402,25 +408,25 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696265/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696278/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696266/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696279/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696274/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696292/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696276/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696294/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -438,13 +444,13 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683525/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683533/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683530/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-192996/rencontre-2683537/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -462,13 +468,7 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683693/",
-    "domain": "www.ffhandball.fr",
-    "status": 200,
-    "result": "ok"
-  },
-  {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683696/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683702/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -486,13 +486,13 @@
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681974/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681978/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681975/",
+    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-192879/rencontre-2681982/",
     "domain": "www.ffhandball.fr",
     "status": 200,
     "result": "ok"
@@ -504,43 +504,43 @@
     "result": "ok"
   },
   {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=GYMNASE%20FRANCOIS%20PROVOST%2C%20rue%20des%20plages%2C%2022560%20TREBEURDEN%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=Gymnase%20Chaptal%2C%20rue%20de%20la%20roche%20jano%2C%2022000%20ST%20BRIEUC%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
+    "url": "https://www.google.com/maps/dir/?api=1&destination=SALLE%20CORVAISIER%2C%20PARC%20DE%20KERGOZ%2C%2022200%20PABU%2C%20France&travelmode=driving&dir_action=navigate",
+    "domain": "www.google.com",
+    "status": 200,
+    "result": "ok"
+  },
+  {
     "url": "https://www.google.com/maps/dir/?api=1&destination=SALLE%20DU%20COLL%C3%88GE%20EUG%C3%88NE%20GUILLEVIC%2C%20RUE%20DU%2019%20MARS%201962%2C%2022150%20PLOEUC%20SUR%20LIE%2C%20France&travelmode=driving&dir_action=navigate",
     "domain": "www.google.com",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.google.com/maps/dir/?api=1&destination=SALLE%20KERRAOUL%2C%20RUE%20HENT%20KERVIK%2C%2022500%20PAIMPOL%2C%20France&travelmode=driving&dir_action=navigate",
+    "url": "https://www.google.com/maps/dir/?api=1&destination=SOS%20LA%20NOURAIS%2C%20ROUTE%20DE%20LA%20NOURAIS%2C%2022100%20LEHON%2C%20France&travelmode=driving&dir_action=navigate",
     "domain": "www.google.com",
     "status": 200,
     "result": "ok"
   },
   {
-    "url": "https://www.google.com/maps/dir/?api=1&destination=SALLE%20PASS%27SPORT%2C%20dixmude%2C%2022580%20PLOUHA%2C%20France&travelmode=driving&dir_action=navigate",
+    "url": "https://www.google.com/maps/dir/?api=1&destination=SOS%2C%20BOURG%2C%2022140%20CAVAN%2C%20France&travelmode=driving&dir_action=navigate",
     "domain": "www.google.com",
     "status": 200,
     "result": "ok"
   },
   {
     "url": "https://www.google.com/maps/dir/?api=1&destination=Salle%20Oc%C3%A9ane%2C%20RUE%20DE%20LA%20CROIX%2C%2022190%20PLERIN%2C%20France&travelmode=driving&dir_action=navigate",
-    "domain": "www.google.com",
-    "status": 200,
-    "result": "ok"
-  },
-  {
-    "url": "https://www.google.com/maps/dir/?api=1&destination=Salle%20omnisports%20d%E2%80%99Erquy%2C%204%20%20RUE%20VILLE%20LOUIS%2C%2022430%20ERQUY%2C%20France&travelmode=driving&dir_action=navigate",
-    "domain": "www.google.com",
-    "status": 200,
-    "result": "ok"
-  },
-  {
-    "url": "https://www.google.com/maps/dir/?api=1&destination=Salle%20omnisports%2C%20LE%20BOURG%20-%20RUE%20DE%20LA%20GRANDE%20VILLE%20NEUVE%2C%2022170%20PLOUAGAT%2C%20France&travelmode=driving&dir_action=navigate",
-    "domain": "www.google.com",
-    "status": 200,
-    "result": "ok"
-  },
-  {
-    "url": "https://www.google.com/maps/dir/?api=1&destination=Salle%20omnisports%2C%20rue%20des%20plantations%2C%2022980%20PLELAN%20LE%20PETIT%2C%20France&travelmode=driving&dir_action=navigate",
     "domain": "www.google.com",
     "status": 200,
     "result": "ok"

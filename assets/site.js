@@ -2,6 +2,19 @@ const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
 const siteHeader = document.querySelector('.site-header');
 const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const sponsorDock = document.querySelector('.sponsor-marquee');
+const sponsorPause = sponsorDock?.querySelector('.sponsor-pause');
+if (sponsorPause) {
+  const setSponsorPause = paused => {
+    sponsorDock.classList.toggle('is-paused', paused);
+    sponsorPause.setAttribute('aria-pressed', String(paused));
+    sponsorPause.setAttribute('aria-label', paused ? 'Reprendre le bandeau des partenaires' : 'Mettre en pause le bandeau des partenaires');
+    sponsorPause.firstElementChild.textContent = paused ? '▶' : '⏸';
+  };
+  sponsorPause.hidden = motion.matches;
+  sponsorPause.addEventListener('click', () => setSponsorPause(sponsorPause.getAttribute('aria-pressed') !== 'true'));
+  motion.addEventListener('change', event => { sponsorPause.hidden = event.matches; });
+}
 function setMenu(open) {
   navigation.classList.toggle('is-open', open);
   menuButton.setAttribute('aria-expanded', String(open));

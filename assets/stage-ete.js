@@ -1,4 +1,19 @@
 (() => {
+  const posters = [...document.querySelectorAll('[data-stage-poster]')];
+  const loadPoster = video => {
+    video.poster = video.dataset.stagePoster;
+    delete video.dataset.stagePoster;
+  };
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        loadPoster(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '200px' });
+    posters.forEach(video => observer.observe(video));
+  } else posters.forEach(loadPoster);
   const photos = [...document.querySelectorAll('[data-stage-photo]')];
   if (!photos.length) return;
   const filters = document.querySelector('.stage-filters');
