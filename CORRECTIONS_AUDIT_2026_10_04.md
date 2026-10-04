@@ -96,3 +96,15 @@ Deux scénarios vérifient les pages U18 et Résultats à 320, 360, 390, 430 et 
 Les grands titres, titres de sections, libellés des horaires et boutons sont réduits sur PC. Le corps de texte hérité reste à 15 px, les boutons conservent une hauteur minimale de 44 px, les horaires sont affichés à environ 18 px. Les animations d’en-tête occupent moins de place ; les espacements entre sections sont raccourcis. L’échelle est également appliquée aux titres du Club et du Stage. Les dimensions des cartes Panini U18 et U13 ont été comparées à la version précédente et restent identiques.
 
 Huit scénarios de noms, portraits, disposition, navigation et chevauchement réussis ; 64 rendus du sitemap sans anomalie. Le module de bureau reste inférieur à 6 Ko. Les contrôles complets de publication sont exécutés à nouveau.
+
+
+### En-têtes regroupés et remontés
+
+Les en-têtes animés de Galerie, Blog, Résultats, Entraînements et Boutique regroupent désormais le surtitre, le titre et la description dans un même bloc. La hauteur du visuel ne répartit plus les textes sur plusieurs rangées étirées. Sur PC, le visuel reprend son ratio vidéo 16:9 et le texte s’aligne en haut. Les marges du fil d’Ariane et de l’en-tête sont réduites. Sur mobile, le titre conserve une colonne distincte du visuel et la description occupe toute la largeur.
+
+Contrôle local : 25 compositions sur cinq pages, de 390 à 1440 px, sans débordement ni espace entre blocs de texte supérieur à 20 px. À 1440 px, l’en-tête Galerie mesure 306 px et Entraînements 261 px. Un test de régression vérifie les espacements et l’absence de chevauchement entre titre et visuel.
+
+
+### Introduction du Club unifiée
+
+Le titre « Le club », la présentation et les liens vers les équipes et l’histoire forment une seule introduction. Le second grand titre est supprimé. Le logo utilise la grille normale, à droite du texte sur PC et du titre sur mobile ; son placement ne dépend plus de coordonnées absolues. Les accès Organigramme, David et Les salles deviennent des liens simples, puis les trois repères sont réunis dans un bandeau discret. Le test du logo vérifie sa séparation du titre de 320 à 1440 px.

@@ -848,3 +848,31 @@ body .team-detail-grid>.team-registration{width:min(100%,960px);justify-self:cen
  body .match-score span{min-width:28px}
  body .match-team-name{min-height:70px;word-break:normal;overflow-wrap:anywhere;hyphens:auto}
 }
+
+/* Keep heading text together instead of stretching each line beside the media. */
+.heading-copy{display:contents}
+@media(min-width:901px){
+ body .animated-heading{grid-template-rows:auto auto;min-height:0;align-content:start;row-gap:0}
+ body .animated-heading .breadcrumb{margin-bottom:20px}
+ body .animated-heading .heading-copy{display:block;grid-column:1;grid-row:2;align-self:start;min-width:0;padding-top:12px}
+ body .animated-heading .heading-copy>.eyebrow{margin:0 0 12px}
+ body .animated-heading .heading-copy>h1{margin:0}
+ body .animated-heading .heading-copy>.page-intro{margin:16px 0 0;line-height:1.6}
+ body .animated-heading .heading-intro-media[data-heading-video-stage]{grid-column:2;grid-row:2;margin:0;align-self:start;aspect-ratio:16/9}
+}
+
+@media(max-width:900px){body .animated-heading .heading-copy>.eyebrow{grid-column:1/-1;grid-row:2}}
+
+
+@media(max-width:900px){
+ body .animated-heading{grid-template-columns:minmax(0,1fr) 150px;grid-template-rows:auto auto;min-height:0;align-content:start}
+ body .animated-heading .heading-copy{display:grid;grid-column:1/-1;grid-row:2;grid-template-columns:minmax(0,1fr) 150px;column-gap:16px;align-items:center}
+ body .animated-heading .heading-copy>.eyebrow{grid-column:1/-1;grid-row:1;margin:0 0 12px}
+ body .animated-heading .heading-copy>h1{grid-column:1;grid-row:2;min-height:110px;display:block;align-content:center;margin:0}
+ body .animated-heading .heading-copy>.page-intro{grid-column:1/-1;grid-row:3;margin:14px 0 0}
+ body .animated-heading .heading-intro-media[data-heading-video-stage]{grid-column:2;grid-row:2;align-self:start;margin:36px 0 0}
+}
+@media(max-width:520px){
+ body .animated-heading,body .animated-heading .heading-copy{grid-template-columns:minmax(0,1fr) 90px;column-gap:12px}
+ body .animated-heading .heading-copy>h1{min-height:90px}
+}

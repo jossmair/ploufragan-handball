@@ -132,3 +132,27 @@ test('long mobile team names stay above their logos and clear of the score',asyn
   }
  }
 });
+
+
+test('animated headings keep their text grouped beside the media',async({page})=>{
+ test.setTimeout(60000);
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [390,900,1440]){
+  await page.setViewportSize({width,height:900});
+  for(const slug of ['galerie','entrainements','resultats','blog','boutique']){
+   await page.goto('/'+slug+'.html');
+   const layout=await page.locator('.animated-heading').evaluate(header=>{
+    const title=header.querySelector('h1').getBoundingClientRect();
+    const eyebrow=header.querySelector('.eyebrow').getBoundingClientRect();
+    const intro=header.querySelector('.page-intro')?.getBoundingClientRect();
+    const media=header.querySelector('.heading-intro-media').getBoundingClientRect();
+    return {eyebrowGap:title.top-eyebrow.bottom,introGap:intro?intro.top-title.bottom:0,
+     collision:title.left<media.right&&title.right>media.left&&title.top<media.bottom&&title.bottom>media.top};
+   });
+   expect(layout.eyebrowGap).toBeGreaterThanOrEqual(0);expect(layout.eyebrowGap).toBeLessThanOrEqual(20);
+   expect(layout.introGap).toBeGreaterThanOrEqual(0);expect(layout.introGap).toBeLessThanOrEqual(20);
+   expect(layout.collision).toBe(false);
+   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+  }
+ }
+});

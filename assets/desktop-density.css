@@ -79,3 +79,7 @@
  body .hero-socials a{font-size:.9375rem;min-height:44px;padding:10px 16px}
  body .home-news-copy h3{font-size:1.6rem}
 }
+
+@media(min-width:1024px){body[data-page] .animated-heading{min-height:0}}
+
+@media(min-width:1024px){body[data-page] .page-heading{padding-top:16px;padding-bottom:24px}body .page-heading .breadcrumb{margin-bottom:20px}}

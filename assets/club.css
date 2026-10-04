@@ -77,3 +77,38 @@ body[data-page="club"] .club-page-heading>.club-heading-emblem{position:absolute
 @media(max-width:520px){.club-page-heading h1{font-size:clamp(2.5rem,10vw,3.6rem)}body[data-page="club"] .club-page-heading>.club-heading-emblem{width:clamp(120px,40vw,160px);right:10px;top:100px}}
 
 .org-coach-panel[aria-hidden="true"]{content-visibility:hidden}
+
+@media(min-width:1024px){body[data-page="club"] .page-heading.club-page-heading{min-height:300px}body[data-page="club"] .club-page-heading>.club-heading-emblem{top:16px;width:280px}}
+
+/* A single club introduction, with a calm text area and a balanced emblem. */
+body[data-page="club"] .page-heading.club-page-heading{display:grid;grid-template-columns:minmax(0,1fr) 280px;grid-template-rows:auto auto;gap:0 60px;padding:16px 0 28px;min-height:0;isolation:isolate}
+.club-page-heading::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#09090deb,#09090d70 65%,transparent)}
+.club-page-heading .breadcrumb{grid-column:1/-1;margin-bottom:22px}
+.club-heading-copy{grid-column:1;grid-row:2;align-self:center;min-width:0}
+.club-heading-copy>.eyebrow{margin-bottom:12px;max-width:none}
+.club-heading-copy>h1{margin:0}
+.club-heading-summary{margin-top:20px;max-width:660px}
+.club-heading-summary p{color:#d1d1d7;line-height:1.65;font-size:1rem;margin:0}
+.club-heading-summary .actions{margin-top:22px;gap:12px;flex-wrap:wrap}
+body[data-page="club"] .club-page-heading>.club-heading-emblem{position:relative;inset:auto;grid-column:2;grid-row:2;width:280px;align-self:center;justify-self:center}
+.club-shortcuts{display:flex;flex-wrap:wrap;gap:24px;padding:16px 0;border-bottom:1px solid var(--line);margin-bottom:20px;font-size:.875rem;font-weight:700}
+.club-shortcuts a{padding-block:6px;border-bottom:2px solid transparent}.club-shortcuts a:hover{border-color:var(--red)}
+body .club-intro.club-intro-editorial{margin-bottom:44px;padding:0}
+body .club-intro-landmarks{margin:0;padding:20px;gap:24px;background:#111116ee;border:1px solid var(--line)}
+body .club-intro-landmarks strong{font-size:1.2rem}body .club-intro-landmarks span{margin-bottom:6px}
+@media(max-width:850px){
+ body[data-page="club"] .page-heading.club-page-heading{grid-template-columns:minmax(0,1fr) 200px;column-gap:24px}
+ body[data-page="club"] .club-page-heading>.club-heading-emblem{width:200px}
+ .club-heading-copy{display:contents}.club-heading-copy>.eyebrow{grid-column:1/-1;grid-row:2;margin:0 0 12px}
+ .club-heading-copy>h1{grid-column:1;grid-row:3;align-self:center}
+ body[data-page="club"] .club-page-heading>.club-heading-emblem{grid-row:3}
+ .club-heading-summary{grid-column:1/-1;grid-row:4;margin-top:18px}
+}
+@media(max-width:520px){
+ body[data-page="club"] .page-heading.club-page-heading{grid-template-columns:minmax(0,1fr) clamp(112px,32vw,150px);column-gap:16px}
+ body[data-page="club"] .club-page-heading>.club-heading-emblem{width:100%}
+ .club-heading-summary .actions{display:grid;grid-template-columns:1fr;gap:10px}.club-heading-summary .button{width:100%;justify-content:space-between}
+ body .club-intro-landmarks{grid-template-columns:1fr;gap:18px;padding:18px}
+}
+
+@media(max-width:850px){.club-heading-copy>*{position:relative;z-index:2}}
