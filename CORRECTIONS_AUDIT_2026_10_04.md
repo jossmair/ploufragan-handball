@@ -72,3 +72,9 @@ Chromium et simulation mobile ne remplacent pas les tests sur Safari/iOS, lecteu
 Mesures U18 à 1440 px : horaires 490 → 425 px, prochain match 476 → 414 px, résultat 401 → 346 px, classement 536 → 476 px. Les deux premières rangées occupent environ 129 px de moins.
 
 Huit tests de navigation, disposition, effectifs et zoom réussis. Seize rendus complémentaires entre 1024 et 1920 px sur quatre équipes : aucun débordement ni nom de club tronqué. Budgets de poids respectés. Les règles de compacité sont réservées au bureau.
+
+## Compacité étendue à toutes les pages sur ordinateur
+
+Les composants partagés des pages Accueil, Résultats, Blog, Galerie, Boutique, Partenaires, équipes et informations utilisent la même densité de bureau : cartes de matchs plus courtes (environ 230 px hors lieu), marges internes réduites, titres d’articles et galeries moins imposants, logos de partenaires proportionnés. La boutique affiche quatre produits par rangée dès 1280 px. Les actualités de l’accueil montrent trois lignes de résumé au lieu de deux.
+
+Les règles sont regroupées dans assets/desktop-density.css (3 Ko, budget 4,5 Ko) et appliquées à partir de 1024 px. La taille des textes courants reste conservée. Les 32 pages du sitemap ont été contrôlées à 390 et 1440 px : 64 rendus sans anomalie. Huit pages principales ont également été inspectées visuellement sur PC.

@@ -1,0 +1,37 @@
+/* Desktop team pages: compact spacing, readable names and scores. */
+@media(min-width:1024px){
+ body .team-detail-grid{gap:20px}
+ .team-detail-grid :is(.team-training,.team-next-card,.team-last-card,.team-season-card,.team-registration){padding:22px}
+ .team-detail-grid :is(.team-next-card,.team-last-card) h2{font-size:1.75rem;margin-bottom:14px}
+ .team-training .panel-title{margin-bottom:16px}.team-training .panel-title h2{font-size:2rem}
+ .team-detail-grid .schedule td{padding:11px 10px}.team-detail-grid .team-staff{margin-top:16px;padding-top:12px}
+ body .match-card{min-height:220px;padding:18px}
+ body .match-main{grid-template-columns:minmax(0,1fr) 108px minmax(0,1fr);gap:12px;min-height:130px;padding-top:12px}
+ body .match-team{grid-template-rows:56px 48px;gap:8px}body .match-team-name{min-height:56px}
+ body .team-logo-disc{width:48px;height:48px}body :is(.match-result,.match-score){min-width:108px}
+ body .match-score{font-size:2.4rem}body .match-location{margin-top:12px;padding-top:10px}
+ .team-detail-grid .team-season-head{padding-bottom:15px}.team-detail-grid .team-season-head h2{font-size:2rem}
+ .team-detail-grid .team-rank{padding:16px 0 12px}.team-detail-grid .team-rank strong{font-size:3.2rem}
+ .team-detail-grid .pool-table :is(th,td){padding:7px 6px}
+ body .team-detail-grid .u13-f-card-grid{gap:20px;width:min(100%,920px)}
+ .team-detail-grid .u13-f-card-grid .player-tile{flex-basis:168px}
+ body .team-detail-grid :is(.team-player-section,.team-photo-section){padding-block:28px}
+}
+
+@media(min-width:1024px){
+ body :is(.information-panel,.paper-panel){padding:26px}
+ body .team-detail-grid :is(.team-training,.team-registration){padding:22px}
+ body .competition-card{padding:20px}.competition-card h3{font-size:1.55rem;margin:12px 0 18px}
+ body .news-card{min-height:280px}.news-card-image{min-height:280px}.news-card-image img{max-height:310px}
+ body .news-card-copy{padding:28px}.news-card-copy h2{font-size:clamp(2rem,3vw,3rem);margin:12px 0 16px}.news-card-copy .text-link{margin-top:20px}
+ body .gallery-index-card,body .gallery-index-card figure{min-height:310px}.gallery-index-copy{padding:32px}.gallery-index-copy h2{font-size:clamp(2.2rem,3.4vw,3.5rem)}
+ body .partner-card{grid-template-columns:72px 1fr auto;gap:18px;padding:20px}.partner-card .partner-logo{width:72px;height:72px}
+ body .product-copy{padding:16px;gap:10px}.product-copy h2{font-size:1.3rem}
+ body .youth-choice{min-height:115px;padding:18px 22px}
+ body .location-list article{padding:24px;gap:20px}.location-list h2{font-size:1.8rem;margin-bottom:10px}
+ body .contact-details>div{padding-block:18px}
+ body .home-news-image{height:170px}.home-news-copy h3{font-size:1.8rem}.home-news-copy p{-webkit-line-clamp:3}
+ body .team-card{min-height:300px}.team-card-copy{padding:24px}.team-card h2{font-size:2.35rem}
+ body .matches-grid,body .competitions-grid,body .news-grid,body .gallery-index-grid{gap:20px}
+}
+@media(min-width:1280px){body .products-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
