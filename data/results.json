@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T12:28:14.897883+00:00",
+  "updatedAt": "2026-10-04T13:31:22.272952+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -520,24 +520,24 @@
         },
         {
           "position": 2,
+          "team": "U13M TER ENTENTE LOUDEAC LA MOTTE",
+          "points": 15,
+          "played": 5,
+          "club": false
+        },
+        {
+          "position": 3,
           "team": "BAIE D'ARMOR HB - 13G1",
           "points": 14,
           "played": 6,
           "club": false
         },
         {
-          "position": 3,
+          "position": 4,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 14,
           "played": 6,
           "club": true
-        },
-        {
-          "position": 4,
-          "team": "U13M TER ENTENTE LOUDEAC LA MOTTE",
-          "points": 12,
-          "played": 4,
-          "club": false
         },
         {
           "position": 5,
@@ -549,22 +549,22 @@
         {
           "position": 6,
           "team": "AL Trebeurden HANDBALL",
-          "points": 9,
-          "played": 4,
-          "club": false
-        },
-        {
-          "position": 7,
-          "team": "GUINGAMP HB 1",
-          "points": 8,
+          "points": 11,
           "played": 6,
           "club": false
         },
         {
-          "position": 8,
+          "position": 7,
           "team": "GOELO HANDBALL CLUB",
-          "points": 6,
-          "played": 4,
+          "points": 9,
+          "played": 5,
+          "club": false
+        },
+        {
+          "position": 8,
+          "team": "GUINGAMP HB 1",
+          "points": 8,
+          "played": 6,
           "club": false
         },
         {
