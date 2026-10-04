@@ -78,3 +78,9 @@ Huit tests de navigation, disposition, effectifs et zoom réussis. Seize rendus 
 Les composants partagés des pages Accueil, Résultats, Blog, Galerie, Boutique, Partenaires, équipes et informations utilisent la même densité de bureau : cartes de matchs plus courtes (environ 230 px hors lieu), marges internes réduites, titres d’articles et galeries moins imposants, logos de partenaires proportionnés. La boutique affiche quatre produits par rangée dès 1280 px. Les actualités de l’accueil montrent trois lignes de résumé au lieu de deux.
 
 Les règles sont regroupées dans assets/desktop-density.css (3 Ko, budget 4,5 Ko) et appliquées à partir de 1024 px. La taille des textes courants reste conservée. Les 32 pages du sitemap ont été contrôlées à 390 et 1440 px : 64 rendus sans anomalie. Huit pages principales ont également été inspectées visuellement sur PC.
+
+## Réduction supplémentaire, cartes Panini conservées
+
+Les blocs, marges internes, vignettes et grands titres de bureau sont encore légèrement réduits. À 1440 px, l’en-tête de l’accueil passe de 755 à 712 px et celui des résultats de 622 à 540 px. Les noms longs des clubs peuvent agrandir leur rangée pour éviter de chevaucher le logo.
+
+Les cartes Panini sont exclues de cette réduction : comparaison des dimensions avant/après sur les neuf cartes U18 et sept cartes U13 filles, strictement identiques. Deux scénarios de noms, portraits et disposition réussis ; 64 rendus des 32 pages du sitemap sans anomalie ; budgets respectés. Les captures de l’accueil, du Club et des résultats ont été contrôlées sur PC.
