@@ -95,7 +95,7 @@ ORG_ID = SITE_URL + "#organization"
 WEBSITE_ID = SITE_URL + "#website"
 OG_IMAGE = SITE_URL + "assets/og-phb.jpg"
 SEO_META = {
-    "index": ("Ploufragan Handball | Club de handball près de Saint-Brieuc", "Site officiel du Ploufragan Handball : équipes, entraînements, résultats, inscriptions et vie du club à Ploufragan, près de Saint-Brieuc."),
+    "index": ("PHB | Ploufragan Handball - Club pr\u00e8s de Saint-Brieuc", "Site officiel du PHB (Ploufragan Handball) : \u00e9quipes, entra\u00eenements, r\u00e9sultats, inscriptions et vie du club \u00e0 Ploufragan, pr\u00e8s de Saint-Brieuc."),
     "equipes": ("Équipes de handball à Ploufragan | PHB", "Découvrez les équipes du Ploufragan Handball, du Baby Hand aux seniors et aux loisirs, ainsi que leurs pages et horaires."),
     "baby-hand": ("Baby Hand 3 à 5 ans à Ploufragan | PHB", "Le Baby Hand du PHB accueille les filles et garçons de 3 à 5 ans à Ploufragan et Trégueux. Retrouvez les séances et les renseignements pour participer."),
     "ecole-de-hand": ("École de handball à Ploufragan | PHB", "L’école de hand du Ploufragan Handball : séances, encadrement et informations pour découvrir le handball près de Saint-Brieuc."),
@@ -413,7 +413,7 @@ def structured_data_for(slug, title):
     if slug == "index":
         data.append({
             "@type": "SportsOrganization", "@id": ORG_ID,
-            "name": "Ploufragan Handball", "alternateName": "PHB",
+            "name": "Ploufragan Handball", "alternateName": ["PHB", "Ploufragan HB"],
             "url": SITE_URL, "logo": SITE_URL + "assets/logo-phb-search.png",
             "sport": "Handball", "email": "ploufraganhandball@gmail.com",
             "telephone": "+33636618800",
@@ -426,6 +426,7 @@ def structured_data_for(slug, title):
             "sameAs": ["https://www.facebook.com/ploufragan.hb/", INSTAGRAM],
         })
         data.append({"@type": "WebSite", "@id": WEBSITE_ID, "name": "Ploufragan Handball",
+                     "alternateName": ["PHB", "Ploufragan HB"],
                      "url": SITE_URL, "inLanguage": "fr-FR", "publisher": {"@id": ORG_ID}})
     if slug != "404":
         data.append({"@type": "WebPage", "@id": canonical + "#webpage",

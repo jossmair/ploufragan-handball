@@ -247,6 +247,9 @@ def audit():
             if relative == "index.html":
                 organization = next((node for node in nodes if node.get("@type") == "SportsOrganization"), {})
                 website = next((node for node in nodes if node.get("@type") == "WebSite"), {})
+                for identity in (organization, website):
+                    if "PHB" not in identity.get("alternateName", []):
+                        errors.append(f"{relative}: nom alternatif PHB absent")
                 if organization.get("@id") != SITE + "#organization" or website.get("@id") != SITE + "#website" or website.get("publisher") != {"@id": SITE + "#organization"}:
                     errors.append(f"{relative}: identifiants Organisation/WebSite incohérents")
             if relative.startswith("articles/") and "BlogPosting" not in schema:
