@@ -12,17 +12,25 @@ test('accueil : publications récentes avant les résultats et lien actif lisibl
   await expect(page.locator('#navigation > a[aria-current="page"]')).toHaveCSS('color', 'rgb(255, 255, 255)');
 });
 
-test('U11 : photo et album retirés de la publication', async ({ page, request }) => {
+test('U11 : six photos en carrousel et album accessible', async ({ page, request }) => {
   await page.goto('/u11-mixte.html');
-  await expect(page.locator('[data-photo-carousel]')).toHaveCount(0);
+  const carousel=page.locator('[data-photo-carousel]');
+  await expect(carousel).toHaveCount(1);
+  await expect(carousel.locator('[data-photo-slide]')).toHaveCount(6);
+  await carousel.locator('[data-photo-thumb]').last().click();
+  await expect(carousel.locator('[data-photo-count]')).toHaveText('6 / 6');
+  await carousel.locator('[data-photo-track]').press('ArrowLeft');
+  await expect(carousel.locator('[data-photo-count]')).toHaveText('5 / 6');
   await expect(page.locator('.team-season-stack .is-team-photo')).toHaveCount(0);
   await expect(page.locator('.team-training [data-org-coach-toggle]')).toHaveCount(1);
-  for (const path of ['/assets/u11-mixte/gallery/01.webp', '/assets/u11-mixte/gallery/thumbs/01.webp',
-    '/assets/photos/u11-mixte-equipe-2026-2027.webp', '/assets/og/u11-mixte.jpg', '/assets/equipes/u11-mixte-action.webp']) {
+  for (const path of ['/assets/u11-mixte/gallery/01.webp','/assets/u11-mixte/gallery/thumbs/01.webp']) {
+    expect((await request.get(path)).status()).toBe(200);
+  }
+  for (const path of ['/assets/photos/u11-mixte-equipe-2026-2027.webp', '/assets/og/u11-mixte.jpg', '/assets/equipes/u11-mixte-action.webp']) {
     expect((await request.get(path)).status()).toBe(404);
   }
   await page.goto('/galerie.html');
-  await expect(page.locator('a[href*="u11-mixte-gallery"]')).toHaveCount(0);
+  await expect(page.locator('.gallery-index-card[href="u11-mixte.html#u11-mixte-gallery-title"]')).toHaveCount(1);
 });
 
 test('seniors masculins : permanences accessibles avant le planning', async ({ page }) => {
