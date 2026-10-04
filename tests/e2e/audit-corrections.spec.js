@@ -70,3 +70,26 @@ test('closed coach cards defer their photos until a visitor opens them',async({p
  await expect.poll(()=>panel.locator('img').first().evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true);
  expect(requests).toContain(source);
 });
+
+test('desktop team photos stay proportionate and fit the card grid',async({page})=>{
+ test.setTimeout(60000);
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [900,1440,1920]){
+  await page.setViewportSize({width,height:1000});
+  for(const route of ['u18-garcons','u15-garcons','u13-filles','seniors-feminines','baby-hand','ecole-de-hand']){
+   await page.goto('/'+route+'.html');
+   const photos=page.locator('.team-sidebar-photo img,.team-page-photo img,.team-gallery-slide img');
+   for(const photo of await photos.all()){
+    const rect=await photo.boundingBox();expect(rect.height).toBeLessThanOrEqual(360);
+   }
+   const sidebar=page.locator('.team-sidebar-photo');
+   if(await sidebar.count()){
+    const card=await sidebar.boundingBox(),grid=await page.locator('.team-detail-grid').boundingBox();
+    expect(card.width).toBeLessThan(grid.width*.55);
+    const signup=await page.locator('.team-registration').boundingBox();
+    expect(Math.abs(card.y-signup.y)).toBeLessThan(2);
+   }
+   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+  }
+ }
+});

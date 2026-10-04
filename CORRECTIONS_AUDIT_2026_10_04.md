@@ -12,6 +12,15 @@
 - Documents distingue les démarches pour mineurs et majeurs, création et renouvellement, compétition et loisir. Source : règlement médical FFHandball 2026–2027, articles 8 et 9.
 - Club et Stage proposent des raccourcis vers les sections de leurs pages longues.
 
+## Photos des équipes sur ordinateur
+
+- Photos dans la grille : une colonne et 300 px de hauteur, avec la carte d’inscription à côté lorsqu’une photo est présente.
+- Photos en tête de page : largeur maximale 860 px et hauteur maximale 340 px.
+- Carrousel des seniors féminines : une colonne, photos limitées à 360 px de hauteur ; le classement reste avant le carrousel.
+- Galeries de matchs : largeur maximale 840 px et photos limitées à 420 px de hauteur sur ordinateur. Le zoom reste disponible.
+- Les photos conservent tous les joueurs grâce à `object-fit: contain`. Les contrôles mobiles existants restent fonctionnels.
+- Dimensions et disposition vérifiées à 900, 1440 et 1920 px sur six pages représentatives ; deux tests navigateur supplémentaires réussis.
+
 ## Chargement et garde-fous
 
 - Cinq variantes mobiles WebP des fonds : 15,7 à 18,5 Ko au lieu de 331 à 369 Ko.

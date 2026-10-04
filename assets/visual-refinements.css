@@ -12,9 +12,8 @@ body .team-player-section,body .team-photo-section{grid-column:1/-1;width:100%;p
 body .team-detail-grid.has-ranking>.team-registration{grid-column:1/-1}
 body .team-detail-grid.has-ranking{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
 body .team-detail-grid.has-ranking>.team-detail-main,body .team-detail-grid.has-ranking>.team-season-stack{display:contents}
-body .team-detail-grid.has-ranking :is(.team-gallery,.team-people,.team-sidebar-photo){grid-column:1/-1}
+
 .history-jump-links{display:flex;gap:10px;flex-wrap:wrap;margin-block:20px}.history-jump-links a{min-height:44px;display:flex;align-items:center;padding:8px 14px;border:1px solid #ffffff35;color:#fff}
-body .shop-intro{padding:24px;margin-bottom:20px;gap:24px}body .shop-intro h2{font-size:2rem}
 body .product-copy{display:flex;flex-direction:column;align-items:start;gap:14px;padding:20px;min-height:0}
 body .product-copy h2{padding-right:0;font-size:1.45rem;line-height:1.15;min-height:2.3em}
 body .product-copy strong{position:static;font-size:1.4rem}
@@ -59,7 +58,6 @@ body .category-values h2{font-size:2rem;margin-bottom:12px}
  :root{--partner-dock-height:48px}body .sponsor-marquee-window{padding-block:8px}
 }
 
-/* Compact shop introduction keeps the catalogue in the first mobile screen. */
 body[data-page="boutique"] .shop-intro{padding:16px;gap:12px;margin-bottom:12px;align-items:center}
 body[data-page="boutique"] .shop-intro h2{font-size:1.5rem;margin:0 0 4px}
 body[data-page="boutique"] .shop-intro p{font-size:.8rem;margin:0;line-height:1.5}
@@ -96,3 +94,14 @@ body[data-page="boutique"] .shop-intro .shop-delivery-note{margin-top:8px;color:
 }
 
 body .team-detail-grid .photo-carousel{width:100%;margin-inline:0}
+
+@media(min-width:851px){
+ body .team-detail-grid.has-ranking :is(.team-gallery,.team-people,.team-sidebar-photo){grid-column:auto;min-width:0}
+ body .team-detail-grid.has-ranking:has(.team-sidebar-photo)>.team-registration{grid-column:auto}
+ body .team-sidebar-photo img,body .team-sidebar-photo.is-team-photo img{height:300px;object-fit:contain}
+ body .team-page-photo{max-width:860px;margin-inline:auto}
+ body .team-page-photo img{height:340px;max-height:340px;object-fit:contain}
+ body .team-photo-section{max-width:840px;justify-self:center}
+ body .team-photo-section .photo-carousel-slide img{max-height:420px}
+ body .team-gallery-slide{aspect-ratio:auto;height:360px}
+}
