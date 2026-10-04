@@ -49,6 +49,14 @@ jobs:
           python-version: '3.12'
       - name: Restaurer les snapshots sportifs
         run: python scripts/snapshot_store.py restore .phb-snapshots
+      - name: Restaurer les derniers prix vérifiés
+        run: |
+          if [ -f .phb-snapshots/data/shop-prices.json ]; then
+            cp .phb-snapshots/data/shop-prices.json data/shop-prices.json
+          fi
+      - name: Synchroniser les prix Equip Club du jour
+        run: python scripts/sync_shop_prices.py
+        continue-on-error: true
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
@@ -86,10 +94,11 @@ jobs:
       - name: Persister les snapshots sportifs validés
         run: |
           python scripts/snapshot_store.py save .phb-snapshots
+          cp data/shop-prices.json .phb-snapshots/data/shop-prices.json
           cd .phb-snapshots
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/results.json data/home_matches.json
+          git add data/results.json data/home_matches.json data/shop-prices.json
           if git diff --cached --quiet; then
             echo "Snapshots sportifs inchangés."
           else

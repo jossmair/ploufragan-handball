@@ -62,6 +62,10 @@ def expand_site_tokens(value):
 
 RESULTS = json.loads((DATA / "results.json").read_text(encoding="utf-8"))
 PRODUCTS = json.loads((DATA / "boutique.json").read_text(encoding="utf-8"))
+SHOP_PRICES = json.loads((DATA / "shop-prices.json").read_text(encoding="utf-8"))
+for product in PRODUCTS:
+    product["price"] = SHOP_PRICES["prices"].get(product["url"], product["price"])
+shop_price_date = datetime.fromisoformat(SHOP_PRICES["checkedAt"]).strftime("%d/%m/%Y")
 IMAGE_DIMENSIONS = json.loads((DATA / "image_dimensions.json").read_text(encoding="utf-8"))
 PARTNER_DATA = json.loads((DATA / "partenaires.json").read_text(encoding="utf-8"))
 PARTNERS = PARTNER_DATA["partners"]
@@ -1464,7 +1468,7 @@ shop_heading_media = heading_video(
     "data-shop-logo-video",
     "boutique-intro-media",
 )
-pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Boutique","Les commandes et paiements sont réalisés sur la boutique Equip Club.",css_class="animated-heading boutique-heading",extra=shop_heading_media)+f'''<section class="container section after-heading"><div class="shop-intro" data-reveal><div><p class="eyebrow">COLLECTION PLOUFRAGAN HB</p><h2><span data-shop-count>{len(PRODUCTS)}</span> ARTICLES</h2><p>Les prix affichés ont été relevés le 13 septembre 2026. Les tailles, stocks et prix définitifs sont indiqués sur Equip Club.</p></div>{button('Ouvrir la boutique officielle',SHOP,False,True)}</div>{shop_filter}<div class="products-grid">{product_cards}</div></section>''')
+pages["boutique"]=page("boutique","Boutique",heading("LA <em>BOUTIQUE</em>","Boutique","Les commandes et paiements sont réalisés sur la boutique Equip Club.",css_class="animated-heading boutique-heading",extra=shop_heading_media)+f'''<section class="container section after-heading"><div class="shop-intro" data-reveal><div><p class="eyebrow">COLLECTION PLOUFRAGAN HB</p><h2><span data-shop-count>{len(PRODUCTS)}</span> ARTICLES</h2><p>Prix vérifiés le {shop_price_date} sur Equip Club. Les tailles, stocks et options de personnalisation sont précisés sur la boutique officielle.</p></div>{button('Ouvrir la boutique officielle',SHOP,False,True)}</div>{shop_filter}<div class="products-grid">{product_cards}</div></section>''')
 
 def partner_card(name, address):
     image = partner_image(name, f"Logo {name}")
