@@ -9,7 +9,7 @@ body .u13-f-card-grid{display:flex;flex-wrap:wrap;justify-content:center;align-i
 .player-name{display:block;margin-top:12px;color:#f0f0f4;font:700 1rem var(--body)}
 .player-instruction{color:#bdbdc6;font-size:.875rem;max-width:400px}.player-tile .senior-player-card-hint{display:none}
 body .team-player-section,body .team-photo-section{grid-column:1/-1;width:100%;padding:40px 0;border-top:1px solid #ffffff24}
-body .team-detail-grid.has-ranking>.team-registration{grid-column:1/-1}
+body .team-detail-grid>.team-registration{grid-column:1/-1}
 body .team-detail-grid.has-ranking{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
 body .team-detail-grid.has-ranking>.team-detail-main,body .team-detail-grid.has-ranking>.team-season-stack{display:contents}
 
@@ -42,7 +42,7 @@ body .category-values h2{font-size:2rem;margin-bottom:12px}
  body .org-coachs ul{grid-template-columns:1fr;gap:15px}.org-coachs .org-coach-toggle{min-height:44px}
  body .org-coachs .org-coach-panel{width:min(100%,240px);margin-inline:auto}
  body .org-card-controls button{min-height:44px}
- body .shop-intro{display:block;padding:18px}.shop-intro .button{margin-top:16px;width:100%}
+ body .shop-intro{display:block;padding:18px}
  body .home-hero{padding-bottom:26px}.home-hero .hero-logo-stage{max-height:230px}
 }
 @media(max-width:520px){
@@ -96,9 +96,7 @@ body[data-page="boutique"] .shop-intro .shop-delivery-note{margin-top:8px;color:
 body .team-detail-grid .photo-carousel{width:100%;margin-inline:0}
 
 @media(min-width:851px){
- body .team-detail-grid.has-ranking :is(.team-gallery,.team-people,.team-sidebar-photo){grid-column:auto;min-width:0}
- body .team-detail-grid.has-ranking:has(.team-sidebar-photo)>.team-registration{grid-column:auto}
- body .team-sidebar-photo img,body .team-sidebar-photo.is-team-photo img{height:300px;object-fit:contain}
+ body .team-detail-grid.has-ranking .team-gallery{grid-column:1/-1;width:min(100%,840px);justify-self:center}
  body .team-page-photo{max-width:860px;margin-inline:auto}
  body .team-page-photo img{height:340px;max-height:340px;object-fit:contain}
  body .team-photo-section{max-width:840px;justify-self:center}

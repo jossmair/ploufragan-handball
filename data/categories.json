@@ -405,7 +405,15 @@
     "seniors-masculins-1": {
       "label": "Seniors masculins 1",
       "resultLabel": "Seniors masculins 1",
-      "publicIntro": "L’équipe première masculine partage les entraînements du groupe seniors : le mardi à Hoëdic et le jeudi à Belle-Île, avec Jérôme Quemener et Guillaume Michel."
+      "publicIntro": "L’équipe première masculine partage les entraînements du groupe seniors : le mardi à Hoëdic et le jeudi à Belle-Île, avec Jérôme Quemener et Guillaume Michel.",
+      "pagePhoto": {
+        "src": "assets/photos/seniors-masculins-1-equipe-2026.webp",
+        "srcset": "assets/photos/seniors-masculins-1-equipe-2026-480.webp 480w, assets/photos/seniors-masculins-1-equipe-2026.webp 960w",
+        "width": 960,
+        "height": 564,
+        "alt": "L’équipe Seniors masculins 1 du Ploufragan Handball réunie devant le but",
+        "className": "is-team-photo"
+      }
     },
     "seniors-masculins-2": {
       "label": "Seniors masculins 2",

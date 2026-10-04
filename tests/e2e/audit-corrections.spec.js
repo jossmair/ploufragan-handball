@@ -30,7 +30,7 @@ test('desktop menus stay open when a visitor activates them after hover or focus
 
 test('team keyboard order follows the mobile arrangement without jumping over players',async({page})=>{
  await page.emulateMedia({reducedMotion:'reduce'});await page.setViewportSize({width:390,height:844});
- await page.goto('/u18-garcons.html');await page.locator('.team-next-card a').last().focus();await page.keyboard.press('Tab');
+ await page.goto('/u18-garcons.html');await page.locator('.team-season-card a').last().focus();await page.keyboard.press('Tab');
  expect(await page.evaluate(()=>Boolean(document.activeElement.closest('.team-player-section')))).toBe(true);
  const sections=await page.locator('.team-detail-grid .team-training,.team-detail-grid .team-next-card,.team-detail-grid .team-player-section,.team-detail-grid .team-photo-section,.team-detail-grid .team-last-card,.team-detail-grid .team-season-card,.team-detail-grid .team-registration').evaluateAll(items=>items.map(e=>e.getBoundingClientRect().top));
  expect(sections).toEqual([...sections].sort((a,b)=>a-b));
@@ -76,7 +76,7 @@ test('desktop team photos stay proportionate and fit the card grid',async({page}
  await page.emulateMedia({reducedMotion:'reduce'});
  for(const width of [900,1440,1920]){
   await page.setViewportSize({width,height:1000});
-  for(const route of ['u18-garcons','u15-garcons','u13-filles','seniors-feminines','baby-hand','ecole-de-hand']){
+  for(const route of ['u18-garcons','u15-garcons','u13-filles','seniors-masculins-1','seniors-feminines','baby-hand','ecole-de-hand']){
    await page.goto('/'+route+'.html');
    const photos=page.locator('.team-sidebar-photo img,.team-page-photo img,.team-gallery-slide img');
    for(const photo of await photos.all()){
@@ -87,7 +87,12 @@ test('desktop team photos stay proportionate and fit the card grid',async({page}
     const card=await sidebar.boundingBox(),grid=await page.locator('.team-detail-grid').boundingBox();
     expect(card.width).toBeLessThan(grid.width*.55);
     const signup=await page.locator('.team-registration').boundingBox();
-    expect(Math.abs(card.y-signup.y)).toBeLessThan(2);
+    const collective=await page.locator('.team-collective').boundingBox();
+    expect(collective.width).toBeLessThanOrEqual(960);
+    expect(signup.y).toBeGreaterThanOrEqual(collective.y+collective.height);
+    const image=await sidebar.locator('img').evaluate(img=>({w:img.getBoundingClientRect().width,h:img.getBoundingClientRect().height,nw:img.naturalWidth,nh:img.naturalHeight,fit:getComputedStyle(img).objectFit}));
+    expect(image.fit).toBe('contain');
+    expect(Math.abs(image.w/image.h-image.nw/image.nh)).toBeLessThan(.01);
    }
    expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
   }

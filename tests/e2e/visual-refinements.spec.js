@@ -26,8 +26,8 @@ test('player names stay with their portraits and incomplete rows are centered', 
     const players = await page.locator('.team-player-section').boundingBox();
     const scores = await page.locator('.team-last-card').first().boundingBox();
     expect(training.y+training.height).toBeLessThanOrEqual(next.y);
-    expect(next.y+next.height).toBeLessThanOrEqual(players.y);
-    expect(players.y+players.height).toBeLessThanOrEqual(scores.y);
+    expect(next.y+next.height).toBeLessThanOrEqual(scores.y);
+    expect(scores.y+scores.height).toBeLessThanOrEqual(players.y);
     const tile = tiles.first(); await tile.locator('button').click();
     await expect(tile.locator('button')).toHaveAttribute('aria-pressed','true');
     await expect(tile.locator('.player-name')).toBeVisible();
@@ -94,7 +94,7 @@ test('next camp and early childhood sessions appear before their photo collectio
   expect(next.y+next.height).toBeLessThanOrEqual(memories.y);
   for (const slug of ['baby-hand','ecole-de-hand']) {
     await page.goto(`/${slug}.html`);
-    const session = await page.locator('.team-training').boundingBox(), photo = await page.locator('.team-page-photo').boundingBox();
+    const session = await page.locator('.team-training').boundingBox(), photo = await page.locator('.team-collective').boundingBox();
     expect(session.y+session.height).toBeLessThan(photo.y);
   }
 });

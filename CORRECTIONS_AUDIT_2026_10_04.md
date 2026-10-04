@@ -12,14 +12,15 @@
 - Documents distingue les démarches pour mineurs et majeurs, création et renouvellement, compétition et loisir. Source : règlement médical FFHandball 2026–2027, articles 8 et 9.
 - Club et Stage proposent des raccourcis vers les sections de leurs pages longues.
 
-## Photos des équipes sur ordinateur
+## Disposition des pages équipe
 
-- Photos dans la grille : une colonne et 300 px de hauteur, avec la carte d’inscription à côté lorsqu’une photo est présente.
-- Photos en tête de page : largeur maximale 860 px et hauteur maximale 340 px.
-- Carrousel des seniors féminines : une colonne, photos limitées à 360 px de hauteur ; le classement reste avant le carrousel.
-- Galeries de matchs : largeur maximale 840 px et photos limitées à 420 px de hauteur sur ordinateur. Le zoom reste disponible.
-- Les photos conservent tous les joueurs grâce à `object-fit: contain`. Les contrôles mobiles existants restent fonctionnels.
-- Dimensions et disposition vérifiées à 900, 1440 et 1920 px sur six pages représentatives ; deux tests navigateur supplémentaires réussis.
+- Ordre choisi : horaires et prochain match, résultats et classement, photo d’équipe et joueurs, galerie, inscription.
+- Sur ordinateur, horaires et prochain match puis résultats et classement sont regroupés en deux colonnes. Sur mobile, le document garde ce même ordre.
+- La photo d’équipe est présentée dans un bandeau centré, limité à 960 px, avec le nom de l’équipe à côté. Elle conserve ses proportions et toutes les personnes sur les bords ; aucun recadrage forcé.
+- La nouvelle photo des seniors masculins 1 est disponible en WebP 480 et 960 px (31 et 90 Ko).
+- Les galeries sont limitées à 840 px sur ordinateur ; le zoom reste disponible. L’inscription termine la page.
+- Dimensions, proportions et absence de débordement vérifiées à 900, 1440 et 1920 px sur sept pages représentatives. Les 12 scénarios ciblés de disposition et navigation passent.
+- Résultats resynchronisés le 4 octobre : le match U18 du 3 octobre contre Belle-Isle/Plounévez affiche le résultat officiel 19–33.
 
 ## Chargement et garde-fous
 
