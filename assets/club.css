@@ -112,3 +112,7 @@ body .club-intro-landmarks strong{font-size:1.2rem}body .club-intro-landmarks sp
 }
 
 @media(max-width:850px){.club-heading-copy>*{position:relative;z-index:2}}
+
+body[data-page="club"] .org-card h3,body[data-page="club"] .org-card li{text-align:center}
+body[data-page="club"] .org-card .org-coach-toggle{justify-content:center;text-align:center}
+body[data-page="club"] .org-card .org-contact{align-self:center;margin-inline:auto}

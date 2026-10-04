@@ -108,3 +108,8 @@ Contrôle local : 25 compositions sur cinq pages, de 390 à 1440 px, sans débor
 ### Introduction du Club unifiée
 
 Le titre « Le club », la présentation et les liens vers les équipes et l’histoire forment une seule introduction. Le second grand titre est supprimé. Le logo utilise la grille normale, à droite du texte sur PC et du titre sur mobile ; son placement ne dépend plus de coordonnées absolues. Les accès Organigramme, David et Les salles deviennent des liens simples, puis les trois repères sont réunis dans un bandeau discret. Le test du logo vérifie sa séparation du titre de 320 à 1440 px.
+
+
+### Organigramme : intitulés d’origine et alignement
+
+Rétablissement des intitulés Team Sponsor, Team Comm, Team Buvette, Team « Boutik », Team Coachs et Team Arbitre. Titres, noms et boutons Contacter sont centrés dans les cartes ; les coordonnées de contact et les cartes individuelles sont conservées.
