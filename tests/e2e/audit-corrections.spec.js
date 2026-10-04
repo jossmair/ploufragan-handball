@@ -113,3 +113,22 @@ test('team photos enlarge across the screen and restore keyboard focus',async({p
   await photo.press('Enter');await expect(dialog).toBeVisible();await dialog.getByRole('button',{name:'Fermer la photo agrandie'}).click();await expect(dialog).not.toBeVisible();
  }
 });
+
+test('long mobile team names stay above their logos and clear of the score',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [320,360,390,430,650]){
+  await page.setViewportSize({width,height:900});
+  for(const slug of ['u18-garcons','resultats']){
+   await page.goto('/'+slug+'.html');
+   const collisions=await page.locator('.match-team').evaluateAll(teams=>teams.flatMap(team=>{
+    const name=team.querySelector('.match-team-name'),logo=team.querySelector('.team-logo-disc');
+    if(!name||!logo)return [];const a=name.getBoundingClientRect(),b=logo.getBoundingClientRect();
+    const score=team.closest(".match-main").querySelector(".match-score")?.getBoundingClientRect();
+    const scoreOverlap=score&&a.left<score.right&&a.right>score.left&&a.top<score.bottom&&a.bottom>score.top;
+    return a.bottom>b.top || scoreOverlap || name.scrollWidth>name.clientWidth+1 ? [name.textContent] : [];
+   }));
+   expect(collisions).toEqual([]);
+   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+  }
+ }
+});

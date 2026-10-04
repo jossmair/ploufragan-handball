@@ -84,3 +84,9 @@ Les règles sont regroupées dans assets/desktop-density.css (3 Ko, budget 4,5 K
 Les blocs, marges internes, vignettes et grands titres de bureau sont encore légèrement réduits. À 1440 px, l’en-tête de l’accueil passe de 755 à 712 px et celui des résultats de 622 à 540 px. Les noms longs des clubs peuvent agrandir leur rangée pour éviter de chevaucher le logo.
 
 Les cartes Panini sont exclues de cette réduction : comparaison des dimensions avant/après sur les neuf cartes U18 et sept cartes U13 filles, strictement identiques. Deux scénarios de noms, portraits et disposition réussis ; 64 rendus des 32 pages du sitemap sans anomalie ; budgets respectés. Les captures de l’accueil, du Club et des résultats ont été contrôlées sur PC.
+
+## Chevauchement des noms et logos sur mobile
+
+Les cartes de résultats et prochains matchs utilisent deux rangées partagées sur mobile : noms dans une rangée de hauteur automatique, logos dans une seconde rangée alignée. Le score occupe la colonne centrale. Les mots longs peuvent se couper sans déborder sur le score. Cela supprime le chevauchement visible sur la carte U18 contre Belle-Isle/Plounévez.
+
+Deux scénarios vérifient les pages U18 et Résultats à 320, 360, 390, 430 et 650 px : absence de chevauchement entre noms, logos et score, absence de texte débordant et de défilement horizontal. Capture U18 contrôlée à 390 px. Les dimensions des cartes Panini ne sont pas modifiées.
