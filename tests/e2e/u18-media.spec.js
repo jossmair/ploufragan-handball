@@ -6,7 +6,11 @@ test('U18: neuf cartes et sept photos accessibles sur mobile et ordinateur',asyn
  const cards=page.locator('.u18-card-presentation [data-u13-card]');
  await expect(cards).toHaveCount(9);
  expect((await cards.evaluateAll(items=>items.map(item=>item.dataset.playerName))).sort()).toEqual(['Abel','Arthur','Baptiste','Gabriel','Gianni','Giulian','Léo','Maxime','Sean'].sort());
+ await expect(page.locator('[data-player-name="Sean"] .senior-player-card-front img')).toHaveAttribute('src','assets/u18-garcons/cards/front/sean.webp');
  for(const card of await cards.all()){
+  await expect(card.locator('.senior-player-card-back img')).toHaveAttribute('src',/assets\/u18-garcons\/cards\/back\/\d{2}\.webp/);
+  await card.scrollIntoViewIfNeeded();
+  await expect.poll(()=>card.locator('.senior-player-card-back img').evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true);
   await card.click();await expect(card).toHaveAttribute('aria-pressed','true');
   await expect.poll(()=>card.locator('.senior-player-card-front img').evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true);
   await card.press('Enter');await expect(card).toHaveAttribute('aria-pressed','false');

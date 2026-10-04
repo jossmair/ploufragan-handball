@@ -3,54 +3,81 @@
     "name": "Arthur",
     "file": "01.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "01.webp",
+    "back_width": 450,
+    "back_height": 630
   },
   {
     "name": "Abel",
     "file": "02.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "02.webp",
+    "back_width": 450,
+    "back_height": 630
   },
   {
     "name": "Léo",
     "file": "03.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "03.webp",
+    "back_width": 450,
+    "back_height": 630
   },
   {
     "name": "Maxime",
     "file": "04.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "04.webp",
+    "back_width": 450,
+    "back_height": 630
   },
   {
     "name": "Gabriel",
     "file": "05.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "05.webp",
+    "back_width": 450,
+    "back_height": 630
   },
   {
     "name": "Gianni",
     "file": "06.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "06.webp",
+    "back_width": 450,
+    "back_height": 630
   },
   {
     "name": "Giulian",
     "file": "07.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "07.webp",
+    "back_width": 450,
+    "back_height": 630
   },
   {
     "name": "Baptiste",
     "file": "08.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "08.webp",
+    "back_width": 450,
+    "back_height": 630
   },
   {
     "name": "Sean",
-    "file": "09.webp",
+    "file": "sean.webp",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "back": "09.webp",
+    "back_width": 450,
+    "back_height": 630
   }
 ]
