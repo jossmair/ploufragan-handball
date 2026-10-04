@@ -1639,7 +1639,7 @@ pages["stage-ete"] = page(
     extra_head='<link rel="stylesheet" href="assets/stage-ete.css?v=20261003-1"><script src="assets/stage-ete.js?v=20261003-1" defer></script>',
 )
 pages["stage-ete"] = re.sub(r'<a class="footer-social-link instagram".*?</a>', '', pages["stage-ete"])
-stage_promo = '''<section class="container section"><div class="team-article-entry"><div><p class="eyebrow">ÉTÉ 2027 · U13 & U15 · FILLES & GARÇONS</p><h2>CAP SUR <em>GUERLÉDAN</em></h2><p>Handball, aventure et esprit d’équipe : le stage d’été PHB revient pour une deuxième édition. Revivez la première en photos et vidéos.</p></div><a class="button" href="stage-ete.html">DÉCOUVRIR LE STAGE ↗</a></div></section>'''
+stage_promo = '''<section class="container section"><div class="team-article-entry"><div><p class="eyebrow">ÉTÉ 2027 · U13 & U15 · FILLES & GARÇONS</p><h2>CAP SUR <em>GUERLÉDAN</em></h2><p>Une semaine de handball et d’activités de plein air à Guerlédan. Retrouvez les photos et les vidéos de 2026, ainsi que les informations sur la prochaine édition.</p></div><a class="button" href="stage-ete.html">DÉCOUVRIR LE STAGE ↗</a></div></section>'''
 pages["index"] = pages["index"].replace('</main>', stage_promo + '</main>')
 for slug, content in pages.items():
     target = ROOT / (slug + ".html")

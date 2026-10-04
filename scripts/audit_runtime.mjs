@@ -10,6 +10,11 @@ const paths = [
   '/boutique.html',
   '/resultats.html',
   '/articles/presentation-seniors-masculins-1.html',
+  '/club.html',
+  '/stage-ete.html',
+  '/u11-mixte.html',
+  '/u15-filles.html',
+  '/u18-garcons.html',
 ];
 
 const browser = await chromium.launch();

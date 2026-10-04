@@ -6,7 +6,7 @@
     "errors": [],
     "h1": 1,
     "overflow": 0,
-    "title": "Ploufragan Handball | Club de handball près de Saint-Brieuc",
+    "title": "PHB | Ploufragan Handball - Club près de Saint-Brieuc",
     "brokenImages": []
   },
   {
@@ -307,6 +307,16 @@
     "h1": 1,
     "overflow": 0,
     "title": "Confidentialité et données personnelles | PHB",
+    "brokenImages": []
+  },
+  {
+    "path": "/stage-ete.html",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "h1": 1,
+    "overflow": 0,
+    "title": "Stage handball été 2027 à Guerlédan · U13 et U15 | PHB",
     "brokenImages": []
   },
   {
@@ -316,7 +326,7 @@
     "errors": [],
     "h1": 1,
     "overflow": 0,
-    "title": "Ploufragan Handball | Club de handball près de Saint-Brieuc",
+    "title": "PHB | Ploufragan Handball - Club près de Saint-Brieuc",
     "brokenImages": []
   },
   {
@@ -617,6 +627,16 @@
     "h1": 1,
     "overflow": 0,
     "title": "Confidentialité et données personnelles | PHB",
+    "brokenImages": []
+  },
+  {
+    "path": "/stage-ete.html",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "h1": 1,
+    "overflow": 0,
+    "title": "Stage handball été 2027 à Guerlédan · U13 et U15 | PHB",
     "brokenImages": []
   }
 ]

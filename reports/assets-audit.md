@@ -3,26 +3,29 @@
 ## Poids du site publié
 
 - Source du calcul : **simulation du paquet GitHub Pages**.
-- Paquet public : **1313 fichiers, 470.4 Mo**.
+- Paquet public : **1380 fichiers, 474.6 Mo**.
 - Plafond surveillé : **500.0 Mo** — **OK**.
-- Marge restante : **29.6 Mo**.
+- Marge restante : **25.4 Mo**.
 
 ## Galeries et originaux HD
 
 | Galerie | Images web | Miniatures | Originaux HD | Total |
 |---|---:|---:|---:|---:|
 | `seniors-1-pays-de-dinan-2026` | 164 · 26.5 Mo | 164 · 850.3 Ko | 164 · 301.4 Mo | 328.7 Mo |
+| `u11-mixte` | 6 · 334.2 Ko | 6 · 33.6 Ko | 0 · 0 o | 367.8 Ko |
 | `u13-filles` | 8 · 272.8 Ko | 8 · 35.1 Ko | 0 · 0 o | 307.9 Ko |
 | `u13-garcons` | 27 · 2.2 Mo | 27 · 135.5 Ko | 0 · 0 o | 2.3 Mo |
+| `u15-filles` | 8 · 755.7 Ko | 8 · 47.1 Ko | 0 · 0 o | 802.8 Ko |
+| `u18-garcons` | 7 · 667.3 Ko | 7 · 43.2 Ko | 0 · 0 o | 710.6 Ko |
 
 - Total des originaux HD publiés : **164 fichiers, 301.4 Mo**.
 - Les cartes du hub Galerie réutilisent ces fichiers existants ; elles ne créent aucune copie.
 
 ## Inventaire général
 
-- Assets publics : **1272 fichiers, 469.2 Mo**.
-- Référencés par le site généré ou ses sources : **1268**.
-- À examiner manuellement : **4**.
+- Assets publics : **1339 fichiers, 473.3 Mo**.
+- Référencés par le site généré ou ses sources : **1334**.
+- À examiner manuellement : **5**.
 - Sources graphiques archivées hors publication : **15 fichiers, 16.4 Mo**.
 
 ## 20 plus gros assets publics
@@ -55,6 +58,7 @@
 Une absence de référence statique ne suffit pas à autoriser une suppression : les sources graphiques et chemins construits dynamiquement doivent être vérifiés manuellement.
 
 - `assets/photos/u11-mixte-coach-yohann-guerin.webp` — 249.1 Ko
+- `assets/david-imbaud.webp` — 196.2 Ko
 - `assets/u13-filles/cards/front/nais.webp` — 44.9 Ko
 - `assets/fonts/barlowcondensed-OFL.txt` — 4.3 Ko
 - `assets/fonts/inter-OFL.txt` — 4.3 Ko
