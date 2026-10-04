@@ -460,6 +460,7 @@ NAV_SECTIONS = {
     "entrainements": [("", [("entrainements.html", "Planning des entraînements"),
                             ("entrainements.html#salles", "Les salles"), ("stage-ete.html", "Stage d’été · U13 et U15")])],
     "galerie": [("Albums photo", [
+        ("u11-mixte.html#u11-mixte-gallery-title", "U11 mixtes"),
         ("u13-filles.html#u13-filles-gallery-title", "U13 filles"),
         ("u13-garcons.html#u13-garcons-gallery-title", "U13 garçons"),
         ("u15-filles.html#u15-filles-gallery-title", "U15 filles"),
@@ -1569,7 +1570,7 @@ def gallery_album_page(album):
 
 
 gallery_hub_entries = []
-for slug in ("u13-filles", "u13-garcons", "u15-filles", "u18-garcons"):
+for slug in ("u13-filles", "u13-garcons", "u15-filles", "u18-garcons", "u11-mixte"):
     config = YOUTH_GALLERIES[slug]
     first_photo = config["photos"][0]
     label = config["label"]

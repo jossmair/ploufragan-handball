@@ -268,5 +268,40 @@
         "height": 900
       }
     ]
+  },
+  "u11-mixte": {
+    "label": "U11 mixtes",
+    "photos": [
+      {
+        "file": "01.webp",
+        "width": 657,
+        "height": 765
+      },
+      {
+        "file": "02.webp",
+        "width": 959,
+        "height": 1011
+      },
+      {
+        "file": "03.webp",
+        "width": 1200,
+        "height": 927
+      },
+      {
+        "file": "04.webp",
+        "width": 1200,
+        "height": 825
+      },
+      {
+        "file": "05.webp",
+        "width": 1200,
+        "height": 572
+      },
+      {
+        "file": "06.webp",
+        "width": 982,
+        "height": 1095
+      }
+    ]
   }
 }

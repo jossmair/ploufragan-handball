@@ -18,7 +18,7 @@ BUDGETS = {
     "Vidéo Boutique": (ASSETS / "videos" / "boutique-animation.mp4", 2_100_000),
 }
 # Added the 194-photo summer camp album and eight locally hosted videos.
-TOTAL_ASSETS_BUDGET = 180_000_000
+TOTAL_ASSETS_BUDGET = 181_000_000
 GALLERY_ORIGINALS = ASSETS / "galeries" / "seniors-1-pays-de-dinan-2026" / "originals"
 GALLERY_ORIGINALS_BUDGET = 330_000_000
 
