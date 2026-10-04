@@ -19,6 +19,12 @@ BUDGETS = {
     "Vidéo Entraînements": (ASSETS / "videos" / "entrainements-animation.mp4", 4_500_000),
     "Vidéo Boutique": (ASSETS / "videos" / "boutique-animation.mp4", 2_100_000),
 }
+for index in range(1, 6):
+    BUDGETS[f"Fond mobile {index}"] = (ASSETS / "backgrounds" / "mobile" / f"fond-{index}.webp", 22_000)
+BUDGETS["Logo club mobile"] = (ASSETS / "logo-phb-club-320.webp", 40_000)
+BUDGETS["Décor nom entraîneur"] = (ASSETS / "ui" / "coach-name-brush-small.webp", 14_000)
+for name in ("photo-36", "photo-03", "premier-bureau-phb-2011"):
+    BUDGETS[f"Aperçu accueil {name}"] = (ASSETS / "home-previews" / f"{name}-480.webp", 40_000)
 # Added the 194-photo summer camp album and eight locally hosted videos.
 TOTAL_ASSETS_BUDGET = 181_000_000
 GALLERY_ORIGINALS = ASSETS / "galeries" / "seniors-1-pays-de-dinan-2026" / "originals"

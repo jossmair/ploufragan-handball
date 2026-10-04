@@ -10,6 +10,9 @@ body .u13-f-card-grid{display:flex;flex-wrap:wrap;justify-content:center;align-i
 .player-instruction{color:#bdbdc6;font-size:.875rem;max-width:400px}.player-tile .senior-player-card-hint{display:none}
 body .team-player-section,body .team-photo-section{grid-column:1/-1;width:100%;padding:40px 0;border-top:1px solid #ffffff24}
 body .team-detail-grid.has-ranking>.team-registration{grid-column:1/-1}
+body .team-detail-grid.has-ranking{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+body .team-detail-grid.has-ranking>.team-detail-main,body .team-detail-grid.has-ranking>.team-season-stack{display:contents}
+body .team-detail-grid.has-ranking :is(.team-gallery,.team-people,.team-sidebar-photo){grid-column:1/-1}
 .history-jump-links{display:flex;gap:10px;flex-wrap:wrap;margin-block:20px}.history-jump-links a{min-height:44px;display:flex;align-items:center;padding:8px 14px;border:1px solid #ffffff35;color:#fff}
 body .shop-intro{padding:24px;margin-bottom:20px;gap:24px}body .shop-intro h2{font-size:2rem}
 body .product-copy{display:flex;flex-direction:column;align-items:start;gap:14px;padding:20px;min-height:0}
@@ -27,10 +30,7 @@ body .category-values h2{font-size:2rem;margin-bottom:12px}
 @media(max-width:850px){
  body .team-detail-grid.has-ranking{display:flex;flex-direction:column;gap:22px}
  body .team-detail-grid.has-ranking>.team-detail-main,body .team-detail-grid.has-ranking>.team-season-stack{display:contents}
- .team-detail-grid.has-ranking .team-training{order:0;width:100%}.team-detail-grid.has-ranking .team-next-card{order:1;width:100%}
- .team-detail-grid.has-ranking .team-player-section{order:2}.team-detail-grid.has-ranking :is(.team-photo-section,.team-gallery){order:3;width:100%}
- .team-detail-grid.has-ranking .team-last-card{order:4;width:100%}.team-detail-grid.has-ranking .team-season-card{order:5;width:100%}
- .team-detail-grid.has-ranking :is(.team-people,.team-sidebar-photo){order:6;width:100%}.team-detail-grid.has-ranking .team-registration{order:7;width:100%}
+ .team-detail-grid.has-ranking :is(.team-training,.team-next-card,.team-player-section,.team-photo-section,.team-gallery,.team-last-card,.team-season-card,.team-people,.team-sidebar-photo,.team-registration){width:100%}
  body .team-player-section,body .team-photo-section{padding:24px 0}.team-player-section>.section-heading{margin-bottom:14px}
  body .animated-heading{min-height:0;grid-template-columns:minmax(0,1fr) 150px;gap:0 16px;padding-bottom:28px}
  body .animated-heading .breadcrumb{grid-column:1/-1;margin-bottom:26px}
@@ -58,3 +58,41 @@ body .category-values h2{font-size:2rem;margin-bottom:12px}
  body .content-sections{gap:8px}.content-sections button{padding:8px 12px;font-size:.8rem}
  :root{--partner-dock-height:48px}body .sponsor-marquee-window{padding-block:8px}
 }
+
+/* Compact shop introduction keeps the catalogue in the first mobile screen. */
+body[data-page="boutique"] .shop-intro{padding:16px;gap:12px;margin-bottom:12px;align-items:center}
+body[data-page="boutique"] .shop-intro h2{font-size:1.5rem;margin:0 0 4px}
+body[data-page="boutique"] .shop-intro p{font-size:.8rem;margin:0;line-height:1.5}
+body[data-page="boutique"] .shop-intro .text-link{min-height:44px;display:flex;align-items:center;flex-shrink:0;font-size:.85rem}
+body[data-page="boutique"] .shop-filter{padding:14px;margin-bottom:18px}
+body[data-page="boutique"] .page-intro{font-size:.9rem}
+@media(max-width:650px){
+ body[data-page="boutique"] .shop-intro{display:flex;align-items:flex-start;flex-direction:column;gap:4px}
+ body[data-page="boutique"] .after-heading{padding-top:0}
+ body[data-page="boutique"] .shop-filter{display:grid;grid-template-columns:1fr;gap:6px}
+ body[data-page="boutique"] .content-filter-label{font-size:.75rem}
+ body[data-page="boutique"] .content-filter-count{font-size:.75rem}
+ body .match-team-name{font:700 .9rem/1.4 var(--body);text-transform:none;overflow-wrap:anywhere}
+ body .match-meta{font-size:.8rem}
+}
+body .licence-fold-body .information-panel h3:not(:first-child){margin-top:26px}
+body .page-shortcuts a:focus-visible,body .content-sections button:focus-visible{outline:3px solid #ffbf4b;outline-offset:3px}
+body .stage-shortcuts{padding-top:24px;margin-bottom:0}
+body[data-page="boutique"] .shop-intro .shop-delivery-note{margin-top:8px;color:#fff}
+@media(max-width:650px){
+ body .match-venue{font-size:.85rem;line-height:1.5}
+ body .match-venue small{font-size:.8rem;color:#c9c9d0}
+ body .match-map{min-height:44px;font-size:.8rem;white-space:normal;text-align:center}
+}
+
+@media(max-width:650px){
+ body[data-page="boutique"] .page-heading{min-height:0;padding-top:16px;padding-bottom:16px}
+ body[data-page="boutique"] .animated-heading .breadcrumb{margin-bottom:16px}
+ body[data-page="boutique"] .shop-intro{padding:12px}
+ body[data-page="boutique"] .shop-intro .text-link{min-height:44px}
+ body[data-page="boutique"] .shop-filter{grid-template-columns:auto minmax(0,1fr);align-items:center;padding:10px;gap:6px 10px}
+ body[data-page="boutique"] .content-filter-label{max-width:90px;line-height:1.35;padding:0}
+ body[data-page="boutique"] .content-filter-count{grid-column:1/-1;margin-top:0}
+}
+
+body .team-detail-grid .photo-carousel{width:100%;margin-inline:0}

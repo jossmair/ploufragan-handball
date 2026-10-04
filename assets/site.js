@@ -680,3 +680,21 @@ if (location.hash) {
   const hashSection = registrationSections.find(section => `#${section.id}` === location.hash);
   if (hashSection) openRegistrationSection(hashSection, false);
 }
+
+function revealRegistrationHash() {
+  const section = registrationSections.find(item => `#${item.id}` === location.hash);
+  if (!section) return;
+  openRegistrationSection(section, false);
+  section.querySelector(':scope > summary').focus({preventScroll:true});
+  section.scrollIntoView({behavior:motion.matches ? 'auto' : 'smooth',block:'start'});
+}
+window.addEventListener('hashchange', revealRegistrationHash);
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link || !registrationSections.some(section => `#${section.id}` === link.getAttribute('href'))) return;
+  // A repeated click on the current fragment does not fire hashchange.
+  if (link.getAttribute('href') === location.hash) {
+    event.preventDefault();
+    revealRegistrationHash();
+  }
+});

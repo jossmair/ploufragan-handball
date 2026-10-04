@@ -18,6 +18,9 @@
   groups.forEach(group => {
     const toggle = group.querySelector('.nav-sub-toggle');
     toggle.addEventListener('click', () => {
+      // Hover and keyboard focus already reveal desktop menus. Activating the
+      // control should keep those choices available rather than hide them.
+      if (desktop.matches) { openGroup(group); return; }
       const open = toggle.getAttribute('aria-expanded') !== 'true';
       closeAll();
       setGroup(group, open);

@@ -17,6 +17,12 @@ const paths = [
   '/u18-garcons.html',
 ];
 
+// Initial visit, before scrolling. These limits include animations already loaded
+// by the existing page, but never the full photo albums or HD downloads.
+const initialByteBudgets = {
+  '/': 3_000_000, '/resultats.html': 4_000_000, '/club.html': 2_000_000,
+  '/stage-ete.html': 1_200_000, '/u11-mixte.html': 1_500_000,
+};
 const browser = await chromium.launch();
 const results = [];
 for (const path of paths) {
@@ -99,11 +105,11 @@ for (const path of paths) {
         .slice(0, 5),
     };
   });
-  results.push({ path, ...metrics, failed });
+  results.push({ path, ...metrics, initialByteBudget: initialByteBudgets[path] || null, failed });
   await context.close();
 }
 await browser.close();
 await mkdir('reports', { recursive: true });
 await writeFile('reports/performance-audit.json', `${JSON.stringify(results, null, 2)}\n`, 'utf8');
 console.log(JSON.stringify(results, null, 2));
-if (results.some(item => item.failed.length || item.cls > 0.1 || item.lcpMs > 2500)) process.exitCode = 1;
+if (results.some(item => item.failed.length || item.cls > 0.1 || item.lcpMs > 2500 || (item.initialByteBudget && item.encodedBytes > item.initialByteBudget))) process.exitCode = 1;

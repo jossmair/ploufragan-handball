@@ -1,6 +1,6 @@
 .org-coach-entry{min-width:0}
 .org-coach-toggle{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:8px 10px;border:1px solid transparent;background:transparent;color:#d8d8de;font:inherit;line-height:1.35;text-align:center;cursor:pointer;transition:color .2s}
-.org-coach-toggle::before{content:"";position:absolute;z-index:-1;left:1%;right:1%;top:-15px;bottom:-15px;background:url('ui/coach-name-brush.webp') center/100% 100% no-repeat;opacity:0;transform:scaleX(.94);transition:opacity .2s ease,transform .25s ease}
+.org-coach-toggle::before{content:"";position:absolute;z-index:-1;left:1%;right:1%;top:-15px;bottom:-15px;background:url('ui/coach-name-brush-small.webp') center/100% 100% no-repeat;opacity:0;transform:scaleX(.94);transition:opacity .2s ease,transform .25s ease}
 .org-coach-icon{position:relative;top:-1px;flex:0 0 21px;width:21px;height:21px;background:url('icons/coach-card-hummel-medium.svg') center/21px 21px no-repeat;transition:transform .3s cubic-bezier(.2,.8,.2,1),filter .2s ease}
 .org-coach-toggle:hover,.org-coach-toggle:focus-visible,.org-coach-entry.is-open .org-coach-toggle{border-color:transparent;background:transparent;color:#fff}
 .org-coach-toggle:hover::before,.org-coach-toggle:focus-visible::before,.org-coach-entry.is-open .org-coach-toggle::before{opacity:.62;transform:scaleX(1)}
@@ -44,10 +44,10 @@ body[data-page="seniors-masculins-2"] .team-sidebar-photo img{height:auto;max-he
 @media(max-width:650px){.org-arbitre ul{grid-template-columns:1fr;gap:24px}.org-buvette .org-coach-toggle{justify-content:center;text-align:center}}
 
 @media(max-width:850px){
-.staff-section .staff-feature{min-height:0;height:620px;aspect-ratio:auto;background-image:linear-gradient(180deg,#06060930,transparent),url('background-phb.webp');background-position:center;background-size:cover}
+.staff-section .staff-feature{min-height:0;height:620px;aspect-ratio:auto;background-image:linear-gradient(180deg,#06060930,transparent),url('background-phb-mobile.webp');background-position:center;background-size:cover}
 .staff-section .staff-copy{left:24px;right:90px;top:26px;width:auto}
 .staff-section .staff-copy h2{font-size:clamp(3.2rem,8vw,4.5rem)}
-.staff-section .staff-feature::after{inset:24px 20px auto auto;width:64px;height:64px;border-radius:50%;background:url('logo-phb.png') center/contain no-repeat;z-index:4}
+.staff-section .staff-feature::after{inset:24px 20px auto auto;width:64px;height:64px;border-radius:50%;background:url('logo-phb.webp') center/contain no-repeat;z-index:4}
 .staff-section .staff-portrait{left:8%;bottom:12px;top:190px;width:84%;height:auto}
 .staff-section .staff-face img{object-fit:contain;object-position:center bottom}
 .staff-section .staff-motion-toggle{right:14px;bottom:14px}
@@ -75,3 +75,5 @@ body[data-page="club"] .club-page-heading>.club-heading-emblem{position:absolute
 @media(max-width:520px){.club-page-heading{padding-right:0;min-height:285px}.club-page-heading .eyebrow{max-width:100%}.club-page-heading h1{font-size:3.6rem;position:relative;z-index:1}body[data-page="club"] .club-page-heading>.club-heading-emblem{top:88px;right:14px;width:160px}.club-intro-editorial h2{font-size:clamp(2.9rem,12vw,4rem)}}
 
 @media(max-width:520px){.club-page-heading h1{font-size:clamp(2.5rem,10vw,3.6rem)}body[data-page="club"] .club-page-heading>.club-heading-emblem{width:clamp(120px,40vw,160px);right:10px;top:100px}}
+
+.org-coach-panel[aria-hidden="true"]{content-visibility:hidden}

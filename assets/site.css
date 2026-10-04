@@ -811,3 +811,13 @@ body[data-page="ecole-de-hand"] .team-page-photo img{height:clamp(260px,35vw,480
 .sponsor-marquee-window{grid-column:-2/-1;grid-row:1}
 .sponsor-marquee.is-paused .sponsor-track,.sponsor-track:focus-within{animation-play-state:paused}
 @media(max-width:768px){.site-texture{background-image:var(--page-background,url('background-phb-mobile.webp'))}}
+
+/* Same club textures, sized for phone screens instead of desktop surfaces. */
+@media(max-width:850px){
+ body .site-texture{background-image:linear-gradient(#08080b24,#08080b54),url('backgrounds/mobile/fond-3.webp')}
+ body[data-page="index"] .site-texture,body[data-page="blog"] .site-texture,body[data-page="galerie"] .site-texture{background-image:linear-gradient(#08080b24,#08080b54),url('backgrounds/mobile/fond-1.webp')}
+ body[data-page="club"] .site-texture,body[data-page="contact"] .site-texture,body[data-page="boutique"] .site-texture{background-image:linear-gradient(#08080b24,#08080b54),url('backgrounds/mobile/fond-2.webp')}
+ body[data-page="entrainements"] .site-texture,body[data-page="partenaires"] .site-texture{background-image:linear-gradient(#08080b24,#08080b54),url('backgrounds/mobile/fond-4.webp')}
+ body[data-page="resultats"] .site-texture,body[data-page="inscriptions"] .site-texture,body[data-page="404"] .site-texture{background-image:linear-gradient(#08080b24,#08080b54),url('backgrounds/mobile/fond-5.webp')}
+ body .org-chart{background-image:linear-gradient(145deg,#08080b55,#10101572),url('backgrounds/mobile/fond-4.webp')}
+}

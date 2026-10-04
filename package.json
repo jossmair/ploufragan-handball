@@ -14,7 +14,8 @@
     "audit:assets": "python scripts/audit_assets.py --output reports/assets-audit.md --max-site-bytes 524288000",
     "audit:external": "python scripts/audit_external_links.py",
     "audit:partner-pdf": "node scripts/audit_partner_pdf.mjs",
-    "build:partner-pdf": "python scripts/build_partner_kit.py && node scripts/build_partner_pdf.mjs"
+    "build:partner-pdf": "python scripts/build_partner_kit.py && node scripts/build_partner_pdf.mjs",
+    "audit:mobile-lab": "node scripts/audit_mobile_lab.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
