@@ -832,3 +832,5 @@ body[data-page="ecole-de-hand"] .team-page-photo img{height:clamp(260px,35vw,480
 
 body .team-detail-grid.no-ranking{grid-template-columns:1fr}
 body .team-detail-grid>.team-registration{width:min(100%,960px);justify-self:center}
+
+.team-photo-enlarge{display:block;cursor:zoom-in}.team-photo-enlarge:focus-visible{outline:3px solid #ffd166;outline-offset:-3px}

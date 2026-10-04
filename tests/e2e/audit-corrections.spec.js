@@ -31,6 +31,7 @@ test('desktop menus stay open when a visitor activates them after hover or focus
 test('team keyboard order follows the mobile arrangement without jumping over players',async({page})=>{
  await page.emulateMedia({reducedMotion:'reduce'});await page.setViewportSize({width:390,height:844});
  await page.goto('/u18-garcons.html');await page.locator('.team-season-card a').last().focus();await page.keyboard.press('Tab');
+ await expect(page.locator('[data-team-photo]')).toBeFocused();await page.keyboard.press('Tab');
  expect(await page.evaluate(()=>Boolean(document.activeElement.closest('.team-player-section')))).toBe(true);
  const sections=await page.locator('.team-detail-grid .team-training,.team-detail-grid .team-next-card,.team-detail-grid .team-player-section,.team-detail-grid .team-photo-section,.team-detail-grid .team-last-card,.team-detail-grid .team-season-card,.team-detail-grid .team-registration').evaluateAll(items=>items.map(e=>e.getBoundingClientRect().top));
  expect(sections).toEqual([...sections].sort((a,b)=>a-b));
@@ -96,5 +97,19 @@ test('desktop team photos stay proportionate and fit the card grid',async({page}
    }
    expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
   }
+ }
+});
+
+test('team photos enlarge across the screen and restore keyboard focus',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [390,1440]){
+  await page.setViewportSize({width,height:900});await page.goto('/u18-garcons.html');
+  const photo=page.locator('[data-team-photo]');await photo.click();
+  const dialog=page.getByRole('dialog',{name:'Photo d’équipe agrandie'});await expect(dialog).toBeVisible();
+  await expect(dialog.locator('img')).toHaveJSProperty('complete',true);
+  const box=await dialog.boundingBox();expect(box.width).toBeGreaterThan(width*.9);expect(box.height).toBeGreaterThan(800);
+  expect(await dialog.locator('img').evaluate(img=>getComputedStyle(img).objectFit)).toBe('contain');
+  await page.keyboard.press('Escape');await expect(dialog).not.toBeVisible();await expect(photo).toBeFocused();
+  await photo.press('Enter');await expect(dialog).toBeVisible();await dialog.getByRole('button',{name:'Fermer la photo agrandie'}).click();await expect(dialog).not.toBeVisible();
  }
 });

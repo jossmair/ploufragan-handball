@@ -891,7 +891,7 @@ def team_sidebar_photo(slug):
         eyebrow = escape(str(config.get("eyebrow", "")))
         caption = f'<figcaption><span>{eyebrow}</span><strong>{escape(str(config["caption"]))}</strong></figcaption>'
     responsive = f' srcset="{escape(config["srcset"], quote=True)}" sizes="(max-width:850px) calc(100vw - 40px), 420px"' if config.get("srcset") else ""
-    return f'''<figure class="{classes}" data-reveal><img src="{src}"{responsive} alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async">{caption}</figure>'''
+    return f'''<figure class="{classes}" data-reveal><a class="team-photo-enlarge" href="{src}" data-team-photo aria-label="Agrandir : {alt}"><img src="{src}"{responsive} alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async"></a>{caption}</figure>'''
 
 
 def team_coach_card(slug):

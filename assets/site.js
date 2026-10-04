@@ -698,3 +698,30 @@ document.addEventListener('click', event => {
     revealRegistrationHash();
   }
 });
+
+const teamPhotos = [...document.querySelectorAll('[data-team-photo]')];
+if (teamPhotos.length) {
+  const dialog = document.createElement('dialog');
+  dialog.className = 'photo-zoom-dialog';
+  dialog.setAttribute('aria-label', 'Photo d’équipe agrandie');
+  dialog.innerHTML = '<button class="photo-zoom-close" type="button" aria-label="Fermer la photo agrandie">&times;</button><div class="photo-zoom-media"><img alt=""></div>';
+  document.body.appendChild(dialog);
+  let opener;
+  teamPhotos.forEach(link => link.addEventListener('click', event => {
+    event.preventDefault(); opener = link;
+    const image = dialog.querySelector('img');
+    image.src = link.href; image.alt = link.querySelector('img').alt;
+    document.body.classList.add('is-photo-zoom-open');
+    document.documentElement.classList.add('is-photo-zoom-open');
+    dialog.showModal();
+  }));
+  dialog.querySelector('button').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog || event.target.tagName === 'IMG') dialog.close();
+  });
+  dialog.addEventListener('close', () => {
+    document.body.classList.remove('is-photo-zoom-open');
+    document.documentElement.classList.remove('is-photo-zoom-open');
+    opener?.focus({preventScroll:true});
+  });
+}

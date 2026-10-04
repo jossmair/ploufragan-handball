@@ -17,6 +17,7 @@
 - Ordre choisi : horaires et prochain match, résultats et classement, photo d’équipe et joueurs, galerie, inscription.
 - Sur ordinateur, horaires et prochain match puis résultats et classement sont regroupés en deux colonnes. Sur mobile, le document garde ce même ordre.
 - La photo d’équipe est présentée dans un bandeau centré, limité à 960 px, avec le nom de l’équipe à côté. Elle conserve ses proportions et toutes les personnes sur les bords ; aucun recadrage forcé.
+- Un clic sur la photo d’équipe ouvre le même affichage plein écran que les carrousels, sans recadrage. Échap et le bouton de fermeture rendent le focus à la photo. Quatre tests de clic, clavier et fermeture passent sur mobile et ordinateur.
 - La nouvelle photo des seniors masculins 1 est disponible en WebP 480 et 960 px (31 et 90 Ko).
 - Les galeries sont limitées à 840 px sur ordinateur ; le zoom reste disponible. L’inscription termine la page.
 - Dimensions, proportions et absence de débordement vérifiées à 900, 1440 et 1920 px sur sept pages représentatives. Les 12 scénarios ciblés de disposition et navigation passent.
