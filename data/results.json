@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T09:40:27.904095+00:00",
+  "updatedAt": "2026-10-04T10:24:17.919142+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -285,23 +285,23 @@
         },
         {
           "position": 3,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 5,
+          "played": 3,
+          "club": true
+        },
+        {
+          "position": 4,
           "team": "PLOEUC HAND",
           "points": 5,
           "played": 3,
           "club": false
         },
         {
-          "position": 4,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 2,
-          "played": 2,
-          "club": true
-        },
-        {
           "position": 5,
           "team": "U15F HENANSAL ERQUY",
-          "points": 1,
-          "played": 2,
+          "points": 2,
+          "played": 3,
           "club": false
         }
       ]
@@ -617,7 +617,7 @@
         },
         {
           "position": 5,
-          "team": "ENTENTE LOUDEAC LA MOTTE 2",
+          "team": "U15M TER - ENTENTE LOUDEAC LA MOTTE",
           "points": 2,
           "played": 2,
           "club": false
@@ -1325,7 +1325,7 @@
       "group": "jeunes",
       "date": "2026-09-19T16:00:00+02:00",
       "home": "PLOUFRAGAN HANDBALL",
-      "away": "ENTENTE LOUDEAC LA MOTTE 2",
+      "away": "U15M TER - ENTENTE LOUDEAC LA MOTTE",
       "homeTeamId": "1816628",
       "awayTeamId": "1816626",
       "homeScore": 40,
