@@ -462,6 +462,7 @@ NAV_SECTIONS = {
     "galerie": [("Albums photo", [
         ("u13-filles.html#u13-filles-gallery-title", "U13 filles"),
         ("u13-garcons.html#u13-garcons-gallery-title", "U13 garçons"),
+        ("u18-garcons.html#u18-garcons-gallery-title", "U18 garçons"),
         ("seniors-feminines.html#seniors-feminines-gallery-title", "Seniors féminines"),
         ("galeries/seniors-1-pays-de-dinan-2026.html", "Seniors masculins 1"),
         ("stage-ete.html#souvenirs", "Stage d’été 2026"),
@@ -936,6 +937,15 @@ def u13_filles_presentation():
     return f'''<section class="container section u13-f-presentation" aria-labelledby="u13-f-cards-title"><div class="section-heading" data-reveal><div><p class="eyebrow">L’ÉQUIPE U13 FILLES</p><h2 id="u13-f-cards-title">LES <em>JOUEUSES</em></h2></div><p class="u13-f-temporary">Cette première présentation est temporaire : les cartes des autres joueuses arriveront très vite.</p></div><div class="u13-f-card-grid" data-reveal>{cards}</div></section>'''
 
 
+def u18_garcons_presentation():
+    players = json.loads((DATA / "u18_players.json").read_text(encoding="utf-8"))
+    cards = ''.join(
+        f'''<button class="senior-player-card u13-f-card" type="button" data-u13-card data-player-name="{escape(player['name'], quote=True)}" aria-pressed="false" aria-label="Afficher la carte de {escape(player['name'], quote=True)}" style="--card-order:{index}"><span class="senior-player-card-inner"><span class="senior-player-card-face senior-player-card-back"><img src="assets/u18-garcons/cards/back.svg" alt="" width="600" height="900" loading="lazy" decoding="async"></span><span class="senior-player-card-face senior-player-card-front"><img src="assets/u18-garcons/cards/front/{player['file']}" alt="Carte de {escape(player['name'])}, U18 garçons du Ploufragan Handball" width="{player['width']}" height="{player['height']}" loading="lazy" decoding="async"></span></span><span class="senior-player-card-hint" aria-hidden="true">Voir la carte</span></button>'''
+        for index, player in enumerate(players)
+    )
+    return f'''<section class="container section u13-f-presentation u18-card-presentation" aria-labelledby="u18-cards-title"><div class="section-heading" data-reveal><div><p class="eyebrow">L’ÉQUIPE U18 GARÇONS</p><h2 id="u18-cards-title">LES <em>JOUEURS</em></h2></div></div><div class="u13-f-card-grid" data-reveal>{cards}</div></section>'''
+
+
 def youth_match_gallery(slug):
     config = YOUTH_GALLERIES.get(slug)
     if not config:
@@ -965,12 +975,16 @@ for youth in YOUTH_TEAMS:
     body += team_detail(slug, name, "jeunes", schedule_name, [team] if team else [])
     if slug == "u13-filles":
         body += u13_filles_presentation()
+    if slug == "u18-garcons":
+        body += u18_garcons_presentation()
     body += youth_match_gallery(slug)
     gallery_head = '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">' if slug in YOUTH_GALLERIES else ''
     inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261004-1">'
                          '<script src="assets/club.js?v=20261003-7" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
-                      '<script src="assets/u13-filles.js?v=20260930-2" defer></script>') if slug == "u13-filles" else ''
+                      '<script src="assets/u13-filles.js?v=20260930-2" defer></script>') if slug in {"u13-filles", "u18-garcons"} else ''
+    if slug == "u18-garcons":
+        u13_cards_head += '<link rel="stylesheet" href="assets/u18-garcons.css?v=20261004-1">'
     pages[slug] = page(slug, name, body, "equipes",
         f"{name} du Ploufragan Handball près de Saint-Brieuc : entraînements et classement {SEASON}.",
         extra_head=gallery_head + inline_coach_head + u13_cards_head)
@@ -1554,7 +1568,7 @@ def gallery_album_page(album):
 
 
 gallery_hub_entries = []
-for slug in ("u13-filles", "u13-garcons"):
+for slug in ("u13-filles", "u13-garcons", "u18-garcons"):
     config = YOUTH_GALLERIES[slug]
     first_photo = config["photos"][0]
     label = config["label"]

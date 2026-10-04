@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Arthur",
+    "file": "01.webp",
+    "width": 600,
+    "height": 900
+  },
+  {
+    "name": "Abel",
+    "file": "02.webp",
+    "width": 600,
+    "height": 900
+  },
+  {
+    "name": "Léo",
+    "file": "03.webp",
+    "width": 600,
+    "height": 900
+  },
+  {
+    "name": "Maxime",
+    "file": "04.webp",
+    "width": 600,
+    "height": 900
+  },
+  {
+    "name": "Gabriel",
+    "file": "05.webp",
+    "width": 600,
+    "height": 900
+  },
+  {
+    "name": "Gianni",
+    "file": "06.webp",
+    "width": 600,
+    "height": 900
+  },
+  {
+    "name": "Giulian",
+    "file": "07.webp",
+    "width": 600,
+    "height": 900
+  },
+  {
+    "name": "Baptiste",
+    "file": "08.webp",
+    "width": 600,
+    "height": 900
+  },
+  {
+    "name": "Sean",
+    "file": "09.webp",
+    "width": 600,
+    "height": 900
+  }
+]

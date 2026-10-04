@@ -183,5 +183,45 @@
         "height": 810
       }
     ]
+  },
+  "u18-garcons": {
+    "label": "U18 garçons",
+    "photos": [
+      {
+        "file": "01.webp",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "file": "02.webp",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "file": "03.webp",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "file": "04.webp",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "file": "05.webp",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "file": "06.webp",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "file": "07.webp",
+        "width": 900,
+        "height": 1200
+      }
+    ]
   }
 }

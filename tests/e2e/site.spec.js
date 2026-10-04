@@ -123,12 +123,13 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   await expect(page.locator('.home-gallery-card').getByRole('link', { name: /Voir les photos/i })).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
   await page.goto('/galerie.html');
   const hubCards = page.locator('.gallery-index-card');
-  await expect(hubCards).toHaveCount(4);
+  await expect(hubCards).toHaveCount(5);
   await expect(hubCards.nth(0)).toHaveAttribute('href', 'u13-filles.html#u13-filles-gallery-title');
   await expect(hubCards.nth(1)).toHaveAttribute('href', 'u13-garcons.html#u13-garcons-gallery-title');
-  await expect(hubCards.nth(2)).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
-  await expect(hubCards.nth(3)).toHaveAttribute('href', 'stage-ete.html#souvenirs');
-  await expect(page.locator('.gallery-index-card .text-link').filter({ hasText: /OUVRIR L.ALBUM/ })).toHaveCount(3);
+  await expect(hubCards.nth(2)).toHaveAttribute('href', 'u18-garcons.html#u18-garcons-gallery-title');
+  await expect(hubCards.nth(3)).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
+  await expect(hubCards.nth(4)).toHaveAttribute('href', 'stage-ete.html#souvenirs');
+  await expect(page.locator('.gallery-index-card .text-link').filter({ hasText: /OUVRIR L.ALBUM/ })).toHaveCount(4);
   await page.goto('/galeries/seniors-1-pays-de-dinan-2026.html');
   const carousel = page.locator('[data-photo-carousel]');
   await expect(carousel).toBeVisible();
