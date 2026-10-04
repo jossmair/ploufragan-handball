@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T15:14:22.586014+00:00",
+  "updatedAt": "2026-10-04T15:43:34.552892+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -437,14 +437,14 @@
         },
         {
           "position": 4,
-          "team": "MENE MERDRIGNAC HANDBALL 1",
-          "points": 7,
-          "played": 3,
+          "team": "PLOEUC HAND 2",
+          "points": 10,
+          "played": 4,
           "club": false
         },
         {
           "position": 5,
-          "team": "PLOEUC HAND 2",
+          "team": "MENE MERDRIGNAC HANDBALL 1",
           "points": 7,
           "played": 3,
           "club": false
@@ -494,8 +494,8 @@
         {
           "position": 12,
           "team": "Henansal-Erquy SM 2",
-          "points": 1,
-          "played": 1,
+          "points": 2,
+          "played": 2,
           "club": false
         }
       ]
