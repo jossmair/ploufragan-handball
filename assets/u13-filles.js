@@ -6,7 +6,7 @@ document.querySelectorAll('.u13-f-card-grid').forEach(grid => {
   }
   cards.forEach((card, index) => {
     card.style.setProperty('--card-order', index);
-    grid.appendChild(card);
+    grid.appendChild(card.closest('.player-tile') || card);
   });
 });
 

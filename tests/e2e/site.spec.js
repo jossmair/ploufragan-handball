@@ -300,7 +300,7 @@ test('U11 mobile : la carte est centrée entre Yohann et Joshua', async ({ page 
   }
 });
 
-test('U11 : les cartes restent dans leurs colonnes, carte coach ouverte ou fermée', async ({ page }) => {
+test('U11 : les cartes restent dans leur conteneur, carte coach ouverte ou fermée', async ({ page }) => {
   for (const width of [390, 768, 900, 1100, 1440, 1840]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/u11-mixte.html');
@@ -310,7 +310,8 @@ test('U11 : les cartes restent dans leurs colonnes, carte coach ouverte ou ferm�
       const cards = page.locator('.team-detail-main > *, .team-season-stack > *');
       const contained = await cards.evaluateAll(elements => elements.every(element => {
         const card = element.getBoundingClientRect();
-        const column = element.parentElement.getBoundingClientRect();
+        const parent = element.parentElement;
+        const column = (getComputedStyle(parent).display === 'contents' ? element.closest('.team-detail-grid') : parent).getBoundingClientRect();
         return card.left >= column.left - 1 && card.right <= column.right + 1
           && element.scrollWidth <= element.clientWidth + 1;
       }));

@@ -19,15 +19,15 @@
   "formules": [
     {
       "titre": "PARTENAIRE DU CLUB",
-      "texte": "Construisons ensemble une présence adaptée à votre entreprise et à la vie du PHB."
+      "texte": "Soutenez la vie du club. Les supports de visibilité et les modalités sont définis avec la commission partenariats."
     },
     {
       "titre": "PARTENAIRE D’ÉQUIPE",
-      "texte": "Étudions une association avec une équipe ou un projet sportif du club."
+      "texte": "Vous souhaitez soutenir une équipe ? Indiquez-nous la catégorie ou le projet sportif qui vous intéresse."
     },
     {
       "titre": "PROJET SUR MESURE",
-      "texte": "Échangeons sur un événement, une action locale ou un soutien matériel."
+      "texte": "Un événement, une action locale ou du matériel à proposer : contactez le club pour en discuter."
     }
   ],
   "dossier_pdf": "assets/dossier-partenaire-phb.pdf"

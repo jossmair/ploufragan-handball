@@ -1,0 +1,60 @@
+/* Shared compositions: practical content first, room for real club photos. */
+body .page-shortcuts,body .content-sections{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.page-shortcuts a,.content-sections button{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border:1px solid #ffffff35;background:#111116;color:#fff;font:700 .875rem var(--body);cursor:pointer;text-decoration:none}
+.page-shortcuts a:hover,.content-sections button:hover,.content-sections button[aria-pressed=true]{background:#d50719;border-color:#d50719}
+.content-sections[hidden]{display:none}.results-panel[hidden]{display:none}.results-panel+.results-panel{margin-top:48px}
+body .u13-f-card-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:start;gap:26px;width:min(100%,850px)}
+.u13-f-card-grid .player-tile{flex:0 0 190px;min-width:0;text-align:center}
+.player-tile .senior-player-card{display:block;width:100%;margin:0}
+.player-name{display:block;margin-top:12px;color:#f0f0f4;font:700 1rem var(--body)}
+.player-instruction{color:#bdbdc6;font-size:.875rem;max-width:400px}.player-tile .senior-player-card-hint{display:none}
+body .team-player-section,body .team-photo-section{grid-column:1/-1;width:100%;padding:40px 0;border-top:1px solid #ffffff24}
+body .team-detail-grid.has-ranking>.team-registration{grid-column:1/-1}
+.history-jump-links{display:flex;gap:10px;flex-wrap:wrap;margin-block:20px}.history-jump-links a{min-height:44px;display:flex;align-items:center;padding:8px 14px;border:1px solid #ffffff35;color:#fff}
+body .shop-intro{padding:24px;margin-bottom:20px;gap:24px}body .shop-intro h2{font-size:2rem}
+body .product-copy{display:flex;flex-direction:column;align-items:start;gap:14px;padding:20px;min-height:0}
+body .product-copy h2{padding-right:0;font-size:1.45rem;line-height:1.15;min-height:2.3em}
+body .product-copy strong{position:static;font-size:1.4rem}
+body .product-copy>a{position:static;margin-top:auto;min-height:44px;display:flex;align-items:center;gap:8px;font-size:.8rem;line-height:1.35}
+body .product-copy>a span{position:static;font-size:1rem}
+body .product-controls>button{width:44px;height:44px}
+body .page-heading .page-intro{max-width:650px}
+body .category-values{padding:26px;margin-bottom:24px}
+body .category-values h2{font-size:2rem;margin-bottom:12px}
+@media(max-width:900px){
+ body .u13-f-card-grid{width:min(100%,390px);gap:22px}.u13-f-card-grid .player-tile{flex-basis:170px}
+}
+@media(max-width:850px){
+ body .team-detail-grid.has-ranking{display:flex;flex-direction:column;gap:22px}
+ body .team-detail-grid.has-ranking>.team-detail-main,body .team-detail-grid.has-ranking>.team-season-stack{display:contents}
+ .team-detail-grid.has-ranking .team-training{order:0;width:100%}.team-detail-grid.has-ranking .team-next-card{order:1;width:100%}
+ .team-detail-grid.has-ranking .team-player-section{order:2}.team-detail-grid.has-ranking :is(.team-photo-section,.team-gallery){order:3;width:100%}
+ .team-detail-grid.has-ranking .team-last-card{order:4;width:100%}.team-detail-grid.has-ranking .team-season-card{order:5;width:100%}
+ .team-detail-grid.has-ranking :is(.team-people,.team-sidebar-photo){order:6;width:100%}.team-detail-grid.has-ranking .team-registration{order:7;width:100%}
+ body .team-player-section,body .team-photo-section{padding:24px 0}.team-player-section>.section-heading{margin-bottom:14px}
+ body .animated-heading{min-height:0;grid-template-columns:minmax(0,1fr) 150px;gap:0 16px;padding-bottom:28px}
+ body .animated-heading .breadcrumb{grid-column:1/-1;margin-bottom:26px}
+ body .animated-heading>.eyebrow,body .animated-heading h1,body .animated-heading .page-intro{grid-column:1/-1}
+ body .animated-heading :is(.blog-intro-media,.boutique-intro-media,.training-intro-media,.results-intro-media,.gallery-intro-media){grid-column:2;grid-row:3;width:150px;height:110px;margin:0;opacity:.8}
+ body .animated-heading h1{grid-column:1;font-size:clamp(2.3rem,6.5vw,3.8rem)}
+ body .products-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+}
+@media(max-width:650px){
+ body .org-coachs ul{grid-template-columns:1fr;gap:15px}.org-coachs .org-coach-toggle{min-height:44px}
+ body .org-coachs .org-coach-panel{width:min(100%,240px);margin-inline:auto}
+ body .org-card-controls button{min-height:44px}
+ body .shop-intro{display:block;padding:18px}.shop-intro .button{margin-top:16px;width:100%}
+ body .home-hero{padding-bottom:26px}.home-hero .hero-logo-stage{max-height:230px}
+}
+@media(max-width:520px){
+ body .page-heading{padding-bottom:24px}body .page-shortcuts{gap:8px;margin-bottom:18px}.page-shortcuts a{padding:8px 12px;font-size:.8rem}
+ body .u13-f-card-grid{width:100%;gap:24px 12px}.u13-f-card-grid .player-tile{flex:0 0 calc((100% - 12px)/2);max-width:145px}.player-name{font-size:.875rem}
+ body[data-page="equipes"] .teams-grid .team-card.has-photo{min-height:300px}body .teams-grid .team-card-copy{padding:22px}.teams-grid .card-bottom{margin-top:18px;padding-top:14px}
+ body .products-grid{gap:12px}body .product-copy{padding:12px;gap:8px}body .product-copy h2{font-size:1.1rem;min-height:3.45em;overflow-wrap:anywhere}
+ body .product-copy strong{font-size:1.25rem}body .product-copy>a{font-size:.72rem;min-height:48px}body .product-controls{left:5px;right:5px;gap:4px}
+ body .product-controls>button{flex-shrink:0}body .product-controls>span{min-width:0;padding:6px;font-size:.6rem}
+ body .animated-heading{grid-template-columns:minmax(0,1fr) 90px;gap:0 12px}body .animated-heading :is(.blog-intro-media,.boutique-intro-media,.training-intro-media,.results-intro-media,.gallery-intro-media){width:90px;height:90px}
+ body .animated-heading h1{font-size:clamp(2rem,7vw,2.7rem)}body .page-intro{margin-top:14px}
+ body .content-sections{gap:8px}.content-sections button{padding:8px 12px;font-size:.8rem}
+ :root{--partner-dock-height:48px}body .sponsor-marquee-window{padding-block:8px}
+}

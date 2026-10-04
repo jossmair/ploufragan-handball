@@ -4,7 +4,7 @@
       "label": "Baby Hand",
       "gender": "mixte",
       "age": "3 à 5 ans",
-      "publicIntro": "Pour les enfants de 3 à 5 ans, filles et garçons. Les séances de motricité permettent de bouger, jouer et prendre confiance dans l’ambiance familiale du PHB.",
+      "publicIntro": "Pour les enfants de 3 à 5 ans. Jeux et motricité avec David, Clara et Erwan, le mercredi à Trégueux et le samedi à Hoëdic.",
       "training": [
         {
           "day": "Mercredi",
@@ -55,7 +55,7 @@
       "label": "École de hand",
       "gender": "mixte",
       "birthYears": "2018–2020",
-      "publicIntro": "L’École de hand fait découvrir les règles, la coordination, les passes et les premiers tirs, en gardant le jeu et le plaisir au centre de chaque séance.",
+      "publicIntro": "Pour les enfants nés entre 2018 et 2020. Le groupe retrouve Olivier Beaux le samedi de 11h30 à 12h30 à Hoëdic.",
       "training": [
         {
           "day": "Samedi",
@@ -101,7 +101,7 @@
       "gender": "mixte",
       "birthYears": "2016–2017",
       "resultLabel": "U11 mixte",
-      "publicIntro": "L’équipe U11 mixte poursuit l’apprentissage du handball avec deux séances par semaine et les premiers repères du jeu collectif.",
+      "publicIntro": "Les U11 mixtes, nés en 2016 ou 2017, retrouvent Yohann Guérin et Joshua Eloy le lundi et le mercredi à Hoëdic.",
       "training": [
         {
           "day": "Lundi",
@@ -136,7 +136,7 @@
       "gender": "filles",
       "birthYears": "2014–2015",
       "resultLabel": "U13 filles",
-      "publicIntro": "Les U13 filles progressent ensemble lors de deux entraînements hebdomadaires et retrouvent ici leurs matchs et leur classement officiel.",
+      "publicIntro": "David encadre les U13 filles, nées en 2014 ou 2015. Les entraînements ont lieu le mardi à Hoëdic et le jeudi à Belle-Île.",
       "training": [
         {
           "day": "Mardi",
@@ -179,7 +179,7 @@
       "gender": "garçons",
       "birthYears": "2014–2015",
       "resultLabel": "U13 garcons",
-      "publicIntro": "Les U13 garçons développent leur jeu collectif lors de deux entraînements par semaine et suivent ici leur championnat.",
+      "publicIntro": "Les garçons nés en 2014 ou 2015 jouent en U13 avec Jérôme. Ils s’entraînent le mardi à Hoëdic et le jeudi à Belle-Île.",
       "training": [
         {
           "day": "Mardi",
@@ -221,7 +221,7 @@
       "gender": "filles",
       "birthYears": "2012–2013",
       "resultLabel": "U15 filles",
-      "publicIntro": "Les U15 filles poursuivent leur formation avec deux séances hebdomadaires, en lien avec leur calendrier et leur classement FFHandball.",
+      "publicIntro": "Les U15 filles sont encadrées par Katia. Le groupe accueille les joueuses nées en 2012 ou 2013 et s’entraîne le mercredi à Hoëdic et le jeudi à Belle-Île.",
       "training": [
         {
           "day": "Mercredi",
@@ -251,7 +251,7 @@
       "gender": "garçons",
       "birthYears": "2012–2013",
       "resultLabel": "U15 garcons",
-      "publicIntro": "Les U15 garçons travaillent leur progression collective lors de deux entraînements par semaine et retrouvent ici le suivi de leur saison.",
+      "publicIntro": "Erwan retrouve les U15 garçons le mercredi et le vendredi à Hoëdic. Cette catégorie accueille les jeunes nés en 2012 ou 2013.",
       "training": [
         {
           "day": "Mercredi",
@@ -292,7 +292,7 @@
       "gender": "garçons",
       "birthYears": "2009–2011",
       "resultLabel": "U18 garcons",
-      "publicIntro": "Les U18 garçons préparent la transition vers le handball senior avec deux séances par semaine et un suivi complet de leur championnat.",
+      "publicIntro": "Nathan Raoult et Clara Toquet accompagnent les U18 garçons, nés entre 2009 et 2011. Le groupe s’entraîne le mercredi et le vendredi à Hoëdic.",
       "training": [
         {
           "day": "Mercredi",
@@ -336,7 +336,7 @@
       "label": "Seniors féminines",
       "gender": "femmes",
       "birthYears": "2008 et avant",
-      "publicIntro": "L’équipe Seniors féminines représente le PHB en compétition et retrouve ici son entraînement, ses matchs et son classement officiel.",
+      "publicIntro": "Les Seniors féminines se retrouvent le jeudi à Hoëdic avec Elsa (« Mamy »). Cette catégorie accueille les joueuses nées en 2008 et avant.",
       "training": [
         {
           "day": "Jeudi",
@@ -399,17 +399,18 @@
           "src": "assets/seniors-masculins/coachs/guillaume-michel.webp",
           "role": "coach seniors masculins"
         }
-      ]
+      ],
+      "publicIntro": "Jérôme Quemener et Guillaume Michel (« Guigui ») encadrent les Seniors masculins. Les entraînements ont lieu le mardi à Hoëdic et le jeudi à Belle-Île, pour les joueurs nés en 2008 et avant."
     },
     "seniors-masculins-1": {
       "label": "Seniors masculins 1",
       "resultLabel": "Seniors masculins 1",
-      "publicIntro": "L’équipe première masculine du PHB dispute son championnat territorial et retrouve ici ses entraînements, résultats et classement."
+      "publicIntro": "L’équipe première masculine partage les entraînements du groupe seniors : le mardi à Hoëdic et le jeudi à Belle-Île, avec Jérôme Quemener et Guillaume Michel."
     },
     "seniors-masculins-2": {
       "label": "Seniors masculins 2",
       "resultLabel": "Seniors masculins 2",
-      "publicIntro": "L’équipe Seniors masculins 2 permet au groupe adulte de vivre une seconde aventure en compétition avec son propre calendrier.",
+      "publicIntro": "L’équipe Seniors masculins 2 partage les entraînements du groupe seniors, le mardi à Hoëdic et le jeudi à Belle-Île. Retrouvez ici son calendrier et ses résultats.",
       "pagePhoto": {
         "src": "assets/photos/seniors-masculins-2-equipe-2026.webp",
         "width": 1350,
@@ -422,7 +423,7 @@
       "label": "Loisirs",
       "gender": "mixte",
       "birthYears": "2008 et avant",
-      "publicIntro": "La section loisirs propose un handball adulte mixte, convivial et ouvert à tous les niveaux, le lundi soir à Marcel Paul.",
+      "publicIntro": "Le groupe loisirs est mixte et se retrouve le lundi à Marcel Paul avec Aurélien. Les adultes nés en 2008 et avant peuvent contacter le club pour un essai.",
       "training": [
         {
           "day": "Lundi",
