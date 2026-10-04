@@ -237,7 +237,14 @@
       "staff": {
         "role": "Coach",
         "names": "Katia"
-      }
+      },
+      "staffCards": [
+        {
+          "name": "Katia Javouhey",
+          "src": "assets/club/cartes/katia-u15-filles.webp",
+          "role": "coach U15 filles"
+        }
+      ]
     },
     "u15-garcons": {
       "label": "U15 garçons",
@@ -402,7 +409,14 @@
     "seniors-masculins-2": {
       "label": "Seniors masculins 2",
       "resultLabel": "Seniors masculins 2",
-      "publicIntro": "L’équipe Seniors masculins 2 permet au groupe adulte de vivre une seconde aventure en compétition avec son propre calendrier."
+      "publicIntro": "L’équipe Seniors masculins 2 permet au groupe adulte de vivre une seconde aventure en compétition avec son propre calendrier.",
+      "pagePhoto": {
+        "src": "assets/photos/seniors-masculins-2-equipe-2026.webp",
+        "width": 1350,
+        "height": 1800,
+        "alt": "Photo de l’équipe Seniors masculins 2 du Ploufragan Handball",
+        "className": "is-team-photo"
+      }
     },
     "loisirs": {
       "label": "Loisirs",
