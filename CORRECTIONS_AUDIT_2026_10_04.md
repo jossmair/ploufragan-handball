@@ -44,6 +44,31 @@
 - Références locales, construction, SEO, médias et budgets vérifiés.
 - Captures des pages modifiées à 320, 390 et 1440 px dans `reports/corrections-20261004/`.
 
+## Contrôle final sur le site public
+
+- Version c4e3f21 publiée après les contrôles complets : 140 tests navigateur réussis, quatre exclusions prévues, contrôles Python, construction, médias, SEO, budgets, responsive et sans JavaScript réussis.
+- Navigation Inscriptions corrigée pour éviter qu’un événement d’ouverture différé remplace l’historique ; dix répétitions locales du parcours réussies.
+- Huit pages publiques contrôlées à 390 px : version correcte, aucun débordement horizontal ni erreur JavaScript ; score U18 19–33, nouvelle photo seniors 1 et ouverture/fermeture plein écran vérifiés.
+- Trois répétitions du protocole mobile ralenti sur cinq pages du site public. LCP médian et CLS maximal :
+
+| Page | Avant | Après | CLS max. après |
+| --- | ---: | ---: | ---: |
+| / | 4356 ms | 2772 ms | 0.0081 |
+| /resultats.html | 3216 ms | 2508 ms | 0.0032 |
+| /club.html | 3728 ms | 2344 ms | 0.0000 |
+| /stage-ete.html | 2052 ms | 2368 ms | 0.0000 |
+| /u11-mixte.html | 1812 ms | 2088 ms | 0.0000 |
+
+Les conditions sont simulées et varient entre les passages. L’accueil reste au-dessus de 2,5 secondes dans cette simulation ; Stage et U11 ne montrent pas de gain sur cette série. Ces mesures ne démontrent pas une amélioration de tous les parcours et ne remplacent pas les données terrain. Rapport brut : reports/mobile-lab-audit.json.
+
 ## Limites
 
 Chromium et simulation mobile ne remplacent pas les tests sur Safari/iOS, lecteur d’écran ou téléphone réel. Les huit vidéos du stage nécessitent encore une écoute de leur bande sonore pour déterminer les éventuelles alternatives utiles ; aucun sous-titre n’a été inventé. Les vérifications automatiques de contraste sur fonds illustrés ne constituent pas une certification d’accessibilité.
+
+## Cartes plus compactes sur PC
+
+À partir de 1024 px, les marges internes, espaces entre blocs, logos des matchs et titres sont légèrement réduits. L’ordre des rubriques et les textes utiles sont conservés. Les cartes joueurs passent à 168 px au lieu de 190 px ; cinq tiennent sur une ligne sur grand écran.
+
+Mesures U18 à 1440 px : horaires 490 → 425 px, prochain match 476 → 414 px, résultat 401 → 346 px, classement 536 → 476 px. Les deux premières rangées occupent environ 129 px de moins.
+
+Huit tests de navigation, disposition, effectifs et zoom réussis. Seize rendus complémentaires entre 1024 et 1920 px sur quatre équipes : aucun débordement ni nom de club tronqué. Budgets de poids respectés. Les règles de compacité sont réservées au bureau.
