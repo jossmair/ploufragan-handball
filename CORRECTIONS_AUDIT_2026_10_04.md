@@ -122,3 +122,12 @@ L’accueil réunit les trois actions sur une ligne et affiche les réseaux soci
 Le profil de David devient un bloc de 840 px maximum et de 320 px de hauteur d’image sur PC. Le nom, le rôle et le contact sont placés à côté de la photo. Les deux portraits passent en fondu, avec pause et respect de la préférence de mouvement réduit ; la rotation qui déformait le portrait est supprimée. Sur mobile, le texte précède la photo.
 
 Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget est ajusté pour couvrir ces dispositions. Les budgets des médias et du CSS commun sont inchangés.
+
+
+### Nouvelle passe PC — 5 octobre 2026
+
+- Photos de fond noir et blanc étendues indépendamment des en-têtes : la scène reste visible sous les premiers contenus, avec un fondu vertical progressif jusqu’à la transparence.
+- Albums et articles sur deux colonnes ; quatre albums complets visibles à 1440 et 1920 px sur un écran de 900 px de haut.
+- Résultats sur trois colonnes dès 1280 px, cartes catégories plus courtes, images produits au format 4/3 sans recadrer les vêtements.
+- Espacement des tableaux, raccourcis et sections réduit sur PC ; les cartes Panini et la composition mobile sont conservées.
+- Aucun nouveau média téléchargé. Module CSS bureau maintenu sous son budget de 10 Ko.

@@ -177,3 +177,23 @@ test('desktop home shows news actions in the first screen and keeps upcoming mat
  await page.goto('/club.html');const profile=await page.locator('.staff-feature').boundingBox();
  expect(profile.width).toBeLessThanOrEqual(840);expect(profile.height).toBeLessThanOrEqual(330);
 });
+
+test('desktop catalogues show multiple complete cards without clipping their links',async({page,isMobile})=>{
+ test.skip(isMobile,'Desktop composition');test.setTimeout(60000);
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [1024,1440,1920]){
+  await page.setViewportSize({width,height:900});
+  for(const [slug,selector] of [['galerie','.gallery-index-card'],['blog','.news-card'],['boutique','.product-card'],['equipes','.team-card']]){
+   await page.goto('/'+slug+'.html');await page.evaluate(()=>document.fonts.ready);
+   const cards=await page.locator(selector).evaluateAll(es=>es.filter(e=>!e.hidden).map(e=>{
+    const rect=e.getBoundingClientRect();const link=e.querySelector('.text-link,.product-copy>a,.card-bottom');
+    const r=link?.getBoundingClientRect();return {x:rect.x,y:rect.y,height:rect.height,linkInside:!r||(r.left>=rect.left&&r.right<=rect.right+1&&r.bottom<=rect.bottom+1)};
+   }));
+   expect(cards.length).toBeGreaterThan(1);expect(cards[0].y).toBeCloseTo(cards[1].y,0);
+   expect(cards[1].x).toBeGreaterThan(cards[0].x);
+   expect(cards.every(c=>c.linkInside)).toBe(true);
+   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+   if(slug==='galerie'&&width>=1440){const dock=(await page.locator('.sponsor-marquee').boundingBox()).y;expect(cards[3].y+cards[3].height).toBeLessThanOrEqual(dock);}
+  }
+ }
+});
