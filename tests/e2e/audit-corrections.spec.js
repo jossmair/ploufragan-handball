@@ -54,7 +54,7 @@ test('mobile loads the small textures and early heading image, with useful page 
  await expect(page.locator('.site-texture')).toHaveCSS('background-image',/backgrounds\/mobile\/fond-2.webp/);
  await expect(page.locator('link[rel="preload"][as="image"]')).toHaveAttribute('href','assets/photos/page-headings/club.webp');
  for(const id of ['club-organigramme','club-david','club-salles']){
-  await page.locator(`.page-shortcuts a[href="#${id}"]`).click();await expect(page.locator(`#${id}`)).toBeInViewport();
+  await page.getByRole('navigation',{name:'Sur cette page'}).locator(`a[href="#${id}"]`).click();await expect(page.locator(`#${id}`)).toBeInViewport();
  }
  await page.goto('/stage-ete.html');await page.locator('.stage-shortcuts a[href="#souvenirs"]').click();await expect(page.locator('#souvenirs')).toBeInViewport();
 });
