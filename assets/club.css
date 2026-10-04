@@ -67,11 +67,9 @@ body[data-page="seniors-masculins-2"] .team-sidebar-photo img{height:auto;max-he
 @media(max-width:520px){.club-intro-editorial h2{font-size:clamp(2.9rem,12vw,4rem)}.club-intro-landmarks{grid-template-columns:1fr;gap:22px}.club-intro-landmarks strong{font-size:1.4rem}.club-intro-editorial .actions{display:grid;gap:12px}.club-intro-editorial .actions .button{width:100%}.club-intro-emblem{max-width:230px}.staff-section .staff-kicker{font-size:.6rem;max-width:215px}.staff-section .staff-portrait{top:205px}}
 @media(prefers-reduced-motion:reduce){.staff-rotor{animation:none}}
 
-.club-page-heading{position:relative;min-height:350px;padding-right:460px}.club-heading-emblem{position:absolute;right:0;top:0;width:420px;pointer-events:none}.club-heading-emblem img{width:100%;filter:drop-shadow(0 12px 30px #ed071920)}
-.club-intro.club-intro-editorial{grid-template-columns:minmax(0,1fr);padding-top:0}.club-intro-editorial .club-intro-copy{max-width:900px}.club-intro-editorial h2{margin-top:0;font-size:clamp(3.3rem,5vw,5rem)}
-@media(max-width:850px){.club-page-heading{padding-right:280px;min-height:280px}.club-heading-emblem{width:270px;top:25px}.club-page-heading .eyebrow{max-width:260px}.club-page-heading h1{font-size:clamp(3rem,7vw,4.5rem)}}
-@media(max-width:520px){.club-page-heading{padding-right:0;min-height:330px}.club-page-heading .eyebrow{max-width:100%}.club-page-heading h1{font-size:3.6rem;position:relative;z-index:1}.club-heading-emblem{width:210px;top:135px;right:0}.club-intro-editorial h2{font-size:clamp(2.9rem,12vw,4rem)}}
 
-body[data-page="club"] .club-page-heading>.club-heading-emblem{position:absolute;top:0;right:0}.club-page-heading{min-height:420px}
-@media(max-width:850px){.club-page-heading{min-height:320px}body[data-page="club"] .club-page-heading>.club-heading-emblem{top:25px}}
-@media(max-width:520px){.club-page-heading{min-height:330px}body[data-page="club"] .club-page-heading>.club-heading-emblem{top:100px;right:0;width:190px}}
+.club-page-heading{position:relative;min-height:395px;padding-right:460px}.club-page-heading h1{width:fit-content}
+body[data-page="club"] .club-page-heading>.club-heading-emblem{position:absolute;top:45px;right:60px;width:350px;pointer-events:none}.club-heading-emblem img{width:100%;filter:drop-shadow(0 12px 30px #ed071920)}
+.club-intro.club-intro-editorial{grid-template-columns:minmax(0,1fr);padding-top:0}.club-intro-editorial .club-intro-copy{max-width:900px}.club-intro-editorial h2{margin-top:0;font-size:clamp(3.3rem,5vw,5rem)}
+@media(max-width:850px){.club-page-heading{padding-right:280px;min-height:300px}.club-page-heading .eyebrow{max-width:260px}.club-page-heading h1{font-size:clamp(3rem,7vw,4.5rem)}body[data-page="club"] .club-page-heading>.club-heading-emblem{top:45px;right:20px;width:230px}}
+@media(max-width:520px){.club-page-heading{padding-right:0;min-height:285px}.club-page-heading .eyebrow{max-width:100%}.club-page-heading h1{font-size:3.6rem;position:relative;z-index:1}body[data-page="club"] .club-page-heading>.club-heading-emblem{top:88px;right:14px;width:160px}.club-intro-editorial h2{font-size:clamp(2.9rem,12vw,4rem)}}
