@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T10:24:17.919142+00:00",
+  "updatedAt": "2026-10-04T11:09:08.742921+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -327,8 +327,8 @@
         {
           "position": 2,
           "team": "AL CANCALE",
-          "points": 9,
-          "played": 3,
+          "points": 10,
+          "played": 4,
           "club": false
         },
         {
@@ -369,8 +369,8 @@
         {
           "position": 8,
           "team": "PLOEUC HAND",
-          "points": 4,
-          "played": 2,
+          "points": 7,
+          "played": 3,
           "club": false
         },
         {
