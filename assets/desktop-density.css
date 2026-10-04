@@ -1,16 +1,16 @@
 /* Desktop team pages: compact spacing, readable names and scores. */
 @media(min-width:1024px){
- body .team-detail-grid{gap:20px}
- .team-detail-grid :is(.team-training,.team-next-card,.team-last-card,.team-season-card,.team-registration){padding:20px}
- .team-detail-grid :is(.team-next-card,.team-last-card) h2{font-size:1.75rem;margin-bottom:14px}
- .team-training .panel-title{margin-bottom:16px}.team-training .panel-title h2{font-size:2rem}
+ body .team-detail-grid{gap:16px}
+ .team-detail-grid :is(.team-training,.team-next-card,.team-last-card,.team-season-card,.team-registration){padding:16px}
+ .team-detail-grid :is(.team-next-card,.team-last-card) h2{font-size:1.6rem;margin-bottom:14px}
+ .team-training .panel-title{margin-bottom:16px}.team-training .panel-title h2{font-size:1.8rem}
  .team-detail-grid .schedule td{padding:11px 10px}.team-detail-grid .team-staff{margin-top:16px;padding-top:12px}
- body .match-card{min-height:210px;padding:16px}
+ body .match-card{min-height:185px;padding:16px}
  body .match-main{grid-template-columns:minmax(0,1fr) 108px minmax(0,1fr);gap:12px;min-height:122px;padding-top:12px}
  body .match-team{grid-template-rows:minmax(56px,auto) 44px;gap:8px}body .match-team-name{min-height:56px}
  body .team-logo-disc{width:44px;height:44px}body :is(.match-result,.match-score){min-width:108px}
  body .match-score{font-size:2.3rem}body .match-location{margin-top:12px;padding-top:10px}
- .team-detail-grid .team-season-head{padding-bottom:15px}.team-detail-grid .team-season-head h2{font-size:1.8rem}
+ .team-detail-grid .team-season-head{padding-bottom:15px}.team-detail-grid .team-season-head h2{font-size:1.6rem}
  .team-detail-grid .team-rank{padding:16px 0 12px}.team-detail-grid .team-rank strong{font-size:3.2rem}
  .team-detail-grid .pool-table :is(th,td){padding:7px 6px}
  body .team-detail-grid .u13-f-card-grid{gap:20px;width:min(100%,920px)}
@@ -19,55 +19,45 @@
 }
 
 @media(min-width:1024px){
- body :is(.information-panel,.paper-panel){padding:24px}
- body .team-detail-grid :is(.team-training,.team-registration){padding:20px}
- body .competition-card{padding:20px}.competition-card h3{font-size:1.55rem;margin:12px 0 18px}
- body .news-card{min-height:260px}.news-card-image{min-height:260px}.news-card-image img{max-height:285px}
- body .news-card-copy{padding:25px}.news-card-copy h2{font-size:clamp(1.9rem,2.8vw,2.8rem);margin:12px 0 16px}.news-card-copy .text-link{margin-top:20px}
- body .gallery-index-card,body .gallery-index-card figure{min-height:285px}.gallery-index-copy{padding:28px}.gallery-index-copy h2{font-size:clamp(2.1rem,3.1vw,3.2rem)}
- body .partner-card{grid-template-columns:72px 1fr auto;gap:18px;padding:20px}.partner-card .partner-logo{width:72px;height:72px}
+ body :is(.information-panel,.paper-panel){padding:18px}
+ body .team-detail-grid :is(.team-training,.team-registration){padding:16px}
+ body .competition-card{padding:16px}.competition-card h3{font-size:1.55rem;margin:12px 0 18px}
+ body .news-card{min-height:220px}.news-card-image{min-height:220px}.news-card-image img{max-height:285px}
+ body .news-card-copy{padding:18px}.news-card-copy h2{font-size:clamp(1.9rem,2.8vw,2.8rem);margin:12px 0 16px}.news-card-copy .text-link{margin-top:20px}
+ body .gallery-index-card,body .gallery-index-card figure{min-height:230px}.gallery-index-copy{padding:20px}.gallery-index-copy h2{font-size:clamp(2.1rem,3.1vw,3.2rem)}
+ body .partner-card{grid-template-columns:72px 1fr auto;gap:18px;padding:16px}.partner-card .partner-logo{width:72px;height:72px}
  body .product-copy{padding:16px;gap:10px}.product-copy h2{font-size:1.3rem}
  body .youth-choice{min-height:115px;padding:18px 22px}
- body .location-list article{padding:24px;gap:20px}.location-list h2{font-size:1.8rem;margin-bottom:10px}
+ body .location-list article{padding:18px;gap:20px}.location-list h2{font-size:1.6rem;margin-bottom:10px}
  body .contact-details>div{padding-block:18px}
- body .home-news-image{height:155px}.home-news-copy h3{font-size:1.8rem}.home-news-copy p{-webkit-line-clamp:3}
- body .team-card{min-height:280px}.team-card-copy{padding:24px}.team-card h2{font-size:2.35rem}
- body .matches-grid,body .competitions-grid,body .news-grid,body .gallery-index-grid{gap:20px}
+ body .home-news-image{height:155px}.home-news-copy h3{font-size:1.6rem}.home-news-copy p{-webkit-line-clamp:3}
+ body .team-card{min-height:240px}.team-card-copy{padding:18px}.team-card h2{font-size:1.95rem}
+ body .matches-grid,body .competitions-grid,body .news-grid,body .gallery-index-grid{gap:16px}
 }
 @media(min-width:1280px){body .products-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-
-@media(min-width:1024px){
- body[data-page] .page-heading{padding-top:32px;padding-bottom:52px;min-height:clamp(320px,28vw,440px)}
- body .page-heading:not(.animated-heading){min-height:0;padding-top:24px;padding-bottom:36px}
- body .page-heading h1{font-size:clamp(3.8rem,5vw,5.2rem)}
- body .heading-intro-media{width:min(104%,540px)}
- body .home-hero{min-height:630px;padding-top:30px;padding-bottom:55px}
- body .home-hero h1{font-size:clamp(3.8rem,6.8vw,6.6rem)}
- body .home-hero .hero-logo-stage{height:clamp(540px,30vw,600px)}
-}
 
 /* A quieter desktop type scale brings useful content into the first screen. */
 @media(min-width:1024px){
  body{font-size:.9375rem}
- body .page-heading h1{font-size:clamp(3rem,4vw,4.2rem)}
- body .section-heading h2{font-size:clamp(1.9rem,2.8vw,2.65rem)}
+ body .page-heading h1{font-size:clamp(2.5rem,3.4vw,3.4rem)}
+ body .section-heading h2{font-size:clamp(1.7rem,2.3vw,2.2rem)}
  body[data-page] .page-heading{min-height:320px;padding-top:24px;padding-bottom:36px}
  body .page-heading:not(.animated-heading){min-height:0}
- body .heading-intro-media{width:min(94%,400px)}
+ body .heading-intro-media{width:min(94%,340px)}
  body .home-hero{min-height:570px;padding-block:24px 36px}
  body .home-hero h1{font-size:clamp(3rem,5.2vw,4.8rem)}
  body .home-hero .hero-logo-stage{height:clamp(480px,27vw,540px)}
  body .home-hero .actions{gap:10px;margin-top:22px}
  body .hero-rule,body .hero-location{margin-top:18px}
  body .button{font-size:1rem;min-height:44px;padding:11px 18px;gap:20px}
- body .information-panel h2,body .panel-title h2{font-size:1.8rem}
+ body .information-panel h2,body .panel-title h2{font-size:1.6rem}
  body .schedule tbody th>a{font-size:1.1rem;padding:8px 12px;min-width:0}
  body .slot strong{font-size:1.1rem}body .venue{font-size:1.05rem}
  body .schedule :is(th,td){padding-block:12px}
- body .section-heading{margin-bottom:22px}
- body main>.section:not(.after-heading):not(.home-news):not(.category-facts):not(.category-photos):not(.category-competitions):not(.home-weekend):not(.stage-shortcuts){padding-block:52px}
- body .news-card-copy h2{font-size:clamp(1.8rem,2.4vw,2.4rem)}
- body .gallery-index-copy h2{font-size:clamp(2rem,2.7vw,2.8rem)}
+ body .section-heading{margin-bottom:16px}
+ body main>.section:not(.after-heading):not(.home-news):not(.category-facts):not(.category-photos):not(.category-competitions):not(.home-weekend):not(.stage-shortcuts){padding-block:36px}
+ body .news-card-copy h2{font-size:clamp(1.6rem,2vw,2rem)}
+ body .gallery-index-copy h2{font-size:clamp(1.8rem,2.2vw,2.2rem)}
 
  body .club-intro-editorial h2{font-size:clamp(2.8rem,4vw,4rem)}
  body .team-overview h2{font-size:clamp(2rem,3vw,2.5rem)}
@@ -75,11 +65,71 @@
  body .stage-hero{min-height:600px}.stage-hero-copy{padding-top:45px;padding-bottom:65px}
  body .stage-hero h1{font-size:clamp(3.5rem,6vw,6.5rem)}
  body .stage-page h2{font-size:clamp(2.3rem,3.3vw,3.3rem)}
- body .training-intro-media{width:min(82%,320px)}
+ body .training-intro-media{width:min(82%,280px)}
  body .hero-socials a{font-size:.9375rem;min-height:44px;padding:10px 16px}
- body .home-news-copy h3{font-size:1.6rem}
+ body .home-news-copy h3{font-size:1.4rem}
 }
 
 @media(min-width:1024px){body[data-page] .animated-heading{min-height:0}}
 
 @media(min-width:1024px){body[data-page] .page-heading{padding-top:16px;padding-bottom:24px}body .page-heading .breadcrumb{margin-bottom:20px}}
+
+@media(min-width:1024px){
+ body{line-height:1.6}
+ body .home-hero{min-height:0;padding-block:16px 18px;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px}
+ body .home-hero h1{font-size:clamp(2.8rem,3.8vw,3.4rem);line-height:1.05}
+ body .home-hero .hero-logo-stage{height:320px}
+ body .home-hero .hero-intro-media{width:100%;max-width:620px}
+ body .hero-copy{width:100%;max-width:680px}
+ body .hero-copy>.eyebrow{margin-bottom:16px}
+ body .hero-rule{display:none}
+ body .hero-location{margin-top:14px;font-size:.875rem;line-height:1.5}
+ body .home-hero .actions{display:flex;flex-wrap:wrap;width:100%;gap:8px;margin-top:16px}
+ body .home-hero .actions>.button{min-height:44px;width:auto;min-width:0;padding:10px 14px;gap:16px;font-size:.9375rem}
+ body .hero-social-title{display:none}
+ body .hero-socials{display:flex;gap:20px;width:auto;margin-top:8px}
+ body .hero-socials a,body .hero-socials a:last-child{width:auto;padding:6px 0;border:0;background:transparent;font-size:.875rem;min-height:44px;gap:8px}
+ body .hero-socials a::before{content:none}
+ body .hero-socials a>b{margin-left:6px}
+ body[data-page="index"] .home-hero+.home-news{padding-top:0;padding-bottom:36px}
+ body .home-news .section-heading{margin-bottom:16px}
+ body .home-news-image{height:120px}
+ body .home-news-copy{padding:14px 16px}
+ body .home-news-copy h3{font-size:1.4rem;margin-block:8px}
+ body .home-news-copy p{margin-bottom:12px}
+ body :is(.information-panel,.news-card-copy,.gallery-index-copy,.team-training,.team-registration,.contact-details) p{font-size:.9375rem;line-height:1.55}
+ body .team-card-copy{padding:18px}
+ body .card-bottom{margin-top:16px;padding-top:12px}
+ body .org-card{padding:20px;min-height:0}
+ body .org-card h3{font-size:1.65rem;margin-bottom:16px}
+ body .org-office h3{font-size:2.6rem}
+ body .org-card li{font-size:.875rem}
+ body .org-chart{padding:28px;gap:18px}
+ body .stage-hero{min-height:480px}
+ body .stage-hero-copy{padding-block:28px 40px}
+ body .stage-hero h1{font-size:clamp(3rem,4.6vw,5rem)}
+ body .stage-page h2{font-size:clamp(2rem,2.7vw,2.8rem)}
+ body .section-heading .eyebrow{margin-bottom:8px}
+}
+
+@media(min-width:1024px){body .hero-location br{display:none}body .hero-location span::before{content:" · "}}
+
+@media(min-width:1024px){body .gallery-index-card figure{height:220px;min-height:220px}body .club-heading-summary p{font-size:.9375rem}}
+
+@media(min-width:1024px){
+ body .home-weekend{padding-block:28px 36px}
+ body .home-weekend .matches-grid{align-items:start;gap:16px}
+ body .home-weekend .match-card{padding:14px;min-height:0}
+ body .home-weekend .match-main{grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);min-height:90px;gap:8px;padding-top:10px}
+ body .home-weekend .match-team{grid-template-rows:minmax(40px,auto) 36px;gap:6px}
+ body .home-weekend .match-team-name{font-size:.875rem;min-height:40px;line-height:1.25}
+ body .home-weekend .team-logo-disc{width:36px;height:36px}
+ body .home-weekend .match-result{min-width:72px}
+ body .home-weekend .match-time{font-size:1.2rem}
+ body .home-weekend .match-source{font-size:.7rem;margin-top:6px}
+ body .home-weekend .match-location{margin-top:8px;padding-top:8px;gap:10px}
+ body .home-weekend .match-map{padding:8px 10px;font-size:.75rem;min-height:40px}
+}
+@media(min-width:1280px){body .home-weekend .matches-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+@media(min-width:1024px){body .home-weekend .match-venue{font-size:.75rem}body .home-weekend .match-venue small{font-size:.65rem}}

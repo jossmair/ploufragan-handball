@@ -63,7 +63,7 @@ if (staffAnimation) {
   button.addEventListener('click', () => {
     paused = !paused;
     button.setAttribute('aria-pressed', String(paused));
-    button.setAttribute('aria-label', paused ? 'Reprendre la rotation des portraits' : 'Mettre en pause la rotation des portraits');
+    button.setAttribute('aria-label', paused ? 'Reprendre les photos' : 'Mettre en pause les photos');
     button.innerHTML = paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4l12 8-12 8z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
     update();
   });

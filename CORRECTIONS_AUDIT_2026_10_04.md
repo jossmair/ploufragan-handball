@@ -113,3 +113,12 @@ Le titre « Le club », la présentation et les liens vers les équipes et l’h
 ### Organigramme : intitulés d’origine et alignement
 
 Rétablissement des intitulés Team Sponsor, Team Comm, Team Buvette, Team « Boutik », Team Coachs et Team Arbitre. Titres, noms et boutons Contacter sont centrés dans les cartes ; les coordonnées de contact et les cartes individuelles sont conservées.
+
+
+### Densité bureau, accueil et profil de David — 5 octobre
+
+L’accueil réunit les trois actions sur une ligne et affiche les réseaux sociaux sous forme de liens compacts. Le visuel, les titres, les images d’actualités et les marges de sections sont réduits sur PC. Les panneaux, les cartes et leurs textes adoptent une échelle plus petite, sans toucher à la taille des images Panini. Les matchs seniors à venir passent à trois colonnes à partir de 1280 px, avec une hauteur intérieure plus courte et des logos de 36 px.
+
+Le profil de David devient un bloc de 840 px maximum et de 320 px de hauteur d’image sur PC. Le nom, le rôle et le contact sont placés à côté de la photo. Les deux portraits passent en fondu, avec pause et respect de la préférence de mouvement réduit ; la rotation qui déformait le portrait est supprimée. Sur mobile, le texte précède la photo.
+
+Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget est ajusté pour couvrir ces dispositions. Les budgets des médias et du CSS commun sont inchangés.

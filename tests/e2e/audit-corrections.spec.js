@@ -156,3 +156,24 @@ test('animated headings keep their text grouped beside the media',async({page})=
   }
  }
 });
+
+
+test('desktop home shows news actions in the first screen and keeps upcoming matches compact',async({page,isMobile})=>{
+ test.skip(isMobile,'Desktop composition');
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [1440,1920]){
+  await page.setViewportSize({width,height:900});await page.goto('/');await page.evaluate(()=>document.fonts.ready);
+  const positions=await page.locator('.hero-copy>.actions>.button').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().top));
+  expect(Math.max(...positions)-Math.min(...positions)).toBeLessThan(1);
+  const dockTop=(await page.locator('.sponsor-marquee').boundingBox()).y;
+  for(const card of await page.locator('.home-news-card').all()){
+   const box=await card.boundingBox();expect(box.y+box.height).toBeLessThanOrEqual(dockTop);
+  }
+  const matches=await page.locator('.home-weekend .match-card').evaluateAll(es=>es.map(e=>({top:e.getBoundingClientRect().top,height:e.getBoundingClientRect().height})));
+  expect(Math.max(...matches.map(x=>x.top))-Math.min(...matches.map(x=>x.top))).toBeLessThan(1);
+  for(const match of matches)expect(match.height).toBeLessThanOrEqual(260);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+ }
+ await page.goto('/club.html');const profile=await page.locator('.staff-feature').boundingBox();
+ expect(profile.width).toBeLessThanOrEqual(840);expect(profile.height).toBeLessThanOrEqual(330);
+});

@@ -116,3 +116,29 @@ body .club-intro-landmarks strong{font-size:1.2rem}body .club-intro-landmarks sp
 body[data-page="club"] .org-card h3,body[data-page="club"] .org-card li{text-align:center}
 body[data-page="club"] .org-card .org-coach-toggle{justify-content:center;text-align:center}
 body[data-page="club"] .org-card .org-contact{align-self:center;margin-inline:auto}
+
+/* A compact educator profile with natural, fading portraits. */
+body .staff-section{margin-top:36px}
+body .staff-section .staff-feature{display:grid;grid-template-columns:280px minmax(0,1fr);width:min(100%,840px);height:auto;min-height:0;aspect-ratio:auto;margin-inline:auto;background:#111116f5;border-top:3px solid var(--red);box-shadow:none}
+body .staff-section .staff-feature::after{content:none}
+body .staff-section .staff-copy{position:relative;inset:auto;grid-column:2;grid-row:1;align-self:center;width:auto;padding:24px}
+body .staff-section .staff-copy h2{font-size:2.5rem;line-height:1.1;margin-bottom:18px}
+body .staff-section .staff-copy h2>span,body .staff-section .staff-copy h2>strong{display:inline;margin:0}
+body .staff-section .staff-copy h2>strong{margin-left:8px}
+body .staff-section .staff-kicker{max-width:none;font-size:.7rem;line-height:1.5;letter-spacing:.07em;white-space:normal;margin-bottom:12px}
+body .staff-section .staff-kicker>span{display:none}
+.staff-description{font-size:.9375rem;line-height:1.55;color:#c7c7ce;margin-bottom:18px}
+body .staff-section .staff-portrait{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:320px;perspective:none;filter:none}
+body .staff-section .staff-rotor{animation:none;transform:none;transform-style:flat;animation-play-state:paused}
+body .staff-section .staff-face{transform:none;backface-visibility:visible;animation:staff-photo-fade 14s linear infinite;animation-play-state:inherit}
+body .staff-section .staff-face:nth-child(2){animation-delay:-7s}
+body .staff-section .staff-face img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:none}
+body .staff-section .staff-motion-toggle{right:10px;bottom:10px;width:44px;height:44px;justify-content:center;padding:10px}
+@keyframes staff-photo-fade{0%,40%,100%{opacity:1}50%,90%{opacity:0}}
+@media(max-width:850px){
+ body .staff-section .staff-feature{grid-template-columns:1fr;row-gap:12px;width:min(100%,520px)}
+ body .staff-section .staff-copy{grid-column:1;grid-row:1;padding:20px}
+ body .staff-section .staff-portrait{grid-column:1;grid-row:2;height:260px}
+ body .staff-section .staff-copy h2{font-size:2.2rem}
+}
+@media(prefers-reduced-motion:reduce){body .staff-section .staff-face{animation:none}body .staff-section .staff-face:not(:first-child){display:none}}
