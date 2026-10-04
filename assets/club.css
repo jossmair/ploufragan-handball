@@ -73,3 +73,5 @@ body[data-page="club"] .club-page-heading>.club-heading-emblem{position:absolute
 .club-intro.club-intro-editorial{grid-template-columns:minmax(0,1fr);padding-top:0}.club-intro-editorial .club-intro-copy{max-width:900px}.club-intro-editorial h2{margin-top:0;font-size:clamp(3.3rem,5vw,5rem)}
 @media(max-width:850px){.club-page-heading{padding-right:280px;min-height:300px}.club-page-heading .eyebrow{max-width:260px}.club-page-heading h1{font-size:clamp(3rem,7vw,4.5rem)}body[data-page="club"] .club-page-heading>.club-heading-emblem{top:45px;right:20px;width:230px}}
 @media(max-width:520px){.club-page-heading{padding-right:0;min-height:285px}.club-page-heading .eyebrow{max-width:100%}.club-page-heading h1{font-size:3.6rem;position:relative;z-index:1}body[data-page="club"] .club-page-heading>.club-heading-emblem{top:88px;right:14px;width:160px}.club-intro-editorial h2{font-size:clamp(2.9rem,12vw,4rem)}}
+
+@media(max-width:520px){.club-page-heading h1{font-size:clamp(2.5rem,10vw,3.6rem)}body[data-page="club"] .club-page-heading>.club-heading-emblem{width:clamp(120px,40vw,160px);right:10px;top:100px}}

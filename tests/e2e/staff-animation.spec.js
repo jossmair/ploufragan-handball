@@ -34,3 +34,15 @@ test('David: rotation automatique, pause et mouvement réduit', async ({ page })
     expect(geometry).toEqual({clear:true,inside:true,overflow:false});
   }
 });
+
+test('Club: logo remains clear of the heading on narrow screens',async({page})=>{
+ await page.goto('/club.html');
+ for(const width of [320,360,390,430,520,768,850,1440]){
+  await page.setViewportSize({width,height:900});
+  const clear=await page.locator('.club-heading-emblem').evaluate(el=>{
+   const logo=el.getBoundingClientRect(), heading=el.parentElement.getBoundingClientRect(), title=el.parentElement.querySelector('h1').getBoundingClientRect();
+   return logo.left>=title.right+8 && logo.bottom<=heading.bottom && document.documentElement.scrollWidth<=innerWidth;
+  });
+  expect(clear).toBe(true);
+ }
+});
