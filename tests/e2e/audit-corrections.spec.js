@@ -50,11 +50,12 @@ test('mobile shop exposes products early and payment gives a real contact action
 });
 
 test('mobile loads small textures and supports direct section links',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
  await page.setViewportSize({width:390,height:844});await page.goto('/club.html');
  await expect(page.locator('.site-texture')).toHaveCSS('background-image',/backgrounds\/mobile\/fond-2.webp/);
  await expect(page.locator('link[rel="preload"][as="image"]')).toHaveAttribute('href','assets/photos/page-headings/club.webp');
  for(const id of ['club-organigramme','club-david','club-salles']){
-  await page.goto(`/club.html#${id}`);await expect(page.locator(`#${id}`)).toBeInViewport();
+  await page.goto(`/club.html?section=${id}#${id}`);await page.evaluate(()=>document.fonts.ready);await expect(page.locator(`#${id}`)).toBeInViewport();
  }
  await page.goto('/stage-ete.html');await page.locator('.stage-shortcuts a[href="#souvenirs"]').click();await expect(page.locator('#souvenirs')).toBeInViewport();
 });
