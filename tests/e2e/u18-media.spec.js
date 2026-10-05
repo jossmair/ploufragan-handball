@@ -13,7 +13,12 @@ test('U18: neuf cartes et sept photos accessibles sur mobile et ordinateur',asyn
   await expect.poll(()=>card.locator('.senior-player-card-back img').evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true);
   await card.click();await expect(card).toHaveAttribute('aria-pressed','true');
   await expect.poll(()=>card.locator('.senior-player-card-front img').evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true);
-  await card.press('Enter');await expect(card).toHaveAttribute('aria-pressed','false');
+  await card.press('Enter');
+  await expect(page.locator('.player-card-dialog')).toBeVisible();
+  await page.locator('.player-card-zoom-image').click();
+  await expect(page.locator('.player-card-dialog')).not.toBeVisible();
+  await expect(card).toHaveAttribute('aria-pressed','true');
+  await expect(card).toBeFocused();
  }
  const carousel=page.locator('[data-photo-carousel]');
  await expect(carousel.locator('[data-photo-slide]')).toHaveCount(7);

@@ -67,7 +67,7 @@ test('navigation : clavier, pages actives et accessibilité', async ({ page }) =
   test.setTimeout(90_000);
   await page.setViewportSize({ width: 1440, height: 1000 });
   for (const [path, current, group] of [
-    ['/', 'Accueil', null], ['seniors-masculins-1.html', 'Seniors masculins 1', 'equipes'],
+    ['/', 'Accueil', null], ['seniors-masculins.html', 'Seniors masculins', 'equipes'],
     ['u11-mixte.html', 'U11 mixte', 'equipes'], ['galerie.html', 'Galerie', null],
     ['club.html', 'Club', 'club'], ['resultats.html', 'Championnats', null],
     ['inscriptions.html', 'Inscriptions', null],

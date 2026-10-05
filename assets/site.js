@@ -204,12 +204,6 @@ document.querySelectorAll('[data-player-position-showcase]').forEach(showcase =>
     overlays.forEach(overlay => overlay.classList.toggle('is-visible', overlay.dataset.positionOverlay === position));
   }
 
-  function setFlipped(card, flipped) {
-    card.classList.toggle('is-flipped', flipped);
-    card.setAttribute('aria-pressed', String(flipped));
-    card.setAttribute('aria-label', `${flipped ? 'Afficher le dos' : 'Afficher le recto'} de la carte de ${card.dataset.playerName}`);
-  }
-
   function selectPosition(position) {
     const template = showcase.querySelector(`template[data-position-template="${position}"]`);
     if (!template) return;
@@ -217,9 +211,6 @@ document.querySelectorAll('[data-player-position-showcase]').forEach(showcase =>
     previewPosition(position);
     controls.forEach(control => control.setAttribute('aria-pressed', String(control.dataset.playerPosition === position)));
     stage.replaceChildren(template.content.cloneNode(true));
-    stage.querySelectorAll('[data-player-card]').forEach(card => {
-      card.addEventListener('click', () => setFlipped(card, !card.classList.contains('is-flipped')));
-    });
     if (innerWidth <= 850) {
       requestAnimationFrame(() => stage.scrollIntoView({ behavior: motion.matches ? 'auto' : 'smooth', block: 'center' }));
     }

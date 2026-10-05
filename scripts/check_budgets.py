@@ -6,6 +6,8 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
 BUDGETS = {
+    "CSS agrandissement cartes": (ASSETS / "player-card-zoom.css", 1_500),
+    "JavaScript agrandissement cartes": (ASSETS / "player-card-zoom.js", 4_000),
     "CSS actualités accueil": (ASSETS / "home-news.css", 2_000),
     "CSS footer": (ASSETS / "footer.css", 4_000),
     "CSS contrôles et contact": (ASSETS / "page-controls.css", 3_000),

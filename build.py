@@ -457,7 +457,7 @@ NAV_SECTIONS = {
                     ("inscriptions.html#documents", "Documents d’inscription")])],
     "equipes": [
         ("Seniors et loisirs", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
-            for key in ("seniors-masculins", "seniors-masculins-1", "seniors-masculins-2", "seniors-feminines", "loisirs")]),
+            for key in ("seniors-masculins", "seniors-feminines", "loisirs")]),
         ("Équipes jeunes", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
             for key in ("jeunes", "u18-garcons", "u15-filles", "u15-garcons", "u13-filles", "u13-garcons", "u11-mixte")]),
         ("École de hand", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
@@ -485,7 +485,7 @@ def navigation_html(slug, active):
         href = "/" if key == "index" else key + ".html"
         sections = NAV_SECTIONS.get(key)
         paths = {url.split("#")[0].removesuffix(".html") for _, links in sections or [] for url, _ in links}
-        selected = active == key or slug in paths and key == "equipes"
+        selected = active == key or key == "equipes" and (slug in paths or slug in {"seniors-masculins-1", "seniors-masculins-2"})
         if slug == "articles/histoire-ploufragan-handball":
             selected = key == "club"
         current = ' aria-current="page"' if slug == key else ''
@@ -517,6 +517,8 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
         extra_head += f'<link rel="preload" as="image" href="{heading_images[slug]}" fetchpriority="high">'
     if 'data-org-coach' in body and 'assets/club.css' not in extra_head:
         extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261005-19"><script src="assets/club.js?v=20261005-2" defer></script>'
+    if "data-u13-card" in body or "data-player-position-showcase" in body:
+        extra_head += '<link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-1"><script src="assets/player-card-zoom.js?v=20261005-1" defer></script>'
     nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
@@ -1019,7 +1021,7 @@ for youth in YOUTH_TEAMS:
     inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261005-19">'
                          '<script src="assets/club.js?v=20261005-2" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
-                      '<script src="assets/u13-filles.js?v=20261004-3" defer></script>') if slug in {"u13-filles", "u18-garcons"} else ''
+                      '<script src="assets/u13-filles.js?v=20261005-1" defer></script>') if slug in {"u13-filles", "u18-garcons"} else ''
     if slug == "u18-garcons":
         u13_cards_head += '<link rel="stylesheet" href="assets/u18-garcons.css?v=20261004-1">'
     pages[slug] = page(slug, name, body, "equipes",
