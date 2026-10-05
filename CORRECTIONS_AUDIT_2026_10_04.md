@@ -147,3 +147,11 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 - Liens utiles sur deux colonnes, contact et réseaux regroupés, bande légale resserrée.
 - Fond uni et discret ; dessin du terrain retiré à la demande de l’utilisateur.
 - Coordonnées, accès au blog, galerie, résultats, boutique, réseaux et mentions légales conservés.
+
+
+### Organigramme compact — 5 octobre 2026
+
+- Organigramme et présentation de David alignés sur la même largeur, limitée à 1040 px sur PC.
+- Bureau sur trois colonnes, quatre Teams sur une ligne à partir de 1100 px ; coachs et arbitres sur toute la largeur.
+- Fond de l’organigramme sombre avec seulement des hermines discrètes, sans traits rouges.
+- Espacements et titres resserrés sur PC ; dispositions mobiles et cartes dépliables vérifiées.

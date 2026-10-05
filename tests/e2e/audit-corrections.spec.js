@@ -175,7 +175,7 @@ test('desktop home shows news actions in the first screen and keeps upcoming mat
   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
  }
  await page.goto('/club.html');const profile=await page.locator('.staff-feature').boundingBox();
- expect(profile.width).toBeLessThanOrEqual(840);expect(profile.height).toBeLessThanOrEqual(330);
+ expect(profile.width).toBeLessThanOrEqual(1040);expect(profile.height).toBeLessThanOrEqual(330);
 });
 
 test('desktop catalogues show multiple complete cards without clipping their links',async({page,isMobile})=>{
@@ -222,6 +222,24 @@ test('contact details fit their content and remain readable on a phone',async({p
   await expect(page.getByRole('link',{name:'ploufraganhandball@gmail.com',exact:true}).first()).toBeVisible();
   await expect(page.locator('.contact-details a[href^="tel:"]')).toHaveAttribute('href','tel:+33636618800');
   const card=await page.locator('.contact-layout>.information-panel').boundingBox();expect(card.height).toBeLessThan(440);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+ }
+});
+
+test('club organisation and David share a width with compact desktop teams',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [390,768,1024,1440,1920]){
+  await page.setViewportSize({width,height:1000});await page.goto('/club.html');await page.evaluate(()=>document.fonts.ready);
+  const chart=await page.locator('.org-chart').boundingBox();const staff=await page.locator('.staff-feature').boundingBox();
+  expect(staff.x).toBeCloseTo(chart.x,0);expect(staff.width).toBeCloseTo(chart.width,0);
+  expect(await page.locator('.org-chart').evaluate(e=>getComputedStyle(e).backgroundImage)).toContain('ermines.svg');
+  if(width>=1100){
+   expect(chart.width).toBeLessThanOrEqual(1040);expect(chart.height).toBeLessThan(1000);
+   const teams=await page.locator('.org-sponsor,.org-comm,.org-buvette,.org-boutik').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().y));
+   expect(Math.max(...teams)-Math.min(...teams)).toBeLessThan(1);
+  }
+  await page.locator('.org-comm [data-org-coach-toggle]').click();
+  await expect(page.locator('.org-comm .org-coach-image')).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
  }
 });

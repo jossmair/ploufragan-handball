@@ -150,3 +150,39 @@ body .staff-section .staff-face:nth-child(2) img{height:195%;object-fit:cover;ob
 .staff-links a:hover{color:#ff5562;border-color:var(--red)}
 body .staff-section .staff-copy>.button{min-height:44px;padding:10px 16px;font-size:.9375rem;gap:24px}
 @media(max-width:850px){body .staff-section .staff-portrait{width:min(100%,280px);justify-self:center;border-right:0}body .staff-section .staff-copy{padding:22px 24px}body .staff-section .staff-motion-toggle{left:12px;bottom:12px}.staff-links{margin-bottom:14px}}
+
+/* One shared width for the club organisation and educator profile. */
+body[data-page="club"] .org-chart{width:min(100%,1040px);margin-inline:auto;background:#0c0c10 url('ui/ermines.svg') repeat;box-shadow:none;border-color:#ffffff18}
+body[data-page="club"] .org-chart::before,body[data-page="club"] .org-chart::after{content:none}
+body[data-page="club"] .org-card{background:#111116;border-color:#ffffff20;border-left-color:var(--red);box-shadow:none}
+body[data-page="club"] .org-card::after{content:none}
+body[data-page="club"] .staff-section .staff-feature{width:min(100%,1040px)}
+@media(min-width:1024px){
+ body[data-page="club"] .org-heading{width:min(100%,1040px);margin-inline:auto}
+ body[data-page="club"] .org-chart{padding:20px;gap:14px}
+ body[data-page="club"] .org-card{padding:16px;min-height:0}
+ body[data-page="club"] .org-card h3{font-size:1.4rem;margin-bottom:12px}
+ body[data-page="club"] .org-card ul{gap:5px;margin-bottom:14px}
+ body[data-page="club"] .org-card li{font-size:.8125rem}
+ body[data-page="club"] .org-card .org-coach-toggle{padding:3px 0;min-height:28px}
+ body[data-page="club"] .org-office{grid-column:1/-1;grid-row:1;border-top-width:3px}
+ body[data-page="club"] .org-office h3{font-size:1.75rem}
+ body[data-page="club"] .org-office-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 14px!important}
+ body[data-page="club"] .org-office-list li{padding:6px 8px}
+ body[data-page="club"] .org-role{font-size:.625rem}
+ body[data-page="club"] .org-coachs{grid-column:1/-1;grid-row:4}
+ body[data-page="club"] .org-arbitre{grid-column:1/-1;grid-row:5}
+ body[data-page="club"] .org-card .org-contact{min-width:0;min-height:40px;padding:8px 14px;font-size:.875rem;gap:18px}
+ body[data-page="club"] .staff-section{margin-top:20px}
+ body[data-page="club"] .staff-section .staff-feature{grid-template-columns:240px minmax(0,1fr)}
+ body[data-page="club"] .staff-section .staff-portrait{height:270px}
+ body[data-page="club"] .staff-section .staff-copy{padding:20px 30px}
+}
+@media(min-width:1100px){
+ body[data-page="club"] .org-sponsor{grid-column:1/4;grid-row:2}
+ body[data-page="club"] .org-comm{grid-column:4/7;grid-row:2}
+ body[data-page="club"] .org-buvette{grid-column:7/10;grid-row:2}
+ body[data-page="club"] .org-boutik{grid-column:10/13;grid-row:2}
+ body[data-page="club"] .org-coachs{grid-row:3}
+ body[data-page="club"] .org-arbitre{grid-row:4}
+}
