@@ -131,3 +131,11 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 - Résultats sur trois colonnes dès 1280 px, cartes catégories plus courtes, images produits au format 4/3 sans recadrer les vêtements.
 - Espacement des tableaux, raccourcis et sections réduit sur PC ; les cartes Panini et la composition mobile sont conservées.
 - Aucun nouveau média téléchargé. Module CSS bureau maintenu sous son budget de 10 Ko.
+
+
+### Retouches des cartes et commandes — 5 octobre 2026
+
+- David : portraits cadrés en buste, panneau photo distinct, présentation de son rôle et liens directs vers les entraînements et le stage ; fondu et pause conservés.
+- Résultats, boutique et inscriptions : filtres compacts, sans bande de fond sur toute la largeur ; menus conservés accessibles au clavier et au clic.
+- Animations des en-têtes agrandies sur PC. Animation d’accueil descendue de 18 px sans déplacement du texte ni des cartes.
+- Contact : hauteur ajustée au contenu, trois coordonnées distinguées par des icônes, liens e-mail et téléphone conservés.

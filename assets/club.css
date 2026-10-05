@@ -119,21 +119,21 @@ body[data-page="club"] .org-card .org-contact{align-self:center;margin-inline:au
 
 /* A compact educator profile with natural, fading portraits. */
 body .staff-section{margin-top:36px}
-body .staff-section .staff-feature{display:grid;grid-template-columns:280px minmax(0,1fr);width:min(100%,840px);height:auto;min-height:0;aspect-ratio:auto;margin-inline:auto;background:#111116f5;border-top:3px solid var(--red);box-shadow:none}
+body .staff-section .staff-feature{display:grid;grid-template-columns:260px minmax(0,1fr);width:min(100%,760px);height:auto;min-height:0;aspect-ratio:auto;margin-inline:auto;background:linear-gradient(115deg,#19191ff5,#101014fa);border:1px solid #ffffff26;border-left:3px solid var(--red);box-shadow:0 12px 32px #0003}
 body .staff-section .staff-feature::after{content:none}
-body .staff-section .staff-copy{position:relative;inset:auto;grid-column:2;grid-row:1;align-self:center;width:auto;padding:24px}
-body .staff-section .staff-copy h2{font-size:2.5rem;line-height:1.1;margin-bottom:18px}
+body .staff-section .staff-copy{position:relative;inset:auto;grid-column:2;grid-row:1;align-self:center;width:auto;padding:24px 32px}
+body .staff-section .staff-copy h2{font-size:2.5rem;line-height:1.1;margin-bottom:8px}
 body .staff-section .staff-copy h2>span,body .staff-section .staff-copy h2>strong{display:inline;margin:0}
 body .staff-section .staff-copy h2>strong{margin-left:8px}
-body .staff-section .staff-kicker{max-width:none;font-size:.7rem;line-height:1.5;letter-spacing:.07em;white-space:normal;margin-bottom:12px}
+body .staff-section .staff-kicker{max-width:none;font-size:.7rem;line-height:1.5;letter-spacing:.12em;white-space:normal;margin-bottom:12px}
 body .staff-section .staff-kicker>span{display:none}
-.staff-description{font-size:.9375rem;line-height:1.55;color:#c7c7ce;margin-bottom:18px}
-body .staff-section .staff-portrait{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:320px;perspective:none;filter:none}
+.staff-description{font-size:.9375rem;line-height:1.55;color:#c7c7ce;margin-bottom:16px}
+body .staff-section .staff-portrait{position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:300px;perspective:none;filter:none;overflow:hidden;background:radial-gradient(ellipse at 50% 65%,#a50b2440,transparent 72%),linear-gradient(135deg,#ffffff05,transparent);border-right:1px solid #ffffff18}
 body .staff-section .staff-rotor{animation:none;transform:none;transform-style:flat;animation-play-state:paused}
 body .staff-section .staff-face{transform:none;backface-visibility:visible;animation:staff-photo-fade 14s linear infinite;animation-play-state:inherit}
 body .staff-section .staff-face:nth-child(2){animation-delay:-7s}
-body .staff-section .staff-face img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:none}
-body .staff-section .staff-motion-toggle{right:10px;bottom:10px;width:44px;height:44px;justify-content:center;padding:10px}
+body .staff-section .staff-face img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:none;padding-top:16px}
+body .staff-section .staff-motion-toggle{right:auto;left:12px;bottom:12px;width:44px;height:44px;justify-content:center;padding:10px}
 @keyframes staff-photo-fade{0%,40%,100%{opacity:1}50%,90%{opacity:0}}
 @media(max-width:850px){
  body .staff-section .staff-feature{grid-template-columns:1fr;row-gap:12px;width:min(100%,520px)}
@@ -142,3 +142,11 @@ body .staff-section .staff-motion-toggle{right:10px;bottom:10px;width:44px;heigh
  body .staff-section .staff-copy h2{font-size:2.2rem}
 }
 @media(prefers-reduced-motion:reduce){body .staff-section .staff-face{animation:none}body .staff-section .staff-face:not(:first-child){display:none}}
+
+/* Both portraits share a bust framing; the stage photo no longer shrinks. */
+body .staff-section .staff-face:nth-child(2) img{height:195%;object-fit:cover;object-position:center top}
+.staff-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:20px}
+.staff-links a{display:flex;align-items:center;min-height:44px;gap:10px;font-size:.875rem;border-bottom:1px solid #ffffff38}
+.staff-links a:hover{color:#ff5562;border-color:var(--red)}
+body .staff-section .staff-copy>.button{min-height:44px;padding:10px 16px;font-size:.9375rem;gap:24px}
+@media(max-width:850px){body .staff-section .staff-portrait{width:min(100%,280px);justify-self:center;border-right:0}body .staff-section .staff-copy{padding:22px 24px}body .staff-section .staff-motion-toggle{left:12px;bottom:12px}.staff-links{margin-bottom:14px}}

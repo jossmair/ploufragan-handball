@@ -197,3 +197,31 @@ test('desktop catalogues show multiple complete cards without clipping their lin
   }
  }
 });
+
+test('compact filters keep their menus clickable above the content',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [390,1440]){
+  await page.setViewportSize({width,height:900});
+  for(const slug of ['resultats','boutique','inscriptions']){
+   await page.goto('/'+slug+'.html');
+   const filter=page.locator('.content-filter').first();
+   if(width>1000)expect((await filter.boundingBox()).width).toBeLessThan(700);
+   await filter.locator('[data-filter-trigger]').click();
+   const option=filter.locator('[role="option"]').nth(1);await expect(option).toBeVisible();
+   const isTop=await option.evaluate(e=>{const r=e.getBoundingClientRect();return e.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));});
+   expect(isTop).toBe(true);await option.click();
+   await expect(filter.locator('[data-filter-trigger]')).toHaveAttribute('aria-expanded','false');
+   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+  }
+ }
+});
+
+test('contact details fit their content and remain readable on a phone',async({page})=>{
+ for(const width of [360,1440]){
+  await page.setViewportSize({width,height:900});await page.goto('/contact.html');
+  await expect(page.getByRole('link',{name:'ploufraganhandball@gmail.com',exact:true}).first()).toBeVisible();
+  await expect(page.locator('.contact-details a[href^="tel:"]')).toHaveAttribute('href','tel:+33636618800');
+  const card=await page.locator('.contact-layout>.information-panel').boundingBox();expect(card.height).toBeLessThan(440);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+ }
+});
