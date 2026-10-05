@@ -171,3 +171,11 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 
 - La carte de David garde une hauteur fixe de 362 px sur PC quand une carte du bureau se déplie ; portrait inchangé à 360 px.
 - Cartes des arbitres ramenées à 240 px maximum comme les autres cartes Panini.
+
+
+### Actualités horizontales — 5 octobre 2026
+
+- Accueil sur PC : chaque carte présente la photo à gauche et le texte à droite, moitié/moitié.
+- Photos affichées entièrement avec object-fit contain, y compris histoire du club et galerie.
+- Cartes de 252 px de haut, trois cartes et leurs boutons visibles dans le premier écran à 1440 et 1920 px.
+- Mobile conserve une disposition verticale avec les images entières.

@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
 BUDGETS = {
+    "CSS actualités accueil": (ASSETS / "home-news.css", 2_000),
     "CSS footer": (ASSETS / "footer.css", 4_000),
     "CSS contrôles et contact": (ASSETS / "page-controls.css", 3_000),
     "CSS densité bureau": (ASSETS / "desktop-density.css", 10_000),

@@ -168,6 +168,9 @@ test('desktop home shows news actions in the first screen and keeps upcoming mat
   const dockTop=(await page.locator('.sponsor-marquee').boundingBox()).y;
   for(const card of await page.locator('.home-news-card').all()){
    const box=await card.boundingBox();expect(box.y+box.height).toBeLessThanOrEqual(dockTop);
+   await expect(card.locator('img')).toHaveCSS('object-fit','contain');
+   const image=await card.locator('.home-news-image').boundingBox();const copy=await card.locator('.home-news-copy').boundingBox();
+   expect(copy.x).toBeGreaterThan(image.x);expect(copy.y).toBeCloseTo(image.y,0);
   }
   const matches=await page.locator('.home-weekend .match-card').evaluateAll(es=>es.map(e=>({top:e.getBoundingClientRect().top,height:e.getBoundingClientRect().height})));
   expect(Math.max(...matches.map(x=>x.top))-Math.min(...matches.map(x=>x.top))).toBeLessThan(1);

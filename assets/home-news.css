@@ -1,0 +1,12 @@
+/* Whole images, with a horizontal photo/text split on desktop. */
+body[data-page="index"] .home-news-grid .home-news-image img{object-fit:contain;object-position:center}
+@media(min-width:1024px){
+ body .home-news-grid .home-news-card{display:grid;grid-template-columns:1fr 1fr;min-height:250px}
+ body .home-news-grid .home-news-image{position:relative;height:auto;min-height:250px;border-bottom:0;border-right:1px solid #ffffff1c}
+ body .home-news-grid .home-news-image img{position:absolute;inset:0;width:100%;height:100%}
+ body .home-news-grid .home-news-copy{min-width:0;padding:16px;gap:0}
+ body .home-news-grid .home-news-copy time{font-size:.625rem;letter-spacing:.04em}
+ body .home-news-grid .home-news-copy h3{font-size:1.25rem;line-height:1.15;margin:10px 0}
+ body .home-news-grid .home-news-copy p{font-size:.8125rem;line-height:1.45;margin-bottom:14px;-webkit-line-clamp:2}
+ body .home-news-grid .home-news-copy .button{font-size:.8125rem;min-height:40px;padding:8px 10px;gap:12px}
+}
