@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-05T05:46:21.950994+00:00",
+  "updatedAt": "2026-10-05T09:41:20.282261+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -51,31 +51,31 @@
         },
         {
           "position": 6,
-          "team": "PLOUDIRY SIZUN HB 2",
+          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
           "points": 4,
           "played": 2,
           "club": false
         },
         {
           "position": 7,
+          "team": "PLOUDIRY SIZUN HB 2",
+          "points": 4,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 8,
           "team": "ENTENTE BRO LEON 4",
           "points": 2,
           "played": 2,
           "club": false
         },
         {
-          "position": 8,
+          "position": 9,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 2,
           "played": 2,
           "club": true
-        },
-        {
-          "position": 9,
-          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
-          "points": 4,
-          "played": 2,
-          "club": false
         },
         {
           "position": 10,
