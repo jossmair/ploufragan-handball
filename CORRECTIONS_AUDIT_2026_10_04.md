@@ -168,3 +168,6 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 
 - Ajustement demandé : David et bureau ont chacun la moitié de la ligne ; suppression des liens et du bouton dans la carte de David.
 - Suppression des raccourcis et du bandeau équipes/pratiques/salles avant l’organigramme.
+
+- La carte de David garde une hauteur fixe de 362 px sur PC quand une carte du bureau se déplie ; portrait inchangé à 360 px.
+- Cartes des arbitres ramenées à 240 px maximum comme les autres cartes Panini.

@@ -239,6 +239,13 @@ test('club bureau and educator lead a balanced desktop organisation',async({page
    const teams=await page.locator('.org-sponsor,.org-comm,.org-buvette,.org-boutik').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().y));
    expect(teams[0]).toBeCloseTo(teams[1],0);expect(teams[2]).toBeCloseTo(teams[3],0);expect(teams[2]).toBeGreaterThan(teams[0]);
   }else expect(staff.y).toBeGreaterThanOrEqual(office.y+office.height);
+  if(width>=1024){
+   await page.locator('.org-office [aria-controls="org-coach-card-audrey"]').click();
+   await expect(page.locator('#org-coach-card-audrey img')).toBeVisible();
+   const expanded=await page.locator('.staff-feature').boundingBox();
+   expect(expanded.height).toBeCloseTo(staff.height,0);
+   expect((await page.locator('.staff-portrait').boundingBox()).height).toBe(360);
+  }
   await page.locator('.org-comm [data-org-coach-toggle]').click();
   await expect(page.locator('.org-comm .org-coach-image')).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);

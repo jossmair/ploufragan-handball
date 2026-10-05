@@ -517,7 +517,7 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
     if slug in heading_images:
         extra_head += f'<link rel="preload" as="image" href="{heading_images[slug]}" fetchpriority="high">'
     if 'data-org-coach' in body and 'assets/club.css' not in extra_head:
-        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261005-16"><script src="assets/club.js?v=20261004-1" defer></script>'
+        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261005-18"><script src="assets/club.js?v=20261004-1" defer></script>'
     nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
@@ -1017,7 +1017,7 @@ for youth in YOUTH_TEAMS:
     body = heading(name.upper(), name, TEAM_INTROS[slug], back=("jeunes.html", "Équipes jeunes"))
     body += team_detail(slug, name, "jeunes", schedule_name, [team] if team else [])
     gallery_head = '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">' if slug in YOUTH_GALLERIES else ''
-    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261005-16">'
+    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261005-18">'
                          '<script src="assets/club.js?v=20261004-1" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
                       '<script src="assets/u13-filles.js?v=20261004-3" defer></script>') if slug in {"u13-filles", "u18-garcons"} else ''
@@ -1334,7 +1334,7 @@ org_chart = org_chart.replace(org_office, '')
 org_chart = org_chart.replace('aria-label="Organigramme du Ploufragan Handball">', 'aria-label="Organigramme du Ploufragan Handball">' + org_office + staff_section, 1)
 
 club_heading = f'''<header class="page-heading container club-page-heading" data-reveal><nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Le club</span></nav><div class="club-heading-copy"><p class="eyebrow">PLOUFRAGAN HANDBALL <span>{SEASON_DISPLAY}</span></p><h1>LE <em>CLUB</em></h1><div class="club-heading-summary"><p>Le PHB accueille les enfants dès 3 ans, les équipes jeunes, les seniors et un groupe loisirs. Retrouvez ici les personnes qui font vivre le club et les salles où nous nous entraînons.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="club-heading-emblem"><img src="assets/logo-phb-club-320.webp" srcset="assets/logo-phb-club-320.webp 320w, assets/logo-phb-club-600.webp 600w, assets/logo-phb-club-v2.webp 900w" sizes="(max-width:520px) 130px, (max-width:850px) 200px, 280px" alt="Logo du Ploufragan Handball" width="900" height="900"></div></header>'''
-pages["club"]=page("club","Le club",club_heading+f'''<section class="container section after-heading"><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2 id="club-organigramme">ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}<div class="section-heading spaced"><h2 id="club-salles">LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261005-16"><script src="assets/club.js?v=20261004-1" defer></script>')
+pages["club"]=page("club","Le club",club_heading+f'''<section class="container section after-heading"><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2 id="club-organigramme">ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}<div class="section-heading spaced"><h2 id="club-salles">LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261005-18"><script src="assets/club.js?v=20261004-1" defer></script>')
 registration_cards = []
 tariff_rows = []
 for registration in CATEGORY_DATA["registration"]:
