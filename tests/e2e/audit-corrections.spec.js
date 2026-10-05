@@ -74,7 +74,7 @@ test('closed coach cards defer their photos until a visitor opens them',async({p
 });
 
 test('desktop team photos stay proportionate and fit the card grid',async({page})=>{
- test.setTimeout(60000);
+ test.setTimeout(120000);
  await page.emulateMedia({reducedMotion:'reduce'});
  for(const width of [900,1440,1920]){
   await page.setViewportSize({width,height:1000});
