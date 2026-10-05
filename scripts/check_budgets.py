@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
 BUDGETS = {
+    "CSS pages équipe": (ASSETS / "team-layout.css", 4_500),
     "CSS stage": (ASSETS / "stage-ete.css", 12_000),
     "Logo header et scores": (ASSETS / "logo-phb-embleme.webp", 30_000),
     "CSS agrandissement cartes": (ASSETS / "player-card-zoom.css", 1_500),

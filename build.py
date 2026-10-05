@@ -521,6 +521,8 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
         extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261005-19"><script src="assets/club.js?v=20261005-2" defer></script>'
     if "data-u13-card" in body or "data-player-position-showcase" in body:
         extra_head += '<link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-1"><script src="assets/player-card-zoom.js?v=20261005-1" defer></script>'
+    if "team-detail-grid" in body or "senior-landing" in body:
+        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261005-1">'
     nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
@@ -819,7 +821,7 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
         players = u13_filles_presentation() if slug == "u13-filles" else u18_garcons_presentation() if slug == "u18-garcons" else ''
         players = players.replace('class="container section ', 'class="section team-player-section ')
         photos = youth_match_gallery(slug).replace('class="container section ', 'class="section team-photo-section ') if slug in YOUTH_GALLERIES else ''
-        content = f'<div class="team-detail-main">{training}{upcoming_cards}{scores}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}</div>{collective}{players}{team_coach_card(slug)}{photos}{team_gallery(slug)}{registration}'
+        content = f'<div class="team-detail-summary"><div class="team-detail-main">{training}{upcoming_cards}{scores}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}</div></div>{collective}{players}{team_coach_card(slug)}{photos}{team_gallery(slug)}{registration}'
     else:
         content = training + category_values(slug) + category_story(slug) + collective + registration
     links = [(f'#training-{slug}', 'Horaires')]

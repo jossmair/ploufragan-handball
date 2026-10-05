@@ -1,0 +1,30 @@
+/* Championship bands use their own row, with no empty adjacent column. */
+body .team-detail-summary,body .team-detail-summary>.team-detail-main,body .team-detail-summary>.team-season-stack{display:contents}
+@media(min-width:1024px){
+body .team-detail-grid:is(.has-ranking,.no-ranking){gap:14px;padding-bottom:28px}
+body .team-detail-summary{display:grid;grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+body .team-detail-summary :is(.team-training,.team-next-card,.team-last-card,.team-season-card){align-self:stretch;min-width:0;width:100%;margin:0}
+body .team-detail-grid:is(.has-ranking,.no-ranking) :is(.team-training,.team-next-card,.team-last-card,.team-season-card,.team-registration),body .senior-landing .team-training{padding:14px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) :is(.panel-title h2,.team-next-card h2,.team-last-card h2,.team-season-head h2,.team-registration h2){font-size:1.45rem;line-height:1.15;margin-bottom:10px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .team-season-head{gap:12px;padding-bottom:10px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .team-rank{padding:12px 0 10px}body .team-detail-grid:is(.has-ranking,.no-ranking) .team-rank strong{font-size:2.8rem}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .pool-table :is(th,td){padding:6px 5px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .match-card{padding:12px;min-height:0}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .match-main{padding-top:10px;min-height:108px;gap:10px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .match-team{grid-template-rows:minmax(42px,auto) 40px;gap:6px;font-size:.9rem}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .match-team-name{min-height:42px}body .team-detail-grid:is(.has-ranking,.no-ranking) .team-logo-disc{width:40px;height:40px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .match-location{margin-top:8px;padding-top:8px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .team-staff{margin-top:10px;padding-top:10px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) .schedule :is(th,td){padding-block:7px}
+body .team-overview{padding:20px}body .team-overview h2{font-size:2rem;margin-block:6px 10px}
+body .team-detail-grid:is(.has-ranking,.no-ranking) :is(.team-player-section,.team-photo-section){padding-block:20px}
+body .team-detail-summary :is(.team-last-card,.team-season-card),body .team-detail-main>.team-next-card:nth-child(n+3){grid-column:1/-1}
+body .team-detail-summary .team-last-card{display:grid;grid-template-columns:190px minmax(0,1fr);gap:6px 20px;align-items:start}
+body .team-last-card>.eyebrow{grid-column:1;grid-row:1}body .team-last-card>h2{grid-column:1;grid-row:2}body .team-last-card>:not(.eyebrow,h2){grid-column:2;grid-row:auto}body .team-last-card>:nth-child(3){grid-row:1/span 2}
+body .team-detail-summary .team-season-card{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,2fr);gap:12px 24px;align-items:start}
+body .team-detail-summary .team-season-head{grid-column:1;grid-row:1;flex-wrap:wrap;gap:8px}
+body .team-detail-summary .team-rank{grid-column:1;grid-row:2;padding:0}
+body .team-detail-summary .pool-table-scroll{grid-column:2;grid-row:1/span 3}
+body .team-detail-summary .season-ranking-link{grid-column:1;grid-row:3;margin-top:0}
+body .team-detail-summary .season-empty{grid-column:2;grid-row:1/span 3}
+}
