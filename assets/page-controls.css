@@ -19,3 +19,5 @@ body .licence-anchor-nav.content-filter{display:flex;flex-wrap:wrap;gap:10px 16p
 body .licence-anchor-nav .content-filter-choice{width:260px;flex:0 1 260px}
 body .licence-anchor-nav .content-filter-label{padding:0}
 @media(min-width:1024px){body[data-page="index"] .hero-intro-media{translate:0 18px}}
+
+@media(min-width:1024px){body[data-page="partenaires"] .participation-link{width:min(100%,960px);margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center}body .participation-link :is(.eyebrow,h2,p){grid-column:1;margin:0}body .participation-link .button{grid-column:2;grid-row:1/span 3;align-self:center}body .participation-link h2{font-size:1.5rem}body .participation-link p{font-size:.9rem}}
