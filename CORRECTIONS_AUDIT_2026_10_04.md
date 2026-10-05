@@ -183,7 +183,7 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 
 ### Cartes visibles et footer des pages courtes — 5 octobre 2026
 
-- À l’ouverture d’une carte Panini, défilement automatique après son déploiement et le chargement de son image, en tenant compte du menu et du bandeau partenaires.
+- À l’ouverture d’une carte Panini, défilement automatique après son déploiement, puis ajustement après le chargement de l’image, en tenant compte du menu et du bandeau partenaires.
 - Petits écrans en hauteur : image limitée à la zone disponible et affichée entièrement.
 - Footer poussé en bas des pages courtes ; suppression de l’espace de fond visible sous le footer du blog.
 - Tests avec et sans animations, sur mobile et PC, y compris fenêtres de 550 px de haut.

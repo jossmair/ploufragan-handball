@@ -2,18 +2,23 @@ const orgCoachEntries = [...document.querySelectorAll('[data-org-coach]')];
 
 function revealOrgCoachCard(entry) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  setTimeout(async () => {
+  const place = behavior => {
     if (!entry.classList.contains('is-open')) return;
     const image = entry.querySelector('.org-coach-image img');
-    if (image) await image.decode().catch(() => {});
-    if (!entry.classList.contains('is-open')) return;
     const top = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 16;
     const bottom = (document.querySelector('.sponsor-marquee')?.getBoundingClientRect().top || innerHeight) - 16;
     const entryRect = entry.getBoundingClientRect();
     const rect = entryRect.height <= bottom - top || !image ? entryRect : image.getBoundingClientRect();
     if (rect.top >= top && rect.bottom <= bottom) return;
     const destination = top + Math.max(0, (bottom - top - rect.height) / 2);
-    window.scrollTo({top: scrollY + rect.top - destination, behavior: reduced ? 'instant' : 'smooth'});
+    window.scrollTo({top: scrollY + rect.top - destination, behavior});
+  };
+  setTimeout(async () => {
+    // Scroll before decoding: a lazy image may wait until it enters the viewport.
+    place(reduced ? 'instant' : 'smooth');
+    const image = entry.querySelector('.org-coach-image img');
+    await Promise.all([image?.decode().catch(() => {}), new Promise(resolve => setTimeout(resolve, reduced ? 0 : 650))]);
+    place('instant');
   }, reduced ? 0 : 350);
 }
 
