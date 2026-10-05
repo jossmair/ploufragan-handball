@@ -225,3 +225,22 @@ test('contact details fit their content and remain readable on a phone',async({p
   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
  }
 });
+
+test('footer stays compact and keeps its links clear of one another',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const width of [320,390,768,1024,1440,1920]){
+  await page.setViewportSize({width,height:900});await page.goto('/club.html');await page.evaluate(()=>document.fonts.ready);
+  await page.evaluate(()=>scrollTo(0,document.documentElement.scrollHeight));
+  const footer=page.locator('.site-footer');const box=await footer.boundingBox();
+  if(width>=1440)expect(box.height).toBeLessThan(230);
+  if(width<=390)expect(box.height).toBeLessThan(440);
+  await expect(footer.locator('a[href^="mailto:"]')).toHaveAttribute('href','mailto:ploufraganhandball@gmail.com');
+  await expect(footer.locator('a[href="mentions-legales.html"]')).toBeVisible();
+  const collisions=await footer.locator('a').evaluateAll(links=>{
+   const boxes=links.map(e=>({text:e.textContent,r:e.getBoundingClientRect()}));
+   return boxes.flatMap((a,i)=>boxes.slice(i+1).filter(b=>a.r.left<b.r.right-1&&a.r.right>b.r.left+1&&a.r.top<b.r.bottom-1&&a.r.bottom>b.r.top+1).map(b=>a.text+' / '+b.text));
+  });
+  expect(collisions).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
+  const dock=(await page.locator('.sponsor-marquee').boundingBox()).y;expect(box.y+box.height).toBeLessThanOrEqual(dock+1);
+ }
+});

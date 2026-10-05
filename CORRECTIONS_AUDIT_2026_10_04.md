@@ -139,3 +139,11 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 - Résultats, boutique et inscriptions : filtres compacts, sans bande de fond sur toute la largeur ; menus conservés accessibles au clavier et au clic.
 - Animations des en-têtes agrandies sur PC. Animation d’accueil descendue de 18 px sans déplacement du texte ni des cartes.
 - Contact : hauteur ajustée au contenu, trois coordonnées distinguées par des icônes, liens e-mail et téléphone conservés.
+
+
+### Footer handball — 5 octobre 2026
+
+- Footer commun compact : environ 183 px sur PC et 349 px à 390 px de large (269 et 618 px auparavant).
+- Liens utiles sur deux colonnes, contact et réseaux regroupés, bande légale resserrée.
+- Décor vectoriel léger reprenant la cage et les arcs des 6 et 9 mètres, sans nouveau média raster.
+- Coordonnées, accès au blog, galerie, résultats, boutique, réseaux et mentions légales conservés.
