@@ -155,3 +155,12 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 - Bureau sur trois colonnes, quatre Teams sur une ligne à partir de 1100 px ; coachs et arbitres sur toute la largeur.
 - Fond de l’organigramme sombre avec seulement des hermines discrètes, sans traits rouges.
 - Espacements et titres resserrés sur PC ; dispositions mobiles et cartes dépliables vérifiées.
+
+
+### Disposition bureau et David — 5 octobre 2026
+
+- Option 1 retenue : bureau et David côte à côte sur PC, quatre Teams en grille 2 × 2, puis coachs et arbitres.
+- Largeur commune de 1240 px pour les sections de la page club sur PC.
+- Portrait de David agrandi à 40 % de sa carte, avec un cadrage en buste et une hauteur de 360 px.
+- Sur mobile, bureau puis David et les Teams se suivent dans l’ordre de lecture.
+- Fond à hermines et cartes dépliables conservés.

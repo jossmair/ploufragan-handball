@@ -175,7 +175,7 @@ test('desktop home shows news actions in the first screen and keeps upcoming mat
   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
  }
  await page.goto('/club.html');const profile=await page.locator('.staff-feature').boundingBox();
- expect(profile.width).toBeLessThanOrEqual(1040);expect(profile.height).toBeLessThanOrEqual(330);
+ expect(profile.width).toBeLessThanOrEqual(1040);expect(profile.height).toBeLessThanOrEqual(430);
 });
 
 test('desktop catalogues show multiple complete cards without clipping their links',async({page,isMobile})=>{
@@ -226,18 +226,19 @@ test('contact details fit their content and remain readable on a phone',async({p
  }
 });
 
-test('club organisation and David share a width with compact desktop teams',async({page})=>{
+test('club bureau and educator lead a balanced desktop organisation',async({page})=>{
  await page.emulateMedia({reducedMotion:'reduce'});
  for(const width of [390,768,1024,1440,1920]){
   await page.setViewportSize({width,height:1000});await page.goto('/club.html');await page.evaluate(()=>document.fonts.ready);
-  const chart=await page.locator('.org-chart').boundingBox();const staff=await page.locator('.staff-feature').boundingBox();
-  expect(staff.x).toBeCloseTo(chart.x,0);expect(staff.width).toBeCloseTo(chart.width,0);
+  const chart=await page.locator('.org-chart').boundingBox();const staff=await page.locator('.staff-feature').boundingBox();const office=await page.locator('.org-office').boundingBox();
   expect(await page.locator('.org-chart').evaluate(e=>getComputedStyle(e).backgroundImage)).toContain('ermines.svg');
-  if(width>=1100){
-   expect(chart.width).toBeLessThanOrEqual(1040);expect(chart.height).toBeLessThan(1000);
+  if(width>=1024){
+   expect(staff.y).toBeCloseTo(office.y,0);expect(staff.height).toBeCloseTo(office.height,0);expect(staff.x).toBeGreaterThan(office.x+office.width);
+   expect(chart.width).toBeLessThanOrEqual(1240);expect(chart.height).toBeLessThan(1450);
+   const portrait=await page.locator('.staff-portrait').boundingBox();expect(portrait.width/staff.width).toBeGreaterThan(.38);expect(portrait.height).toBeGreaterThanOrEqual(360);
    const teams=await page.locator('.org-sponsor,.org-comm,.org-buvette,.org-boutik').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().y));
-   expect(Math.max(...teams)-Math.min(...teams)).toBeLessThan(1);
-  }
+   expect(teams[0]).toBeCloseTo(teams[1],0);expect(teams[2]).toBeCloseTo(teams[3],0);expect(teams[2]).toBeGreaterThan(teams[0]);
+  }else expect(staff.y).toBeGreaterThanOrEqual(office.y+office.height);
   await page.locator('.org-comm [data-org-coach-toggle]').click();
   await expect(page.locator('.org-comm .org-coach-image')).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
