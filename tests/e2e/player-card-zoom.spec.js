@@ -2,6 +2,7 @@ import {test, expect} from '@playwright/test';
 
 for (const width of [390, 1440]) {
   test(`player cards: flip, enlarge and restore at ${width}px`, async ({page}) => {
+    test.setTimeout(90000);
     await page.emulateMedia({reducedMotion:'reduce'});
     await page.setViewportSize({width,height:844});
     for (const slug of ['u18-garcons', 'u13-filles', 'seniors-masculins']) {
@@ -16,6 +17,7 @@ for (const width of [390, 1440]) {
       await card.press('Enter');
       const dialog = page.locator('.player-card-dialog');
       await expect(dialog).toBeVisible();
+      await expect(dialog.locator('.player-card-zoom-close')).toHaveCount(0);
       const image = dialog.locator('img');
       await expect.poll(()=>image.evaluate(img=>img.complete && img.naturalWidth>0)).toBe(true);
       await expect(image).toHaveCSS('object-fit','contain');

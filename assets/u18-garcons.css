@@ -1,2 +1,5 @@
 .u18-card-presentation .u13-f-card-grid .u13-f-card{aspect-ratio:2/3}
 .u18-card-presentation .senior-player-card-face img{object-fit:contain}
+
+/* Match the 2:3 player face while keeping every edge of the back design. */
+.u18-card-presentation .senior-player-card-back img{object-fit:fill}

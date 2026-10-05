@@ -201,3 +201,6 @@ body[data-page="club"] .org-arbitre{grid-row:6}
  body[data-page="club"] .org-coachs{grid-row:7}
  body[data-page="club"] .org-arbitre{grid-row:8}
 }
+
+/* Keep training coach names readable on the light schedule card. */
+body .team-training-coach-list .org-coach-toggle:is(:hover,:focus-visible,[aria-expanded="true"]){color:#17171b}

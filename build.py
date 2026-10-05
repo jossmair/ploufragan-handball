@@ -518,11 +518,11 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
     if slug in heading_images:
         extra_head += f'<link rel="preload" as="image" href="{heading_images[slug]}" fetchpriority="high">'
     if 'data-org-coach' in body and 'assets/club.css' not in extra_head:
-        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261005-19"><script src="assets/club.js?v=20261005-2" defer></script>'
+        extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261005-20"><script src="assets/club.js?v=20261005-2" defer></script>'
     if "data-u13-card" in body or "data-player-position-showcase" in body:
-        extra_head += '<link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-1"><script src="assets/player-card-zoom.js?v=20261005-1" defer></script>'
+        extra_head += '<link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script>'
     if "team-detail-grid" in body or "senior-landing" in body:
-        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261005-1">'
+        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261005-2">'
     nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
@@ -812,7 +812,8 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
     sidebar_photo = team_sidebar_photo(slug)
     photo_config = CATEGORIES.get(slug, {}).get("pagePhoto", {})
     photo_width = min(420, round(320 * photo_config.get("width", 1) / photo_config.get("height", 1)))
-    overview = f'<div class="team-overview"><p class="eyebrow">L’ÉQUIPE</p><h2>{escape(name.upper())}</h2><p>PLOUFRAGAN HANDBALL</p></div>'
+    overview_title = "U18 <em>GARÇONS</em>" if slug == "u18-garcons" else escape(name.upper())
+    overview = f'<div class="team-overview"><p class="eyebrow">L’ÉQUIPE</p><h2>{overview_title}</h2><p>PLOUFRAGAN HANDBALL</p></div>'
     collective = f'<div class="team-collective" style="--team-photo-width:{photo_width}px">{sidebar_photo}{overview}</div>' if sidebar_photo else ""
     if teams:
         competitions = [competition_detail(team) for team in teams]
@@ -1019,15 +1020,16 @@ def youth_match_gallery(slug):
 for youth in YOUTH_TEAMS:
     slug, name, schedule_name, years, result_label, photo = youth
     team = next((team for team in RESULTS["teams"] if team["label"] == result_label), None)
-    body = heading(name.upper(), name, TEAM_INTROS[slug], back=("jeunes.html", "Équipes jeunes"))
+    team_heading = "U18 <em>GARÇONS</em>" if slug == "u18-garcons" else name.upper()
+    body = heading(team_heading, name, TEAM_INTROS[slug], back=("jeunes.html", "Équipes jeunes"))
     body += team_detail(slug, name, "jeunes", schedule_name, [team] if team else [])
     gallery_head = '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">' if slug in YOUTH_GALLERIES else ''
-    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261005-19">'
+    inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261005-20">'
                          '<script src="assets/club.js?v=20261005-2" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
                       '<script src="assets/u13-filles.js?v=20261005-1" defer></script>') if slug in {"u13-filles", "u18-garcons"} else ''
     if slug == "u18-garcons":
-        u13_cards_head += '<link rel="stylesheet" href="assets/u18-garcons.css?v=20261004-1">'
+        u13_cards_head += '<link rel="stylesheet" href="assets/u18-garcons.css?v=20261005-2">'
     pages[slug] = page(slug, name, body, "equipes",
         f"{name} du Ploufragan Handball près de Saint-Brieuc : entraînements et classement {SEASON}.",
         extra_head=gallery_head + inline_coach_head + u13_cards_head)
@@ -1339,7 +1341,7 @@ org_chart = org_chart.replace(org_office, '')
 org_chart = org_chart.replace('aria-label="Organigramme du Ploufragan Handball">', 'aria-label="Organigramme du Ploufragan Handball">' + org_office + staff_section, 1)
 
 club_heading = f'''<header class="page-heading container club-page-heading" data-reveal><nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Le club</span></nav><div class="club-heading-copy"><p class="eyebrow">PLOUFRAGAN HANDBALL <span>{SEASON_DISPLAY}</span></p><h1>LE <em>CLUB</em></h1><div class="club-heading-summary"><p>Le PHB accueille les enfants dès 3 ans, les équipes jeunes, les seniors et un groupe loisirs. Retrouvez ici les personnes qui font vivre le club et les salles où nous nous entraînons.</p><div class="actions">{button('Consulter les équipes','equipes.html')}{button('Découvrir notre histoire','articles/histoire-ploufragan-handball.html',True)}</div></div></div><div class="club-heading-emblem"><img src="assets/logo-phb-club-320.webp" srcset="assets/logo-phb-club-320.webp 320w, assets/logo-phb-club-600.webp 600w, assets/logo-phb-club-v2.webp 900w" sizes="(max-width:520px) 130px, (max-width:850px) 200px, 280px" alt="Logo du Ploufragan Handball" width="900" height="900"></div></header>'''
-pages["club"]=page("club","Le club",club_heading+f'''<section class="container section after-heading"><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2 id="club-organigramme">ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}<div class="section-heading spaced"><h2 id="club-salles">LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261005-19"><script src="assets/club.js?v=20261005-2" defer></script>')
+pages["club"]=page("club","Le club",club_heading+f'''<section class="container section after-heading"><div class="section-heading org-heading"><div><p class="eyebrow">ORGANISATION DU CLUB</p><h2 id="club-organigramme">ORGANIGRAMME <em>DU CLUB</em></h2></div></div>{org_chart}<div class="section-heading spaced"><h2 id="club-salles">LES <em>SALLES</em></h2></div>{locations}</section>''', extra_head='<link rel="stylesheet" href="assets/club.css?v=20261005-20"><script src="assets/club.js?v=20261005-2" defer></script>')
 registration_cards = []
 tariff_rows = []
 for registration in CATEGORY_DATA["registration"]:

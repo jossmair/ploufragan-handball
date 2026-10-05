@@ -2,5 +2,4 @@
 .player-card-dialog::backdrop{background:#000d}
 .player-card-zoom-image{display:block;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-out}
 .player-card-zoom-image img{display:block;width:100%;height:100%;object-fit:contain}
-.player-card-zoom-close{position:absolute;right:6px;top:6px;width:36px;height:36px;padding:0;border:1px solid #fff6;border-radius:50%;background:#0a0a0ddd;color:#fff;font:24px/1 sans-serif;cursor:pointer}
 .player-card-dialog button:focus-visible{outline:2px solid #ffbf4b;outline-offset:3px}

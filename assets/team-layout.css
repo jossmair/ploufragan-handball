@@ -1,6 +1,9 @@
 /* Championship bands use their own row, with no empty adjacent column. */
 body .team-detail-summary,body .team-detail-summary>.team-detail-main,body .team-detail-summary>.team-season-stack{display:contents}
 @media(min-width:1024px){
+body main>:is(.page-heading,.page-shortcuts,.team-detail-grid,.senior-landing,.team-article-entry){width:min(calc(100% - 80px),1120px);max-width:1120px;margin-inline:auto}
+body main .team-detail-grid.container>.team-collective,body main .team-detail-grid.container>.team-registration,body main .team-detail-grid.container>.team-photo-section,body main .team-detail-grid.container>.team-gallery{width:100%;max-width:none;justify-self:stretch}
+
 body .team-detail-grid:is(.has-ranking,.no-ranking){gap:14px;padding-bottom:28px}
 body .team-detail-summary{display:grid;grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
 body .team-detail-summary :is(.team-training,.team-next-card,.team-last-card,.team-season-card){align-self:stretch;min-width:0;width:100%;margin:0}

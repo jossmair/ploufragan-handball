@@ -82,6 +82,7 @@ test('desktop team photos stay proportionate and fit the card grid',async({page}
    await page.goto('/'+route+'.html');
    const photos=page.locator('.team-sidebar-photo img,.team-page-photo img,.team-gallery-slide img');
    for(const photo of await photos.all()){
+    await photo.scrollIntoViewIfNeeded();await photo.evaluate(img=>img.decode());
     const rect=await photo.boundingBox();expect(rect.height).toBeLessThanOrEqual(360);
    }
    const sidebar=page.locator('.team-sidebar-photo');
@@ -90,7 +91,8 @@ test('desktop team photos stay proportionate and fit the card grid',async({page}
     expect(card.width).toBeLessThan(grid.width*.55);
     const signup=await page.locator('.team-registration').boundingBox();
     const collective=await page.locator('.team-collective').boundingBox();
-    expect(collective.width).toBeLessThanOrEqual(960);
+    if(width>=1024)expect(Math.abs(collective.width-grid.width)).toBeLessThan(1);
+    else expect(collective.width).toBeLessThanOrEqual(960);
     expect(signup.y).toBeGreaterThanOrEqual(collective.y+collective.height);
     const image=await sidebar.locator('img').evaluate(img=>({w:img.getBoundingClientRect().width,h:img.getBoundingClientRect().height,nw:img.naturalWidth,nh:img.naturalHeight,fit:getComputedStyle(img).objectFit}));
     expect(image.fit).toBe('contain');

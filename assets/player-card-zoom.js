@@ -14,7 +14,7 @@ function enlargePlayerCard(card) {
     playerCardDialog = document.createElement('dialog');
     playerCardDialog.className = 'player-card-dialog';
     playerCardDialog.setAttribute('aria-label', 'Carte de joueur agrandie');
-    playerCardDialog.innerHTML = '<button type="button" class="player-card-zoom-image" aria-label="Réduire la carte"><img alt=""></button><button type="button" class="player-card-zoom-close" aria-label="Fermer la carte agrandie">×</button>';
+    playerCardDialog.innerHTML = '<button type="button" class="player-card-zoom-image" aria-label="Réduire la carte"><img alt=""></button>';
     document.body.append(playerCardDialog);
     playerCardDialog.addEventListener('click', event => {
       if (event.target === playerCardDialog || event.target.closest('button')) playerCardDialog.close();
