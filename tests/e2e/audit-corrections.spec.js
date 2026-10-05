@@ -256,6 +256,27 @@ test('club bureau and educator lead a balanced desktop organisation',async({page
  }
 });
 
+test('opening a Panini card brings its whole image above the partner dock',async({page})=>{
+ for(const [width,height] of [[390,844],[1440,900],[1024,550],[1440,550]]){
+  await page.setViewportSize({width,height});await page.emulateMedia({reducedMotion:width===1440?'no-preference':'reduce'});
+  await page.goto('/club.html');await page.evaluate(()=>document.fonts.ready);
+  const trigger=page.locator('[aria-controls="org-coach-card-audrey"]');
+  await trigger.evaluate(e=>{const r=e.getBoundingClientRect();scrollTo({top:scrollY+r.top-innerHeight+130,behavior:'instant'});});
+  await trigger.click();
+  const card=page.locator('#org-coach-card-audrey img');await expect(card).toBeVisible();
+  await expect.poll(()=>card.evaluate(e=>{const r=e.getBoundingClientRect();const top=document.querySelector('.site-header').getBoundingClientRect().bottom;const bottom=document.querySelector('.sponsor-marquee').getBoundingClientRect().top;return r.top>=top+8&&r.bottom<=bottom-8;})).toBe(true);
+ }
+});
+
+test('short pages keep the footer against the partner dock',async({page})=>{
+ for(const height of [900,1100]){
+  await page.setViewportSize({width:1920,height});await page.goto('/blog.html');await page.evaluate(()=>document.fonts.ready);
+  await page.evaluate(()=>scrollTo(0,document.documentElement.scrollHeight));
+  const gap=await page.evaluate(()=>document.querySelector('.sponsor-marquee').getBoundingClientRect().top-document.querySelector('.site-footer').getBoundingClientRect().bottom);
+  expect(Math.abs(gap)).toBeLessThanOrEqual(1);
+ }
+});
+
 test('footer stays compact and keeps its links clear of one another',async({page})=>{
  await page.emulateMedia({reducedMotion:'reduce'});
  for(const width of [320,390,768,1024,1440,1920]){

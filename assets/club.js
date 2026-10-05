@@ -1,5 +1,22 @@
 const orgCoachEntries = [...document.querySelectorAll('[data-org-coach]')];
 
+function revealOrgCoachCard(entry) {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(async () => {
+    if (!entry.classList.contains('is-open')) return;
+    const image = entry.querySelector('.org-coach-image img');
+    if (image) await image.decode().catch(() => {});
+    if (!entry.classList.contains('is-open')) return;
+    const top = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 16;
+    const bottom = (document.querySelector('.sponsor-marquee')?.getBoundingClientRect().top || innerHeight) - 16;
+    const entryRect = entry.getBoundingClientRect();
+    const rect = entryRect.height <= bottom - top || !image ? entryRect : image.getBoundingClientRect();
+    if (rect.top >= top && rect.bottom <= bottom) return;
+    const destination = top + Math.max(0, (bottom - top - rect.height) / 2);
+    window.scrollTo({top: scrollY + rect.top - destination, behavior: reduced ? 'instant' : 'smooth'});
+  }, reduced ? 0 : 350);
+}
+
 function setOrgCoachOpen(entry, open) {
   entry.classList.toggle('is-open', open);
   const trigger = entry.querySelector('[data-org-coach-toggle]');
@@ -19,6 +36,7 @@ orgCoachEntries.forEach(entry => {
   trigger.addEventListener('click', () => {
     const willOpen = trigger.getAttribute('aria-expanded') !== 'true';
     orgCoachEntries.forEach(item => setOrgCoachOpen(item, item === entry && willOpen));
+    if (willOpen) revealOrgCoachCard(entry);
   });
   entry.querySelectorAll('[data-org-coach-close]').forEach(close => close.addEventListener('click', () => {
     setOrgCoachOpen(entry, false);

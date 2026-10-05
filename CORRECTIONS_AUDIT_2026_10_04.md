@@ -179,3 +179,11 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 - Photos affichées entièrement avec object-fit contain, y compris histoire du club et galerie.
 - Cartes de 252 px de haut, trois cartes et leurs boutons visibles dans le premier écran à 1440 et 1920 px.
 - Mobile conserve une disposition verticale avec les images entières.
+
+
+### Cartes visibles et footer des pages courtes — 5 octobre 2026
+
+- À l’ouverture d’une carte Panini, défilement automatique après son déploiement et le chargement de son image, en tenant compte du menu et du bandeau partenaires.
+- Petits écrans en hauteur : image limitée à la zone disponible et affichée entièrement.
+- Footer poussé en bas des pages courtes ; suppression de l’espace de fond visible sous le footer du blog.
+- Tests avec et sans animations, sur mobile et PC, y compris fenêtres de 550 px de haut.

@@ -1,4 +1,7 @@
 /* A compact club footer with clear, grouped links. */
+body{display:flex;flex-direction:column;min-height:100dvh}
+body>main{flex:1 0 auto}
+body>.site-header,body>.site-footer{flex-shrink:0}
 body .site-footer{position:relative;isolation:isolate;overflow:hidden;background:#0c0c10;border-top:2px solid #ed0719}
 body .footer-main{grid-template-columns:minmax(150px,.8fr) minmax(250px,1.2fr) minmax(260px,1.2fr) minmax(145px,.7fr);align-items:start;gap:22px;padding-block:20px 14px}
 body .footer-brand{gap:10px;align-self:center}

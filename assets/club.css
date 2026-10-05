@@ -12,6 +12,7 @@
 .org-coach-entry.is-open .org-coach-panel{grid-template-rows:1fr;opacity:1}
 .org-coach-image{display:block;width:min(100%,240px);margin:10px auto 4px;padding:0;border:0;border-radius:18px;background:transparent;cursor:pointer;overflow:hidden;box-shadow:0 15px 32px #000b}
 .org-coach-image img{display:block;width:100%;height:auto;border-radius:18px}
+.org-coach-image img{max-height:calc(100dvh - 240px);object-fit:contain}
 .org-coach-image:focus-visible{outline:3px solid #ed0719;outline-offset:4px}
 .team-staff-coaches{align-items:flex-start}
 .team-training-coach-list{display:grid;grid-template-columns:max-content max-content;align-items:start;justify-content:start;flex:1;gap:8px 20px;min-width:0}
