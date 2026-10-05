@@ -164,3 +164,7 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 - Portrait de David agrandi à 40 % de sa carte, avec un cadrage en buste et une hauteur de 360 px.
 - Sur mobile, bureau puis David et les Teams se suivent dans l’ordre de lecture.
 - Fond à hermines et cartes dépliables conservés.
+
+
+- Ajustement demandé : David et bureau ont chacun la moitié de la ligne ; suppression des liens et du bouton dans la carte de David.
+- Suppression des raccourcis et du bandeau équipes/pratiques/salles avant l’organigramme.
