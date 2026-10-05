@@ -187,3 +187,11 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 - Petits écrans en hauteur : image limitée à la zone disponible et affichée entièrement.
 - Footer poussé en bas des pages courtes ; suppression de l’espace de fond visible sous le footer du blog.
 - Tests avec et sans animations, sur mobile et PC, y compris fenêtres de 550 px de haut.
+
+
+### Menu du header — 5 octobre 2026
+
+- Suppression du lien Histoire du club dans le menu déroulant Club.
+- Libellé Résultats remplacé par Championnats dans la navigation principale, lien resultats.html conservé.
+- Espacements du header ajustés entre 851 et 1000 px pour garder le menu et le bouton Inscriptions dans leur conteneur.
+- Vérification des 34 headers générés et du responsive de la navigation.

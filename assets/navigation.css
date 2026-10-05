@@ -10,5 +10,5 @@
 @media(min-width:1301px){#navigation{gap:18px}.nav-sub-toggle{width:24px}}
 @media(min-width:851px) and (max-width:1300px){#navigation{gap:clamp(6px,.95vw,12px)}.nav-sub-toggle{width:24px}}
 @media(min-width:1001px) and (max-width:1300px){#navigation>a,.nav-group-heading>a{font-size:1rem}}
-@media(min-width:851px) and (max-width:1000px){#navigation>a,.nav-group-heading>a{font-size:.9rem}#navigation{gap:6px}}
+@media(min-width:851px) and (max-width:1000px){.header-inner{gap:12px}#navigation>a,.nav-group-heading>a{font-size:.9rem}#navigation{gap:4px}}
 @media(max-width:850px){#navigation>a[aria-current=page],#navigation>a.is-active{color:#fff}}
