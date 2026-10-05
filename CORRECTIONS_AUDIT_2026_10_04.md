@@ -145,5 +145,5 @@ Le module de densité, chargé uniquement sur PC, reste sous 10 Ko ; son budget 
 
 - Footer commun compact : environ 183 px sur PC et 349 px à 390 px de large (269 et 618 px auparavant).
 - Liens utiles sur deux colonnes, contact et réseaux regroupés, bande légale resserrée.
-- Décor vectoriel léger reprenant la cage et les arcs des 6 et 9 mètres, sans nouveau média raster.
+- Fond uni et discret ; dessin du terrain retiré à la demande de l’utilisateur.
 - Coordonnées, accès au blog, galerie, résultats, boutique, réseaux et mentions légales conservés.

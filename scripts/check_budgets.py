@@ -7,7 +7,6 @@ ASSETS = ROOT / "assets"
 
 BUDGETS = {
     "CSS footer": (ASSETS / "footer.css", 4_000),
-    "Décor terrain footer": (ASSETS / "ui" / "footer-court.svg", 1_000),
     "CSS contrôles et contact": (ASSETS / "page-controls.css", 3_000),
     "CSS densité bureau": (ASSETS / "desktop-density.css", 10_000),
     "CSS compositions": (ASSETS / "visual-refinements.css", 9_000),

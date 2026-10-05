@@ -1,6 +1,5 @@
-/* A compact club footer, with the goal area traced behind the links. */
+/* A compact club footer with clear, grouped links. */
 body .site-footer{position:relative;isolation:isolate;overflow:hidden;background:#0c0c10;border-top:2px solid #ed0719}
-body .site-footer::before{content:"";position:absolute;inset:0 0 0 auto;width:min(48%,520px);background:url('ui/footer-court.svg') right center/auto 100% no-repeat;pointer-events:none;z-index:-1}
 body .footer-main{grid-template-columns:minmax(150px,.8fr) minmax(250px,1.2fr) minmax(260px,1.2fr) minmax(145px,.7fr);align-items:start;gap:22px;padding-block:20px 14px}
 body .footer-brand{gap:10px;align-self:center}
 body .footer-brand img{width:44px;height:44px}
@@ -18,7 +17,6 @@ body .footer-bottom a{display:inline-flex;align-items:center;min-height:36px}
 body .footer-bottom nav{gap:18px}
 @media(max-width:1100px){body .footer-main{grid-template-columns:1fr 1.4fr;gap:12px 24px}body .footer-brand{align-self:start}body .footer-socials{display:flex;flex-wrap:wrap;gap:0 18px}body .footer-socials h2{width:100%}}
 @media(max-width:700px){
- body .site-footer::before{width:100%;opacity:.5}
  body .footer-main{grid-template-columns:1fr;gap:8px;padding-block:16px 8px}
  body .footer-brand{justify-self:start}
  body .footer-main h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
