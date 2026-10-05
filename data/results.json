@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T23:35:21.174071+00:00",
+  "updatedAt": "2026-10-05T05:19:36.231353+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -626,21 +626,6 @@
     }
   ],
   "matches": [
-    {
-      "id": "2681025",
-      "category": "Seniors masculins 2",
-      "group": "seniors-masculins",
-      "date": "2026-10-31T19:00:00+01:00",
-      "home": "PLOUFRAGAN HANDBALL",
-      "away": "HB.PELEMOIS",
-      "homeTeamId": "1815560",
-      "awayTeamId": "1815551",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "home",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681025/"
-    },
     {
       "id": "2625948",
       "category": "Seniors feminines",
