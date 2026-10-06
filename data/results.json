@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T06:07:11.221597+00:00",
+  "updatedAt": "2026-10-06T11:19:22.311435+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -753,6 +753,36 @@
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683702/"
     },
     {
+      "id": "2697258",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-10-10T15:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "LANNION HANDBALL",
+      "homeTeamId": "1816160",
+      "awayTeamId": "1816162",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697258/"
+    },
+    {
+      "id": "2697259",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-10-10T15:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "PLESTIN HB",
+      "homeTeamId": "1816160",
+      "awayTeamId": "1816155",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697259/"
+    },
+    {
       "id": "2696292",
       "category": "U13 garcons",
       "group": "jeunes",
@@ -790,36 +820,6 @@
       "clubSide": "home",
       "played": false,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194043/rencontre-2696294/"
-    },
-    {
-      "id": "2697258",
-      "category": "U13 filles",
-      "group": "jeunes",
-      "date": "2026-10-10T14:30:00+02:00",
-      "home": "PLOUFRAGAN HANDBALL",
-      "away": "LANNION HANDBALL",
-      "homeTeamId": "1816160",
-      "awayTeamId": "1816162",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "home",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697258/"
-    },
-    {
-      "id": "2697259",
-      "category": "U13 filles",
-      "group": "jeunes",
-      "date": "2026-10-10T14:30:00+02:00",
-      "home": "PLOUFRAGAN HANDBALL",
-      "away": "PLESTIN HB",
-      "homeTeamId": "1816160",
-      "awayTeamId": "1816155",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "home",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697259/"
     },
     {
       "id": "2708198",
