@@ -6,6 +6,9 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
 BUDGETS = {
+    "CSS zoom boutique": (ASSETS / "shop-zoom.css", 3_500),
+    "JavaScript zoom boutique": (ASSETS / "shop-zoom.js", 6_000),
+    "CSS site compact": (ASSETS / "site-compact.css", 3_000),
     "CSS pages équipe": (ASSETS / "team-layout.css", 4_500),
     "CSS stage": (ASSETS / "stage-ete.css", 12_000),
     "Logo header et scores": (ASSETS / "logo-phb-embleme.webp", 30_000),

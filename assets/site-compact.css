@@ -1,0 +1,26 @@
+/* The same compact desktop canvas across standard pages and special layouts. */
+@media(min-width:1024px){
+ body main>.container,body main>.stage-page .container,body main>.news-article .container,body .site-footer>.container{width:min(calc(100% - 80px),1120px);max-width:1120px;margin-inline:auto}
+ body main>.news-article:not(.history-article) .container{width:min(calc(100% - 80px),880px)}
+ body :is(.page-heading,.article-heading) h1{font-size:clamp(2.5rem,3vw,3rem)}
+ body .section-heading h2{font-size:clamp(1.7rem,2vw,2rem)}
+ body .section-heading{gap:16px;margin-bottom:14px}
+ body main>.section:not(.after-heading):not(.home-news):not(.home-weekend){padding-block:24px}
+ body .after-heading{padding-bottom:28px}
+ body :is(.teams-grid,.competitions-grid,.matches-grid,.news-grid,.gallery-index-grid,.products-grid,.contact-layout){gap:14px}
+ body :is(.information-panel,.paper-panel,.competition-card,.team-card-copy,.news-card-copy,.gallery-index-copy,.product-copy){padding:16px}
+ body .home-hero{gap:24px}
+ body .home-hero h1{font-size:clamp(2.8rem,3.5vw,3.2rem)}
+ body .home-news{padding-bottom:28px}
+ body .home-weekend{padding-block:24px 28px}
+ body .stage-page h2{font-size:clamp(1.8rem,2.4vw,2.5rem)}
+ body .stage-section{margin-top:28px}
+ body .stage-section-head{gap:20px;margin-bottom:16px}
+ body .stage-next{padding:24px;gap:24px}
+ body .history-opening{gap:28px;padding-block:28px}
+ body :is(.history-card,.history-closing){padding:24px}
+ body .history-card h2{font-size:2rem}
+ body .history-closing h2{font-size:2.5rem}
+ body .footer-main{column-gap:24px}
+}
+@media(min-width:1600px){body .site-header .header-inner.container{width:min(calc(100% - 80px),1440px);max-width:1440px}}
