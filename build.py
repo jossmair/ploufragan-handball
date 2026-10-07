@@ -1552,7 +1552,7 @@ def sponsor_metric(item):
 sponsor_contact_url = "mailto:jay.quemener@gmail.com?subject=Devenir%20partenaire%20du%20PHB"
 sponsor_logos = ''.join(
     f'<a href="{escape(PARTNER_DATA["websites"][name], quote=True)}" target="_blank" rel="noopener noreferrer sponsored" aria-label="{escape(name, quote=True)}">{partner_image(name, "") or f"<span>{escape(name)}</span>"}<small>{escape(name)}</small></a>'
-    for name, _, _ in PARTNERS[:6]
+    for name, _, _ in PARTNERS
 )
 sponsor_names = ''.join(f'<li>{escape(first)} <strong>{escape(last)}</strong></li>' for first, last in SPONSOR_TEAM)
 partner_body = f'''
@@ -1572,7 +1572,7 @@ partner_body = f'''
   <section class="sponsor-options" aria-labelledby="sponsor-options-title"><div class="section-heading"><div><p class="eyebrow">À CHACUN SA PLACE DANS LE CLUB</p><h2 id="sponsor-options-title">BIEN PLUS <em>QU’UN LOGO</em></h2></div><p>Quelques possibilités pour imaginer votre partenariat. La Team Sponsor vous présente ensuite une offre adaptée.</p></div>
     <div class="sponsor-offer-grid">
       <article class="sponsor-formula"><img src="assets/partenariat/salle-hoedic.png" alt="La salle Hœdic, lieu des matchs et de la visibilité des partenaires" width="297" height="234" loading="lazy"><div><span class="sponsor-offer-number">01 / DANS LA SALLE</span><h3>UN PANNEAU <em>À VOTRE IMAGE</em></h3><p>Votre entreprise visible à Hœdic auprès des joueurs, des familles, des supporters et des autres utilisateurs de la salle. Panneau ou visibilité autour du terrain : discutons des possibilités.</p></div></article>
-      <article class="sponsor-formula"><img src="assets/partenariat/ballon-match.png" alt="Un ballon de handball, au cœur du soutien aux équipes" width="338" height="234" loading="lazy"><div><span class="sponsor-offer-number">02 / BALLON DU MATCH</span><h3>VIVEZ LE MATCH <em>DE L’INTÉRIEUR</em></h3><p>Votre soutien permet l’achat de deux ballons pour les équipes jeunes et seniors. Vous êtes invité au coup d’envoi et devenez le partenaire privilégié du week-end de matchs.</p></div></article>
+      <article class="sponsor-formula"><img src="assets/partenariat/ballon-match.png" alt="Un ballon de handball, au cœur du soutien aux équipes" width="338" height="234" loading="lazy"><div><span class="sponsor-offer-number">02 / BALLONS DE MATCH</span><h3>OFFREZ DES <em>BALLONS DE MATCH</em></h3><p>Votre soutien finance deux ballons de match pour les équipes jeunes et seniors. Vous êtes invité au coup d’envoi et devenez le partenaire privilégié du week-end de matchs.</p></div></article>
       <article class="sponsor-formula sponsor-communication"><div class="sponsor-comm-visual" aria-hidden="true"><img src="assets/logo-phb-embleme.webp" alt="" width="256" height="256"><span>ON JOUE<br><b>COLLECTIF.</b></span></div><div><span class="sponsor-offer-number">03 / LA COMM DU CLUB</span><h3>DE LA VISIBILITÉ. <em>DES RENCONTRES.</em></h3><p>Un encart sur le site du club, une présence dans les publications Facebook des matchs et résultats, et des invitations à la soirée sponsors et aux soirées gala.</p><small>Ces accompagnements sont offerts dans le cadre du partenariat convenu.</small></div></article>
     </div>
   </section>
