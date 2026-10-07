@@ -39,10 +39,10 @@ test('summer camp: responsive, album, keyboard and local videos',async ({page}) 
 test('summer camp: header entry, active section and accessibility',async ({page})=>{
   await page.setViewportSize({width:1440,height:1000});
   await page.goto('/');
-  await page.locator('[aria-controls="nav-sub-club"]').hover();
-  await page.locator('#nav-sub-club a[href="stage-ete.html"]').click();
+  await page.locator('[aria-controls="nav-sub-entrainements"]').hover();
+  await page.locator('#nav-sub-entrainements a[href="stage-ete.html"]').click();
   await expect(page).toHaveURL(/stage-ete.html$/);
-  await expect(page.locator('#nav-sub-club a[href="stage-ete.html"]')).toHaveAttribute('aria-current','page');
+  await expect(page.locator('#nav-sub-entrainements a[href="stage-ete.html"]')).toHaveAttribute('aria-current','page');
   const audit=await new AxeBuilder({page}).include('main').withTags(['wcag2a','wcag2aa']).analyze();
   expect(audit.violations).toEqual([]);
 });
