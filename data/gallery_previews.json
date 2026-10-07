@@ -1,0 +1,86 @@
+{
+  "assets/u13-filles/gallery/01.webp": {
+    "480": {
+      "src": "assets/gallery-previews/09e39b93e3-480.webp",
+      "width": 480,
+      "height": 360
+    },
+    "960": {
+      "src": "assets/gallery-previews/09e39b93e3-960.webp",
+      "width": 960,
+      "height": 720
+    }
+  },
+  "assets/u13-garcons/gallery/01.webp": {
+    "480": {
+      "src": "assets/gallery-previews/a316fcd4d9-480.webp",
+      "width": 480,
+      "height": 360
+    },
+    "960": {
+      "src": "assets/gallery-previews/a316fcd4d9-960.webp",
+      "width": 960,
+      "height": 720
+    }
+  },
+  "assets/u15-filles/gallery/01.webp": {
+    "480": {
+      "src": "assets/gallery-previews/3295d2cca0-480.webp",
+      "width": 480,
+      "height": 360
+    },
+    "960": {
+      "src": "assets/gallery-previews/3295d2cca0-960.webp",
+      "width": 960,
+      "height": 720
+    }
+  },
+  "assets/u18-garcons/gallery/01.webp": {
+    "480": {
+      "src": "assets/gallery-previews/6f677a9e77-480.webp",
+      "width": 480,
+      "height": 360
+    },
+    "960": {
+      "src": "assets/gallery-previews/6f677a9e77-960.webp",
+      "width": 960,
+      "height": 720
+    }
+  },
+  "assets/u11-mixte/gallery/01.webp": {
+    "480": {
+      "src": "assets/gallery-previews/b24e9b9632-480.webp",
+      "width": 480,
+      "height": 559
+    },
+    "960": {
+      "src": "assets/gallery-previews/b24e9b9632-960.webp",
+      "width": 657,
+      "height": 765
+    }
+  },
+  "assets/galeries/seniors-1-pays-de-dinan-2026/photo-36.webp": {
+    "480": {
+      "src": "assets/gallery-previews/51599e205f-480.webp",
+      "width": 480,
+      "height": 320
+    },
+    "960": {
+      "src": "assets/gallery-previews/51599e205f-960.webp",
+      "width": 960,
+      "height": 640
+    }
+  },
+  "assets/stage-ete/photo-003.webp": {
+    "480": {
+      "src": "assets/gallery-previews/729f9986ec-480.webp",
+      "width": 480,
+      "height": 360
+    },
+    "960": {
+      "src": "assets/gallery-previews/729f9986ec-960.webp",
+      "width": 960,
+      "height": 720
+    }
+  }
+}

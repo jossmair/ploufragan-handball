@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
 BUDGETS = {
+    "JavaScript chargement Galerie": (ASSETS / "gallery-performance.js", 2_000),
     "CSS scores": (ASSETS / "match-score.css", 1_000),
     "CSS partenariat": (ASSETS / "sponsor-page.css", 10_000),
     "CSS zoom boutique": (ASSETS / "shop-zoom.css", 3_500),

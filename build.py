@@ -1614,8 +1614,17 @@ for article in ARTICLES:
     pages[f'articles/{article["slug"]}'] = article_page(article)
 
 
-def gallery_index_card(entry):
-    return f'''<a class="gallery-index-card" href="{escape(entry['href'], quote=True)}" data-reveal><figure><img src="{escape(entry['cover'], quote=True)}" alt="{escape(entry['alt'], quote=True)}" width="{entry['cover_width']}" height="{entry['cover_height']}" loading="lazy" decoding="async"></figure><div class="gallery-index-copy"><p class="eyebrow">{escape(entry['eyebrow'])} <span>· {escape(entry['meta'])}</span></p><h2>{escape(entry['title'])}</h2><p>{escape(entry['intro'])}</p><span class="text-link">{escape(entry['cta'])} ↗</span></div></a>'''
+GALLERY_PREVIEWS = json.loads((DATA / "gallery_previews.json").read_text(encoding="utf-8"))
+GALLERY_IMAGE_SIZES = "(max-width:520px) calc(100vw - 40px), (max-width:780px) calc(100vw - 64px), (max-width:1023px) 320px, 240px"
+
+
+def gallery_index_card(entry, first=False):
+    preview = GALLERY_PREVIEWS.get(entry["cover"])
+    src = preview["960"]["src"] if preview else entry["cover"]
+    responsive = f' srcset="{preview["480"]["src"]} 480w, {preview["960"]["src"]} 960w" sizes="{GALLERY_IMAGE_SIZES}"' if preview else ""
+    loading = 'loading="eager" fetchpriority="high"' if first else 'loading="lazy" fetchpriority="low"'
+    reveal = " data-reveal data-gallery-critical" if first else " data-reveal"
+    return f'''<a class="gallery-index-card" href="{escape(entry['href'], quote=True)}"{reveal}><figure><img src="{escape(src, quote=True)}"{responsive} alt="{escape(entry['alt'], quote=True)}" width="{entry['cover_width']}" height="{entry['cover_height']}" {loading} decoding="async"></figure><div class="gallery-index-copy"><p class="eyebrow">{escape(entry['eyebrow'])} <span>· {escape(entry['meta'])}</span></p><h2>{escape(entry['title'])}</h2><p>{escape(entry['intro'])}</p><span class="text-link">{escape(entry['cta'])} ↗</span></div></a>'''
 
 
 def gallery_album_page(album):
@@ -1688,18 +1697,25 @@ gallery_hub_entries.append({
     "title": "Le stage d’été à Guerlédan", "intro": "Handball et aventures : revivez la première édition du stage PHB.",
     "cta": "REVIVRE LE STAGE",
 })
-gallery_cards = ''.join(gallery_index_card(entry) for entry in gallery_hub_entries)
+gallery_cards = ''.join(gallery_index_card(entry, first=index == 0) for index, entry in enumerate(gallery_hub_entries))
 gallery_heading_media = heading_video(
     "assets/videos/galerie-animation.mp4",
     "assets/videos/galerie-animation-first.webp",
     "data-gallery-logo-video",
     "gallery-intro-media",
+).replace('data-heading-video ', '').replace('preload="metadata"', 'preload="none"').replace('<source src=', '<source data-src=')
+gallery_heading_preview = GALLERY_PREVIEWS["assets/galeries/seniors-1-pays-de-dinan-2026/photo-36.webp"]["480"]["src"]
+gallery_mobile_head = (
+    f'<link rel="preload" as="image" href="{gallery_heading_preview}" media="(max-width:850px)">'
+    f'<style>@media(max-width:850px){{body[data-page="galerie"] .gallery-heading{{--page-heading-photo:url("/{gallery_heading_preview}")}}[data-gallery-critical]{{opacity:1!important;transform:none!important;transition:none!important}}}}</style>'
+    '<script src="assets/gallery-performance.js?v=20261007-1" defer></script>'
 )
 pages["galerie"] = page(
     "galerie", "Galerie photo",
     heading("GALERIE <em>PHOTO</em>", "Galerie photo", "Les matchs et les temps forts du Ploufragan Handball en images.",
-            css_class="animated-heading gallery-heading", extra=gallery_heading_media)
+            css_class="animated-heading gallery-heading", extra=gallery_heading_media).replace(" data-reveal", " data-reveal data-gallery-critical")
     + f'''<section class="container section after-heading gallery-index"><div class="gallery-index-grid">{gallery_cards}</div></section>''',
+    extra_head=gallery_mobile_head,
 )
 for gallery in GALLERIES:
     pages[f"galeries/{gallery['slug']}"] = gallery_album_page(gallery)
