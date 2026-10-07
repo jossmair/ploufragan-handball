@@ -12,4 +12,8 @@
 @media(min-width:1001px) and (max-width:1300px){#navigation>a,.nav-group-heading>a{font-size:1rem}}
 @media(min-width:851px) and (max-width:1000px){.header-inner{gap:12px}#navigation>a,.nav-group-heading>a{font-size:.9rem}#navigation{gap:4px}}
 @media(max-width:850px){#navigation>a[aria-current=page],#navigation>a.is-active{color:#fff}}
-@media(min-width:851px) and (max-width:1000px){#navigation>a,.nav-group-heading>a{font-size:.8rem}#navigation>.nav-registration{padding-inline:10px;gap:8px}}
+@media(min-width:851px){.site-header .header-inner{min-height:76px}.header-inner>.brand>img{width:52px;height:52px}#navigation>a,.nav-group-heading>a{white-space:nowrap;flex-shrink:0}}
+@media(min-width:851px){#nav-sub-entrainements{left:auto;right:0}}
+@media(min-width:851px) and (max-width:1000px){.nav-teams{left:-44px}}
+.results-panel[id]{scroll-margin-top:96px}
+.nav-submenu:not(.nav-teams) .nav-section+.nav-section{margin-top:12px;padding-top:12px;border-top:1px solid #ffffff24}

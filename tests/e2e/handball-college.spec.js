@@ -5,6 +5,8 @@ test('option au collège : informations scolaires, encadrant et accès direct', 
   await page.goto('/handball-college.html');
   const main = page.locator('main');
   await expect(main).toContainText('NOUVEAUTÉ 2026');
+  await expect(page.locator('main h1')).toContainText('SECTION HANDBALL');
+  await expect(main).not.toContainText('option handball');
   await expect(main).toContainText('La Grande Métairie');
   await expect(main).toContainText('co-construite avec le principal du collège, un professeur d’EPS');
   await expect(main).toContainText('collectifs mixtes');
@@ -17,9 +19,9 @@ test('option au collège : informations scolaires, encadrant et accès direct', 
   await expect(page.locator('.college-schedule > div').nth(2)).toContainText('LE MARDI');
   await expect(page.locator('.college-coach h2')).toHaveText('DAVID IMBAUD');
   const links = await page.locator('#navigation > a, #navigation > .nav-group > .nav-group-heading > a').evaluateAll(items => items.map(item => item.getAttribute('href')));
-  const index = links.indexOf('handball-college.html');
-  expect(links.slice(index - 1, index + 2)).toEqual(['entrainements.html', 'handball-college.html', 'resultats.html']);
-  await expect(page.locator('#navigation > a[href="handball-college.html"]')).toHaveAttribute('aria-current', 'page');
+  expect(links).toEqual(['/', 'club.html', 'equipes.html', 'entrainements.html', 'resultats.html', 'boutique.html', 'contact.html', 'inscriptions.html']);
+  await expect(page.locator('#nav-sub-entrainements a[href="handball-college.html"]')).toHaveAttribute('aria-current', 'page');
+  await expect(page.locator('[data-nav-group]').filter({ has: page.locator('[aria-controls="nav-sub-entrainements"]') })).toHaveClass(/is-active/);
   const audit = await new AxeBuilder({ page }).analyze();
   expect(audit.violations).toEqual([]);
 });
@@ -46,13 +48,17 @@ test('option au collège : photos entières, navigation du carrousel et agrandis
 });
 
 test('option au collège : largeur compacte et header sans chevauchement', async ({ page }) => {
-  for (const width of [320, 850, 900, 1024, 1440, 2560]) {
+  for (const width of [320, 850, 851, 900, 1024, 1301, 1366, 1440, 2560]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/handball-college.html');
     await page.evaluate(() => document.fonts.ready);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
     if (width >= 1024) expect(await page.locator('.college-page').evaluate(el => el.getBoundingClientRect().width)).toBeLessThanOrEqual(1120);
     if (width > 850) {
+      expect(await page.locator('.site-header').evaluate(el => el.getBoundingClientRect().height)).toBeLessThanOrEqual(78);
+      for (const link of await page.locator('#navigation > a, .nav-group-heading > a').all()) {
+        await expect(link).toHaveCSS('white-space', 'nowrap');
+      }
       const boxes = await page.locator('.header-inner > .brand, #navigation > a, #navigation > .nav-group').evaluateAll(items => items.map(item => {
         const r = item.getBoundingClientRect(); return { left: r.left, right: r.right };
       }));

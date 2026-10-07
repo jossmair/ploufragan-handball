@@ -49,7 +49,7 @@ test('navigation : responsive, liens directs et accordéons', async ({ page }) =
   expect(errors).toEqual([]);
 });
 
-test('navigation : inscriptions lisible au défilement et albums directs', async ({ page }) => {
+test('navigation : inscriptions lisible au défilement et photos dans Club', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/inscriptions.html', { waitUntil: 'domcontentloaded' });
   const registration = page.locator('#navigation > .nav-registration');
@@ -57,10 +57,10 @@ test('navigation : inscriptions lisible au défilement et albums directs', async
   await page.evaluate(() => scrollTo(0, 700));
   await expect(page.locator('.site-header')).not.toHaveClass(/is-hidden/);
   await expect(registration).toBeInViewport();
-  await page.locator('[aria-controls="nav-sub-galerie"]').hover();
-  await page.locator('#nav-sub-galerie a[href="u13-garcons.html#u13-garcons-gallery-title"]').click();
-  await expect(page).toHaveURL(/u13-garcons.html#u13-garcons-gallery-title$/);
-  await expect(page.locator('#u13-garcons-gallery-title')).toBeInViewport();
+  await page.locator('[aria-controls="nav-sub-club"]').hover();
+  await page.locator('#nav-sub-club a[href="galerie.html"]').click();
+  await expect(page).toHaveURL(/galerie.html$/);
+  await expect(page.locator('main h1')).toContainText('GALERIE');
 });
 
 test('navigation : clavier, pages actives et accessibilité', async ({ page }) => {
@@ -68,8 +68,11 @@ test('navigation : clavier, pages actives et accessibilité', async ({ page }) =
   await page.setViewportSize({ width: 1440, height: 1000 });
   for (const [path, current, group] of [
     ['/', 'Accueil', null], ['seniors-masculins.html', 'Seniors masculins', 'equipes'],
-    ['u11-mixte.html', 'U11 mixte', 'equipes'], ['galerie.html', 'Galerie', null],
-    ['club.html', 'Club', 'club'], ['resultats.html', 'Championnats', null],
+    ['u11-mixte.html', 'U11 mixte', 'equipes'], ['galerie.html', 'Galeries photo', 'club'],
+    ['club.html', 'Club', 'club'], ['resultats.html', 'Championnats', 'resultats'],
+    ['handball-college.html', 'Section handball', 'entrainements'],
+    ['stage-ete.html', 'Stage d’été · U13 et U15', 'entrainements'],
+    ['blog.html', 'Le blog', 'club'], ['partenaires.html', 'Nos partenaires', 'club'],
     ['inscriptions.html', 'Inscriptions', null],
   ]) {
     await page.goto(path, { waitUntil: 'domcontentloaded' });
@@ -93,4 +96,38 @@ test('navigation : clavier, pages actives et accessibilité', async ({ page }) =
   await page.keyboard.press('Escape');
   await expect(page.locator('[aria-controls="nav-sub-equipes"]')).toBeFocused();
   await expect(page.locator('[aria-controls="nav-sub-equipes"]')).toHaveAttribute('aria-expanded', 'false');
+});
+
+test('Championnats : liens vers les onglets et retour dans l’historique', async ({ page }) => {
+  test.setTimeout(60_000);
+  for (const [label, fragment, panel] of [
+    ['Classements', 'classements', 'competitions'],
+    ['Prochains matchs', 'prochains-matchs', 'upcoming'],
+    ['Résultats', 'resultats', 'scores'],
+  ]) {
+    await page.goto('/handball-college.html');
+    if ((page.viewportSize()?.width || 0) <= 850) await page.locator('.menu-toggle').click();
+    const toggle = page.locator('[aria-controls="nav-sub-resultats"]');
+    if ((page.viewportSize()?.width || 0) > 850) await toggle.hover();
+    else await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await page.locator('#navigation').evaluate(el => Promise.all(el.getAnimations({ subtree: true }).map(animation => animation.finished.catch(() => {}))));
+    await page.locator('#nav-sub-resultats').getByRole('link', { name: label, exact: true }).click();
+    await expect(page).toHaveURL(new RegExp(`resultats.html#${fragment}$`));
+    await expect(page.locator(`[data-results-section="${panel}"]`)).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator(`[data-results-panel="${panel}"]`)).toBeVisible();
+    for (const other of ['scores', 'upcoming', 'competitions'].filter(value => value !== panel)) {
+      await expect(page.locator(`[data-results-panel="${other}"]`)).toBeHidden();
+    }
+  }
+  await page.goto('/resultats.html#prochains-matchs');
+  await expect(page.locator('[data-results-section="upcoming"]')).toHaveAttribute('aria-pressed', 'true');
+  await page.goto('/resultats.html#classements');
+  await expect(page.locator('[data-results-section="competitions"]')).toHaveAttribute('aria-pressed', 'true');
+  await page.goBack();
+  await expect(page.locator('[data-results-section="upcoming"]')).toHaveAttribute('aria-pressed', 'true');
+  await page.goto('/resultats.html#classements');
+  await expect(page.locator('[data-results-section="competitions"]')).toHaveAttribute('aria-pressed', 'true');
+  await page.reload();
+  await expect(page.locator('[data-results-panel="competitions"]')).toBeVisible();
 });
