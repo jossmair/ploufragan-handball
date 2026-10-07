@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T15:46:51.148407+00:00",
+  "updatedAt": "2026-10-07T16:41:44.579856+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -714,6 +714,21 @@
       }
     },
     {
+      "id": "2683702",
+      "category": "U15 garcons",
+      "group": "jeunes",
+      "date": "2026-10-10T17:00:00+02:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "U15M TER - ENTENTE DU TREGOR HB2 - LOUANNEC",
+      "homeTeamId": "1816628",
+      "awayTeamId": "1816627",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683702/"
+    },
+    {
       "id": "2683537",
       "category": "U15 filles",
       "group": "jeunes",
@@ -736,21 +751,6 @@
         "longitude": "-2.75342",
         "source": "FFHandball"
       }
-    },
-    {
-      "id": "2683702",
-      "category": "U15 garcons",
-      "group": "jeunes",
-      "date": "2026-10-10T16:30:00+02:00",
-      "home": "PLOUFRAGAN HANDBALL",
-      "away": "U15M TER - ENTENTE DU TREGOR HB2 - LOUANNEC",
-      "homeTeamId": "1816628",
-      "awayTeamId": "1816627",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "home",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683702/"
     },
     {
       "id": "2697258",
