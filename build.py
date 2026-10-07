@@ -526,7 +526,7 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
     if slug == "boutique":
         extra_head += '<link rel="stylesheet" href="assets/shop-zoom.css?v=20261006-1"><script src="assets/shop-zoom.js?v=20261006-1" defer></script>'
     if slug == "devenir-partenaire":
-        extra_head += '<link rel="stylesheet" href="assets/sponsor-page.css?v=20261007-2">'
+        extra_head += '<link rel="stylesheet" href="assets/sponsor-page.css?v=20261007-3">'
     nav = navigation_html(slug, active)
     metadata = SEO_META.get(slug)
     description = metadata[1] if metadata else (description or f"{title} | Ploufragan Handball")
@@ -1573,7 +1573,8 @@ partner_body = f'''
     <div class="sponsor-offer-grid">
       <article class="sponsor-formula"><img src="assets/partenariat/salle-hoedic.png" alt="La salle Hœdic, lieu des matchs et de la visibilité des partenaires" width="297" height="234" loading="lazy"><div><span class="sponsor-offer-number">01 / DANS LA SALLE</span><h3>UN PANNEAU <em>À VOTRE IMAGE</em></h3><p>Votre entreprise visible à Hœdic auprès des joueurs, des familles, des supporters et des autres utilisateurs de la salle. Panneau ou visibilité autour du terrain : discutons des possibilités.</p></div></article>
       <article class="sponsor-formula"><img src="assets/partenariat/ballon-match.png" alt="Un ballon de handball, au cœur du soutien aux équipes" width="338" height="234" loading="lazy"><div><span class="sponsor-offer-number">02 / BALLONS DE MATCH</span><h3>OFFREZ DES <em>BALLONS DE MATCH</em></h3><p>Votre soutien finance deux ballons de match pour les équipes jeunes et seniors. Vous êtes invité au coup d’envoi et devenez le partenaire privilégié du week-end de matchs.</p></div></article>
-      <article class="sponsor-formula sponsor-communication"><div class="sponsor-comm-visual" aria-hidden="true"><img src="assets/logo-phb-embleme.webp" alt="" width="256" height="256"><span>ON JOUE<br><b>COLLECTIF.</b></span></div><div><span class="sponsor-offer-number">03 / LA COMM DU CLUB</span><h3>DE LA VISIBILITÉ. <em>DES RENCONTRES.</em></h3><p>Un encart sur le site du club, une présence dans les publications Facebook des matchs et résultats, et des invitations à la soirée sponsors et aux soirées gala.</p><small>Ces accompagnements sont offerts dans le cadre du partenariat convenu.</small></div></article>
+      <article class="sponsor-formula sponsor-more"><div class="sponsor-comm-visual" aria-hidden="true"><span>VOTRE PROJET.<br><b>PARLONS-EN.</b></span></div><div><span class="sponsor-offer-number">03 / D’AUTRES POSSIBILITÉS</span><h3>D’AUTRES OFFRES <em>SONT DISPONIBLES</em></h3><p>Ces exemples ne présentent qu’une partie des possibilités. Contactez la Team Sponsor pour découvrir les autres offres et construire un partenariat adapté à votre entreprise.</p>{button("CONTACTER LA TEAM SPONSOR", sponsor_contact_url)}</div></article>
+      <article class="sponsor-formula sponsor-communication"><div class="sponsor-comm-visual" aria-hidden="true"><img src="assets/logo-phb-embleme.webp" alt="" width="256" height="256"><span>ON JOUE<br><b>COLLECTIF.</b></span></div><div><span class="sponsor-offer-number">04 / LA COMM DU CLUB</span><h3>DE LA VISIBILITÉ. <em>DES RENCONTRES.</em></h3><p>Un encart sur le site du club, une présence dans les publications Facebook des matchs et résultats, et des invitations à la soirée sponsors et aux soirées gala.</p><small>Ces accompagnements sont offerts dans le cadre du partenariat convenu.</small></div></article>
     </div>
   </section>
   <div class="sponsor-bottom-grid">
