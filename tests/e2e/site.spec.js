@@ -537,6 +537,8 @@ test('permanences : page navigable mais non indexable', async ({ page }) => {
 
 test('404 : identité, noindex et retour vers le site', async ({ page }) => {
   await page.goto('/404.html');
+  await page.evaluate(() => document.fonts.ready);
+  expect(await page.evaluate(() => new URL(document.baseURI).origin)).toBe(new URL(page.url()).origin);
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex,follow');
   await expect(page.locator('main .actions').getByRole('link', { name: /^Accueil/i })).toHaveAttribute('href', '/');
