@@ -22,7 +22,7 @@ COMPETITIVE = {
     "u18-garcons", "seniors-feminines", "seniors-masculins-1",
     "seniors-masculins-2",
 }
-ALLOWED_NOINDEX = {"404.html", "actualites.html", "permanences-seniors-masculins.html"}
+ALLOWED_NOINDEX = {"404.html", "actualites.html", "permanences-seniors-masculins.html", "permanences-seniors-feminines.html", "permanences-u18-garcons.html"}
 
 
 def duplicate_html_ids(page):

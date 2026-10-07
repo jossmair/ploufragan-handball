@@ -76,6 +76,11 @@ ARTICLES = expand_site_tokens(json.loads((DATA / "articles.json").read_text(enco
 GALLERIES = expand_site_tokens(json.loads((DATA / "galeries.json").read_text(encoding="utf-8")))
 SPONSOR_DATA = expand_site_tokens(json.loads((DATA / "partenariat.json").read_text(encoding="utf-8")))
 SENIOR_DUTIES = json.loads((DATA / "permanences-seniors-masculins.json").read_text(encoding="utf-8"))
+TEAM_DUTIES = {"seniors-masculins": SENIOR_DUTIES}
+for duty_group in ("seniors-feminines", "u18-garcons"):
+    TEAM_DUTIES[duty_group] = json.loads((DATA / f"permanences-{duty_group}.json").read_text(encoding="utf-8"))
+    if TEAM_DUTIES[duty_group].get("season") != SEASON:
+        raise ValueError(f"Saison incohérente pour les permanences {duty_group}")
 HOME_MATCHES = json.loads((DATA / "home_matches.json").read_text(encoding="utf-8"))
 
 for data_name, payload in (("results.json", RESULTS), ("inscriptions.json", LICENSES),
@@ -408,8 +413,10 @@ def breadcrumb_schema(slug, title):
         parents.extend([("Équipes", SITE_URL + "equipes.html"), ("Équipes jeunes", SITE_URL + "jeunes.html")])
     elif slug.startswith("seniors-masculins-"):
         parents.extend([("Équipes", SITE_URL + "equipes.html"), ("Seniors masculins", SITE_URL + "seniors-masculins.html")])
-    elif slug == "permanences-seniors-masculins":
-        parents.extend([("Équipes", SITE_URL + "equipes.html"), ("Seniors masculins", SITE_URL + "seniors-masculins.html")])
+    elif slug.startswith("permanences-"):
+        duty_parent = slug.removeprefix("permanences-")
+        duty_name = {"seniors-masculins": "Seniors masculins", "seniors-feminines": "Seniors féminines", "u18-garcons": "U18 garçons"}[duty_parent]
+        parents.extend([("Équipes", SITE_URL + "equipes.html"), (duty_name, SITE_URL + duty_parent + ".html")])
     url = SITE_URL + slug + ".html"
     parents.append((title, url))
     return {"@type": "BreadcrumbList", "@id": url + "#breadcrumb",
@@ -534,7 +541,7 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
     path = "" if slug == "index" else f"{slug}.html"
     canonical = SITE_URL + path
     page_title = page_title or (metadata[0] if metadata else f"{title} | Ploufragan Handball")
-    robots = "noindex,follow" if slug in {"404", "permanences-seniors-masculins"} else "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    robots = "noindex,follow" if (slug == "404" or slug.startswith("permanences-")) else "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
     structured_data = structured_data_for(slug, title)
     social_image = social_image or SOCIAL_IMAGES.get(slug)
     og_url = SITE_URL + social_image[0] if social_image else OG_IMAGE
@@ -806,7 +813,8 @@ def team_training(schedule_group, schedule_name=None, staff_key=None):
         staff = f'<div class="team-staff team-staff-coaches"><span>{escape(role)}</span><div class="team-training-coach-list team-training-coach-list-many">{people}</div></div>'
     else:
         staff = f'<p class="team-staff"><span>{escape(role)}</span><strong>{escape(person)}</strong></p>'
-    duties = f'<div class="actions">{button("Permanences de salle", "permanences-seniors-masculins.html")}</div>' if schedule_group == "seniors-masculins" else ''
+    duty_group = staff_key if staff_key in TEAM_DUTIES else schedule_group
+    duties = f'<div class="actions">{button("Permanences de salle", f"permanences-{duty_group}.html")}</div>' if duty_group in TEAM_DUTIES else ''
     return f'''<div class="paper-panel team-training" data-reveal><div class="panel-title"><p class="eyebrow">SAISON {SEASON_DISPLAY}</p><h2>ENTRAÎNEMENTS</h2></div>{schedule(schedule_group, schedule_name)}{staff}{duties}<a class="text-link" href="entrainements.html">Planning complet ↗</a></div>'''
 
 
@@ -1195,63 +1203,68 @@ pages["seniors-masculins"] = page(
     f"Seniors masculins du Ploufragan Handball : horaires d’entraînement et accès aux deux équipes engagées en {SEASON}.")
 
 MONTHS_FR = ("", "JANVIER", "FÉVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOÛT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DÉCEMBRE")
-today_local = datetime.now(ZoneInfo("Europe/Paris")).date()
-upcoming_duties = [item for item in SENIOR_DUTIES["dates"]
-                   if datetime.fromisoformat(item["date"]).date() + timedelta(days=1) >= today_local]
-upcoming_duty_dates = {item["date"] for item in upcoming_duties}
-matches_by_duty_day = {}
-matches_without_duty = []
-for home_match in HOME_MATCHES["matches"]:
-    match_day = datetime.fromisoformat(home_match["date"]).date()
-    weekend_day = match_day - timedelta(days=1) if match_day.weekday() == 6 else match_day
-    if weekend_day + timedelta(days=1) < today_local:
-        continue
-    if weekend_day.isoformat() in upcoming_duty_dates:
-        matches_by_duty_day.setdefault(weekend_day.isoformat(), []).append(home_match)
-    else:
-        matches_without_duty.append(home_match)
-
-senior_duty_months = {}
-for duty in upcoming_duties:
-    duty_date = datetime.fromisoformat(duty["date"])
-    senior_duty_months.setdefault((duty_date.year, duty_date.month), []).append(duty)
-senior_duty_sections = []
-for (year, month), duties in senior_duty_months.items():
-    rows = []
-    for duty in duties:
-        day = datetime.fromisoformat(duty["date"]).day
-        if duty["responsables"]:
-            names = ''.join(f'<li>{escape(name)}</li>' for name in duty["responsables"])
-            volunteer_cta = ""
+for duty_group, duty_label in (("seniors-masculins", "Seniors masculins"),
+                               ("seniors-feminines", "Seniors féminines"),
+                               ("u18-garcons", "U18 garçons")):
+    duty_data = TEAM_DUTIES[duty_group]
+    duty_slug = f"permanences-{duty_group}"
+    today_local = datetime.now(ZoneInfo("Europe/Paris")).date()
+    upcoming_duties = [item for item in duty_data["dates"]
+                       if datetime.fromisoformat(item["date"]).date() + timedelta(days=1) >= today_local]
+    upcoming_duty_dates = {item["date"] for item in upcoming_duties}
+    matches_by_duty_day = {}
+    matches_without_duty = []
+    for home_match in HOME_MATCHES["matches"]:
+        match_day = datetime.fromisoformat(home_match["date"]).date()
+        weekend_day = match_day - timedelta(days=1) if match_day.weekday() == 6 else match_day
+        if weekend_day + timedelta(days=1) < today_local:
+            continue
+        if weekend_day.isoformat() in upcoming_duty_dates:
+            matches_by_duty_day.setdefault(weekend_day.isoformat(), []).append(home_match)
         else:
-            names = '<li class="duty-volunteer-label">Volontaires recherchés</li>'
-            volunteer_subject = quote(f"Volontaire permanence du {day} {MONTHS_FR[month].lower()} {year}")
-            volunteer_cta = f'<a class="duty-volunteer-button" href="mailto:ploufraganhandball@gmail.com?subject={volunteer_subject}">Je me propose <span aria-hidden="true">↗</span></a>'
-        match_count = len(matches_by_duty_day.get(duty["date"], []))
-        if match_count:
-            match_label = "match à domicile" if match_count == 1 else "matchs à domicile"
-            match_total = f'<div class="duty-match-total"><strong>{match_count:02d}</strong><span>{match_label}</span></div>'
-        else:
-            match_total = '<div class="duty-match-total is-pending"><span>Calendrier à venir</span></div>'
-        rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul>{match_total}{volunteer_cta}</div></li>')
-    senior_duty_sections.append(f'<section class="duty-month" aria-label="{MONTHS_FR[month].title()} {year}" data-reveal><header><h2>{MONTHS_FR[month]} <em>{year}</em></h2><span>{len(duties)} date{"s" if len(duties) > 1 else ""}</span></header><ol>{"".join(rows)}</ol></section>')
+            matches_without_duty.append(home_match)
 
-unmatched_by_weekend = {}
-for match in matches_without_duty:
-    match_day = datetime.fromisoformat(match["date"]).date()
-    weekend_day = match_day - timedelta(days=1) if match_day.weekday() == 6 else match_day
-    unmatched_by_weekend.setdefault(weekend_day, 0)
-    unmatched_by_weekend[weekend_day] += 1
-unmatched_rows = ''.join(f'<li><time datetime="{weekend.isoformat()}">{weekend.day} {MONTHS_FR[weekend.month].lower()} {weekend.year}</time><strong>{count:02d}</strong><span>{"match à domicile" if count == 1 else "matchs à domicile"}</span></li>' for weekend, count in sorted(unmatched_by_weekend.items()))
-unmatched_block = (f'<section class="duty-extra" data-reveal><p class="eyebrow">APPEL AUX VOLONTAIRES</p><h2>DATE À <em>COUVRIR</em></h2><p>FFHandball annonce un ou plusieurs matchs à domicile sur une date qui ne possède pas encore de responsables.</p><ul class="duty-extra-counts">{unmatched_rows}</ul><a class="button duty-extra-action" href="mailto:ploufraganhandball@gmail.com?subject=Volontaire%20permanence%20de%20salle">Je me propose <span aria-hidden="true">↗</span></a></section>') if unmatched_rows else ''
+    senior_duty_months = {}
+    for duty in upcoming_duties:
+        duty_date = datetime.fromisoformat(duty["date"])
+        senior_duty_months.setdefault((duty_date.year, duty_date.month), []).append(duty)
+    senior_duty_sections = []
+    for (year, month), duties in senior_duty_months.items():
+        rows = []
+        for duty in duties:
+            day = datetime.fromisoformat(duty["date"]).day
+            if duty["responsables"]:
+                names = ''.join(f'<li>{escape(name)}</li>' for name in duty["responsables"])
+                volunteer_cta = ""
+            else:
+                names = '<li class="duty-volunteer-label">Volontaires recherchés</li>'
+                volunteer_subject = quote(f"Volontaire permanence du {day} {MONTHS_FR[month].lower()} {year}")
+                volunteer_cta = f'<a class="duty-volunteer-button" href="mailto:ploufraganhandball@gmail.com?subject={volunteer_subject}">Je me propose <span aria-hidden="true">↗</span></a>'
+            match_count = len(matches_by_duty_day.get(duty["date"], []))
+            if match_count:
+                match_label = "match à domicile" if match_count == 1 else "matchs à domicile"
+                match_total = f'<div class="duty-match-total"><strong>{match_count:02d}</strong><span>{match_label}</span></div>'
+            else:
+                match_total = '<div class="duty-match-total is-pending"><span>Calendrier à venir</span></div>'
+            rows.append(f'<li class="duty-row"><time datetime="{duty["date"]}"><strong>{day:02d}</strong><span>{MONTHS_FR[month][:3]}</span></time><div class="duty-row-content"><ul aria-label="Responsables de salle du {day} {MONTHS_FR[month].lower()} {year}">{names}</ul>{match_total}{volunteer_cta}</div></li>')
+        senior_duty_sections.append(f'<section class="duty-month" aria-label="{MONTHS_FR[month].title()} {year}" data-reveal><header><h2>{MONTHS_FR[month]} <em>{year}</em></h2><span>{len(duties)} date{"s" if len(duties) > 1 else ""}</span></header><ol>{"".join(rows)}</ol></section>')
 
-pages["permanences-seniors-masculins"] = page(
-    "permanences-seniors-masculins", "Permanences à domicile",
-    heading("PERMANENCES <em>À DOMICILE</em>", "Permanences à domicile",
-            "Prochains week-ends de permanence pour les matchs à domicile de toutes les équipes.",
-            back=("seniors-masculins.html", "Seniors masculins")) +
-    f'<section class="container duty-page after-heading"><div class="duty-month-grid">{"".join(senior_duty_sections)}</div>{unmatched_block}<div class="duty-note" data-reveal><strong>À SAVOIR</strong><p>Pour chaque date : table de marque, ordinateur et responsable de salle. Buvette ou arbitrage selon les besoins. Le nombre de matchs à domicile vient des calendriers FFHandball et se complète à mesure de leur publication. Les week-ends terminés disparaissent automatiquement.</p></div></section>',
-    "equipes")
+    unmatched_by_weekend = {}
+    for match in matches_without_duty:
+        match_day = datetime.fromisoformat(match["date"]).date()
+        weekend_day = match_day - timedelta(days=1) if match_day.weekday() == 6 else match_day
+        unmatched_by_weekend.setdefault(weekend_day, 0)
+        unmatched_by_weekend[weekend_day] += 1
+    unmatched_rows = ''.join(f'<li><time datetime="{weekend.isoformat()}">{weekend.day} {MONTHS_FR[weekend.month].lower()} {weekend.year}</time><strong>{count:02d}</strong><span>{"match à domicile" if count == 1 else "matchs à domicile"}</span></li>' for weekend, count in sorted(unmatched_by_weekend.items()))
+    unmatched_block = (f'<section class="duty-extra" data-reveal><p class="eyebrow">APPEL AUX VOLONTAIRES</p><h2>DATE À <em>COUVRIR</em></h2><p>FFHandball annonce un ou plusieurs matchs à domicile sur une date qui ne possède pas encore de responsables.</p><ul class="duty-extra-counts">{unmatched_rows}</ul><a class="button duty-extra-action" href="mailto:ploufraganhandball@gmail.com?subject=Volontaire%20permanence%20de%20salle">Je me propose <span aria-hidden="true">↗</span></a></section>') if unmatched_rows else ''
+
+    pages[duty_slug] = page(
+        duty_slug, f"Permanences de salle · {duty_label}",
+        heading("PERMANENCES <em>À DOMICILE</em>", "Permanences à domicile",
+                f"{duty_label} : responsables des prochains week-ends de permanence pour les matchs à domicile de toutes les équipes.",
+                back=(f"{duty_group}.html", duty_label)) +
+        f'<section class="container duty-page after-heading"><div class="duty-month-grid">{"".join(senior_duty_sections)}</div>{unmatched_block}<div class="duty-note" data-reveal><strong>À SAVOIR</strong><p>Pour chaque date : table de marque, ordinateur et responsable de salle. Buvette ou arbitrage selon les besoins. Le nombre de matchs à domicile vient des calendriers FFHandball et se complète à mesure de leur publication. Les week-ends terminés disparaissent automatiquement.</p></div></section>',
+        "equipes")
 
 locations='''<div class="location-list" id="salles"><article data-reveal><span class="location-number">01</span><div><h2>HOËDIC / BELLE-ÎLE</h2><p>Complexe sportif du Haut-Champ<br>Allée des Glénan · 22440 Ploufragan</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Complexe+sportif+du+Haut-Champ+All%C3%A9e+des+Gl%C3%A9nan+22440+Ploufragan" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article><article data-reveal><span class="location-number">02</span><div><h2>MARCEL PAUL</h2><p>Complexe sportif Marcel Paul<br>13 rue de Merlet · 22440 Ploufragan</p><p class="muted">Entraînements loisirs · lundi, 20h30–22h</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Complexe+sportif+Marcel+Paul+13+rue+de+Merlet+22440+Ploufragan" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article><article data-reveal><span class="location-number">03</span><div><h2>TRÉGUEUX</h2><p>Salle de motricité de l’école Pasteur</p><p class="muted">Baby Hand · mercredi, 10h–11h</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Salle+de+motricit%C3%A9+de+l%27%C3%A9cole+Pasteur+Tr%C3%A9gueux" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps <span aria-hidden="true">↗</span></a></div></article></div>'''
 training_heading_media = heading_video(
@@ -1752,7 +1765,7 @@ for slug, content in pages.items():
     '<body><p>Le blog du PHB est désormais à l’adresse <a href="blog.html">blog.html</a>.</p></body></html>',
     encoding="utf-8",
 )
-public_slugs = [slug for slug in pages if slug not in {"404", "permanences-seniors-masculins"}]
+public_slugs = [slug for slug in pages if slug != "404" and not slug.startswith("permanences-")]
 sitemap_urls = ''.join(
     f'<url><loc>{SITE_URL if slug == "index" else SITE_URL + slug + ".html"}</loc></url>'
     for slug in public_slugs
