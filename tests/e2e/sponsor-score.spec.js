@@ -8,3 +8,13 @@ for(const width of [320,390,430,1440])test(`scores séparés et partenariat lisi
  await expect(page.locator('.sponsor-formula')).toHaveCount(3);expect(await page.locator('main').innerText()).not.toMatch(/\d+\s*€/);expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
  await page.screenshot({path:`reports/sponsor-updated-${width}.png`,fullPage:true});
 });
+
+for (const width of [390,1440,2560]) test(`partenariat : captures intégrées et maillots visibles ${width}`,async({page})=>{
+ await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/devenir-partenaire.html');await page.evaluate(()=>document.fonts.ready);
+ await expect(page.locator('.sponsor-maillot')).toContainText('SPONSORS MAILLOTS');await expect(page.locator('.sponsor-maillot')).toContainText('échauffement');
+ await expect(page.locator('.sponsor-formula').nth(0)).toContainText('Hœdic');await expect(page.locator('.sponsor-formula').nth(1)).toContainText('deux ballons');await expect(page.locator('.sponsor-formula').nth(1)).toContainText('coup d’envoi');await expect(page.locator('.sponsor-formula').nth(2)).toContainText('offerts');
+ await expect(page.locator('.sponsor-mecenat')).toContainText('60 %');await expect(page.locator('.sponsor-mecenat')).toContainText('dons éligibles');await expect(page.locator('.sponsor-mecenat a')).toHaveAttribute('href','https://www.impots.gouv.fr/professionnel/dons-et-reduction-dimpot');await expect(page.locator('.sponsor-steps li')).toHaveCount(3);
+ if(width>=1440){expect((await page.locator('.sponsor-hero-layout').boundingBox()).height).toBeLessThan(420);expect((await page.locator('.sponsor-proof').boundingBox()).height).toBeLessThan(130);expect((await page.locator('.sponsor-maillot-row').boundingBox()).y).toBeLessThan(750);expect((await page.locator('.sponsor-page').boundingBox()).width).toBeLessThanOrEqual(1120);}
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+ await page.screenshot({path:`reports/sponsor-redesign-${width}.png`,fullPage:true});
+});
