@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T09:24:47.628039+00:00",
+  "updatedAt": "2026-10-07T15:35:30.329339+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -416,30 +416,30 @@
       "standings": [
         {
           "position": 1,
+          "team": "PLOEUC HAND 2",
+          "points": 10,
+          "played": 4,
+          "club": false
+        },
+        {
+          "position": 2,
           "team": "BAIE D'ARMOR HB - SG2",
           "points": 9,
           "played": 3,
           "club": false
         },
         {
-          "position": 2,
+          "position": 3,
           "team": "GUINGAMP HANDBALL 3",
           "points": 8,
           "played": 3,
           "club": false
         },
         {
-          "position": 3,
+          "position": 4,
           "team": "USMB LOUARGAT",
           "points": 7,
           "played": 3,
-          "club": false
-        },
-        {
-          "position": 4,
-          "team": "PLOEUC HAND 2",
-          "points": 10,
-          "played": 4,
           "club": false
         },
         {
