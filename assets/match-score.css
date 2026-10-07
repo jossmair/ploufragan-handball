@@ -1,0 +1,4 @@
+/* Reserve a real gap around the separator, including italic digit overhang. */
+body :is(.match-score,.season-result-score){display:flex;align-items:center;justify-content:center;gap:.18em;white-space:nowrap;font-variant-numeric:tabular-nums}
+body :is(.match-score,.season-result-score)>span:not(.sr-only){flex:0 0 auto;min-width:0;margin:0;padding-inline:.05em;text-align:center}
+body :is(.match-score,.season-result-score)>i{flex:0 0 auto;margin:0;font-size:.45em;font-style:normal;line-height:1;color:#999}
