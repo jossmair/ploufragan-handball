@@ -1,0 +1,2 @@
+img[src*="legendes/guigui-preview.webp"]{clip-path:inset(.45% .6% round 6% / 4%)}
+body .home-news-grid .home-news-image img[src*="legendes/guigui-preview.webp"]{width:auto;max-width:100%;height:100%;aspect-ratio:2/3;margin:auto;object-fit:contain}
