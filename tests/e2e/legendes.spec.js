@@ -8,6 +8,7 @@ test('nine album slots, three cards reveal and enlarge within their album',async
  const slots=await page.locator('.legend-card').evaluateAll(cards=>cards.map(c=>c.getAttribute('style')));expect(new Set(slots).size).toBe(3);
  const card=page.locator('.legend-card').first();await card.click();await expect(card).toHaveAttribute('aria-pressed','true');await expect(card).toHaveClass(/is-revealed/);
  await card.click();await expect(page.locator('.legend-zoom')).toBeVisible();await expect(page.locator('.legend-zoom img')).toHaveAttribute('src',/pierrot/);
+ const image=page.locator('.legend-zoom img');await image.evaluate(i=>i.decode());const bounds=await image.boundingBox();expect(bounds.width/bounds.height).toBeCloseTo(2/3,2);
  await page.locator('.legend-zoom button').click();await expect(page.locator('.legend-zoom')).not.toBeVisible();await expect(card).toBeFocused();
  expect((await new AxeBuilder({page}).analyze()).violations).toEqual([]);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
