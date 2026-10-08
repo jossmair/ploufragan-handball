@@ -626,7 +626,7 @@ def finalize_article_document(article, body):
     schema_json = json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     extra_head = f'<meta property="article:published_time" content="{article["date"]}"><script type="application/ld+json">{schema_json}</script>'
     if article.get('layout') == 'legends':
-        extra_head += '<link rel="stylesheet" href="assets/legendes.css?v=20261008-1"><script src="assets/legendes.js?v=20261008-1" defer></script>'
+        extra_head += '<link rel="stylesheet" href="assets/legendes.css?v=20261008-3"><script src="assets/legendes.js?v=20261008-2" defer></script>'
     document = page(
         f"articles/{slug}", article["title"], body, active="blog",
         description=article["meta_description"], page_title=article["meta_title"],
@@ -1755,7 +1755,7 @@ pages["mon-phb"] = page(
     build_dashboard(CATEGORIES, RESULTS, ARTICLES, gallery_hub_entries, TEAM_DUTIES, GALLERY_PREVIEWS, personal_panini, YOUTH_GALLERIES, GALLERIES),
     active="mon-phb",
     description="Composez votre espace Mon PHB : vos équipes, prochains matchs, résultats, photos, entraînements et permanences. Sans compte, vos choix sont mémorisés sur votre navigateur.",
-    extra_head='<link rel="stylesheet" href="assets/mon-phb.css?v=20261008-2"><link rel="stylesheet" href="assets/mon-phb-space.css?v=20261008-2"><link rel="stylesheet" href="assets/mon-phb-studio.css?v=20261008-3"><link rel="stylesheet" href="assets/legendes.css?v=20261008-1"><script src="assets/mon-phb.js?v=20261008-3" defer></script><script src="assets/mon-phb-viewer.js?v=20261008-4" defer></script><script src="assets/mon-phb-studio.js?v=20261008-3" defer></script><script src="assets/legendes.js?v=20261008-1" defer></script>',
+    extra_head='<link rel="stylesheet" href="assets/mon-phb.css?v=20261008-2"><link rel="stylesheet" href="assets/mon-phb-space.css?v=20261008-2"><link rel="stylesheet" href="assets/mon-phb-studio.css?v=20261008-3"><link rel="stylesheet" href="assets/legendes.css?v=20261008-3"><script src="assets/mon-phb.js?v=20261008-3" defer></script><script src="assets/mon-phb-viewer.js?v=20261008-4" defer></script><script src="assets/mon-phb-studio.js?v=20261008-3" defer></script><script src="assets/legendes.js?v=20261008-2" defer></script>',
 )
 
 legal = '''<section class="container section after-heading legal-content"><div class="information-panel"><h2>ÉDITEUR DU SITE</h2><p>Ploufragan Handball, association déclarée. SIREN : 534 810 460 · RNA : W224002757.</p><p>Siège social : Pôle associatif, 22 rue de la Mairie, 22440 Ploufragan.</p><p>Directeur de la publication : Josselin Mear.</p><p>Contact : <a href="mailto:ploufraganhandball@gmail.com">ploufraganhandball@gmail.com</a> · <a href="tel:+33636618800">06 36 61 88 00</a>.</p><p>Lieu d’activité : complexe sportif du Haut-Champ, allée des Glénan, 22440 Ploufragan.</p></div><div class="information-panel"><h2>HÉBERGEMENT</h2><p>Site publié avec GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, États-Unis. Le nom de domaine est géré via OVHcloud.</p><p><a href="https://docs.github.com/fr/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">Informations GitHub Pages ↗</a></p></div><div class="information-panel"><h2>CONTENUS</h2><p>Textes, photographies et logos sont utilisés pour présenter les activités du club et de ses partenaires. Pour toute question relative à un contenu ou à un droit à l’image, contactez l’association.</p></div></section>'''

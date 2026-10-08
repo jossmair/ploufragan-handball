@@ -2,3 +2,17 @@
 @keyframes legend-starlight{0%{opacity:0;transform:scale(.2) rotate(-30deg)}35%{opacity:1;transform:scale(1.5) rotate(20deg)}100%{opacity:0;transform:scale(2.5) rotate(80deg)}}@keyframes legend-shine{0%{opacity:0;transform:translateX(-80%)}30%{opacity:.8}100%{opacity:0;transform:translateX(80%)}}
 @media(max-width:700px){.legends-article .article-heading{padding-top:22px}.legends-article .container{width:calc(100% - 24px)}.legends-article h1{font-size:2.65rem}.legends-intro{font-size:.85rem}.legends-toolbar{padding:12px 14px;font-size:.67rem}.legends-toolbar strong{font-size:1.25rem}.legends-instruction,.legends-caption{font-size:.7rem;margin:12px 0}.legend-card,.legend-face,.legend-card::after{border-radius:6px}.legend-hint{font-size:.5rem;bottom:3px;padding:2px 5px}.legend-spark{font-size:2rem}.legends-board{border-radius:8px}.legend-zoom img{border-radius:10px}}
 @media(prefers-reduced-motion:reduce){.legend-turn{transition:none}.legend-spark,.legend-card::after{animation:none!important;display:none}}
+
+/* Identical portrait frames; the original artwork stays untouched. */
+.legend-card{background:transparent;box-shadow:none;border-radius:6% / 4%}
+.legend-face{background:transparent;border-radius:6% / 4%;overflow:visible}
+.legend-face img,.legend-zoom img,.legends-nojs img{clip-path:inset(.45% .6% round 6% / 4%)}
+.legend-face img{object-fit:fill}
+.legend-card.is-revealed{box-shadow:none;filter:drop-shadow(0 0 8px #e4ba6355)}
+.legend-zoom img{border-radius:0;box-shadow:none;filter:drop-shadow(0 0 24px #e4ba6333)}
+.legend-empty{position:absolute;left:var(--slot-x);top:var(--slot-y);width:var(--slot-w);height:var(--slot-h);display:grid;place-items:center;border:1px solid #b6b6bc55;border-radius:6% / 4%;background:linear-gradient(135deg,#b4b4b422,#27272b55);color:#c2c2c8}
+.legend-empty span{font:700 .8rem var(--display);text-transform:uppercase;letter-spacing:.08em}
+@media(max-width:700px){.legend-card,.legend-face{border-radius:6% / 4%}.legend-empty span{font-size:.45rem}}
+
+.legends-toolbar{display:block;padding:14px 0;margin:0;text-align:center;border:0;border-radius:0;background:transparent;color:#fff;font:800 italic clamp(1.3rem,3vw,2rem)/1.3 var(--display);text-wrap:balance}
+.legends-toolbar em{color:var(--red);font-style:inherit}
