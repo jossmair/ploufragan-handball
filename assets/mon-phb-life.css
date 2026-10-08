@@ -11,3 +11,18 @@
 @media(max-width:700px){.phb-club-logo{width:30px!important;height:30px!important}.phb-match-view .phb-club-logo{width:48px!important;height:48px!important}.phb-table-wrap th .phb-club-logo{margin-right:5px}}
 
 .phb-card-tools [data-studio-remove]{display:grid;place-items:center}
+
+.phb-match .phb-match-clubs{display:grid;gap:8px;margin:10px 0}
+.phb-match .phb-club-row{display:flex;align-items:center;gap:10px;color:inherit}
+.phb-match .phb-club-row>span{color:inherit;min-width:0}
+.phb-match .phb-club-logo{width:32px!important;height:32px!important;margin:0}
+.phb-match .phb-score{flex-shrink:0;white-space:nowrap;align-self:center}
+
+.phb-match .phb-club-row{display:grid;grid-template-columns:32px minmax(0,1fr) auto;color:#fff!important;min-height:36px}
+.phb-match .phb-club-row:not(:has(img)){grid-template-columns:minmax(0,1fr) auto}
+.phb-match .phb-club-row>span{color:#fff!important}
+.phb-team-score{font:800 italic 1.8rem/1 var(--display);min-width:40px;text-align:right}
+.phb-score-own{color:var(--red)!important}.phb-score-opponent{color:#fff!important}
+.phb-ranking-list>button>b{min-width:66px;flex-shrink:0;line-height:1.1}
+.phb-ranking-list .phb-rank-total{display:block;font:600 .7rem/1.4 var(--body);color:#c7c7d3;margin-top:4px}
+.phb-ranking-list>button strong{color:#fff!important}

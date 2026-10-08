@@ -25,7 +25,7 @@
     if(view.kind==='team'){const result=teamView(view.id);if(!result)return;({title,html}=result);}
     if(view.kind==='standings'){const t=data.standings.find(t=>t.team===view.id);if(!t)return;title='Classement · '+t.label;html=table(t)+'<p class="phb-data-note">Source : FFHandball. Les données sont actualisées avec le site.</p>';}
     if(view.kind==='match'){const m=data.matches.find(m=>m.id===view.id);if(!m)return;title=m.category;
-      const score=m.played?(m.homeScore==='FO'||m.awayScore==='FO'?'Forfait':`${esc(m.homeScore??'—')} <i>–</i> ${esc(m.awayScore??'—')}`):time(m.date);
+      const score=m.played?(m.homeScore==='FO'||m.awayScore==='FO'?'Forfait':`<span class="${m.clubSide==='home'?'phb-score-own':'phb-score-opponent'}">${esc(m.homeScore??'—')}</span> <i>–</i> <span class="${m.clubSide==='away'?'phb-score-own':'phb-score-opponent'}">${esc(m.awayScore??'—')}</span>`):time(m.date);
       html=`<div class="phb-match-view"><p class="eyebrow">${date(m.date)} · ${m.played?'RÉSULTAT OFFICIEL':'PROCHAIN RENDEZ-VOUS'}</p><div class="phb-match-versus"><strong>${crest(m.homeLogo)}${esc(m.home)}</strong><b>${score}</b><strong>${crest(m.awayLogo)}${esc(m.away)}</strong></div><p>${m.clubSide==='home'?'Le PHB reçoit à domicile.':'Le PHB joue à l’extérieur.'}</p><p>Horaire publié : ${time(m.date)}</p><small>Source : FFHandball${data.updatedAt?' · vérifiée le '+date(data.updatedAt):''}. Les horaires peuvent évoluer avant le match.</small></div>${action('team',m.team,'Mon collectif')}`;
     }
     if(view.kind==='news'){const a=data.news.find(a=>a.id===view.id);if(!a)return;title=a.title;
