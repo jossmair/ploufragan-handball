@@ -1,0 +1,7 @@
+{
+  "cards": [
+    {"name": "Pierrot", "role": "Fondateur du club en 2011", "front": "assets/legendes/pierrot.webp", "slot": 5, "release": "2026-10-08"},
+    {"name": "Jay", "role": "Entraîneur depuis 2015", "front": "assets/legendes/jay.webp", "slot": 1, "release": "2026-10-08"},
+    {"name": "Guigui", "role": "Au club depuis 2011", "front": "assets/legendes/guigui.webp", "slot": 7, "release": "2026-10-08"}
+  ]
+}

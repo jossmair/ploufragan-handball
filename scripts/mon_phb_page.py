@@ -3,6 +3,7 @@ import json
 from html import escape
 import unicodedata
 from pathlib import Path
+from scripts.legends_album import album_html
 
 MODULES = [
     ('upcoming', 'Prochains matchs', 'Les prochains rendez-vous de vos équipes.', '01'),
@@ -49,7 +50,7 @@ def build_dashboard(categories, results, articles, galleries, duties, previews, 
             article_teams = ['seniors-masculins-1', 'seniors-masculins-2']
         news.append({'id': a['slug'], 'title': a['title'], 'date': a['date'], 'intro': a['intro'],
                      'image': a.get('image'), 'content': a.get('content', []), 'timeline': a.get('timeline', []), 'closing': a.get('closing', []),
-                     'url': f"articles/{a['slug']}.html", 'teams': article_teams})
+                     'url': f"articles/{a['slug']}.html", 'teams': article_teams, 'album': album_html() if a.get('layout') == 'legends' else ''})
     photos = []
     for entry in galleries:
         url = entry['href']

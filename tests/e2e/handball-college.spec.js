@@ -19,7 +19,7 @@ test('option au collège : informations scolaires, encadrant et accès direct', 
   await expect(page.locator('.college-schedule > div').nth(2)).toContainText('LE MARDI');
   await expect(page.locator('.college-coach h2')).toHaveText('DAVID IMBAUD');
   const links = await page.locator('#navigation > a, #navigation > .nav-group > .nav-group-heading > a').evaluateAll(items => items.map(item => item.getAttribute('href')));
-  expect(links).toEqual(['/', 'club.html', 'equipes.html', 'entrainements.html', 'resultats.html', 'boutique.html', 'contact.html', 'inscriptions.html']);
+  expect(links).toEqual(['/', 'club.html', 'equipes.html', 'entrainements.html', 'resultats.html', 'boutique.html', 'contact.html', 'mon-phb.html', 'inscriptions.html']);
   await expect(page.locator('#nav-sub-entrainements a[href="handball-college.html"]')).toHaveAttribute('aria-current', 'page');
   await expect(page.locator('[data-nav-group]').filter({ has: page.locator('[aria-controls="nav-sub-entrainements"]') })).toHaveClass(/is-active/);
   const audit = await new AxeBuilder({ page }).analyze();

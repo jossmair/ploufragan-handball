@@ -386,5 +386,28 @@
         "url": "https://www.ploufragan.fr/sites/default/files/atoms/files/proces-verbal_du_cm_du_12_novembre_2025.pdf"
       }
     ]
+  },
+  {
+    "slug": "album-des-legendes",
+    "layout": "legends",
+    "title": "L’album des légendes",
+    "date": "2026-10-08",
+    "author": "Ploufragan Handball",
+    "categories": [
+      "Club",
+      "Légendes"
+    ],
+    "image": "assets/legendes/album-preview.webp",
+    "image_alt": "La première planche de l’album des légendes du Ploufragan Handball",
+    "intro": "Ils font partie de notre histoire. Découvrez les visages qui ont marqué le PHB dans une collection de cartes à révéler, une légende après l’autre.",
+    "content": [
+      "Pierrot, fondateur du club en 2011 ; Jay, entraîneur depuis 2015 ; Guigui, au club depuis 2011 : trois parcours, trois premières cartes pour ouvrir l’album des légendes.",
+      "Chaque vendredi, une nouvelle carte viendra compléter la collection. La première planche compte neuf emplacements : trois sont déjà occupés, les six autres attendent leurs légendes. Revenez découvrir la suite !"
+    ],
+    "meta_title": "L’album des légendes | Ploufragan Handball",
+    "meta_description": "Révélez les premières cartes légendes du PHB : Pierrot, Jay et Guigui. Un album interactif à compléter avec une nouvelle carte chaque vendredi.",
+    "og_image": "assets/legendes/album.webp",
+    "og_width": 1055,
+    "og_height": 1491
   }
 ]

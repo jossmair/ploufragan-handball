@@ -6,6 +6,8 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
 BUDGETS = {
+    "CSS album légendes": (ASSETS / "legendes.css", 8_000),
+    "JavaScript album légendes": (ASSETS / "legendes.js", 2_000),
     "CSS accès Mon PHB": (ASSETS / "mon-phb-entry.css", 1_000),
     "CSS Mon PHB": (ASSETS / "mon-phb.css", 15_000),
     "CSS vues Mon PHB": (ASSETS / "mon-phb-space.css", 17_000),
