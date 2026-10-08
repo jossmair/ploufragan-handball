@@ -6,6 +6,9 @@
   "display": "standalone",
   "background_color": "#101012",
   "theme_color": "#101012",
+  "shortcuts": [
+    {"name": "Mon PHB", "short_name": "Mon PHB", "description": "Retrouver mes équipes et mon espace personnalisé", "url": "/mon-phb.html", "icons": [{"src": "assets/favicon-192.png", "sizes": "192x192", "type": "image/png"}]}
+  ],
   "icons": [
     {
       "src": "assets/favicon-192.png",

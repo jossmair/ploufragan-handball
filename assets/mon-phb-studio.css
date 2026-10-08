@@ -1,0 +1,104 @@
+/* The personal dashboard has its own calm canvas, within the PHB identity. */
+body[data-page="mon-phb"] .site-texture{opacity:1}
+body[data-page="mon-phb"] .watermark{opacity:.075}
+body[data-page="mon-phb"] .site-header{background:#0a0a0e}
+.phb-space{max-width:1180px!important;padding-top:18px!important}
+.phb-hero{padding:30px 0 24px;border:0;align-items:flex-start}
+.phb-hero h1{font-size:clamp(3.2rem,5vw,4.5rem);letter-spacing:-1px;margin:12px 0}
+.phb-hero .eyebrow{color:#a6a6b5;letter-spacing:2px;font-size:.62rem}
+.phb-hero-intro{font-size:.9rem;color:#b6b6c3;margin:12px 0 18px}
+.phb-hero-actions{padding-top:30px;text-align:right}
+.phb-space .button{clip-path:none;border-radius:13px;transition:background .2s,transform .2s}
+.phb-hero-actions .button{background:#ed0719;border:0;padding:13px 22px}
+.phb-hero-actions .button:hover{background:#ca0615;transform:translateY(-2px)}
+.phb-local-note{font-size:.67rem;color:#aaaab9}
+.phb-team-pills{gap:8px}
+.phb-team-pills button,.phb-team-pills>span{border-radius:30px;background:#1b1b24;border:1px solid #ffffff14;font-size:.72rem;padding:7px 13px}
+.phb-team-pills button:hover{background:#2a1720;border-color:#ed071966}
+.phb-overview{display:flex;gap:25px;align-items:center;flex-wrap:wrap;padding:17px 22px;border:1px solid #ffffff0f;border-radius:17px;background:#14141b;color:#aaaab8;font-size:.73rem;margin-bottom:24px}
+.phb-overview>div:first-child{margin-right:auto;color:#fff;display:flex;align-items:center;gap:9px;font-weight:600}
+.phb-overview strong{font-size:.9rem;color:#fff;margin-right:5px;font-weight:700}
+.phb-overview-dot{width:7px;height:7px;background:var(--red);border-radius:50%;box-shadow:0 0 0 4px #ed071916}
+.phb-studio-bar{display:flex;align-items:center;gap:18px;margin-bottom:4px;flex-wrap:wrap}
+.phb-studio-switch{display:flex;gap:4px;background:#15151d;border:1px solid #ffffff12;border-radius:14px;padding:4px}
+.phb-studio-bar button{border:0;cursor:pointer;font:600 .75rem var(--body);border-radius:10px;padding:10px 14px;color:#bcbcca;background:none}
+.phb-studio-switch button[aria-pressed=true]{background:#30303c;color:#fff;box-shadow:0 3px 8px #0003}
+.phb-studio-switch span{margin-left:5px}
+.phb-studio-hint{font-size:.69rem;color:#aaaabb;flex:1}
+.phb-studio-bar .phb-add-module{border:1px solid #ffffff25;color:#fff;background:#181820}
+.phb-studio-bar .phb-add-module:hover{border-color:#ffffff55;background:#252530}
+.phb-dashboard{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1px;row-gap:0;column-gap:22px;align-items:start;padding-top:22px}
+.phb-module,.phb-dashboard.is-compact .phb-module{border:1px solid #ffffff12;border-radius:22px;background:linear-gradient(145deg,#1c1c25,#15151d);box-shadow:0 8px 25px #0002;min-width:0;height:auto;transition:border-color .2s,box-shadow .2s;align-self:start}
+.phb-module:hover{border-color:#ffffff27;box-shadow:0 12px 32px #0003}
+.phb-module[data-module=upcoming]{background:linear-gradient(120deg,#2a141c,#1b1822 65%);border:1px solid #ed071933;grid-column:auto}
+.phb-module[data-module].is-wide{grid-column:1/-1}
+.phb-module[data-module=upcoming]:not(.is-wide) .phb-match-list{display:block}
+.phb-module[data-module=upcoming]:not(.is-wide) .phb-match{flex-direction:row;align-items:center;border-right:0;border-bottom:1px solid #ffffff12;padding:14px 0;gap:12px}
+.phb-module[data-module=upcoming]:not(.is-wide) .phb-score{font-size:2rem}
+.phb-module>header,.phb-dashboard.is-compact .phb-module>header{padding:23px 24px 19px;gap:12px;align-items:center;flex-wrap:wrap}
+.phb-module>header>div:first-of-type{flex:1;min-width:0}
+.phb-module h2{font:700 1.03rem/1.3 var(--body);font-style:normal;letter-spacing:-.2px;text-transform:none;margin:0}
+.phb-module>header small{display:none}
+.phb-module-icon{display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border-radius:12px;background:#ffffff06;color:#d6d6e2;border:1px solid #ffffff0a}
+.phb-module[data-module=upcoming] .phb-module-icon{background:#ed07191c;color:#ff5965;border-color:#ed071923}
+.phb-module-icon svg{width:19px;height:19px}
+.phb-module>header .phb-expand{width:32px;height:32px;background:#ffffff03;border:0;color:#a8a8b8}
+.phb-module-body,.phb-dashboard.is-compact .phb-module-body{padding:0 24px 22px;flex:0 0 auto}
+.phb-module>footer{padding:15px 24px;background:#ffffff02;border-color:#ffffff0b}
+.phb-module>footer>button{color:#c7c7d3;font-size:.71rem}
+.phb-module[data-module=upcoming] .phb-match{padding:9px 20px;gap:20px}
+.phb-module[data-module=upcoming] .phb-match small{font-size:.66rem}
+.phb-module[data-module=upcoming] .phb-score{font-size:2.75rem}
+.phb-match small{color:#ff8490;font-size:.65rem}
+.phb-match strong{font-size:.81rem}
+.phb-match{padding:15px 0}
+.phb-ranking-list>button{padding:14px 0}
+.phb-ranking-list>button>b{color:#ff5965}
+.phb-photo-grid,.phb-team-grid{gap:14px}
+.phb-album-cover,.phb-team-grid>button>div,.phb-news-cover{border-radius:13px;overflow:hidden}
+.phb-photo-grid img,.phb-team-grid img{height:170px;background:#101016}
+.phb-news-cover{height:190px!important;background:#101016}
+.phb-photo-grid strong,.phb-team-grid strong{font-size:.76rem;margin-top:12px}
+.phb-album-cover>span{border-radius:6px;margin:8px;font-size:.58rem}
+.phb-training-list article{padding:0 0 15px;margin-bottom:15px}
+.phb-training-list article:last-child{margin-bottom:0;border:0;padding-bottom:0}
+.phb-training-list p{font-size:.74rem}
+.phb-training-list h3{font-size:.84rem}
+.phb-empty{min-height:155px;align-items:center;text-align:center;border:1px dashed #ffffff16;border-radius:14px;background:#ffffff02;padding:22px;gap:9px}
+.phb-empty>span{color:#ff5965}.phb-empty p{font-size:.81rem}.phb-empty small{color:#a6a6b7;font-size:.66rem}
+.phb-panini-grid .senior-player-card{animation:none;transform:none;opacity:1}
+.phb-card-tools{display:none;width:100%;gap:6px;border-top:1px solid #ffffff13;padding-top:12px}
+.is-organizing .phb-card-tools{display:flex}
+.phb-module>header .phb-card-tools button{width:38px;height:34px;border-radius:9px;background:#ffffff06;border:1px solid #ffffff18;font:500 1.1rem var(--body)}
+.phb-card-tools button:first-child{margin-right:auto;cursor:grab;touch-action:none}
+.phb-card-tools button:hover{background:#ffffff14!important}
+.phb-card-tools button:disabled{opacity:.3;cursor:default}
+.phb-module.is-lifted{border-color:#ff5965;opacity:.55;box-shadow:0 0 0 2px #ed071933}
+.phb-module.is-drop-target{border:2px dashed #ff5965;background:#331820}
+.is-dragging{user-select:none}
+.phb-studio-toast{position:fixed;z-index:80;bottom:85px;left:50%;transform:translateX(-50%);max-width:calc(100% - 32px);display:flex;align-items:center;gap:22px;background:#f0f0f5;color:#15151c;border-radius:14px;padding:13px 18px;box-shadow:0 12px 50px #0007;font-size:.78rem}
+.phb-studio-toast button{color:#b10010;background:none;border:0;font-weight:700;cursor:pointer}
+.phb-studio-toast[hidden],.phb-overview[hidden],.phb-studio-bar[hidden]{display:none!important}
+.phb-update{grid-column:1/-1;grid-row-end:auto;align-self:start;margin-top:5px;font-size:.65rem;color:#b0b0bd}
+.phb-dashboard.is-compact .phb-module>header{padding:16px 20px 13px}
+.phb-dashboard.is-compact .phb-module-body{padding:0 20px 16px}
+.phb-dashboard.is-compact :is(.phb-photo-grid img,.phb-team-grid img){height:125px}
+.phb-dashboard.is-compact .phb-news-cover{height:145px!important}
+.phb-bottom{border-color:#ffffff12;margin-top:25px}
+.phb-welcome{padding:30px 0 55px}.phb-preview{border-radius:24px;transform:rotate(-1deg);border:1px solid #ffffff20;padding:30px;box-shadow:0 25px 70px #0004;background:linear-gradient(135deg,#2b141e,#181820)}
+.phb-editor,.phb-reset-dialog,.phb-viewer{border-radius:22px;border:1px solid #ffffff22;background:#15151d}
+.phb-dialog-close,.phb-viewer>header>button{border-radius:50%;background:#ffffff04}
+.phb-choice,.phb-module-choice,.phb-order li{border-radius:12px}
+.phb-choice>b,.phb-module-choice>b{border-radius:6px}
+.phb-order li{margin-bottom:6px;background:#ffffff03;border:1px solid #ffffff12}
+.phb-order button,.phb-density select{border-radius:8px}
+.phb-viewer .phb-view-content{scrollbar-width:thin}
+.phb-viewer .phb-gallery-main img,.phb-viewer .phb-reading>img{border-radius:12px}
+.phb-gallery-dots button,.phb-gallery-main>button,.phb-duty-timeline article{border-radius:10px}
+@media(max-width:700px){
+ .phb-space{width:calc(100% - 28px)!important;padding-top:10px!important}.phb-hero{padding:20px 4px;gap:12px}.phb-hero h1{font-size:3.2rem}.phb-hero-actions{padding-top:3px;align-items:center}.phb-hero-actions .button{font-size:.82rem;padding:12px 17px}.phb-local-note{max-width:none;font-size:.63rem}
+ .phb-overview{gap:12px 18px;padding:16px;margin-bottom:19px;border-radius:16px;font-size:.65rem}.phb-overview>div:first-child{width:100%}.phb-overview strong{font-size:.81rem}
+ .phb-studio-bar{gap:10px;justify-content:space-between}.phb-studio-hint{order:3;flex:0 0 100%;font-size:.66rem;padding:0 3px}.phb-studio-bar button{padding:10px;font-size:.66rem}.phb-studio-switch{padding:3px;border-radius:12px}.phb-studio-bar .phb-add-module{padding:13px 10px}
+ .phb-dashboard{display:grid;grid-template-columns:1fr;grid-auto-rows:auto;gap:17px;padding-top:16px}.phb-module,.phb-dashboard.is-compact .phb-module{border-radius:19px}.phb-module[data-module].is-wide{grid-column:auto}.phb-module>header,.phb-dashboard.is-compact .phb-module>header{padding:19px 17px 16px;gap:9px}.phb-module h2{font-size:.94rem}.phb-module-icon{width:32px;height:32px;border-radius:10px}.phb-module-body,.phb-dashboard.is-compact .phb-module-body{padding:0 17px 18px}.phb-module>footer{padding:14px 17px}.phb-module[data-module=upcoming] .phb-match{padding:15px 0;gap:12px}.phb-module[data-module=upcoming] .phb-score{font-size:2rem}.phb-photo-grid img,.phb-team-grid img{height:135px}.phb-news-cover{height:175px!important}.phb-card-tools [data-studio-size]{display:none}.phb-studio-toast{bottom:82px;font-size:.7rem;gap:16px;padding:12px 14px;width:max-content}.phb-viewer{border-radius:18px}.phb-preview{transform:none}.phb-update{margin-top:0}
+}
+@media(prefers-reduced-motion:reduce){.phb-space *{transition:none!important;animation:none!important}}
