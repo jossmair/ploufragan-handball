@@ -67,7 +67,7 @@ def build_dashboard(categories, results, articles, galleries, duties, previews, 
         photos.append({'id': str(len(photos)), 'team': key, 'url': url, 'title': entry['title'], 'images': images,
                        'image': preview.get('480', {}).get('src', entry['cover']), 'date': entry.get('date', '')})
     payload = {'teams': teams, 'matches': matches, 'standings': standings, 'news': news,
-               'photos': photos, 'duties': duties, 'modules': MODULES,
+               'photos': photos, 'duties': {key: {'dates': value['dates']} for key, value in duties.items()}, 'modules': MODULES,
                'panini': panini, 'updatedAt': results.get('updatedAt'), 'season': results['season']}
     encoded = json.dumps(payload, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     options = ''.join(f'<label class="phb-choice"><input type="checkbox" name="team" value="{key}"><span>{escape(categories[key]["label"])}</span><b aria-hidden="true">✓</b></label>' for key in keys)
