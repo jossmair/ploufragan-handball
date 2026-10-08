@@ -36,11 +36,12 @@
   function matches(played) {
     return data.matches.filter(m => follows(m.team) && (played ? m.played : !m.played && new Date(m.date) >= new Date())).sort((a,b) => played ? new Date(b.date)-new Date(a.date) : new Date(a.date)-new Date(b.date));
   }
+  const crest=(src,name)=>src?`<img class="phb-club-logo" src="${esc(src)}" alt="${esc(name)}" width="40" height="40" loading="lazy" decoding="async">`:'';
   function matchRows(list,scores=false) {
     return `<div class="phb-match-list">${list.map(m=>{
       const opponent=m.clubSide==='home'?m.away:m.home, own=m.clubSide==='home'?m.homeScore:m.awayScore, their=m.clubSide==='home'?m.awayScore:m.homeScore;
       const score=scores?(own==='FO'||their==='FO'?'Forfait':own===null||their===null?'En attente':`${esc(own)} <i>–</i> ${esc(their)}`):time(m.date);
-      return viewButton('match',m.id,`<div><small>${esc(m.category)} · ${day(m.date)}</small><strong>PHB <span>vs</span> ${esc(opponent)}</strong><span class="phb-match-place">${m.clubSide==='home'?'À domicile':'À l’extérieur'}</span></div><b class="phb-score ${scores&&Number(own)>Number(their)?'is-win':''}">${score}</b><span class="phb-open-hint" aria-hidden="true">↗</span>`,'phb-match');
+      return viewButton('match',m.id,`<div><span class="phb-club-pair">${crest(m.clubSide==='home'?m.homeLogo:m.awayLogo,'Ploufragan Handball')}${crest(m.clubSide==='home'?m.awayLogo:m.homeLogo,opponent)}</span><small>${esc(m.category)} · ${day(m.date)}</small><strong>PHB <span>vs</span> ${esc(opponent)}</strong><span class="phb-match-place">${m.clubSide==='home'?'À domicile':'À l’extérieur'}</span></div><b class="phb-score ${scores&&Number(own)>Number(their)?'is-win':''}">${score}</b><span class="phb-open-hint" aria-hidden="true">↗</span>`,'phb-match');
     }).join('')}</div>`;
   }
   function renderModule(id,expanded=false) {

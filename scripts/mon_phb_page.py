@@ -21,7 +21,7 @@ MODULES = [
 def normalized(value):
     return ''.join(c for c in unicodedata.normalize('NFD', value.lower()) if unicodedata.category(c) != 'Mn')
 
-def build_dashboard(categories, results, articles, galleries, duties, previews, panini, youth_galleries, albums):
+def build_dashboard(categories, results, articles, galleries, duties, previews, panini, youth_galleries, albums, team_logos=None, team_logo_ids=None):
     keys = ['seniors-masculins-1', 'seniors-masculins-2', 'seniors-feminines', 'u18-garcons', 'u15-filles', 'u15-garcons',
             'u13-filles', 'u13-garcons', 'u11-mixte', 'loisirs', 'ecole-de-hand', 'baby-hand']
     labels = {normalized(v['label']): k for k, v in categories.items()}
@@ -35,9 +35,12 @@ def build_dashboard(categories, results, articles, galleries, duties, previews, 
         teams.append({'id': key, 'label': c['label'], 'url': key + '.html',
                       'image': photo.get('srcset', '').split(',')[0].strip().split(' ')[0] or photo.get('src'), 'training': training_config.get('training', []),
                       'staff': training_config.get('staff', {}).get('names', ''), 'intro': c.get('publicIntro', '')})
-    matches = [{**m, 'team': group(m['category'])} for m in results['matches']]
+    logos = {name.casefold(): src for name, src in (team_logos or {}).items()}
+    def logo(name, team_id=None):
+        return 'assets/logo-phb-embleme.webp' if 'ploufragan handball' in name.casefold() else (team_logo_ids or {}).get(str(team_id)) or logos.get(name.casefold())
+    matches = [{**m, 'team': group(m['category']), 'homeLogo': logo(m['home'], m.get('homeTeamId')), 'awayLogo': logo(m['away'], m.get('awayTeamId'))} for m in results['matches']]
     standings = [{'team': group(t['label']), 'label': t['label'], 'pool': t.get('pool', ''),
-                  'ranking': t['ranking'], 'rows': t.get('standings', []), 'position': next((s for s in t.get('standings', []) if s.get('club')), None)}
+                  'ranking': t['ranking'], 'rows': [{**row, 'logo': logo(row['team'])} for row in t.get('standings', [])], 'position': next((s for s in t.get('standings', []) if s.get('club')), None)}
                  for t in results['teams']]
     news = []
     for a in articles:

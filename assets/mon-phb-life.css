@@ -1,0 +1,13 @@
+.phb-module{position:relative;isolation:isolate;background:radial-gradient(ellipse at 100% 0,#ed07190a,transparent 65%),linear-gradient(145deg,#1c1c25,#15151d)!important}
+.phb-module::before{content:'';position:absolute;z-index:-1;pointer-events:none;inset:0;border-radius:inherit;background:linear-gradient(120deg,transparent 65%,#ffffff03 65.2%,transparent 66%),radial-gradient(circle at 95% 85%,transparent 16%,#ffffff05 16.3%,transparent 16.7%);}
+.phb-module[data-module=upcoming],.phb-module[data-module=results]{background:radial-gradient(ellipse at 95% 0,#ed071917,transparent 70%),linear-gradient(145deg,#211921,#15151d)!important}
+.phb-module[data-module=photos]::before,.phb-module[data-module=teams]::before{background:url('logo-phb-embleme.webp') no-repeat 98% 90%/150px;opacity:.045}
+.phb-module[data-module=panini]::before{background:repeating-linear-gradient(125deg,transparent 0 50px,#ffffff04 51px 52px,transparent 53px 85px)}
+.phb-club-pair{display:flex;gap:7px;align-items:center;margin:0 0 10px}
+.phb-club-logo{display:inline-block!important;flex-shrink:0;width:34px!important;height:34px!important;object-fit:contain!important;padding:3px;background:#fff;border:1px solid #ffffff44;border-radius:50%;vertical-align:middle}
+.phb-match-view .phb-club-logo{display:block!important;width:64px!important;height:64px!important;margin:0 auto 14px}
+.phb-table-wrap th .phb-club-logo{width:28px!important;height:28px!important;margin-right:10px}
+.phb-match>div{min-width:0;flex:1}.phb-match>div strong{overflow-wrap:anywhere}
+@media(max-width:700px){.phb-club-logo{width:30px!important;height:30px!important}.phb-match-view .phb-club-logo{width:48px!important;height:48px!important}.phb-table-wrap th .phb-club-logo{margin-right:5px}}
+
+.phb-card-tools [data-studio-remove]{display:grid;place-items:center}

@@ -25,7 +25,7 @@
       const controls=document.createElement('div');controls.className='phb-card-tools';
       const handle=document.createElement('button');handle.type='button';handle.dataset.studioDrag=id;handle.textContent='⠿';handle.setAttribute('aria-label','Déplacer '+name);handle.title='Glisser ou utiliser les flèches';controls.append(handle);
       const size=document.createElement('button');size.type='button';size.dataset.studioSize=id;size.textContent=config.wide?.includes(id)?'↙':'↔';size.setAttribute('aria-label',(config.wide?.includes(id)?'Réduire ':'Élargir ')+name);size.setAttribute('aria-pressed',String(config.wide?.includes(id)));controls.append(size);
-      const remove=document.createElement('button');remove.type='button';remove.dataset.studioRemove=id;remove.textContent='−';remove.setAttribute('aria-label','Retirer '+name);remove.disabled=config.modules.length===1;controls.append(remove);
+      const remove=document.createElement('button');remove.type='button';remove.dataset.studioRemove=id;remove.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/></svg>';remove.setAttribute('aria-label','Retirer '+name);remove.disabled=config.modules.length===1;controls.append(remove);
       card.querySelector('header').append(controls);observer.observe(card);
     });mode(editing);
   });
@@ -42,12 +42,18 @@
     for(const card of board.querySelectorAll('.phb-module')){if(card.dataset.module===drag.id)continue;const r=card.getBoundingClientRect(),d=Math.hypot(Math.max(r.left-x,0,x-r.right),Math.max(r.top-y,0,y-r.bottom));if(d<distance){distance=d;nearest=card;}}
     return nearest;
   }
-  function paintDrag(scroll=true){
+  function paintDrag(scroll=true,now=performance.now()){
     if(!drag?.active)return;
     const d=drag;d.ghost.style.transform=`translate3d(${d.px-d.offsetX}px,${d.py-d.offsetY}px,0)`;
     const card=targetAt(d.px,d.py),target=card&&card.dataset.module!==d.id?card:null;
     if(target!==d.targetCard){d.targetCard?.classList.remove('is-drop-target');target?.classList.add('is-drop-target');d.targetCard=target;d.target=target?.dataset.module||null;}
-    if(scroll){const edge=100,speed=d.py<edge?-Math.min(14,(edge-d.py)/5):d.py>innerHeight-edge?Math.min(14,(d.py-innerHeight+edge)/5):0;if(speed)window.scrollBy(0,speed);dragFrame=requestAnimationFrame(()=>paintDrag());}
+    if(scroll){
+      const viewport=window.visualViewport,top=Math.max(viewport?.offsetTop||0,document.querySelector('.site-header')?.getBoundingClientRect().bottom||0),bottom=Math.min((viewport?.offsetTop||0)+(viewport?.height||innerHeight),document.querySelector('.sponsor-marquee')?.getBoundingClientRect().top||innerHeight),edge=Math.min(160,(bottom-top)/3);
+      const speed=d.py<top+edge?-Math.min(950,Math.max(0,(top+edge-d.py)/edge)*950):d.py>bottom-edge?Math.min(950,Math.max(0,(d.py-bottom+edge)/edge)*950):0;
+      const elapsed=Math.min(40,Math.max(0,now-(d.lastFrame||now)));d.lastFrame=now;
+      if(speed)window.scrollBy({top:speed*elapsed/1000,left:0,behavior:'instant'});
+      dragFrame=requestAnimationFrame(t=>paintDrag(true,t));
+    }
   }
   board.addEventListener('pointerdown',e=>{
     const handle=e.target.closest('[data-studio-drag]');if(!handle||!editing||e.button!==0)return;
