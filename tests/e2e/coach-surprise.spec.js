@@ -1,6 +1,7 @@
 import {test,expect} from '@playwright/test';
 
 test('Nathan cache sa carte secrète dans sa page équipe uniquement',async({page,isMobile})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
  let secretRequests=0;
  page.on('request',request=>{if(request.url().includes('nathan-secret.webp'))secretRequests++;});
  await page.goto('/u18-garcons.html');

@@ -534,6 +534,7 @@ if (scheduleFilter) {
     list.hidden = false;
     trigger.setAttribute('aria-expanded', 'true');
     (options.find(option => option.getAttribute('aria-selected') === 'true') || options[0]).focus();
+
   };
   scheduleFilter.hidden = false;
   trigger.addEventListener('click', () => { if (list.hidden) open(); else close(); });
@@ -575,6 +576,11 @@ function setupContentDropdown(root, optionSelector, applySelection) {
     menu.hidden = false;
     trigger.setAttribute('aria-expanded', 'true');
     (options.find(option => option.getAttribute('aria-selected') === 'true') || options[0]).focus();
+    const safeBottom = (document.querySelector('.sponsor-marquee')?.getBoundingClientRect().top || innerHeight) - 12;
+    const safeTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 12;
+    const rect = menu.getBoundingClientRect();
+    const shift = Math.min(rect.top + Math.min(rect.height, 180) - safeBottom, root.getBoundingClientRect().top - safeTop);
+    if (shift > 0) window.scrollBy({top:shift,behavior:'instant'});
   };
   trigger.addEventListener('click', () => { if (menu.hidden) open(); else close(); });
   trigger.addEventListener('keydown', event => {

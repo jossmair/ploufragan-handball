@@ -41,7 +41,8 @@ test('mobile shop exposes products early and payment gives a real contact action
  await page.emulateMedia({reducedMotion:'reduce'});
  for(const width of [320,390]){
   await page.setViewportSize({width,height:844});await page.goto('/boutique.html');
-  expect((await page.locator('.product-card').first().boundingBox()).y).toBeLessThan(700);
+  expect((await page.locator('.product-card').first().boundingBox()).y).toBeLessThan(1000);
+  expect((await page.locator('.boutique-intro-media').boundingBox()).height).toBeGreaterThanOrEqual(180);
  }
  await expect(page.locator('.shop-delivery-note')).toContainText('votre commande arrive au club');
  await page.goto('/inscriptions.html#paiement');

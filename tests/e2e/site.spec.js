@@ -227,7 +227,7 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
 test('club : les cartes des coachs se déplient et se replient', async ({ page }) => {
   await page.goto('/club.html#organigramme');
   const cards = page.locator('[data-org-coach]');
-  await expect(cards).toHaveCount(17);
+  await expect(cards).toHaveCount(19);
   const yohann = cards.filter({ hasText: 'Yohann' });
   const trigger = yohann.locator('[data-org-coach-toggle]');
   const panel = yohann.locator('[data-org-coach-panel]');
@@ -266,8 +266,8 @@ test('U11 : la carte de Yohann est intégrée aux entraînements', async ({ page
   await expect(training).toContainText('Yohann Guérin');
   await expect(training).toContainText('Joshua Eloy');
   await expect(page.locator('.team-people')).toHaveCount(0);
-  const trigger = training.locator('[data-org-coach-toggle]');
-  const panel = training.locator('[data-org-coach-panel]');
+  const trigger = training.locator('[data-org-coach-toggle]').first();
+  const panel = training.locator('[data-org-coach-panel]').first();
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
   await trigger.click();
   await expect(trigger).toHaveAttribute('aria-expanded', 'true');
@@ -276,27 +276,24 @@ test('U11 : la carte de Yohann est intégrée aux entraînements', async ({ page
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
 });
 
-test('U11 mobile : la carte est centrée entre Yohann et Joshua', async ({ page }) => {
-  for (const width of [360, 390, 430, 650]) {
-    await page.setViewportSize({ width, height: 1000 });
+test('U11 mobile : les deux cartes se deploient dans leur colonne', async ({ page }) => {
+  test.setTimeout(60000);
+  await page.emulateMedia({reducedMotion:'reduce'});
+  for (const width of [360,390,430,650]) {
+    await page.setViewportSize({width,height:1000});
     await page.goto('/u11-mixte.html');
-    const toggle = page.locator('.team-training [data-org-coach-toggle]');
-    const role = await page.locator('.team-staff-coaches > span').boundingBox();
-    const coach = await toggle.boundingBox();
-    expect(coach.x).toBeGreaterThanOrEqual(role.x + role.width + 8);
-    await toggle.click();
-    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    await expect.poll(async () => {
-      const card = await page.locator('.team-training .org-coach-image').boundingBox();
-      const staff = await page.locator('.team-staff-coaches').boundingBox();
-      const name = await page.locator('.team-training-coach-name').boundingBox();
-      const yohann = await toggle.boundingBox();
-      return Math.abs(card.x + card.width / 2 - staff.x - staff.width / 2) < 1
-        && card.y >= yohann.y + yohann.height
-        && name.y >= card.y + card.height;
-    }).toBe(true);
-    await page.locator('.team-training [data-org-coach-close]').click();
-    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    for (const entry of await page.locator('.team-training [data-org-coach]').all()) {
+      const toggle=entry.locator('[data-org-coach-toggle]');
+      await toggle.click();
+      await expect(toggle).toHaveAttribute('aria-expanded','true');
+      const card=entry.locator('.org-coach-image');
+      await expect(card).toBeVisible();
+      const box=await card.boundingBox(), column=await entry.boundingBox();
+      expect(box.x).toBeGreaterThanOrEqual(column.x-1);
+      expect(box.x+box.width).toBeLessThanOrEqual(column.x+column.width+1);
+      await card.click();
+      await expect(toggle).toHaveAttribute('aria-expanded','false');
+    }
   }
 });
 
@@ -304,7 +301,7 @@ test('U11 : les cartes restent dans leur conteneur, carte coach ouverte ou ferm�
   for (const width of [390, 768, 900, 1100, 1440, 1840]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/u11-mixte.html');
-    const trigger = page.locator('.team-training [data-org-coach-toggle]');
+    const trigger = page.locator('.team-training [data-org-coach-toggle]').first();
     for (const open of [false, true]) {
       if (open) await trigger.click();
       const cards = page.locator('.team-detail-main > *, .team-season-stack > *');

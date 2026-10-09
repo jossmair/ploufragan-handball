@@ -22,7 +22,7 @@ test('U11 : six photos en carrousel et album accessible', async ({ page, request
   await carousel.locator('[data-photo-track]').press('ArrowLeft');
   await expect(carousel.locator('[data-photo-count]')).toHaveText('5 / 6');
   await expect(page.locator('.team-season-stack .is-team-photo')).toHaveCount(0);
-  await expect(page.locator('.team-training [data-org-coach-toggle]')).toHaveCount(1);
+  await expect(page.locator('.team-training [data-org-coach-toggle]')).toHaveCount(2);
   for (const path of ['/assets/u11-mixte/gallery/01.webp','/assets/u11-mixte/gallery/thumbs/01.webp']) {
     expect((await request.get(path)).status()).toBe(200);
   }
