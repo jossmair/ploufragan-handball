@@ -2,9 +2,14 @@
  const card = document.querySelector('[data-nathan-secret]');
  if (!card) return;
  const toggle = card.closest('[data-org-coach]').querySelector('[data-org-coach-toggle]');
- let timer, lastTap = 0, dialog;
- const reveal = () => {
+ let timer, lastTap = 0, dialog, revealing = false;
+ const reveal = async () => {
    clearTimeout(timer); lastTap = 0;
+   if (revealing || dialog?.open) return;
+   revealing = true;
+   const original = card.querySelector('img');
+   const origin = original.getBoundingClientRect();
+   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
    if (!dialog) {
      dialog = document.createElement('dialog');
      dialog.className = 'coach-secret-dialog';
@@ -15,7 +20,32 @@
      dialog.addEventListener('click', close);
      dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
    }
-   if (!dialog.open) dialog.showModal();
+   const large = dialog.querySelector('img');
+   large.src = original.src;
+   large.alt = original.alt;
+   dialog.showModal();
+   const target = large.getBoundingClientRect();
+   const stage = dialog.querySelector('button');
+   if (!reduced) {
+     const x = origin.left + origin.width / 2 - target.left - target.width / 2;
+     const y = origin.top + origin.height / 2 - target.top - target.height / 2;
+     await stage.animate([
+       {transform:`translate(${x}px,${y}px) scale(${origin.width / target.width})`,opacity:.7},
+       {transform:'none',opacity:1}
+     ],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'}).finished;
+   }
+   const special = new Image();
+   special.src = 'assets/club/cartes/nathan-secret.webp';
+   try { await special.decode(); } catch { revealing = false; return; }
+   large.src = special.src;
+   large.alt = 'NR88, Nathan : légende du club, coach U18 garçons';
+   original.src = special.src;
+   original.alt = large.alt;
+   if (!reduced && dialog.open) large.animate([
+     {filter:'brightness(3)',transform:'perspective(900px) rotateY(-35deg)'},
+     {filter:'brightness(1)',transform:'none'}
+   ],{duration:700,easing:'cubic-bezier(.16,1,.3,1)'});
+   revealing = false;
  };
  document.addEventListener('click', event => {
    if (!card.contains(event.target) || toggle.getAttribute('aria-expanded') !== 'true') return;

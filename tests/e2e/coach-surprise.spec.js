@@ -17,6 +17,7 @@ test('Nathan cache sa carte secrète dans sa page équipe uniquement',async({pag
  await page.keyboard.press('Escape');
  await expect(dialog).not.toBeVisible();
  await expect(toggle).toHaveAttribute('aria-expanded','true');
+ await expect(card.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
  await page.goto('/club.html');
  await expect(page.locator('[data-nathan-secret]')).toHaveCount(0);
  for(const name of ['Nathan RAOULT','Joshua ELOY']){
@@ -25,6 +26,24 @@ test('Nathan cache sa carte secrète dans sa page équipe uniquement',async({pag
    await expect(person).toHaveAttribute('aria-expanded','true');
    await expect(page.locator('.org-coachs .org-coach-entry.is-open img').first()).toBeVisible();
  }
+});
+
+test('la transformation laisse la carte spéciale dans les entraînements',async({page})=>{
+ await page.goto('/u18-garcons.html');
+ const toggle=page.locator('.team-training [data-org-coach-toggle]').first();
+ await toggle.click();
+ const card=page.locator('[data-nathan-secret]');
+ await expect(card.locator('img')).toHaveAttribute('src',/nathan-u18-garcons.webp/);
+ await card.dblclick();
+ const dialog=page.locator('.coach-secret-dialog');
+ await expect(dialog).toBeVisible();
+ await expect(dialog.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
+ await page.keyboard.press('Escape');
+ await expect(card.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
+ await card.click();
+ await expect(toggle).toHaveAttribute('aria-expanded','false');
+ await toggle.click();
+ await expect(card.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
 });
 
 test('les animations restent visibles sur petit écran',async({page})=>{
