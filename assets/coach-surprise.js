@@ -2,12 +2,14 @@
  const card = document.querySelector('[data-nathan-secret]');
  if (!card) return;
  const toggle = card.closest('[data-org-coach]').querySelector('[data-org-coach-toggle]');
+ const normalAlt = card.querySelector('img').alt;
  let timer, lastTap = 0, dialog, revealing = false;
  const reveal = async () => {
    clearTimeout(timer); lastTap = 0;
    if (revealing || dialog?.open) return;
    revealing = true;
    const original = card.querySelector('img');
+   const returning = original.src.endsWith('nathan-secret.webp');
    const origin = original.getBoundingClientRect();
    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
    if (!dialog) {
@@ -34,12 +36,14 @@
        {transform:'none',opacity:1}
      ],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'}).finished;
    }
-   const special = new Image();
-   special.src = 'assets/club/cartes/nathan-secret.webp';
-   try { await special.decode(); } catch { revealing = false; return; }
-   large.src = special.src;
-   large.alt = 'NR88, Nathan : légende du club, coach U18 garçons';
-   original.src = special.src;
+   const next = new Image();
+   next.src = returning ? 'assets/club/cartes/nathan-u18-garcons.webp' : 'assets/club/cartes/nathan-secret.webp';
+   try { await next.decode(); } catch { revealing = false; return; }
+   large.src = next.src;
+   large.alt = returning ? normalAlt : 'NR88, Nathan : légende du club, coach U18 garçons';
+   dialog.setAttribute('aria-label', returning ? 'Carte de Nathan, coach U18 garçons' : 'Carte secrète de Nathan, NR88');
+   dialog.querySelector('button').setAttribute('aria-label', 'Fermer la carte de Nathan');
+   original.src = next.src;
    original.alt = large.alt;
    if (!reduced && dialog.open) large.animate([
      {filter:'brightness(3)',transform:'perspective(900px) rotateY(-35deg)'},

@@ -44,6 +44,10 @@ test('la transformation laisse la carte spéciale dans les entraînements',async
  await expect(toggle).toHaveAttribute('aria-expanded','false');
  await toggle.click();
  await expect(card.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
+ await card.dblclick();
+ await expect(dialog.locator('img')).toHaveAttribute('src',/nathan-u18-garcons.webp/);
+ await page.keyboard.press('Escape');
+ await expect(card.locator('img')).toHaveAttribute('src',/nathan-u18-garcons.webp/);
 });
 
 test('les animations restent visibles sur petit écran',async({page})=>{
