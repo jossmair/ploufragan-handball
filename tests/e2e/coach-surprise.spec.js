@@ -12,9 +12,7 @@ test('Nathan cache sa carte secrète dans sa page équipe uniquement',async({pag
  expect(secretRequests).toBe(0);
  if(isMobile){await card.tap();await card.tap();}else await card.dblclick();
  const dialog=page.locator('.coach-secret-dialog');
- await expect(dialog).toBeVisible();
- await expect(dialog.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
- await page.keyboard.press('Escape');
+ await expect(card.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
  await expect(dialog).not.toBeVisible();
  await expect(toggle).toHaveAttribute('aria-expanded','true');
  await expect(card.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
@@ -38,7 +36,8 @@ test('la transformation laisse la carte spéciale dans les entraînements',async
  const dialog=page.locator('.coach-secret-dialog');
  await expect(dialog).toBeVisible();
  await expect(dialog.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
- await page.keyboard.press('Escape');
+ await expect(dialog).not.toBeVisible();
+ await expect(toggle).toHaveAttribute('aria-expanded','true');
  await expect(card.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
  await card.click();
  await expect(toggle).toHaveAttribute('aria-expanded','false');
@@ -46,7 +45,8 @@ test('la transformation laisse la carte spéciale dans les entraînements',async
  await expect(card.locator('img')).toHaveAttribute('src',/nathan-secret.webp/);
  await card.dblclick();
  await expect(dialog.locator('img')).toHaveAttribute('src',/nathan-u18-garcons.webp/);
- await page.keyboard.press('Escape');
+ await expect(dialog).not.toBeVisible();
+ await expect(toggle).toHaveAttribute('aria-expanded','true');
  await expect(card.locator('img')).toHaveAttribute('src',/nathan-u18-garcons.webp/);
 });
 

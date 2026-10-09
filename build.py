@@ -533,7 +533,7 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
     if "team-detail-grid" in body or "senior-landing" in body:
         extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261005-2">'
     if slug == "u18-garcons":
-        extra_head += '<link rel="stylesheet" href="assets/coach-surprise.css?v=20261009-2"><script src="assets/coach-surprise.js?v=20261009-3" defer></script>'
+        extra_head += '<link rel="stylesheet" href="assets/coach-surprise.css?v=20261009-2"><script src="assets/coach-surprise.js?v=20261009-4" defer></script>'
     if slug == "boutique":
         extra_head += '<link rel="stylesheet" href="assets/shop-zoom.css?v=20261006-1"><script src="assets/shop-zoom.js?v=20261006-1" defer></script>'
     if slug == "devenir-partenaire":
