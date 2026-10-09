@@ -1,0 +1,13 @@
+[data-nathan-secret]{touch-action:manipulation}
+.coach-secret-dialog{border:0;padding:0;background:transparent;overflow:visible;max-width:90vw;max-height:90dvh;color:#fff}
+.coach-secret-dialog::backdrop{background:rgba(4,2,2,.92);backdrop-filter:blur(12px);animation:secret-backdrop .5s ease both}
+.coach-secret-card{position:relative;display:block;padding:0;border:0;background:transparent;cursor:pointer;isolation:isolate;animation:secret-arrival .85s cubic-bezier(.16,1,.3,1) both}
+.coach-secret-card img{display:block;width:min(85vw,54.66dvh,600px);height:auto;aspect-ratio:2/3;object-fit:contain;clip-path:inset(0 round 6% / 4%);filter:drop-shadow(0 0 24px #b58139)}
+.coach-secret-card::before{content:"";position:absolute;inset:-12%;z-index:-1;background:conic-gradient(from 20deg,transparent,#d5a447,transparent,#ed0719,transparent,#ffe2a1,transparent);filter:blur(35px);opacity:.6;animation:secret-aura 8s linear infinite}
+.coach-secret-card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:6% / 4%;background:linear-gradient(115deg,transparent 35%,#fff8 48%,transparent 61%);background-size:300% 100%;animation:secret-shine 1.5s .35s ease both}
+.coach-secret-card:focus-visible{outline:2px solid #fff;outline-offset:8px;border-radius:20px}
+@keyframes secret-arrival{from{opacity:0;transform:perspective(1000px) rotateY(-65deg) scale(.55);filter:brightness(4)}to{opacity:1;transform:none;filter:brightness(1)}}
+@keyframes secret-aura{to{transform:rotate(360deg)}}
+@keyframes secret-shine{from{background-position:100% 0}to{background-position:0 0}}
+@keyframes secret-backdrop{from{background:#fff8}to{background:rgba(4,2,2,.92)}}
+@media(prefers-reduced-motion:reduce){.coach-secret-card,.coach-secret-card::before,.coach-secret-card::after,.coach-secret-dialog::backdrop{animation:none}.coach-secret-card::after{display:none}}

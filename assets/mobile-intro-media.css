@@ -1,0 +1,6 @@
+@media(max-width:850px){
+ body:is([data-page="resultats"],[data-page="boutique"],[data-page="blog"]) .animated-heading{grid-template-columns:minmax(0,1fr)}
+ body:is([data-page="resultats"],[data-page="boutique"],[data-page="blog"]) .animated-heading .heading-copy{display:block;grid-column:1/-1;grid-row:2}
+ body .animated-heading .heading-intro-media[data-heading-video-stage]:is(.results-intro-media,.boutique-intro-media,.blog-intro-media){grid-column:1;grid-row:3;width:min(100%,460px);height:clamp(190px,58vw,280px);margin:12px auto 0;opacity:1;justify-self:center}
+ body .animated-heading :is(.results-intro-media,.boutique-intro-media,.blog-intro-media) :is(video,img){width:100%;height:100%;object-fit:contain}
+}

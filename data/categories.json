@@ -118,17 +118,17 @@
         "role": "Coachs",
         "names": "Yohann Guérin et Joshua Eloy"
       },
-      "coachPhoto": {
-        "src": "assets/photos/u11-mixte-coach-yohann-guerin-transparent.webp",
-        "width": 1024,
-        "height": 1536,
-        "alt": "Yohann Guérin, coach de l'équipe U11 mixte du Ploufragan Handball",
-        "name": "Yohann Guérin",
-        "role": "Coach U11 mixte"
-      },
-      "coachPhotoInline": true,
-      "additionalCoaches": [
-        "Joshua Eloy"
+      "staffCards": [
+        {
+          "name": "Yohann Guérin",
+          "src": "assets/photos/u11-mixte-coach-yohann-guerin-transparent.webp",
+          "role": "coach U11 mixte"
+        },
+        {
+          "name": "Joshua Eloy",
+          "src": "assets/club/cartes/josh-u11-mixte.webp",
+          "role": "coach U11 mixte"
+        }
       ]
     },
     "u13-filles": {
@@ -323,7 +323,9 @@
       },
       "staffCards": [
         {
-          "name": "Nathan Raoult"
+          "name": "Nathan Raoult",
+          "src": "assets/club/cartes/nathan-u18-garcons.webp",
+          "role": "coach U18 garçons"
         },
         {
           "name": "Clara Toquet",
