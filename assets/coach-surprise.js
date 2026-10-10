@@ -3,11 +3,13 @@
  if (!card) return;
  const toggle = card.closest('[data-org-coach]').querySelector('[data-org-coach-toggle]');
  const normalAlt = card.querySelector('img').alt;
- let timer, lastTap = 0, dialog, revealing = false;
- const reveal = async () => {
+ let timer, lastTap = 0, dialog, revealing = false, keyboardReveal = false;
+ const restoreFocus = () => { if (keyboardReveal) card.focus({preventScroll:true}); else card.blur(); };
+ const reveal = async (fromKeyboard = false) => {
    clearTimeout(timer); lastTap = 0;
    if (revealing || dialog?.open) return;
    revealing = true;
+   keyboardReveal = fromKeyboard;
    const original = card.querySelector('img');
    const returning = original.src.endsWith('nathan-secret.webp');
    const origin = original.getBoundingClientRect();
@@ -18,9 +20,9 @@
      dialog.setAttribute('aria-label', 'Carte secrète de Nathan, NR88');
      dialog.innerHTML = '<button type="button" class="coach-secret-card" aria-label="Fermer la carte secrète de Nathan"><img src="assets/club/cartes/nathan-secret.webp" width="640" height="960" alt="NR88, Nathan : légende du club, coach U18 garçons"></button>';
      document.body.append(dialog);
-     const close = () => { dialog.close(); card.focus(); };
+     const close = () => { dialog.close(); restoreFocus(); };
      dialog.addEventListener('click', close);
-     dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
+     dialog.addEventListener('cancel', event => { event.preventDefault(); keyboardReveal = true; close(); });
    }
    const large = dialog.querySelector('img');
    large.src = original.src;
@@ -66,14 +68,14 @@
    }
    dialog.close();
    stage.getAnimations().forEach(animation => animation.cancel());
-   card.focus({preventScroll:true});
+   restoreFocus();
    revealing = false;
  };
  document.addEventListener('click', event => {
    if (!card.contains(event.target) || toggle.getAttribute('aria-expanded') !== 'true') return;
    event.preventDefault(); event.stopImmediatePropagation();
    const now = performance.now();
-   if (lastTap && now - lastTap < 450) { reveal(); return; }
+   if (lastTap && now - lastTap < 450) { reveal(event.detail === 0); return; }
    lastTap = now;
    clearTimeout(timer);
    timer = setTimeout(() => { lastTap = 0; if (toggle.getAttribute('aria-expanded') === 'true') toggle.click(); }, 450);

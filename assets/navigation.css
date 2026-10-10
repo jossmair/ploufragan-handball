@@ -23,3 +23,5 @@ body{padding-top:77px}
 
 .nav-sub-label{display:none}
 @media(max-width:850px){#navigation{width:min(340px,calc(100vw - 24px));clip-path:none;overscroll-behavior:contain;scroll-padding-block:12px 64px}.nav-group-heading>a{display:none}.nav-group-heading>.nav-sub-toggle{width:100%;justify-content:space-between;padding:11px 15px;min-height:44px;text-align:left}.nav-sub-label{display:block;font:600 1rem var(--display)}.nav-group.is-active .nav-sub-toggle{color:#fff}.nav-group-heading>.nav-sub-toggle:hover{background:#ffffff08}.nav-submenu-inner{margin-bottom:4px}.nav-section-title{line-height:1.5}.nav-group-heading{border-bottom:1px solid #ffffff0d}}
+
+html[data-input-mode="pointer"] :is(button,a,[tabindex]):is(:focus,:focus-visible){outline:none!important}

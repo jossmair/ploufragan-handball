@@ -9,7 +9,9 @@ if (sponsorPause) {
     sponsorDock.classList.toggle('is-paused', paused);
     sponsorPause.setAttribute('aria-pressed', String(paused));
     sponsorPause.setAttribute('aria-label', paused ? 'Reprendre le bandeau des partenaires' : 'Mettre en pause le bandeau des partenaires');
-    sponsorPause.firstElementChild.textContent = paused ? '▶' : '⏸';
+    sponsorPause.firstElementChild.innerHTML = paused
+      ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l14 8-14 8z"/></svg>'
+      : '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
   };
   sponsorPause.hidden = motion.matches;
   sponsorPause.addEventListener('click', () => setSponsorPause(sponsorPause.getAttribute('aria-pressed') !== 'true'));

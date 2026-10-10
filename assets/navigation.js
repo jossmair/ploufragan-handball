@@ -1,4 +1,8 @@
 (() => {
+  const root = document.documentElement;
+  root.dataset.inputMode = 'pointer';
+  document.addEventListener('pointerdown', () => { root.dataset.inputMode = 'pointer'; }, true);
+  document.addEventListener('keydown', () => { root.dataset.inputMode = 'keyboard'; }, true);
   const nav = document.querySelector('#navigation');
   const groups = [...nav.querySelectorAll('[data-nav-group]')];
   const desktop = window.matchMedia('(min-width:851px)');
