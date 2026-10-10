@@ -1,0 +1,12 @@
+/* Shared, crisp action icons with the same silhouette on every platform. */
+.phb-ui-icon{display:inline-block;width:1em;height:1em;flex:0 0 auto;vertical-align:-.12em}
+.phb-ui-arrow{width:14px;height:14px;margin-left:3px}
+.button>span[aria-hidden],.match-map>span[aria-hidden],.nav-registration>span[aria-hidden]{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;line-height:1}
+.button .phb-ui-arrow{width:18px;height:18px;margin:0;transition:transform .2s ease}
+.button:hover .phb-ui-arrow{transform:translate(2px,-2px)}
+.match-map .phb-ui-arrow{width:14px;height:14px;margin:0}
+.sponsor-pause{display:inline-flex;align-items:center;justify-content:center}
+.sponsor-pause>span{display:inline-flex;align-items:center;justify-content:center;width:27px;height:27px;border:1px solid #ffffff26;border-radius:7px;background:#ffffff0a;transition:background .2s,border-color .2s}
+.sponsor-pause svg{display:block;width:13px;height:13px}
+.sponsor-pause:hover>span{background:#ffffff18;border-color:#ffffff50}
+@media(prefers-reduced-motion:reduce){.button .phb-ui-arrow,.sponsor-pause>span{transition:none}}

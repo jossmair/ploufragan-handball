@@ -4,7 +4,7 @@
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const date=v=>new Intl.DateTimeFormat('fr-FR',{timeZone:'Europe/Paris',day:'numeric',month:'long',year:'numeric'}).format(new Date(v));
   const time=v=>new Intl.DateTimeFormat('fr-FR',{timeZone:'Europe/Paris',hour:'2-digit',minute:'2-digit'}).format(new Date(v));
-  const action=(kind,id,label)=>`<button type="button" data-phb-view="${kind}" data-id="${esc(id)}">${label} <span aria-hidden="true">↗︎</span></button>`;
+  const action=(kind,id,label)=>`<button type="button" data-phb-view="${kind}" data-id="${esc(id)}">${label} <span aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></span></button>`;
   const dialog=document.createElement('dialog');dialog.className='phb-viewer';dialog.setAttribute('aria-labelledby','phb-view-title');
   dialog.innerHTML='<header role="presentation"><div><p class="eyebrow">MON PHB / DANS MON ESPACE</p><h2 id="phb-view-title"></h2></div><button type="button" data-phb-view-close aria-label="Fermer la vue et revenir à mon espace">×</button></header><div class="phb-view-toolbar"><button type="button" data-phb-view-back hidden>← Retour</button></div><div class="phb-view-content" tabindex="0" aria-label="Contenu de la vue"></div>';
   document.body.append(dialog);
