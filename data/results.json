@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-10T13:30:05.030684+00:00",
+  "updatedAt": "2026-10-10T16:22:28.854745+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -196,20 +196,20 @@
         {
           "position": 1,
           "team": "L'HANDBALLE CLUB",
-          "points": 18,
-          "played": 6,
+          "points": 21,
+          "played": 7,
           "club": false
         },
         {
           "position": 2,
-          "team": "LANNION HANDBALL",
-          "points": 16,
-          "played": 6,
+          "team": "BAIE D'ARMOR HB -13F2",
+          "points": 17,
+          "played": 7,
           "club": false
         },
         {
           "position": 3,
-          "team": "BAIE D'ARMOR HB -13F2",
+          "team": "LANNION HANDBALL",
           "points": 16,
           "played": 6,
           "club": false
@@ -514,22 +514,22 @@
         {
           "position": 1,
           "team": "U13M TER ENTENTE LOUDEAC LA MOTTE",
-          "points": 18,
-          "played": 6,
+          "points": 24,
+          "played": 8,
           "club": false
         },
         {
           "position": 2,
           "team": "CSAL PAIMPOL HB - 13 GARS 1",
-          "points": 16,
-          "played": 6,
+          "points": 20,
+          "played": 8,
           "club": false
         },
         {
           "position": 3,
-          "team": "BAIE D'ARMOR HB - 13G1",
+          "team": "LANNION HANDBALL",
           "points": 14,
-          "played": 6,
+          "played": 7,
           "club": false
         },
         {
@@ -541,37 +541,37 @@
         },
         {
           "position": 5,
-          "team": "LANNION HANDBALL",
-          "points": 11,
+          "team": "BAIE D'ARMOR HB - 13G1",
+          "points": 14,
           "played": 6,
           "club": false
         },
         {
           "position": 6,
+          "team": "GOELO HANDBALL CLUB",
+          "points": 13,
+          "played": 7,
+          "club": false
+        },
+        {
+          "position": 7,
           "team": "AL Trebeurden HANDBALL",
           "points": 11,
           "played": 6,
           "club": false
         },
         {
-          "position": 7,
-          "team": "GOELO HANDBALL CLUB",
-          "points": 10,
-          "played": 6,
-          "club": false
-        },
-        {
           "position": 8,
           "team": "GUINGAMP HB 1",
-          "points": 8,
-          "played": 6,
+          "points": 10,
+          "played": 8,
           "club": false
         },
         {
           "position": 9,
           "team": "U13M TER ENTENTE DU TREGOR HB - LOUANNEC",
-          "points": 6,
-          "played": 6,
+          "points": 8,
+          "played": 8,
           "club": false
         }
       ]
