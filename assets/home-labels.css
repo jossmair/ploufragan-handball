@@ -7,3 +7,6 @@ body .home-hero .home-labels img{display:block;width:56px;height:56px;max-width:
 @media(min-width:1024px){body .home-hero .home-labels{width:190px;margin-top:12px}body .home-hero .home-labels img{width:48px;height:48px}body .home-hero .hero-copy>.hero-location{margin-top:10px}}
 @media(max-width:850px){body .home-hero .hero-copy>.home-labels{order:3;grid-column:1;margin-top:24px;margin-bottom:20px}}
 @media(prefers-reduced-motion:reduce){body .home-hero .home-labels img{transition:none}.home-labels-row a:hover img{transform:none}}
+
+/* Social links precede the location and main actions on small screens. */
+@media(max-width:850px){body .home-hero .hero-copy>.hero-social-title{order:5}body .home-hero .hero-copy>.hero-socials{order:6}body .home-hero .hero-copy>.hero-location{order:7}body .home-hero .hero-copy>.actions{order:8}}
