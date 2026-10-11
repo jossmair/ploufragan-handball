@@ -16,7 +16,8 @@ body .home-hero .home-labels img{display:block;width:56px;height:56px;max-width:
 
 /* Compact desktop links retain their transparent surface on hover. */
 @media(min-width:1024px){
-  body .home-hero .hero-social-title{margin-top:8px}
+  body .home-hero .hero-social-title{margin-top:26px}
+  body[data-page=index] .home-hero{padding-bottom:0}
   body .home-hero .hero-socials a:hover{background:transparent;transform:none}
   body .home-hero .hero-socials a::after{content:'';position:absolute;left:32px;right:24px;bottom:6px;height:1px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
   body .home-hero .hero-socials a:hover::after{transform:scaleX(1)}
