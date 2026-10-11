@@ -1,5 +1,6 @@
 import {test, expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import {withUpcomingFixture} from './helpers/mon-phb-fixtures.js';
 const key='phb.personal-space.v1';
 
 test('compose, reorder, persist, cancel edits and reset only Mon PHB', async({page})=>{
@@ -32,6 +33,7 @@ test('compose, reorder, persist, cancel edits and reset only Mon PHB', async({pa
 });
 
 test('all modules, official data filtering, calendar download and accessible dialog', async({page})=>{
+  await withUpcomingFixture(page);
   await page.clock.setFixedTime(new Date('2026-10-08T10:00:00+02:00'));
   await page.goto('/mon-phb.html');
   await page.locator('.phb-hero [data-phb-edit]').click();

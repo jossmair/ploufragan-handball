@@ -1,5 +1,6 @@
 import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import {withUpcomingFixture} from './helpers/mon-phb-fixtures.js';
 const key='phb.personal-space.v1';
 async function setup(page,teams,modules){
   await page.clock.setFixedTime(new Date('2026-10-08T10:00:00+02:00'));
@@ -46,6 +47,7 @@ test('albums open above the space, navigate, return and restore focus',async({pa
 });
 
 test('team, article, standings, match and full duties stay in the space',async({page})=>{
+  await withUpcomingFixture(page);
   await setup(page,['u18-garcons','seniors-masculins-1'],['upcoming','results','standings','teams','news','duties']);
   for(const [module,kind] of [['upcoming','match'],['standings','standings'],['teams','team'],['news','news'],['duties','duties']]){
     await page.locator(`[data-module=${module}] .phb-module-body [data-phb-view=${kind}]`).first().click();
@@ -62,4 +64,13 @@ test('team, article, standings, match and full duties stay in the space',async({
   await expect(page.locator('.phb-collective-view')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect.poll(()=>page.evaluate(()=>document.body.style.overflow)).toBe('');
+});
+
+test('no announced match keeps upcoming and calendar usable',async({page})=>{
+  await withUpcomingFixture(page,false);
+  await setup(page,['u18-garcons'],['upcoming','results','calendar']);
+  await expect(page.locator('[data-module=upcoming]')).toContainText('Aucun prochain match publié');
+  await expect(page.locator('[data-module=calendar]')).toContainText('Le calendrier se remplira');
+  await expect(page.locator('[data-phb-calendar]')).toHaveCount(0);
+  await expect(page.locator('[data-module=results]')).toBeVisible();
 });
