@@ -13,3 +13,11 @@ body .home-hero .home-labels img{display:block;width:56px;height:56px;max-width:
 @media(max-width:850px){body .home-hero .hero-copy>.hero-social-title{order:5}body .home-hero .hero-copy>.hero-socials{order:6}body .home-hero .hero-copy>.hero-location{order:7}body .home-hero .hero-copy>.actions{order:8}}
 
 @media(max-width:600px){body .home-hero .hero-copy>.home-labels{margin-inline:auto;justify-self:center}}
+
+/* Compact desktop links retain their transparent surface on hover. */
+@media(min-width:1024px){
+  body .home-hero .hero-socials a:hover{background:transparent;transform:none}
+  body .home-hero .hero-socials a::after{content:'';position:absolute;left:32px;right:24px;bottom:6px;height:1px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+  body .home-hero .hero-socials a:hover::after{transform:scaleX(1)}
+  body .home-hero .hero-socials a:hover>b{transform:translate(2px,-2px)}
+}
