@@ -5,7 +5,7 @@ for (const width of [390, 1440]) {
     test.setTimeout(90000);
     await page.emulateMedia({reducedMotion:'reduce'});
     await page.setViewportSize({width,height:844});
-    for (const slug of ['u18-garcons', 'u13-filles', 'seniors-masculins']) {
+    for (const slug of ['u18-garcons', 'u15-garcons', 'u13-filles', 'seniors-masculins']) {
       await page.goto(`/${slug}.html`);
       if (slug === 'seniors-masculins') await page.getByRole('button', {name:'Voir les joueurs au poste Gardien',exact:true}).click();
       const card = page.locator('[data-u13-card], [data-player-card]').first();

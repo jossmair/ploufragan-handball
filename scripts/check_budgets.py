@@ -49,8 +49,8 @@ BUDGETS["Logo club mobile"] = (ASSETS / "logo-phb-club-320.webp", 40_000)
 BUDGETS["Décor nom entraîneur"] = (ASSETS / "ui" / "coach-name-brush-small.webp", 14_000)
 for name in ("photo-36", "photo-03", "premier-bureau-phb-2011"):
     BUDGETS[f"Aperçu accueil {name}"] = (ASSETS / "home-previews" / f"{name}-480.webp", 40_000)
-# Added the 194-photo summer camp album and eight locally hosted videos.
-TOTAL_ASSETS_BUDGET = 181_000_000
+# Summer camp media plus eleven optimized U15 player / club volunteer cards (~965 KB).
+TOTAL_ASSETS_BUDGET = 182_200_000
 GALLERY_ORIGINALS = ASSETS / "galeries" / "seniors-1-pays-de-dinan-2026" / "originals"
 GALLERY_ORIGINALS_BUDGET = 330_000_000
 

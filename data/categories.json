@@ -251,7 +251,7 @@
       "gender": "garçons",
       "birthYears": "2012–2013",
       "resultLabel": "U15 garcons",
-      "publicIntro": "Erwan retrouve les U15 garçons le mercredi et le vendredi à Hoëdic. Cette catégorie accueille les jeunes nés en 2012 ou 2013.",
+      "publicIntro": "Erwan et Morgan accompagnent les U15 garçons le mercredi et le vendredi à Hoëdic. Cette catégorie accueille les jeunes nés en 2012 ou 2013.",
       "training": [
         {
           "day": "Mercredi",
@@ -265,8 +265,8 @@
         }
       ],
       "staff": {
-        "role": "Coach",
-        "names": "Erwan"
+        "role": "Coaches",
+        "names": "Erwan et Morgan"
       },
       "cardPhoto": {
         "src": "assets/equipes/u15-garcons-card.webp",
@@ -283,6 +283,11 @@
         {
           "name": "Erwan Rouxel",
           "src": "assets/club/cartes/erwan-u15-garcons.webp",
+          "role": "coach U15 garçons"
+        },
+        {
+          "name": "Morgan Pion",
+          "src": "assets/club/cartes/morgan-u15-garcons.webp",
           "role": "coach U15 garçons"
         }
       ]

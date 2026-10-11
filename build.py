@@ -849,15 +849,15 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
         competitions = [competition_detail(team) for team in teams]
         upcoming_cards = ''.join(upcoming for _, _, upcoming in competitions)
         scores = ''.join(result for _, result, _ in competitions)
-        players = u13_filles_presentation() if slug == "u13-filles" else u18_garcons_presentation() if slug == "u18-garcons" else ''
+        players = u13_filles_presentation() if slug == "u13-filles" else u18_garcons_presentation() if slug == "u18-garcons" else u15_garcons_presentation() if slug == "u15-garcons" else ''
         players = players.replace('class="container section ', 'class="section team-player-section ')
         photos = youth_match_gallery(slug).replace('class="container section ', 'class="section team-photo-section ') if slug in YOUTH_GALLERIES else ''
         content = f'<div class="team-detail-summary"><div class="team-detail-main">{training}{upcoming_cards}{scores}</div><div class="team-season-stack">{"".join(standings for standings, _, _ in competitions)}</div></div>{collective}{players}{team_coach_card(slug)}{photos}{team_gallery(slug)}{registration}'
     else:
         content = training + category_values(slug) + category_story(slug) + collective + registration
     links = [(f'#training-{slug}', 'Horaires')]
-    if slug in {'u13-filles', 'u18-garcons'}:
-        links.append(('#u13-f-cards-title' if slug == 'u13-filles' else '#u18-cards-title', 'Joueuses' if slug == 'u13-filles' else 'Joueurs'))
+    if slug in {'u13-filles', 'u18-garcons', 'u15-garcons'}:
+        links.append(('#u13-f-cards-title' if slug == 'u13-filles' else f'#{slug[:3]}-cards-title', 'Joueuses' if slug == 'u13-filles' else 'Joueurs'))
     if slug in YOUTH_GALLERIES:
         links.append((f'#{slug}-gallery-title', 'Photos'))
     links.append(('inscriptions.html#essai', 'Faire un essai'))
@@ -1025,6 +1025,15 @@ def u18_garcons_presentation():
     return f'''<section class="container section u13-f-presentation u18-card-presentation" aria-labelledby="u18-cards-title"><div class="section-heading" data-reveal><div><p class="eyebrow">L’ÉQUIPE U18 GARÇONS</p><h2 id="u18-cards-title">LES <em>JOUEURS</em></h2></div><p class="player-instruction">Touchez une carte pour découvrir le joueur.</p></div><div class="u13-f-card-grid" data-reveal>{cards}</div></section>'''
 
 
+def u15_garcons_presentation():
+    players = json.loads((DATA / "u15_players.json").read_text(encoding="utf-8"))
+    cards = ''.join(
+        f'''<div class="player-tile"><button class="senior-player-card u13-f-card" type="button" data-u13-card data-player-name="{escape(player['name'], quote=True)}" aria-pressed="false" aria-label="Afficher la carte de {escape(player['name'], quote=True)}" style="--card-order:{index}"><span class="senior-player-card-inner"><span class="senior-player-card-face senior-player-card-back"><img src="assets/u18-garcons/cards/back/{player['back']}" alt="" width="{player['back_width']}" height="{player['back_height']}" loading="lazy" decoding="async"></span><span class="senior-player-card-face senior-player-card-front"><img src="assets/u15-garcons/cards/front/{player['file']}" alt="Carte de {escape(player['name'])}, U15 garçons du Ploufragan Handball" width="{player['width']}" height="{player['height']}" loading="lazy" decoding="async"></span></span><span class="senior-player-card-hint" aria-hidden="true">Voir la carte</span></button><span class="player-name">{escape(player['name'])}</span></div>'''
+        for index, player in enumerate(players)
+    )
+    return f'''<section class="container section u13-f-presentation u18-card-presentation" aria-labelledby="u15-cards-title"><div class="section-heading" data-reveal><div><p class="eyebrow">L’ÉQUIPE U15 GARÇONS</p><h2 id="u15-cards-title">LES <em>JOUEURS</em></h2></div><p class="player-instruction">Touchez une carte pour découvrir le joueur.</p></div><div class="u13-f-card-grid" data-reveal>{cards}</div></section>'''
+
+
 def youth_match_gallery(slug):
     config = YOUTH_GALLERIES.get(slug)
     if not config:
@@ -1057,8 +1066,8 @@ for youth in YOUTH_TEAMS:
     inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261005-20">'
                          '<script src="assets/club.js?v=20261005-2" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
     u13_cards_head = ('<link rel="stylesheet" href="assets/u13-filles.css?v=20260930-3">'
-                      '<script src="assets/u13-filles.js?v=20261005-1" defer></script>') if slug in {"u13-filles", "u18-garcons"} else ''
-    if slug == "u18-garcons":
+                      '<script src="assets/u13-filles.js?v=20261005-1" defer></script>') if slug in {"u13-filles", "u18-garcons", "u15-garcons"} else ''
+    if slug in {"u18-garcons", "u15-garcons"}:
         u13_cards_head += '<link rel="stylesheet" href="assets/u18-garcons.css?v=20261005-2">'
     pages[slug] = page(slug, name, body, "equipes",
         f"{name} du Ploufragan Handball près de Saint-Brieuc : entraînements et classement {SEASON}.",
@@ -1318,8 +1327,8 @@ def org_team(area, title, members):
             people += f'<li class="org-coach-entry" data-org-coach>{org_person_card(first, last, "christopher-arbitre", [("assets/club/cartes/christopher-le-grand.webp", "Christopher Le Grand, arbitre du club", 512, 768)])}</li>'
         elif area == "arbitre" and first == "Joshua":
             people += f'<li class="org-coach-entry" data-org-coach>{org_person_card(first, last, "joshua-arbitre", [("assets/club/cartes/joshua-arbitre.webp", "Joshua Eloy, arbitre du club", 640, 960)])}</li>'
-        elif area == "buvette" and first in {"Rozenn", "Franckie"}:
-            key = "rozenn-team-buvette" if first == "Rozenn" else "franckie-team-buvette"
+        elif area == "buvette" and first in {"Rozenn", "Franckie", "Jérôme"}:
+            key = {"Rozenn": "rozenn-team-buvette", "Franckie": "franckie-team-buvette", "Jérôme": "jerome-team-buvette"}[first]
             people += f'<li class="org-coach-entry" data-org-coach>{org_person_card(first, last, key, [("assets/club/cartes/" + key + ".webp", first + " " + last + ", Team Buvette", 640, 960)])}</li>'
         else:
             people += f'<li><span>{escape(first)} <strong>{escape(last)}</strong></span></li>'
@@ -1328,6 +1337,7 @@ def org_team(area, title, members):
 
 def org_coach_team(members):
     coach_cards = {
+        ("Morgan", "PION"): ("morgan-coach", "assets/club/cartes/morgan-u15-garcons.webp", "Morgan Pion, coach U15 garçons"),
         ("Nathan", "RAOULT"): ("nathan", "assets/club/cartes/nathan-u18-garcons.webp", "Nathan Raoult, coach U18 garçons"),
         ("Joshua", "ELOY"): ("josh", "assets/club/cartes/josh-u11-mixte.webp", "Joshua Eloy, coach U11 mixte"),
         ("Yohann", "GUÉRIN"): ("yohann", "assets/photos/u11-mixte-coach-yohann-guerin-transparent.webp", "Carte de Yohann Guérin, coach des U11 mixtes"),
@@ -1751,7 +1761,7 @@ pages["contact"]=page("contact","Contact et accès",heading("CONTACT <em>& ACCÈ
 
 from scripts.mon_phb_page import build_dashboard
 personal_panini = {}
-for personal_team in ("u13-filles", "u18-garcons", "seniors-masculins-1", "seniors-masculins-2"):
+for personal_team in ("u13-filles", "u18-garcons", "u15-garcons", "seniors-masculins-1", "seniors-masculins-2"):
     personal_source = pages["seniors-masculins"] if personal_team == "seniors-masculins-1" else pages[personal_team]
     personal_cards = re.findall(r'<button\b[^>]*\b(?:data-player-card|data-u13-card)\b[^>]*>.*?</button>', personal_source, re.S)
     personal_panini.setdefault(personal_team, []).extend(personal_cards)
