@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Chloé",
+    "number": "6",
+    "position": "Arrière gauche",
+    "file": "06.webp"
+  },
+  {
+    "name": "Audrey",
+    "number": "10",
+    "position": "Demi-centre",
+    "file": "10.webp"
+  },
+  {
+    "name": "Margaux",
+    "number": "9",
+    "position": "Pivot",
+    "file": "09.webp"
+  },
+  {
+    "name": "Élise",
+    "number": "15",
+    "position": "Arrière droite",
+    "file": "15.webp"
+  },
+  {
+    "name": "Lætitia",
+    "number": "11",
+    "position": "Arrière gauche",
+    "file": "11.webp"
+  },
+  {
+    "name": "Claire",
+    "number": "3",
+    "position": "Ailière gauche",
+    "file": "03.webp"
+  },
+  {
+    "name": "Lætitia",
+    "number": "4",
+    "position": "Ailière gauche",
+    "file": "04.webp"
+  },
+  {
+    "name": "Mégane",
+    "number": "12",
+    "position": "Ailière droite",
+    "file": "12.webp"
+  },
+  {
+    "name": "Fanny",
+    "number": "8",
+    "position": "Arrière droite",
+    "file": "08.webp"
+  }
+]

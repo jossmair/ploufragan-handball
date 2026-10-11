@@ -389,12 +389,12 @@ test('Seniors féminines : carrousel sous le classement', async ({ page }) => {
   await expect(ranking).toBeVisible();
   await expect(gallery).toBeVisible();
   expect(await ranking.evaluate((element, next) => Boolean(element.compareDocumentPosition(next) & Node.DOCUMENT_POSITION_FOLLOWING), await gallery.elementHandle())).toBe(true);
-  await expect(gallery.locator('.team-gallery-slide')).toHaveCount(2);
+  await expect(gallery.locator('.team-gallery-slide')).toHaveCount(4);
   await gallery.locator('[data-team-gallery-next]').click();
-  await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('2 / 2');
+  await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('2 / 4');
   await gallery.locator('[data-team-gallery-track]').focus();
   await page.keyboard.press('ArrowLeft');
-  await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('1 / 2');
+  await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('1 / 4');
 });
 
 test('partenaires : dock unique avec pause accessible', async ({ page }) => {

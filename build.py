@@ -780,7 +780,7 @@ home_score_matches = sorted(
 )
 home_scores_title = "SCORES DU <em>WEEK-END</em>" if weekend_switch_active else "DERNIERS <em>RÉSULTATS</em>"
 pages={}
-home_body = f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>{SEASON_DISPLAY}</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><section class="home-labels" aria-label="Labels FFHandball"><div class="home-labels-row"><a href="baby-hand.html" aria-label="Label BabyHand FFHandball : découvrir le Baby Hand"><img src="assets/labels/babyhand.webp" alt="Label BabyHand FFHandball" width="192" height="192" decoding="async"></a><a href="ecole-de-hand.html" aria-label="Label Hand à 4 FFHandball : découvrir l’école de hand"><img src="assets/labels/hand-a-4.webp" alt="Label Hand à 4 FFHandball" width="192" height="192" decoding="async"></a><a href="equipes.html" aria-label="Label Hand à 7 FFHandball : découvrir les équipes"><img src="assets/labels/hand-a-7.webp" alt="Label Hand à 7 FFHandball" width="192" height="192" decoding="async"></a></div></section><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></b></a></div><p class="hero-location">Complexe sportif du Haut-Champ<br><span>22440 Ploufragan</span></p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}{button('Essayer / s’inscrire','inscriptions.html',True)}</div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section>{home_news_section(ARTICLES)}<section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>{home_scores_title}</h2></div><a class="text-link" href="resultats.html">Tous les résultats <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div><div class="matches-grid">{''.join(match_card(m, pending_score=not m["played"]) for m in home_score_matches[:4])}</div></section>''' + home_weekend_section(upcoming, display_now)
+home_body = f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>{SEASON_DISPLAY}</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><section class="home-labels" aria-label="Labels FFHandball"><div class="home-labels-row"><a href="baby-hand.html" aria-label="Label BabyHand FFHandball : découvrir le Baby Hand"><img src="assets/labels/babyhand.webp" alt="Label BabyHand FFHandball" width="192" height="192" decoding="async"></a><a href="u11-mixte.html" aria-label="Label Hand à 4 FFHandball : découvrir les U11 mixtes"><img src="assets/labels/hand-a-4.webp" alt="Label Hand à 4 FFHandball" width="192" height="192" decoding="async"></a><a href="equipes.html" aria-label="Label Hand à 7 FFHandball : découvrir les équipes"><img src="assets/labels/hand-a-7.webp" alt="Label Hand à 7 FFHandball" width="192" height="192" decoding="async"></a></div></section><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></b></a></div><p class="hero-location">Complexe sportif du Haut-Champ<br><span>22440 Ploufragan</span></p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}{button('Essayer / s’inscrire','inscriptions.html',True)}</div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section>{home_news_section(ARTICLES)}<section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>{home_scores_title}</h2></div><a class="text-link" href="resultats.html">Tous les résultats <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div><div class="matches-grid">{''.join(match_card(m, pending_score=not m["played"]) for m in home_score_matches[:4])}</div></section>''' + home_weekend_section(upcoming, display_now)
 pages["index"]=page("index","Accueil",home_body,extra_head='<link rel="stylesheet" href="assets/home-news.css?v=20261005-1"><link rel="stylesheet" href="assets/home-labels.css?v=20261011-5">',description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
 pages["equipes"]=page("equipes","Les équipes",heading("LES <em>ÉQUIPES</em>","Équipes","À Ploufragan, près de Saint-Brieuc, le PHB accueille les enfants dès 3 ans, les jeunes, les seniors et les adultes en loisir. Sélectionnez une catégorie pour découvrir son projet, ses horaires et ses informations pratiques.")+f'<section class="container section after-heading"><div class="teams-grid">{"".join(team_card(g) for g in GROUPS)}</div></section>')
 
@@ -951,6 +951,8 @@ def team_gallery(slug):
     if slug != "seniors-feminines":
         return ""
     photos = (
+        ("assets/equipes/seniors-feminines-groupe-equipe.webp", 900, 1200, "Les seniors féminines du PHB réunies devant le but après le match"),
+        ("assets/equipes/seniors-feminines-groupe-club.webp", 900, 1200, "Les seniors féminines du PHB avec les proches et les supporters du club"),
         ("assets/equipes/seniors-feminines-gallery-01.webp", 864, 844,
          "Deux joueuses Seniors féminines du PHB échangent pendant un match"),
         ("assets/equipes/seniors-feminines-gallery-02.webp", 803, 806,
@@ -1107,22 +1109,30 @@ SENIOR_POSITIONS = [
 ]
 
 
-def senior_player_card_experience():
-    article = next(item for item in ARTICLES if item["slug"] == "presentation-seniors-masculins-1")
-    player_names = {player["name"] for player in article["players"]}
-    if player_names != set(SENIOR_PLAYER_CARD_FRONTS):
-        missing = player_names.symmetric_difference(SENIOR_PLAYER_CARD_FRONTS)
-        raise ValueError(f"Cartes joueurs seniors incomplètes ou inconnues : {sorted(missing)}")
+def senior_player_card_experience(female=False):
+    if female:
+        article = {"players": json.loads((DATA / "senior_female_players.json").read_text(encoding="utf-8"))}
+    else:
+        article = next(item for item in ARTICLES if item["slug"] == "presentation-seniors-masculins-1")
+        player_names = {player["name"] for player in article["players"]}
+        if player_names != set(SENIOR_PLAYER_CARD_FRONTS):
+            missing = player_names.symmetric_difference(SENIOR_PLAYER_CARD_FRONTS)
+            raise ValueError(f"Cartes joueurs seniors incomplètes ou inconnues : {sorted(missing)}")
+    plural = "joueuses" if female else "joueurs"
+    singular = "joueuse" if female else "joueur"
+    team_label = "FÉMININES" if female else "MASCULINS 1"
 
     hotspots = []
     position_overlays = []
     shortcuts = []
     templates = []
     for position_id, abbreviation, label, x, y in SENIOR_POSITIONS:
+        if female:
+            label = {"Gardien": "Gardienne", "Ailier gauche": "Ailière gauche", "Ailier droit": "Ailière droite", "Arrière droit": "Arrière droite"}.get(label, label)
         players = [player for player in article["players"] if player["position"] == label]
-        if not players:
+        if not players and not female:
             raise ValueError(f"Aucun joueur senior au poste {label}")
-        control_label = f"Voir les joueurs au poste {label}"
+        control_label = f"Voir les {plural} au poste {label}"
         hotspots.append(
             f'<button class="senior-position-hotspot" type="button" data-player-position="{position_id}" '
             f'style="--position-x:{x}%;--position-y:{y}%" aria-controls="senior-player-stage" '
@@ -1141,7 +1151,7 @@ def senior_player_card_experience():
         cards = []
         back = f"assets/seniors-masculins/cards/back/{position_id}.webp"
         for index, player in enumerate(players):
-            front = f"assets/seniors-masculins/cards/front/{SENIOR_PLAYER_CARD_FRONTS[player['name']]}"
+            front = f"assets/seniors-feminines/cards/front/{player['file']}" if female else f"assets/seniors-masculins/cards/front/{SENIOR_PLAYER_CARD_FRONTS[player['name']]}"
             name = escape(player["name"])
             card_description = f"Carte de {name}, #{escape(player['number'])}, {escape(label)}"
             cards.append(
@@ -1150,32 +1160,36 @@ def senior_player_card_experience():
                 f'aria-label="Afficher le recto de la carte de {escape(player["name"], quote=True)}">'
                 f'<span class="senior-player-card-inner">'
                 f'<span class="senior-player-card-face senior-player-card-back"><img src="{back}" alt="" width="640" height="896" loading="lazy" decoding="async"></span>'
-                f'<span class="senior-player-card-face senior-player-card-front"><img src="{front}" alt="{escape(card_description, quote=True)}" width="640" height="896" loading="lazy" decoding="async"></span>'
+                f'<span class="senior-player-card-face senior-player-card-front"><img src="{front}" alt="{escape(card_description, quote=True)}" width="640" height="{960 if female else 896}" loading="lazy" decoding="async"></span>'
                 f'</span><span class="senior-player-card-hint" aria-hidden="true">Sélectionner pour retourner</span></button>'
             )
-        player_word = "joueur" if len(players) == 1 else "joueurs"
+        player_word = singular if len(players) == 1 else plural
+        empty_note = '<p class="senior-position-noscript">Aucune carte disponible pour ce poste pour le moment.</p>' if not players else ''
         templates.append(
             f'<template data-position-template="{position_id}"><div class="senior-position-selection">'
             f'<div class="senior-position-selection-heading"><p class="eyebrow">POSTE · {abbreviation}</p>'
             f'<h3>{escape(label)}</h3><p>{len(players)} {player_word} · cartes {SEASON_DISPLAY}</p></div>'
-            f'<div class="senior-position-deck">{"".join(cards)}</div></div></template>'
+            f'<div class="senior-position-deck">{"".join(cards)}</div>{empty_note}</div></template>'
         )
 
+    fallback = ('<div class="senior-female-nojs">' + ''.join(
+        f'<figure><img src="assets/seniors-feminines/cards/front/{player["file"]}" alt="{escape(player["name"], quote=True)}, numéro {player["number"]}, {escape(player["position"], quote=True)}" width="640" height="960" loading="lazy"><figcaption>{escape(player["name"])} · #{player["number"]}</figcaption></figure>'
+        for player in article["players"]) + '</div>') if female else '<p class="senior-position-noscript">Les portraits et les postes restent disponibles dans <a href="articles/presentation-seniors-masculins-1.html">la présentation de l’équipe</a>.</p>'
     return f'''<section class="section senior-position-showcase" data-player-position-showcase>
-      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS MASCULINS 1</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES JOUEURS</em></h2></div><p>Sélectionne un poste du terrain, puis chaque carte pour révéler les joueurs.</p></div>
+      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS {team_label}</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES {plural.upper()}</em></h2></div><p>Sélectionne un poste du terrain, puis chaque carte pour révéler les {plural}.</p></div>
       <div class="senior-position-experience">
         <div class="senior-position-court" data-reveal>
           <img class="senior-position-base" src="assets/seniors-masculins/terrain.webp?v=20260927-exact" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
           {"".join(position_overlays)}
           <div class="senior-position-hotspots">{"".join(hotspots)}</div>
         </div>
-        <div class="senior-player-stage" id="senior-player-stage" data-player-stage tabindex="-1" aria-live="polite" aria-label="Cartes des joueurs sélectionnés">
+        <div class="senior-player-stage" id="senior-player-stage" data-player-stage tabindex="-1" aria-live="polite" aria-label="Cartes des {plural}">
           <div class="senior-player-stage-placeholder"><span class="senior-player-stage-emblem" aria-hidden="true"><img src="assets/seniors-masculins/logo-phb-glow.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span><p class="eyebrow">COMPOSE TON SEPT</p><h3>CHOISIS UN POSTE</h3><p>Les cartes correspondantes seront distribuées ici.</p></div>
         </div>
       </div>
       <div class="senior-position-shortcuts" aria-label="Choisir un poste">{"".join(shortcuts)}</div>
       {"".join(templates)}
-      <noscript><p class="senior-position-noscript">Les portraits et les postes restent disponibles dans <a href="articles/presentation-seniors-masculins-1.html">la présentation de l’équipe</a>.</p></noscript>
+      <noscript>{fallback}</noscript>
     </section>'''
 
 
@@ -1220,6 +1234,11 @@ pages["seniors-masculins"] = page(
     '<div class="senior-duty-entry" data-reveal><div><p class="eyebrow">TOUTES LES ÉQUIPES</p><h2>PERMANENCES <em>DE SALLE</em></h2><p>Les prochains week-ends, les responsables et tous les matchs à domicile annoncés par FFHandball.</p></div>' +
     button('Voir le planning', 'permanences-seniors-masculins.html') + '</div></section>', "equipes",
     f"Seniors masculins du Ploufragan Handball : horaires d’entraînement et accès aux deux équipes engagées en {SEASON}.")
+
+# Reuse the seniors’ court and card interactions for the women’s supplied portraits.
+pages["seniors-feminines"] = pages["seniors-feminines"].replace(
+    '<section class="team-gallery"', senior_player_card_experience(female=True) + '<section class="team-gallery"', 1
+).replace('</head>', '<link rel="stylesheet" href="assets/seniors-feminines-cards.css?v=20261011-2"><link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script></head>')
 
 MONTHS_FR = ("", "JANVIER", "FÉVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOÛT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DÉCEMBRE")
 for duty_group, duty_label in (("seniors-masculins", "Seniors masculins"),
@@ -1761,7 +1780,7 @@ pages["contact"]=page("contact","Contact et accès",heading("CONTACT <em>& ACCÈ
 
 from scripts.mon_phb_page import build_dashboard
 personal_panini = {}
-for personal_team in ("u13-filles", "u18-garcons", "u15-garcons", "seniors-masculins-1", "seniors-masculins-2"):
+for personal_team in ("u13-filles", "u18-garcons", "u15-garcons", "seniors-feminines", "seniors-masculins-1", "seniors-masculins-2"):
     personal_source = pages["seniors-masculins"] if personal_team == "seniors-masculins-1" else pages[personal_team]
     personal_cards = re.findall(r'<button\b[^>]*\b(?:data-player-card|data-u13-card)\b[^>]*>.*?</button>', personal_source, re.S)
     personal_panini.setdefault(personal_team, []).extend(personal_cards)

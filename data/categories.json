@@ -367,7 +367,14 @@
           "src": "assets/club/cartes/elsa-seniors-feminines.webp",
           "role": "coach des seniors féminines"
         }
-      ]
+      ],
+      "pagePhoto": {
+        "src": "assets/equipes/seniors-feminines-equipe-2026.webp",
+        "width": 682,
+        "height": 534,
+        "alt": "Équipe des seniors féminines du Ploufragan Handball",
+        "className": "team-sidebar-photo-collective"
+      }
     },
     "seniors-masculins": {
       "label": "Seniors masculins",
