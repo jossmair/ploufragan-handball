@@ -958,11 +958,19 @@ def team_gallery(slug):
         ("assets/equipes/seniors-feminines-gallery-02.webp", 803, 806,
          "Deux joueuses Seniors féminines du PHB s'encouragent sur le terrain"),
     )
+    label = "Seniors féminines"
+    title = "LES FILLES"
+    heading_id = "seniors-feminines-gallery-title"
+    total = len(photos)
     slides = ''.join(
-        f'<figure class="team-gallery-slide"><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async"></figure>'
+        f'<figure class="photo-carousel-slide" data-photo-slide><img src="{src}" alt="{escape(alt, quote=True)}" width="{width}" height="{height}" loading="lazy" decoding="async"><figcaption>{escape(alt)}</figcaption></figure>'
         for src, width, height, alt in photos
     )
-    return f'''<section class="team-gallery" data-team-gallery data-reveal aria-labelledby="seniors-feminines-gallery-title"><header><div><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="seniors-feminines-gallery-title">LES FILLES <em>EN IMAGES</em></h2></div><div class="team-gallery-controls"><button type="button" data-team-gallery-prev aria-label="Photo précédente">←</button><span data-team-gallery-count aria-live="polite">1 / {len(photos)}</span><button type="button" data-team-gallery-next aria-label="Photo suivante">→</button></div></header><div class="team-gallery-track" data-team-gallery-track tabindex="0" role="region" aria-label="Photos des Seniors féminines">{slides}</div></section>'''
+    thumbnails = ''.join(
+        f'<button class="photo-carousel-thumb" type="button" data-photo-thumb data-photo-index="{index}" aria-label="Afficher la photo {index + 1}"' + (' aria-current="true"' if index == 0 else '') + f'><img src="assets/equipes/thumbs/{Path(src).name}" alt="" width="240" height="156" loading="lazy" decoding="async"></button>'
+        for index, (src, width, height, alt) in enumerate(photos)
+    )
+    return f'''<section class="youth-photo-gallery" aria-labelledby="{heading_id}"><div class="youth-photo-gallery-heading" data-reveal><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="{heading_id}">{title} <em>EN IMAGES</em></h2></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos de match des {escape(label, quote=True)}">{slides}</div><div class="photo-carousel-thumbnails-shell"><button class="photo-carousel-thumb-nav is-prev" type="button" data-photo-thumb-prev aria-label="Miniatures précédentes" disabled>←</button><div class="photo-carousel-thumbnails" data-photo-thumbnails aria-label="Miniatures des photos">{thumbnails}</div><button class="photo-carousel-thumb-nav is-next" type="button" data-photo-thumb-next aria-label="Miniatures suivantes">→</button></div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / max(total, 1):.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div></section>'''
 
 for slug,name,title,meta,mark,photo in GROUPS:
     if slug in ("jeunes", "seniors-masculins"):
@@ -1237,8 +1245,8 @@ pages["seniors-masculins"] = page(
 
 # Reuse the seniors’ court and card interactions for the women’s supplied portraits.
 pages["seniors-feminines"] = pages["seniors-feminines"].replace(
-    '<section class="team-gallery"', senior_player_card_experience(female=True) + '<section class="team-gallery"', 1
-).replace('</head>', '<link rel="stylesheet" href="assets/seniors-feminines-cards.css?v=20261011-3"><link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script></head>')
+    '<section class="youth-photo-gallery"', senior_player_card_experience(female=True) + '<section class="youth-photo-gallery"', 1
+).replace('</head>', '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1"><link rel="stylesheet" href="assets/seniors-feminines-cards.css?v=20261011-3"><link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script></head>')
 
 MONTHS_FR = ("", "JANVIER", "FÉVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOÛT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DÉCEMBRE")
 for duty_group, duty_label in (("seniors-masculins", "Seniors masculins"),

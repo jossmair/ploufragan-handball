@@ -385,16 +385,18 @@ test('mobile : les cartes seniors sont empilées', async ({ page }, testInfo) =>
 test('Seniors féminines : carrousel sous le classement', async ({ page }) => {
   await page.goto('/seniors-feminines.html');
   const ranking = page.locator('.team-season-card');
-  const gallery = page.locator('[data-team-gallery]');
+  const gallery = page.locator('[data-photo-carousel]');
   await expect(ranking).toBeVisible();
   await expect(gallery).toBeVisible();
   expect(await ranking.evaluate((element, next) => Boolean(element.compareDocumentPosition(next) & Node.DOCUMENT_POSITION_FOLLOWING), await gallery.elementHandle())).toBe(true);
-  await expect(gallery.locator('.team-gallery-slide')).toHaveCount(4);
-  await gallery.locator('[data-team-gallery-next]').click();
-  await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('2 / 4');
-  await gallery.locator('[data-team-gallery-track]').focus();
+  await expect(gallery.locator('[data-photo-slide]')).toHaveCount(4);
+  await expect(gallery.locator('[data-photo-thumb]')).toHaveCount(4);
+  await gallery.locator('[data-photo-thumb]').nth(1).click();
+  await expect(gallery.locator('[data-photo-thumb]').nth(1)).toHaveAttribute('aria-current', 'true');
+  await expect(gallery.locator('[data-photo-count]')).toHaveText('2 / 4');
+  await gallery.locator('[data-photo-track]').focus();
   await page.keyboard.press('ArrowLeft');
-  await expect(gallery.locator('[data-team-gallery-count]')).toHaveText('1 / 4');
+  await expect(gallery.locator('[data-photo-count]')).toHaveText('1 / 4');
 });
 
 test('partenaires : dock unique avec pause accessible', async ({ page }) => {

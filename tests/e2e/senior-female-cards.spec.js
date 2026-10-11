@@ -40,7 +40,7 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
   expect(numbers.sort()).toEqual(['01','03','04','06','08','09','10','11','12','15']);
   await showcase.locator('.senior-position-shortcut[data-player-position="gardien"]').click();
   await expect(showcase.locator('[data-player-stage] [data-player-card]')).toHaveAttribute('data-player-name','Clara');
-  const photos=page.locator('[data-team-gallery] .team-gallery-slide img');
+  const photos=page.locator('[data-photo-carousel] [data-photo-slide] img');
   await expect(photos).toHaveCount(4);
   await expect(photos.nth(0)).toHaveAttribute('src',/groupe-equipe/);
   await expect(photos.nth(1)).toHaveAttribute('src',/groupe-club/);
