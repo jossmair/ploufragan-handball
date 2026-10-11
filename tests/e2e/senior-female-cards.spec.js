@@ -6,10 +6,19 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
   await page.goto('/seniors-feminines.html');
   const showcase=page.locator('[data-player-position-showcase]');
   const numbers=[];
-  for(const [position,count] of [['ailier-gauche',2],['ailier-droit',1],['pivot',1],['arriere-gauche',2],['arriere-droit',2],['demi-centre',1]]){
+  for(const [position,count] of [['gardien',1],['ailier-gauche',2],['ailier-droit',1],['pivot',1],['arriere-gauche',2],['arriere-droit',2],['demi-centre',1]]){
     await showcase.locator(`.senior-position-shortcut[data-player-position="${position}"]`).click();
     const cards=showcase.locator('[data-player-stage] [data-player-card]');
     await expect(cards).toHaveCount(count);
+    if(page.viewportSize().width<=520){
+      const first=await cards.first().boundingBox();
+      expect(first.width).toBeLessThanOrEqual(160);
+      expect(first.width).toBeGreaterThan(100);
+      if(count===2){
+        const second=await cards.nth(1).boundingBox();
+        expect(Math.abs(first.y-second.y)).toBeLessThan(1);
+      }
+    }
     if(count===1){
       const deck=await showcase.locator('.senior-position-deck').boundingBox();
       const card=await cards.first().boundingBox();
@@ -28,9 +37,9 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
       await expect(dialog).not.toBeVisible();
     }
   }
-  expect(numbers.sort()).toEqual(['03','04','06','08','09','10','11','12','15']);
+  expect(numbers.sort()).toEqual(['01','03','04','06','08','09','10','11','12','15']);
   await showcase.locator('.senior-position-shortcut[data-player-position="gardien"]').click();
-  await expect(showcase.locator('[data-player-stage]')).toContainText('Aucune carte disponible');
+  await expect(showcase.locator('[data-player-stage] [data-player-card]')).toHaveAttribute('data-player-name','Clara');
   const photos=page.locator('[data-team-gallery] .team-gallery-slide img');
   await expect(photos).toHaveCount(4);
   await expect(photos.nth(0)).toHaveAttribute('src',/groupe-equipe/);
@@ -38,7 +47,7 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
   await expect(page.locator('.team-sidebar-photo img')).toHaveAttribute('src',/seniors-feminines-equipe-2026/);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await page.goto('/mon-phb.html');
-  expect(await page.locator('#phb-data').evaluate(el=>JSON.parse(el.textContent).panini['seniors-feminines'].length)).toBe(9);
+  expect(await page.locator('#phb-data').evaluate(el=>JSON.parse(el.textContent).panini['seniors-feminines'].length)).toBe(10);
   await page.goto('/');
   await expect(page.getByRole('link',{name:'Label Hand à 4 FFHandball : découvrir les U11 mixtes'})).toHaveAttribute('href','u11-mixte.html');
 });

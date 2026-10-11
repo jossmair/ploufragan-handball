@@ -1238,7 +1238,7 @@ pages["seniors-masculins"] = page(
 # Reuse the seniors’ court and card interactions for the women’s supplied portraits.
 pages["seniors-feminines"] = pages["seniors-feminines"].replace(
     '<section class="team-gallery"', senior_player_card_experience(female=True) + '<section class="team-gallery"', 1
-).replace('</head>', '<link rel="stylesheet" href="assets/seniors-feminines-cards.css?v=20261011-2"><link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script></head>')
+).replace('</head>', '<link rel="stylesheet" href="assets/seniors-feminines-cards.css?v=20261011-3"><link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script></head>')
 
 MONTHS_FR = ("", "JANVIER", "FÉVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOÛT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DÉCEMBRE")
 for duty_group, duty_label in (("seniors-masculins", "Seniors masculins"),

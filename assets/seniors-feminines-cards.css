@@ -3,6 +3,11 @@ body[data-page=seniors-feminines] .senior-player-card-face{border:0;border-radiu
 body[data-page=seniors-feminines] .senior-player-card-front img{object-fit:contain}
 body[data-page=seniors-feminines] .senior-player-card-back img{object-fit:fill}
 .senior-position-deck>.senior-player-card:only-child{grid-column:1/-1;width:calc((100% - clamp(12px,1.6vw,24px))/2);justify-self:center}
-@media(max-width:520px){.senior-position-deck>.senior-player-card:only-child{width:min(100%,320px)}}
+@media(max-width:520px){
+ body[data-page=seniors-feminines] .senior-player-stage{min-height:280px;padding:20px 15px}
+ body[data-page=seniors-feminines] .senior-position-deck{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:332px;margin-inline:auto}
+ body[data-page=seniors-feminines] .senior-player-card{width:100%}
+ body[data-page=seniors-feminines] .senior-position-deck>.senior-player-card:only-child{width:calc((100% - 12px)/2)}
+}
 .senior-female-nojs{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:20px;margin-top:24px}
 .senior-female-nojs figure{margin:0}.senior-female-nojs img{display:block;width:100%;height:auto;border-radius:5.5%}.senior-female-nojs figcaption{margin-top:8px;text-align:center}

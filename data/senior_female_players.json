@@ -52,5 +52,11 @@
     "number": "8",
     "position": "Arrière droite",
     "file": "08.webp"
+  },
+  {
+    "name": "Clara",
+    "number": "1",
+    "position": "Gardienne",
+    "file": "01.webp"
   }
 ]
