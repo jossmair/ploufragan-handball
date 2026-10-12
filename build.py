@@ -525,13 +525,13 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
         'resultats': 'assets/photos/page-headings/resultats.webp',
     }
     if slug in heading_images:
-        extra_head += f'<link rel="preload" as="image" href="{heading_images[slug]}" fetchpriority="high">'
+        extra_head += (f'<link rel="preload" as="image" href="{heading_images[slug]}" media="(min-width:851px)" fetchpriority="high"><link rel="preload" as="image" href="assets/photos/home-handball-action-mobile.webp" media="(max-width:850px)" fetchpriority="high">' if slug == 'index' else f'<link rel="preload" as="image" href="{heading_images[slug]}" fetchpriority="high">')
     if 'data-org-coach' in body and 'assets/club.css' not in extra_head:
         extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261005-20"><script src="assets/club.js?v=20261005-2" defer></script>'
     if "data-u13-card" in body or "data-player-position-showcase" in body:
         extra_head += '<link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script>'
     if "team-detail-grid" in body or "senior-landing" in body:
-        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261005-2">'
+        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261011-3">'
     if slug == "u18-garcons":
         extra_head += '<link rel="stylesheet" href="assets/coach-surprise.css?v=20261009-2"><script src="assets/coach-surprise.js?v=20261010-1" defer></script>'
     if slug == "boutique":
@@ -780,8 +780,15 @@ home_score_matches = sorted(
 )
 home_scores_title = "SCORES DU <em>WEEK-END</em>" if weekend_switch_active else "DERNIERS <em>RÉSULTATS</em>"
 pages={}
-home_body = f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>{SEASON_DISPLAY}</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><section class="home-labels" aria-label="Labels FFHandball"><div class="home-labels-row"><a href="baby-hand.html" aria-label="Label BabyHand FFHandball : découvrir le Baby Hand"><img src="assets/labels/babyhand.webp" alt="Label BabyHand FFHandball" width="192" height="192" decoding="async"></a><a href="u11-mixte.html" aria-label="Label Hand à 4 FFHandball : découvrir les U11 mixtes"><img src="assets/labels/hand-a-4.webp" alt="Label Hand à 4 FFHandball" width="192" height="192" decoding="async"></a><a href="equipes.html" aria-label="Label Hand à 7 FFHandball : découvrir les équipes"><img src="assets/labels/hand-a-7.webp" alt="Label Hand à 7 FFHandball" width="192" height="192" decoding="async"></a></div></section><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></b></a></div><p class="hero-location">Complexe sportif du Haut-Champ<br><span>22440 Ploufragan</span></p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}{button('Essayer / s’inscrire','inscriptions.html',True)}</div></div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><img src="assets/blog/intro-final.webp" alt="Logo du Ploufragan Handball" width="1280" height="720"><video data-intro-video muted playsinline preload="metadata" poster="assets/blog/intro-first.webp" width="1280" height="720" aria-hidden="true"><source src="assets/blog/intro.mp4" type="video/mp4"></video></div></div></section>{home_news_section(ARTICLES)}<section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>{home_scores_title}</h2></div><a class="text-link" href="resultats.html">Tous les résultats <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div><div class="matches-grid">{''.join(match_card(m, pending_score=not m["played"]) for m in home_score_matches[:4])}</div></section>''' + home_weekend_section(upcoming, display_now)
-pages["index"]=page("index","Accueil",home_body,extra_head='<link rel="stylesheet" href="assets/home-news.css?v=20261005-1"><link rel="stylesheet" href="assets/home-labels.css?v=20261011-5">',description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
+next_home_matches = sorted((match for match in HOME_MATCHES["matches"] if datetime.fromisoformat(match["date"]) > display_now), key=lambda match: match["date"])
+if next_home_matches:
+    rendezvous = next_home_matches[0]
+    rendezvous_date = datetime.fromisoformat(rendezvous["date"]).astimezone(PARIS)
+    home_next_link = f'<a class="hero-next-link" href="permanences-seniors-masculins.html"><span>PROCHAIN MATCH AU CLUB</span><strong>{rendezvous_date.strftime("%d/%m · %Hh%M")} · {escape(rendezvous["category"])}</strong></a>'
+else:
+    home_next_link = '<a class="hero-next-link" href="resultats.html#prochains-matchs"><span>PROCHAINS RENDEZ-VOUS</span><strong>Consulter le calendrier des équipes</strong></a>'
+home_body = f'''<section class="home-hero container"><div class="hero-copy" data-reveal><p class="eyebrow">SAISON <span>{SEASON_DISPLAY}</span></p><h1>PLOUFRAGAN<br><em>HANDBALL</em></h1><div class="hero-rule"></div><section class="home-labels" aria-label="Labels FFHandball"><div class="home-labels-row"><a href="baby-hand.html" aria-label="Label BabyHand FFHandball : découvrir le Baby Hand"><img src="assets/labels/babyhand.webp" alt="Label BabyHand FFHandball" width="192" height="192" decoding="async"></a><a href="u11-mixte.html" aria-label="Label Hand à 4 FFHandball : découvrir les U11 mixtes"><img src="assets/labels/hand-a-4.webp" alt="Label Hand à 4 FFHandball" width="192" height="192" decoding="async"></a><a href="equipes.html" aria-label="Label Hand à 7 FFHandball : découvrir les équipes"><img src="assets/labels/hand-a-7.webp" alt="Label Hand à 7 FFHandball" width="192" height="192" decoding="async"></a></div></section><p class="hero-social-title">Suivez notre actualité sur les réseaux :</p><div class="hero-socials" aria-label="Réseaux sociaux du club"><a href="https://www.facebook.com/ploufragan.hb/" target="_blank" rel="noopener noreferrer">{social_icon("facebook")}Facebook <b aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></b></a><a href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer">{social_icon("instagram")}Instagram <b aria-hidden="true"><svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></b></a></div><p class="hero-location">Complexe sportif du Haut-Champ<br><span>22440 Ploufragan</span></p><div class="actions">{button('Les équipes','equipes.html')}{button('Résultats','resultats.html',True)}{button('Essayer / s’inscrire','inscriptions.html',True)}</div>{home_next_link}</div><div class="hero-logo-stage"><div class="hero-intro-media" data-intro-video-stage><picture><source media="(max-width:850px)" srcset="assets/blog/intro-final-mobile.webp"><img src="assets/blog/intro-final.webp" fetchpriority="high" alt="Logo du Ploufragan Handball" width="1280" height="720"></picture><video data-intro-video muted playsinline preload="none" width="1280" height="720" aria-hidden="true"><source data-src="assets/blog/intro.mp4" type="video/mp4"></video><button class="hero-animation-play" type="button" data-home-animation hidden aria-label="Animer le logo du club">▶</button></div></div></section>{home_news_section(ARTICLES)}<section class="container section"><div class="section-heading" data-reveal><div><p class="eyebrow">MISE À JOUR AUTOMATIQUE</p><h2>{home_scores_title}</h2></div><a class="text-link" href="resultats.html">Tous les résultats <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div><div class="matches-grid">{''.join(match_card(m, pending_score=not m["played"]) for m in home_score_matches[:4])}</div></section>''' + home_weekend_section(upcoming, display_now)
+pages["index"]=page("index","Accueil",home_body,extra_head='<link rel="stylesheet" href="assets/home-news.css?v=20261005-1"><link rel="stylesheet" href="assets/home-labels.css?v=20261011-6">',description="Site officiel du Ploufragan Handball : équipes, horaires, résultats, boutique et contact.")
 pages["equipes"]=page("equipes","Les équipes",heading("LES <em>ÉQUIPES</em>","Équipes","À Ploufragan, près de Saint-Brieuc, le PHB accueille les enfants dès 3 ans, les jeunes, les seniors et les adultes en loisir. Sélectionnez une catégorie pour découvrir son projet, ses horaires et ses informations pratiques.")+f'<section class="container section after-heading"><div class="teams-grid">{"".join(team_card(g) for g in GROUPS)}</div></section>')
 
 def org_person_card(first, last, key, cards, secret=False):
@@ -1246,7 +1253,7 @@ pages["seniors-masculins"] = page(
 # Reuse the seniors’ court and card interactions for the women’s supplied portraits.
 pages["seniors-feminines"] = pages["seniors-feminines"].replace(
     '<section class="youth-photo-gallery"', senior_player_card_experience(female=True) + '<section class="youth-photo-gallery"', 1
-).replace('</head>', '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1"><link rel="stylesheet" href="assets/seniors-feminines-cards.css?v=20261011-3"><link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script></head>')
+).replace('</head>', '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1"><link rel="stylesheet" href="assets/seniors-feminines-cards.css?v=20261012-1"><link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script></head>')
 
 MONTHS_FR = ("", "JANVIER", "FÉVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOÛT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DÉCEMBRE")
 for duty_group, duty_label in (("seniors-masculins", "Seniors masculins"),
@@ -1462,12 +1469,33 @@ if HELLOASSO_URL:
 else:
     payment_cta = button("Demander les modalités de paiement", 'mailto:tresoreriephb@gmail.com?subject=Paiement%20licence%20PHB')
 
+trial_options = ['<option value="">Choisir une catégorie</option>']
+trial_templates = []
+for key in CATEGORY_DATA["landingOrder"]:
+    if key == "jeunes":
+        continue
+    keys = CATEGORY_DATA["youthOrder"] if key == "jeunes" else [key]
+    for category_id in keys:
+        category = CATEGORIES[category_id]
+        audience = category.get("age") or ("né(e) en " + category.get("birthYears", ""))
+        trial_options.append(f'<option value="{category_id}">{escape(category["label"])} · {escape(audience)}</option>')
+        sessions = ''.join(f'<li><strong>{escape(slot["day"])} {escape(slot["time"])}</strong><span>{escape(slot["venue"])}</span></li>' for slot in category["training"])
+        trial_templates.append(f'<template data-trial-category="{category_id}"><h3>{escape(category["label"])}</h3><ul class="trial-sessions">{sessions}</ul><p>Contactez le club pour confirmer le créneau et les conditions de votre premier essai.</p><div class="actions">{button("Demander un essai", mail("Essai PHB — " + category["label"]))}{button("Voir l’équipe", category_id + ".html", True)}</div></template>')
+# Include individual youth teams in the chooser alongside the adult categories.
+for category_id in CATEGORY_DATA["youthOrder"]:
+    category = CATEGORIES[category_id]
+    trial_options.append(f'<option value="{category_id}">{escape(category["label"])} · né(e) en {escape(category["birthYears"])}</option>')
+    sessions = ''.join(f'<li><strong>{escape(slot["day"])} {escape(slot["time"])}</strong><span>{escape(slot["venue"])}</span></li>' for slot in category["training"])
+    trial_templates.append(f'<template data-trial-category="{category_id}"><h3>{escape(category["label"])}</h3><ul class="trial-sessions">{sessions}</ul><p>Contactez le club pour confirmer le créneau et les conditions de votre premier essai.</p><div class="actions">{button("Demander un essai", mail("Essai PHB — " + category["label"]))}{button("Voir l’équipe", category_id + ".html", True)}</div></template>')
+trial_start = f'''<section class="trial-start" aria-labelledby="trial-start-title"><p class="eyebrow">VOTRE PREMIER ESSAI</p><h2 id="trial-start-title">TROUVEZ VOTRE <em>CRÉNEAU</em></h2><p>Choisissez la catégorie selon l’âge ou l’année de naissance, consultez les horaires, puis contactez le club.</p><label for="trial-category">Votre catégorie</label><select id="trial-category" data-trial-chooser disabled>{''.join(trial_options)}</select><div data-trial-result aria-live="polite"><p>Un doute sur la catégorie ? <a href="{mail('Essai PHB')}">Écrivez au club</a> en précisant l’année de naissance.</p></div>{''.join(trial_templates)}<noscript><p><a href="#categories">Consulter les catégories</a> · <a href="entrainements.html">Voir les horaires</a> · <a href="{mail('Essai PHB')}">Demander un essai</a></p></noscript></section>'''
+
 registration_body = heading(
     "LICENCES <em>& INSCRIPTIONS</em>",
     "Licences & inscriptions",
     f"Saison {SEASON} · Trouvez votre catégorie, contactez le club, puis suivez les indications reçues pour compléter votre licence.",
 ) + f'''
 <div class="container licence-page">
+  {trial_start}
   <nav class="page-shortcuts" aria-label="Essai et renseignements"><a href="#essai">Faire un essai</a><a href="#contact-inscriptions">Contacter le club</a></nav>
   <nav class="content-filter licence-anchor-nav" aria-label="Accès rapide aux rubriques d’inscription" data-registration-nav data-reveal>
     <span class="content-filter-label" id="registration-nav-title">Aller à</span>
@@ -1566,6 +1594,7 @@ pages["inscriptions"] = page(
     registration_body,
     description=f"Licences et inscriptions {SEASON} du Ploufragan Handball : catégories, années de naissance, tarifs, démarches Gest’Hand, paiement et contact.",
 )
+pages["inscriptions"] = pages["inscriptions"].replace('</head>', '<link rel="stylesheet" href="assets/trial-start.css?v=20261011-1"><script src="assets/trial-start.js?v=20261011-1" defer></script></head>')
 
 
 competition_cards=''.join(f'''<article class="competition-card" data-results-item data-team="{escape(t['label'], quote=True)}" data-reveal><p class="eyebrow">{escape(t['pool'])}</p><h3>{escape(clean_label(t['label']))}</h3><div><a href="{escape(t['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Calendrier FFHandball <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a><a href="{escape(t['ranking'],quote=True)}" target="_blank" rel="noopener noreferrer">Classement <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div></article>''' for t in RESULTS["teams"])

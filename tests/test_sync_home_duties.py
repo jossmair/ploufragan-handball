@@ -12,6 +12,35 @@ class HomeDutiesSnapshotTests(unittest.TestCase):
         source = Path(__file__).resolve().parents[1] / "data" / "home_matches.json"
         self.assertTrue(sync_home_duties.is_valid_snapshot(source))
 
+    def test_current_official_id_replaces_configured_id(self):
+        team = {"base": "https://example.test/", "poolId": "10", "label": "U18",
+                "group": "jeunes", "internalId": "old"}
+        page = {"competitions---poule-selector": {
+            "selected_poule": {"journees": '[{"journee_numero": 1}]'},
+            "equipe_options": [{"structureId": "3062", "id": "new", "ext_equipeId": "100"}]},
+            "competitions---rencontre-list": {"selected_numero_journee": 1, "rencontres": [{
+                "equipe1Id": "new", "equipe2Id": "opponent", "ext_rencontreId": "77",
+                "date": "2026-10-17T15:00:00+02:00", "equipe1Libelle": "PHB", "equipe2Libelle": "Opponent"}]}}
+        with patch.object(sync_home_duties, "fetch", return_value=page):
+            matches = sync_home_duties.fetch_team_rounds(team)
+        self.assertEqual([match["id"] for match in matches], ["77"])
+        self.assertEqual(team["internalId"], "old")
+
+    def test_health_check_rejects_stale_but_preserves_snapshot(self):
+        from scripts.check_home_schedule import check
+        from datetime import datetime, timezone, timedelta
+        source = Path(__file__).resolve().parents[1] / "data" / "home_matches.json"
+        with TemporaryDirectory() as directory:
+            target = Path(directory) / "home_matches.json"
+            target.write_bytes(source.read_bytes())
+            snapshot = json.loads(target.read_text(encoding="utf-8"))
+            verified = datetime.fromisoformat(snapshot["updatedAt"])
+            self.assertEqual(check(target, verified + timedelta(hours=23)), snapshot)
+            before = target.read_bytes()
+            with self.assertRaises(ValueError):
+                check(target, verified + timedelta(hours=25))
+            self.assertEqual(target.read_bytes(), before)
+
     def test_empty_snapshot_is_rejected(self):
         with TemporaryDirectory() as directory:
             target = Path(directory) / "home_matches.json"

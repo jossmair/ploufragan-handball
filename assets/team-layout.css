@@ -31,3 +31,5 @@ body .team-detail-summary .pool-table-scroll{grid-column:2;grid-row:1/span 3}
 body .team-detail-summary .season-ranking-link{grid-column:1;grid-row:3;margin-top:0}
 body .team-detail-summary .season-empty{grid-column:2;grid-row:1/span 3}
 }
+
+body main .team-detail-grid.container>.youth-photo-gallery{grid-column:1/-1;width:100%;max-width:none;min-width:0;justify-self:stretch}

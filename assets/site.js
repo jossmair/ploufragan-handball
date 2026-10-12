@@ -60,7 +60,20 @@ if (blogIntroVideo) {
   blogIntroVideo.addEventListener('ended', holdFinalImage, { once: true });
   blogIntroVideo.addEventListener('error', holdFinalImage, { once: true });
   if (motion.matches) holdFinalImage();
-  else blogIntroVideo.play().catch(holdFinalImage);
+  else {
+    const playButton = stage.querySelector('[data-home-animation]');
+    const play = () => {
+      stage.classList.remove('is-ended');
+      const source = blogIntroVideo.querySelector('source[data-src]');
+      if (source && !source.hasAttribute('src')) { source.src = source.dataset.src; blogIntroVideo.load(); }
+      if (playButton) playButton.hidden = true;
+      blogIntroVideo.play().catch(holdFinalImage);
+    };
+    if (matchMedia('(max-width:850px)').matches || navigator.connection?.saveData) {
+      holdFinalImage();
+      if (playButton) { playButton.hidden = false; playButton.addEventListener('click', play); }
+    } else play();
+  }
   motion.addEventListener('change', event => { if (event.matches) holdFinalImage(); });
 }
 

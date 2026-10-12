@@ -23,3 +23,12 @@ body .home-hero .home-labels img{display:block;width:56px;height:56px;max-width:
   body .home-hero .hero-socials a:hover::after{transform:scaleX(1)}
   body .home-hero .hero-socials a:hover>b{transform:translate(2px,-2px)}
 }
+
+.hero-animation-play{position:absolute;right:14px;bottom:14px;z-index:5;width:38px;height:38px;border:1px solid #ffffff66;border-radius:50%;background:#101012b3;color:#fff;cursor:pointer}
+.hero-animation-play[hidden]{display:none}
+@media(max-width:850px){body[data-page=index] main .home-hero::before{background-image:linear-gradient(#09090db5,#09090db5),url('photos/home-handball-action-mobile.webp')}}
+
+.hero-next-link{display:block;margin-top:12px;padding:10px 12px;border-left:3px solid var(--red);background:#101012a8;line-height:1.4}.hero-next-link span{display:block;font-size:.65rem;letter-spacing:.1em;color:#bebec7}.hero-next-link strong{font-size:.85rem}.hero-next-link:hover{background:#202026}.hero-next-link:focus-visible{outline:3px solid #ffbf4b;outline-offset:3px}@media(max-width:850px){body .home-hero .hero-copy>.hero-next-link{order:9;width:100%}}
+
+.hero-intro-media picture{display:contents}
+@media(min-width:1024px){body .home-hero .hero-next-link{position:absolute;left:calc(100% + 24px);bottom:12px;width:min(100%,420px);margin:0;z-index:4}}

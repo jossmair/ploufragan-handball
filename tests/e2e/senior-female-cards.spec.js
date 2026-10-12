@@ -6,7 +6,8 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
   await page.goto('/seniors-feminines.html');
   const showcase=page.locator('[data-player-position-showcase]');
   const numbers=[];
-  for(const [position,count] of [['gardien',1],['ailier-gauche',2],['ailier-droit',1],['pivot',1],['arriere-gauche',2],['arriere-droit',2],['demi-centre',1]]){
+  for(const [position,expected] of [['gardien',['01']],['ailier-gauche',['04','12']],['ailier-droit',['03']],['pivot',['09']],['arriere-gauche',['08','15']],['arriere-droit',['06','11']],['demi-centre',['10']]]){
+    const count=expected.length;
     await showcase.locator(`.senior-position-shortcut[data-player-position="${position}"]`).click();
     const cards=showcase.locator('[data-player-stage] [data-player-card]');
     await expect(cards).toHaveCount(count);
@@ -19,14 +20,16 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
         expect(Math.abs(first.y-second.y)).toBeLessThan(1);
       }
     }
-    if(count===1){
+    if(count===1||count===3){
       const deck=await showcase.locator('.senior-position-deck').boundingBox();
-      const card=await cards.first().boundingBox();
+      const card=await cards.last().boundingBox();
       expect(Math.abs(card.x+card.width/2-deck.x-deck.width/2)).toBeLessThan(1);
     }
+    const positionNumbers=[];
     for(const card of await cards.all()){
       const front=card.locator('.senior-player-card-front img');
-      numbers.push((await front.getAttribute('src')).match(/\/(\d+)\.webp$/)[1]);
+      const number=(await front.getAttribute('src')).match(/\/(\d+)-20261012(?:-v2)?\.webp$/)[1];
+      numbers.push(number);positionNumbers.push(number);
       await card.click();
       await expect(card).toHaveClass(/is-flipped/);
       await card.click();
@@ -36,6 +39,7 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
       await dialog.locator('button').click();
       await expect(dialog).not.toBeVisible();
     }
+    expect(positionNumbers.sort()).toEqual(expected);
   }
   expect(numbers.sort()).toEqual(['01','03','04','06','08','09','10','11','12','15']);
   await showcase.locator('.senior-position-shortcut[data-player-position="gardien"]').click();

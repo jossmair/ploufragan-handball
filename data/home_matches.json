@@ -1,6 +1,7 @@
 {
   "source": "FFHandball",
-  "updatedAt": "2026-09-23T00:05:35.204466+00:00",
+  "season": "2026–2027",
+  "updatedAt": "2026-10-11T20:07:43.520470+00:00",
   "matches": [
     {
       "id": "2683525",
@@ -34,7 +35,7 @@
       "id": "2683693",
       "category": "U15 garcons",
       "date": "2026-09-19T16:00:00+02:00",
-      "opponent": "ENTENTE LOUDEAC LA MOTTE 2",
+      "opponent": "U15M TER - ENTENTE LOUDEAC LA MOTTE",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683693/"
     },
     {
@@ -69,7 +70,7 @@
       "id": "2697255",
       "category": "U13 filles",
       "date": "2026-10-03T13:00:00+02:00",
-      "opponent": "ALVMP HANDBALL",
+      "opponent": "ALVMP HanDBALL",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697255/"
     },
     {
@@ -117,14 +118,14 @@
     {
       "id": "2697258",
       "category": "U13 filles",
-      "date": "2026-10-10T14:30:00+02:00",
+      "date": "2026-10-10T15:00:00+02:00",
       "opponent": "LANNION HANDBALL",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697258/"
     },
     {
       "id": "2697259",
       "category": "U13 filles",
-      "date": "2026-10-10T14:30:00+02:00",
+      "date": "2026-10-10T15:00:00+02:00",
       "opponent": "PLESTIN HB",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194492/rencontre-2697259/"
     },
@@ -138,7 +139,7 @@
     {
       "id": "2683702",
       "category": "U15 garcons",
-      "date": "2026-10-10T16:30:00+02:00",
+      "date": "2026-10-10T17:00:00+02:00",
       "opponent": "U15M TER - ENTENTE DU TREGOR HB2 - LOUANNEC",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193010/rencontre-2683702/"
     },
