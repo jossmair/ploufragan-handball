@@ -56,6 +56,7 @@ document.querySelectorAll('[data-heading-video]').forEach(headingVideo => {
 const blogIntroVideo = document.querySelector('[data-intro-video]');
 if (blogIntroVideo) {
   const stage = blogIntroVideo.closest('[data-intro-video-stage]');
+  blogIntroVideo.loop = false;
   const holdFinalImage = () => { blogIntroVideo.pause(); stage.classList.add('is-ended'); };
   blogIntroVideo.addEventListener('ended', holdFinalImage, { once: true });
   blogIntroVideo.addEventListener('error', holdFinalImage, { once: true });
@@ -69,10 +70,8 @@ if (blogIntroVideo) {
       if (playButton) playButton.hidden = true;
       blogIntroVideo.play().catch(holdFinalImage);
     };
-    if (matchMedia('(max-width:850px)').matches || navigator.connection?.saveData) {
-      holdFinalImage();
-      if (playButton) { playButton.hidden = false; playButton.addEventListener('click', play); }
-    } else play();
+    if (playButton) playButton.addEventListener('click', play);
+    play();
   }
   motion.addEventListener('change', event => { if (event.matches) holdFinalImage(); });
 }

@@ -162,7 +162,7 @@ test('animated headings keep their text grouped beside the media',async({page})=
 });
 
 
-test('desktop home shows news actions in the first screen and keeps upcoming matches compact',async({page,isMobile})=>{
+test('desktop home shows landscape news previews and keeps upcoming matches compact',async({page,isMobile})=>{
  test.skip(isMobile,'Desktop composition');
  await page.emulateMedia({reducedMotion:'reduce'});
  for(const width of [1440,1920]){
@@ -171,10 +171,13 @@ test('desktop home shows news actions in the first screen and keeps upcoming mat
   expect(Math.max(...positions)-Math.min(...positions)).toBeLessThan(1);
   const dockTop=(await page.locator('.sponsor-marquee').boundingBox()).y;
   for(const card of await page.locator('.home-news-card').all()){
-   const box=await card.boundingBox();expect(box.y+box.height).toBeLessThanOrEqual(dockTop);
-   await expect(card.locator('img')).toHaveCSS('object-fit','contain');
    const image=await card.locator('.home-news-image').boundingBox();const copy=await card.locator('.home-news-copy').boundingBox();
-   expect(copy.x).toBeGreaterThan(image.x);expect(copy.y).toBeCloseTo(image.y,0);
+   expect(image.width).toBeGreaterThan(image.height);expect(image.y+image.height).toBeLessThanOrEqual(dockTop);
+   expect(copy.y).toBeGreaterThanOrEqual(image.y+image.height);expect(copy.x).toBeCloseTo(image.x,0);
+   if(await card.locator('.home-legends-preview').count()){
+    await expect(card.locator('img')).toHaveCount(3);
+    for(const img of await card.locator('img').all())await expect(img).toHaveCSS('object-fit','contain');
+   }else await expect(card.locator('img')).toHaveCSS('object-fit','cover');
   }
   const matches=await page.locator('.home-weekend .match-card').evaluateAll(es=>es.map(e=>({top:e.getBoundingClientRect().top,height:e.getBoundingClientRect().height})));
   expect(Math.max(...matches.map(x=>x.top))-Math.min(...matches.map(x=>x.top))).toBeLessThan(1);
