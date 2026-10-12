@@ -47,8 +47,10 @@ for index in range(1, 6):
     BUDGETS[f"Fond mobile {index}"] = (ASSETS / "backgrounds" / "mobile" / f"fond-{index}.webp", 22_000)
 BUDGETS["Logo club mobile"] = (ASSETS / "logo-phb-club-320.webp", 40_000)
 BUDGETS["Décor nom entraîneur"] = (ASSETS / "ui" / "coach-name-brush-small.webp", 14_000)
-for name in ("photo-36", "photo-03", "premier-bureau-phb-2011"):
+for name in ("photo-03", "premier-bureau-phb-2011"):
     BUDGETS[f"Aperçu accueil {name}"] = (ASSETS / "home-previews" / f"{name}-480.webp", 40_000)
+BUDGETS["Aperçu accueil Dinan"] = (ASSETS / "home-previews/news-dinan.webp", 40_000)
+BUDGETS["Aperçu accueil histoire"] = (ASSETS / "home-previews/news-history.webp", 40_000)
 # Summer camp media, U15 / club cards and nine senior women cards (~800 KB).
 TOTAL_ASSETS_BUDGET = 183_150_000
 GALLERY_ORIGINALS = ASSETS / "galeries" / "seniors-1-pays-de-dinan-2026" / "originals"
