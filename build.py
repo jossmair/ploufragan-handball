@@ -531,7 +531,7 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
     if "data-u13-card" in body or "data-player-position-showcase" in body:
         extra_head += '<link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script>'
     if "team-detail-grid" in body or "senior-landing" in body:
-        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261011-3">'
+        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261012-1"><link rel="stylesheet" href="assets/team-shortcuts.css?v=20261012-8"><script src="assets/team-shortcuts.js?v=20261012-1" defer></script>'
     if slug == "u18-garcons":
         extra_head += '<link rel="stylesheet" href="assets/coach-surprise.css?v=20261009-2"><script src="assets/coach-surprise.js?v=20261010-1" defer></script>'
     if slug == "boutique":
@@ -874,8 +874,14 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
         links.append(('#u13-f-cards-title' if slug == 'u13-filles' else f'#{slug[:3]}-cards-title', 'Joueuses' if slug == 'u13-filles' else 'Joueurs'))
     if slug in YOUTH_GALLERIES:
         links.append((f'#{slug}-gallery-title', 'Photos'))
-    links.append(('inscriptions.html#essai', 'Faire un essai'))
-    shortcuts = '<nav class="container page-shortcuts" aria-label="Accès à l’équipe">' + ''.join(f'<a href="{url}">{label}</a>' for url,label in links) + '</nav>'
+    icons = {
+        'Horaires': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/>',
+        'Joueurs': '<circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 5a3 3 0 0 1 0 6M21 20v-2a6 6 0 0 0-4-5"/>',
+        'Photos': '<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8" cy="9" r="1.5"/><path d="m4 17 5-5 4 4 3-3 4 4"/>',
+    }
+    icons['Joueuses'] = icons['Joueurs']
+    tabs = ''.join(f'<a href="{url}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{icons[label]}</svg><span>{label}</span></a>' for url,label in links)
+    shortcuts = f'<nav class="container page-shortcuts team-shortcuts" aria-label="Accès à l’équipe"><div class="team-shortcut-tabs">{tabs}</div><a class="team-shortcut-trial" href="inscriptions.html#essai"><span>Faire un essai</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></nav>'
     return shortcuts + f'<section class="container team-detail-grid {"has-ranking" if teams else "no-ranking"} after-heading">{content}</section>'
 
 
@@ -900,14 +906,14 @@ def category_values(slug):
     if slug not in CATEGORY_VALUE_COPY:
         return ""
     eyebrow, title, copy = CATEGORY_VALUE_COPY[slug]
-    return f'<section class="container category-values after-heading" data-reveal><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{copy}</p></section>'
+    return f'<section class="category-values after-heading" data-reveal><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{copy}</p></section>'
 
 
 def category_story(slug):
     if slug != "loisirs":
         return ""
     eyebrow, title, copy, src, width, height, alt = LOISIRS_STORY
-    return f'''<section class="container category-story after-heading" data-reveal><div class="category-story-copy"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{copy}</p></div><figure><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async"></figure></section>'''
+    return f'''<section class="category-story after-heading" data-reveal><div class="category-story-copy"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{copy}</p></div><figure><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async"></figure></section>'''
 
 
 TEAM_PAGE_PHOTOS = {

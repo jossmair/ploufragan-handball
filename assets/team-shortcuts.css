@@ -1,0 +1,16 @@
+body main .team-shortcuts{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:0;margin-bottom:22px;background:none;border:0}
+.team-shortcut-tabs{display:flex;align-items:center;gap:3px;padding:3px;border:1px solid #ffffff20;border-radius:13px;background:#111116de}
+body .team-shortcut-tabs>a{display:flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:10px 18px;border:0;border-radius:10px;background:transparent;color:#c4c4ce;font:600 .875rem/1.3 var(--body);transition:color .18s,background .18s}
+.team-shortcut-tabs svg{flex-shrink:0;color:#9696a2}
+body .team-shortcut-tabs>a:hover{background:#ffffff0b;color:#fff}
+body .team-shortcut-tabs>a[aria-current]{background:#f0f0f3;color:#16161c;box-shadow:0 2px 6px #0003}
+body .team-shortcut-tabs>a[aria-current]>svg{color:var(--red)}
+body .team-shortcuts>.team-shortcut-trial{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;min-height:44px;padding:10px 16px;border:1px solid #ff50614a;border-radius:10px;background:var(--red);color:#fff;font:700 .8rem/1.3 var(--body);box-shadow:0 3px 12px #0002;transition:background .18s,box-shadow .18s}
+body .team-shortcuts>.team-shortcut-trial:after{content:'';position:absolute;bottom:0;left:16px;width:24px;height:2px;background:#ffffff70;transition:width .18s}
+body .team-shortcuts>.team-shortcut-trial:hover{background:#cf0617;box-shadow:0 4px 16px #0003}
+body .team-shortcuts>.team-shortcut-trial:hover:after{width:calc(100% - 32px)}
+.team-shortcut-trial svg{flex-shrink:0;width:18px;height:18px;padding:0;border-radius:0;background:none;color:#fff;transition:transform .18s}
+.team-shortcut-trial:hover svg{transform:translateX(2px)}
+body .team-shortcuts a:focus-visible{outline:3px solid #ffbf4b;outline-offset:3px}
+@media(max-width:600px){body main .team-shortcuts{gap:8px}.team-shortcut-tabs{width:100%}body .team-shortcut-tabs>a{flex:1;min-width:0;padding-inline:10px;font-size:.8rem;gap:7px}body .team-shortcuts>.team-shortcut-trial{width:auto;margin-left:auto}body .team-shortcut-tabs svg{width:18px;height:18px}}
+@media(prefers-reduced-motion:reduce){body .team-shortcuts a{transition:none}}
