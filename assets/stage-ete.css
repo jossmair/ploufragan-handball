@@ -15,3 +15,4 @@
 .stage-next{padding:28px;gap:28px;margin-top:28px;margin-bottom:40px}.stage-next h2{font-size:2.6rem}.stage-next p{font-size:.9375rem;line-height:1.55}.stage-next-details{padding:14px 0;margin:18px 0;gap:12px}.stage-next-details strong{font-size:1.2rem}.stage-next-image{max-width:370px;justify-self:center}.stage-next-image>span{padding:12px;font-size:1.3rem}
 }
 @media(min-width:1280px){.stage-album{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.stage-lightbox-frame,.stage-lightbox-frame img{touch-action:pan-y pinch-zoom}

@@ -8,7 +8,7 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
   const numbers=[];
   for(const [position,expected] of [['gardien',['01']],['ailier-gauche',['04','12']],['ailier-droit',['03']],['pivot',['09']],['arriere-gauche',['08','15']],['arriere-droit',['06','11']],['demi-centre',['10']]]){
     const count=expected.length;
-    await showcase.locator(`.senior-position-shortcut[data-player-position="${position}"]`).click();
+    await showcase.locator(`.senior-position-hotspot[data-player-position="${position}"]`).click();
     const cards=showcase.locator('[data-player-stage] [data-player-card]');
     await expect(cards).toHaveCount(count);
     if(page.viewportSize().width<=520){
@@ -42,7 +42,7 @@ test('les Panini seniors féminines se révèlent par poste et s’agrandissent'
     expect(positionNumbers.sort()).toEqual(expected);
   }
   expect(numbers.sort()).toEqual(['01','03','04','06','08','09','10','11','12','15']);
-  await showcase.locator('.senior-position-shortcut[data-player-position="gardien"]').click();
+  await showcase.locator('.senior-position-hotspot[data-player-position="gardien"]').click();
   await expect(showcase.locator('[data-player-stage] [data-player-card]')).toHaveAttribute('data-player-name','Clara');
   const photos=page.locator('[data-photo-carousel] [data-photo-slide] img');
   await expect(photos).toHaveCount(4);

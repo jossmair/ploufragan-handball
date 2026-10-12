@@ -420,6 +420,7 @@ document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
   zoomDialog.innerHTML = '<button class="photo-zoom-close" type="button" aria-label="Fermer la photo agrandie">&times;</button><div class="photo-zoom-media"><img alt=""></div>';
   document.body.appendChild(zoomDialog);
   const zoomImage = zoomDialog.querySelector('img');
+  carousel.photoZoomDialog = zoomDialog;
   const zoomClose = zoomDialog.querySelector('.photo-zoom-close');
 
   function currentIndex() {

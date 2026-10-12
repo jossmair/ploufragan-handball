@@ -34,3 +34,4 @@ body .team-detail-summary .season-empty{grid-column:2;grid-row:1/span 3}
 
 body main .team-detail-grid.container>.youth-photo-gallery{grid-column:1/-1;width:100%;max-width:none;min-width:0;justify-self:stretch}
 body .team-detail-grid>:is(.category-values,.category-story){grid-column:1/-1;width:100%;min-width:0;margin:0;justify-self:stretch}
+body main .team-last-card>.season-result{display:block;margin:12px 0 0;padding:14px 0 0;border:0;border-top:1px solid #ffffff24;border-radius:0;background:none;box-shadow:none}

@@ -49,6 +49,18 @@
   dialog.querySelector('.stage-lightbox-close').addEventListener('click',() => dialog.close());
   dialog.querySelector('[data-stage-prev]').addEventListener('click',() => show(current-1));
   dialog.querySelector('[data-stage-next]').addEventListener('click',() => show(current+1));
+  const frame = dialog.querySelector('.stage-lightbox-frame');
+  let swipeStart;
+  frame.addEventListener('pointerdown',event => {
+    if(event.isPrimary) swipeStart={id:event.pointerId,x:event.clientX,y:event.clientY};
+  });
+  frame.addEventListener('pointerup',event => {
+    if(!swipeStart || swipeStart.id!==event.pointerId) return;
+    const dx=event.clientX-swipeStart.x,dy=event.clientY-swipeStart.y;
+    swipeStart=null;
+    if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)*1.25) show(current+(dx<0?1:-1));
+  });
+  frame.addEventListener('pointercancel',()=>{swipeStart=null;});
   dialog.addEventListener('keydown',event => {
     if(event.key==='ArrowLeft'){event.preventDefault();show(current-1);}
     if(event.key==='ArrowRight'){event.preventDefault();show(current+1);}

@@ -473,7 +473,7 @@ NAV_SECTIONS = {
         ("Seniors et loisirs", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
             for key in ("seniors-masculins", "seniors-feminines", "loisirs")]),
         ("Équipes jeunes", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
-            for key in ("jeunes", "u18-garcons", "u15-filles", "u15-garcons", "u13-filles", "u13-garcons", "u11-mixte")]),
+            for key in ("u18-garcons", "u15-filles", "u15-garcons", "u13-filles", "u13-garcons", "u11-mixte")]),
         ("École de hand", [(key + ".html", CATEGORY_DATA["categories"][key]["label"])
             for key in ("baby-hand", "ecole-de-hand")]),
     ],
@@ -530,8 +530,10 @@ def page(slug, title, body, active=None, description=None, show_partner_marquee=
         extra_head += '<link rel="stylesheet" href="assets/club.css?v=20261005-20"><script src="assets/club.js?v=20261005-2" defer></script>'
     if "data-u13-card" in body or "data-player-position-showcase" in body:
         extra_head += '<link rel="stylesheet" href="assets/player-card-zoom.css?v=20261005-2"><script src="assets/player-card-zoom.js?v=20261005-2" defer></script>'
+    if 'data-photo-carousel' in body:
+        extra_head += '<link rel="stylesheet" href="assets/gallery-fullscreen.css?v=20261012-1"><script src="assets/gallery-fullscreen.js?v=20261012-1" defer></script>'
     if "team-detail-grid" in body or "senior-landing" in body:
-        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261012-1"><link rel="stylesheet" href="assets/team-shortcuts.css?v=20261012-8"><script src="assets/team-shortcuts.js?v=20261012-1" defer></script>'
+        extra_head += '<link rel="stylesheet" href="assets/team-layout.css?v=20261012-2"><link rel="stylesheet" href="assets/team-shortcuts.css?v=20261012-8"><script src="assets/team-shortcuts.js?v=20261012-1" defer></script>'
     if slug == "u18-garcons":
         extra_head += '<link rel="stylesheet" href="assets/coach-surprise.css?v=20261009-2"><script src="assets/coach-surprise.js?v=20261010-1" defer></script>'
     if slug == "boutique":
@@ -870,9 +872,11 @@ def team_detail(slug, name, schedule_group, schedule_name=None, teams=None):
     else:
         content = training + category_values(slug) + category_story(slug) + collective + registration
     links = [(f'#training-{slug}', 'Horaires')]
+    if slug == 'seniors-feminines':
+        links.append(('#senior-female-cards-title', 'Joueuses'))
     if slug in {'u13-filles', 'u18-garcons', 'u15-garcons'}:
         links.append(('#u13-f-cards-title' if slug == 'u13-filles' else f'#{slug[:3]}-cards-title', 'Joueuses' if slug == 'u13-filles' else 'Joueurs'))
-    if slug in YOUTH_GALLERIES:
+    if slug in YOUTH_GALLERIES or slug == 'seniors-feminines':
         links.append((f'#{slug}-gallery-title', 'Photos'))
     icons = {
         'Horaires': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/>',
@@ -1152,7 +1156,6 @@ def senior_player_card_experience(female=False):
 
     hotspots = []
     position_overlays = []
-    shortcuts = []
     templates = []
     for position_id, abbreviation, label, x, y in SENIOR_POSITIONS:
         if female:
@@ -1171,10 +1174,6 @@ def senior_player_card_experience(female=False):
             f'<img class="senior-position-overlay" data-position-overlay="{position_id}" '
             f'src="assets/seniors-masculins/positions/{position_id}.webp?v=20260927-exact" alt="" width="1536" height="1024" '
             f'decoding="async" aria-hidden="true">'
-        )
-        shortcuts.append(
-            f'<button type="button" class="senior-position-shortcut" data-player-position="{position_id}" '
-            f'aria-controls="senior-player-stage" aria-pressed="false"><strong>{abbreviation}</strong><span>{escape(label)}</span></button>'
         )
         cards = []
         back = f"assets/seniors-masculins/cards/back/{position_id}.webp"
@@ -1204,7 +1203,7 @@ def senior_player_card_experience(female=False):
         f'<figure><img src="assets/seniors-feminines/cards/front/{player["file"]}" alt="{escape(player["name"], quote=True)}, numéro {player["number"]}, {escape(player["position"], quote=True)}" width="640" height="960" loading="lazy"><figcaption>{escape(player["name"])} · #{player["number"]}</figcaption></figure>'
         for player in article["players"]) + '</div>') if female else '<p class="senior-position-noscript">Les portraits et les postes restent disponibles dans <a href="articles/presentation-seniors-masculins-1.html">la présentation de l’équipe</a>.</p>'
     return f'''<section class="section senior-position-showcase" data-player-position-showcase>
-      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS {team_label}</p><h2>CHOISIS UN POSTE, <em>RÉVÈLE LES {plural.upper()}</em></h2></div><p>Sélectionne un poste du terrain, puis chaque carte pour révéler les {plural}.</p></div>
+      <div class="section-heading senior-position-heading"><div><p class="eyebrow">EFFECTIF SENIORS {team_label}</p><h2 id="{'senior-female-cards-title' if female else 'senior-male-cards-title'}">CHOISIS UN POSTE, <em>RÉVÈLE LES {plural.upper()}</em></h2></div><p>Sélectionne un poste du terrain, puis chaque carte pour révéler les {plural}.</p></div>
       <div class="senior-position-experience">
         <div class="senior-position-court" data-reveal>
           <img class="senior-position-base" src="assets/seniors-masculins/terrain.webp?v=20260927-exact" alt="Terrain de handball avec les sept postes de jeu : gardien, ailiers, arrières, pivot et demi-centre" width="1536" height="1024" loading="lazy" decoding="async">
@@ -1215,7 +1214,6 @@ def senior_player_card_experience(female=False):
           <div class="senior-player-stage-placeholder"><span class="senior-player-stage-emblem" aria-hidden="true"><img src="assets/seniors-masculins/logo-phb-glow.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span><p class="eyebrow">COMPOSE TON SEPT</p><h3>CHOISIS UN POSTE</h3><p>Les cartes correspondantes seront distribuées ici.</p></div>
         </div>
       </div>
-      <div class="senior-position-shortcuts" aria-label="Choisir un poste">{"".join(shortcuts)}</div>
       {"".join(templates)}
       <noscript>{fallback}</noscript>
     </section>'''
@@ -1855,7 +1853,7 @@ pages["stage-ete"] = page(
     page_title="Stage handball été 2027 à Guerlédan · U13 et U15 | PHB",
     social_image=("assets/og/stage-ete.jpg", 1200, 630, "Le groupe du stage d’été PHB à Guerlédan"),
     description="Stage d’été du Ploufragan Handball à Guerlédan pour les filles et garçons des catégories U13 et U15. Revivez 2026 en photos et vidéos et découvrez la prochaine édition 2027.",
-    extra_head='<link rel="stylesheet" href="assets/stage-ete.css?v=20261005-2"><script src="assets/stage-ete.js?v=20261004-1" defer></script>',
+    extra_head='<link rel="stylesheet" href="assets/stage-ete.css?v=20261012-1"><script src="assets/stage-ete.js?v=20261012-1" defer></script>',
 )
 pages["stage-ete"] = re.sub(r'<a class="footer-social-link instagram".*?</a>', '', pages["stage-ete"])
 stage_promo = '''<section class="container section"><div class="team-article-entry"><div><p class="eyebrow">ÉTÉ 2027 · U13 & U15 · FILLES & GARÇONS</p><h2>CAP SUR <em>GUERLÉDAN</em></h2><p>Une semaine de handball et d’activités de plein air à Guerlédan. Retrouvez les photos et les vidéos de 2026, ainsi que les informations sur la prochaine édition.</p></div><a class="button" href="stage-ete.html">DÉCOUVRIR LE STAGE <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div></section>'''
