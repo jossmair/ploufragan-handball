@@ -367,7 +367,7 @@ test('Seniors masculins : les cartes se révèlent dans la page', async ({ page 
     await page.mouse.move(0, 0);
     await expect(gardienOverlay).toHaveCSS('opacity', '1');
   }
-  await showcase.getByRole('button', { name: /AG\s*Ailier gauche/i }).click();
+  await showcase.locator('.senior-position-hotspot[data-player-position="ailier-gauche"]').click();
   await expect(stage.getByRole('heading', { name: 'Ailier gauche' })).toBeVisible();
   await expect(stage.locator('[data-player-card]')).toHaveCount(2);
 });
