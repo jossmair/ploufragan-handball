@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T13:29:31.516097+00:00",
+  "updatedAt": "2026-10-15T19:54:49.206766+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -154,7 +154,7 @@
       "standings": [
         {
           "position": 1,
-          "team": "U11 mixte 2",
+          "team": "HENANSAL ERQUY",
           "points": 9,
           "played": 3,
           "club": false
@@ -1187,7 +1187,7 @@
       "group": "jeunes",
       "date": "2026-09-26T14:00:00+02:00",
       "home": "PLOUFRAGAN HANDBALL",
-      "away": "U11 mixte 2",
+      "away": "HENANSAL ERQUY",
       "homeTeamId": "1816287",
       "awayTeamId": "1816290",
       "homeScore": 14,
