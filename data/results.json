@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T04:45:25.872479+00:00",
+  "updatedAt": "2026-10-15T13:29:31.516097+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -120,7 +120,7 @@
         },
         {
           "position": 4,
-          "team": "HANDBALL CLUB BELLE-ISLE/PLOUNEVEZ",
+          "team": "HBC BELLE ISLE /PLOUNEVEZ U18M",
           "points": 9,
           "played": 5,
           "club": false
@@ -872,7 +872,7 @@
       "group": "jeunes",
       "date": "2026-10-03T17:00:00+02:00",
       "home": "PLOUFRAGAN HANDBALL",
-      "away": "HANDBALL CLUB BELLE-ISLE/PLOUNEVEZ",
+      "away": "HBC BELLE ISLE /PLOUNEVEZ U18M",
       "homeTeamId": "1815873",
       "awayTeamId": "1815871",
       "homeScore": 19,
