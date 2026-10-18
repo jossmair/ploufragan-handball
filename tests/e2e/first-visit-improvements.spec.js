@@ -22,6 +22,8 @@ test('actualités : aperçus compacts et aucune carte légende dévoilée',async
 });
 test('premier essai : catégorie, horaires et contact direct',async({page})=>{
  await page.goto('/inscriptions.html');
+ await expect(page.locator('[data-registration-nav]')).not.toHaveAttribute('data-reveal');
+ await expect(page.locator('[data-registration-nav]')).toHaveCSS('opacity','1');
  const chooser=page.locator('[data-trial-chooser]');await expect(chooser).toBeEnabled();
  await chooser.selectOption('u13-filles');
  const result=page.locator('[data-trial-result]');

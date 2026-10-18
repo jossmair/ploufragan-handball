@@ -1508,7 +1508,7 @@ registration_body = heading(
 <div class="container licence-page">
   {trial_start}
   <nav class="page-shortcuts" aria-label="Essai et renseignements"><a href="#essai">Faire un essai</a><a href="#contact-inscriptions">Contacter le club</a></nav>
-  <nav class="content-filter licence-anchor-nav" aria-label="Accès rapide aux rubriques d’inscription" data-registration-nav data-reveal>
+  <nav class="content-filter licence-anchor-nav" aria-label="Accès rapide aux rubriques d’inscription" data-registration-nav>
     <span class="content-filter-label" id="registration-nav-title">Aller à</span>
     <div class="content-filter-choice">
       <button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="registration-nav-options" aria-labelledby="registration-nav-title registration-nav-selected"><span id="registration-nav-selected" data-filter-selected>Catégories</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button>
