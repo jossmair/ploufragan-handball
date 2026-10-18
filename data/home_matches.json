@@ -1,7 +1,7 @@
 {
   "source": "FFHandball",
   "season": "2026–2027",
-  "updatedAt": "2026-10-17T04:14:59.348724+00:00",
+  "updatedAt": "2026-10-18T08:28:01.751765+00:00",
   "matches": [
     {
       "id": "2683525",
@@ -156,6 +156,27 @@
       "date": "2026-10-31T19:00:00+01:00",
       "opponent": "HB.PELEMOIS",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681025/"
+    },
+    {
+      "id": "2681058",
+      "category": "Seniors masculins 2",
+      "date": "2026-11-07T19:00:00+01:00",
+      "opponent": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681058/"
+    },
+    {
+      "id": "2627160",
+      "category": "Seniors masculins 1",
+      "date": "2026-11-07T21:00:00+01:00",
+      "opponent": "Tinteniac Combourg HBC 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627160/"
+    },
+    {
+      "id": "2625958",
+      "category": "Seniors feminines",
+      "date": "2026-11-14T19:00:00+01:00",
+      "opponent": "ENTENTE BRO LEON 4",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625958/"
     }
   ]
 }
