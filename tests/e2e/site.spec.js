@@ -87,7 +87,9 @@ test('résultats : filtres, données et date FFHandball', async ({ page }) => {
   await page.goto('/resultats.html');
   await expect(page.locator('.results-heading h1 br')).toHaveCount(1);
   await expect(page.locator('[data-results-logo-video] source')).toHaveAttribute('src', 'assets/blog/blog-logo-orbit.mp4');
-  await expect(page.locator('.match-card').first()).toBeVisible();
+  const scoreCards = page.locator('[data-results-scores] .match-card');
+  if (await scoreCards.count()) await expect(scoreCards.first()).toBeVisible();
+  else await expect(page.locator('[data-results-scores] .season-empty')).toHaveText('Aucun match annoncé pour cette semaine.');
   await expect(page.locator('.data-source time')).toContainText(/Données FFHandball actualisées/i);
   const pendingScore = page.locator('[data-results-scores] .match-card').filter({ hasText: 'En attente' }).first();
   if (await pendingScore.count()) {

@@ -19,9 +19,12 @@ test('desktop championship bands leave no empty neighbouring column',async({page
   }
  }
  // Multiple results in the same weekend remain separate within their band.
- await page.locator('.team-last-card').first().evaluate(card=>card.append(card.lastElementChild.cloneNode(true)));
- const results=await page.locator('.team-last-card').first().locator('.season-result,.match-card').evaluateAll(items=>items.map(e=>({top:e.getBoundingClientRect().top,bottom:e.getBoundingClientRect().bottom})));
- expect(results[1].top).toBeGreaterThanOrEqual(results[0].bottom);
+ const last=page.locator('.team-last-card').first();
+ if(await last.locator('.season-result,.match-card').count()){
+  await last.evaluate(card=>card.append(card.lastElementChild.cloneNode(true)));
+  const results=await last.locator('.season-result,.match-card').evaluateAll(items=>items.map(e=>({top:e.getBoundingClientRect().top,bottom:e.getBoundingClientRect().bottom})));
+  expect(results[1].top).toBeGreaterThanOrEqual(results[0].bottom);
+ }else await expect(last.locator('.season-empty')).toContainText(/Aucun match annoncé|Aucun résultat publié/);
  // A longer published pool changes only its own band and moves following content.
  const collective=page.locator('.team-collective');const before=await collective.boundingBox();
  await page.locator('.pool-table tbody').first().evaluate(body=>{for(let i=0;i<8;i++)body.append(body.lastElementChild.cloneNode(true));});

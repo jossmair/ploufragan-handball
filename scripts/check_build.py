@@ -18,6 +18,11 @@ assert results['matches'], 'No official matches were imported'
 score_matches, upcoming, _ = select_score_and_upcoming(results['matches'], paris_now())
 scores_html = results_page.split('data-results-scores>', 1)[1].split('data-results-upcoming>', 1)[0]
 upcoming_html = results_page.split('data-results-upcoming>', 1)[1].split('SUIVRE LES', 1)[0]
+if not score_matches:
+    assert 'Aucun match annoncé pour cette semaine.' in scores_html, 'Empty score week is not explained'
+    assert 'class="match-card"' not in scores_html, 'Old scores leaked into an empty week'
+if not upcoming:
+    assert 'Aucun prochain match annoncé.' in upcoming_html, 'Empty upcoming schedule is not explained'
 for match in score_matches:
     assert f"rencontre-{match['id']}/" in scores_html, f"Displayed weekend match absent: {match['id']}"
     if match['homeScore'] == 'FO' or match['awayScore'] == 'FO':

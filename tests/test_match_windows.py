@@ -50,6 +50,19 @@ class MatchWindowTests(unittest.TestCase):
         self.assertEqual(start.isoformat(), "2026-09-21")
         self.assertEqual(end.isoformat(), "2026-09-28")
 
+    def test_empty_weekend_does_not_reuse_previous_scores(self):
+        matches = [
+            fixture("previous", "2026-10-10T18:00:00+02:00", True),
+            fixture("next", "2026-10-24T19:00:00+02:00"),
+        ]
+        for now in (datetime(2026, 10, 17, 9, tzinfo=PARIS),
+                    datetime(2026, 10, 18, 10, tzinfo=PARIS)):
+            with self.subTest(now=now):
+                scores, upcoming, active = select_score_and_upcoming(matches, now)
+                self.assertTrue(active)
+                self.assertEqual(scores, [])
+                self.assertEqual([match["id"] for match in upcoming], ["next"])
+
     def test_workflow_syncs_hourly_on_saturday(self):
         workflow = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
         self.assertIn("cron: '7,22,37,52 * * * 6'", workflow)

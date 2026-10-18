@@ -4,7 +4,8 @@ for(const width of [320,390,430,1440])test(`scores séparés et partenariat lisi
  await page.goto('/resultats.html');
  // Le samedi avant les matchs, la page affiche les scores en attente.
  const scoreCards=page.locator('[data-results-scores] .match-card');
- await expect(scoreCards.first()).toBeVisible();
+ if(await scoreCards.count()) await expect(scoreCards.first()).toBeVisible();
+ else await expect(page.locator('[data-results-scores] .season-empty')).toHaveText('Aucun match annoncé pour cette semaine.');
  const hasScores=await page.locator('.match-score').count();
  if(hasScores) await page.locator('.match-score').first().scrollIntoViewIfNeeded();
  else await expect(scoreCards.locator('.match-time')).toHaveText(Array(await scoreCards.count()).fill('En attente'));

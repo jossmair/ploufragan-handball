@@ -52,9 +52,14 @@ test('équipes : menu simplifié, résultat sans carte imbriquée et terrain seu
   await expect(page.locator('#navigation a[href="jeunes.html"]')).toHaveCount(0);
   await expect(page.locator('.senior-position-shortcuts')).toHaveCount(0);
   if(path.includes('feminines')){
-   const result=page.locator('.team-last-card .season-result').first();
-   await expect(result).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
-   await expect(result).toHaveCSS('border-left-width','0px');
+   const panel=page.locator('.team-last-card');
+   const result=panel.locator('.season-result').first();
+   if(await result.count()){
+    await expect(result).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
+    await expect(result).toHaveCSS('border-left-width','0px');
+   }else if(await panel.locator('.match-card').count()){
+    await expect(panel.locator('.match-card').first()).toBeVisible();
+   }else await expect(panel.locator('.season-empty')).toContainText(/Aucun match annoncé|Aucun résultat publié/);
    for(const label of ['Joueuses','Photos']){
     const link=page.locator('.team-shortcut-tabs a').filter({hasText:label});
     await link.click();
