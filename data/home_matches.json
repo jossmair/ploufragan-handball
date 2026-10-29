@@ -1,7 +1,7 @@
 {
   "source": "FFHandball",
   "season": "2026–2027",
-  "updatedAt": "2026-10-19T15:40:29.656925+00:00",
+  "updatedAt": "2026-10-29T13:14:12.337237+00:00",
   "matches": [
     {
       "id": "2683525",
@@ -177,6 +177,146 @@
       "date": "2026-11-14T19:00:00+01:00",
       "opponent": "ENTENTE BRO LEON 4",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625958/"
+    },
+    {
+      "id": "2681071",
+      "category": "Seniors masculins 2",
+      "date": "2026-11-28T19:00:00+01:00",
+      "opponent": "GUINGAMP HANDBALL 3",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681071/"
+    },
+    {
+      "id": "2625963",
+      "category": "Seniors feminines",
+      "date": "2026-11-28T21:00:00+01:00",
+      "opponent": "GOELO HBC",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625963/"
+    },
+    {
+      "id": "2627170",
+      "category": "Seniors masculins 1",
+      "date": "2026-11-29T14:00:00+01:00",
+      "opponent": "HANDBALL BEAUSSAIS RANCE FREMUR 1",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627170/"
+    },
+    {
+      "id": "2625973",
+      "category": "Seniors feminines",
+      "date": "2026-12-12T19:00:00+01:00",
+      "opponent": "PLOUDIRY SIZUN HB 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625973/"
+    },
+    {
+      "id": "2627180",
+      "category": "Seniors masculins 1",
+      "date": "2026-12-12T21:00:00+01:00",
+      "opponent": "HBC HENANSAL ERQUY 1",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627180/"
+    },
+    {
+      "id": "2681081",
+      "category": "Seniors masculins 2",
+      "date": "2026-12-13T14:00:00+01:00",
+      "opponent": "USMB LOUARGAT",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681081/"
+    },
+    {
+      "id": "2627192",
+      "category": "Seniors masculins 1",
+      "date": "2027-01-17T14:00:00+01:00",
+      "opponent": "SC Mevennais handball",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627192/"
+    },
+    {
+      "id": "2681103",
+      "category": "Seniors masculins 2",
+      "date": "2027-02-06T19:00:00+01:00",
+      "opponent": "Henansal-Erquy SM 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681103/"
+    },
+    {
+      "id": "2627206",
+      "category": "Seniors masculins 1",
+      "date": "2027-02-06T21:00:00+01:00",
+      "opponent": "Pays de dinan handball club",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627206/"
+    },
+    {
+      "id": "2626000",
+      "category": "Seniors feminines",
+      "date": "2027-03-13T19:00:00+01:00",
+      "opponent": "MORLAIX PLOUGONVEN HB 1",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2626000/"
+    },
+    {
+      "id": "2627220",
+      "category": "Seniors masculins 1",
+      "date": "2027-03-13T21:00:00+01:00",
+      "opponent": "LEHON DINAN COM HB 1",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627220/"
+    },
+    {
+      "id": "2681117",
+      "category": "Seniors masculins 2",
+      "date": "2027-03-14T14:00:00+01:00",
+      "opponent": "+16M TER ENTENTE DU TREGOR HB (D2)",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681117/"
+    },
+    {
+      "id": "2627231",
+      "category": "Seniors masculins 1",
+      "date": "2027-04-03T19:00:00+02:00",
+      "opponent": "+16M TER EMERAUDE 2 DOL",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627231/"
+    },
+    {
+      "id": "2681131",
+      "category": "Seniors masculins 2",
+      "date": "2027-04-03T21:00:00+02:00",
+      "opponent": "BAIE D'ARMOR HB - SG3",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681131/"
+    },
+    {
+      "id": "2626012",
+      "category": "Seniors feminines",
+      "date": "2027-04-11T14:00:00+02:00",
+      "opponent": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2626012/"
+    },
+    {
+      "id": "2627241",
+      "category": "Seniors masculins 1",
+      "date": "2027-04-17T19:00:00+02:00",
+      "opponent": "CSAL PAIMPOL HB1",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627241/"
+    },
+    {
+      "id": "2681142",
+      "category": "Seniors masculins 2",
+      "date": "2027-04-17T21:00:00+02:00",
+      "opponent": "BAIE D'ARMOR HB - SG2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681142/"
+    },
+    {
+      "id": "2626024",
+      "category": "Seniors feminines",
+      "date": "2027-05-22T19:00:00+02:00",
+      "opponent": "PLOUVORN HB 2",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2626024/"
+    },
+    {
+      "id": "2681152",
+      "category": "Seniors masculins 2",
+      "date": "2027-05-22T21:00:00+02:00",
+      "opponent": "MENE MERDRIGNAC HANDBALL 1",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681152/"
+    },
+    {
+      "id": "2627251",
+      "category": "Seniors masculins 1",
+      "date": "2027-05-23T14:00:00+02:00",
+      "opponent": "PLOEUC HAND",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627251/"
     }
   ]
 }

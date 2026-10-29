@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19T15:40:09.766455+00:00",
+  "updatedAt": "2026-10-29T13:13:58.905370+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -417,8 +417,8 @@
         {
           "position": 1,
           "team": "BAIE D'ARMOR HB - SG2",
-          "points": 12,
-          "played": 4,
+          "points": 15,
+          "played": 5,
           "club": false
         },
         {
@@ -437,44 +437,44 @@
         },
         {
           "position": 4,
+          "team": "HB.PELEMOIS",
+          "points": 10,
+          "played": 4,
+          "club": false
+        },
+        {
+          "position": 5,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 9,
           "played": 4,
           "club": true
         },
         {
-          "position": 5,
+          "position": 6,
+          "team": "MENE MERDRIGNAC HANDBALL 1",
+          "points": 9,
+          "played": 5,
+          "club": false
+        },
+        {
+          "position": 7,
           "team": "USMB LOUARGAT",
           "points": 8,
           "played": 4,
           "club": false
         },
         {
-          "position": 6,
-          "team": "HB.PELEMOIS",
-          "points": 7,
-          "played": 3,
-          "club": false
-        },
-        {
-          "position": 7,
-          "team": "MENE MERDRIGNAC HANDBALL 1",
-          "points": 8,
-          "played": 4,
-          "club": false
-        },
-        {
           "position": 8,
-          "team": "Henansal-Erquy SM 2",
-          "points": 5,
-          "played": 3,
+          "team": "BAIE D'ARMOR HB - SG3",
+          "points": 7,
+          "played": 5,
           "club": false
         },
         {
           "position": 9,
-          "team": "AL VX MARCHE PLOUARET HB",
-          "points": 5,
-          "played": 5,
+          "team": "Henansal-Erquy SM 2",
+          "points": 6,
+          "played": 4,
           "club": false
         },
         {
@@ -486,15 +486,15 @@
         },
         {
           "position": 11,
-          "team": "+16M TER ENTENTE DU TREGOR HB (D2)",
+          "team": "AL VX MARCHE PLOUARET HB",
           "points": 5,
           "played": 5,
           "club": false
         },
         {
           "position": 12,
-          "team": "BAIE D'ARMOR HB - SG3",
-          "points": 7,
+          "team": "+16M TER ENTENTE DU TREGOR HB (D2)",
+          "points": 5,
           "played": 5,
           "club": false
         }
@@ -541,7 +541,7 @@
         },
         {
           "position": 5,
-          "team": "PLOUFRAGAN HANDBALL",
+          "team": "PLOUFRAGAN HANDBALL 1",
           "points": 16,
           "played": 8,
           "club": true
@@ -640,6 +640,30 @@
       "clubSide": "home",
       "played": false,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627160/"
+    },
+    {
+      "id": "2625955",
+      "category": "Seniors feminines",
+      "group": "seniors-feminines",
+      "date": "2026-11-07T20:30:00+01:00",
+      "home": "MORLAIX PLOUGONVEN HB 1",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1815416",
+      "awayTeamId": "1815412",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625955/",
+      "venue": {
+        "name": "ARTHUR AUREGAN",
+        "street": "PARC AURA©GAN - RUE DE KERVEGUEN",
+        "postalCode": "29600",
+        "city": "MORLAIX",
+        "latitude": "48.57173",
+        "longitude": "-3.82235",
+        "source": "FFHandball"
+      }
     },
     {
       "id": "2681058",
@@ -818,7 +842,7 @@
       "group": "jeunes",
       "date": "2026-10-10T15:00:00+02:00",
       "home": "AL Trebeurden HANDBALL",
-      "away": "PLOUFRAGAN HANDBALL",
+      "away": "PLOUFRAGAN HANDBALL 1",
       "homeTeamId": "1816429",
       "awayTeamId": "1816433",
       "homeScore": 11,
@@ -841,7 +865,7 @@
       "category": "U13 garcons",
       "group": "jeunes",
       "date": "2026-10-10T15:00:00+02:00",
-      "home": "PLOUFRAGAN HANDBALL",
+      "home": "PLOUFRAGAN HANDBALL 1",
       "away": "BAIE D'ARMOR HB - 13G1",
       "homeTeamId": "1816433",
       "awayTeamId": "1816431",
