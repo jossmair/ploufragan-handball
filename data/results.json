@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T20:05:53.456000+00:00",
+  "updatedAt": "2026-11-01T02:22:27.863180+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -348,8 +348,8 @@
         {
           "position": 5,
           "team": "SC Mevennais handball",
-          "points": 10,
-          "played": 4,
+          "points": 11,
+          "played": 5,
           "club": false
         },
         {
@@ -362,8 +362,8 @@
         {
           "position": 7,
           "team": "PLOEUC HAND",
-          "points": 10,
-          "played": 4,
+          "points": 13,
+          "played": 5,
           "club": false
         },
         {
