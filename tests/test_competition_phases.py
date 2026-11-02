@@ -1,5 +1,6 @@
 import json
 import unittest
+from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 from scripts import sync_results, sync_home_duties
@@ -87,6 +88,9 @@ class CompetitionPhaseTests(unittest.TestCase):
         self.assertEqual(teams[0][1][0]['date'], '2026-11-21T15:00:00+01:00')
 
     def test_undated_match_keeps_opponent_and_calendar_without_inventing_date(self):
+        future_day = (datetime.now(timezone.utc) + timedelta(days=14)).date().isoformat()
+        for pool in self.pools[1:]:
+            pool['journees'] = self.days(future_day)
         def undated(url):
             data = self.fetch(url)
             listing = data.get('competitions---rencontre-list')
@@ -99,7 +103,7 @@ class CompetitionPhaseTests(unittest.TestCase):
         pending = teams[0][0]['undatedMatches'][0]
         self.assertIsNone(pending['date'])
         self.assertEqual(pending['away'], 'Opponent')
-        self.assertEqual(pending['calendarStart'], '2026-11-14')
+        self.assertEqual(pending['calendarStart'], future_day)
 
 
 if __name__ == '__main__':
