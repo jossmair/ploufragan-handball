@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T18:25:05.412255+00:00",
+  "updatedAt": "2026-11-02T06:12:33.138094+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -626,6 +626,69 @@
     }
   ],
   "matches": [
+    {
+      "id": "2681065",
+      "category": "Seniors masculins 2",
+      "group": "seniors-masculins",
+      "date": "2026-11-15T11:00:00+01:00",
+      "home": "BAIE D'ARMOR HB - SG3",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1815561",
+      "awayTeamId": "1815560",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681065/",
+      "venue": {
+        "name": "SOS OCEANE",
+        "street": "RUE DE LA CROIX",
+        "postalCode": "22190",
+        "city": "PLERIN",
+        "latitude": "48.53086",
+        "longitude": "-2.76553",
+        "source": "FFHandball"
+      }
+    },
+    {
+      "id": "2625958",
+      "category": "Seniors feminines",
+      "group": "seniors-feminines",
+      "date": "2026-11-14T19:00:00+01:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "ENTENTE BRO LEON 4",
+      "homeTeamId": "1815412",
+      "awayTeamId": "1815414",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625958/"
+    },
+    {
+      "id": "2627165",
+      "category": "Seniors masculins 1",
+      "group": "seniors-masculins",
+      "date": "2026-11-14T18:30:00+01:00",
+      "home": "+16M TER EMERAUDE 2 DOL",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1815513",
+      "awayTeamId": "1815505",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627165/",
+      "venue": {
+        "name": "COSEC (SALLE VERT)",
+        "street": "RUE PIERRE DE COUBERTIN",
+        "postalCode": "35120",
+        "city": "DOL DE BRETAGNE",
+        "latitude": "48.54313",
+        "longitude": "-1.76392",
+        "source": "FFHandball"
+      }
+    },
     {
       "id": "2627160",
       "category": "Seniors masculins 1",
