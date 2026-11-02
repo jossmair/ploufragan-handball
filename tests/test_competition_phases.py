@@ -86,6 +86,21 @@ class CompetitionPhaseTests(unittest.TestCase):
             teams = sync_results.sync_team(self.team, '2026-11-02', '2026-11-15')
         self.assertEqual(teams[0][1][0]['date'], '2026-11-21T15:00:00+01:00')
 
+    def test_undated_match_keeps_opponent_and_calendar_without_inventing_date(self):
+        def undated(url):
+            data = self.fetch(url)
+            listing = data.get('competitions---rencontre-list')
+            if listing:
+                listing['rencontres'][0]['date'] = None
+            return data
+        with patch.object(sync_results, 'fetch', side_effect=undated):
+            teams = sync_results.sync_team(self.team, '2026-11-02', '2026-11-15')
+        self.assertEqual(teams[0][1], [])
+        pending = teams[0][0]['undatedMatches'][0]
+        self.assertIsNone(pending['date'])
+        self.assertEqual(pending['away'], 'Opponent')
+        self.assertEqual(pending['calendarStart'], '2026-11-14')
+
 
 if __name__ == '__main__':
     unittest.main()

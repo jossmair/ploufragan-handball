@@ -17,15 +17,24 @@ test('each youth team shows all its current official pools and its own matches',
    const team=teams[i],ranking=page.locator('.team-season-card').nth(i);
    await expect(ranking).toContainText(team.pool);
    await expect(ranking.locator('.season-ranking-link')).toHaveAttribute('href',team.ranking);
-   const urls=new Set(data.matches.filter(m=>[m.homeTeamId,m.awayTeamId].includes(team.internalId)).map(m=>m.url));
+   const urls=new Set([...data.matches.filter(m=>[m.homeTeamId,m.awayTeamId].includes(team.internalId)),...(team.undatedMatches||[])].map(m=>m.url));
    const next=page.locator('.team-next-card').nth(i);
    if(await next.locator('.match-card').count()){
     expect(urls.has(await next.locator('.match-card-primary').getAttribute('href'))).toBe(true);
+    if(await next.getByText('date et horaire à confirmer',{exact:false}).count()) await expect(next.locator('time')).toHaveCount(0);
    }else await expect(next.locator('.season-empty')).toBeVisible();
   }
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  }
  await page.goto('/resultats.html');
- await expect(page.locator('[data-results-team="U13 garcons"]')).toHaveCount(1);
+ await page.locator('[data-results-section="all"]').click();
+ for(const number of ['1','2']){
+  await expect(page.locator(`[data-results-team="U13 garcons ${number}"]`)).toHaveCount(1);
+  await page.locator('[data-results-filter] [data-filter-trigger]').click();
+  await page.locator(`[data-results-team="U13 garcons ${number}"]`).click();
+  const shown=await page.locator('[data-results-item]:visible').evaluateAll(es=>es.map(e=>e.dataset.team));
+  expect(shown.length).toBeGreaterThan(0);
+  expect(shown.every(value=>value===`U13 garcons ${number}`)).toBe(true);
+ }
  await expect(page.locator('.competition-card')).toHaveCount(data.teams.length);
 });

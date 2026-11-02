@@ -163,6 +163,7 @@ def sync_team(original, start, end):
         if found['standings'] and not any(row['club'] for row in found['standings']):
             raise ValueError('PHB missing from official standings for ' + found['label'])
         matches = []
+        undated = {}
         days = json.loads(sel.get('selected_poule', {}).get('journees') or '[]')
         selected = current.get('competitions---rencontre-list', {})
         # Include neighbouring rounds for postponed games and results entered late.
@@ -183,6 +184,12 @@ def sync_team(original, start, end):
                 match = normalize_match(raw, found, pid)
                 if match and match['date']:
                     matches.append(match)
+                elif match:
+                    day = next((d for d in days if int(d['journee_numero']) == number), None)
+                    if day and day['date_fin'] >= datetime.now(timezone.utc).date().isoformat():
+                        undated[match['id']] = {**match, 'calendarStart': day['date_debut'],
+                                                'calendarEnd': day['date_fin']}
+        found['undatedMatches'] = sorted(undated.values(), key=lambda m: m['calendarStart'])
         resolved.append((found, matches))
     if not resolved:
         raise ValueError('PHB team not found in current pools: ' + original['label'])

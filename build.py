@@ -253,10 +253,10 @@ def fr_date(value):
 def match_team(name, side, team_id=None):
     logo = TEAM_LOGO_IDS.get(str(team_id)) if team_id else None
     logo = logo or TEAM_LOGOS_BY_NAME.get(name.casefold())
-    if name.casefold() == "ploufragan handball":
+    if name.casefold() in {"ploufragan handball", "ploufragan handball 1", "ploufragan handball 2"}:
         logo = "assets/logo-phb-embleme.webp"
     if logo:
-        phb_class = " team-logo-phb" if name.casefold() == "ploufragan handball" else ""
+        phb_class = " team-logo-phb" if name.casefold() in {"ploufragan handball", "ploufragan handball 1", "ploufragan handball 2"} else ""
         badge = f'<span class="team-logo-disc{phb_class}" aria-hidden="true"><img src="{escape(logo, quote=True)}?v={TEAM_ASSET_VERSION}" alt="" width="240" height="240" loading="lazy"></span>'
     else:
         badge = ''
@@ -286,6 +286,11 @@ def match_outcome(match):
     return 'draw', 'Résultat officiel'
 
 
+def results_team_key(category, name):
+    number = name.rsplit(' ', 1)[-1]
+    return category + ' ' + number if category == 'U13 garcons' and number in {'1', '2'} else category
+
+
 def match_card(m, pending_score=False):
     if m["played"]:
         outcome, badge = match_outcome(m)
@@ -297,7 +302,14 @@ def match_card(m, pending_score=False):
         label = "En attente" if pending_score else "À venir"
         score=f'<div class="match-result"><strong class="match-time">{label}</strong></div>'
     location = match_location(m) if not m["played"] else ""
-    return f'''<article class="match-card" data-results-item data-team="{escape(m['category'], quote=True)}" data-reveal><a class="match-card-primary" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer"><div class="match-top"><span>{escape(clean_label(m['category']))}</span><time datetime="{m['date']}">{fr_date(m['date'])}</time></div><div class="match-main">{match_team(m['home'], 'home', m.get('homeTeamId'))}{score}{match_team(m['away'], 'away', m.get('awayTeamId'))}</div><span class="match-source">FFHandball <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></span></a>{location}</article>'''
+    card_label = clean_label(m['category'])
+    filter_label = results_team_key(m['category'], m['home'] if m['clubSide'] == 'home' else m['away'])
+    club_name = m['home'] if m['clubSide'] == 'home' else m['away']
+    if m['category'] == 'U13 garcons' and club_name.rsplit(' ', 1)[-1] in {'1', '2'}:
+        card_label += ' · Équipe ' + club_name.rsplit(' ', 1)[-1]
+    date_html = (f'<time datetime="{m["date"]}">{fr_date(m["date"])}</time>' if m.get('date')
+                 else f'<span>Journée du {escape(m["calendarStart"][8:10] + "/" + m["calendarStart"][5:7])} au {escape(m["calendarEnd"][8:10] + "/" + m["calendarEnd"][5:7])} · date et horaire à confirmer</span>')
+    return f'''<article class="match-card" data-results-item data-team="{escape(filter_label, quote=True)}" data-reveal><a class="match-card-primary" href="{escape(m['url'],quote=True)}" target="_blank" rel="noopener noreferrer"><div class="match-top"><span>{escape(card_label)}</span>{date_html}</div><div class="match-main">{match_team(m['home'], 'home', m.get('homeTeamId'))}{score}{match_team(m['away'], 'away', m.get('awayTeamId'))}</div><span class="match-source">FFHandball <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></span></a>{location}</article>'''
 
 
 def match_location(match):
@@ -364,6 +376,9 @@ def competition_detail(team):
     result_title = "SCORES DU WEEK-END" if weekend_active else "DERNIER RÉSULTAT"
     result_card = f'''<article class="team-last-card" data-reveal><p class="eyebrow">{escape(label)}</p><h2>{result_title}</h2>{result}</article>'''
     next_match = min(future, key=lambda match: match["date"], default=None)
+    pending_calendar = team.get('undatedMatches', [])
+    if pending_calendar and (not next_match or pending_calendar[0]['calendarStart'] <= next_match['date'][:10]):
+        next_match = pending_calendar[0]
     next_content = match_card(next_match) if next_match else '<p class="season-empty">Aucun prochain match annoncé pour cette équipe.</p>'
     next_card = f'<article class="team-next-card" data-reveal><p class="eyebrow">{escape(label)}</p><h2>PROCHAIN MATCH</h2>{next_content}</article>'
     return standings_card, result_card, next_card
@@ -1620,7 +1635,7 @@ pages["inscriptions"] = page(
 pages["inscriptions"] = pages["inscriptions"].replace('</head>', '<link rel="stylesheet" href="assets/trial-start.css?v=20261011-1"><script src="assets/trial-start.js?v=20261011-1" defer></script></head>')
 
 
-competition_cards=''.join(f'''<article class="competition-card" data-results-item data-team="{escape(t['label'], quote=True)}" data-reveal><p class="eyebrow">{escape(t['pool'])}</p><h3>{escape(clean_label(t['label']))}</h3><div><a href="{escape(t['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Calendrier FFHandball <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a><a href="{escape(t['ranking'],quote=True)}" target="_blank" rel="noopener noreferrer">Classement <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div></article>''' for t in RESULTS["teams"])
+competition_cards=''.join(f'''<article class="competition-card" data-results-item data-team="{escape(results_team_key(t['label'], t.get('teamName', '')), quote=True)}" data-reveal><p class="eyebrow">{escape(t['pool'])}</p><h3>{escape(clean_label(results_team_key(t['label'], t.get('teamName', ''))))}</h3><div><a href="{escape(t['url'],quote=True)}" target="_blank" rel="noopener noreferrer">Calendrier FFHandball <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a><a href="{escape(t['ranking'],quote=True)}" target="_blank" rel="noopener noreferrer">Classement <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div></article>''' for t in RESULTS["teams"])
 sync_months = ("janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre")
 if RESULTS.get("updatedAt"):
     sync_time = datetime.fromisoformat(RESULTS["updatedAt"]).astimezone(ZoneInfo("Europe/Paris"))
@@ -1628,7 +1643,7 @@ if RESULTS.get("updatedAt"):
     sync_source = f'<span class="data-source">Source : FFHandball<br><time datetime="{escape(RESULTS["updatedAt"], quote=True)}">{escape(sync_label)}</time></span>'
 else:
     sync_source = '<span class="data-source">Source : FFHandball<br>Dernière synchronisation non disponible</span>'
-result_filter_buttons = ''.join(f'<button type="button" role="option" data-results-team="{escape(label, quote=True)}" aria-selected="false">{escape(clean_label(label))}</button>' for label in dict.fromkeys(team['label'] for team in RESULTS["teams"]))
+result_filter_buttons = ''.join(f'<button type="button" role="option" data-results-team="{escape(label, quote=True)}" aria-selected="false">{escape(clean_label(label))}</button>' for label in dict.fromkeys(results_team_key(team['label'], team.get('teamName', '')) for team in RESULTS["teams"]))
 results_filter = f'''<div class="content-filter" data-results-filter data-reveal><span class="content-filter-label" id="results-filter-title">Équipe</span><div class="content-filter-choice"><button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="results-filter-options" aria-labelledby="results-filter-title results-filter-selected"><span id="results-filter-selected" data-filter-selected>Toutes les équipes</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button><div class="content-filter-menu" id="results-filter-options" data-filter-menu role="listbox" aria-label="Équipes" hidden><button type="button" role="option" data-results-team="" aria-selected="true">Toutes les équipes</button>{result_filter_buttons}</div></div><span class="content-filter-count" data-results-status aria-live="polite">Toutes les équipes affichées</span></div>'''
 results_heading_media = heading_video(
     "assets/blog/blog-logo-orbit.mp4",
@@ -1638,7 +1653,8 @@ results_heading_media = heading_video(
 )
 scores_eyebrow = "WEEK-END EN COURS" if weekend_switch_active else "DERNIER WEEK-END"
 results_controls = '<div class="content-sections" data-results-sections hidden aria-label="Choisir les informations sportives"><button type="button" data-results-section="scores" aria-pressed="true">Résultats</button><button type="button" data-results-section="upcoming" aria-pressed="false">Prochains matchs</button><button type="button" data-results-section="competitions" aria-pressed="false">Championnats</button><button type="button" data-results-section="all" aria-pressed="false">Tout afficher</button></div>'
-results_panels = f'''<div class="results-panel" id="resultats" data-results-panel="scores"><div class="section-heading"><div><p class="eyebrow">{scores_eyebrow}</p><h2>LES <em>SCORES</em></h2></div>{sync_source}</div><div class="matches-grid" data-results-scores>{''.join(match_card(m, pending_score=not m["played"]) for m in score_matches) or '<p class="season-empty">Aucun match annoncé pour cette semaine.</p>'}</div></div><div class="results-panel" id="prochains-matchs" data-results-panel="upcoming"><div class="section-heading"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid" data-results-upcoming>{''.join(match_card(m) for m in next_round_matches(upcoming)) or '<p class="season-empty">Aucun prochain match annoncé.</p>'}</div></div><div class="results-panel" id="classements" data-results-panel="competitions"><div class="section-heading"><div><p class="eyebrow">{len(RESULTS["teams"])} ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div></div>'''
+undated_upcoming = ''.join(match_card(t['undatedMatches'][0]) for t in RESULTS['teams'] if t.get('undatedMatches') and not any(t['internalId'] in (m.get('homeTeamId'), m.get('awayTeamId')) and m['date'][:10] < t['undatedMatches'][0]['calendarStart'] for m in upcoming))
+results_panels = f'''<div class="results-panel" id="resultats" data-results-panel="scores"><div class="section-heading"><div><p class="eyebrow">{scores_eyebrow}</p><h2>LES <em>SCORES</em></h2></div>{sync_source}</div><div class="matches-grid" data-results-scores>{''.join(match_card(m, pending_score=not m["played"]) for m in score_matches) or '<p class="season-empty">Aucun match annoncé pour cette semaine.</p>'}</div></div><div class="results-panel" id="prochains-matchs" data-results-panel="upcoming"><div class="section-heading"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid" data-results-upcoming>{undated_upcoming + ''.join(match_card(m) for m in next_round_matches(upcoming)) or '<p class="season-empty">Aucun prochain match annoncé.</p>'}</div></div><div class="results-panel" id="classements" data-results-panel="competitions"><div class="section-heading"><div><p class="eyebrow">{len(RESULTS["teams"])} ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div></div>'''
 pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS<br><em>& CHAMPIONNATS</em>","Résultats","Choisissez votre équipe pour retrouver ses résultats, ses prochains matchs et son championnat.",css_class="animated-heading results-heading",extra=results_heading_media)+f'<section class="container section after-heading">{results_filter}{results_controls}{results_panels}</section>')
 
 
