@@ -107,58 +107,85 @@ def normalize_match(match, team, pool_id):
         'url': team['base'] + f"poule-{pool_id}/rencontre-{match['ext_rencontreId']}/",
     }
 
-def sync_team(original, start, end):
-    team = dict(original)
-    data = fetch(team['base'])
+def resolve_team_pools(team, fetcher=None):
+    """Find every PHB entry in the newest published calendar, including split teams.
+
+    Previous phases remain online on FFHandball. Their continued existence must
+    never pin the site to an obsolete pool. Compare first-round calendar dates,
+    not opaque phase/pool identifiers or the competition's default selected pool.
+    """
+    fetcher = fetcher or fetch
+    data = fetcher(team['base'])
     selector = data['competitions---poule-selector']
-    pools = selector.get('poules', [])
-    # A new phase receives new pool/team IDs. Discover it from the current source.
-    candidates = [p for p in pools if str(p['ext_pouleId']) == str(team['poolId'])]
-    if not candidates:
-        candidates = pools
+    pools = selector.get('poules') or [
+        {**selector.get('selected_poule', {}), 'ext_pouleId': team['poolId'],
+         'libelle': team.get('pool', team['label'])}
+    ]
+    cohorts = {}
+    for pool in pools:
+        days = json.loads(pool.get('journees') or '[]')
+        dates = [d['date_debut'] for d in days if d.get('date_debut')]
+        cohorts.setdefault(min(dates) if dates else '', []).append(pool)
+    for phase_start in sorted(cohorts, reverse=True):
+        resolved = []
+        for pool in cohorts[phase_start]:
+            pid = str(pool['ext_pouleId'])
+            current = (data if pid == str(selector.get('selected_poule', {}).get('ext_pouleId'))
+                       else fetcher(team['base'] + f'poule-{pid}/'))
+            for record in current['competitions---poule-selector'].get('equipe_options', []):
+                if str(record.get('structureId')) != '3062':
+                    continue
+                found = {**team, 'poolId': pid, 'pool': pool['libelle'],
+                         'internalId': str(record['id']), 'teamId': str(record['ext_equipeId']),
+                         'teamName': record.get('libelle', team['label']), 'phaseStart': phase_start}
+                found['url'] = found['base'] + 'equipe-' + found['teamId'] + '/'
+                found['ranking'] = found['base'] + f'poule-{pid}/classements/'
+                resolved.append((found, current))
+        if resolved:
+            return resolved
+    raise ValueError('PHB team not found in published pools: ' + team['label'])
+
+
+def sync_team(original, start, end):
     resolved = []
-    for pool in candidates:
-        pid = str(pool['ext_pouleId'])
-        current = data if pid == str(selector.get('selected_poule', {}).get('ext_pouleId')) else fetch(team['base'] + f'poule-{pid}/')
+    for found, current in resolve_team_pools(original):
+        pid = found['poolId']
         sel = current['competitions---poule-selector']
-        for record in sel.get('equipe_options', []):
-            if str(record.get('structureId')) != '3062':
-                continue
-            found = {**team, 'poolId': pid, 'pool': pool['libelle'],
-                     'internalId': str(record['id']), 'teamId': str(record['ext_equipeId'])}
-            found['url'] = found['base'] + 'equipe-' + found['teamId'] + '/'
-            found['ranking'] = found['base'] + f'poule-{pid}/classements/'
-            ranking = fetch(found['ranking']).get('competitions---classement', {}).get('classements')
-            if not isinstance(ranking, list):
-                raise ValueError('Missing official standings for ' + found['label'])
-            found['standings'] = [
-                {'position': int(row['place']), 'team': row['equipe_libelle'],
-                 'points': int(row['point']), 'played': int(row['joue']),
-                 'club': str(row['equipeId']) == found['internalId']}
-                for row in ranking
-            ]
-            if not any(row['club'] for row in found['standings']):
-                raise ValueError('PHB missing from official standings for ' + found['label'])
-            matches = []
-            days = json.loads(sel.get('selected_poule', {}).get('journees') or '[]')
-            selected = current.get('competitions---rencontre-list', {})
-            # Include neighbouring rounds for postponed games and results entered late.
-            wanted = [d for d in days if d['date_debut'] <= end and d['date_fin'] >= start]
-            numbers = {int(d['journee_numero']) for d in wanted}
-            for number in list(numbers):
-                if number > 1: numbers.add(number - 1)
-            numbers.add(int(selected.get('selected_numero_journee') or 1))
-            for number in sorted(numbers):
-                listing = selected if str(number) == str(selected.get('selected_numero_journee')) else fetch(found['base'] + f'poule-{pid}/journee-{number}/').get('competitions---rencontre-list', {})
-                if 'rencontres' not in listing:
-                    raise ValueError('Missing match list for ' + found['label'])
-                for raw in listing['rencontres']:
-                    match = normalize_match(raw, found, pid)
-                    if match and match['date']:
-                        matches.append(match)
-            resolved.append((found, matches))
+        ranking = fetch(found['ranking']).get('competitions---classement', {}).get('classements')
+        if not isinstance(ranking, list):
+            raise ValueError('Missing official standings for ' + found['label'])
+        found['standings'] = [
+            {'position': int(row['place']), 'team': row['equipe_libelle'],
+             'points': int(row['point']), 'played': int(row['joue']),
+             'club': str(row['equipeId']) == found['internalId']}
+            for row in ranking
+        ]
+        if found['standings'] and not any(row['club'] for row in found['standings']):
+            raise ValueError('PHB missing from official standings for ' + found['label'])
+        matches = []
+        days = json.loads(sel.get('selected_poule', {}).get('journees') or '[]')
+        selected = current.get('competitions---rencontre-list', {})
+        # Include neighbouring rounds for postponed games and results entered late.
+        wanted = [d for d in days if d['date_debut'] <= end and d['date_fin'] >= start]
+        numbers = {int(d['journee_numero']) for d in wanted}
+        # A phase can start after the usual window; a team can be exempt on day 1.
+        following = sorted((d for d in days if d['date_debut'] > end),
+                           key=lambda d: d['date_debut'])
+        numbers.update(int(d['journee_numero']) for d in following[:2])
+        for number in list(numbers):
+            if number > 1: numbers.add(number - 1)
+        numbers.add(int(selected.get('selected_numero_journee') or 1))
+        for number in sorted(numbers):
+            listing = selected if str(number) == str(selected.get('selected_numero_journee')) else fetch(found['base'] + f'poule-{pid}/journee-{number}/').get('competitions---rencontre-list', {})
+            if 'rencontres' not in listing:
+                raise ValueError('Missing match list for ' + found['label'])
+            for raw in listing['rencontres']:
+                match = normalize_match(raw, found, pid)
+                if match and match['date']:
+                    matches.append(match)
+        resolved.append((found, matches))
     if not resolved:
-        raise ValueError('PHB team not found in current pools: ' + team['label'])
+        raise ValueError('PHB team not found in current pools: ' + original['label'])
     return resolved
 
 def is_valid_snapshot(path=TARGET):

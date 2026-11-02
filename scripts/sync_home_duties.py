@@ -6,9 +6,9 @@ import json
 import sys
 
 try:
-    from .sync_results import fetch, normalize_match
+    from .sync_results import fetch, normalize_match, resolve_team_pools
 except ImportError:  # Direct execution: python scripts/sync_home_duties.py
-    from sync_results import fetch, normalize_match
+    from sync_results import fetch, normalize_match, resolve_team_pools
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -75,15 +75,16 @@ def write_snapshot_atomic(snapshot, output=OUTPUT):
 
 
 def fetch_team_rounds(team):
+    matches = {}
+    for resolved, page in resolve_team_pools(team, fetcher=fetch):
+        for match in fetch_resolved_team_rounds(resolved, page):
+            matches[match['id']] = match
+    return list(matches.values())
+
+
+def fetch_resolved_team_rounds(team, page):
     base = team["base"] + f"poule-{team['poolId']}/"
-    page = fetch(base)
     selector = page["competitions---poule-selector"]
-    records = [record for record in selector.get("equipe_options", [])
-               if str(record.get("structureId")) == "3062"]
-    if not records:
-        raise ValueError(f"Équipe PHB absente de la poule actuelle pour {team['label']}")
-    resolved = [{**team, "internalId": str(record["id"]),
-                 "teamId": str(record["ext_equipeId"])} for record in records]
     rounds = json.loads(selector["selected_poule"]["journees"])
     wanted = [int(round_["journee_numero"]) for round_ in rounds]
 
@@ -96,10 +97,9 @@ def fetch_team_rounds(team):
             raise ValueError(f"FFHandball: journée {number} absente pour {team['label']}")
         matches = []
         for raw in listing["rencontres"]:
-            for current_team in resolved:
-                match = normalize_match(raw, current_team, team["poolId"])
-                if match and match["date"] and match["clubSide"] == "home":
-                    matches.append(match)
+            match = normalize_match(raw, team, team["poolId"])
+            if match and match["date"] and match["clubSide"] == "home":
+                matches.append(match)
         return matches
 
     with ThreadPoolExecutor(max_workers=4) as executor:

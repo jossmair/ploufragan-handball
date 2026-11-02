@@ -330,6 +330,10 @@ def clean_label(label):
 
 def competition_detail(team):
     label = clean_label(team["label"])
+    if sum(t['label'] == team['label'] for t in RESULTS.get('teams', [])) > 1:
+        name = team.get('teamName', team['pool'])
+        number = name.rsplit(' ', 1)[-1]
+        label += ' · ' + ('Équipe ' + number if number.isdecimal() else name)
     rows = team.get("standings", [])
     club = next((row for row in rows if row["club"]), None)
     rank = f'{club["position"]}<span> / {len(rows)}</span>' if club else "—"
@@ -340,6 +344,9 @@ def competition_detail(team):
     )
     table = f'<div class="pool-table-scroll"><table class="pool-table"><thead><tr><th scope="col">#</th><th scope="col">Équipe</th><th scope="col">J</th><th scope="col">Pts</th></tr></thead><tbody>{standings}</tbody></table></div>' if rows else '<p class="season-empty">Classement non publié à ce jour.</p>'
     team_matches = [m for m in RESULTS["matches"] if m["category"] == team["label"]]
+    if team.get('internalId'):
+        team_matches = [m for m in team_matches
+                        if str(team['internalId']) in (m.get('homeTeamId'), m.get('awayTeamId'))]
     weekend_matches, future, weekend_active = select_score_and_upcoming(team_matches, paris_now())
     related = [m for m in team_matches if m["played"]]
     latest = max(related, key=lambda match: match["date"], default=None)
@@ -769,8 +776,13 @@ def home_weekend_section(matches, now=None):
 
 
 def next_round_matches(matches):
-    """Show all fixtures in the first upcoming calendar week, including Sunday."""
-    return first_calendar_week(matches)
+    """Show each team's next week, including Sunday and staggered phase starts."""
+    groups = {}
+    for match in sorted(matches, key=lambda m: m['date']):
+        club_id = match.get('homeTeamId' if match['clubSide'] == 'home' else 'awayTeamId')
+        groups.setdefault((match['category'], club_id), []).append(match)
+    return sorted((match for group in groups.values() for match in first_calendar_week(group)),
+                  key=lambda m: m['date'])
 
 
 display_now = paris_now()
@@ -1092,10 +1104,10 @@ def youth_match_gallery(slug):
 
 for youth in YOUTH_TEAMS:
     slug, name, schedule_name, years, result_label, photo = youth
-    team = next((team for team in RESULTS["teams"] if team["label"] == result_label), None)
+    teams = [team for team in RESULTS["teams"] if team["label"] == result_label]
     team_heading = team_title(name)
     body = heading(team_heading, name, TEAM_INTROS[slug], back=("jeunes.html", "Équipes jeunes"))
-    body += team_detail(slug, name, "jeunes", schedule_name, [team] if team else [])
+    body += team_detail(slug, name, "jeunes", schedule_name, teams)
     gallery_head = '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">' if slug in YOUTH_GALLERIES else ''
     inline_coach_head = ('<link rel="stylesheet" href="assets/club.css?v=20261005-20">'
                          '<script src="assets/club.js?v=20261005-2" defer></script>') if CATEGORIES[slug].get("coachPhotoInline") else ''
@@ -1616,7 +1628,7 @@ if RESULTS.get("updatedAt"):
     sync_source = f'<span class="data-source">Source : FFHandball<br><time datetime="{escape(RESULTS["updatedAt"], quote=True)}">{escape(sync_label)}</time></span>'
 else:
     sync_source = '<span class="data-source">Source : FFHandball<br>Dernière synchronisation non disponible</span>'
-result_filter_buttons = ''.join(f'<button type="button" role="option" data-results-team="{escape(team["label"], quote=True)}" aria-selected="false">{escape(clean_label(team["label"]))}</button>' for team in RESULTS["teams"])
+result_filter_buttons = ''.join(f'<button type="button" role="option" data-results-team="{escape(label, quote=True)}" aria-selected="false">{escape(clean_label(label))}</button>' for label in dict.fromkeys(team['label'] for team in RESULTS["teams"]))
 results_filter = f'''<div class="content-filter" data-results-filter data-reveal><span class="content-filter-label" id="results-filter-title">Équipe</span><div class="content-filter-choice"><button class="content-filter-trigger" type="button" data-filter-trigger aria-expanded="false" aria-haspopup="listbox" aria-controls="results-filter-options" aria-labelledby="results-filter-title results-filter-selected"><span id="results-filter-selected" data-filter-selected>Toutes les équipes</span><span class="content-filter-chevron" aria-hidden="true">⌄</span></button><div class="content-filter-menu" id="results-filter-options" data-filter-menu role="listbox" aria-label="Équipes" hidden><button type="button" role="option" data-results-team="" aria-selected="true">Toutes les équipes</button>{result_filter_buttons}</div></div><span class="content-filter-count" data-results-status aria-live="polite">Toutes les équipes affichées</span></div>'''
 results_heading_media = heading_video(
     "assets/blog/blog-logo-orbit.mp4",
@@ -1626,7 +1638,7 @@ results_heading_media = heading_video(
 )
 scores_eyebrow = "WEEK-END EN COURS" if weekend_switch_active else "DERNIER WEEK-END"
 results_controls = '<div class="content-sections" data-results-sections hidden aria-label="Choisir les informations sportives"><button type="button" data-results-section="scores" aria-pressed="true">Résultats</button><button type="button" data-results-section="upcoming" aria-pressed="false">Prochains matchs</button><button type="button" data-results-section="competitions" aria-pressed="false">Championnats</button><button type="button" data-results-section="all" aria-pressed="false">Tout afficher</button></div>'
-results_panels = f'''<div class="results-panel" id="resultats" data-results-panel="scores"><div class="section-heading"><div><p class="eyebrow">{scores_eyebrow}</p><h2>LES <em>SCORES</em></h2></div>{sync_source}</div><div class="matches-grid" data-results-scores>{''.join(match_card(m, pending_score=not m["played"]) for m in score_matches) or '<p class="season-empty">Aucun match annoncé pour cette semaine.</p>'}</div></div><div class="results-panel" id="prochains-matchs" data-results-panel="upcoming"><div class="section-heading"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid" data-results-upcoming>{''.join(match_card(m) for m in next_round_matches(upcoming)) or '<p class="season-empty">Aucun prochain match annoncé.</p>'}</div></div><div class="results-panel" id="classements" data-results-panel="competitions"><div class="section-heading"><div><p class="eyebrow">9 ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div></div>'''
+results_panels = f'''<div class="results-panel" id="resultats" data-results-panel="scores"><div class="section-heading"><div><p class="eyebrow">{scores_eyebrow}</p><h2>LES <em>SCORES</em></h2></div>{sync_source}</div><div class="matches-grid" data-results-scores>{''.join(match_card(m, pending_score=not m["played"]) for m in score_matches) or '<p class="season-empty">Aucun match annoncé pour cette semaine.</p>'}</div></div><div class="results-panel" id="prochains-matchs" data-results-panel="upcoming"><div class="section-heading"><h2>PROCHAINS <em>MATCHS</em></h2></div><div class="matches-grid" data-results-upcoming>{''.join(match_card(m) for m in next_round_matches(upcoming)) or '<p class="season-empty">Aucun prochain match annoncé.</p>'}</div></div><div class="results-panel" id="classements" data-results-panel="competitions"><div class="section-heading"><div><p class="eyebrow">{len(RESULTS["teams"])} ÉQUIPES ENGAGÉES</p><h2>SUIVRE LES <em>CHAMPIONNATS</em></h2></div></div><div class="competitions-grid">{competition_cards}</div></div>'''
 pages["resultats"]=page("resultats","Résultats et championnats",heading("RÉSULTATS<br><em>& CHAMPIONNATS</em>","Résultats","Choisissez votre équipe pour retrouver ses résultats, ses prochains matchs et son championnat.",css_class="animated-heading results-heading",extra=results_heading_media)+f'<section class="container section after-heading">{results_filter}{results_controls}{results_panels}</section>')
 
 

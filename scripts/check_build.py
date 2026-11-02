@@ -15,6 +15,9 @@ expected = {team['label'] for team in configured}
 actual = {team['label'] for team in results['teams']}
 assert expected <= actual, f'Missing PHB competitions: {sorted(expected - actual)}'
 assert results['matches'], 'No official matches were imported'
+for team in results['teams']:
+    assert team['ranking'] in results_page, f'Current pool link missing: {team["pool"]}'
+    assert team['url'] in results_page, f'Current team calendar missing: {team["label"]}'
 score_matches, upcoming, _ = select_score_and_upcoming(results['matches'], paris_now())
 scores_html = results_page.split('data-results-scores>', 1)[1].split('data-results-upcoming>', 1)[0]
 upcoming_html = results_page.split('data-results-upcoming>', 1)[1].split('SUIVRE LES', 1)[0]
