@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T21:04:21.208838+00:00",
+  "updatedAt": "2026-11-03T11:58:55.740197+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -651,25 +651,7 @@
           "club": false
         }
       ],
-      "undatedMatches": [
-        {
-          "id": "2775507",
-          "category": "U13 garcons",
-          "group": "jeunes",
-          "date": null,
-          "home": "HANDBALL BEAUSSAIS RANCE FREMUR",
-          "away": "PLOUFRAGAN HANDBALL 1",
-          "homeTeamId": "1851107",
-          "awayTeamId": "1851111",
-          "homeScore": null,
-          "awayScore": null,
-          "clubSide": "away",
-          "played": false,
-          "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200085/rencontre-2775507/",
-          "calendarStart": "2026-11-14",
-          "calendarEnd": "2026-11-15"
-        }
-      ]
+      "undatedMatches": []
     },
     {
       "label": "U13 garcons",
@@ -840,30 +822,6 @@
   ],
   "matches": [
     {
-      "id": "2627175",
-      "category": "Seniors masculins 1",
-      "group": "seniors-masculins",
-      "date": "2026-12-05T21:00:00+01:00",
-      "home": "CSAL PAIMPOL HB1",
-      "away": "PLOUFRAGAN HANDBALL",
-      "homeTeamId": "1815509",
-      "awayTeamId": "1815505",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "away",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627175/",
-      "venue": {
-        "name": "SALLE KERRAOUL",
-        "street": "RUE HENT KERVIK",
-        "postalCode": "22500",
-        "city": "PAIMPOL",
-        "latitude": "48.78379",
-        "longitude": "-3.05994",
-        "source": "FFHandball"
-      }
-    },
-    {
       "id": "2681076",
       "category": "Seniors masculins 2",
       "group": "seniors-masculins",
@@ -960,30 +918,6 @@
       }
     },
     {
-      "id": "2775514",
-      "category": "U13 garcons",
-      "group": "jeunes",
-      "date": "2026-12-05T13:45:00+01:00",
-      "home": "PLOEUC HAND",
-      "away": "PLOUFRAGAN HANDBALL 1",
-      "homeTeamId": "1851106",
-      "awayTeamId": "1851111",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "away",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200085/rencontre-2775514/",
-      "venue": {
-        "name": "SALLE DU COLLÈGE EUGÈNE GUILLEVIC",
-        "street": "RUE DU 19 MARS 1962",
-        "postalCode": "22150",
-        "city": "PLOEUC SUR LIE",
-        "latitude": "48.34623",
-        "longitude": "-2.75342",
-        "source": "FFHandball"
-      }
-    },
-    {
       "id": "2774924",
       "category": "U13 filles",
       "group": "jeunes",
@@ -1006,21 +940,6 @@
         "longitude": "-3.00097",
         "source": "FFHandball"
       }
-    },
-    {
-      "id": "2627170",
-      "category": "Seniors masculins 1",
-      "group": "seniors-masculins",
-      "date": "2026-11-29T14:00:00+01:00",
-      "home": "PLOUFRAGAN HANDBALL",
-      "away": "HANDBALL BEAUSSAIS RANCE FREMUR 1",
-      "homeTeamId": "1815505",
-      "awayTeamId": "1815511",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "home",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627170/"
     },
     {
       "id": "2625963",
@@ -1107,21 +1026,6 @@
       }
     },
     {
-      "id": "2775510",
-      "category": "U13 garcons",
-      "group": "jeunes",
-      "date": "2026-11-21T15:00:00+01:00",
-      "home": "PLOUFRAGAN HANDBALL 1",
-      "away": "U13 2 HENANSAL ERQUY",
-      "homeTeamId": "1851111",
-      "awayTeamId": "1851108",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "home",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200085/rencontre-2775510/"
-    },
-    {
       "id": "2772760",
       "category": "U11 mixte",
       "group": "jeunes",
@@ -1174,30 +1078,6 @@
       "clubSide": "home",
       "played": false,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625958/"
-    },
-    {
-      "id": "2627165",
-      "category": "Seniors masculins 1",
-      "group": "seniors-masculins",
-      "date": "2026-11-14T18:30:00+01:00",
-      "home": "+16M TER EMERAUDE 2 DOL",
-      "away": "PLOUFRAGAN HANDBALL",
-      "homeTeamId": "1815513",
-      "awayTeamId": "1815505",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "away",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627165/",
-      "venue": {
-        "name": "COSEC (SALLE VERT)",
-        "street": "RUE PIERRE DE COUBERTIN",
-        "postalCode": "35120",
-        "city": "DOL DE BRETAGNE",
-        "latitude": "48.54313",
-        "longitude": "-1.76392",
-        "source": "FFHandball"
-      }
     },
     {
       "id": "2771776",
@@ -1282,21 +1162,6 @@
       "clubSide": "home",
       "played": false,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-200024/rencontre-2772752/"
-    },
-    {
-      "id": "2627160",
-      "category": "Seniors masculins 1",
-      "group": "seniors-masculins",
-      "date": "2026-11-07T21:00:00+01:00",
-      "home": "PLOUFRAGAN HANDBALL",
-      "away": "Tinteniac Combourg HBC 2",
-      "homeTeamId": "1815505",
-      "awayTeamId": "1815515",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "home",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627160/"
     },
     {
       "id": "2625955",
