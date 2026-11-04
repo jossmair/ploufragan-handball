@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T19:31:14.768520+00:00",
+  "updatedAt": "2026-11-04T00:38:37.198779+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -716,25 +716,7 @@
           "club": false
         }
       ],
-      "undatedMatches": [
-        {
-          "id": "2775915",
-          "category": "U13 garcons",
-          "group": "jeunes",
-          "date": null,
-          "home": "ALVMP HANDBALL",
-          "away": "PLOUFRAGAN HANDBALL 2",
-          "homeTeamId": "1851159",
-          "awayTeamId": "1851165",
-          "homeScore": null,
-          "awayScore": null,
-          "clubSide": "away",
-          "played": false,
-          "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200093/rencontre-2775915/",
-          "calendarStart": "2026-11-21",
-          "calendarEnd": "2026-11-22"
-        }
-      ]
+      "undatedMatches": []
     },
     {
       "label": "U15 garcons",
@@ -849,7 +831,7 @@
       "id": "2681076",
       "category": "Seniors masculins 2",
       "group": "seniors-masculins",
-      "date": "2026-12-05T19:00:00+01:00",
+      "date": "2026-12-05T21:00:00+01:00",
       "home": "BAIE D'ARMOR HB - SG2",
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1815557",
@@ -1039,6 +1021,30 @@
       "clubSide": "home",
       "played": false,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773810/"
+    },
+    {
+      "id": "2775915",
+      "category": "U13 garcons",
+      "group": "jeunes",
+      "date": "2026-11-21T16:45:00+01:00",
+      "home": "ALVMP HANDBALL",
+      "away": "PLOUFRAGAN HANDBALL 2",
+      "homeTeamId": "1851159",
+      "awayTeamId": "1851165",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200093/rencontre-2775915/",
+      "venue": {
+        "name": "SOS DE PLOUARET",
+        "street": "RUE LOUIS PRIGENT PLACE DE L'EGLISE",
+        "postalCode": "22420",
+        "city": "PLOUARET",
+        "latitude": "48.60981",
+        "longitude": "-3.46747",
+        "source": "FFHandball"
+      }
     },
     {
       "id": "2777454",
