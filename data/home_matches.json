@@ -1,7 +1,7 @@
 {
   "source": "FFHandball",
   "season": "2026–2027",
-  "updatedAt": "2026-11-04T12:13:29.561897+00:00",
+  "updatedAt": "2026-11-05T00:56:33.281448+00:00",
   "matches": [
     {
       "id": "2627133",
@@ -102,6 +102,13 @@
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-200024/rencontre-2772760/"
     },
     {
+      "id": "2775510",
+      "category": "U13 garcons",
+      "date": "2026-11-21T15:00:00+01:00",
+      "opponent": "U13 2 HENANSAL ERQUY",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200085/rencontre-2775510/"
+    },
+    {
       "id": "2773810",
       "category": "U15 filles",
       "date": "2026-11-21T17:00:00+01:00",
@@ -135,6 +142,27 @@
       "date": "2026-11-29T14:00:00+01:00",
       "opponent": "HANDBALL BEAUSSAIS RANCE FREMUR 1",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627170/"
+    },
+    {
+      "id": "2774929",
+      "category": "U13 filles",
+      "date": "2026-12-12T13:00:00+01:00",
+      "opponent": "US BOURBRIAC",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-200021/rencontre-2774929/"
+    },
+    {
+      "id": "2775925",
+      "category": "U13 garcons",
+      "date": "2026-12-12T14:10:00+01:00",
+      "opponent": "L'HANDBALLE CLUB",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200093/rencontre-2775925/"
+    },
+    {
+      "id": "2775518",
+      "category": "U13 garcons",
+      "date": "2026-12-12T15:20:00+01:00",
+      "opponent": "AL CANCALE",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200085/rencontre-2775518/"
     },
     {
       "id": "2625973",
