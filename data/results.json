@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T00:55:26.045213+00:00",
+  "updatedAt": "2026-11-05T12:25:25.809083+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -375,23 +375,6 @@
           "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773806/",
           "calendarStart": "2026-11-14",
           "calendarEnd": "2026-11-15"
-        },
-        {
-          "id": "2773814",
-          "category": "U15 filles",
-          "group": "jeunes",
-          "date": null,
-          "home": "PLOUFRAGAN HANDBALL",
-          "away": "U15F HENANSAL ERQUY",
-          "homeTeamId": "1851411",
-          "awayTeamId": "1851416",
-          "homeScore": null,
-          "awayScore": null,
-          "clubSide": "home",
-          "played": false,
-          "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773814/",
-          "calendarStart": "2026-12-05",
-          "calendarEnd": "2026-12-06"
         }
       ]
     },
@@ -781,25 +764,7 @@
           "club": false
         }
       ],
-      "undatedMatches": [
-        {
-          "id": "2777457",
-          "category": "U15 garcons",
-          "group": "jeunes",
-          "date": null,
-          "home": "PLOUFRAGAN HANDBALL",
-          "away": "U15M TER - ENTENTE COTE DE GRANIT ROSE 2",
-          "homeTeamId": "1851364",
-          "awayTeamId": "1851366",
-          "homeScore": null,
-          "awayScore": null,
-          "clubSide": "home",
-          "played": false,
-          "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-199950/rencontre-2777457/",
-          "calendarStart": "2026-12-05",
-          "calendarEnd": "2026-12-06"
-        }
-      ]
+      "undatedMatches": []
     }
   ],
   "matches": [
@@ -900,6 +865,21 @@
       }
     },
     {
+      "id": "2777457",
+      "category": "U15 garcons",
+      "group": "jeunes",
+      "date": "2026-12-05T15:30:00+01:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "U15M TER - ENTENTE COTE DE GRANIT ROSE 2",
+      "homeTeamId": "1851364",
+      "awayTeamId": "1851366",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-199950/rencontre-2777457/"
+    },
+    {
       "id": "2775920",
       "category": "U13 garcons",
       "group": "jeunes",
@@ -970,6 +950,21 @@
         "longitude": "-3.00097",
         "source": "FFHandball"
       }
+    },
+    {
+      "id": "2773814",
+      "category": "U15 filles",
+      "group": "jeunes",
+      "date": "2026-12-05T13:30:00+01:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "U15F HENANSAL ERQUY",
+      "homeTeamId": "1851411",
+      "awayTeamId": "1851416",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773814/"
     },
     {
       "id": "2627170",
