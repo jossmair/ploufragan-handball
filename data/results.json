@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T13:51:28.806834+00:00",
+  "updatedAt": "2026-11-07T17:43:33.998559+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -358,25 +358,7 @@
           "club": false
         }
       ],
-      "undatedMatches": [
-        {
-          "id": "2773806",
-          "category": "U15 filles",
-          "group": "jeunes",
-          "date": null,
-          "home": "U15F TER - PLOUISY - GUINGAMP HB",
-          "away": "PLOUFRAGAN HANDBALL",
-          "homeTeamId": "1851418",
-          "awayTeamId": "1851411",
-          "homeScore": null,
-          "awayScore": null,
-          "clubSide": "away",
-          "played": false,
-          "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773806/",
-          "calendarStart": "2026-11-14",
-          "calendarEnd": "2026-11-15"
-        }
-      ]
+      "undatedMatches": []
     },
     {
       "label": "Seniors masculins 1",
@@ -1259,6 +1241,30 @@
       "clubSide": "home",
       "played": false,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-200021/rencontre-2774916/"
+    },
+    {
+      "id": "2773806",
+      "category": "U15 filles",
+      "group": "jeunes",
+      "date": "2026-11-14T14:30:00+01:00",
+      "home": "U15F TER - PLOUISY - GUINGAMP HB",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1851418",
+      "awayTeamId": "1851411",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773806/",
+      "venue": {
+        "name": "SOS",
+        "street": "PARC BELLON",
+        "postalCode": "22200",
+        "city": "PLOUISY",
+        "latitude": "48.58049",
+        "longitude": "-3.17953",
+        "source": "FFHandball"
+      }
     },
     {
       "id": "2775507",
