@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T17:43:33.998559+00:00",
+  "updatedAt": "2026-11-07T21:06:19.087224+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -1368,10 +1368,10 @@
       "away": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
       "homeTeamId": "1815560",
       "awayTeamId": "1815552",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 35,
+      "awayScore": 21,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681058/"
     },
     {
