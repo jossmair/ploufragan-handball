@@ -64,7 +64,7 @@ jobs:
       - name: Installer les tests navigateur
         run: |
           npm ci
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
       - name: Vérifier le traitement des scores
         run: python -m unittest discover -s tests
       - name: Récupérer les résultats officiels
