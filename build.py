@@ -1115,7 +1115,8 @@ def youth_match_gallery(slug):
     total = len(photos)
     title = escape(label.upper())
     heading_id = f"{slug}-gallery-title"
-    return f'''<section class="container section youth-photo-gallery" aria-labelledby="{heading_id}"><div class="youth-photo-gallery-heading" data-reveal><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="{heading_id}">{title} <em>EN IMAGES</em></h2></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos de match des {escape(label, quote=True)}">{slides}</div><div class="photo-carousel-thumbnails-shell"><button class="photo-carousel-thumb-nav is-prev" type="button" data-photo-thumb-prev aria-label="Miniatures précédentes" disabled>←</button><div class="photo-carousel-thumbnails" data-photo-thumbnails aria-label="Miniatures des photos">{thumbnails}</div><button class="photo-carousel-thumb-nav is-next" type="button" data-photo-thumb-next aria-label="Miniatures suivantes">→</button></div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / max(total, 1):.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div></section>'''
+    credit = f'<p class="gallery-credit">Photos · <a href="{escape(config["source"], quote=True)}" target="_blank" rel="noopener noreferrer">Arbodphoto ↗</a></p>' if config.get("source") else ""
+    return f'''<section class="container section youth-photo-gallery" aria-labelledby="{heading_id}"><div class="youth-photo-gallery-heading" data-reveal><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="{heading_id}">{title} <em>EN IMAGES</em></h2></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos de match des {escape(label, quote=True)}">{slides}</div><div class="photo-carousel-thumbnails-shell"><button class="photo-carousel-thumb-nav is-prev" type="button" data-photo-thumb-prev aria-label="Miniatures précédentes" disabled>←</button><div class="photo-carousel-thumbnails" data-photo-thumbnails aria-label="Miniatures des photos">{thumbnails}</div><button class="photo-carousel-thumb-nav is-next" type="button" data-photo-thumb-next aria-label="Miniatures suivantes">→</button></div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / max(total, 1):.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div>{credit}</section>'''
 
 for youth in YOUTH_TEAMS:
     slug, name, schedule_name, years, result_label, photo = youth
@@ -1269,6 +1270,7 @@ for slug, name, result_label in SENIOR_MEN:
     body = heading(f"SENIORS MASCULINS <em>{number}</em>", result_label, TEAM_INTROS[slug],
                    back=("seniors-masculins.html", "Seniors masculins"))
     body += team_detail(slug, result_label, "seniors-masculins", teams=[team])
+    body += '<link rel="stylesheet" href="assets/youth-galleries.css?v=20260930-1">'
     if slug == "seniors-masculins-1":
         body += f'''<section class="container team-article-entry" data-reveal><div><p class="eyebrow">PORTRAITS {SEASON_DISPLAY}</p><h2>DÉCOUVRIR LES <em>JOUEURS ET LE STAFF</em></h2><p>Retrouvez les portraits, les postes et l’encadrement de l’équipe première.</p></div>{button("Voir la présentation", "articles/presentation-seniors-masculins-1.html", True)}</section>'''
     pages[slug] = page(slug, result_label, body, "equipes",
@@ -1791,7 +1793,7 @@ def gallery_album_page(album):
 
 
 gallery_hub_entries = []
-for slug in ("u13-filles", "u13-garcons", "u15-filles", "u18-garcons", "u11-mixte"):
+for slug in ("seniors-masculins-1", "seniors-masculins-2", "u13-filles", "u13-garcons", "u15-filles", "u18-garcons", "u11-mixte"):
     config = YOUTH_GALLERIES[slug]
     first_photo = config["photos"][0]
     label = config["label"]

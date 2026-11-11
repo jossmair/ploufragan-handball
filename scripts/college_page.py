@@ -4,9 +4,9 @@
 def college_body():
     slides = ''.join(
         f'<figure class="photo-carousel-slide" data-photo-slide><img src="assets/handball-college/seance-{i:02}.webp" '
-        f'alt="Filles et garçons pendant une séance de handball, photo {i}" width="960" height="{1280 if i == 2 else 1279}" '
+        f'alt="Filles et garçons pendant une séance de handball, photo {i}" width="960" height="1280" '
         'loading="lazy" decoding="async"><figcaption>Section handball au collège · Les séances en images</figcaption></figure>'
-        for i in range(1, 5)
+        for i in range(1, 8)
     )
     return '''<section class="container college-page">
       <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span>Section handball au collège</span></nav>
@@ -21,7 +21,7 @@ def college_body():
       </div>
       <div class="college-details">
         <section class="college-gallery" aria-labelledby="college-gallery-title"><p class="eyebrow">SUR LE TERRAIN</p><h2 id="college-gallery-title">LA SECTION <em>EN IMAGES</em></h2>
-          <div class="photo-carousel" data-photo-carousel><div class="photo-carousel-topbar"><span>LES SÉANCES</span><span data-photo-count aria-live="polite">1 / 4</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Les quatre photos des séances de handball">''' + slides + '''</div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:25%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div>
+          <div class="photo-carousel" data-photo-carousel><div class="photo-carousel-topbar"><span>LES SÉANCES</span><span data-photo-count aria-live="polite">1 / 7</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Les sept photos des séances de handball">''' + slides + '''</div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:14.2857%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div>
         </section>
         <div class="college-information">
           <section class="college-project" aria-labelledby="college-project-title"><p class="eyebrow">COLLÈGE × PHB</p><h2 id="college-project-title">UN PROJET <em>CONSTRUIT ENSEMBLE</em></h2><p>La section handball a été co-construite avec le principal du collège, un professeur d’EPS et le Ploufragan Handball.</p><div class="college-benefit"><h3>Filles et garçons, ensemble</h3><p>Des collectifs mixtes pour partager le jeu et progresser ensemble.</p></div><div class="college-benefit"><h3>Une place dans l’emploi du temps</h3><p>La séance de 1 h 30 est intégrée à l’emploi du temps de l’élève et compatible avec les deux entraînements hebdomadaires du club.</p></div></section>
