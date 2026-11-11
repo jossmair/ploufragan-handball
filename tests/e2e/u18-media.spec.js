@@ -27,14 +27,14 @@ test('U18: neuf cartes et sept photos accessibles sur mobile et ordinateur',asyn
   await expect(card).toBeFocused();
  }
  const carousel=page.locator('[data-photo-carousel]');
- await expect(carousel.locator('[data-photo-slide]')).toHaveCount(7);
+ await expect(carousel.locator('[data-photo-slide]')).toHaveCount(115);
  await carousel.locator('[data-photo-track]').scrollIntoViewIfNeeded();
  await carousel.locator('[data-photo-track]').press('ArrowRight');
- await expect(carousel.locator('[data-photo-count]')).toHaveText('2 / 7');
+ await expect(carousel.locator('[data-photo-count]')).toHaveText('2 / 115');
  await carousel.locator('[data-photo-thumb]').last().click();
- await expect(carousel.locator('[data-photo-count]')).toHaveText('7 / 7');
+ await expect(carousel.locator('[data-photo-count]')).toHaveText('115 / 115');
  await carousel.locator('[data-photo-track]').press('ArrowLeft');
- await expect(carousel.locator('[data-photo-count]')).toHaveText('6 / 7');
+ await expect(carousel.locator('[data-photo-count]')).toHaveText('114 / 115');
  for(const width of [360,390,768,1440]){
   await page.setViewportSize({width,height:900});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

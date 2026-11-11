@@ -20,7 +20,7 @@ test('galerie mobile : la vidéo attend la couverture visible', async ({page, is
     await page.evaluate(() => document.fonts.ready);
     expect(videos).toEqual([]);
     release();
-    await expect.poll(() => page.locator('.gallery-index-card img').first().evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+    await expect.poll(() => page.locator('.gallery-index-card img').nth(2).evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
     await expect.poll(() => videos.length).toBeGreaterThan(0);
     await expect(page.locator('[data-gallery-logo-video] source')).toHaveAttribute('src', 'assets/videos/galerie-animation.mp4');
   } finally { release(); }
@@ -32,10 +32,10 @@ test('galerie : couvertures adaptées, fond mobile valide et liens préservés',
   for(const width of [320,390,768,850,1024,1440]) {
     await page.setViewportSize({width,height:844});
     await page.goto('/galerie.html');
-    const image=page.locator('.gallery-index-card img').first();
+    const image=page.locator('.gallery-index-card img').nth(2);
     await expect.poll(() => image.evaluate(element => element.complete && element.naturalWidth>0)).toBe(true);
     expect(await image.evaluate(element => element.naturalWidth)).toBeLessThanOrEqual(960);
-    expect(await page.locator('.gallery-index-card').first().getAttribute('href')).toBe('u13-filles.html#u13-filles-gallery-title');
+    expect(await page.locator('.gallery-index-card').nth(2).getAttribute('href')).toBe('u13-filles.html#u13-filles-gallery-title');
     if(width<=850) {
       const background=await page.locator('.gallery-heading').evaluate(element => getComputedStyle(element,'::before').backgroundImage);
       expect(background).toContain('/assets/gallery-previews/51599e205f-480.webp');

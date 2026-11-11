@@ -30,21 +30,21 @@ test('option au collège : photos entières, navigation du carrousel et agrandis
   await page.goto('/handball-college.html');
   const track = page.locator('[data-photo-track]');
   await track.scrollIntoViewIfNeeded();
-  await expect(page.locator('[data-photo-slide]')).toHaveCount(4);
+  await expect(page.locator('[data-photo-slide]')).toHaveCount(7);
   await expect.poll(() => page.locator('[data-photo-slide] img').first().evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
   await expect(page.locator('[data-photo-slide] img').first()).toHaveCSS('object-fit', 'contain');
   await page.locator('[data-photo-next]').click();
-  await expect(page.locator('[data-photo-count]')).toHaveText('2 / 4');
+  await expect(page.locator('[data-photo-count]')).toHaveText('2 / 7');
   await track.focus();
   await page.keyboard.press('ArrowRight');
-  await expect(page.locator('[data-photo-count]')).toHaveText('3 / 4');
+  await expect(page.locator('[data-photo-count]')).toHaveText('3 / 7');
   await page.getByRole('button', { name: 'Agrandir la photo', exact: true }).click();
   await expect(page.getByRole('dialog', { name: 'Photo agrandie' })).toBeVisible();
   await expect(page.locator('.photo-zoom-media img')).toHaveAttribute('src', /seance-03\.webp/);
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog', { name: 'Photo agrandie' })).not.toBeVisible();
   await page.locator('[data-photo-prev]').click();
-  await expect(page.locator('[data-photo-count]')).toHaveText('2 / 4');
+  await expect(page.locator('[data-photo-count]')).toHaveText('2 / 7');
 });
 
 test('option au collège : largeur compacte et header sans chevauchement', async ({ page }) => {
@@ -66,3 +66,4 @@ test('option au collège : largeur compacte et header sans chevauchement', async
     }
   }
 });
+
