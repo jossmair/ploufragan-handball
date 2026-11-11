@@ -133,7 +133,7 @@ test('galerie : album accessible, responsive et pilotable', async ({ page }) => 
   await expect(hubCards.nth(6)).toHaveAttribute('href', 'u11-mixte.html#u11-mixte-gallery-title');
   await expect(hubCards.nth(7)).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
   await expect(hubCards.nth(8)).toHaveAttribute('href', 'stage-ete.html#souvenirs');
-  await expect(page.locator('.gallery-index-card .text-link').filter({ hasText: /OUVRIR L.ALBUM/ })).toHaveCount(6);
+  await expect(page.locator('.gallery-index-card .text-link').filter({ hasText: /OUVRIR L.ALBUM/ })).toHaveCount(8);
   await page.goto('/galeries/seniors-1-pays-de-dinan-2026.html');
   const carousel = page.locator('[data-photo-carousel]');
   await expect(carousel).toBeVisible();
