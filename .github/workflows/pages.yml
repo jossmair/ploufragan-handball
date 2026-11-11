@@ -63,6 +63,10 @@ jobs:
           cache: npm
       - name: Installer les tests navigateur
         run: |
+          sudo find /etc/apt/sources.list.d -type f -exec sed -i 's|azure.archive.ubuntu.com|archive.ubuntu.com|g' {} +
+          if [ -f /etc/apt/sources.list ]; then
+            sudo sed -i 's|azure.archive.ubuntu.com|archive.ubuntu.com|g' /etc/apt/sources.list
+          fi
           npm ci
           npx playwright install --with-deps chromium
       - name: Vérifier le traitement des scores
