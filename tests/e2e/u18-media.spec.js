@@ -26,7 +26,10 @@ test('U18: neuf cartes et sept photos accessibles sur mobile et ordinateur',asyn
   await expect(card).toHaveAttribute('aria-pressed','true');
   await expect(card).toBeFocused();
  }
- const carousel=page.locator('[data-photo-carousel]');
+ const galleries=page.locator('[data-photo-carousel]');
+ await expect(galleries).toHaveCount(2);
+ await expect(galleries.nth(1).locator('[data-photo-slide]')).toHaveCount(7);
+ const carousel=galleries.first();
  await expect(carousel.locator('[data-photo-slide]')).toHaveCount(115);
  await carousel.locator('[data-photo-track]').scrollIntoViewIfNeeded();
  await carousel.locator('[data-photo-track]').press('ArrowRight');

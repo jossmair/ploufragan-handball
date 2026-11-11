@@ -1099,24 +1099,37 @@ def youth_match_gallery(slug):
     config = YOUTH_GALLERIES.get(slug)
     if not config:
         return ""
+    albums = config.get("albums", [config])
+    return "".join(team_match_album(slug, album, index) for index, album in enumerate(albums))
+
+
+def team_match_album(slug, config, album_index):
     label = str(config["label"])
-    photos = config["photos"]
+    photos = [dict(photo,
+        src=photo.get("src") or f"assets/{slug}/gallery/{photo['file']}",
+        thumb=photo.get("thumb") or f"assets/{slug}/gallery/thumbs/{photo['file']}")
+        for photo in config["photos"]]
     slides = ''.join(
-        f'<figure class="photo-carousel-slide" data-photo-slide><img src="assets/{slug}/gallery/{photo["file"]}" alt="{escape(label, quote=True)} du PHB en match, photo {index + 1}" width="{int(photo["width"])}" height="{int(photo["height"])}" loading="lazy" decoding="async"><figcaption>{escape(label)} du PHB en match</figcaption></figure>'
+        f'<figure class="photo-carousel-slide" data-photo-slide><img src="{photo["src"]}" alt="{escape(label, quote=True)} du PHB en match, photo {index + 1}" width="{int(photo["width"])}" height="{int(photo["height"])}" loading="lazy" decoding="async"><figcaption>{escape(label)} du PHB en match</figcaption></figure>'
         for index, photo in enumerate(photos)
     )
     thumbnail_items = []
     for index, photo in enumerate(photos):
         aria_current = ' aria-current="true"' if index == 0 else ''
         thumbnail_items.append(
-            f'<button class="photo-carousel-thumb" type="button" data-photo-thumb data-photo-index="{index}" aria-label="Afficher la photo {index + 1}"{aria_current}><img src="assets/{slug}/gallery/thumbs/{photo["file"]}" alt="" width="240" height="156" loading="lazy" decoding="async"></button>'
+            f'<button class="photo-carousel-thumb" type="button" data-photo-thumb data-photo-index="{index}" aria-label="Afficher la photo {index + 1}"{aria_current}><img src="{photo["thumb"]}" alt="" width="240" height="156" loading="lazy" decoding="async"></button>'
         )
     thumbnails = ''.join(thumbnail_items)
     total = len(photos)
-    title = escape(label.upper())
-    heading_id = f"{slug}-gallery-title"
-    credit = f'<p class="gallery-credit">Photos · <a href="{escape(config["source"], quote=True)}" target="_blank" rel="noopener noreferrer">Arbodphoto ↗</a></p>' if config.get("source") else ""
-    return f'''<section class="container section youth-photo-gallery" aria-labelledby="{heading_id}"><div class="youth-photo-gallery-heading" data-reveal><p class="eyebrow">AU CŒUR DU MATCH</p><h2 id="{heading_id}">{title} <em>EN IMAGES</em></h2></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos de match des {escape(label, quote=True)}">{slides}</div><div class="photo-carousel-thumbnails-shell"><button class="photo-carousel-thumb-nav is-prev" type="button" data-photo-thumb-prev aria-label="Miniatures précédentes" disabled>←</button><div class="photo-carousel-thumbnails" data-photo-thumbnails aria-label="Miniatures des photos">{thumbnails}</div><button class="photo-carousel-thumb-nav is-next" type="button" data-photo-thumb-next aria-label="Miniatures suivantes">→</button></div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / max(total, 1):.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div>{credit}</section>'''
+    title = escape(config.get("title", label).upper())
+    album_date = f'<time datetime="{config["date"]}">{article_date(config["date"])}</time>' if config.get("date") else "Date non renseignée"
+    heading_id = f"{slug}-gallery-title" + (f"-{album_index + 1}" if album_index else "")
+    credit = ""
+    if config.get("source"):
+        credit = f'<p class="gallery-credit">Photos · <a href="{escape(config["source"], quote=True)}" target="_blank" rel="noopener noreferrer">Arbodphoto ↗</a></p>'
+    elif config.get("credit_note"):
+        credit = f'<p class="gallery-credit">{escape(config["credit_note"])}</p>' 
+    return f'''<section class="container section youth-photo-gallery" aria-labelledby="{heading_id}"><div class="youth-photo-gallery-heading" data-reveal><p class="eyebrow">{escape(label)} · {album_date}</p><h2 id="{heading_id}">{title}</h2></div><div class="photo-carousel" data-photo-carousel data-reveal><div class="photo-carousel-topbar"><span class="photo-carousel-counter" data-photo-count aria-live="polite">1 / {total}</span></div><div class="photo-carousel-track" data-photo-track tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos de match des {escape(label, quote=True)}">{slides}</div><div class="photo-carousel-thumbnails-shell"><button class="photo-carousel-thumb-nav is-prev" type="button" data-photo-thumb-prev aria-label="Miniatures précédentes" disabled>←</button><div class="photo-carousel-thumbnails" data-photo-thumbnails aria-label="Miniatures des photos">{thumbnails}</div><button class="photo-carousel-thumb-nav is-next" type="button" data-photo-thumb-next aria-label="Miniatures suivantes">→</button></div><div class="photo-carousel-footer"><div class="photo-carousel-progress" aria-hidden="true"><span data-photo-progress style="--gallery-progress:{100 / max(total, 1):.4f}%"></span></div><div class="photo-carousel-controls"><button type="button" data-photo-prev aria-label="Photo précédente" disabled>←</button><button type="button" data-photo-next aria-label="Photo suivante">→</button></div></div></div>{credit}</section>'''
 
 for youth in YOUTH_TEAMS:
     slug, name, schedule_name, years, result_label, photo = youth
@@ -1797,6 +1810,8 @@ for slug in ("seniors-masculins-1", "seniors-masculins-2", "u13-filles", "u13-ga
     config = YOUTH_GALLERIES[slug]
     first_photo = config["photos"][0]
     label = config["label"]
+    albums = config.get("albums", [config])
+    photo_count = sum(len(album["photos"]) for album in albums)
     gallery_hub_entries.append({
         "href": f"{slug}.html#{slug}-gallery-title",
         "cover": f"assets/{slug}/gallery/{first_photo['file']}",
@@ -1804,7 +1819,7 @@ for slug in ("seniors-masculins-1", "seniors-masculins-2", "u13-filles", "u13-ga
         "cover_height": first_photo["height"],
         "alt": f"{label} du Ploufragan Handball en match",
         "eyebrow": "ÉQUIPES JEUNES",
-        "meta": f"{len(config['photos'])} photos",
+        "meta": f"{len(albums)} galerie(s) · {photo_count} photos",
         "title": f"{label} en images",
         "intro": f"Retrouvez le carrousel et les miniatures des photos de match des {label}.",
         "cta": "OUVRIR L’ALBUM",
