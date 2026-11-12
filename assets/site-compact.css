@@ -31,3 +31,5 @@
  body .footer-main{column-gap:24px}
 }
 @media(min-width:1600px){body .site-header .header-inner.container{width:min(calc(100% - 80px),1440px);max-width:1440px}}
+
+@media(min-width:1024px){body[data-page=galerie] .gallery-index-copy{padding:12px}}
