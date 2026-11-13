@@ -1,7 +1,7 @@
 {
   "source": "FFHandball",
   "season": "2026–2027",
-  "updatedAt": "2026-11-13T01:08:49.703382+00:00",
+  "updatedAt": "2026-11-13T12:17:39.977779+00:00",
   "matches": [
     {
       "id": "2627133",
@@ -121,6 +121,13 @@
       "date": "2026-11-21T19:00:00+01:00",
       "opponent": "CSAL PAIMPOL HB - 18G",
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-199969/rencontre-2771779/"
+    },
+    {
+      "id": "2774919",
+      "category": "U13 filles",
+      "date": "2026-11-22T16:00:00+01:00",
+      "opponent": "HB PELEMOIS",
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-200021/rencontre-2774919/"
     },
     {
       "id": "2681071",

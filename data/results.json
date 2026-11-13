@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T01:07:42.371855+00:00",
+  "updatedAt": "2026-11-13T12:16:34.965677+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -268,25 +268,7 @@
           "club": false
         }
       ],
-      "undatedMatches": [
-        {
-          "id": "2774919",
-          "category": "U13 filles",
-          "group": "jeunes",
-          "date": null,
-          "home": "PLOUFRAGAN HANDBALL",
-          "away": "HB PELEMOIS",
-          "homeTeamId": "1850843",
-          "awayTeamId": "1850837",
-          "homeScore": null,
-          "awayScore": null,
-          "clubSide": "home",
-          "played": false,
-          "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-200021/rencontre-2774919/",
-          "calendarStart": "2026-11-21",
-          "calendarEnd": "2026-11-22"
-        }
-      ]
+      "undatedMatches": []
     },
     {
       "label": "U15 filles",
@@ -1124,6 +1106,21 @@
         "longitude": "-3.14006",
         "source": "FFHandball"
       }
+    },
+    {
+      "id": "2774919",
+      "category": "U13 filles",
+      "group": "jeunes",
+      "date": "2026-11-22T16:00:00+01:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "HB PELEMOIS",
+      "homeTeamId": "1850843",
+      "awayTeamId": "1850837",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-200021/rencontre-2774919/"
     },
     {
       "id": "2771779",
