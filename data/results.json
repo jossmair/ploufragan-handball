@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T14:02:09.652869+00:00",
+  "updatedAt": "2026-11-14T18:53:24.125909+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -170,8 +170,8 @@
         {
           "position": 2,
           "team": "ARMOR CLUB DE LA MOTTE",
-          "points": 3,
-          "played": 1,
+          "points": 6,
+          "played": 2,
           "club": false
         },
         {
@@ -183,16 +183,16 @@
         },
         {
           "position": 4,
-          "team": "U11 MIXTE CAVAN HBC",
+          "team": "U11M TER GUINGAMP / PLOUISY HB",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
           "position": 5,
-          "team": "U11M TER GUINGAMP / PLOUISY HB",
-          "points": 0,
-          "played": 0,
+          "team": "U11 MIXTE CAVAN HBC",
+          "points": 1,
+          "played": 1,
           "club": false
         },
         {
@@ -220,49 +220,49 @@
       "standings": [
         {
           "position": 1,
-          "team": "ALS PLOUAGAT 2",
-          "points": 0,
-          "played": 0,
+          "team": "BAIE D'ARMOR HB -13F2",
+          "points": 3,
+          "played": 1,
           "club": false
         },
         {
           "position": 2,
-          "team": "BAIE D'ARMOR HB -13F2",
-          "points": 0,
-          "played": 0,
+          "team": "PLOEUC HAND",
+          "points": 3,
+          "played": 1,
           "club": false
         },
         {
           "position": 3,
+          "team": "ALS PLOUAGAT 2",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "US BOURBRIAC",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 5,
           "team": "U13F TER ENTENTE LOUDEAC LA MOTTE 2",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 4,
+          "position": 6,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 0,
           "played": 0,
           "club": true
         },
         {
-          "position": 5,
-          "team": "PLOEUC HAND",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
-          "position": 6,
-          "team": "HB PELEMOIS",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
           "position": 7,
-          "team": "US BOURBRIAC",
+          "team": "HB PELEMOIS",
           "points": 0,
           "played": 0,
           "club": false
@@ -579,15 +579,15 @@
         {
           "position": 4,
           "team": "PLOEUC HAND",
-          "points": 0,
-          "played": 0,
+          "points": 1,
+          "played": 1,
           "club": false
         },
         {
           "position": 5,
           "team": "AL CANCALE",
-          "points": 0,
-          "played": 0,
+          "points": 3,
+          "played": 1,
           "club": false
         },
         {
@@ -615,49 +615,49 @@
       "standings": [
         {
           "position": 1,
+          "team": "PLOUFRAGAN HANDBALL 2",
+          "points": 1,
+          "played": 1,
+          "club": true
+        },
+        {
+          "position": 2,
+          "team": "MENE MERDRIGNAC HANDBALL",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 3,
           "team": "GUINGAMP HB 2",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 2,
-          "team": "PLOUFRAGAN HANDBALL 2",
-          "points": 0,
-          "played": 0,
-          "club": true
-        },
-        {
-          "position": 3,
+          "position": 4,
           "team": "L'HANDBALLE CLUB",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "CSAL PAIMPOL HB - 13 GARS 2",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 5,
+          "position": 6,
           "team": "LANNION HANDBALL 2",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 6,
-          "team": "ALVMP HANDBALL",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
           "position": 7,
-          "team": "MENE MERDRIGNAC HANDBALL",
+          "team": "ALVMP HANDBALL",
           "points": 0,
           "played": 0,
           "club": false
@@ -680,51 +680,51 @@
       "standings": [
         {
           "position": 1,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 3,
+          "played": 1,
+          "club": true
+        },
+        {
+          "position": 2,
+          "team": "H.B.Pelemois",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 3,
           "team": "GUINGAMP HB 3",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 2,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 0,
-          "played": 0,
-          "club": true
-        },
-        {
-          "position": 3,
+          "position": 4,
           "team": "PLESTIN HB",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "GOELO HANDBALL CLUB",
-          "points": 0,
-          "played": 0,
+          "points": 1,
+          "played": 1,
           "club": false
         },
         {
-          "position": 5,
+          "position": 6,
           "team": "U15M TER - ENTENTE COTE DE GRANIT ROSE 2",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 6,
-          "team": "U15M TER - ENTENTE DU TREGOR HB3 - LOUANNEC",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
           "position": 7,
-          "team": "H.B.Pelemois",
-          "points": 0,
-          "played": 0,
+          "team": "U15M TER - ENTENTE DU TREGOR HB3 - LOUANNEC",
+          "points": 3,
+          "played": 1,
           "club": false
         }
       ],
@@ -1326,10 +1326,10 @@
       "away": "H.B.Pelemois",
       "homeTeamId": "1851364",
       "awayTeamId": "1851363",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 48,
+      "awayScore": 22,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-199950/rencontre-2777451/"
     },
     {
@@ -1341,10 +1341,10 @@
       "away": "U13F TER ENTENTE LOUDEAC LA MOTTE 2",
       "homeTeamId": "1850843",
       "awayTeamId": "1850838",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 22,
+      "awayScore": 23,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-200021/rencontre-2774916/"
     },
     {
@@ -1404,10 +1404,10 @@
       "away": "MENE MERDRIGNAC HANDBALL",
       "homeTeamId": "1851165",
       "awayTeamId": "1851160",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 16,
+      "awayScore": 21,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200093/rencontre-2775912/"
     },
     {
