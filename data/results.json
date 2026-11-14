@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T18:53:24.125909+00:00",
+  "updatedAt": "2026-11-14T22:56:44.551020+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -18,16 +18,16 @@
       "standings": [
         {
           "position": 1,
-          "team": "GOELO HBC",
-          "points": 12,
-          "played": 4,
+          "team": "PSM HANDBALL",
+          "points": 14,
+          "played": 5,
           "club": false
         },
         {
           "position": 2,
-          "team": "PSM HANDBALL",
-          "points": 12,
-          "played": 4,
+          "team": "GOELO HBC",
+          "points": 14,
+          "played": 5,
           "club": false
         },
         {
@@ -46,36 +46,36 @@
         },
         {
           "position": 5,
-          "team": "PLOUDIRY SIZUN HB 2",
+          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
           "points": 8,
           "played": 4,
           "club": false
         },
         {
           "position": 6,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 6,
+          "team": "PLOUDIRY SIZUN HB 2",
+          "points": 8,
           "played": 4,
-          "club": true
+          "club": false
         },
         {
           "position": 7,
-          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
-          "points": 5,
-          "played": 3,
+          "team": "ENTENTE BRO LEON 4",
+          "points": 7,
+          "played": 5,
           "club": false
         },
         {
           "position": 8,
-          "team": "ALS PLOUAGAT 3",
-          "points": 5,
-          "played": 3,
-          "club": false
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 7,
+          "played": 5,
+          "club": true
         },
         {
           "position": 9,
-          "team": "ENTENTE BRO LEON 4",
-          "points": 4,
+          "team": "ALS PLOUAGAT 3",
+          "points": 6,
           "played": 4,
           "club": false
         },
@@ -112,8 +112,8 @@
         {
           "position": 2,
           "team": "PLOEUC HAND",
-          "points": 0,
-          "played": 0,
+          "points": 3,
+          "played": 1,
           "club": false
         },
         {
@@ -133,8 +133,8 @@
         {
           "position": 5,
           "team": "RGP U18M - MENE MERDRIGNAC / BROONS",
-          "points": 0,
-          "played": 0,
+          "points": 1,
+          "played": 1,
           "club": false
         },
         {
@@ -558,36 +558,36 @@
         {
           "position": 1,
           "team": "HANDBALL BEAUSSAIS RANCE FREMUR",
-          "points": 0,
-          "played": 0,
+          "points": 3,
+          "played": 1,
           "club": false
         },
         {
           "position": 2,
-          "team": "U13 2 HENANSAL ERQUY",
-          "points": 0,
-          "played": 0,
+          "team": "AL CANCALE",
+          "points": 3,
+          "played": 1,
           "club": false
         },
         {
           "position": 3,
-          "team": "PLOUFRAGAN HANDBALL 1",
-          "points": 0,
-          "played": 0,
-          "club": true
-        },
-        {
-          "position": 4,
           "team": "PLOEUC HAND",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 5,
-          "team": "AL CANCALE",
-          "points": 3,
+          "position": 4,
+          "team": "PLOUFRAGAN HANDBALL 1",
+          "points": 1,
           "played": 1,
+          "club": true
+        },
+        {
+          "position": 5,
+          "team": "U13 2 HENANSAL ERQUY",
+          "points": 0,
+          "played": 0,
           "club": false
         },
         {
@@ -1108,6 +1108,30 @@
       }
     },
     {
+      "id": "2773806",
+      "category": "U15 filles",
+      "group": "jeunes",
+      "date": "2026-11-28T00:00:00+01:00",
+      "home": "U15F TER - PLOUISY - GUINGAMP HB",
+      "away": "PLOUFRAGAN HANDBALL",
+      "homeTeamId": "1851418",
+      "awayTeamId": "1851411",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773806/",
+      "venue": {
+        "name": "SOS",
+        "street": "PARC BELLON",
+        "postalCode": "22200",
+        "city": "PLOUISY",
+        "latitude": "48.58049",
+        "longitude": "-3.17953",
+        "source": "FFHandball"
+      }
+    },
+    {
       "id": "2774919",
       "category": "U13 filles",
       "group": "jeunes",
@@ -1263,10 +1287,10 @@
       "away": "ENTENTE BRO LEON 4",
       "homeTeamId": "1815412",
       "awayTeamId": "1815414",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 17,
+      "awayScore": 20,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625958/"
     },
     {
@@ -1278,10 +1302,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1815513",
       "awayTeamId": "1815505",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 31,
+      "awayScore": 22,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627165/",
       "venue": {
         "name": "COSEC (SALLE VERT)",
@@ -1348,30 +1372,6 @@
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-200021/rencontre-2774916/"
     },
     {
-      "id": "2773806",
-      "category": "U15 filles",
-      "group": "jeunes",
-      "date": "2026-11-14T14:30:00+01:00",
-      "home": "U15F TER - PLOUISY - GUINGAMP HB",
-      "away": "PLOUFRAGAN HANDBALL",
-      "homeTeamId": "1851418",
-      "awayTeamId": "1851411",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "away",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773806/",
-      "venue": {
-        "name": "SOS",
-        "street": "PARC BELLON",
-        "postalCode": "22200",
-        "city": "PLOUISY",
-        "latitude": "48.58049",
-        "longitude": "-3.17953",
-        "source": "FFHandball"
-      }
-    },
-    {
       "id": "2775507",
       "category": "U13 garcons",
       "group": "jeunes",
@@ -1380,10 +1380,10 @@
       "away": "PLOUFRAGAN HANDBALL 1",
       "homeTeamId": "1851107",
       "awayTeamId": "1851111",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 24,
+      "awayScore": 19,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200085/rencontre-2775507/",
       "venue": {
         "name": "SOS PLESLIN TRIGAVOU",
