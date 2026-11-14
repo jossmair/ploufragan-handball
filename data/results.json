@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T06:08:11.986932+00:00",
+  "updatedAt": "2026-11-14T13:40:07.327992+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -162,45 +162,45 @@
       "standings": [
         {
           "position": 1,
+          "team": "BAIE D'ARMOR HB -11G1",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 2,
           "team": "ARMOR CLUB DE LA MOTTE",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
-          "position": 2,
+          "position": 3,
           "team": "GOELO HANDBALL CLUB",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 3,
-          "team": "BAIE D'ARMOR HB -11G1",
-          "points": 3,
+          "position": 4,
+          "team": "U11 MIXTE CAVAN HBC",
+          "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "U11M TER GUINGAMP / PLOUISY HB",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 5,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 0,
-          "played": 0,
-          "club": true
-        },
-        {
           "position": 6,
-          "team": "U11 MIXTE CAVAN HBC",
+          "team": "PLOUFRAGAN HANDBALL",
           "points": 1,
           "played": 1,
-          "club": false
+          "club": true
         }
       ],
       "undatedMatches": []
@@ -1419,10 +1419,10 @@
       "away": "BAIE D'ARMOR HB -11G1",
       "homeTeamId": "1850045",
       "awayTeamId": "1850041",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 12,
+      "awayScore": 59,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-200024/rencontre-2772752/"
     },
     {
