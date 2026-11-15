@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T06:32:08.800128+00:00",
+  "updatedAt": "2026-11-15T15:40:01.148834+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -104,37 +104,37 @@
       "standings": [
         {
           "position": 1,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 0,
-          "played": 0,
-          "club": true
-        },
-        {
-          "position": 2,
           "team": "PLOEUC HAND",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
+          "position": 2,
+          "team": "RGP U18M - MENE MERDRIGNAC / BROONS",
+          "points": 1,
+          "played": 1,
+          "club": false
+        },
+        {
           "position": 3,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 0,
+          "played": 0,
+          "club": true
+        },
+        {
+          "position": 4,
           "team": "CSAL PAIMPOL HB - 18G",
           "points": 0,
           "played": 0,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "U18M TER ENTENTE COTE DE GRANIT ROSE 2",
           "points": 0,
           "played": 0,
-          "club": false
-        },
-        {
-          "position": 5,
-          "team": "RGP U18M - MENE MERDRIGNAC / BROONS",
-          "points": 1,
-          "played": 1,
           "club": false
         },
         {
@@ -471,72 +471,72 @@
         },
         {
           "position": 3,
+          "team": "PLOEUC HAND 2",
+          "points": 15,
+          "played": 7,
+          "club": false
+        },
+        {
+          "position": 4,
           "team": "HB.PELEMOIS",
           "points": 14,
           "played": 6,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 13,
           "played": 6,
           "club": true
         },
         {
-          "position": 5,
+          "position": 6,
           "team": "MENE MERDRIGNAC HANDBALL 1",
           "points": 13,
           "played": 7,
           "club": false
         },
         {
-          "position": 6,
-          "team": "PLOEUC HAND 2",
-          "points": 12,
-          "played": 6,
-          "club": false
-        },
-        {
           "position": 7,
-          "team": "Henansal-Erquy SM 2",
+          "team": "USMB LOUARGAT",
           "points": 10,
           "played": 6,
           "club": false
         },
         {
           "position": 8,
-          "team": "USMB LOUARGAT",
-          "points": 9,
-          "played": 5,
+          "team": "Henansal-Erquy SM 2",
+          "points": 10,
+          "played": 6,
           "club": false
         },
         {
           "position": 9,
-          "team": "AL VX MARCHE PLOUARET HB",
-          "points": 8,
-          "played": 6,
+          "team": "+16M TER ENTENTE DU TREGOR HB (D2)",
+          "points": 9,
+          "played": 7,
           "club": false
         },
         {
           "position": 10,
-          "team": "BAIE D'ARMOR HB - SG3",
-          "points": 7,
-          "played": 5,
+          "team": "AL VX MARCHE PLOUARET HB",
+          "points": 9,
+          "played": 7,
           "club": false
         },
         {
           "position": 11,
-          "team": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
-          "points": 6,
-          "played": 5,
+          "team": "BAIE D'ARMOR HB - SG3",
+          "points": 10,
+          "played": 6,
           "club": false
         },
         {
           "position": 12,
-          "team": "+16M TER ENTENTE DU TREGOR HB (D2)",
+          "team": "+16M TER ENTENTE COTE DE GRANIT ROSE 2",
           "points": 6,
-          "played": 6,
+          "played": 5,
           "club": false
         }
       ],
@@ -1263,10 +1263,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1815561",
       "awayTeamId": "1815560",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 29,
+      "awayScore": 19,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681065/",
       "venue": {
         "name": "SOS OCEANE",
@@ -1326,10 +1326,10 @@
       "away": "PLOUFRAGAN HANDBALL",
       "homeTeamId": "1850518",
       "awayTeamId": "1850521",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 25,
+      "awayScore": 22,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-199969/rencontre-2771776/",
       "venue": {
         "name": "SOS TREGUIER",
