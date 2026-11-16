@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T23:30:45.703935+00:00",
+  "updatedAt": "2026-11-16T06:35:51.423721+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -755,6 +755,51 @@
         "longitude": "-3.56639",
         "source": "FFHandball"
       }
+    },
+    {
+      "id": "2681081",
+      "category": "Seniors masculins 2",
+      "group": "seniors-masculins",
+      "date": "2026-12-13T14:00:00+01:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "USMB LOUARGAT",
+      "homeTeamId": "1815560",
+      "awayTeamId": "1815555",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-2eme-division-territoriale-mas-p-12-30530/poule-192928/rencontre-2681081/"
+    },
+    {
+      "id": "2627180",
+      "category": "Seniors masculins 1",
+      "group": "seniors-masculins",
+      "date": "2026-12-12T21:00:00+01:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "HBC HENANSAL ERQUY 1",
+      "homeTeamId": "1815505",
+      "awayTeamId": "1815507",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-masculine-30529/poule-190425/rencontre-2627180/"
+    },
+    {
+      "id": "2625973",
+      "category": "Seniors feminines",
+      "group": "seniors-feminines",
+      "date": "2026-12-12T19:00:00+01:00",
+      "home": "PLOUFRAGAN HANDBALL",
+      "away": "PLOUDIRY SIZUN HB 2",
+      "homeTeamId": "1815412",
+      "awayTeamId": "1815417",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "home",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/16-ans-1ere-division-territoriale-feminine-p-10-30525/poule-190429/rencontre-2625973/"
     },
     {
       "id": "2777460",
