@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T02:58:04.256358+00:00",
+  "updatedAt": "2026-11-17T13:30:22.450713+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -46,9 +46,9 @@
         },
         {
           "position": 5,
-          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
-          "points": 8,
-          "played": 4,
+          "team": "ALS PLOUAGAT 3",
+          "points": 9,
+          "played": 5,
           "club": false
         },
         {
@@ -60,24 +60,24 @@
         },
         {
           "position": 7,
+          "team": "+16F TER PLESTIN BELLE-ISLE HANDBALL",
+          "points": 8,
+          "played": 4,
+          "club": false
+        },
+        {
+          "position": 8,
           "team": "ENTENTE BRO LEON 4",
           "points": 7,
           "played": 5,
           "club": false
         },
         {
-          "position": 8,
+          "position": 9,
           "team": "PLOUFRAGAN HANDBALL",
           "points": 7,
           "played": 5,
           "club": true
-        },
-        {
-          "position": 9,
-          "team": "ALS PLOUAGAT 3",
-          "points": 9,
-          "played": 5,
-          "club": false
         },
         {
           "position": 10,
