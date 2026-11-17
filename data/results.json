@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T18:36:58.497623+00:00",
+  "updatedAt": "2026-11-17T02:58:04.256358+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -557,38 +557,38 @@
       "standings": [
         {
           "position": 1,
-          "team": "HANDBALL BEAUSSAIS RANCE FREMUR",
+          "team": "OC MONTAUBAN",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
           "position": 2,
-          "team": "AL CANCALE",
+          "team": "HANDBALL BEAUSSAIS RANCE FREMUR",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
           "position": 3,
+          "team": "AL CANCALE",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
           "team": "PLOEUC HAND",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "PLOUFRAGAN HANDBALL 1",
           "points": 1,
           "played": 1,
           "club": true
-        },
-        {
-          "position": 5,
-          "team": "OC MONTAUBAN",
-          "points": 3,
-          "played": 1,
-          "club": false
         },
         {
           "position": 6,
