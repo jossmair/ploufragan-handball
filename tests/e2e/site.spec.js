@@ -122,7 +122,7 @@ test('boutique : filtre, images et commande', async ({ page }) => {
 
 test('galerie : album accessible, responsive et pilotable', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.home-gallery-card').getByRole('link', { name: /Voir les photos/i })).toHaveAttribute('href', 'galeries/seniors-1-pays-de-dinan-2026.html');
+  await expect(page.locator('.home-news a[href="kalon-2027.html"]')).toHaveAttribute('href', 'kalon-2027.html');
   await page.goto('/galerie.html');
   const hubCards = page.locator('.gallery-index-card');
   await expect(hubCards).toHaveCount(9);

@@ -14,8 +14,8 @@ test('actualités : aperçus compacts et aucune carte légende dévoilée',async
   }
   await expect(page.locator('.home-news-card[data-article="album-des-legendes"] img')).toHaveAttribute('src','assets/legendes/album-preview.webp');
   await expect(page.locator('.home-news img[src*="guigui"],.home-news img[src*="jay"],.home-news img[src*="pierrot"]')).toHaveCount(0);
-  await expect(page.locator('.home-gallery-card img')).toHaveAttribute('src','assets/home-previews/news-dinan.webp');
-  await expect(page.locator('.home-news-card[data-article="histoire-ploufragan-handball"] img')).toHaveAttribute('src','assets/home-previews/news-history.webp');
+  await expect(page.locator('.home-news img[src="assets/kalon-2027.webp"]')).toHaveAttribute('src','assets/kalon-2027.webp');
+  await expect(page.locator('.home-news img[src="assets/stage-ete/hero-960.webp"]')).toHaveAttribute('src','assets/stage-ete/hero-960.webp');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)).toBe(0);
  }
  expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()).violations).toEqual([]);

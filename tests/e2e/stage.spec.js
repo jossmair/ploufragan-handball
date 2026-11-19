@@ -8,7 +8,7 @@ test('summer camp: responsive, album, keyboard and local videos',async ({page}) 
   await expect(page.locator('.stage-page video')).toHaveCount(8);
   await expect(page.locator('[data-stage-photo]')).toHaveCount(194);
   await expect(page.locator('[data-stage-photo]:visible')).toHaveCount(24);
-  await expect(page.locator('#edition-2027')).toContainText('À venir');
+  await expect(page.locator('#edition-2027')).toContainText('12 au 16 juillet 2027');
   await expect(page.locator('a[href*="instagram"]')).toHaveCount(0);
   for(const width of [1920,1440,1280,1024,768,430,390,360]){
     await page.setViewportSize({width,height:900});

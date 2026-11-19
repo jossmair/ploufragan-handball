@@ -624,6 +624,7 @@ def home_news_section(articles):
     cards = [card for card in cards if 'histoire-ploufragan-handball' not in card and 'home-gallery-card' not in card][:1]
     for slug,title,summary,image in [('kalon-2027','Kalon Breizh Cup 2027','Les U13 garçons repartent à Pontivy du 6 au 8 mai. Inscriptions jusqu’au 18 décembre.','assets/kalon-2027.webp'),('stage-ete','Stage d’été PHB 2027','12–16 juillet · Guerlédan · 24 places · U15 puis U13 · 490 €','assets/stage-ete/hero-960.webp')]:
         cards.append(f'<article class="home-news-card" data-reveal><div class="home-news-image"><img src="{image}" alt="{title}" width="960" height="720" loading="lazy"></div><div class="home-news-copy"><time datetime="2026-11-20">20 NOVEMBRE 2026</time><h3>{title}</h3><p>{summary}</p>{button("Découvrir",slug+".html",True)}</div></article>')
+    cards.sort(key=lambda card: re.search(r'<time datetime="([^"]+)"', card).group(1), reverse=True)
     for index, card in enumerate(cards):
         src = re.search(r'<img[^>]*\bsrc="([^"]+)"', card).group(1)
         stem = Path(src).stem
