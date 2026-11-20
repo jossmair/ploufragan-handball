@@ -622,7 +622,7 @@ def home_news_section(articles):
     cards = [card.replace('src="assets/galeries/seniors-1-pays-de-dinan-2026/photo-36.webp"', 'src="assets/home-previews/news-dinan.webp"').replace('width="1656" height="1104"', 'width="360" height="540"').replace('alt="Match des Seniors masculins 1 du PHB à Pays de Dinan"', 'alt="Quatre joueurs du PHB en préparation du match à Pays de Dinan"') if 'data-gallery="seniors-1-pays-de-dinan-2026"' in card else card for card in cards]
     cards.sort(key=lambda card: re.search(r'<time datetime="([^"]+)"', card).group(1), reverse=True)
     cards = [card for card in cards if 'histoire-ploufragan-handball' not in card and 'home-gallery-card' not in card][:1]
-    for slug,title,summary,image in [('kalon-2027','Kalon Breizh Cup 2027','Les U13 garçons repartent à Pontivy du 6 au 8 mai. Inscriptions jusqu’au 18 décembre.','assets/kalon-2027.webp'),('stage-ete','Stage d’été PHB 2027','12–16 juillet · Guerlédan · 24 places · U15 puis U13 · 490 €','assets/stage-ete/hero-960.webp')]:
+    for slug,title,summary,image in [('kalon-2027','Kalon Breizh Cup 2027','Les U13 garçons repartent à Pontivy du 6 au 8 mai. Inscriptions jusqu’au 18 décembre.','assets/kalon-2027.webp'),('stage-ete','Stage d’été PHB 2027','12–16 juillet · Guerlédan · 24 places · U15 puis U13 · 500 €','assets/stage-ete/hero-960.webp')]:
         cards.append(f'<article class="home-news-card" data-reveal><div class="home-news-image"><img src="{image}" alt="{title}" width="960" height="720" loading="lazy"></div><div class="home-news-copy"><time datetime="2026-11-20">20 NOVEMBRE 2026</time><h3>{title}</h3><p>{summary}</p>{button("Découvrir",slug+".html",True)}</div></article>')
     cards.sort(key=lambda card: re.search(r'<time datetime="([^"]+)"', card).group(1), reverse=True)
     for index, card in enumerate(cards):
@@ -1898,7 +1898,7 @@ pages["404"]=page("404","Page introuvable",heading("PAGE <em>INTROUVABLE</em>","
 
 from stage_page import stage_body
 from kalon_page import kalon_body
-pages["kalon-2027"] = page("kalon-2027", "Kalon Breizh Cup 2027 · U13 garçons", kalon_body(), active="kalon-2027", extra_head='<link rel="stylesheet" href="assets/kalon.css?v=20261120-3">')
+pages["kalon-2027"] = page("kalon-2027", "Kalon Breizh Cup 2027 · U13 garçons", kalon_body(), active="kalon-2027", extra_head='<link rel="stylesheet" href="assets/kalon.css?v=20261120-4">')
 pages["stage-ete"] = page(
     "stage-ete", "Stage d’été PHB à Guerlédan", stage_body(ROOT), active="entrainements",
     page_title="Stage handball été 2027 à Guerlédan · U13 et U15 | PHB",
