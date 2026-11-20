@@ -52,7 +52,7 @@ for name in ("photo-03", "premier-bureau-phb-2011"):
 BUDGETS["Aperçu accueil Dinan"] = (ASSETS / "home-previews/news-dinan.webp", 40_000)
 BUDGETS["Aperçu accueil histoire"] = (ASSETS / "home-previews/news-history.webp", 40_000)
 # Summer camp media, U15 / club cards and nine senior women cards (~800 KB).
-TOTAL_ASSETS_BUDGET = 212_000_000  # Albums Arbodphoto seniors 1, seniors 2 et U18 optimisés.
+TOTAL_ASSETS_BUDGET = 235_000_000  # Albums optimisés et film Kalon 2026 (21 Mo, chargé à la demande).
 GALLERY_ORIGINALS = ASSETS / "galeries" / "seniors-1-pays-de-dinan-2026" / "originals"
 GALLERY_ORIGINALS_BUDGET = 330_000_000
 
