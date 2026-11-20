@@ -1898,13 +1898,13 @@ pages["404"]=page("404","Page introuvable",heading("PAGE <em>INTROUVABLE</em>","
 
 from stage_page import stage_body
 from kalon_page import kalon_body
-pages["kalon-2027"] = page("kalon-2027", "Kalon Breizh Cup 2027 · U13 garçons", kalon_body(), active="kalon-2027", extra_head='<link rel="stylesheet" href="assets/kalon.css?v=20261120-4">')
+pages["kalon-2027"] = page("kalon-2027", "Kalon Breizh Cup 2027 · U13 garçons", kalon_body(), active="kalon-2027", extra_head='<link rel="stylesheet" href="assets/kalon.css?v=20261120-5">')
 pages["stage-ete"] = page(
     "stage-ete", "Stage d’été PHB à Guerlédan", stage_body(ROOT), active="entrainements",
     page_title="Stage handball été 2027 à Guerlédan · U13 et U15 | PHB",
     social_image=("assets/og/stage-ete.jpg", 1200, 630, "Le groupe du stage d’été PHB à Guerlédan"),
     description="Stage d’été du Ploufragan Handball à Guerlédan pour les filles et garçons des catégories U13 et U15. Revivez 2026 en photos et vidéos et découvrez la prochaine édition 2027.",
-    extra_head='<link rel="stylesheet" href="assets/stage-ete.css?v=20261012-1"><link rel="stylesheet" href="assets/stage-2027.css?v=20261120-1"><script src="assets/stage-ete.js?v=20261012-1" defer></script>',
+    extra_head='<link rel="stylesheet" href="assets/stage-ete.css?v=20261012-1"><link rel="stylesheet" href="assets/stage-2027.css?v=20261120-2"><script src="assets/stage-ete.js?v=20261012-1" defer></script>',
 )
 pages["stage-ete"] = re.sub(r'<a class="footer-social-link instagram".*?</a>', '', pages["stage-ete"])
 stage_promo = '''<section class="container section"><div class="team-article-entry"><div><p class="eyebrow">ÉTÉ 2027 · U13 & U15 · FILLES & GARÇONS</p><h2>CAP SUR <em>GUERLÉDAN</em></h2><p>Une semaine de handball et d’activités de plein air à Guerlédan. Retrouvez les photos et les vidéos de 2026, ainsi que les informations sur la prochaine édition.</p></div><a class="button" href="stage-ete.html">DÉCOUVRIR LE STAGE <svg class="phb-ui-icon phb-ui-arrow" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 3h15v15h-3V8.12L5.12 21 3 18.88 15.88 6H6z"/></svg></a></div></section>'''
