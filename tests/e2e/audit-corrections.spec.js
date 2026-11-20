@@ -58,7 +58,7 @@ test('mobile loads small textures and supports direct section links',async({page
  for(const id of ['club-organigramme','club-david','club-salles']){
   await page.goto(`/club.html?section=${id}#${id}`);await page.evaluate(()=>document.fonts.ready);await expect(page.locator(`#${id}`)).toBeInViewport();
  }
- await page.goto('/stage-ete.html');await page.locator('.stage-shortcuts a[href="#souvenirs"]').click();await expect(page.locator('#souvenirs')).toBeInViewport();
+ await page.goto('/stage-ete.html#souvenirs');await expect(page.locator('.stage-shortcuts')).toHaveCount(0);await expect(page.locator('#souvenirs')).toBeInViewport();
 });
 
 test('closed coach cards defer their photos until a visitor opens them',async({page})=>{
