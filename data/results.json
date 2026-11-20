@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T07:25:16.608828+00:00",
+  "updatedAt": "2026-11-20T16:22:46.758769+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -33,7 +33,7 @@
         {
           "position": 3,
           "team": "BAIE D'ARMOR HB - SF1",
-          "points": 13,
+          "points": 12,
           "played": 5,
           "club": false
         },
@@ -177,20 +177,20 @@
         {
           "position": 3,
           "team": "GOELO HANDBALL CLUB",
-          "points": 1,
-          "played": 1,
+          "points": 4,
+          "played": 2,
           "club": false
         },
         {
           "position": 4,
-          "team": "U11M TER GUINGAMP / PLOUISY HB",
-          "points": 1,
-          "played": 1,
+          "team": "U11 MIXTE CAVAN HBC",
+          "points": 2,
+          "played": 2,
           "club": false
         },
         {
           "position": 5,
-          "team": "U11 MIXTE CAVAN HBC",
+          "team": "U11M TER GUINGAMP / PLOUISY HB",
           "points": 1,
           "played": 1,
           "club": false
@@ -234,31 +234,31 @@
         },
         {
           "position": 3,
+          "team": "U13F TER ENTENTE LOUDEAC LA MOTTE 2",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 1,
+          "played": 1,
+          "club": true
+        },
+        {
+          "position": 5,
           "team": "ALS PLOUAGAT 2",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 4,
+          "position": 6,
           "team": "US BOURBRIAC",
           "points": 1,
           "played": 1,
           "club": false
-        },
-        {
-          "position": 5,
-          "team": "U13F TER ENTENTE LOUDEAC LA MOTTE 2",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
-          "position": 6,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 0,
-          "played": 0,
-          "club": true
         },
         {
           "position": 7,
@@ -364,30 +364,30 @@
         },
         {
           "position": 2,
-          "team": "PLOEUC HAND",
+          "team": "Pays de dinan handball club",
           "points": 17,
           "played": 7,
           "club": false
         },
         {
           "position": 3,
-          "team": "AL CANCALE",
+          "team": "PLOEUC HAND",
           "points": 17,
           "played": 7,
           "club": false
         },
         {
           "position": 4,
-          "team": "SC Mevennais handball",
-          "points": 15,
+          "team": "AL CANCALE",
+          "points": 17,
           "played": 7,
           "club": false
         },
         {
           "position": 5,
-          "team": "Pays de dinan handball club",
-          "points": 14,
-          "played": 6,
+          "team": "SC Mevennais handball",
+          "points": 15,
+          "played": 7,
           "club": false
         },
         {
@@ -428,8 +428,8 @@
         {
           "position": 11,
           "team": "L'HANDBALLE CLUB",
-          "points": 4,
-          "played": 6,
+          "points": 5,
+          "played": 7,
           "club": false
         },
         {
@@ -615,44 +615,44 @@
       "standings": [
         {
           "position": 1,
-          "team": "MENE MERDRIGNAC HANDBALL",
+          "team": "L'HANDBALLE CLUB",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
           "position": 2,
-          "team": "CSAL PAIMPOL HB - 13 GARS 2",
+          "team": "MENE MERDRIGNAC HANDBALL",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
           "position": 3,
+          "team": "CSAL PAIMPOL HB - 13 GARS 2",
+          "points": 3,
+          "played": 1,
+          "club": false
+        },
+        {
+          "position": 4,
           "team": "GUINGAMP HB 2",
           "points": 1,
           "played": 1,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "PLOUFRAGAN HANDBALL 2",
           "points": 1,
           "played": 1,
           "club": true
         },
         {
-          "position": 5,
-          "team": "L'HANDBALLE CLUB",
-          "points": 0,
-          "played": 0,
-          "club": false
-        },
-        {
           "position": 6,
           "team": "LANNION HANDBALL 2",
-          "points": 0,
-          "played": 0,
+          "points": 1,
+          "played": 1,
           "club": false
         },
         {
@@ -1177,6 +1177,30 @@
       }
     },
     {
+      "id": "2775915",
+      "category": "U13 garcons",
+      "group": "jeunes",
+      "date": "2026-11-28T14:00:00+01:00",
+      "home": "ALVMP HANDBALL",
+      "away": "PLOUFRAGAN HANDBALL 2",
+      "homeTeamId": "1851159",
+      "awayTeamId": "1851165",
+      "homeScore": null,
+      "awayScore": null,
+      "clubSide": "away",
+      "played": false,
+      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200093/rencontre-2775915/",
+      "venue": {
+        "name": "SOS DE PLOUARET",
+        "street": "RUE LOUIS PRIGENT PLACE DE L'EGLISE",
+        "postalCode": "22420",
+        "city": "PLOUARET",
+        "latitude": "48.60981",
+        "longitude": "-3.46747",
+        "source": "FFHandball"
+      }
+    },
+    {
       "id": "2774919",
       "category": "U13 filles",
       "group": "jeunes",
@@ -1220,30 +1244,6 @@
       "clubSide": "home",
       "played": false,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-feminine-territoriale-30549/poule-199634/rencontre-2773810/"
-    },
-    {
-      "id": "2775915",
-      "category": "U13 garcons",
-      "group": "jeunes",
-      "date": "2026-11-21T16:45:00+01:00",
-      "home": "ALVMP HANDBALL",
-      "away": "PLOUFRAGAN HANDBALL 2",
-      "homeTeamId": "1851159",
-      "awayTeamId": "1851165",
-      "homeScore": null,
-      "awayScore": null,
-      "clubSide": "away",
-      "played": false,
-      "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200093/rencontre-2775915/",
-      "venue": {
-        "name": "SOS DE PLOUARET",
-        "street": "RUE LOUIS PRIGENT PLACE DE L'EGLISE",
-        "postalCode": "22420",
-        "city": "PLOUARET",
-        "latitude": "48.60981",
-        "longitude": "-3.46747",
-        "source": "FFHandball"
-      }
     },
     {
       "id": "2777454",
