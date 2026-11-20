@@ -11,7 +11,7 @@ test('all pages share the desktop canvas without overflow',async({page})=>{
   for(const route of routes){
    await page.goto(route,{waitUntil:'domcontentloaded'});
    await page.evaluate(()=>document.fonts.ready);
-   const boxes=await page.locator('main>.container,main>.stage-page .container,main>.news-article .container').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {width:r.width,left:r.left};}));
+   const boxes=await page.locator('main>.container,main>.stage-page .container,main>.kalon-page .container,main>.news-article .container').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {width:r.width,left:r.left};}));
    expect(boxes.length,route).toBeGreaterThan(0);
    for(const box of boxes){expect(box.width,route).toBeLessThanOrEqual(1120.1);expect(Math.abs(box.left-(width-box.width)/2),route).toBeLessThan(1);}
    expect(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth),route).toBe(0);
