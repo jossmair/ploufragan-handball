@@ -1898,7 +1898,7 @@ pages["404"]=page("404","Page introuvable",heading("PAGE <em>INTROUVABLE</em>","
 
 from stage_page import stage_body
 from kalon_page import kalon_body
-pages["kalon-2027"] = page("kalon-2027", "Kalon Breizh Cup 2027 · U13 garçons", kalon_body(), active="kalon-2027", extra_head='<link rel="stylesheet" href="assets/kalon.css?v=20261120-1">')
+pages["kalon-2027"] = page("kalon-2027", "Kalon Breizh Cup 2027 · U13 garçons", kalon_body(), active="kalon-2027", extra_head='<link rel="stylesheet" href="assets/kalon.css?v=20261120-3">')
 pages["stage-ete"] = page(
     "stage-ete", "Stage d’été PHB à Guerlédan", stage_body(ROOT), active="entrainements",
     page_title="Stage handball été 2027 à Guerlédan · U13 et U15 | PHB",
