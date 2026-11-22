@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T01:09:49.855829+00:00",
+  "updatedAt": "2026-11-22T06:48:16.264927+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -104,38 +104,38 @@
       "standings": [
         {
           "position": 1,
-          "team": "PLOEUC HAND",
+          "team": "CSAL PAIMPOL HB - 18G",
           "points": 6,
           "played": 2,
           "club": false
         },
         {
           "position": 2,
+          "team": "PLOEUC HAND",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
           "team": "U18M TER ENTENTE DU TREGOR HB",
           "points": 4,
           "played": 2,
           "club": false
         },
         {
-          "position": 3,
-          "team": "CSAL PAIMPOL HB - 18G",
-          "points": 3,
-          "played": 1,
-          "club": false
+          "position": 4,
+          "team": "PLOUFRAGAN HANDBALL",
+          "points": 2,
+          "played": 2,
+          "club": true
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "RGP U18M - MENE MERDRIGNAC / BROONS",
           "points": 1,
           "played": 1,
           "club": false
-        },
-        {
-          "position": 5,
-          "team": "PLOUFRAGAN HANDBALL",
-          "points": 1,
-          "played": 1,
-          "club": true
         },
         {
           "position": 6,
@@ -292,28 +292,28 @@
         },
         {
           "position": 2,
+          "team": "U15F TER - ENT DU TREGOR HB 1",
+          "points": 6,
+          "played": 2,
+          "club": false
+        },
+        {
+          "position": 3,
           "team": "USMB LOUARGAT",
           "points": 4,
           "played": 2,
           "club": false
         },
         {
-          "position": 3,
-          "team": "U15F TER - ENT DU TREGOR HB 1",
-          "points": 3,
-          "played": 1,
-          "club": false
-        },
-        {
           "position": 4,
-          "team": "U15F TER - PLOUISY - GUINGAMP HB",
-          "points": 3,
-          "played": 1,
+          "team": "BAIE D'ARMOR HB - 15F2",
+          "points": 4,
+          "played": 2,
           "club": false
         },
         {
           "position": 5,
-          "team": "BAIE D'ARMOR HB - 15F2",
+          "team": "U15F TER - PLOUISY - GUINGAMP HB",
           "points": 3,
           "played": 1,
           "club": false
@@ -1224,10 +1224,10 @@
       "away": "CSAL PAIMPOL HB - 18G",
       "homeTeamId": "1850521",
       "awayTeamId": "1850519",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 29,
+      "awayScore": 46,
       "clubSide": "home",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-masculin-territoriale-30542/poule-199969/rencontre-2771779/"
     },
     {
