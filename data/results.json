@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T07:35:16.689131+00:00",
+  "updatedAt": "2026-11-28T16:05:26.906316+00:00",
   "season": "2026–2027",
   "source": "FFHandball",
   "teams": [
@@ -719,24 +719,24 @@
         },
         {
           "position": 3,
+          "team": "PLOUFRAGAN HANDBALL 2",
+          "points": 4,
+          "played": 2,
+          "club": true
+        },
+        {
+          "position": 4,
           "team": "MENE MERDRIGNAC HANDBALL",
           "points": 3,
           "played": 1,
           "club": false
         },
         {
-          "position": 4,
+          "position": 5,
           "team": "CSAL PAIMPOL HB - 13 GARS 2",
           "points": 3,
           "played": 1,
           "club": false
-        },
-        {
-          "position": 5,
-          "team": "PLOUFRAGAN HANDBALL 2",
-          "points": 1,
-          "played": 1,
-          "club": true
         },
         {
           "position": 6,
@@ -748,8 +748,8 @@
         {
           "position": 7,
           "team": "ALVMP HANDBALL",
-          "points": 0,
-          "played": 0,
+          "points": 1,
+          "played": 1,
           "club": false
         }
       ],
@@ -1317,10 +1317,10 @@
       "away": "PLOUFRAGAN HANDBALL 2",
       "homeTeamId": "1851159",
       "awayTeamId": "1851165",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 6,
+      "awayScore": 21,
       "clubSide": "away",
-      "played": false,
+      "played": true,
       "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-200093/rencontre-2775915/",
       "venue": {
         "name": "SOS DE PLOUARET",
